@@ -17,7 +17,13 @@ class PlatformType(str, Enum):
     WORKDAY = "workday"
     LEVER = "lever"
     ASHBY = "ashby"
+    CLEARANCEJOBS = "clearancejobs"
+    USAJOBS = "usajobs"
+    ICIMS = "icims"
+    TALEO = "taleo"
+    SMARTRECRUITERS = "smartrecruiters"
     COMPANY_WEBSITE = "company"  # Generic company career pages
+    EXTERNAL = "external"  # External/unknown ATS
 
 
 class ApplicationStatus(str, Enum):
@@ -43,10 +49,13 @@ class JobPosting:
     salary_range: Optional[str] = None
     posted_date: Optional[datetime] = None
     easy_apply: bool = False
-    requirements: List[str] = field(default_factory=list)
+    requirements: Optional[str] = None  # Can be string or list
     remote: bool = False
     job_type: str = "full-time"  # full-time, part-time, contract
     experience_level: str = "mid"  # entry, mid, senior, lead
+    external_apply_url: Optional[str] = None  # URL for external application
+    clearance_required: Optional[str] = None  # Security clearance level
+    source_platform: Optional[str] = None  # Original source if redirected
 
 
 @dataclass
@@ -113,12 +122,13 @@ class JobPlatformAdapter(ABC):
     Abstract base class for job platform adapters.
     Each platform (LinkedIn, Indeed, etc.) implements this interface.
     """
-    
+
     platform: PlatformType
-    
-    def __init__(self, browser_manager):
+
+    def __init__(self, browser_manager, session_cookie: Optional[str] = None):
         self.browser_manager = browser_manager
-        self.session = None
+        self.session_cookie = session_cookie
+        self._session = None
     
     @abstractmethod
     async def search_jobs(self, criteria: SearchConfig) -> List[JobPosting]:
@@ -144,17 +154,22 @@ class JobPlatformAdapter(ABC):
     
     async def get_session(self):
         """Get or create a browser session for this platform."""
-        if not self.session:
-            self.session = await self.browser_manager.create_stealth_session(
+        if not self._session:
+            self._session = await self.browser_manager.create_stealth_session(
                 self.platform.value
             )
-        return self.session
-    
+        return self._session
+
     async def close(self):
         """Close the platform session."""
-        if self.session:
-            await self.browser_manager.close_session(self.session.session_id)
-            self.session = None
+        if self._session:
+            await self.browser_manager.close_session(self._session.session_id)
+            self._session = None
+
+    def _log(self, message: str, level: str = "info"):
+        """Log a message with platform prefix."""
+        prefix = self.platform.value.upper() if hasattr(self, 'platform') else "ADAPTER"
+        print(f"[{prefix}] {message}")
     
     def _score_job_fit(self, job: JobPosting, criteria: SearchConfig) -> float:
         """

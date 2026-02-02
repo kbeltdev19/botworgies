@@ -1,577 +1,337 @@
 <!DOCTYPE html>
-<!-- Version: 2026-02-02-v2 - Added LinkedIn Auth, Employment Types, Company Careers -->
+<!-- Version: 2026-02-02-v3 - Security fixes, authentication, localStorage persistence -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com;">
     <title>Job Applier - AI-Powered Job Application Automation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        .card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-        .toggle-btn {
-            transition: all 0.2s;
-        }
-        .toggle-btn.active {
-            background: #8b5cf6;
-            color: white;
-        }
-        .progress-bar {
-            transition: width 0.5s ease-out;
-        }
-        input[type="range"] {
-            -webkit-appearance: none;
-            height: 8px;
-            border-radius: 4px;
-            background: #e2e8f0;
-        }
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #8b5cf6;
-            cursor: pointer;
-        }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card { background: white; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        .toggle-btn { transition: all 0.2s; }
+        .toggle-btn.active { background: #8b5cf6; color: white; }
+        .progress-bar { transition: width 0.5s ease-out; }
+        input[type="range"] { -webkit-appearance: none; height: 8px; border-radius: 4px; background: #e2e8f0; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: #8b5cf6; cursor: pointer; }
+        .auth-section { display: none; }
+        .auth-section.active { display: block; }
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen">
     <!-- Header -->
     <header class="gradient-bg text-white py-6 px-4">
-        <div class="max-w-6xl mx-auto">
-            <h1 class="text-3xl font-bold">🚀 Job Applier</h1>
-            <p class="text-purple-100 mt-1">AI-powered job application automation</p>
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-bold">Job Applier</h1>
+                <p class="text-purple-100 mt-1">AI-powered job application automation</p>
+            </div>
+            <div id="auth-status" class="text-sm">
+                <span id="user-email" class="hidden mr-4"></span>
+                <button id="logout-btn" onclick="logout()" class="hidden px-4 py-2 bg-white/20 rounded-lg hover:bg-white/30">Logout</button>
+            </div>
         </div>
     </header>
 
     <main class="max-w-6xl mx-auto py-8 px-4">
-        <!-- Progress Bar (shown during batch apply) -->
-        <div id="progress-container" class="mb-6 card p-4 hidden">
-            <div class="flex justify-between items-center mb-2">
-                <span class="font-medium">📤 Applying to jobs...</span>
-                <span id="progress-text" class="text-sm text-gray-600">0 / 0</span>
-            </div>
-            <div class="w-full bg-gray-200 rounded-full h-4">
-                <div id="progress-bar" class="progress-bar bg-purple-600 h-4 rounded-full" style="width: 0%"></div>
-            </div>
-            <div id="progress-status" class="mt-2 text-sm text-gray-600"></div>
-        </div>
+        <!-- Auth Section (shown when not logged in) -->
+        <div id="auth-container" class="auth-section active">
+            <div class="max-w-md mx-auto card p-8">
+                <h2 class="text-2xl font-bold text-center mb-6">Welcome to Job Applier</h2>
 
-        <!-- Status Bar -->
-        <div id="status-bar" class="mb-6 p-4 rounded-lg hidden">
-            <span id="status-message"></span>
-        </div>
-
-        <!-- Daily Limit Display -->
-        <div id="rate-limit-card" class="mb-6 card p-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center gap-4">
-                    <div class="text-3xl">📊</div>
-                    <div>
-                        <h3 class="font-semibold text-gray-800">Daily Applications</h3>
-                        <p class="text-sm text-gray-600">Rolling 24-hour window</p>
-                    </div>
+                <div id="login-form-container">
+                    <form id="login-form" class="space-y-4">
+                        <input type="email" id="login-email" placeholder="Email" required
+                            class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                        <input type="password" id="login-password" placeholder="Password" required minlength="8"
+                            class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                        <button type="submit" class="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 font-medium">
+                            Login
+                        </button>
+                    </form>
+                    <p class="text-center mt-4 text-gray-600">
+                        Don't have an account? <a href="#" onclick="showRegister()" class="text-purple-600 hover:underline">Register</a>
+                    </p>
                 </div>
-                <div class="flex items-center gap-6">
-                    <div class="text-center">
-                        <div id="sent-count" class="text-2xl font-bold text-purple-600">0</div>
-                        <div class="text-xs text-gray-500">Sent</div>
+
+                <div id="register-form-container" class="hidden">
+                    <form id="register-form" class="space-y-4">
+                        <input type="email" id="register-email" placeholder="Email" required
+                            class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                        <input type="password" id="register-password" placeholder="Password (min 8 chars, letters + numbers)" required minlength="8" pattern="^(?=.*[A-Za-z])(?=.*\d).{8,}$"
+                            class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                        <input type="password" id="register-confirm" placeholder="Confirm Password" required
+                            class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                        <button type="submit" class="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 font-medium">
+                            Create Account
+                        </button>
+                    </form>
+                    <p class="text-center mt-4 text-gray-600">
+                        Already have an account? <a href="#" onclick="showLogin()" class="text-purple-600 hover:underline">Login</a>
+                    </p>
+                </div>
+
+                <div id="auth-error" class="mt-4 p-3 bg-red-100 text-red-700 rounded-lg hidden"></div>
+            </div>
+        </div>
+
+        <!-- Main App (shown when logged in) -->
+        <div id="app-container" class="auth-section">
+            <!-- Progress Bar -->
+            <div id="progress-container" class="mb-6 card p-4 hidden">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="font-medium">Applying to jobs...</span>
+                    <span id="progress-text" class="text-sm text-gray-600">0 / 0</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-4">
+                    <div id="progress-bar" class="progress-bar bg-purple-600 h-4 rounded-full" style="width: 0%"></div>
+                </div>
+                <div id="progress-status" class="mt-2 text-sm text-gray-600"></div>
+            </div>
+
+            <!-- Status Bar -->
+            <div id="status-bar" class="mb-6 p-4 rounded-lg hidden">
+                <span id="status-message"></span>
+            </div>
+
+            <!-- Rate Limit Card -->
+            <div id="rate-limit-card" class="mb-6 card p-4">
+                <div class="flex items-center justify-between flex-wrap gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="text-3xl">📊</div>
+                        <div>
+                            <h3 class="font-semibold text-gray-800">Daily Applications</h3>
+                            <p class="text-sm text-gray-600">Rolling 24-hour window</p>
+                        </div>
                     </div>
-                    <div class="text-gray-300 text-2xl">/</div>
-                    <div class="text-center">
-                        <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-6">
+                        <div class="text-center">
+                            <div id="sent-count" class="text-2xl font-bold text-purple-600">0</div>
+                            <div class="text-xs text-gray-500">Sent</div>
+                        </div>
+                        <div class="text-gray-300 text-2xl">/</div>
+                        <div class="text-center">
                             <input type="number" id="daily-limit-input" min="1" max="1000" value="10"
                                 class="w-16 text-2xl font-bold text-center border-b-2 border-purple-200 focus:border-purple-500 outline-none bg-transparent">
+                            <div class="text-xs text-gray-500">Daily Limit</div>
                         </div>
-                        <div class="text-xs text-gray-500">Daily Limit</div>
-                    </div>
-                    <div class="text-center ml-4 px-4 py-2 rounded-lg" id="remaining-badge">
-                        <div id="remaining-count" class="text-xl font-bold">10</div>
-                        <div class="text-xs">Remaining</div>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-3">
-                <div class="w-full bg-gray-200 rounded-full h-2">
-                    <div id="limit-progress-bar" class="bg-purple-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-6">
-            <!-- Left Column: Setup -->
-            <div class="space-y-6">
-                <!-- Resume Upload -->
-                <div class="card p-6">
-                    <h2 class="text-xl font-semibold mb-4">📄 1. Upload Resume</h2>
-                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-purple-500 transition-colors">
-                        <input type="file" id="resume-input" accept=".pdf,.docx,.txt" class="hidden">
-                        <label for="resume-input" class="cursor-pointer">
-                            <div class="text-4xl mb-2">📤</div>
-                            <p class="text-gray-600">Drop your resume here or click to upload</p>
-                            <p class="text-sm text-gray-400 mt-1">PDF, DOCX, or TXT</p>
-                        </label>
-                    </div>
-                    <div id="resume-status" class="mt-4 text-sm text-gray-600"></div>
-                </div>
-
-                <!-- Profile -->
-                <div class="card p-6">
-                    <h2 class="text-xl font-semibold mb-4">👤 2. Your Profile</h2>
-                    <form id="profile-form" class="space-y-4">
-                        <div class="grid grid-cols-2 gap-4">
-                            <input type="text" id="first_name" placeholder="First Name" required
-                                class="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
-                            <input type="text" id="last_name" placeholder="Last Name" required
-                                class="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                        <div class="text-center ml-4 px-4 py-2 rounded-lg bg-green-100 text-green-800" id="remaining-badge">
+                            <div id="remaining-count" class="text-xl font-bold">10</div>
+                            <div class="text-xs">Remaining</div>
                         </div>
-                        <input type="email" id="email" placeholder="Email" required
-                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
-                        <input type="tel" id="phone" placeholder="Phone" required
-                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
-                        <input type="url" id="linkedin_url" placeholder="LinkedIn URL (optional)"
-                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
-                        <input type="number" id="years_experience" placeholder="Years of Experience"
-                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
-                        <button type="submit" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors">
-                            Save Profile
-                        </button>
-                    </form>
+                    </div>
                 </div>
-
-                <!-- LinkedIn Auth -->
-                <div class="card p-6">
-                    <h2 class="text-xl font-semibold mb-4">🔐 LinkedIn Auth (Optional)</h2>
-                    <p class="text-sm text-gray-600 mb-4">
-                        For LinkedIn Easy Apply, paste your <code>li_at</code> session cookie. 
-                        <a href="#" onclick="showCookieHelp()" class="text-purple-600 underline">How to get it?</a>
-                    </p>
-                    <div id="cookie-help" class="hidden mb-4 p-3 bg-blue-50 rounded-lg text-sm">
-                        <ol class="list-decimal ml-4 space-y-1">
-                            <li>Open LinkedIn in Chrome and log in</li>
-                            <li>Press F12 → Application tab → Cookies → linkedin.com</li>
-                            <li>Find <code>li_at</code> and copy its Value</li>
-                            <li>Paste below (expires in ~1 year)</li>
-                        </ol>
+                <div class="mt-3">
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                        <div id="limit-progress-bar" class="bg-purple-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
                     </div>
-                    <div class="flex gap-2">
-                        <input type="password" id="linkedin_cookie" placeholder="Paste li_at cookie value"
-                            class="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none font-mono text-sm">
-                        <button onclick="saveLinkedInCookie()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                            Save
-                        </button>
-                    </div>
-                    <div id="cookie-status" class="mt-2 text-sm"></div>
                 </div>
             </div>
 
-            <!-- Right Column: Search & Apply -->
-            <div class="space-y-6">
-                <!-- Job Search -->
-                <div class="card p-6">
-                    <h2 class="text-xl font-semibold mb-4">🔍 3. Search Jobs</h2>
-                    <form id="search-form" class="space-y-4">
-                        <input type="text" id="roles" placeholder="Job Titles (comma-separated)" 
-                            value="Software Engineer, Backend Developer"
-                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
-                        <input type="text" id="locations" placeholder="Locations (comma-separated)" 
-                            value="Remote, San Francisco"
-                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
-                        
-                        <!-- Country Filter -->
-                        <div class="flex items-center gap-4">
-                            <label class="flex items-center gap-2 cursor-pointer">
-                                <input type="checkbox" id="us-only" checked class="w-4 h-4 text-purple-600 rounded focus:ring-purple-500">
-                                <span class="text-sm font-medium text-gray-700">🇺🇸 US Jobs Only</span>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Left Column -->
+                <div class="space-y-6">
+                    <!-- Resume Upload -->
+                    <div class="card p-6">
+                        <h2 class="text-xl font-semibold mb-4">📄 1. Upload Resume</h2>
+                        <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-purple-500 transition-colors">
+                            <input type="file" id="resume-input" accept=".pdf,.docx,.txt" class="hidden">
+                            <label for="resume-input" class="cursor-pointer">
+                                <div class="text-4xl mb-2">📤</div>
+                                <p class="text-gray-600">Drop your resume here or click to upload</p>
+                                <p class="text-sm text-gray-400 mt-1">PDF, DOCX, or TXT (max 10MB)</p>
                             </label>
-                            <select id="country-filter" class="px-3 py-1 text-sm border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
-                                <option value="US" selected>United States</option>
-                                <option value="CA">Canada</option>
-                                <option value="GB">United Kingdom</option>
-                                <option value="DE">Germany</option>
-                                <option value="ALL">All Countries</option>
-                            </select>
                         </div>
-                        
-                        <!-- Work Type Toggles -->
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Work Type</label>
-                            <div class="flex gap-2">
-                                <button type="button" id="toggle-remote" class="toggle-btn active flex-1 px-4 py-2 border rounded-lg text-sm font-medium">
-                                    🏠 Remote
-                                </button>
-                                <button type="button" id="toggle-hybrid" class="toggle-btn flex-1 px-4 py-2 border rounded-lg text-sm font-medium">
-                                    🔄 Hybrid
-                                </button>
-                                <button type="button" id="toggle-onsite" class="toggle-btn flex-1 px-4 py-2 border rounded-lg text-sm font-medium">
-                                    🏢 On-site
-                                </button>
-                            </div>
-                        </div>
+                        <div id="resume-status" class="mt-4 text-sm text-gray-600"></div>
+                    </div>
 
-                        <!-- Employment Type Toggles -->
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Employment Type</label>
-                            <div class="flex gap-2 flex-wrap">
-                                <button type="button" id="toggle-fulltime" class="toggle-btn active px-4 py-2 border rounded-lg text-sm font-medium">
-                                    💼 Full-time
-                                </button>
-                                <button type="button" id="toggle-contract" class="toggle-btn px-4 py-2 border rounded-lg text-sm font-medium">
-                                    📝 Contract
-                                </button>
-                                <button type="button" id="toggle-temporary" class="toggle-btn px-4 py-2 border rounded-lg text-sm font-medium">
-                                    ⏱️ Temporary
-                                </button>
-                                <button type="button" id="toggle-parttime" class="toggle-btn px-4 py-2 border rounded-lg text-sm font-medium">
-                                    🕐 Part-time
-                                </button>
+                    <!-- Profile -->
+                    <div class="card p-6">
+                        <h2 class="text-xl font-semibold mb-4">👤 2. Your Profile</h2>
+                        <form id="profile-form" class="space-y-4">
+                            <div class="grid grid-cols-2 gap-4">
+                                <input type="text" id="first_name" placeholder="First Name" required maxlength="100"
+                                    class="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                                <input type="text" id="last_name" placeholder="Last Name" required maxlength="100"
+                                    class="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
                             </div>
-                        </div>
+                            <input type="email" id="profile-email" placeholder="Email" required
+                                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                            <input type="tel" id="phone" placeholder="Phone (e.g., 555-123-4567)" required pattern="[\d\s\-\+\(\)]{7,20}"
+                                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                            <input type="url" id="linkedin_url" placeholder="LinkedIn URL (optional)" maxlength="200"
+                                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                            <input type="number" id="years_experience" placeholder="Years of Experience" min="0" max="50"
+                                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                            <button type="submit" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700">
+                                Save Profile
+                            </button>
+                        </form>
+                    </div>
 
-                        <!-- Minimum Compensation Slider -->
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">
-                                Minimum Salary: <span id="salary-display" class="text-purple-600 font-bold">$80,000</span>
-                            </label>
-                            <input type="range" id="min-salary" min="0" max="300000" step="5000" value="80000"
-                                class="w-full">
-                            <div class="flex justify-between text-xs text-gray-500 mt-1">
-                                <span>Any</span>
-                                <span>$150k</span>
-                                <span>$300k+</span>
+                    <!-- LinkedIn Auth -->
+                    <div class="card p-6">
+                        <h2 class="text-xl font-semibold mb-4">🔐 LinkedIn Auth (Optional)</h2>
+                        <p class="text-sm text-gray-600 mb-4">
+                            For LinkedIn Easy Apply, paste your <code class="bg-gray-100 px-1 rounded">li_at</code> session cookie.
+                            <button onclick="toggleCookieHelp()" class="text-purple-600 underline ml-1">How to get it?</button>
+                        </p>
+                        <div id="cookie-help" class="hidden mb-4 p-3 bg-blue-50 rounded-lg text-sm">
+                            <ol class="list-decimal ml-4 space-y-1">
+                                <li>Open LinkedIn in Chrome and log in</li>
+                                <li>Press F12 → Application tab → Cookies → linkedin.com</li>
+                                <li>Find <code class="bg-blue-100 px-1 rounded">li_at</code> and copy its Value</li>
+                                <li>Paste below (expires in ~1 year)</li>
+                            </ol>
+                        </div>
+                        <div class="flex gap-2">
+                            <input type="password" id="linkedin_cookie" placeholder="Paste li_at cookie value" maxlength="500"
+                                class="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none font-mono text-sm">
+                            <button onclick="saveLinkedInCookie()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                                Save
+                            </button>
+                        </div>
+                        <div id="cookie-status" class="mt-2 text-sm"></div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="space-y-6">
+                    <!-- Job Search -->
+                    <div class="card p-6">
+                        <h2 class="text-xl font-semibold mb-4">🔍 3. Search Jobs</h2>
+                        <form id="search-form" class="space-y-4">
+                            <input type="text" id="roles" placeholder="Job Titles (comma-separated)" maxlength="500"
+                                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                            <input type="text" id="locations" placeholder="Locations (comma-separated)" maxlength="500"
+                                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+
+                            <div class="flex items-center gap-4">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" id="us-only" checked class="w-4 h-4 text-purple-600 rounded">
+                                    <span class="text-sm font-medium text-gray-700">🇺🇸 US Jobs Only</span>
+                                </label>
+                                <select id="country-filter" class="px-3 py-1 text-sm border rounded-lg">
+                                    <option value="US" selected>United States</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="GB">United Kingdom</option>
+                                    <option value="DE">Germany</option>
+                                    <option value="ALL">All Countries</option>
+                                </select>
                             </div>
-                        </div>
 
-                        <div class="flex items-center gap-4">
+                            <div class="flex items-center gap-4">
+                                <label class="flex items-center gap-2">
+                                    <input type="checkbox" id="easy_apply_only" checked class="rounded text-purple-600">
+                                    <span class="text-sm">Easy Apply only</span>
+                                </label>
+                                <select id="posted_within" class="px-3 py-2 border rounded-lg">
+                                    <option value="1">Past 24 hours</option>
+                                    <option value="7" selected>Past week</option>
+                                    <option value="30">Past month</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
+                                🔍 Search Jobs
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Results -->
+                    <div class="card p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-xl font-semibold">📋 Results</h2>
+                            <span id="results-count" class="text-sm text-gray-500"></span>
+                        </div>
+                        <div id="results" class="space-y-3 max-h-96 overflow-y-auto">
+                            <p class="text-gray-500 text-center py-8">Search results will appear here</p>
+                        </div>
+                    </div>
+
+                    <!-- Batch Apply -->
+                    <div class="card p-6">
+                        <h2 class="text-xl font-semibold mb-4">⚡ Batch Apply</h2>
+                        <div class="flex items-center gap-4 mb-4">
                             <label class="flex items-center gap-2">
-                                <input type="checkbox" id="easy_apply_only" checked class="rounded text-purple-600">
-                                <span class="text-sm">Easy Apply only</span>
+                                <input type="checkbox" id="generate_cover_letter" checked class="rounded text-purple-600">
+                                <span class="text-sm">Generate cover letters</span>
                             </label>
-                            <select id="posted_within" class="px-3 py-2 border rounded-lg">
-                                <option value="1">Past 24 hours</option>
-                                <option value="7" selected>Past week</option>
-                                <option value="30">Past month</option>
-                            </select>
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" id="auto_submit" class="rounded text-red-600">
+                                <span class="text-sm text-red-600">Auto-submit</span>
+                            </label>
                         </div>
-                        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                            🔍 Search Jobs
+                        <button id="batch-apply-btn" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 font-medium disabled:opacity-50" disabled>
+                            🚀 Apply to Selected Jobs (<span id="selected-count">0</span>)
                         </button>
-                        <p class="text-xs text-gray-400 text-center mt-1">⚠️ Search requires local browser. Use direct URL below for cloud.</p>
-                    </form>
-                </div>
-
-                <!-- Results -->
-                <div class="card p-6">
-                    <div class="flex justify-between items-center mb-4">
-                        <h2 class="text-xl font-semibold">📋 Results</h2>
-                        <span id="results-count" class="text-sm text-gray-500"></span>
                     </div>
-                    <div id="results" class="space-y-3 max-h-96 overflow-y-auto">
-                        <p class="text-gray-500 text-center py-8">Search results will appear here</p>
-                    </div>
-                </div>
 
-                <!-- Batch Apply Settings -->
-                <div class="card p-6">
-                    <h2 class="text-xl font-semibold mb-4">⚡ Batch Apply</h2>
-                    
-                    <!-- Number of Applications -->
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">
-                            Applications to send: <span id="app-count-display" class="text-purple-600 font-bold">10</span>
-                        </label>
-                        <input type="range" id="app-count" min="1" max="50" step="1" value="10"
-                            class="w-full">
-                        <div class="flex justify-between text-xs text-gray-500 mt-1">
-                            <span>1</span>
-                            <span>25</span>
-                            <span>50</span>
+                    <!-- Single Apply -->
+                    <div class="card p-6">
+                        <h2 class="text-xl font-semibold mb-4">🎯 Single Job Apply</h2>
+                        <div id="linkedin-warning" class="mb-3 p-3 bg-amber-50 border border-amber-200 rounded-lg text-sm text-amber-800 hidden">
+                            ⚠️ LinkedIn requires authentication. Add your li_at cookie above.
                         </div>
+                        <form id="apply-form" class="space-y-4">
+                            <input type="url" id="job_url" placeholder="Paste job URL" required maxlength="500"
+                                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                            <button type="submit" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700">
+                                🎯 Apply Now
+                            </button>
+                        </form>
                     </div>
-
-                    <div class="flex items-center gap-4 mb-4">
-                        <label class="flex items-center gap-2">
-                            <input type="checkbox" id="generate_cover_letter" checked class="rounded text-purple-600">
-                            <span class="text-sm">Generate cover letters</span>
-                        </label>
-                        <label class="flex items-center gap-2">
-                            <input type="checkbox" id="auto_submit" class="rounded text-red-600">
-                            <span class="text-sm text-red-600">Auto-submit (⚠️)</span>
-                        </label>
-                    </div>
-
-                    <button id="batch-apply-btn" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-                        🚀 Apply to Selected Jobs (<span id="selected-count">0</span>)
-                    </button>
-                </div>
-
-                <!-- Quick Apply -->
-                <div class="card p-6">
-                    <h2 class="text-xl font-semibold mb-4">🎯 Single Job Apply</h2>
-                    <div id="linkedin-warning" class="mb-3 p-3 bg-amber-50 border border-amber-200 rounded-lg text-sm text-amber-800 hidden">
-                        ⚠️ <strong>LinkedIn requires auth!</strong> Add your <code>li_at</code> cookie in the LinkedIn Auth section (left side) before applying to LinkedIn jobs.
-                    </div>
-                    <form id="apply-form" class="space-y-4">
-                        <input type="url" id="job_url" placeholder="Paste any job URL (LinkedIn, Indeed, Greenhouse, company careers, etc.)"
-                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none" oninput="checkLinkedInWarning(this.value)">
-                        <p class="text-xs text-gray-500">Supports: LinkedIn, Indeed, Greenhouse, Workday, Lever, + any company career page</p>
-                        <button type="submit" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors">
-                            🎯 Apply Now
-                        </button>
-                    </form>
-                </div>
-                
-                <!-- Company Careers Scraper -->
-                <div class="card p-6">
-                    <h2 class="text-xl font-semibold mb-4">🏢 Company Careers</h2>
-                    <p class="text-sm text-gray-600 mb-3">Scrape jobs directly from a company's careers page</p>
-                    <form id="company-search-form" class="space-y-4">
-                        <input type="url" id="careers_url" placeholder="Company careers page URL (e.g., https://stripe.com/jobs)"
-                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
-                        <input type="text" id="company_roles" placeholder="Filter by role (optional, e.g., Engineer)"
-                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
-                        <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition-colors">
-                            🔍 Find Jobs on This Site
-                        </button>
-                    </form>
                 </div>
             </div>
-        </div>
 
-        <!-- Applications Log -->
-        <div class="card p-6 mt-6">
-            <h2 class="text-xl font-semibold mb-4">📊 Application History</h2>
-            <div id="applications-log" class="overflow-x-auto">
-                <table class="w-full text-sm">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-4 py-2 text-left">Job</th>
-                            <th class="px-4 py-2 text-left">Company</th>
-                            <th class="px-4 py-2 text-left">Platform</th>
-                            <th class="px-4 py-2 text-left">Status</th>
-                            <th class="px-4 py-2 text-left">Time</th>
-                        </tr>
-                    </thead>
-                    <tbody id="applications-tbody">
-                        <tr><td colspan="5" class="px-4 py-8 text-center text-gray-500">No applications yet</td></tr>
-                    </tbody>
-                </table>
+            <!-- Applications History -->
+            <div class="card p-6 mt-6">
+                <h2 class="text-xl font-semibold mb-4">📊 Application History</h2>
+                <div id="applications-log" class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-4 py-2 text-left">Job</th>
+                                <th class="px-4 py-2 text-left">Company</th>
+                                <th class="px-4 py-2 text-left">Platform</th>
+                                <th class="px-4 py-2 text-left">Status</th>
+                                <th class="px-4 py-2 text-left">Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="applications-tbody">
+                            <tr><td colspan="5" class="px-4 py-8 text-center text-gray-500">No applications yet</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </main>
 
     <script>
-        // API Base URL - Job Applier Backend (Fly.io)
-        const API_BASE = 'https://job-applier-api.fly.dev';
-        
-        const USER_ID = 'default';
+        // Configuration
+        const API_BASE = localStorage.getItem('api_base') || 'https://job-applier-api.fly.dev';
+
+        // State
+        let authToken = localStorage.getItem('auth_token');
+        let userId = localStorage.getItem('user_id');
         let selectedJobs = new Set();
         let searchResults = [];
-
-        // === LinkedIn Cookie Functions ===
         let linkedInCookieSet = false;
-        
-        function showCookieHelp() {
-            const helpEl = document.getElementById('cookie-help');
-            helpEl.classList.toggle('hidden');
-        }
-        
-        function checkLinkedInWarning(url) {
-            const warning = document.getElementById('linkedin-warning');
-            if (url.toLowerCase().includes('linkedin.com') && !linkedInCookieSet) {
-                warning.classList.remove('hidden');
-            } else {
-                warning.classList.add('hidden');
-            }
+
+        // === Utility Functions ===
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text || '';
+            return div.innerHTML;
         }
 
-        async function saveLinkedInCookie() {
-            const cookie = document.getElementById('linkedin_cookie').value.trim();
-            if (!cookie) {
-                document.getElementById('cookie-status').innerHTML = '<span class="text-red-600">Please enter a cookie value</span>';
-                return;
-            }
-            
-            try {
-                const res = await fetch(`${API_BASE}/settings?user_id=${USER_ID}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ daily_limit: parseInt(document.getElementById('daily-limit-input').value) || 10, linkedin_cookie: cookie })
-                });
-                const data = await res.json();
-                
-                if (data.linkedin_cookie_set) {
-                    linkedInCookieSet = true;
-                    document.getElementById('cookie-status').innerHTML = '<span class="text-green-600">✅ LinkedIn cookie saved! You can now use Easy Apply.</span>';
-                    document.getElementById('linkedin_cookie').value = '';
-                    document.getElementById('linkedin-warning')?.classList.add('hidden');
-                } else {
-                    document.getElementById('cookie-status').innerHTML = '<span class="text-red-600">Failed to save cookie</span>';
-                }
-            } catch (e) {
-                document.getElementById('cookie-status').innerHTML = `<span class="text-red-600">Error: ${e.message}</span>`;
-            }
+        function sanitizeText(text) {
+            return String(text || '').replace(/[<>&"']/g, c => ({
+                '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&#39;'
+            })[c]);
         }
 
-        // === Company Careers Search ===
-        document.getElementById('company-search-form')?.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const careersUrl = document.getElementById('careers_url').value;
-            const roles = document.getElementById('company_roles').value;
-            
-            if (!careersUrl) {
-                showStatus('Please enter a careers page URL', 'error');
-                return;
-            }
-            
-            document.getElementById('results').innerHTML = '<p class="text-center py-4">🔍 Scraping company careers page...</p>';
-            
-            try {
-                const res = await fetch(`${API_BASE}/jobs/search?platform=company`, {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({
-                        roles: roles ? [roles] : [],
-                        locations: [],
-                        careers_url: careersUrl
-                    })
-                });
-                
-                if (!res.ok) {
-                    const errorData = await res.json().catch(() => ({ detail: 'Server error' }));
-                    throw new Error(errorData.detail || `HTTP ${res.status}`);
-                }
-                
-                const data = await res.json();
-                searchResults = data.jobs || [];
-                
-                document.getElementById('results-count').textContent = `${data.count} jobs found`;
-                
-                if (searchResults.length === 0) {
-                    document.getElementById('results').innerHTML = '<p class="text-center py-4 text-gray-500">No jobs found on that page</p>';
-                } else {
-                    renderResults();
-                }
-                showStatus(`Found ${data.count} jobs from company careers page`, 'success');
-            } catch (err) {
-                showStatus('Company search: ' + err.message, 'error');
-                document.getElementById('results').innerHTML = `<p class="text-center py-4 text-amber-600">${err.message}</p>`;
-            }
-        });
-
-        // === Rate Limit Management ===
-        async function loadRateLimitStatus() {
-            try {
-                const res = await fetch(`${API_BASE}/settings?user_id=${USER_ID}`);
-                const data = await res.json();
-                updateRateLimitDisplay(data);
-            } catch (e) {
-                console.error('Failed to load rate limit:', e);
-            }
-        }
-
-        function updateRateLimitDisplay(data) {
-            // Check if LinkedIn cookie is set
-            if (data.linkedin_cookie_set) {
-                linkedInCookieSet = true;
-                document.getElementById('cookie-status').innerHTML = '<span class="text-green-600">✅ Cookie active</span>';
-            }
-            const sent = data.sent_last_24h || 0;
-            const limit = data.daily_limit || 10;
-            const remaining = data.remaining || (limit - sent);
-            const percentage = Math.min(100, (sent / limit) * 100);
-            
-            document.getElementById('sent-count').textContent = sent;
-            document.getElementById('daily-limit-input').value = limit;
-            document.getElementById('remaining-count').textContent = remaining;
-            document.getElementById('limit-progress-bar').style.width = `${percentage}%`;
-            
-            // Update badge color based on remaining
-            const badge = document.getElementById('remaining-badge');
-            if (remaining === 0) {
-                badge.className = 'text-center ml-4 px-4 py-2 rounded-lg bg-red-100 text-red-800';
-            } else if (remaining <= 3) {
-                badge.className = 'text-center ml-4 px-4 py-2 rounded-lg bg-yellow-100 text-yellow-800';
-            } else {
-                badge.className = 'text-center ml-4 px-4 py-2 rounded-lg bg-green-100 text-green-800';
-            }
-            
-            // Update progress bar color
-            const progressBar = document.getElementById('limit-progress-bar');
-            if (percentage >= 100) {
-                progressBar.className = 'bg-red-500 h-2 rounded-full transition-all duration-300';
-            } else if (percentage >= 70) {
-                progressBar.className = 'bg-yellow-500 h-2 rounded-full transition-all duration-300';
-            } else {
-                progressBar.className = 'bg-purple-600 h-2 rounded-full transition-all duration-300';
-            }
-        }
-
-        // Daily limit input change handler
-        document.getElementById('daily-limit-input').addEventListener('change', async (e) => {
-            const newLimit = parseInt(e.target.value);
-            if (newLimit < 1 || newLimit > 1000) {
-                showStatus('Daily limit must be between 1 and 1000', 'error');
-                return;
-            }
-            try {
-                const res = await fetch(`${API_BASE}/settings?user_id=${USER_ID}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ daily_limit: newLimit })
-                });
-                const data = await res.json();
-                updateRateLimitDisplay(data);
-                showStatus(`Daily limit updated to ${newLimit}`, 'success');
-            } catch (e) {
-                showStatus('Failed to update limit', 'error');
-            }
-        });
-
-        // Load rate limit on page load
-        loadRateLimitStatus();
-        // Refresh every 60 seconds
-        setInterval(loadRateLimitStatus, 60000);
-
-        // Work type toggles
-        const workTypes = { remote: true, hybrid: false, onsite: false };
-        const employmentTypes = { fulltime: true, contract: false, temporary: false, parttime: false };
-        
-        // Work type buttons
-        ['remote', 'hybrid', 'onsite'].forEach(type => {
-            document.getElementById(`toggle-${type}`)?.addEventListener('click', (e) => {
-                workTypes[type] = !workTypes[type];
-                e.target.classList.toggle('active', workTypes[type]);
-            });
-        });
-        
-        // Employment type buttons
-        ['fulltime', 'contract', 'temporary', 'parttime'].forEach(type => {
-            document.getElementById(`toggle-${type}`)?.addEventListener('click', (e) => {
-                employmentTypes[type] = !employmentTypes[type];
-                e.target.classList.toggle('active', employmentTypes[type]);
-            });
-        });
-
-        // Salary slider
-        document.getElementById('min-salary').addEventListener('input', (e) => {
-            const val = parseInt(e.target.value);
-            document.getElementById('salary-display').textContent = val === 0 ? 'Any' : `$${val.toLocaleString()}`;
-        });
-
-        // App count slider
-        document.getElementById('app-count').addEventListener('input', (e) => {
-            document.getElementById('app-count-display').textContent = e.target.value;
-        });
-
-        // Status helper
         function showStatus(message, type = 'info') {
             const bar = document.getElementById('status-bar');
             const msg = document.getElementById('status-message');
@@ -585,109 +345,312 @@
             setTimeout(() => bar.classList.add('hidden'), 5000);
         }
 
-        // Progress bar
-        function updateProgress(current, total, status = '') {
-            const container = document.getElementById('progress-container');
-            const bar = document.getElementById('progress-bar');
-            const text = document.getElementById('progress-text');
-            const statusEl = document.getElementById('progress-status');
-            
-            if (total === 0) {
-                container.classList.add('hidden');
-                return;
-            }
-            
-            container.classList.remove('hidden');
-            const percent = Math.round((current / total) * 100);
-            bar.style.width = percent + '%';
-            text.textContent = `${current} / ${total}`;
-            statusEl.textContent = status;
+        function authHeaders() {
+            return authToken ? { 'Authorization': `Bearer ${authToken}`, 'Content-Type': 'application/json' } : { 'Content-Type': 'application/json' };
         }
 
-        // Resume Upload
+        // === Authentication ===
+
+        function showLogin() {
+            document.getElementById('login-form-container').classList.remove('hidden');
+            document.getElementById('register-form-container').classList.add('hidden');
+        }
+
+        function showRegister() {
+            document.getElementById('login-form-container').classList.add('hidden');
+            document.getElementById('register-form-container').classList.remove('hidden');
+        }
+
+        function showAuthError(message) {
+            const el = document.getElementById('auth-error');
+            el.textContent = message;
+            el.classList.remove('hidden');
+        }
+
+        function checkAuth() {
+            if (authToken && userId) {
+                document.getElementById('auth-container').classList.remove('active');
+                document.getElementById('app-container').classList.add('active');
+                document.getElementById('logout-btn').classList.remove('hidden');
+                loadRateLimitStatus();
+                loadApplications();
+                loadSavedProfile();
+            } else {
+                document.getElementById('auth-container').classList.add('active');
+                document.getElementById('app-container').classList.remove('active');
+                document.getElementById('logout-btn').classList.add('hidden');
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('auth_token');
+            localStorage.removeItem('user_id');
+            authToken = null;
+            userId = null;
+            checkAuth();
+        }
+
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            try {
+                const res = await fetch(`${API_BASE}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.detail || 'Login failed');
+
+                authToken = data.access_token;
+                userId = data.user_id;
+                localStorage.setItem('auth_token', authToken);
+                localStorage.setItem('user_id', userId);
+                checkAuth();
+            } catch (err) {
+                showAuthError(err.message);
+            }
+        });
+
+        document.getElementById('register-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirm = document.getElementById('register-confirm').value;
+
+            if (password !== confirm) {
+                showAuthError('Passwords do not match');
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_BASE}/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.detail || 'Registration failed');
+
+                authToken = data.access_token;
+                userId = data.user_id;
+                localStorage.setItem('auth_token', authToken);
+                localStorage.setItem('user_id', userId);
+                checkAuth();
+            } catch (err) {
+                showAuthError(err.message);
+            }
+        });
+
+        // === Profile Management ===
+
+        function loadSavedProfile() {
+            const saved = localStorage.getItem('profile');
+            if (saved) {
+                try {
+                    const profile = JSON.parse(saved);
+                    document.getElementById('first_name').value = profile.first_name || '';
+                    document.getElementById('last_name').value = profile.last_name || '';
+                    document.getElementById('profile-email').value = profile.email || '';
+                    document.getElementById('phone').value = profile.phone || '';
+                    document.getElementById('linkedin_url').value = profile.linkedin_url || '';
+                    document.getElementById('years_experience').value = profile.years_experience || '';
+                } catch (e) {}
+            }
+            // Also load search preferences
+            const searchPrefs = localStorage.getItem('search_prefs');
+            if (searchPrefs) {
+                try {
+                    const prefs = JSON.parse(searchPrefs);
+                    document.getElementById('roles').value = prefs.roles || '';
+                    document.getElementById('locations').value = prefs.locations || '';
+                } catch (e) {}
+            }
+        }
+
+        document.getElementById('profile-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const profile = {
+                first_name: document.getElementById('first_name').value.trim(),
+                last_name: document.getElementById('last_name').value.trim(),
+                email: document.getElementById('profile-email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                linkedin_url: document.getElementById('linkedin_url').value.trim() || null,
+                years_experience: parseInt(document.getElementById('years_experience').value) || null
+            };
+
+            // Validate phone
+            if (!/^[\d\s\-\+\(\)]{7,20}$/.test(profile.phone)) {
+                showStatus('Invalid phone format', 'error');
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_BASE}/profile`, {
+                    method: 'POST',
+                    headers: authHeaders(),
+                    body: JSON.stringify(profile)
+                });
+                if (!res.ok) {
+                    const data = await res.json();
+                    throw new Error(data.detail || 'Failed to save');
+                }
+                localStorage.setItem('profile', JSON.stringify(profile));
+                showStatus('Profile saved!', 'success');
+            } catch (err) {
+                showStatus('Error: ' + err.message, 'error');
+            }
+        });
+
+        // === Rate Limits ===
+
+        async function loadRateLimitStatus() {
+            try {
+                const res = await fetch(`${API_BASE}/settings`, { headers: authHeaders() });
+                if (!res.ok) return;
+                const data = await res.json();
+                updateRateLimitDisplay(data);
+            } catch (e) {}
+        }
+
+        function updateRateLimitDisplay(data) {
+            linkedInCookieSet = data.linkedin_cookie_set;
+            if (linkedInCookieSet) {
+                document.getElementById('cookie-status').textContent = '✅ Cookie active';
+                document.getElementById('cookie-status').className = 'mt-2 text-sm text-green-600';
+            }
+
+            const sent = data.sent_last_24h || 0;
+            const limit = data.daily_limit || 10;
+            const remaining = Math.max(0, limit - sent);
+            const percentage = Math.min(100, (sent / limit) * 100);
+
+            document.getElementById('sent-count').textContent = sent;
+            document.getElementById('daily-limit-input').value = limit;
+            document.getElementById('remaining-count').textContent = remaining;
+            document.getElementById('limit-progress-bar').style.width = `${percentage}%`;
+
+            const badge = document.getElementById('remaining-badge');
+            badge.className = remaining === 0 ? 'text-center ml-4 px-4 py-2 rounded-lg bg-red-100 text-red-800' :
+                remaining <= 3 ? 'text-center ml-4 px-4 py-2 rounded-lg bg-yellow-100 text-yellow-800' :
+                'text-center ml-4 px-4 py-2 rounded-lg bg-green-100 text-green-800';
+        }
+
+        document.getElementById('daily-limit-input').addEventListener('change', async (e) => {
+            const newLimit = parseInt(e.target.value);
+            if (newLimit < 1 || newLimit > 1000) {
+                showStatus('Limit must be 1-1000', 'error');
+                return;
+            }
+            try {
+                const res = await fetch(`${API_BASE}/settings`, {
+                    method: 'POST',
+                    headers: authHeaders(),
+                    body: JSON.stringify({ daily_limit: newLimit })
+                });
+                const data = await res.json();
+                updateRateLimitDisplay(data);
+                showStatus('Limit updated', 'success');
+            } catch (e) {
+                showStatus('Failed to update limit', 'error');
+            }
+        });
+
+        // === LinkedIn Cookie ===
+
+        function toggleCookieHelp() {
+            document.getElementById('cookie-help').classList.toggle('hidden');
+        }
+
+        async function saveLinkedInCookie() {
+            const cookie = document.getElementById('linkedin_cookie').value.trim();
+            if (!cookie) {
+                document.getElementById('cookie-status').textContent = 'Please enter a cookie';
+                document.getElementById('cookie-status').className = 'mt-2 text-sm text-red-600';
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_BASE}/settings`, {
+                    method: 'POST',
+                    headers: authHeaders(),
+                    body: JSON.stringify({
+                        daily_limit: parseInt(document.getElementById('daily-limit-input').value) || 10,
+                        linkedin_cookie: cookie
+                    })
+                });
+                const data = await res.json();
+                if (data.linkedin_cookie_set) {
+                    linkedInCookieSet = true;
+                    document.getElementById('cookie-status').textContent = '✅ Cookie saved!';
+                    document.getElementById('cookie-status').className = 'mt-2 text-sm text-green-600';
+                    document.getElementById('linkedin_cookie').value = '';
+                    document.getElementById('linkedin-warning').classList.add('hidden');
+                }
+            } catch (e) {
+                document.getElementById('cookie-status').textContent = 'Error: ' + e.message;
+                document.getElementById('cookie-status').className = 'mt-2 text-sm text-red-600';
+            }
+        }
+
+        // === Resume Upload ===
+
         document.getElementById('resume-input').addEventListener('change', async (e) => {
             const file = e.target.files[0];
             if (!file) return;
+
+            if (file.size > 10 * 1024 * 1024) {
+                showStatus('File too large (max 10MB)', 'error');
+                return;
+            }
 
             const formData = new FormData();
             formData.append('file', file);
 
             try {
-                showStatus('Uploading and parsing resume...');
-                const res = await fetch(`${API_BASE}/resume/upload?user_id=${USER_ID}`, {
+                showStatus('Uploading resume...');
+                const res = await fetch(`${API_BASE}/resume/upload`, {
                     method: 'POST',
+                    headers: { 'Authorization': `Bearer ${authToken}` },
                     body: formData
                 });
                 const data = await res.json();
-                
-                document.getElementById('resume-status').innerHTML = `
-                    <div class="p-3 bg-green-50 rounded-lg">
-                        <strong>✅ Resume uploaded:</strong> ${file.name}<br>
-                        <span class="text-gray-600">Skills: ${data.parsed_data?.skills?.slice(0,5).join(', ') || 'Parsing...'}</span>
-                    </div>
-                `;
-                showStatus('Resume uploaded successfully!', 'success');
+                if (!res.ok) throw new Error(data.detail || 'Upload failed');
+
+                const status = document.getElementById('resume-status');
+                status.innerHTML = '';
+                const div = document.createElement('div');
+                div.className = 'p-3 bg-green-50 rounded-lg';
+                const strong = document.createElement('strong');
+                strong.textContent = '✅ Uploaded: ';
+                const span = document.createElement('span');
+                span.textContent = file.name;
+                div.appendChild(strong);
+                div.appendChild(span);
+                status.appendChild(div);
+                showStatus('Resume uploaded!', 'success');
             } catch (err) {
-                showStatus('Failed to upload resume: ' + err.message, 'error');
+                showStatus('Upload failed: ' + err.message, 'error');
             }
         });
 
-        // Profile Form
-        document.getElementById('profile-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const profile = {
-                first_name: document.getElementById('first_name').value,
-                last_name: document.getElementById('last_name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                linkedin_url: document.getElementById('linkedin_url').value || null,
-                years_experience: parseInt(document.getElementById('years_experience').value) || null
-            };
+        // === Job Search ===
 
-            try {
-                const res = await fetch(`${API_BASE}/profile?user_id=${USER_ID}`, {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify(profile)
-                });
-                showStatus('Profile saved!', 'success');
-            } catch (err) {
-                showStatus('Failed to save profile: ' + err.message, 'error');
-            }
-        });
-
-        // Job Search
         document.getElementById('search-form').addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            // Build locations based on work type toggles
-            let locations = document.getElementById('locations').value.split(',').map(s => s.trim());
-            if (workTypes.remote && !locations.some(l => l.toLowerCase().includes('remote'))) {
-                locations.push('Remote');
-            }
+            const roles = document.getElementById('roles').value;
+            const locations = document.getElementById('locations').value;
 
-            // Get country filter
-            const usOnly = document.getElementById('us-only').checked;
-            const countryFilter = document.getElementById('country-filter').value;
-            
-            // If US only is checked, ensure US locations
-            if (usOnly && !locations.some(l => l.toLowerCase().includes('united states'))) {
-                locations = locations.map(l => {
-                    if (l.toLowerCase() === 'remote') return 'Remote, United States';
-                    return l + ', United States';
-                });
-            }
+            localStorage.setItem('search_prefs', JSON.stringify({ roles, locations }));
 
             const search = {
-                roles: document.getElementById('roles').value.split(',').map(s => s.trim()),
-                locations: locations,
+                roles: roles.split(',').map(s => s.trim()).filter(Boolean),
+                locations: locations.split(',').map(s => s.trim()).filter(Boolean),
                 easy_apply_only: document.getElementById('easy_apply_only').checked,
                 posted_within_days: parseInt(document.getElementById('posted_within').value),
-                min_salary: parseInt(document.getElementById('min-salary').value) || null,
-                work_types: Object.entries(workTypes).filter(([k,v]) => v).map(([k]) => k),
-                employment_types: Object.entries(employmentTypes).filter(([k,v]) => v).map(([k]) => k),
-                country: usOnly ? 'US' : countryFilter
+                country: document.getElementById('us-only').checked ? 'US' : document.getElementById('country-filter').value
             };
 
             document.getElementById('results').innerHTML = '<p class="text-center py-4">🔍 Searching...</p>';
@@ -697,133 +660,123 @@
             try {
                 const res = await fetch(`${API_BASE}/jobs/search?platform=linkedin`, {
                     method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
+                    headers: authHeaders(),
                     body: JSON.stringify(search)
                 });
-                
                 if (!res.ok) {
-                    const errorData = await res.json().catch(() => ({ detail: 'Server error' }));
-                    throw new Error(errorData.detail || `HTTP ${res.status}`);
+                    const data = await res.json();
+                    throw new Error(data.detail || 'Search failed');
                 }
-                
                 const data = await res.json();
                 searchResults = data.jobs || [];
-                
                 document.getElementById('results-count').textContent = `${data.count} jobs found`;
-                
-                if (searchResults.length === 0) {
-                    document.getElementById('results').innerHTML = '<p class="text-center py-4 text-gray-500">No jobs found</p>';
-                } else {
-                    renderResults();
-                }
+                renderResults();
                 showStatus(`Found ${data.count} jobs`, 'success');
             } catch (err) {
-                const errorMsg = err.message.includes('Browser automation') 
-                    ? '⚠️ Search requires browser automation (not available on cloud). Use "Single Job Apply" with a direct job URL instead!'
-                    : err.message;
-                showStatus('Search: ' + errorMsg, 'error');
-                document.getElementById('results').innerHTML = `
-                    <div class="text-center py-4">
-                        <p class="text-amber-600 mb-2">🔍 Job search requires browser automation</p>
-                        <p class="text-sm text-gray-500">Paste a job URL directly in "Single Job Apply" below instead!</p>
-                    </div>`;
+                showStatus('Search failed: ' + err.message, 'error');
+                document.getElementById('results').innerHTML = '<p class="text-center py-4 text-red-600">Search failed. Try single job apply.</p>';
             }
         });
 
         function renderResults() {
-            document.getElementById('results').innerHTML = searchResults.map((job, idx) => `
-                <div class="p-3 border rounded-lg hover:bg-gray-50 ${selectedJobs.has(idx) ? 'ring-2 ring-purple-500 bg-purple-50' : ''}">
-                    <div class="flex items-start gap-3">
-                        <input type="checkbox" ${selectedJobs.has(idx) ? 'checked' : ''} 
-                            onchange="toggleJob(${idx})"
-                            class="mt-1 rounded text-purple-600">
-                        <div class="flex-1">
-                            <div class="font-medium">${job.title}</div>
-                            <div class="text-sm text-gray-600">${job.company} • ${job.location}</div>
-                            <div class="flex items-center gap-2 mt-2 flex-wrap">
-                                ${job.easy_apply ? '<span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Easy Apply</span>' : ''}
-                                ${job.remote ? '<span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">🏠 Remote</span>' : ''}
-                                <a href="${job.url}" target="_blank" class="text-xs text-purple-600 hover:underline">View →</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
+            const container = document.getElementById('results');
+            container.innerHTML = '';
+
+            if (searchResults.length === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-center py-8">No results</p>';
+                return;
+            }
+
+            searchResults.forEach((job, idx) => {
+                const div = document.createElement('div');
+                div.className = `p-3 border rounded-lg hover:bg-gray-50 ${selectedJobs.has(idx) ? 'ring-2 ring-purple-500 bg-purple-50' : ''}`;
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = selectedJobs.has(idx);
+                checkbox.className = 'mt-1 rounded text-purple-600';
+                checkbox.onchange = () => toggleJob(idx);
+
+                const content = document.createElement('div');
+                content.className = 'flex-1 ml-3';
+
+                const title = document.createElement('div');
+                title.className = 'font-medium';
+                title.textContent = job.title;
+
+                const meta = document.createElement('div');
+                meta.className = 'text-sm text-gray-600';
+                meta.textContent = `${job.company} • ${job.location}`;
+
+                const badges = document.createElement('div');
+                badges.className = 'flex items-center gap-2 mt-2 flex-wrap';
+
+                if (job.easy_apply) {
+                    const badge = document.createElement('span');
+                    badge.className = 'text-xs bg-green-100 text-green-800 px-2 py-1 rounded';
+                    badge.textContent = 'Easy Apply';
+                    badges.appendChild(badge);
+                }
+                if (job.remote) {
+                    const badge = document.createElement('span');
+                    badge.className = 'text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded';
+                    badge.textContent = '🏠 Remote';
+                    badges.appendChild(badge);
+                }
+
+                const link = document.createElement('a');
+                link.href = job.url;
+                link.target = '_blank';
+                link.className = 'text-xs text-purple-600 hover:underline';
+                link.textContent = 'View →';
+                badges.appendChild(link);
+
+                content.appendChild(title);
+                content.appendChild(meta);
+                content.appendChild(badges);
+
+                const wrapper = document.createElement('div');
+                wrapper.className = 'flex items-start gap-3';
+                wrapper.appendChild(checkbox);
+                wrapper.appendChild(content);
+                div.appendChild(wrapper);
+                container.appendChild(div);
+            });
         }
 
         function toggleJob(idx) {
-            if (selectedJobs.has(idx)) {
-                selectedJobs.delete(idx);
-            } else {
-                selectedJobs.add(idx);
-            }
+            if (selectedJobs.has(idx)) selectedJobs.delete(idx);
+            else selectedJobs.add(idx);
             updateSelectedCount();
             renderResults();
         }
 
         function updateSelectedCount() {
-            const count = selectedJobs.size;
-            document.getElementById('selected-count').textContent = count;
-            document.getElementById('batch-apply-btn').disabled = count === 0;
+            document.getElementById('selected-count').textContent = selectedJobs.size;
+            document.getElementById('batch-apply-btn').disabled = selectedJobs.size === 0;
         }
 
-        // Batch Apply
-        document.getElementById('batch-apply-btn').addEventListener('click', async () => {
-            const maxApps = parseInt(document.getElementById('app-count').value);
-            const jobsToApply = Array.from(selectedJobs).slice(0, maxApps).map(idx => searchResults[idx]);
-            
-            if (jobsToApply.length === 0) {
-                showStatus('No jobs selected', 'error');
-                return;
-            }
+        // === Apply ===
 
-            const autoSubmit = document.getElementById('auto_submit').checked;
-            const generateCover = document.getElementById('generate_cover_letter').checked;
-
-            updateProgress(0, jobsToApply.length, 'Starting...');
-            
-            for (let i = 0; i < jobsToApply.length; i++) {
-                const job = jobsToApply[i];
-                updateProgress(i, jobsToApply.length, `Applying to ${job.company}...`);
-                
-                try {
-                    await fetch(`${API_BASE}/apply?user_id=${USER_ID}`, {
-                        method: 'POST',
-                        headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify({
-                            job_url: job.url,
-                            auto_submit: autoSubmit,
-                            generate_cover_letter: generateCover
-                        })
-                    });
-                } catch (err) {
-                    console.error(`Failed to apply to ${job.company}:`, err);
-                }
-                
-                // Small delay between applications
-                await new Promise(r => setTimeout(r, 2000));
+        document.getElementById('job_url').addEventListener('input', (e) => {
+            const warning = document.getElementById('linkedin-warning');
+            if (e.target.value.toLowerCase().includes('linkedin.com') && !linkedInCookieSet) {
+                warning.classList.remove('hidden');
+            } else {
+                warning.classList.add('hidden');
             }
-            
-            updateProgress(jobsToApply.length, jobsToApply.length, '✅ Complete!');
-            showStatus(`Applied to ${jobsToApply.length} jobs!`, 'success');
-            loadApplications();
-            loadRateLimitStatus();  // Refresh rate limit display
-            
-            // Hide progress after delay
-            setTimeout(() => updateProgress(0, 0), 3000);
         });
 
-        // Single Apply Form
         document.getElementById('apply-form').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const jobUrl = document.getElementById('job_url').value;
+            const jobUrl = document.getElementById('job_url').value.trim();
             if (!jobUrl) return;
-            
+
             try {
-                showStatus('Applying to job...');
-                const res = await fetch(`${API_BASE}/apply?user_id=${USER_ID}`, {
+                showStatus('Starting application...');
+                const res = await fetch(`${API_BASE}/apply`, {
                     method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
+                    headers: authHeaders(),
                     body: JSON.stringify({
                         job_url: jobUrl,
                         auto_submit: document.getElementById('auto_submit').checked,
@@ -831,52 +784,117 @@
                     })
                 });
                 const data = await res.json();
-                showStatus(`Application ${data.status}: ${data.application_id}`, 'success');
+                if (!res.ok) throw new Error(data.detail || 'Application failed');
+                showStatus(`Application started: ${data.application_id}`, 'success');
                 document.getElementById('job_url').value = '';
                 loadApplications();
-                loadRateLimitStatus();  // Refresh rate limit display
+                loadRateLimitStatus();
             } catch (err) {
-                showStatus('Application failed: ' + err.message, 'error');
-                loadRateLimitStatus();  // Still refresh to show updated count
+                showStatus('Error: ' + err.message, 'error');
             }
         });
 
+        document.getElementById('batch-apply-btn').addEventListener('click', async () => {
+            const jobs = Array.from(selectedJobs).map(idx => searchResults[idx]);
+            if (jobs.length === 0) return;
+
+            const autoSubmit = document.getElementById('auto_submit').checked;
+            const generateCover = document.getElementById('generate_cover_letter').checked;
+
+            for (let i = 0; i < jobs.length; i++) {
+                const job = jobs[i];
+                document.getElementById('progress-container').classList.remove('hidden');
+                document.getElementById('progress-text').textContent = `${i + 1} / ${jobs.length}`;
+                document.getElementById('progress-bar').style.width = `${((i + 1) / jobs.length) * 100}%`;
+                document.getElementById('progress-status').textContent = `Applying to ${job.company}...`;
+
+                try {
+                    await fetch(`${API_BASE}/apply`, {
+                        method: 'POST',
+                        headers: authHeaders(),
+                        body: JSON.stringify({ job_url: job.url, auto_submit: autoSubmit, generate_cover_letter: generateCover })
+                    });
+                } catch (e) {}
+                await new Promise(r => setTimeout(r, 2000));
+            }
+
+            document.getElementById('progress-status').textContent = '✅ Complete!';
+            showStatus(`Applied to ${jobs.length} jobs!`, 'success');
+            loadApplications();
+            loadRateLimitStatus();
+            setTimeout(() => document.getElementById('progress-container').classList.add('hidden'), 3000);
+        });
+
+        // === Applications History ===
+
         async function loadApplications() {
             try {
-                const res = await fetch(`${API_BASE}/applications?user_id=${USER_ID}`);
+                const res = await fetch(`${API_BASE}/applications`, { headers: authHeaders() });
+                if (!res.ok) return;
                 const data = await res.json();
-                
-                if (data.applications.length === 0) {
-                    document.getElementById('applications-tbody').innerHTML = 
-                        '<tr><td colspan="5" class="px-4 py-8 text-center text-gray-500">No applications yet</td></tr>';
-                } else {
-                    document.getElementById('applications-tbody').innerHTML = data.applications.map(app => `
-                        <tr class="border-t">
-                            <td class="px-4 py-2">${app.job_title || 'Job'}</td>
-                            <td class="px-4 py-2">${app.company || '-'}</td>
-                            <td class="px-4 py-2">
-                                <span class="text-xs px-2 py-1 rounded bg-gray-100">${app.platform || 'linkedin'}</span>
-                            </td>
-                            <td class="px-4 py-2">
-                                <span class="px-2 py-1 rounded text-xs ${
-                                    app.status === 'submitted' ? 'bg-green-100 text-green-800' :
-                                    app.status === 'pending_review' ? 'bg-yellow-100 text-yellow-800' :
-                                    app.status === 'error' ? 'bg-red-100 text-red-800' :
-                                    'bg-gray-100'
-                                }">${app.status}</span>
-                            </td>
-                            <td class="px-4 py-2 text-sm text-gray-500">${new Date(app.timestamp).toLocaleString()}</td>
-                        </tr>
-                    `).join('');
+                const tbody = document.getElementById('applications-tbody');
+                tbody.innerHTML = '';
+
+                if (!data.applications || data.applications.length === 0) {
+                    const tr = document.createElement('tr');
+                    const td = document.createElement('td');
+                    td.colSpan = 5;
+                    td.className = 'px-4 py-8 text-center text-gray-500';
+                    td.textContent = 'No applications yet';
+                    tr.appendChild(td);
+                    tbody.appendChild(tr);
+                    return;
                 }
-            } catch (err) {
-                console.error('Failed to load applications:', err);
-            }
+
+                data.applications.forEach(app => {
+                    const tr = document.createElement('tr');
+                    tr.className = 'border-t';
+
+                    const tdJob = document.createElement('td');
+                    tdJob.className = 'px-4 py-2';
+                    tdJob.textContent = app.job_title || 'Job';
+
+                    const tdCompany = document.createElement('td');
+                    tdCompany.className = 'px-4 py-2';
+                    tdCompany.textContent = app.company || '-';
+
+                    const tdPlatform = document.createElement('td');
+                    tdPlatform.className = 'px-4 py-2';
+                    const platformSpan = document.createElement('span');
+                    platformSpan.className = 'text-xs px-2 py-1 rounded bg-gray-100';
+                    platformSpan.textContent = app.platform || 'unknown';
+                    tdPlatform.appendChild(platformSpan);
+
+                    const tdStatus = document.createElement('td');
+                    tdStatus.className = 'px-4 py-2';
+                    const statusSpan = document.createElement('span');
+                    statusSpan.className = `px-2 py-1 rounded text-xs ${
+                        app.status === 'submitted' ? 'bg-green-100 text-green-800' :
+                        app.status === 'pending_review' ? 'bg-yellow-100 text-yellow-800' :
+                        app.status === 'error' ? 'bg-red-100 text-red-800' :
+                        'bg-gray-100'
+                    }`;
+                    statusSpan.textContent = app.status;
+                    tdStatus.appendChild(statusSpan);
+
+                    const tdTime = document.createElement('td');
+                    tdTime.className = 'px-4 py-2 text-sm text-gray-500';
+                    tdTime.textContent = app.created_at ? new Date(app.created_at).toLocaleString() : '-';
+
+                    tr.appendChild(tdJob);
+                    tr.appendChild(tdCompany);
+                    tr.appendChild(tdPlatform);
+                    tr.appendChild(tdStatus);
+                    tr.appendChild(tdTime);
+                    tbody.appendChild(tr);
+                });
+            } catch (e) {}
         }
 
-        // Load applications on page load
-        loadApplications();
-        setInterval(loadApplications, 10000);
+        // Initialize
+        checkAuth();
+        setInterval(loadRateLimitStatus, 60000);
+        setInterval(loadApplications, 30000);
     </script>
 </body>
 </html>
