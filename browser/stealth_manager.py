@@ -1,6 +1,7 @@
 """
 BrowserBase Stealth Browser Manager
 Handles anti-detection, captcha solving, and human-like interactions.
+Updated with current user agents and improved stealth patches.
 """
 
 import os
@@ -13,17 +14,46 @@ from browserbase import Browserbase
 from playwright.async_api import async_playwright, Page, Browser
 
 
+# Updated user agents for 2025/2026
+USER_AGENTS = [
+    # Chrome 131 on Windows 11
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    # Chrome 130 on Windows 11
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    # Chrome 131 on macOS Sonoma
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    # Safari 17 on macOS
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Safari/605.1.15",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Safari/605.1.15",
+    # Edge 131 on Windows
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+    # Firefox 122 on Windows
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0",
+    # Chrome on Linux
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+]
+
+# Viewport sizes for randomization
+VIEWPORTS = [
+    {"width": 1920, "height": 1080},
+    {"width": 1680, "height": 1050},
+    {"width": 1536, "height": 864},
+    {"width": 1440, "height": 900},
+    {"width": 1366, "height": 768},
+    {"width": 1280, "height": 800},
+]
+
+
 def load_browserbase_creds() -> dict:
     """Load BrowserBase credentials from env vars or tokens file."""
     creds = {}
-    
-    # Try env vars first (for Fly.io deployment)
+
     if os.getenv("BROWSERBASE_API_KEY"):
         creds["BROWSERBASE_API_KEY"] = os.getenv("BROWSERBASE_API_KEY")
         creds["BROWSERBASE_PROJECT_ID"] = os.getenv("BROWSERBASE_PROJECT_ID", "")
         return creds
-    
-    # Fall back to local file
+
     try:
         with open(os.path.expanduser("~/.clawdbot/secrets/tokens.env")) as f:
             for line in f:
@@ -32,7 +62,7 @@ def load_browserbase_creds() -> dict:
                     creds[key] = val
     except FileNotFoundError:
         pass
-    
+
     return creds
 
 
@@ -51,243 +81,271 @@ class StealthBrowserManager:
     Manages stealth browser sessions via BrowserBase.
     Handles fingerprinting, proxies, and human-like behavior.
     """
-    
+
     def __init__(self):
         creds = load_browserbase_creds()
         self.api_key = creds.get("BROWSERBASE_API_KEY")
         self.project_id = creds.get("BROWSERBASE_PROJECT_ID")
-        self.bb = Browserbase(api_key=self.api_key)
+        self.bb = Browserbase(api_key=self.api_key) if self.api_key else None
         self.active_sessions: Dict[str, BrowserSession] = {}
         self.playwright = None
-    
+
     async def initialize(self):
         """Initialize Playwright instance."""
         if not self.playwright:
             self.playwright = await async_playwright().start()
-    
+
     async def create_stealth_session(
-        self, 
+        self,
         platform: str,
         use_proxy: bool = True
     ) -> BrowserSession:
-        """
-        Create a fingerprint-randomized session for specific platform.
-        """
+        """Create a fingerprint-randomized session for specific platform."""
         await self.initialize()
-        
-        # Create session with BrowserBase SDK
-        session = self.bb.sessions.create(
-            project_id=self.project_id,
-            proxies=use_proxy,  # Enable residential proxies
-        )
-        
-        print(f"🌐 Created BrowserBase session: {session.id}")
-        
-        # Connect Playwright to the session
-        browser = await self.playwright.chromium.connect_over_cdp(
-            session.connect_url,
-            timeout=60000
-        )
-        
-        # Get existing context or create new one
+
+        if self.bb:
+            # Use BrowserBase for stealth session
+            session = self.bb.sessions.create(
+                project_id=self.project_id,
+                proxies=use_proxy,
+            )
+            print(f"[Browser] Created BrowserBase session: {session.id}")
+
+            browser = await self.playwright.chromium.connect_over_cdp(
+                session.connect_url,
+                timeout=60000
+            )
+            connect_url = session.connect_url
+            session_id = session.id
+        else:
+            # Fallback to local browser for development
+            print("[Browser] Using local browser (no BrowserBase credentials)")
+            browser = await self.playwright.chromium.launch(headless=True)
+            connect_url = "local"
+            session_id = f"local_{random.randint(1000, 9999)}"
+
+        # Random viewport and user agent
+        viewport = random.choice(VIEWPORTS)
+        user_agent = random.choice(USER_AGENTS)
+
         context = browser.contexts[0] if browser.contexts else await browser.new_context(
-            viewport={"width": random.randint(1280, 1920), "height": random.randint(800, 1080)},
-            user_agent=self._get_random_user_agent(),
+            viewport=viewport,
+            user_agent=user_agent,
         )
-        
+
         page = await context.new_page()
-        
+
         # Apply stealth patches
         await self._apply_stealth_patches(page)
-        
+
         browser_session = BrowserSession(
-            session_id=session.id,
+            session_id=session_id,
             browser=browser,
             page=page,
             platform=platform,
-            connect_url=session.connect_url
+            connect_url=connect_url
         )
-        
-        self.active_sessions[session.id] = browser_session
+
+        self.active_sessions[session_id] = browser_session
         return browser_session
-    
+
     async def _apply_stealth_patches(self, page: Page):
         """Apply JavaScript patches to avoid detection."""
         await page.add_init_script("""
-            // Hide webdriver
+            // Hide webdriver property
             Object.defineProperty(navigator, 'webdriver', {
                 get: () => undefined
             });
-            
-            // Mock plugins
+
+            // Mock realistic plugins array
             Object.defineProperty(navigator, 'plugins', {
-                get: () => [1, 2, 3, 4, 5]
+                get: () => {
+                    const plugins = [
+                        { name: 'Chrome PDF Plugin', filename: 'internal-pdf-viewer' },
+                        { name: 'Chrome PDF Viewer', filename: 'mhjfbmdgcfjbbpaeojofohoefgiehjai' },
+                        { name: 'Native Client', filename: 'internal-nacl-plugin' }
+                    ];
+                    plugins.length = 3;
+                    return plugins;
+                }
             });
-            
+
             // Mock languages
             Object.defineProperty(navigator, 'languages', {
                 get: () => ['en-US', 'en']
             });
-            
-            // Hide automation
+
+            // Mock platform
+            Object.defineProperty(navigator, 'platform', {
+                get: () => 'Win32'
+            });
+
+            // Mock hardware concurrency
+            Object.defineProperty(navigator, 'hardwareConcurrency', {
+                get: () => 8
+            });
+
+            // Mock device memory
+            Object.defineProperty(navigator, 'deviceMemory', {
+                get: () => 8
+            });
+
+            // Hide automation indicators
             window.chrome = {
-                runtime: {}
+                runtime: {},
+                loadTimes: function() {},
+                csi: function() {},
+                app: {}
             };
-            
-            // Override permissions
+
+            // Override permissions API
             const originalQuery = window.navigator.permissions.query;
             window.navigator.permissions.query = (parameters) => (
                 parameters.name === 'notifications' ?
                     Promise.resolve({ state: Notification.permission }) :
                     originalQuery(parameters)
             );
+
+            // Mock WebGL vendor and renderer
+            const getParameter = WebGLRenderingContext.prototype.getParameter;
+            WebGLRenderingContext.prototype.getParameter = function(parameter) {
+                if (parameter === 37445) return 'Intel Inc.';
+                if (parameter === 37446) return 'Intel Iris OpenGL Engine';
+                return getParameter.call(this, parameter);
+            };
+
+            // Prevent iframe detection
+            Object.defineProperty(HTMLIFrameElement.prototype, 'contentWindow', {
+                get: function() {
+                    return window;
+                }
+            });
         """)
-    
-    def _get_random_user_agent(self) -> str:
-        """Return a random realistic user agent."""
-        user_agents = [
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15",
-        ]
-        return random.choice(user_agents)
-    
+
     async def human_like_delay(self, min_sec: float = 1.0, max_sec: float = 3.0):
         """Add human-like random delay."""
         delay = random.uniform(min_sec, max_sec)
         await asyncio.sleep(delay)
-    
+
     async def human_like_type(self, page: Page, selector: str, text: str):
-        """
-        Type text with variable delays, random pauses, like a human.
-        """
+        """Type text with variable delays, like a human."""
         element = page.locator(selector).first
         await element.click()
-        
-        # Simulate reading pause before typing
-        await self.human_like_delay(0.5, 1.5)
-        
+
+        await self.human_like_delay(0.3, 0.8)
+
         for char in text:
             await element.type(char, delay=random.randint(50, 150))
-            
-            # Occasional pause mid-typing (like thinking)
-            if random.random() < 0.08:
-                await asyncio.sleep(random.uniform(0.2, 0.6))
-        
-        # Move mouse away after typing
+            if random.random() < 0.05:
+                await asyncio.sleep(random.uniform(0.2, 0.5))
+
         await page.mouse.move(
             random.randint(100, 800),
             random.randint(100, 600)
         )
-    
+
     async def human_like_click(self, page: Page, selector: str):
         """Click with human-like mouse movement."""
         element = page.locator(selector).first
         box = await element.bounding_box()
-        
+
         if box:
-            # Click at random position within element
             x = box["x"] + random.uniform(5, box["width"] - 5)
             y = box["y"] + random.uniform(5, box["height"] - 5)
-            
-            # Move mouse to position (with some randomness in path)
             await page.mouse.move(x, y)
             await self.human_like_delay(0.1, 0.3)
             await page.mouse.click(x, y)
         else:
             await element.click()
-    
+
     async def human_like_scroll(self, page: Page, direction: str = "down", amount: int = None):
         """Scroll like a human would."""
         if amount is None:
             amount = random.randint(200, 500)
-        
+
         if direction == "down":
             await page.evaluate(f"window.scrollBy(0, {amount})")
         else:
             await page.evaluate(f"window.scrollBy(0, -{amount})")
-        
+
         await self.human_like_delay(0.5, 1.5)
-    
+
     async def wait_for_cloudflare(self, page: Page, timeout: int = 30):
         """Wait for Cloudflare challenge to complete."""
         start_time = asyncio.get_event_loop().time()
-        
+
         while asyncio.get_event_loop().time() - start_time < timeout:
             title = await page.title()
             if "moment" not in title.lower() and "cloudflare" not in title.lower():
                 return True
-            
-            print("   ⏳ Waiting for Cloudflare...")
+            print("[Browser] Waiting for Cloudflare...")
             await asyncio.sleep(2)
-        
+
         return False
-    
+
     async def solve_captcha(self, page: Page, captcha_type: str = "auto") -> bool:
-        """
-        Attempt to solve CAPTCHA (BrowserBase handles many automatically).
-        For complex ones, may need external service.
-        """
+        """Attempt to solve CAPTCHA (BrowserBase handles many automatically)."""
         try:
-            # Check for reCAPTCHA iframe
             recaptcha = page.locator('iframe[src*="recaptcha"]').first
             if await recaptcha.count() > 0:
-                print("   🔐 reCAPTCHA detected - BrowserBase should handle...")
+                print("[Browser] reCAPTCHA detected - BrowserBase handling...")
                 await self.human_like_delay(5, 10)
                 return True
-            
-            # Check for hCaptcha
+
             hcaptcha = page.locator('iframe[src*="hcaptcha"]').first
             if await hcaptcha.count() > 0:
-                print("   🔐 hCaptcha detected - BrowserBase should handle...")
+                print("[Browser] hCaptcha detected - BrowserBase handling...")
                 await self.human_like_delay(5, 10)
                 return True
-            
+
             return True
-            
+
         except Exception as e:
-            print(f"   ⚠️ CAPTCHA handling error: {e}")
+            print(f"[Browser] CAPTCHA handling error: {e}")
             return False
-    
+
     async def close_session(self, session_id: str):
         """Close a browser session."""
         if session_id in self.active_sessions:
             session = self.active_sessions[session_id]
-            await session.browser.close()
+            try:
+                await session.browser.close()
+            except Exception:
+                pass
             del self.active_sessions[session_id]
-            print(f"   Closed session: {session_id}")
-    
+            print(f"[Browser] Closed session: {session_id}")
+
     async def close_all(self):
         """Close all active sessions."""
         for session_id in list(self.active_sessions.keys()):
             await self.close_session(session_id)
-        
+
         if self.playwright:
-            await self.playwright.stop()
+            try:
+                await self.playwright.stop()
+            except Exception:
+                pass
             self.playwright = None
 
 
-# Test function
 async def test_stealth():
+    """Test the stealth browser manager."""
     manager = StealthBrowserManager()
-    
+
     try:
         session = await manager.create_stealth_session("test", use_proxy=True)
         page = session.page
-        
-        print("Navigating to Indeed...")
+
+        print("[Test] Navigating to Indeed...")
         await page.goto("https://www.indeed.com/jobs?q=software+engineer&l=San+Francisco")
-        
-        # Wait for Cloudflare if needed
+
         await manager.wait_for_cloudflare(page)
-        
-        print(f"Title: {await page.title()}")
-        
-        # Take screenshot
+
+        print(f"[Test] Title: {await page.title()}")
+
         await page.screenshot(path="/tmp/indeed_test.png")
-        print("Screenshot saved to /tmp/indeed_test.png")
-        
+        print("[Test] Screenshot saved to /tmp/indeed_test.png")
+
     finally:
         await manager.close_all()
 

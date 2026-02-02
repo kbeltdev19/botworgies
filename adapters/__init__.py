@@ -1,6 +1,7 @@
 """
 Job Platform Adapters
 Unified interface for applying to jobs across different platforms.
+Supports: LinkedIn, Indeed, Greenhouse, Workday, Lever, ClearanceJobs, and external ATS.
 """
 
 from .base import (
@@ -19,77 +20,148 @@ from .greenhouse import GreenhouseAdapter
 from .workday import WorkdayAdapter
 from .lever import LeverAdapter
 from .company import CompanyWebsiteAdapter
+from .clearancejobs import ClearanceJobsAdapter
+
+
+# Platform URL patterns for detection
+PLATFORM_PATTERNS = {
+    "linkedin": ["linkedin.com/jobs", "linkedin.com/in/"],
+    "indeed": ["indeed.com"],
+    "greenhouse": ["greenhouse.io", "boards.greenhouse"],
+    "workday": ["myworkdayjobs.com", "workday.com"],
+    "lever": ["lever.co", "jobs.lever"],
+    "clearancejobs": ["clearancejobs.com"],
+    "usajobs": ["usajobs.gov"],
+    "icims": ["icims.com", "careers-"],
+    "taleo": ["taleo.net", "taleo.com"],
+    "smartrecruiters": ["smartrecruiters.com"],
+    "jobvite": ["jobvite.com"],
+    "ashbyhq": ["ashbyhq.com", "jobs.ashby"],
+    "bamboohr": ["bamboohr.com"],
+    "brassring": ["brassring.com"],
+    "successfactors": ["successfactors.com", "successfactors.eu"],
+}
+
+# Adapters registry
+ADAPTERS = {
+    "linkedin": LinkedInAdapter,
+    "indeed": IndeedAdapter,
+    "greenhouse": GreenhouseAdapter,
+    "workday": WorkdayAdapter,
+    "lever": LeverAdapter,
+    "clearancejobs": ClearanceJobsAdapter,
+    "company": CompanyWebsiteAdapter,
+}
 
 
 def get_adapter(platform: str, browser_manager, session_cookie: str = None) -> JobPlatformAdapter:
     """
     Factory function to get the appropriate adapter for a platform.
-    
+
     Args:
-        platform: Platform identifier (linkedin, indeed, greenhouse, workday, lever)
+        platform: Platform identifier or URL
         browser_manager: StealthBrowserManager instance
-    
+        session_cookie: Optional session cookie for authenticated platforms
+
     Returns:
         Appropriate platform adapter
     """
-    adapters = {
-        "linkedin": LinkedInAdapter,
-        "indeed": IndeedAdapter,
-        "greenhouse": GreenhouseAdapter,
-        "workday": WorkdayAdapter,
-        "lever": LeverAdapter,
-        "company": CompanyWebsiteAdapter,
-    }
-    
     platform_lower = platform.lower()
-    
-    # Also detect from URL
-    if "linkedin.com" in platform_lower:
-        platform_lower = "linkedin"
-    elif "indeed.com" in platform_lower:
-        platform_lower = "indeed"
-    elif "greenhouse.io" in platform_lower or "boards.greenhouse" in platform_lower:
-        platform_lower = "greenhouse"
-    elif "myworkdayjobs.com" in platform_lower or "workday" in platform_lower:
-        platform_lower = "workday"
-    elif "lever.co" in platform_lower:
-        platform_lower = "lever"
-    
-    adapter_class = adapters.get(platform_lower)
-    
+
+    # Detect platform from URL if full URL provided
+    if "://" in platform_lower or "." in platform_lower:
+        detected = detect_platform_from_url(platform)
+        if detected != "unknown":
+            platform_lower = detected
+
+    adapter_class = ADAPTERS.get(platform_lower)
+
     if not adapter_class:
-        raise ValueError(f"Unsupported platform: {platform}. Supported: {list(adapters.keys())}")
-    
-    # LinkedIn adapter accepts session cookie for auth
-    if platform_lower == "linkedin" and session_cookie:
-        return adapter_class(browser_manager, session_cookie=session_cookie)
-    
-    return adapter_class(browser_manager)
+        # Try to use ClearanceJobs adapter for external sites since it has
+        # good external site handling
+        if platform_lower in ["icims", "taleo", "smartrecruiters", "jobvite", "external"]:
+            adapter_class = ClearanceJobsAdapter
+        else:
+            raise ValueError(f"Unsupported platform: {platform}. Supported: {list(ADAPTERS.keys())}")
+
+    # All adapters can accept session_cookie now
+    return adapter_class(browser_manager, session_cookie=session_cookie)
 
 
 def detect_platform_from_url(url: str) -> str:
     """
     Detect which platform a job URL belongs to.
-    
-    Returns platform identifier or 'unknown'.
+
+    Args:
+        url: Job posting URL
+
+    Returns:
+        Platform identifier or 'unknown'
     """
     url_lower = url.lower()
-    
-    if "linkedin.com" in url_lower:
-        return "linkedin"
-    elif "indeed.com" in url_lower:
-        return "indeed"
-    elif "greenhouse.io" in url_lower or "boards.greenhouse" in url_lower:
-        return "greenhouse"
-    elif "myworkdayjobs.com" in url_lower:
-        return "workday"
-    elif "lever.co" in url_lower:
-        return "lever"
-    
+
+    for platform, patterns in PLATFORM_PATTERNS.items():
+        if any(pattern in url_lower for pattern in patterns):
+            return platform
+
+    # Additional heuristics for common ATS patterns
+    if "/careers/" in url_lower or "/jobs/" in url_lower:
+        # Could be a company career page
+        return "company"
+
     return "unknown"
 
 
+def get_external_platform_type(url: str) -> str:
+    """
+    Get the external ATS type from a URL for routing to appropriate handler.
+
+    Args:
+        url: External application URL
+
+    Returns:
+        ATS type identifier
+    """
+    url_lower = url.lower()
+
+    ats_patterns = {
+        "workday": ["myworkday", "workday.com", "wd5.myworkdayjobs"],
+        "icims": ["icims.com"],
+        "taleo": ["taleo.net", "taleo.com"],
+        "greenhouse": ["greenhouse.io", "boards.greenhouse"],
+        "lever": ["lever.co", "jobs.lever"],
+        "smartrecruiters": ["smartrecruiters.com"],
+        "jobvite": ["jobvite.com"],
+        "successfactors": ["successfactors.com", "successfactors.eu"],
+        "bamboohr": ["bamboohr.com"],
+        "ashbyhq": ["ashbyhq.com", "jobs.ashby"],
+        "brassring": ["brassring.com"],
+    }
+
+    for ats, patterns in ats_patterns.items():
+        if any(pattern in url_lower for pattern in patterns):
+            return ats
+
+    return "generic"
+
+
+def is_external_application(url: str, source_platform: str) -> bool:
+    """
+    Check if a URL leads to an external application site.
+
+    Args:
+        url: Target URL
+        source_platform: Original platform where job was found
+
+    Returns:
+        True if URL is external to source platform
+    """
+    detected = detect_platform_from_url(url)
+    return detected != "unknown" and detected != source_platform
+
+
 __all__ = [
+    # Base classes
     "JobPlatformAdapter",
     "PlatformType",
     "JobPosting",
@@ -98,11 +170,17 @@ __all__ = [
     "SearchConfig",
     "UserProfile",
     "Resume",
+    # Adapters
     "LinkedInAdapter",
     "IndeedAdapter",
     "GreenhouseAdapter",
     "WorkdayAdapter",
     "LeverAdapter",
+    "ClearanceJobsAdapter",
+    "CompanyWebsiteAdapter",
+    # Factory functions
     "get_adapter",
     "detect_platform_from_url",
+    "get_external_platform_type",
+    "is_external_application",
 ]
