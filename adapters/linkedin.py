@@ -18,10 +18,34 @@ from .base import (
 class LinkedInAdapter(JobPlatformAdapter):
     """
     LinkedIn Jobs adapter with Easy Apply support.
+    Uses session cookie for authentication when available.
     """
     
     platform = PlatformType.LINKEDIN
     BASE_URL = "https://www.linkedin.com/jobs/search"
+    
+    def __init__(self, browser_manager, session_cookie: str = None):
+        super().__init__(browser_manager)
+        self.session_cookie = session_cookie  # li_at cookie value
+    
+    async def get_session(self):
+        """Get browser session with LinkedIn auth cookie if available."""
+        session = await super().get_session()
+        
+        # Inject LinkedIn session cookie if provided
+        if self.session_cookie:
+            await session.page.context.add_cookies([{
+                "name": "li_at",
+                "value": self.session_cookie,
+                "domain": ".linkedin.com",
+                "path": "/",
+                "httpOnly": True,
+                "secure": True,
+                "sameSite": "None"
+            }])
+            print("🔐 LinkedIn session cookie injected")
+        
+        return session
     
     async def search_jobs(self, criteria: SearchConfig) -> List[JobPosting]:
         """

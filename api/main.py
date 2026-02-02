@@ -57,13 +57,14 @@ DATA_DIR.mkdir(exist_ok=True)
 # === Pydantic Models ===
 
 class SearchRequest(BaseModel):
-    roles: List[str] = Field(..., example=["Software Engineer", "Backend Developer"])
-    locations: List[str] = Field(..., example=["San Francisco", "Remote"])
+    roles: List[str] = Field(default=[], example=["Software Engineer", "Backend Developer"])
+    locations: List[str] = Field(default=[], example=["San Francisco", "Remote"])
     easy_apply_only: bool = False
     posted_within_days: int = 7
     required_keywords: List[str] = Field(default_factory=list)
     exclude_keywords: List[str] = Field(default_factory=list)
     country: str = Field(default="US", description="Country filter: US, CA, GB, DE, ALL")
+    careers_url: Optional[str] = Field(default=None, description="Company careers page URL for direct scraping")
 
 
 class UserProfileRequest(BaseModel):
@@ -92,6 +93,7 @@ class TailorResumeRequest(BaseModel):
 
 class UserSettingsRequest(BaseModel):
     daily_limit: int = Field(default=10, ge=1, le=100, description="Max applications per 24 hours")
+    linkedin_cookie: Optional[str] = Field(default=None, description="LinkedIn li_at session cookie for auth")
 
 
 # === In-Memory State (use Redis in production) ===
@@ -170,11 +172,16 @@ async def update_settings(request: UserSettingsRequest, user_id: str = "default"
     
     state["user_settings"][user_id]["daily_limit"] = request.daily_limit
     
+    # Store LinkedIn cookie if provided
+    if request.linkedin_cookie:
+        state["user_settings"][user_id]["linkedin_cookie"] = request.linkedin_cookie
+    
     sent_24h = count_applications_last_24h(user_id)
     
     return {
         "message": "Settings updated",
         "daily_limit": request.daily_limit,
+        "linkedin_cookie_set": bool(state["user_settings"][user_id].get("linkedin_cookie")),
         "sent_last_24h": sent_24h,
         "remaining": max(0, request.daily_limit - sent_24h)
     }
@@ -347,15 +354,28 @@ async def search_jobs(request: SearchRequest, platform: str = "linkedin"):
         country=request.country
     )
     
-    # Support linkedin and indeed for search
-    if platform not in ["linkedin", "indeed"]:
+    # Support linkedin, indeed, and company for search
+    if platform not in ["linkedin", "indeed", "company"]:
         raise HTTPException(
             status_code=400, 
-            detail=f"Search only supported for: linkedin, indeed. Use job URL for greenhouse/workday/lever."
+            detail=f"Search only supported for: linkedin, indeed, company. Use job URL for greenhouse/workday/lever."
         )
     
+    # Company platform requires careers_url
+    if platform == "company" and not request.careers_url:
+        raise HTTPException(
+            status_code=400,
+            detail="Company platform requires careers_url parameter"
+        )
+    
+    # Pass careers_url to search config for company scraping
+    if request.careers_url:
+        search_config.careers_url = request.careers_url
+    
     try:
-        adapter = get_adapter(platform, browser_manager)
+        # Get LinkedIn cookie if available for authenticated search
+        linkedin_cookie = state["user_settings"].get("default", {}).get("linkedin_cookie")
+        adapter = get_adapter(platform, browser_manager, session_cookie=linkedin_cookie)
         jobs = await adapter.search_jobs(search_config)
         
         # Cache results
@@ -448,7 +468,9 @@ async def apply_to_job(
         print(f"🔧 Starting application {application_id} for {request.job_url}")
         adapter = None
         try:
-            adapter = get_adapter(platform, browser_manager)
+            # Get LinkedIn cookie if available
+            linkedin_cookie = state["user_settings"].get(user_id, {}).get("linkedin_cookie")
+            adapter = get_adapter(platform, browser_manager, session_cookie=linkedin_cookie)
             print(f"📄 Getting job details from {platform}...")
             
             # Get job details

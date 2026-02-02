@@ -17,6 +17,7 @@ class PlatformType(str, Enum):
     WORKDAY = "workday"
     LEVER = "lever"
     ASHBY = "ashby"
+    COMPANY_WEBSITE = "company"  # Generic company career pages
 
 
 class ApplicationStatus(str, Enum):
@@ -75,6 +76,7 @@ class SearchConfig:
     industries: List[str] = field(default_factory=list)
     easy_apply_only: bool = False
     country: str = "US"  # Country filter: US, CA, GB, DE, ALL
+    careers_url: Optional[str] = None  # Company careers page URL for direct scraping
 
 
 @dataclass 

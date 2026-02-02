@@ -18,9 +18,10 @@ from .indeed import IndeedAdapter
 from .greenhouse import GreenhouseAdapter
 from .workday import WorkdayAdapter
 from .lever import LeverAdapter
+from .company import CompanyWebsiteAdapter
 
 
-def get_adapter(platform: str, browser_manager) -> JobPlatformAdapter:
+def get_adapter(platform: str, browser_manager, session_cookie: str = None) -> JobPlatformAdapter:
     """
     Factory function to get the appropriate adapter for a platform.
     
@@ -37,6 +38,7 @@ def get_adapter(platform: str, browser_manager) -> JobPlatformAdapter:
         "greenhouse": GreenhouseAdapter,
         "workday": WorkdayAdapter,
         "lever": LeverAdapter,
+        "company": CompanyWebsiteAdapter,
     }
     
     platform_lower = platform.lower()
@@ -57,6 +59,10 @@ def get_adapter(platform: str, browser_manager) -> JobPlatformAdapter:
     
     if not adapter_class:
         raise ValueError(f"Unsupported platform: {platform}. Supported: {list(adapters.keys())}")
+    
+    # LinkedIn adapter accepts session cookie for auth
+    if platform_lower == "linkedin" and session_cookie:
+        return adapter_class(browser_manager, session_cookie=session_cookie)
     
     return adapter_class(browser_manager)
 
