@@ -1,0 +1,14 @@
+__pycache__
+*.pyc
+*.pyo
+.git
+.gitignore
+*.md
+frontend/
+workers/
+*.log
+.env
+.venv
+venv/
+node_modules/
+wrangler.toml

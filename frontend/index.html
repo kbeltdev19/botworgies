@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Applier - AI-Powered Job Application Automation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .toggle-btn {
+            transition: all 0.2s;
+        }
+        .toggle-btn.active {
+            background: #8b5cf6;
+            color: white;
+        }
+        .progress-bar {
+            transition: width 0.5s ease-out;
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            height: 8px;
+            border-radius: 4px;
+            background: #e2e8f0;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #8b5cf6;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-6 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-3xl font-bold">🚀 Job Applier</h1>
+            <p class="text-purple-100 mt-1">AI-powered job application automation</p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto py-8 px-4">
+        <!-- Progress Bar (shown during batch apply) -->
+        <div id="progress-container" class="mb-6 card p-4 hidden">
+            <div class="flex justify-between items-center mb-2">
+                <span class="font-medium">📤 Applying to jobs...</span>
+                <span id="progress-text" class="text-sm text-gray-600">0 / 0</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-4">
+                <div id="progress-bar" class="progress-bar bg-purple-600 h-4 rounded-full" style="width: 0%"></div>
+            </div>
+            <div id="progress-status" class="mt-2 text-sm text-gray-600"></div>
+        </div>
+
+        <!-- Status Bar -->
+        <div id="status-bar" class="mb-6 p-4 rounded-lg hidden">
+            <span id="status-message"></span>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Left Column: Setup -->
+            <div class="space-y-6">
+                <!-- Resume Upload -->
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold mb-4">📄 1. Upload Resume</h2>
+                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-purple-500 transition-colors">
+                        <input type="file" id="resume-input" accept=".pdf,.docx,.txt" class="hidden">
+                        <label for="resume-input" class="cursor-pointer">
+                            <div class="text-4xl mb-2">📤</div>
+                            <p class="text-gray-600">Drop your resume here or click to upload</p>
+                            <p class="text-sm text-gray-400 mt-1">PDF, DOCX, or TXT</p>
+                        </label>
+                    </div>
+                    <div id="resume-status" class="mt-4 text-sm text-gray-600"></div>
+                </div>
+
+                <!-- Profile -->
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold mb-4">👤 2. Your Profile</h2>
+                    <form id="profile-form" class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="text" id="first_name" placeholder="First Name" required
+                                class="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                            <input type="text" id="last_name" placeholder="Last Name" required
+                                class="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                        </div>
+                        <input type="email" id="email" placeholder="Email" required
+                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                        <input type="tel" id="phone" placeholder="Phone" required
+                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                        <input type="url" id="linkedin_url" placeholder="LinkedIn URL (optional)"
+                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                        <input type="number" id="years_experience" placeholder="Years of Experience"
+                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                        <button type="submit" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors">
+                            Save Profile
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Column: Search & Apply -->
+            <div class="space-y-6">
+                <!-- Job Search -->
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold mb-4">🔍 3. Search Jobs</h2>
+                    <form id="search-form" class="space-y-4">
+                        <input type="text" id="roles" placeholder="Job Titles (comma-separated)" 
+                            value="Software Engineer, Backend Developer"
+                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                        <input type="text" id="locations" placeholder="Locations (comma-separated)" 
+                            value="Remote, San Francisco"
+                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                        
+                        <!-- Work Type Toggles -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Work Type</label>
+                            <div class="flex gap-2">
+                                <button type="button" id="toggle-remote" class="toggle-btn active flex-1 px-4 py-2 border rounded-lg text-sm font-medium">
+                                    🏠 Remote
+                                </button>
+                                <button type="button" id="toggle-hybrid" class="toggle-btn flex-1 px-4 py-2 border rounded-lg text-sm font-medium">
+                                    🔄 Hybrid
+                                </button>
+                                <button type="button" id="toggle-onsite" class="toggle-btn flex-1 px-4 py-2 border rounded-lg text-sm font-medium">
+                                    🏢 On-site
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Minimum Compensation Slider -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Minimum Salary: <span id="salary-display" class="text-purple-600 font-bold">$80,000</span>
+                            </label>
+                            <input type="range" id="min-salary" min="0" max="300000" step="5000" value="80000"
+                                class="w-full">
+                            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                <span>Any</span>
+                                <span>$150k</span>
+                                <span>$300k+</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <label class="flex items-center gap-2">
+                                <input type="checkbox" id="easy_apply_only" checked class="rounded text-purple-600">
+                                <span class="text-sm">Easy Apply only</span>
+                            </label>
+                            <select id="posted_within" class="px-3 py-2 border rounded-lg">
+                                <option value="1">Past 24 hours</option>
+                                <option value="7" selected>Past week</option>
+                                <option value="30">Past month</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                            🔍 Search Jobs
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results -->
+                <div class="card p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-semibold">📋 Results</h2>
+                        <span id="results-count" class="text-sm text-gray-500"></span>
+                    </div>
+                    <div id="results" class="space-y-3 max-h-96 overflow-y-auto">
+                        <p class="text-gray-500 text-center py-8">Search results will appear here</p>
+                    </div>
+                </div>
+
+                <!-- Batch Apply Settings -->
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold mb-4">⚡ Batch Apply</h2>
+                    
+                    <!-- Number of Applications -->
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Applications to send: <span id="app-count-display" class="text-purple-600 font-bold">10</span>
+                        </label>
+                        <input type="range" id="app-count" min="1" max="50" step="1" value="10"
+                            class="w-full">
+                        <div class="flex justify-between text-xs text-gray-500 mt-1">
+                            <span>1</span>
+                            <span>25</span>
+                            <span>50</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 mb-4">
+                        <label class="flex items-center gap-2">
+                            <input type="checkbox" id="generate_cover_letter" checked class="rounded text-purple-600">
+                            <span class="text-sm">Generate cover letters</span>
+                        </label>
+                        <label class="flex items-center gap-2">
+                            <input type="checkbox" id="auto_submit" class="rounded text-red-600">
+                            <span class="text-sm text-red-600">Auto-submit (⚠️)</span>
+                        </label>
+                    </div>
+
+                    <button id="batch-apply-btn" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                        🚀 Apply to Selected Jobs (<span id="selected-count">0</span>)
+                    </button>
+                </div>
+
+                <!-- Quick Apply -->
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold mb-4">🎯 Single Job Apply</h2>
+                    <form id="apply-form" class="space-y-4">
+                        <input type="url" id="job_url" placeholder="Paste any job URL (LinkedIn, Indeed, Greenhouse, etc.)"
+                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                        <p class="text-xs text-gray-500">Supports: LinkedIn, Indeed, Greenhouse, Workday, Lever</p>
+                        <button type="submit" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors">
+                            🎯 Apply Now
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Applications Log -->
+        <div class="card p-6 mt-6">
+            <h2 class="text-xl font-semibold mb-4">📊 Application History</h2>
+            <div id="applications-log" class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-4 py-2 text-left">Job</th>
+                            <th class="px-4 py-2 text-left">Company</th>
+                            <th class="px-4 py-2 text-left">Platform</th>
+                            <th class="px-4 py-2 text-left">Status</th>
+                            <th class="px-4 py-2 text-left">Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="applications-tbody">
+                        <tr><td colspan="5" class="px-4 py-8 text-center text-gray-500">No applications yet</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // API Base URL - Job Applier Backend (Fly.io)
+        const API_BASE = 'https://job-applier-api.fly.dev';
+        
+        const USER_ID = 'default';
+        let selectedJobs = new Set();
+        let searchResults = [];
+
+        // Work type toggles
+        const workTypes = { remote: true, hybrid: false, onsite: false };
+        
+        document.querySelectorAll('[id^="toggle-"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const type = btn.id.replace('toggle-', '');
+                workTypes[type] = !workTypes[type];
+                btn.classList.toggle('active', workTypes[type]);
+            });
+        });
+
+        // Salary slider
+        document.getElementById('min-salary').addEventListener('input', (e) => {
+            const val = parseInt(e.target.value);
+            document.getElementById('salary-display').textContent = val === 0 ? 'Any' : `$${val.toLocaleString()}`;
+        });
+
+        // App count slider
+        document.getElementById('app-count').addEventListener('input', (e) => {
+            document.getElementById('app-count-display').textContent = e.target.value;
+        });
+
+        // Status helper
+        function showStatus(message, type = 'info') {
+            const bar = document.getElementById('status-bar');
+            const msg = document.getElementById('status-message');
+            bar.className = `mb-6 p-4 rounded-lg ${
+                type === 'error' ? 'bg-red-100 text-red-800' :
+                type === 'success' ? 'bg-green-100 text-green-800' :
+                'bg-blue-100 text-blue-800'
+            }`;
+            msg.textContent = message;
+            bar.classList.remove('hidden');
+            setTimeout(() => bar.classList.add('hidden'), 5000);
+        }
+
+        // Progress bar
+        function updateProgress(current, total, status = '') {
+            const container = document.getElementById('progress-container');
+            const bar = document.getElementById('progress-bar');
+            const text = document.getElementById('progress-text');
+            const statusEl = document.getElementById('progress-status');
+            
+            if (total === 0) {
+                container.classList.add('hidden');
+                return;
+            }
+            
+            container.classList.remove('hidden');
+            const percent = Math.round((current / total) * 100);
+            bar.style.width = percent + '%';
+            text.textContent = `${current} / ${total}`;
+            statusEl.textContent = status;
+        }
+
+        // Resume Upload
+        document.getElementById('resume-input').addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                showStatus('Uploading and parsing resume...');
+                const res = await fetch(`${API_BASE}/resume/upload?user_id=${USER_ID}`, {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await res.json();
+                
+                document.getElementById('resume-status').innerHTML = `
+                    <div class="p-3 bg-green-50 rounded-lg">
+                        <strong>✅ Resume uploaded:</strong> ${file.name}<br>
+                        <span class="text-gray-600">Skills: ${data.parsed_data?.skills?.slice(0,5).join(', ') || 'Parsing...'}</span>
+                    </div>
+                `;
+                showStatus('Resume uploaded successfully!', 'success');
+            } catch (err) {
+                showStatus('Failed to upload resume: ' + err.message, 'error');
+            }
+        });
+
+        // Profile Form
+        document.getElementById('profile-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const profile = {
+                first_name: document.getElementById('first_name').value,
+                last_name: document.getElementById('last_name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                linkedin_url: document.getElementById('linkedin_url').value || null,
+                years_experience: parseInt(document.getElementById('years_experience').value) || null
+            };
+
+            try {
+                const res = await fetch(`${API_BASE}/profile?user_id=${USER_ID}`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(profile)
+                });
+                showStatus('Profile saved!', 'success');
+            } catch (err) {
+                showStatus('Failed to save profile: ' + err.message, 'error');
+            }
+        });
+
+        // Job Search
+        document.getElementById('search-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Build locations based on work type toggles
+            let locations = document.getElementById('locations').value.split(',').map(s => s.trim());
+            if (workTypes.remote && !locations.some(l => l.toLowerCase().includes('remote'))) {
+                locations.push('Remote');
+            }
+
+            const search = {
+                roles: document.getElementById('roles').value.split(',').map(s => s.trim()),
+                locations: locations,
+                easy_apply_only: document.getElementById('easy_apply_only').checked,
+                posted_within_days: parseInt(document.getElementById('posted_within').value),
+                min_salary: parseInt(document.getElementById('min-salary').value) || null,
+                work_types: Object.entries(workTypes).filter(([k,v]) => v).map(([k]) => k)
+            };
+
+            document.getElementById('results').innerHTML = '<p class="text-center py-4">🔍 Searching...</p>';
+            selectedJobs.clear();
+            updateSelectedCount();
+
+            try {
+                const res = await fetch(`${API_BASE}/jobs/search?platform=linkedin`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(search)
+                });
+                const data = await res.json();
+                searchResults = data.jobs || [];
+                
+                document.getElementById('results-count').textContent = `${data.count} jobs found`;
+                
+                if (searchResults.length === 0) {
+                    document.getElementById('results').innerHTML = '<p class="text-center py-4 text-gray-500">No jobs found</p>';
+                } else {
+                    renderResults();
+                }
+                showStatus(`Found ${data.count} jobs`, 'success');
+            } catch (err) {
+                showStatus('Search failed: ' + err.message, 'error');
+                document.getElementById('results').innerHTML = '<p class="text-center py-4 text-red-500">Search failed</p>';
+            }
+        });
+
+        function renderResults() {
+            document.getElementById('results').innerHTML = searchResults.map((job, idx) => `
+                <div class="p-3 border rounded-lg hover:bg-gray-50 ${selectedJobs.has(idx) ? 'ring-2 ring-purple-500 bg-purple-50' : ''}">
+                    <div class="flex items-start gap-3">
+                        <input type="checkbox" ${selectedJobs.has(idx) ? 'checked' : ''} 
+                            onchange="toggleJob(${idx})"
+                            class="mt-1 rounded text-purple-600">
+                        <div class="flex-1">
+                            <div class="font-medium">${job.title}</div>
+                            <div class="text-sm text-gray-600">${job.company} • ${job.location}</div>
+                            <div class="flex items-center gap-2 mt-2 flex-wrap">
+                                ${job.easy_apply ? '<span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Easy Apply</span>' : ''}
+                                ${job.remote ? '<span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">🏠 Remote</span>' : ''}
+                                <a href="${job.url}" target="_blank" class="text-xs text-purple-600 hover:underline">View →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleJob(idx) {
+            if (selectedJobs.has(idx)) {
+                selectedJobs.delete(idx);
+            } else {
+                selectedJobs.add(idx);
+            }
+            updateSelectedCount();
+            renderResults();
+        }
+
+        function updateSelectedCount() {
+            const count = selectedJobs.size;
+            document.getElementById('selected-count').textContent = count;
+            document.getElementById('batch-apply-btn').disabled = count === 0;
+        }
+
+        // Batch Apply
+        document.getElementById('batch-apply-btn').addEventListener('click', async () => {
+            const maxApps = parseInt(document.getElementById('app-count').value);
+            const jobsToApply = Array.from(selectedJobs).slice(0, maxApps).map(idx => searchResults[idx]);
+            
+            if (jobsToApply.length === 0) {
+                showStatus('No jobs selected', 'error');
+                return;
+            }
+
+            const autoSubmit = document.getElementById('auto_submit').checked;
+            const generateCover = document.getElementById('generate_cover_letter').checked;
+
+            updateProgress(0, jobsToApply.length, 'Starting...');
+            
+            for (let i = 0; i < jobsToApply.length; i++) {
+                const job = jobsToApply[i];
+                updateProgress(i, jobsToApply.length, `Applying to ${job.company}...`);
+                
+                try {
+                    await fetch(`${API_BASE}/apply?user_id=${USER_ID}`, {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({
+                            job_url: job.url,
+                            auto_submit: autoSubmit,
+                            generate_cover_letter: generateCover
+                        })
+                    });
+                } catch (err) {
+                    console.error(`Failed to apply to ${job.company}:`, err);
+                }
+                
+                // Small delay between applications
+                await new Promise(r => setTimeout(r, 2000));
+            }
+            
+            updateProgress(jobsToApply.length, jobsToApply.length, '✅ Complete!');
+            showStatus(`Applied to ${jobsToApply.length} jobs!`, 'success');
+            loadApplications();
+            
+            // Hide progress after delay
+            setTimeout(() => updateProgress(0, 0), 3000);
+        });
+
+        // Single Apply Form
+        document.getElementById('apply-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const jobUrl = document.getElementById('job_url').value;
+            if (!jobUrl) return;
+            
+            try {
+                showStatus('Applying to job...');
+                const res = await fetch(`${API_BASE}/apply?user_id=${USER_ID}`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        job_url: jobUrl,
+                        auto_submit: document.getElementById('auto_submit').checked,
+                        generate_cover_letter: document.getElementById('generate_cover_letter').checked
+                    })
+                });
+                const data = await res.json();
+                showStatus(`Application ${data.status}: ${data.application_id}`, 'success');
+                document.getElementById('job_url').value = '';
+                loadApplications();
+            } catch (err) {
+                showStatus('Application failed: ' + err.message, 'error');
+            }
+        });
+
+        async function loadApplications() {
+            try {
+                const res = await fetch(`${API_BASE}/applications?user_id=${USER_ID}`);
+                const data = await res.json();
+                
+                if (data.applications.length === 0) {
+                    document.getElementById('applications-tbody').innerHTML = 
+                        '<tr><td colspan="5" class="px-4 py-8 text-center text-gray-500">No applications yet</td></tr>';
+                } else {
+                    document.getElementById('applications-tbody').innerHTML = data.applications.map(app => `
+                        <tr class="border-t">
+                            <td class="px-4 py-2">${app.job_title || 'Job'}</td>
+                            <td class="px-4 py-2">${app.company || '-'}</td>
+                            <td class="px-4 py-2">
+                                <span class="text-xs px-2 py-1 rounded bg-gray-100">${app.platform || 'linkedin'}</span>
+                            </td>
+                            <td class="px-4 py-2">
+                                <span class="px-2 py-1 rounded text-xs ${
+                                    app.status === 'submitted' ? 'bg-green-100 text-green-800' :
+                                    app.status === 'pending_review' ? 'bg-yellow-100 text-yellow-800' :
+                                    app.status === 'error' ? 'bg-red-100 text-red-800' :
+                                    'bg-gray-100'
+                                }">${app.status}</span>
+                            </td>
+                            <td class="px-4 py-2 text-sm text-gray-500">${new Date(app.timestamp).toLocaleString()}</td>
+                        </tr>
+                    `).join('');
+                }
+            } catch (err) {
+                console.error('Failed to load applications:', err);
+            }
+        }
+
+        // Load applications on page load
+        loadApplications();
+        setInterval(loadApplications, 10000);
+    </script>
+</body>
+</html>

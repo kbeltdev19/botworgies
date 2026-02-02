@@ -1,0 +1,32 @@
+# Cloudflare Workers configuration for Job Applier
+
+name = "job-applier"
+main = "workers/index.js"
+compatibility_date = "2024-01-01"
+
+# For the static frontend (Cloudflare Pages)
+# Deploy frontend separately: npx wrangler pages deploy frontend --project-name=job-applier-ui
+
+# Environment variables (set via dashboard or wrangler secret)
+[vars]
+ENVIRONMENT = "production"
+
+# Secrets (set with: wrangler secret put MOONSHOT_API_KEY)
+# - MOONSHOT_API_KEY
+# - BROWSERBASE_API_KEY
+# - BROWSERBASE_PROJECT_ID
+
+# KV namespace for state storage
+# [[kv_namespaces]]
+# binding = "JOB_APPLIER_KV"
+# id = "your-kv-namespace-id"
+
+# Durable Objects for queue management
+# [[durable_objects.bindings]]
+# name = "APPLICATION_QUEUE"
+# class_name = "ApplicationQueue"
+
+# Routes
+# [[routes]]
+# pattern = "job-applier.yourdomain.com/*"
+# zone_name = "yourdomain.com"
