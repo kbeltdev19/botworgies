@@ -308,8 +308,14 @@
     </main>
 
     <script>
-        // Configuration
-        const API_BASE = localStorage.getItem('api_base') || 'https://job-applier-api.fly.dev';
+        // Configuration - auto-detect local vs production
+        const API_BASE = localStorage.getItem('api_base') || (
+            window.location.hostname === 'localhost' ||
+            window.location.hostname === '127.0.0.1' ||
+            window.location.protocol === 'file:'
+                ? 'http://localhost:8080'
+                : 'https://job-applier-api.fly.dev'
+        );
 
         // State
         let authToken = localStorage.getItem('auth_token');
@@ -347,6 +353,13 @@
 
         function authHeaders() {
             return authToken ? { 'Authorization': `Bearer ${authToken}`, 'Content-Type': 'application/json' } : { 'Content-Type': 'application/json' };
+        }
+
+        function handleFetchError(err) {
+            if (err.name === 'TypeError' && err.message === 'Failed to fetch') {
+                return `Cannot connect to API server at ${API_BASE}. Make sure the server is running.`;
+            }
+            return err.message;
         }
 
         // === Authentication ===
@@ -410,7 +423,7 @@
                 localStorage.setItem('user_id', userId);
                 checkAuth();
             } catch (err) {
-                showAuthError(err.message);
+                showAuthError(handleFetchError(err));
             }
         });
 
@@ -440,7 +453,7 @@
                 localStorage.setItem('user_id', userId);
                 checkAuth();
             } catch (err) {
-                showAuthError(err.message);
+                showAuthError(handleFetchError(err));
             }
         });
 

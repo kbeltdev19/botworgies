@@ -20,7 +20,12 @@ class AppConfig:
     # CORS settings - MUST be configured for production
     CORS_ORIGINS: List[str] = field(default_factory=lambda: [
         origin.strip() for origin in
-        os.getenv("CORS_ORIGINS", "http://localhost:3000,https://job-applier.pages.dev").split(",")
+        os.getenv("CORS_ORIGINS",
+            "http://localhost:3000,http://localhost:8080,http://localhost:5500,"
+            "http://127.0.0.1:3000,http://127.0.0.1:8080,http://127.0.0.1:5500,"
+            "null,"  # For file:// origins
+            "https://job-applier.pages.dev"
+        ).split(",")
         if origin.strip()
     ])
     CORS_ALLOW_CREDENTIALS: bool = True
