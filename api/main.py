@@ -1,22 +1,39 @@
 """
 Job Applier API - FastAPI Backend
 Handles resume upload, job search, and application orchestration.
+With authentication, database persistence, and proper security.
 """
 
 import os
-import json
+import re
+import uuid
 import asyncio
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import List, Optional
 from pathlib import Path
+from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, HTTPException, UploadFile, File, BackgroundTasks
+from fastapi import FastAPI, HTTPException, UploadFile, File, BackgroundTasks, Depends, status, Request
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field
+from fastapi.responses import JSONResponse
+from pydantic import BaseModel, Field, EmailStr, validator
 
-# Import our services
+# Local imports
 import sys
 sys.path.append(str(Path(__file__).parent.parent))
+
+from api.config import config, get_config
+from api.auth import (
+    get_current_user, get_optional_user, create_access_token, create_refresh_token,
+    hash_password, verify_password, encrypt_sensitive_data, decrypt_sensitive_data
+)
+from api.database import (
+    init_database, create_user, get_user_by_email, get_user_by_id,
+    save_profile, get_profile, save_resume, get_latest_resume, update_resume_tailored,
+    save_application, get_applications, get_application, count_applications_since,
+    save_settings, get_settings
+)
+from api.logging_config import logger, log_application, log_ai_request
 
 from ai.kimi_service import KimiResumeOptimizer
 
@@ -33,80 +50,149 @@ from adapters import (
     SearchConfig, UserProfile, Resume, ApplicationStatus
 )
 
+
+# === Lifespan Management ===
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Application lifespan management."""
+    # Startup
+    logger.info("Starting Job Applier API...")
+    await init_database()
+    logger.info("Database initialized")
+    yield
+    # Shutdown
+    logger.info("Shutting down Job Applier API...")
+    if browser_manager is not None:
+        await browser_manager.close_all()
+        logger.info("Browser sessions closed")
+
+
 # Initialize FastAPI app
 app = FastAPI(
     title="Job Applier API",
     description="Automated job application service with AI resume optimization",
-    version="1.0.0"
+    version="2.0.0",
+    lifespan=lifespan,
+    docs_url="/docs" if config.DEBUG else None,
+    redoc_url="/redoc" if config.DEBUG else None,
 )
 
-# CORS for frontend
+# CORS configuration - restricted to specific origins
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Configure properly in production
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=config.CORS_ORIGINS,
+    allow_credentials=config.CORS_ALLOW_CREDENTIALS,
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_headers=["Content-Type", "Authorization"],
 )
 
+
+# === Request Logging Middleware ===
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    """Log all HTTP requests."""
+    start_time = datetime.now()
+    response = await call_next(request)
+    duration = (datetime.now() - start_time).total_seconds() * 1000
+    logger.info(f"{request.method} {request.url.path} -> {response.status_code} ({duration:.2f}ms)")
+    return response
+
+
 # Data directory
-DATA_DIR = Path(__file__).parent.parent / "data"
+DATA_DIR = Path(config.DATA_DIR)
 DATA_DIR.mkdir(exist_ok=True)
 
 
-# === Pydantic Models ===
+# === Pydantic Models with Validation ===
+
+class RegisterRequest(BaseModel):
+    email: EmailStr
+    password: str = Field(..., min_length=8)
+
+    @validator('password')
+    def password_strength(cls, v):
+        if not re.search(r'[A-Za-z]', v) or not re.search(r'\d', v):
+            raise ValueError('Password must contain letters and numbers')
+        return v
+
+
+class LoginRequest(BaseModel):
+    email: EmailStr
+    password: str
+
 
 class SearchRequest(BaseModel):
     roles: List[str] = Field(default=[], example=["Software Engineer", "Backend Developer"])
     locations: List[str] = Field(default=[], example=["San Francisco", "Remote"])
     easy_apply_only: bool = False
-    posted_within_days: int = 7
+    posted_within_days: int = Field(default=7, ge=1, le=30)
     required_keywords: List[str] = Field(default_factory=list)
     exclude_keywords: List[str] = Field(default_factory=list)
-    country: str = Field(default="US", description="Country filter: US, CA, GB, DE, ALL")
-    careers_url: Optional[str] = Field(default=None, description="Company careers page URL for direct scraping")
+    country: str = Field(default="US", pattern="^(US|CA|GB|DE|FR|AU|IN|NL|SG|ALL)$")
+    careers_url: Optional[str] = Field(default=None)
+
+    @validator('roles')
+    def validate_roles(cls, v):
+        if len(v) > 10:
+            raise ValueError('Maximum 10 roles allowed')
+        return [role[:100] for role in v]  # Limit role length
 
 
 class UserProfileRequest(BaseModel):
-    first_name: str
-    last_name: str
-    email: str
-    phone: str
-    linkedin_url: Optional[str] = None
-    years_experience: Optional[int] = None
-    work_authorization: str = "Yes"
-    sponsorship_required: str = "No"
+    first_name: str = Field(..., min_length=1, max_length=100)
+    last_name: str = Field(..., min_length=1, max_length=100)
+    email: EmailStr
+    phone: str = Field(..., pattern=r'^[\d\s\-\+\(\)]{7,20}$')
+    linkedin_url: Optional[str] = Field(default=None, max_length=200)
+    years_experience: Optional[int] = Field(default=None, ge=0, le=50)
+    work_authorization: str = Field(default="Yes", pattern="^(Yes|No)$")
+    sponsorship_required: str = Field(default="No", pattern="^(Yes|No)$")
     custom_answers: dict = Field(default_factory=dict)
 
 
 class ApplicationRequest(BaseModel):
-    job_url: str
+    job_url: str = Field(..., max_length=500)
     auto_submit: bool = False
     generate_cover_letter: bool = True
-    cover_letter_tone: str = "professional"
+    cover_letter_tone: str = Field(default="professional", pattern="^(professional|casual|enthusiastic)$")
+
+    @validator('job_url')
+    def validate_url(cls, v):
+        if not v.startswith(('http://', 'https://')):
+            raise ValueError('Invalid URL format')
+        return v
 
 
 class TailorResumeRequest(BaseModel):
-    job_description: str
-    optimization_type: str = "balanced"
+    job_description: str = Field(..., min_length=50, max_length=10000)
+    optimization_type: str = Field(default="balanced", pattern="^(conservative|balanced|aggressive)$")
 
 
 class UserSettingsRequest(BaseModel):
-    daily_limit: int = Field(default=10, ge=1, le=1000, description="Max applications per 24 hours")
-    linkedin_cookie: Optional[str] = Field(default=None, description="LinkedIn li_at session cookie for auth")
+    daily_limit: int = Field(default=10, ge=1, le=1000)
+    linkedin_cookie: Optional[str] = Field(default=None, max_length=500)
 
 
-# === In-Memory State (use Redis in production) ===
-state = {
-    "resumes": {},  # user_id -> Resume
-    "profiles": {},  # user_id -> UserProfile
-    "applications": [],  # List of applications
-    "jobs_cache": {},  # Search results cache
-    "user_settings": {},  # user_id -> {daily_limit: int, ...}
-}
+# === Utility Functions ===
 
-# Default settings
-DEFAULT_DAILY_LIMIT = 10
+def sanitize_filename(filename: str) -> str:
+    """Sanitize filename to prevent path traversal."""
+    # Remove path separators and other dangerous characters
+    sanitized = re.sub(r'[/\\:*?"<>|]', '_', filename)
+    # Remove any leading dots or spaces
+    sanitized = sanitized.lstrip('. ')
+    # Limit length
+    name, ext = os.path.splitext(sanitized)
+    return f"{name[:50]}{ext[:10]}"
+
+
+def validate_file_extension(filename: str) -> bool:
+    """Validate file has allowed extension."""
+    ext = os.path.splitext(filename)[1].lower()
+    return ext in config.ALLOWED_EXTENSIONS
+
 
 # Initialize services
 kimi = KimiResumeOptimizer()
@@ -117,72 +203,116 @@ browser_manager = StealthBrowserManager() if BROWSER_AVAILABLE else None
 
 @app.get("/")
 async def root():
-    return {"status": "ok", "message": "Job Applier API v1.0"}
+    """Health check endpoint."""
+    return {"status": "ok", "message": "Job Applier API v2.0", "docs": "/docs" if config.DEBUG else "disabled"}
 
 
 @app.get("/health")
 async def health():
-    return {"status": "healthy", "timestamp": datetime.now().isoformat()}
+    """Detailed health check."""
+    return {
+        "status": "healthy",
+        "timestamp": datetime.now().isoformat(),
+        "browser_available": BROWSER_AVAILABLE,
+        "version": "2.0.0"
+    }
+
+
+# === Authentication Endpoints ===
+
+@app.post("/auth/register")
+async def register(request: RegisterRequest):
+    """Register a new user."""
+    user_id = str(uuid.uuid4())
+    hashed = hash_password(request.password)
+
+    success = await create_user(user_id, request.email, hashed)
+    if not success:
+        raise HTTPException(status_code=400, detail="Email already registered")
+
+    access_token = create_access_token(user_id)
+    refresh_token = create_refresh_token(user_id)
+
+    logger.info(f"New user registered: {request.email}")
+
+    return {
+        "message": "Registration successful",
+        "user_id": user_id,
+        "access_token": access_token,
+        "refresh_token": refresh_token,
+        "token_type": "bearer"
+    }
+
+
+@app.post("/auth/login")
+async def login(request: LoginRequest):
+    """Login and get access token."""
+    user = await get_user_by_email(request.email)
+    if not user or not verify_password(request.password, user["hashed_password"]):
+        raise HTTPException(status_code=401, detail="Invalid credentials")
+
+    if not user.get("is_active", True):
+        raise HTTPException(status_code=403, detail="Account disabled")
+
+    access_token = create_access_token(user["id"])
+    refresh_token = create_refresh_token(user["id"])
+
+    logger.info(f"User logged in: {request.email}")
+
+    return {
+        "access_token": access_token,
+        "refresh_token": refresh_token,
+        "token_type": "bearer",
+        "user_id": user["id"]
+    }
+
+
+@app.post("/auth/refresh")
+async def refresh_token(current_user: str = Depends(get_current_user)):
+    """Refresh access token."""
+    access_token = create_access_token(current_user)
+    return {"access_token": access_token, "token_type": "bearer"}
 
 
 # === User Settings & Rate Limits ===
 
-def get_user_settings(user_id: str) -> dict:
-    """Get user settings with defaults."""
-    return state["user_settings"].get(user_id, {"daily_limit": DEFAULT_DAILY_LIMIT})
-
-
-def count_applications_last_24h(user_id: str) -> int:
-    """Count applications submitted in last 24 hours for a user."""
-    from datetime import timedelta
-    cutoff = datetime.now() - timedelta(hours=24)
-    count = 0
-    for app in state["applications"]:
-        if app.get("user_id", "default") == user_id:
-            try:
-                app_time = datetime.fromisoformat(app["timestamp"])
-                if app_time > cutoff and app.get("status") not in ["error", "cancelled"]:
-                    count += 1
-            except (KeyError, ValueError):
-                pass
-    return count
-
-
 @app.get("/settings")
-async def get_settings(user_id: str = "default"):
+async def get_user_settings(user_id: str = Depends(get_current_user)):
     """Get user settings including rate limit status."""
-    settings = get_user_settings(user_id)
-    sent_24h = count_applications_last_24h(user_id)
-    daily_limit = settings.get("daily_limit", DEFAULT_DAILY_LIMIT)
-    
+    settings = await get_settings(user_id) or {"daily_limit": config.DEFAULT_DAILY_LIMIT}
+    cutoff = datetime.now() - timedelta(hours=24)
+    sent_24h = await count_applications_since(user_id, cutoff)
+    daily_limit = settings.get("daily_limit", config.DEFAULT_DAILY_LIMIT)
+
     return {
         "daily_limit": daily_limit,
         "sent_last_24h": sent_24h,
         "remaining": max(0, daily_limit - sent_24h),
         "can_apply": sent_24h < daily_limit,
         "reset_info": "Rolling 24-hour window",
-        "linkedin_cookie_set": bool(settings.get("linkedin_cookie"))
+        "linkedin_cookie_set": bool(settings.get("linkedin_cookie_encrypted"))
     }
 
 
 @app.post("/settings")
-async def update_settings(request: UserSettingsRequest, user_id: str = "default"):
+async def update_user_settings(request: UserSettingsRequest, user_id: str = Depends(get_current_user)):
     """Update user settings."""
-    if user_id not in state["user_settings"]:
-        state["user_settings"][user_id] = {}
-    
-    state["user_settings"][user_id]["daily_limit"] = request.daily_limit
-    
-    # Store LinkedIn cookie if provided
+    settings_data = {"daily_limit": request.daily_limit}
+
+    # Encrypt LinkedIn cookie if provided
     if request.linkedin_cookie:
-        state["user_settings"][user_id]["linkedin_cookie"] = request.linkedin_cookie
-    
-    sent_24h = count_applications_last_24h(user_id)
-    
+        settings_data["linkedin_cookie_encrypted"] = encrypt_sensitive_data(request.linkedin_cookie)
+        logger.info(f"LinkedIn cookie updated for user {user_id}")
+
+    await save_settings(user_id, settings_data)
+
+    cutoff = datetime.now() - timedelta(hours=24)
+    sent_24h = await count_applications_since(user_id, cutoff)
+
     return {
         "message": "Settings updated",
         "daily_limit": request.daily_limit,
-        "linkedin_cookie_set": bool(state["user_settings"][user_id].get("linkedin_cookie")),
+        "linkedin_cookie_set": bool(request.linkedin_cookie),
         "sent_last_24h": sent_24h,
         "remaining": max(0, request.daily_limit - sent_24h)
     }
@@ -193,79 +323,57 @@ async def get_platforms():
     """Get list of supported job platforms."""
     return {
         "platforms": [
-            {
-                "id": "linkedin",
-                "name": "LinkedIn",
-                "search_supported": True,
-                "easy_apply": True,
-                "url_pattern": "linkedin.com/jobs"
-            },
-            {
-                "id": "indeed",
-                "name": "Indeed",
-                "search_supported": True,
-                "easy_apply": True,
-                "url_pattern": "indeed.com/viewjob"
-            },
-            {
-                "id": "greenhouse",
-                "name": "Greenhouse",
-                "search_supported": False,
-                "easy_apply": True,
-                "url_pattern": "boards.greenhouse.io/*/jobs/*"
-            },
-            {
-                "id": "workday",
-                "name": "Workday",
-                "search_supported": False,
-                "easy_apply": False,
-                "note": "Often requires account creation",
-                "url_pattern": "*.myworkdayjobs.com"
-            },
-            {
-                "id": "lever",
-                "name": "Lever",
-                "search_supported": False,
-                "easy_apply": True,
-                "url_pattern": "jobs.lever.co/*/*"
-            }
+            {"id": "linkedin", "name": "LinkedIn", "search_supported": True, "easy_apply": True},
+            {"id": "indeed", "name": "Indeed", "search_supported": True, "easy_apply": True},
+            {"id": "greenhouse", "name": "Greenhouse", "search_supported": False, "easy_apply": True},
+            {"id": "workday", "name": "Workday", "search_supported": False, "easy_apply": False},
+            {"id": "lever", "name": "Lever", "search_supported": False, "easy_apply": True}
         ]
     }
 
 
-# --- Resume Endpoints ---
+# === Resume Endpoints ===
 
 @app.post("/resume/upload")
 async def upload_resume(
     file: UploadFile = File(...),
-    user_id: str = "default"
+    user_id: str = Depends(get_current_user)
 ):
     """Upload and parse a resume file."""
-    # Save file
-    file_path = DATA_DIR / f"resume_{user_id}_{file.filename}"
+    # Validate file extension
+    if not validate_file_extension(file.filename):
+        raise HTTPException(status_code=400, detail=f"Invalid file type. Allowed: {config.ALLOWED_EXTENSIONS}")
+
+    # Validate file size
     content = await file.read()
-    
+    if len(content) > config.MAX_UPLOAD_SIZE_MB * 1024 * 1024:
+        raise HTTPException(status_code=400, detail=f"File too large. Max: {config.MAX_UPLOAD_SIZE_MB}MB")
+
+    # Sanitize filename and save
+    safe_filename = sanitize_filename(file.filename)
+    file_path = DATA_DIR / f"resume_{user_id}_{safe_filename}"
+
     with open(file_path, "wb") as f:
         f.write(content)
-    
-    # Extract text (simple for now - could use PDF parser)
+
+    # Extract text
     if file.filename.endswith(".txt"):
         raw_text = content.decode("utf-8")
     else:
-        # For PDF/DOCX, would use proper parsers
         raw_text = content.decode("utf-8", errors="ignore")
-    
-    # Parse with Kimi
-    parsed_data = await kimi.parse_resume(raw_text)
-    
-    # Store resume
-    resume = Resume(
-        file_path=str(file_path),
-        raw_text=raw_text,
-        parsed_data=parsed_data
-    )
-    state["resumes"][user_id] = resume
-    
+
+    # Parse with Kimi AI
+    try:
+        parsed_data = await kimi.parse_resume(raw_text)
+    except Exception as e:
+        logger.error(f"Resume parsing failed: {e}")
+        parsed_data = {"error": "Parsing failed", "raw_available": True}
+
+    # Save to database
+    await save_resume(user_id, str(file_path), raw_text, parsed_data)
+
+    logger.info(f"Resume uploaded for user {user_id}: {safe_filename}")
+
     return {
         "message": "Resume uploaded and parsed",
         "file_path": str(file_path),
@@ -276,75 +384,60 @@ async def upload_resume(
 @app.post("/resume/tailor")
 async def tailor_resume(
     request: TailorResumeRequest,
-    user_id: str = "default"
+    user_id: str = Depends(get_current_user)
 ):
     """Tailor resume to a specific job description."""
-    resume = state["resumes"].get(user_id)
+    resume = await get_latest_resume(user_id)
     if not resume:
         raise HTTPException(status_code=404, detail="Resume not found. Upload first.")
-    
-    result = await kimi.tailor_resume(
-        resume.raw_text,
-        request.job_description,
-        request.optimization_type
-    )
-    
-    # Store tailored version
-    resume.tailored_version = result
-    
-    return result
+
+    try:
+        result = await kimi.tailor_resume(
+            resume["raw_text"],
+            request.job_description,
+            request.optimization_type
+        )
+        await update_resume_tailored(resume["id"], result)
+        log_ai_request("kimi", "tailor_resume")
+        return result
+    except Exception as e:
+        log_ai_request("kimi", "tailor_resume", error=str(e))
+        raise HTTPException(status_code=500, detail=f"Tailoring failed: {str(e)}")
 
 
-# --- Profile Endpoints ---
+# === Profile Endpoints ===
 
 @app.post("/profile")
-async def save_profile(profile: UserProfileRequest, user_id: str = "default"):
+async def save_user_profile(profile: UserProfileRequest, user_id: str = Depends(get_current_user)):
     """Save user profile for applications."""
-    user_profile = UserProfile(
-        first_name=profile.first_name,
-        last_name=profile.last_name,
-        email=profile.email,
-        phone=profile.phone,
-        linkedin_url=profile.linkedin_url,
-        years_experience=profile.years_experience,
-        work_authorization=profile.work_authorization,
-        sponsorship_required=profile.sponsorship_required,
-        custom_answers=profile.custom_answers
-    )
-    state["profiles"][user_id] = user_profile
-    
+    await save_profile(user_id, profile.dict())
+    logger.info(f"Profile saved for user {user_id}")
     return {"message": "Profile saved", "profile": profile.dict()}
 
 
-@app.get("/profile/{user_id}")
-async def get_profile(user_id: str):
+@app.get("/profile")
+async def get_user_profile(user_id: str = Depends(get_current_user)):
     """Get user profile."""
-    profile = state["profiles"].get(user_id)
+    profile = await get_profile(user_id)
     if not profile:
         raise HTTPException(status_code=404, detail="Profile not found")
-    
-    return {
-        "first_name": profile.first_name,
-        "last_name": profile.last_name,
-        "email": profile.email,
-        "phone": profile.phone,
-        "linkedin_url": profile.linkedin_url,
-        "years_experience": profile.years_experience
-    }
+    return profile
 
 
-# --- Job Search Endpoints ---
+# === Job Search Endpoints ===
 
 @app.post("/jobs/search")
-async def search_jobs(request: SearchRequest, platform: str = "linkedin"):
+async def search_jobs(request: SearchRequest, platform: str = "linkedin", user_id: str = Depends(get_current_user)):
     """Search for jobs across platforms."""
-    # Browser required for search
     if not BROWSER_AVAILABLE or not browser_manager:
-        raise HTTPException(
-            status_code=503,
-            detail="Browser automation not available on this deployment. Use local API for search."
-        )
-    
+        raise HTTPException(status_code=503, detail="Browser automation not available")
+
+    if platform not in ["linkedin", "indeed", "company"]:
+        raise HTTPException(status_code=400, detail="Search only supported for: linkedin, indeed, company")
+
+    if platform == "company" and not request.careers_url:
+        raise HTTPException(status_code=400, detail="Company platform requires careers_url")
+
     search_config = SearchConfig(
         roles=request.roles,
         locations=request.locations,
@@ -352,37 +445,22 @@ async def search_jobs(request: SearchRequest, platform: str = "linkedin"):
         posted_within_days=request.posted_within_days,
         required_keywords=request.required_keywords,
         exclude_keywords=request.exclude_keywords,
-        country=request.country
+        country=request.country,
+        careers_url=request.careers_url
     )
-    
-    # Support linkedin, indeed, and company for search
-    if platform not in ["linkedin", "indeed", "company"]:
-        raise HTTPException(
-            status_code=400, 
-            detail=f"Search only supported for: linkedin, indeed, company. Use job URL for greenhouse/workday/lever."
-        )
-    
-    # Company platform requires careers_url
-    if platform == "company" and not request.careers_url:
-        raise HTTPException(
-            status_code=400,
-            detail="Company platform requires careers_url parameter"
-        )
-    
-    # Pass careers_url to search config for company scraping
-    if request.careers_url:
-        search_config.careers_url = request.careers_url
-    
+
     try:
-        # Get LinkedIn cookie if available for authenticated search
-        linkedin_cookie = state["user_settings"].get("default", {}).get("linkedin_cookie")
+        # Get LinkedIn cookie if available
+        settings = await get_settings(user_id)
+        linkedin_cookie = None
+        if settings and settings.get("linkedin_cookie_encrypted"):
+            linkedin_cookie = decrypt_sensitive_data(settings["linkedin_cookie_encrypted"])
+
         adapter = get_adapter(platform, browser_manager, session_cookie=linkedin_cookie)
         jobs = await adapter.search_jobs(search_config)
-        
-        # Cache results
-        cache_key = f"{platform}_{hash(str(request.dict()))}"
-        state["jobs_cache"][cache_key] = jobs
-        
+
+        logger.info(f"Search completed for user {user_id}: {len(jobs)} jobs found on {platform}")
+
         return {
             "platform": platform,
             "count": len(jobs),
@@ -400,105 +478,110 @@ async def search_jobs(request: SearchRequest, platform: str = "linkedin"):
             ]
         }
     except Exception as e:
+        logger.error(f"Search failed: {e}")
         raise HTTPException(status_code=500, detail=str(e))
     finally:
         if 'adapter' in locals():
             await adapter.close()
 
 
-# --- Application Endpoints ---
+# === Application Endpoints ===
 
 @app.post("/apply")
 async def apply_to_job(
     request: ApplicationRequest,
     background_tasks: BackgroundTasks,
-    user_id: str = "default"
+    user_id: str = Depends(get_current_user)
 ):
     """Apply to a specific job."""
-    # Browser required for applications
     if not BROWSER_AVAILABLE or not browser_manager:
-        raise HTTPException(
-            status_code=503,
-            detail="Browser automation not available on this deployment. Use local API for applications."
-        )
-    
+        raise HTTPException(status_code=503, detail="Browser automation not available")
+
     # Check rate limit
-    settings = get_user_settings(user_id)
-    sent_24h = count_applications_last_24h(user_id)
-    daily_limit = settings.get("daily_limit", DEFAULT_DAILY_LIMIT)
-    
+    settings = await get_settings(user_id) or {}
+    daily_limit = settings.get("daily_limit", config.DEFAULT_DAILY_LIMIT)
+    cutoff = datetime.now() - timedelta(hours=24)
+    sent_24h = await count_applications_since(user_id, cutoff)
+
     if sent_24h >= daily_limit:
         raise HTTPException(
             status_code=429,
-            detail=f"Daily limit reached ({daily_limit} applications per 24 hours). "
-                   f"You've sent {sent_24h} applications. Try again later or increase your limit in settings."
+            detail=f"Daily limit reached ({daily_limit}). Sent: {sent_24h}. Try again later."
         )
-    
-    resume = state["resumes"].get(user_id)
-    profile = state["profiles"].get(user_id)
-    
+
+    resume = await get_latest_resume(user_id)
+    profile = await get_profile(user_id)
+
     if not resume:
         raise HTTPException(status_code=400, detail="Resume not uploaded")
     if not profile:
         raise HTTPException(status_code=400, detail="Profile not saved")
-    
+
+    # Detect platform
+    platform = detect_platform_from_url(request.job_url)
+    if platform == "unknown":
+        raise HTTPException(status_code=400, detail="Unsupported job platform")
+
+    # Check LinkedIn auth requirement
+    linkedin_cookie = None
+    if platform == "linkedin":
+        if settings.get("linkedin_cookie_encrypted"):
+            linkedin_cookie = decrypt_sensitive_data(settings["linkedin_cookie_encrypted"])
+        else:
+            raise HTTPException(status_code=400, detail="LinkedIn requires authentication. Add li_at cookie in settings.")
+
     # Generate cover letter if requested
     cover_letter = None
     if request.generate_cover_letter:
-        # Would need job details - for now, use generic
-        cover_letter = await kimi.generate_cover_letter(
-            resume_summary=resume.raw_text[:2000],
-            job_title="Position",
-            company_name="Company",
-            job_requirements="",
-            tone=request.cover_letter_tone
-        )
-    
-    # Auto-detect platform from URL
-    platform = detect_platform_from_url(request.job_url)
-    if platform == "unknown":
-        raise HTTPException(
-            status_code=400, 
-            detail="Could not detect platform from URL. Supported: LinkedIn, Indeed, Greenhouse, Workday, Lever"
-        )
-    
-    # Check LinkedIn cookie for LinkedIn applications
-    linkedin_cookie = state["user_settings"].get(user_id, {}).get("linkedin_cookie")
-    if platform == "linkedin" and not linkedin_cookie:
-        raise HTTPException(
-            status_code=400,
-            detail="⚠️ LinkedIn requires authentication! Please add your LinkedIn session cookie (li_at) in the LinkedIn Auth section before applying. Without it, applications cannot be submitted."
-        )
-    
-    # Apply in background
-    application_id = f"app_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
-    
+        try:
+            cover_letter = await kimi.generate_cover_letter(
+                resume_summary=resume["raw_text"][:2000],
+                job_title="Position",
+                company_name="Company",
+                job_requirements="",
+                tone=request.cover_letter_tone
+            )
+        except Exception as e:
+            logger.warning(f"Cover letter generation failed: {e}")
+
+    # Create application record
+    application_id = f"app_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:8]}"
+
     async def do_apply():
-        print(f"🔧 Starting application {application_id} for {request.job_url}")
+        logger.info(f"Starting application {application_id} for {request.job_url}")
         adapter = None
         try:
-            # Get LinkedIn cookie if available
-            linkedin_cookie = state["user_settings"].get(user_id, {}).get("linkedin_cookie")
             adapter = get_adapter(platform, browser_manager, session_cookie=linkedin_cookie)
-            print(f"📄 Getting job details from {platform}...")
-            
-            # Get job details
             job = await adapter.get_job_details(request.job_url)
-            print(f"✅ Got job: {job.title} at {job.company}")
-            
-            # Apply
-            print(f"📝 Applying to job...")
+            logger.info(f"Got job details: {job.title} at {job.company}")
+
+            # Build Resume and UserProfile objects
+            resume_obj = Resume(
+                file_path=resume["file_path"],
+                raw_text=resume["raw_text"],
+                parsed_data=resume["parsed_data"]
+            )
+            profile_obj = UserProfile(
+                first_name=profile["first_name"],
+                last_name=profile["last_name"],
+                email=profile["email"],
+                phone=profile["phone"],
+                linkedin_url=profile.get("linkedin_url"),
+                years_experience=profile.get("years_experience"),
+                work_authorization=profile.get("work_authorization", "Yes"),
+                sponsorship_required=profile.get("sponsorship_required", "No"),
+                custom_answers=profile.get("custom_answers", {})
+            )
+
             result = await adapter.apply_to_job(
                 job=job,
-                resume=resume,
-                profile=profile,
+                resume=resume_obj,
+                profile=profile_obj,
                 cover_letter=cover_letter,
                 auto_submit=request.auto_submit
             )
-            print(f"✅ Application result: {result.status.value} - {result.message}")
-            
-            # Store result
-            state["applications"].append({
+
+            await save_application({
                 "id": application_id,
                 "user_id": user_id,
                 "job_url": request.job_url,
@@ -507,33 +590,30 @@ async def apply_to_job(
                 "platform": platform,
                 "status": result.status.value,
                 "message": result.message,
-                "screenshot": result.screenshot_path,
+                "screenshot_path": result.screenshot_path,
                 "timestamp": datetime.now().isoformat()
             })
-            print(f"💾 Stored application result")
-            
+
+            log_application(application_id, user_id, request.job_url, result.status.value)
+
         except Exception as e:
-            import traceback
-            error_msg = str(e)
-            print(f"❌ Application error: {error_msg}")
-            print(traceback.format_exc())
-            
-            state["applications"].append({
+            logger.error(f"Application {application_id} failed: {e}")
+            await save_application({
                 "id": application_id,
                 "user_id": user_id,
                 "job_url": request.job_url,
                 "platform": platform,
                 "status": "error",
-                "error": error_msg,
+                "error": str(e),
                 "timestamp": datetime.now().isoformat()
             })
+            log_application(application_id, user_id, request.job_url, "error", str(e))
         finally:
             if adapter:
                 await adapter.close()
-                print(f"🔒 Closed adapter")
-    
+
     background_tasks.add_task(do_apply)
-    
+
     return {
         "message": "Application started",
         "application_id": application_id,
@@ -542,78 +622,86 @@ async def apply_to_job(
 
 
 @app.get("/applications")
-async def get_applications(user_id: str = "default"):
-    """Get all applications."""
-    return {"applications": state["applications"]}
+async def list_applications(user_id: str = Depends(get_current_user)):
+    """Get all applications for the user."""
+    applications = await get_applications(user_id)
+    return {"applications": applications}
 
 
 @app.get("/applications/{application_id}")
-async def get_application(application_id: str):
+async def get_application_status(application_id: str, user_id: str = Depends(get_current_user)):
     """Get specific application status."""
-    for app in state["applications"]:
-        if app["id"] == application_id:
-            return app
-    raise HTTPException(status_code=404, detail="Application not found")
+    application = await get_application(application_id)
+    if not application:
+        raise HTTPException(status_code=404, detail="Application not found")
+    if application["user_id"] != user_id:
+        raise HTTPException(status_code=403, detail="Access denied")
+    return application
 
 
-# --- AI Endpoints ---
+# === AI Endpoints ===
 
 @app.post("/ai/generate-cover-letter")
 async def generate_cover_letter(
     job_title: str,
     company_name: str,
     job_requirements: str = "",
-    company_research: str = "",
     tone: str = "professional",
-    user_id: str = "default"
+    user_id: str = Depends(get_current_user)
 ):
     """Generate a cover letter for a specific job."""
-    resume = state["resumes"].get(user_id)
+    resume = await get_latest_resume(user_id)
     if not resume:
         raise HTTPException(status_code=404, detail="Resume not found")
-    
-    cover_letter = await kimi.generate_cover_letter(
-        resume_summary=resume.raw_text[:3000],
-        job_title=job_title,
-        company_name=company_name,
-        job_requirements=job_requirements,
-        company_research=company_research,
-        tone=tone
-    )
-    
-    return {"cover_letter": cover_letter}
+
+    try:
+        cover_letter = await kimi.generate_cover_letter(
+            resume_summary=resume["raw_text"][:3000],
+            job_title=job_title,
+            company_name=company_name,
+            job_requirements=job_requirements,
+            tone=tone
+        )
+        log_ai_request("kimi", "generate_cover_letter")
+        return {"cover_letter": cover_letter}
+    except Exception as e:
+        log_ai_request("kimi", "generate_cover_letter", error=str(e))
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.post("/ai/answer-question")
-async def answer_question(
-    question: str,
-    user_id: str = "default"
-):
+async def answer_question(question: str, user_id: str = Depends(get_current_user)):
     """Answer a job application question using resume context."""
-    resume = state["resumes"].get(user_id)
-    profile = state["profiles"].get(user_id)
-    
+    resume = await get_latest_resume(user_id)
+    profile = await get_profile(user_id)
+
     if not resume:
         raise HTTPException(status_code=404, detail="Resume not found")
-    
-    answer = await kimi.answer_application_question(
-        question=question,
-        resume_context=resume.raw_text[:2000],
-        existing_answers=profile.custom_answers if profile else None
+
+    try:
+        answer = await kimi.answer_application_question(
+            question=question,
+            resume_context=resume["raw_text"][:2000],
+            existing_answers=profile.get("custom_answers") if profile else None
+        )
+        return {"question": question, "answer": answer}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# === Error Handlers ===
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    """Global exception handler."""
+    logger.error(f"Unhandled exception: {exc}", exc_info=True)
+    return JSONResponse(
+        status_code=500,
+        content={"detail": "Internal server error"}
     )
-    
-    return {"question": question, "answer": answer}
-
-
-# --- Startup/Shutdown ---
-
-@app.on_event("shutdown")
-async def shutdown():
-    """Cleanup on shutdown."""
-    await browser_manager.close_all()
 
 
 # Run with: uvicorn api.main:app --reload --port 8000
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host=config.HOST, port=config.PORT)
