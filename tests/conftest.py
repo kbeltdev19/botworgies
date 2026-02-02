@@ -91,12 +91,12 @@ def sample_user_profile():
 
 
 @pytest.fixture
-def sample_resume():
+def sample_resume(sample_resume_text):
     """Sample Resume object for testing."""
     from adapters.base import Resume
     return Resume(
         file_path="/tmp/test_resume.pdf",
-        raw_text=sample_resume_text(),
+        raw_text=sample_resume_text,
         parsed_data={
             "name": "John Doe",
             "email": "john.doe@email.com",
@@ -158,7 +158,58 @@ def setup_test_env():
     os.environ.setdefault("TESTING", "true")
     os.environ.setdefault("MOONSHOT_API_KEY", "test-key")
     os.environ.setdefault("BROWSERBASE_API_KEY", "test-key")
+    os.environ.setdefault("DATABASE_PATH", "/tmp/test_job_applier.db")
+    os.environ.setdefault("JWT_SECRET_KEY", "test-secret-key-for-testing-only")
     yield
+    # Cleanup test database
+    test_db = Path("/tmp/test_job_applier.db")
+    if test_db.exists():
+        test_db.unlink()
+
+
+@pytest.fixture(autouse=True, scope="session")
+def init_test_database():
+    """Initialize test database before all tests."""
+    import asyncio
+    os.environ["DATABASE_PATH"] = "/tmp/test_job_applier.db"
+    
+    from api.database import init_database
+    asyncio.run(init_database())
+    yield
+
+
+# === Authenticated Test Client ===
+
+@pytest.fixture
+def authenticated_client():
+    """
+    Create a test client with authentication bypassed.
+    Uses dependency_overrides for proper FastAPI authentication mocking.
+    """
+    from fastapi.testclient import TestClient
+    from api.main import app, get_current_user
+    
+    # Override the authentication dependency
+    async def mock_get_current_user():
+        return "test-user-uuid-1234"
+    
+    app.dependency_overrides[get_current_user] = mock_get_current_user
+    
+    try:
+        client = TestClient(app)
+        yield client
+    finally:
+        # Clean up override
+        app.dependency_overrides.pop(get_current_user, None)
+
+
+@pytest.fixture
+def auth_headers():
+    """Create valid JWT authentication headers."""
+    from api.auth import create_access_token
+    
+    token = create_access_token("test-user-uuid-1234")
+    return {"Authorization": f"Bearer {token}"}
 
 
 # === Markers ===

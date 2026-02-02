@@ -26,8 +26,12 @@ class TestHallucinationGuards:
         result = await kimi.tailor_resume(sample_resume_text, sample_job_description)
         
         # Get tailored content
-        tailored = result.get("tailored_bullets", []) if isinstance(result, dict) else str(result)
-        tailored_text = " ".join(tailored) if isinstance(tailored, list) else tailored
+        if isinstance(result, dict):
+            tailored = result.get("tailored_bullets", [])
+            # Handle case where bullets might be dicts
+            tailored_text = " ".join(str(b) for b in tailored)
+        else:
+            tailored_text = str(result)
         
         # Original companies
         assert "StartupCo" in tailored_text or "TechCorp" in tailored_text

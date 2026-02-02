@@ -63,7 +63,8 @@ def create_access_token(user_id: str, expires_delta: Optional[timedelta] = None)
         "sub": user_id,
         "exp": expire,
         "type": "access",
-        "iat": datetime.utcnow()
+        "iat": datetime.utcnow(),
+        "jti": secrets.token_urlsafe(16)  # Unique token ID to ensure tokens are different
     }
     return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
 

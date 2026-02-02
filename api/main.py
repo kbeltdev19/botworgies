@@ -50,6 +50,13 @@ from adapters import (
     SearchConfig, UserProfile, Resume, ApplicationStatus
 )
 
+# Parallel processing for batch applications
+from api.parallel_processor import (
+    ParallelApplicationProcessor,
+    process_applications_parallel,
+    BatchApplicationStats
+)
+
 
 # === Lifespan Management ===
 
@@ -179,10 +186,14 @@ class UserSettingsRequest(BaseModel):
 
 def sanitize_filename(filename: str) -> str:
     """Sanitize filename to prevent path traversal."""
+    # First, get just the basename (remove any path components)
+    filename = os.path.basename(filename)
     # Remove path separators and other dangerous characters
     sanitized = re.sub(r'[/\\:*?"<>|]', '_', filename)
     # Remove any leading dots or spaces
     sanitized = sanitized.lstrip('. ')
+    # Remove any remaining '..' sequences
+    sanitized = sanitized.replace('..', '_')
     # Limit length
     name, ext = os.path.splitext(sanitized)
     return f"{name[:50]}{ext[:10]}"
@@ -618,6 +629,208 @@ async def apply_to_job(
         "message": "Application started",
         "application_id": application_id,
         "status": "processing"
+    }
+
+
+class BatchApplicationRequest(BaseModel):
+    """Request for batch job applications."""
+    job_urls: List[str] = Field(..., min_items=1, max_items=50)
+    auto_submit: bool = False
+    generate_cover_letter: bool = True
+    cover_letter_tone: str = Field(default="professional", pattern="^(professional|casual|enthusiastic)$")
+    max_concurrent: int = Field(default=3, ge=1, le=5)
+    target_apps_per_minute: float = Field(default=10.0, ge=1.0, le=20.0)
+
+
+@app.post("/apply/batch")
+async def apply_to_jobs_batch(
+    request: BatchApplicationRequest,
+    user_id: str = Depends(get_current_user)
+):
+    """
+    Apply to multiple jobs in parallel with rate limiting.
+    
+    Features:
+    - Configurable concurrency (max 5 parallel)
+    - Rate limiting (default: 10 apps/minute, max: 20 apps/minute)
+    - Progress tracking
+    - Automatic retry on failure
+    
+    **Theoretical Maximum Performance:**
+    - With auto_submit=True: ~10 apps/minute (target rate)
+    - With auto_submit=False (review mode): ~6-8 apps/minute
+    - Peak burst: Up to 5 concurrent applications
+    - Sustained rate: 10 applications per minute
+    - Daily maximum: 10 apps/min × 60 min × 24 hr = 14,400 applications/day (limited by daily_limit setting)
+    """
+    if not BROWSER_AVAILABLE or not browser_manager:
+        raise HTTPException(status_code=503, detail="Browser automation not available")
+    
+    # Check rate limits
+    settings = await get_settings(user_id) or {}
+    daily_limit = settings.get("daily_limit", config.DEFAULT_DAILY_LIMIT)
+    cutoff = datetime.now() - timedelta(hours=24)
+    sent_24h = await count_applications_since(user_id, cutoff)
+    
+    remaining_today = daily_limit - sent_24h
+    if remaining_today <= 0:
+        raise HTTPException(
+            status_code=429,
+            detail=f"Daily limit reached ({daily_limit}). Try again tomorrow."
+        )
+    
+    if len(request.job_urls) > remaining_today:
+        raise HTTPException(
+            status_code=429,
+            detail=f"Would exceed daily limit. Remaining: {remaining_today}, Requested: {len(request.job_urls)}"
+        )
+    
+    # Get user data
+    resume = await get_latest_resume(user_id)
+    profile = await get_profile(user_id)
+    
+    if not resume:
+        raise HTTPException(status_code=400, detail="Resume not uploaded")
+    if not profile:
+        raise HTTPException(status_code=400, detail="Profile not saved")
+    
+    # Get LinkedIn cookie if available
+    linkedin_cookie = None
+    if settings.get("linkedin_cookie_encrypted"):
+        linkedin_cookie = decrypt_sensitive_data(settings["linkedin_cookie_encrypted"])
+    
+    # Prepare jobs list
+    jobs = [{"url": url, "platform": detect_platform_from_url(url)} for url in request.job_urls]
+    
+    # Filter out unsupported platforms
+    supported_jobs = [j for j in jobs if j["platform"] != "unknown"]
+    unsupported_jobs = [j for j in jobs if j["platform"] == "unknown"]
+    
+    if not supported_jobs:
+        raise HTTPException(status_code=400, detail="No supported job platforms in batch")
+    
+    # Create processor
+    processor = ParallelApplicationProcessor(
+        max_concurrent=request.max_concurrent,
+        target_apps_per_minute=request.target_apps_per_minute,
+        retry_attempts=2
+    )
+    
+    async def process_single_application(job: dict) -> dict:
+        """Process a single application."""
+        platform = job["platform"]
+        job_url = job["url"]
+        
+        # Check LinkedIn auth
+        if platform == "linkedin" and not linkedin_cookie:
+            raise Exception("LinkedIn requires authentication. Add li_at cookie in settings.")
+        
+        # Generate cover letter if requested
+        cover_letter = None
+        if request.generate_cover_letter:
+            try:
+                cover_letter = await kimi.generate_cover_letter(
+                    resume_summary=resume["raw_text"][:2000],
+                    job_title="Position",
+                    company_name="Company",
+                    job_requirements="",
+                    tone=request.cover_letter_tone
+                )
+            except Exception as e:
+                logger.warning(f"Cover letter generation failed for {job_url}: {e}")
+        
+        # Build objects
+        resume_obj = Resume(
+            file_path=resume["file_path"],
+            raw_text=resume["raw_text"],
+            parsed_data=resume["parsed_data"]
+        )
+        profile_obj = UserProfile(
+            first_name=profile["first_name"],
+            last_name=profile["last_name"],
+            email=profile["email"],
+            phone=profile["phone"],
+            linkedin_url=profile.get("linkedin_url"),
+            years_experience=profile.get("years_experience"),
+            work_authorization=profile.get("work_authorization", "Yes"),
+            sponsorship_required=profile.get("sponsorship_required", "No"),
+            custom_answers=profile.get("custom_answers", {})
+        )
+        
+        # Apply
+        adapter = get_adapter(platform, browser_manager, session_cookie=linkedin_cookie)
+        try:
+            job_details = await adapter.get_job_details(job_url)
+            result = await adapter.apply_to_job(
+                job=job_details,
+                resume=resume_obj,
+                profile=profile_obj,
+                cover_letter=cover_letter,
+                auto_submit=request.auto_submit
+            )
+            
+            # Save application
+            app_id = f"app_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:8]}"
+            await save_application({
+                "id": app_id,
+                "user_id": user_id,
+                "job_url": job_url,
+                "job_title": job_details.title,
+                "company": job_details.company,
+                "platform": platform,
+                "status": result.status.value,
+                "message": result.message,
+                "screenshot_path": result.screenshot_path,
+                "timestamp": datetime.now().isoformat()
+            })
+            
+            return {
+                "application_id": app_id,
+                "status": result.status.value,
+                "message": result.message
+            }
+        finally:
+            await adapter.close()
+    
+    # Process batch
+    start_time = datetime.now()
+    results = await processor.process_batch(
+        jobs=supported_jobs,
+        application_func=process_single_application
+    )
+    end_time = datetime.now()
+    
+    # Calculate statistics
+    stats = processor.get_stats()
+    duration_seconds = (end_time - start_time).total_seconds()
+    actual_apps_per_minute = (len(supported_jobs) / duration_seconds) * 60 if duration_seconds > 0 else 0
+    
+    # Format results
+    formatted_results = []
+    for result in results:
+        formatted_results.append({
+            "job_url": result.job_url,
+            "status": result.status.value,
+            "application_id": result.application_id,
+            "duration_seconds": round(result.duration_seconds, 2),
+            "error": result.error
+        })
+    
+    return {
+        "message": "Batch processing complete",
+        "summary": {
+            "total_requested": len(request.job_urls),
+            "total_processed": len(supported_jobs),
+            "unsupported_platforms": len(unsupported_jobs),
+            "completed": sum(1 for r in results if r.status.value == "completed"),
+            "failed": sum(1 for r in results if r.status.value == "failed"),
+            "rate_limited": sum(1 for r in results if r.status.value == "rate_limited"),
+            "duration_seconds": round(duration_seconds, 2),
+            "target_apps_per_minute": request.target_apps_per_minute,
+            "actual_apps_per_minute": round(actual_apps_per_minute, 2),
+            "efficiency": round((actual_apps_per_minute / request.target_apps_per_minute) * 100, 1) if request.target_apps_per_minute > 0 else 0
+        },
+        "results": formatted_results
     }
 
 

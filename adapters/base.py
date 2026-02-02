@@ -79,6 +79,7 @@ class SearchConfig:
     salary_max: Optional[int] = None
     exclude_keywords: List[str] = field(default_factory=list)
     required_keywords: List[str] = field(default_factory=list)
+    exclude_companies: List[str] = field(default_factory=list)  # Companies to exclude
     posted_within_days: int = 7
     experience_levels: List[str] = field(default_factory=lambda: ["mid", "senior"])
     company_sizes: List[str] = field(default_factory=list)
