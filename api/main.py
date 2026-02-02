@@ -92,7 +92,7 @@ class TailorResumeRequest(BaseModel):
 
 
 class UserSettingsRequest(BaseModel):
-    daily_limit: int = Field(default=10, ge=1, le=100, description="Max applications per 24 hours")
+    daily_limit: int = Field(default=10, ge=1, le=1000, description="Max applications per 24 hours")
     linkedin_cookie: Optional[str] = Field(default=None, description="LinkedIn li_at session cookie for auth")
 
 

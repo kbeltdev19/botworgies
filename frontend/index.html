@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Version: 2026-02-02-v2 - Added LinkedIn Auth, Employment Types, Company Careers -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -85,7 +86,7 @@
                     <div class="text-gray-300 text-2xl">/</div>
                     <div class="text-center">
                         <div class="flex items-center gap-2">
-                            <input type="number" id="daily-limit-input" min="1" max="100" value="10"
+                            <input type="number" id="daily-limit-input" min="1" max="1000" value="10"
                                 class="w-16 text-2xl font-bold text-center border-b-2 border-purple-200 focus:border-purple-500 outline-none bg-transparent">
                         </div>
                         <div class="text-xs text-gray-500">Daily Limit</div>
@@ -495,8 +496,8 @@
         // Daily limit input change handler
         document.getElementById('daily-limit-input').addEventListener('change', async (e) => {
             const newLimit = parseInt(e.target.value);
-            if (newLimit < 1 || newLimit > 100) {
-                showStatus('Daily limit must be between 1 and 100', 'error');
+            if (newLimit < 1 || newLimit > 1000) {
+                showStatus('Daily limit must be between 1 and 1000', 'error');
                 return;
             }
             try {
