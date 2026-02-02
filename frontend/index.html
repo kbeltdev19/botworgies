@@ -67,6 +67,42 @@
             <span id="status-message"></span>
         </div>
 
+        <!-- Daily Limit Display -->
+        <div id="rate-limit-card" class="mb-6 card p-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <div class="text-3xl">📊</div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800">Daily Applications</h3>
+                        <p class="text-sm text-gray-600">Rolling 24-hour window</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div class="text-center">
+                        <div id="sent-count" class="text-2xl font-bold text-purple-600">0</div>
+                        <div class="text-xs text-gray-500">Sent</div>
+                    </div>
+                    <div class="text-gray-300 text-2xl">/</div>
+                    <div class="text-center">
+                        <div class="flex items-center gap-2">
+                            <input type="number" id="daily-limit-input" min="1" max="100" value="10"
+                                class="w-16 text-2xl font-bold text-center border-b-2 border-purple-200 focus:border-purple-500 outline-none bg-transparent">
+                        </div>
+                        <div class="text-xs text-gray-500">Daily Limit</div>
+                    </div>
+                    <div class="text-center ml-4 px-4 py-2 rounded-lg" id="remaining-badge">
+                        <div id="remaining-count" class="text-xl font-bold">10</div>
+                        <div class="text-xs">Remaining</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3">
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div id="limit-progress-bar" class="bg-purple-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+
         <div class="grid md:grid-cols-2 gap-6">
             <!-- Left Column: Setup -->
             <div class="space-y-6">
@@ -122,6 +158,21 @@
                             value="Remote, San Francisco"
                             class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
                         
+                        <!-- Country Filter -->
+                        <div class="flex items-center gap-4">
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" id="us-only" checked class="w-4 h-4 text-purple-600 rounded focus:ring-purple-500">
+                                <span class="text-sm font-medium text-gray-700">🇺🇸 US Jobs Only</span>
+                            </label>
+                            <select id="country-filter" class="px-3 py-1 text-sm border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                                <option value="US" selected>United States</option>
+                                <option value="CA">Canada</option>
+                                <option value="GB">United Kingdom</option>
+                                <option value="DE">Germany</option>
+                                <option value="ALL">All Countries</option>
+                            </select>
+                        </div>
+                        
                         <!-- Work Type Toggles -->
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Work Type</label>
@@ -134,6 +185,25 @@
                                 </button>
                                 <button type="button" id="toggle-onsite" class="toggle-btn flex-1 px-4 py-2 border rounded-lg text-sm font-medium">
                                     🏢 On-site
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Employment Type Toggles -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Employment Type</label>
+                            <div class="flex gap-2 flex-wrap">
+                                <button type="button" id="toggle-fulltime" class="toggle-btn active px-4 py-2 border rounded-lg text-sm font-medium">
+                                    💼 Full-time
+                                </button>
+                                <button type="button" id="toggle-contract" class="toggle-btn px-4 py-2 border rounded-lg text-sm font-medium">
+                                    📝 Contract
+                                </button>
+                                <button type="button" id="toggle-temporary" class="toggle-btn px-4 py-2 border rounded-lg text-sm font-medium">
+                                    ⏱️ Temporary
+                                </button>
+                                <button type="button" id="toggle-parttime" class="toggle-btn px-4 py-2 border rounded-lg text-sm font-medium">
+                                    🕐 Part-time
                                 </button>
                             </div>
                         </div>
@@ -166,6 +236,7 @@
                         <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
                             🔍 Search Jobs
                         </button>
+                        <p class="text-xs text-gray-400 text-center mt-1">⚠️ Search requires local browser. Use direct URL below for cloud.</p>
                     </form>
                 </div>
 
@@ -259,14 +330,92 @@
         let selectedJobs = new Set();
         let searchResults = [];
 
+        // === Rate Limit Management ===
+        async function loadRateLimitStatus() {
+            try {
+                const res = await fetch(`${API_BASE}/settings?user_id=${USER_ID}`);
+                const data = await res.json();
+                updateRateLimitDisplay(data);
+            } catch (e) {
+                console.error('Failed to load rate limit:', e);
+            }
+        }
+
+        function updateRateLimitDisplay(data) {
+            const sent = data.sent_last_24h || 0;
+            const limit = data.daily_limit || 10;
+            const remaining = data.remaining || (limit - sent);
+            const percentage = Math.min(100, (sent / limit) * 100);
+            
+            document.getElementById('sent-count').textContent = sent;
+            document.getElementById('daily-limit-input').value = limit;
+            document.getElementById('remaining-count').textContent = remaining;
+            document.getElementById('limit-progress-bar').style.width = `${percentage}%`;
+            
+            // Update badge color based on remaining
+            const badge = document.getElementById('remaining-badge');
+            if (remaining === 0) {
+                badge.className = 'text-center ml-4 px-4 py-2 rounded-lg bg-red-100 text-red-800';
+            } else if (remaining <= 3) {
+                badge.className = 'text-center ml-4 px-4 py-2 rounded-lg bg-yellow-100 text-yellow-800';
+            } else {
+                badge.className = 'text-center ml-4 px-4 py-2 rounded-lg bg-green-100 text-green-800';
+            }
+            
+            // Update progress bar color
+            const progressBar = document.getElementById('limit-progress-bar');
+            if (percentage >= 100) {
+                progressBar.className = 'bg-red-500 h-2 rounded-full transition-all duration-300';
+            } else if (percentage >= 70) {
+                progressBar.className = 'bg-yellow-500 h-2 rounded-full transition-all duration-300';
+            } else {
+                progressBar.className = 'bg-purple-600 h-2 rounded-full transition-all duration-300';
+            }
+        }
+
+        // Daily limit input change handler
+        document.getElementById('daily-limit-input').addEventListener('change', async (e) => {
+            const newLimit = parseInt(e.target.value);
+            if (newLimit < 1 || newLimit > 100) {
+                showStatus('Daily limit must be between 1 and 100', 'error');
+                return;
+            }
+            try {
+                const res = await fetch(`${API_BASE}/settings?user_id=${USER_ID}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ daily_limit: newLimit })
+                });
+                const data = await res.json();
+                updateRateLimitDisplay(data);
+                showStatus(`Daily limit updated to ${newLimit}`, 'success');
+            } catch (e) {
+                showStatus('Failed to update limit', 'error');
+            }
+        });
+
+        // Load rate limit on page load
+        loadRateLimitStatus();
+        // Refresh every 60 seconds
+        setInterval(loadRateLimitStatus, 60000);
+
         // Work type toggles
         const workTypes = { remote: true, hybrid: false, onsite: false };
+        const employmentTypes = { fulltime: true, contract: false, temporary: false, parttime: false };
         
-        document.querySelectorAll('[id^="toggle-"]').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const type = btn.id.replace('toggle-', '');
+        // Work type buttons
+        ['remote', 'hybrid', 'onsite'].forEach(type => {
+            document.getElementById(`toggle-${type}`)?.addEventListener('click', (e) => {
                 workTypes[type] = !workTypes[type];
-                btn.classList.toggle('active', workTypes[type]);
+                e.target.classList.toggle('active', workTypes[type]);
+            });
+        });
+        
+        // Employment type buttons
+        ['fulltime', 'contract', 'temporary', 'parttime'].forEach(type => {
+            document.getElementById(`toggle-${type}`)?.addEventListener('click', (e) => {
+                employmentTypes[type] = !employmentTypes[type];
+                e.target.classList.toggle('active', employmentTypes[type]);
             });
         });
 
@@ -377,13 +526,27 @@
                 locations.push('Remote');
             }
 
+            // Get country filter
+            const usOnly = document.getElementById('us-only').checked;
+            const countryFilter = document.getElementById('country-filter').value;
+            
+            // If US only is checked, ensure US locations
+            if (usOnly && !locations.some(l => l.toLowerCase().includes('united states'))) {
+                locations = locations.map(l => {
+                    if (l.toLowerCase() === 'remote') return 'Remote, United States';
+                    return l + ', United States';
+                });
+            }
+
             const search = {
                 roles: document.getElementById('roles').value.split(',').map(s => s.trim()),
                 locations: locations,
                 easy_apply_only: document.getElementById('easy_apply_only').checked,
                 posted_within_days: parseInt(document.getElementById('posted_within').value),
                 min_salary: parseInt(document.getElementById('min-salary').value) || null,
-                work_types: Object.entries(workTypes).filter(([k,v]) => v).map(([k]) => k)
+                work_types: Object.entries(workTypes).filter(([k,v]) => v).map(([k]) => k),
+                employment_types: Object.entries(employmentTypes).filter(([k,v]) => v).map(([k]) => k),
+                country: usOnly ? 'US' : countryFilter
             };
 
             document.getElementById('results').innerHTML = '<p class="text-center py-4">🔍 Searching...</p>';
@@ -396,6 +559,12 @@
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(search)
                 });
+                
+                if (!res.ok) {
+                    const errorData = await res.json().catch(() => ({ detail: 'Server error' }));
+                    throw new Error(errorData.detail || `HTTP ${res.status}`);
+                }
+                
                 const data = await res.json();
                 searchResults = data.jobs || [];
                 
@@ -408,8 +577,15 @@
                 }
                 showStatus(`Found ${data.count} jobs`, 'success');
             } catch (err) {
-                showStatus('Search failed: ' + err.message, 'error');
-                document.getElementById('results').innerHTML = '<p class="text-center py-4 text-red-500">Search failed</p>';
+                const errorMsg = err.message.includes('Browser automation') 
+                    ? '⚠️ Search requires browser automation (not available on cloud). Use "Single Job Apply" with a direct job URL instead!'
+                    : err.message;
+                showStatus('Search: ' + errorMsg, 'error');
+                document.getElementById('results').innerHTML = `
+                    <div class="text-center py-4">
+                        <p class="text-amber-600 mb-2">🔍 Job search requires browser automation</p>
+                        <p class="text-sm text-gray-500">Paste a job URL directly in "Single Job Apply" below instead!</p>
+                    </div>`;
             }
         });
 
@@ -490,6 +666,7 @@
             updateProgress(jobsToApply.length, jobsToApply.length, '✅ Complete!');
             showStatus(`Applied to ${jobsToApply.length} jobs!`, 'success');
             loadApplications();
+            loadRateLimitStatus();  // Refresh rate limit display
             
             // Hide progress after delay
             setTimeout(() => updateProgress(0, 0), 3000);
@@ -516,8 +693,10 @@
                 showStatus(`Application ${data.status}: ${data.application_id}`, 'success');
                 document.getElementById('job_url').value = '';
                 loadApplications();
+                loadRateLimitStatus();  // Refresh rate limit display
             } catch (err) {
                 showStatus('Application failed: ' + err.message, 'error');
+                loadRateLimitStatus();  // Still refresh to show updated count
             }
         });
 

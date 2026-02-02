@@ -63,6 +63,7 @@ class SearchRequest(BaseModel):
     posted_within_days: int = 7
     required_keywords: List[str] = Field(default_factory=list)
     exclude_keywords: List[str] = Field(default_factory=list)
+    country: str = Field(default="US", description="Country filter: US, CA, GB, DE, ALL")
 
 
 class UserProfileRequest(BaseModel):
@@ -89,13 +90,21 @@ class TailorResumeRequest(BaseModel):
     optimization_type: str = "balanced"
 
 
+class UserSettingsRequest(BaseModel):
+    daily_limit: int = Field(default=10, ge=1, le=100, description="Max applications per 24 hours")
+
+
 # === In-Memory State (use Redis in production) ===
 state = {
     "resumes": {},  # user_id -> Resume
     "profiles": {},  # user_id -> UserProfile
     "applications": [],  # List of applications
     "jobs_cache": {},  # Search results cache
+    "user_settings": {},  # user_id -> {daily_limit: int, ...}
 }
+
+# Default settings
+DEFAULT_DAILY_LIMIT = 10
 
 # Initialize services
 kimi = KimiResumeOptimizer()
@@ -112,6 +121,63 @@ async def root():
 @app.get("/health")
 async def health():
     return {"status": "healthy", "timestamp": datetime.now().isoformat()}
+
+
+# === User Settings & Rate Limits ===
+
+def get_user_settings(user_id: str) -> dict:
+    """Get user settings with defaults."""
+    return state["user_settings"].get(user_id, {"daily_limit": DEFAULT_DAILY_LIMIT})
+
+
+def count_applications_last_24h(user_id: str) -> int:
+    """Count applications submitted in last 24 hours for a user."""
+    from datetime import timedelta
+    cutoff = datetime.now() - timedelta(hours=24)
+    count = 0
+    for app in state["applications"]:
+        if app.get("user_id", "default") == user_id:
+            try:
+                app_time = datetime.fromisoformat(app["timestamp"])
+                if app_time > cutoff and app.get("status") not in ["error", "cancelled"]:
+                    count += 1
+            except (KeyError, ValueError):
+                pass
+    return count
+
+
+@app.get("/settings")
+async def get_settings(user_id: str = "default"):
+    """Get user settings including rate limit status."""
+    settings = get_user_settings(user_id)
+    sent_24h = count_applications_last_24h(user_id)
+    daily_limit = settings.get("daily_limit", DEFAULT_DAILY_LIMIT)
+    
+    return {
+        "daily_limit": daily_limit,
+        "sent_last_24h": sent_24h,
+        "remaining": max(0, daily_limit - sent_24h),
+        "can_apply": sent_24h < daily_limit,
+        "reset_info": "Rolling 24-hour window"
+    }
+
+
+@app.post("/settings")
+async def update_settings(request: UserSettingsRequest, user_id: str = "default"):
+    """Update user settings."""
+    if user_id not in state["user_settings"]:
+        state["user_settings"][user_id] = {}
+    
+    state["user_settings"][user_id]["daily_limit"] = request.daily_limit
+    
+    sent_24h = count_applications_last_24h(user_id)
+    
+    return {
+        "message": "Settings updated",
+        "daily_limit": request.daily_limit,
+        "sent_last_24h": sent_24h,
+        "remaining": max(0, request.daily_limit - sent_24h)
+    }
 
 
 @app.get("/platforms")
@@ -277,7 +343,8 @@ async def search_jobs(request: SearchRequest, platform: str = "linkedin"):
         easy_apply_only=request.easy_apply_only,
         posted_within_days=request.posted_within_days,
         required_keywords=request.required_keywords,
-        exclude_keywords=request.exclude_keywords
+        exclude_keywords=request.exclude_keywords,
+        country=request.country
     )
     
     # Support linkedin and indeed for search
@@ -334,6 +401,18 @@ async def apply_to_job(
             detail="Browser automation not available on this deployment. Use local API for applications."
         )
     
+    # Check rate limit
+    settings = get_user_settings(user_id)
+    sent_24h = count_applications_last_24h(user_id)
+    daily_limit = settings.get("daily_limit", DEFAULT_DAILY_LIMIT)
+    
+    if sent_24h >= daily_limit:
+        raise HTTPException(
+            status_code=429,
+            detail=f"Daily limit reached ({daily_limit} applications per 24 hours). "
+                   f"You've sent {sent_24h} applications. Try again later or increase your limit in settings."
+        )
+    
     resume = state["resumes"].get(user_id)
     profile = state["profiles"].get(user_id)
     
@@ -366,12 +445,18 @@ async def apply_to_job(
     application_id = f"app_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
     
     async def do_apply():
-        adapter = get_adapter(platform, browser_manager)
+        print(f"🔧 Starting application {application_id} for {request.job_url}")
+        adapter = None
         try:
+            adapter = get_adapter(platform, browser_manager)
+            print(f"📄 Getting job details from {platform}...")
+            
             # Get job details
             job = await adapter.get_job_details(request.job_url)
+            print(f"✅ Got job: {job.title} at {job.company}")
             
             # Apply
+            print(f"📝 Applying to job...")
             result = await adapter.apply_to_job(
                 job=job,
                 resume=resume,
@@ -379,10 +464,12 @@ async def apply_to_job(
                 cover_letter=cover_letter,
                 auto_submit=request.auto_submit
             )
+            print(f"✅ Application result: {result.status.value} - {result.message}")
             
             # Store result
             state["applications"].append({
                 "id": application_id,
+                "user_id": user_id,
                 "job_url": request.job_url,
                 "job_title": job.title,
                 "company": job.company,
@@ -392,18 +479,27 @@ async def apply_to_job(
                 "screenshot": result.screenshot_path,
                 "timestamp": datetime.now().isoformat()
             })
+            print(f"💾 Stored application result")
             
         except Exception as e:
+            import traceback
+            error_msg = str(e)
+            print(f"❌ Application error: {error_msg}")
+            print(traceback.format_exc())
+            
             state["applications"].append({
                 "id": application_id,
+                "user_id": user_id,
                 "job_url": request.job_url,
                 "platform": platform,
                 "status": "error",
-                "error": str(e),
+                "error": error_msg,
                 "timestamp": datetime.now().isoformat()
             })
         finally:
-            await adapter.close()
+            if adapter:
+                await adapter.close()
+                print(f"🔒 Closed adapter")
     
     background_tasks.add_task(do_apply)
     

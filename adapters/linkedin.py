@@ -31,10 +31,23 @@ class LinkedInAdapter(JobPlatformAdapter):
         page = session.page
         
         # Build search URL
+        location = criteria.locations[0] if criteria.locations else "United States"
         params = {
             "keywords": " ".join(criteria.roles),
-            "location": criteria.locations[0] if criteria.locations else "United States",
+            "location": location,
         }
+        
+        # Country/GeoId filter for more accurate results
+        # LinkedIn geoIds: US=103644278, CA=101174742, GB=101165590, DE=101282230
+        country = getattr(criteria, 'country', 'US')
+        if country == 'US' or 'united states' in location.lower():
+            params["geoId"] = "103644278"
+        elif country == 'CA' or 'canada' in location.lower():
+            params["geoId"] = "101174742"
+        elif country == 'GB' or 'united kingdom' in location.lower():
+            params["geoId"] = "101165590"
+        elif country == 'DE' or 'germany' in location.lower():
+            params["geoId"] = "101282230"
         
         # Time posted filter
         if criteria.posted_within_days <= 1:

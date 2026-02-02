@@ -74,6 +74,7 @@ class SearchConfig:
     company_sizes: List[str] = field(default_factory=list)
     industries: List[str] = field(default_factory=list)
     easy_apply_only: bool = False
+    country: str = "US"  # Country filter: US, CA, GB, DE, ALL
 
 
 @dataclass 

@@ -14,13 +14,25 @@ from playwright.async_api import async_playwright, Page, Browser
 
 
 def load_browserbase_creds() -> dict:
-    """Load BrowserBase credentials from tokens file."""
+    """Load BrowserBase credentials from env vars or tokens file."""
     creds = {}
-    with open(os.path.expanduser("~/.clawdbot/secrets/tokens.env")) as f:
-        for line in f:
-            if "=" in line and not line.strip().startswith("#"):
-                key, val = line.strip().split("=", 1)
-                creds[key] = val
+    
+    # Try env vars first (for Fly.io deployment)
+    if os.getenv("BROWSERBASE_API_KEY"):
+        creds["BROWSERBASE_API_KEY"] = os.getenv("BROWSERBASE_API_KEY")
+        creds["BROWSERBASE_PROJECT_ID"] = os.getenv("BROWSERBASE_PROJECT_ID", "")
+        return creds
+    
+    # Fall back to local file
+    try:
+        with open(os.path.expanduser("~/.clawdbot/secrets/tokens.env")) as f:
+            for line in f:
+                if "=" in line and not line.strip().startswith("#"):
+                    key, val = line.strip().split("=", 1)
+                    creds[key] = val
+    except FileNotFoundError:
+        pass
+    
     return creds
 
 
