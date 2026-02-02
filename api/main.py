@@ -160,7 +160,8 @@ async def get_settings(user_id: str = "default"):
         "sent_last_24h": sent_24h,
         "remaining": max(0, daily_limit - sent_24h),
         "can_apply": sent_24h < daily_limit,
-        "reset_info": "Rolling 24-hour window"
+        "reset_info": "Rolling 24-hour window",
+        "linkedin_cookie_set": bool(settings.get("linkedin_cookie"))
     }
 
 
@@ -459,6 +460,14 @@ async def apply_to_job(
         raise HTTPException(
             status_code=400, 
             detail="Could not detect platform from URL. Supported: LinkedIn, Indeed, Greenhouse, Workday, Lever"
+        )
+    
+    # Check LinkedIn cookie for LinkedIn applications
+    linkedin_cookie = state["user_settings"].get(user_id, {}).get("linkedin_cookie")
+    if platform == "linkedin" and not linkedin_cookie:
+        raise HTTPException(
+            status_code=400,
+            detail="⚠️ LinkedIn requires authentication! Please add your LinkedIn session cookie (li_at) in the LinkedIn Auth section before applying. Without it, applications cannot be submitted."
         )
     
     # Apply in background

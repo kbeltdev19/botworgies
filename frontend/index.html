@@ -314,9 +314,12 @@
                 <!-- Quick Apply -->
                 <div class="card p-6">
                     <h2 class="text-xl font-semibold mb-4">🎯 Single Job Apply</h2>
+                    <div id="linkedin-warning" class="mb-3 p-3 bg-amber-50 border border-amber-200 rounded-lg text-sm text-amber-800 hidden">
+                        ⚠️ <strong>LinkedIn requires auth!</strong> Add your <code>li_at</code> cookie in the LinkedIn Auth section (left side) before applying to LinkedIn jobs.
+                    </div>
                     <form id="apply-form" class="space-y-4">
                         <input type="url" id="job_url" placeholder="Paste any job URL (LinkedIn, Indeed, Greenhouse, company careers, etc.)"
-                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none">
+                            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 outline-none" oninput="checkLinkedInWarning(this.value)">
                         <p class="text-xs text-gray-500">Supports: LinkedIn, Indeed, Greenhouse, Workday, Lever, + any company career page</p>
                         <button type="submit" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors">
                             🎯 Apply Now
@@ -372,9 +375,20 @@
         let searchResults = [];
 
         // === LinkedIn Cookie Functions ===
+        let linkedInCookieSet = false;
+        
         function showCookieHelp() {
             const helpEl = document.getElementById('cookie-help');
             helpEl.classList.toggle('hidden');
+        }
+        
+        function checkLinkedInWarning(url) {
+            const warning = document.getElementById('linkedin-warning');
+            if (url.toLowerCase().includes('linkedin.com') && !linkedInCookieSet) {
+                warning.classList.remove('hidden');
+            } else {
+                warning.classList.add('hidden');
+            }
         }
 
         async function saveLinkedInCookie() {
@@ -393,8 +407,10 @@
                 const data = await res.json();
                 
                 if (data.linkedin_cookie_set) {
+                    linkedInCookieSet = true;
                     document.getElementById('cookie-status').innerHTML = '<span class="text-green-600">✅ LinkedIn cookie saved! You can now use Easy Apply.</span>';
                     document.getElementById('linkedin_cookie').value = '';
+                    document.getElementById('linkedin-warning')?.classList.add('hidden');
                 } else {
                     document.getElementById('cookie-status').innerHTML = '<span class="text-red-600">Failed to save cookie</span>';
                 }
@@ -462,6 +478,11 @@
         }
 
         function updateRateLimitDisplay(data) {
+            // Check if LinkedIn cookie is set
+            if (data.linkedin_cookie_set) {
+                linkedInCookieSet = true;
+                document.getElementById('cookie-status').innerHTML = '<span class="text-green-600">✅ Cookie active</span>';
+            }
             const sent = data.sent_last_24h || 0;
             const limit = data.daily_limit || 10;
             const remaining = data.remaining || (limit - sent);
