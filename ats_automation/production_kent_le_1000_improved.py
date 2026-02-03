@@ -43,7 +43,7 @@ KENT_LE_PROFILE = UserProfile(
     phone="404-934-0630",
     resume_path="Test Resumes/Kent_Le_Resume.pdf",
     resume_text="""KENT LE
-Auburn, AL | 404-934-0630 | kle4311@gmail.com
+Auburn, Alabama | 404-934-0630 | kle4311@gmail.com
 
 PROFESSIONAL SUMMARY
 Results-driven Customer Success professional with 5+ years of experience building client relationships, driving product adoption, and reducing churn. Proven track record of increasing customer satisfaction scores by 25% and growing account revenue by 30% year-over-year. Skilled in CRM management, data analysis, and cross-functional collaboration.
