@@ -1,0 +1,21 @@
+{
+  "test_id": "improvements_test_100_20260203_1328",
+  "total_jobs": 100,
+  "successful": 0,
+  "redirects": 0,
+  "manual_required": 0,
+  "failed": 100,
+  "success_rate": 0.0,
+  "duration_seconds": 494.994047,
+  "avg_time_per_job": 4.9499404700000005,
+  "platforms": {
+    "indeed": {
+      "total": 100,
+      "success": 0
+    }
+  },
+  "statuses": {
+    "unknown_format": 94,
+    "error": 6
+  }
+}
