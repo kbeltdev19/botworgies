@@ -1,0 +1,4008 @@
+{
+  "collection_date": "2026-02-03T10:54:11.232136",
+  "total_jobs": 500,
+  "candidate": "Kent Le",
+  "location": "Auburn, AL / Remote",
+  "jobs": [
+    {
+      "title": "Senior Relationship Banker - Broadway",
+      "company": "VANTAGE WEST CREDIT UNION",
+      "location": "Tucson, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=37a76bc0783e50e6",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Control Engineering- Automation Engineering/ Specialized Machinery",
+      "company": "Bosch",
+      "location": "Charleston, SC, US",
+      "url": "https://www.indeed.com/viewjob?jk=f5f33e770dc16b50",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior Workday SCM Analyst/Architect",
+      "company": "e4health",
+      "location": "Minot, ND, US",
+      "url": "https://www.indeed.com/viewjob?jk=a48fa5a64f6e1262",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Hallmark Field Merchandiser (part-time) Bronx, NY 10463",
+      "company": "Hallmark",
+      "location": "Bronx, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=8283cad732560096",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Shop Helper",
+      "company": "JX Enterprises",
+      "location": "Elmhurst, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=7245e10870694e4a",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Business Development Executive",
+      "company": "JX Enterprises",
+      "location": "Bolingbrook, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=314ddb892cb599f7",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Retention Account Manager, SMB",
+      "company": "Block",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=39d9f19269c37655",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Sales & Client Relationship Manager (B2B SaaS)",
+      "company": "Taurus",
+      "location": "Tampa, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=de3f9b212ca59140",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Inside Sales Consultant \u2013 Automotive & Commercial",
+      "company": "Priority Payments Local",
+      "location": "Red Bank, NJ, US",
+      "url": "https://www.indeed.com/viewjob?jk=57dd15372b7bdb50",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Loan Support Consultant Specialist - Asset-Based Finance Servicing",
+      "company": "PNC Financial Services Group",
+      "location": "Pittsburgh, PA, US",
+      "url": "https://www.indeed.com/viewjob?jk=8d17d23d04cc1265",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Regional Banker/Teller",
+      "company": "PNC Financial Services Group",
+      "location": "Walnut Creek, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=6dbc1cba255f2420",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Personal Banker",
+      "company": "PNC Financial Services Group",
+      "location": "Norwalk, OH, US",
+      "url": "https://www.indeed.com/viewjob?jk=ef317e90ccd2a97c",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Teller",
+      "company": "PNC Financial Services Group",
+      "location": "Lancaster, OH, US",
+      "url": "https://www.indeed.com/viewjob?jk=cfa25c94a783d847",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Commercial Account Executive- Mid-Atlantic",
+      "company": "CyberArk",
+      "location": "Baltimore, MD, US",
+      "url": "https://www.indeed.com/viewjob?jk=bf4552231faa0650",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Personal Banker",
+      "company": "PNC Financial Services Group",
+      "location": "Lexington, KY, US",
+      "url": "https://www.indeed.com/viewjob?jk=994f486e5771a95a",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Psychotherapist",
+      "company": "Center for Success and Independence",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=d93db34969fd1914",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Commercial Underwriter III",
+      "company": "PNC Financial Services Group",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=9dd2b03ab4b3a2b6",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Teller",
+      "company": "PNC Financial Services Group",
+      "location": "Spring Lake, NC, US",
+      "url": "https://www.indeed.com/viewjob?jk=22ae9f8ca3a0fd74",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Teller - Russet Center",
+      "company": "PNC Financial Services Group",
+      "location": "Laurel, MD, US",
+      "url": "https://www.indeed.com/viewjob?jk=75a18f0fd360b070",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Teller",
+      "company": "PNC Financial Services Group",
+      "location": "Bryn Mawr, PA, US",
+      "url": "https://www.indeed.com/viewjob?jk=60121f29a8ad6912",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Community Outreach Coordinator",
+      "company": "Wayside Waifs",
+      "location": "Kansas City, MO, US",
+      "url": "https://www.indeed.com/viewjob?jk=103b752f83af34b6",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "PRINTER AND SHIPPING ASSOCIATE - Hollywood, FL - Onsite",
+      "company": "Surf Style Retail Management Inc.",
+      "location": "Hollywood, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=711f29db8aaee64c",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Assistant Store Manager",
+      "company": "SAVER GROUP",
+      "location": "Carlisle, KY, US",
+      "url": "https://www.indeed.com/viewjob?jk=00c78c98ce571db5",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Director of Consumer Banking Support Services",
+      "company": "S&T Bank",
+      "location": "Indiana, PA, US",
+      "url": "https://www.indeed.com/viewjob?jk=ca781f6e5ed79875",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Outside Plant Project Manager",
+      "company": "Cannon Companies",
+      "location": "Phoenix, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=f7b9b4f37e9b2317",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Commercial Account Executive- Ohio Valley",
+      "company": "CyberArk",
+      "location": "Pittsburgh, PA, US",
+      "url": "https://www.indeed.com/viewjob?jk=54ff73e892ba5558",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Mechanical Specialist \u2013 Gearboxes & Pumps",
+      "company": "Illinois Electric Works",
+      "location": "Granite City, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=0865c0ca0f27358c",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Director, Manufacturing Engineering",
+      "company": "Outform Group",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=11255b02d43bacf2",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Director, Manufacturing Engineering",
+      "company": "Outform Group",
+      "location": "Union City, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=4d4a572f61731544",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "CONTRACTS ADMINISTRATOR (SENIOR LEVEL)",
+      "company": "Gulf Interstate Engineering",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=3420b1bafed63d01",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Apprentice Operator I",
+      "company": "Hulcher Services",
+      "location": "Hudson, WI, US",
+      "url": "https://www.indeed.com/viewjob?jk=ea9b8bdfdb0b81c6",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Apprentice Operator I",
+      "company": "Hulcher Services",
+      "location": "Hudson, WI, US",
+      "url": "https://www.indeed.com/viewjob?jk=fc832ef5f89e5d69",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Entry-Level Sales Representative",
+      "company": "Results Contracting",
+      "location": "Rochester, MN, US",
+      "url": "https://www.indeed.com/viewjob?jk=2f00952e9738a4d0",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Manager Trainee",
+      "company": "Menards",
+      "location": "Maplewood, MN, US",
+      "url": "https://www.indeed.com/viewjob?jk=c1d52625904815cf",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Manager Trainee",
+      "company": "Menards",
+      "location": "Waukesha, WI, US",
+      "url": "https://www.indeed.com/viewjob?jk=0bd170ecde81d154",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Energy Analyst (Oil and Natural Gas Infrastructure)",
+      "company": "E&M Technologies, Inc.",
+      "location": "Washington, DC, US",
+      "url": "https://www.indeed.com/viewjob?jk=57783531ade6cdbf",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Civil/Industrial Engineer",
+      "company": "E&M Technologies, Inc.",
+      "location": "Washington, DC, US",
+      "url": "https://www.indeed.com/viewjob?jk=76df32eaee866419",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Junior Customer Excellence Consultant",
+      "company": "Cargobase Pte Ltd",
+      "location": "Troy, MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=722413d34c0a87ff",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Entry Level Sales Representative",
+      "company": NaN,
+      "location": "Frankenmuth, MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=b54a38a2b28e9d60",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Assistant Warehouse Logistic Manager",
+      "company": "Cranney Home Services",
+      "location": "Danvers, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=7642065ee5a0a85d",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Warehouse Parts Runner",
+      "company": "Cranney Home Services",
+      "location": "Danvers, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=529ed943e0e32d07",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Permit Coordinator",
+      "company": "Cranney Home Services",
+      "location": "Danvers, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=4876c2d126a35f42",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Route Driver",
+      "company": NaN,
+      "location": "Woodinville, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=4eb8645461ffa989",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Dunkin -Overnight",
+      "company": "Gagnon - Dunkin",
+      "location": "New Britain, CT, US",
+      "url": "https://www.indeed.com/viewjob?jk=aecbf15485c53652",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Field Service Technician",
+      "company": "Quadient",
+      "location": "Boise, ID, US",
+      "url": "https://www.indeed.com/viewjob?jk=1e5d34f06b521d05",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Accounts Recievables Clerk",
+      "company": NaN,
+      "location": "Hammond, LA, US",
+      "url": "https://www.indeed.com/viewjob?jk=71ad2af1488b8885",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Macrobond Financial AB",
+      "location": "MN, US",
+      "url": "https://www.indeed.com/viewjob?jk=71dd674225f5d688",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Electrical Engineer",
+      "company": "Salas O'Brien",
+      "location": "Evansville, IN, US",
+      "url": "https://www.indeed.com/viewjob?jk=664586a502bab230",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Director, Global Manufacturing Quality",
+      "company": "Fortune Brands Innovations",
+      "location": "Deerfield, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=25de3b3116cc137d",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Associate Sales Representative",
+      "company": "SPR",
+      "location": "Albuquerque, NM, US",
+      "url": "https://www.indeed.com/viewjob?jk=9b8b53ab93dc2285",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Client Support Specialist",
+      "company": "King Risk Partners",
+      "location": "Moncks Corner, SC, US",
+      "url": "https://www.indeed.com/viewjob?jk=2a5c89f3fb0c0251",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Assistant Site Manager",
+      "company": "Zips Car Wash",
+      "location": "Dallas, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=1864ab177dc45b66",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Project Engineer",
+      "company": "Oshkosh Defense",
+      "location": "Oshkosh, WI, US",
+      "url": "https://www.indeed.com/viewjob?jk=07733d608cd0e3c2",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Warehouse Director",
+      "company": "ConnectUs Corporation",
+      "location": "King of Prussia, PA, US",
+      "url": "https://www.indeed.com/viewjob?jk=7552064e6a9be8d5",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Casino Floor Supervisor",
+      "company": "Mineral Palace Hotel & Gaming",
+      "location": "Deadwood, SD, US",
+      "url": "https://www.indeed.com/viewjob?jk=217c11fda7f13599",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Multifamily Marketing and Revenue Manager",
+      "company": "Levco Management",
+      "location": "Glen Allen, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=315f55cf50ed0ab3",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Journeyman / Tradesman Plumber",
+      "company": "Capital Care Plumbing",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=dac9d60ca11421d9",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Distribution Sales Manager",
+      "company": "APT Manufacturing Solutions",
+      "location": "Hicksville, OH, US",
+      "url": "https://www.indeed.com/viewjob?jk=911d9deefc5febde",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Patient Services Representative",
+      "company": "ADVENT",
+      "location": "Franklin, TN, US",
+      "url": "https://www.indeed.com/viewjob?jk=6af6c1d98f4524e9",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Continuous Improvement Manager (Supply Chain)",
+      "company": "MasterBrand Cabinets",
+      "location": "Indianapolis, IN, US",
+      "url": "https://www.indeed.com/viewjob?jk=9698db9dbdc731aa",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior Manager, Procurement",
+      "company": "Cuisine Solutions",
+      "location": "Sterling, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=3cd72c10015abaa1",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Dealer Relationship Manager - Atlanta West",
+      "company": "KINETIC ADVANTAGE LLC",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=12a0c91f475b67a3",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior Digital Strategist",
+      "company": "Carrier",
+      "location": "Palm Beach Gardens, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=00affcd3e5c2792a",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Ferrous Scrap Buyer",
+      "company": "CMC",
+      "location": "Martinsburg, WV, US",
+      "url": "https://www.indeed.com/viewjob?jk=a3934f6a1a3a5c24",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Coordinator Insights, Strategy & Analytics",
+      "company": "Sony Pictures Entertainment",
+      "location": "Culver City, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=c6c38ca783a658d9",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Laboratory Support Group Leader",
+      "company": "The GEL Group, Inc.",
+      "location": "Charleston, SC, US",
+      "url": "https://www.indeed.com/viewjob?jk=a7b50d8933fe7050",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Business Development Specialist",
+      "company": "Darwill, Inc.",
+      "location": "Oakbrook Terrace, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=92c6a766fddd841b",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Territory Manager- Landscape Products Group",
+      "company": "Smith Turf & Irrigation",
+      "location": "Greensboro, NC, US",
+      "url": "https://www.indeed.com/viewjob?jk=77e55b6bb3b58589",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Barback and Busser",
+      "company": "Shrimp Boat, Inc.",
+      "location": "Valrico, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=ec72c732b4fff125",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Receiving Inspector",
+      "company": "Conductix-Wampfler",
+      "location": "Harlan, IA, US",
+      "url": "https://www.indeed.com/viewjob?jk=d7909c50f8441117",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Automotive Parts Consultant",
+      "company": "Fairway Chevrolet GMC",
+      "location": "East Liverpool, OH, US",
+      "url": "https://www.indeed.com/viewjob?jk=83438e18906801fb",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Business Development Representative",
+      "company": "CCN Agency Primus",
+      "location": "Frederick, MD, US",
+      "url": "https://www.indeed.com/viewjob?jk=4f80fc11b98ed3e4",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior Stylist",
+      "company": "Studio 71 Hair Salon",
+      "location": "Erie, PA, US",
+      "url": "https://www.indeed.com/viewjob?jk=a23e771aa3f011f2",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Customer Success Associate",
+      "company": "GF Consulting Inc.",
+      "location": "Brentwood, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=c651870e469d348b",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Yacht Detailing and Maintenance Specialist",
+      "company": "DiMillo's Yacht Sales",
+      "location": "Freeport, ME, US",
+      "url": "https://www.indeed.com/viewjob?jk=aa98552adce1b644",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Real Estate Salesperson",
+      "company": NaN,
+      "location": "Saratoga Springs, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=15ebf5c1d8862168",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Materials Planner",
+      "company": "Modula Inc.",
+      "location": "Franklin, OH, US",
+      "url": "https://www.indeed.com/viewjob?jk=92f34786268400a4",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Facility Maintenance Technician",
+      "company": "Mr. Window LLC",
+      "location": "RI, US",
+      "url": "https://www.indeed.com/viewjob?jk=110442f87eef9aaf",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Automotive Parts Consultant",
+      "company": "Fairway Chevrolet GMC",
+      "location": "East Liverpool, OH, US",
+      "url": "https://www.indeed.com/viewjob?jk=43661514255ab849",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Customer Success Coordinator",
+      "company": "ManpowerGroup",
+      "location": "San Juan, PR, US",
+      "url": "https://www.indeed.com/viewjob?jk=a2999d52c159280d",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Palm Beach Gardens, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=98a6135d5d1b50ca",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Office Account Manager",
+      "company": "Impact Staffing Solutions",
+      "location": "Mount Vernon, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=523fdffe73a7bbf2",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Part Time Order Picker/Verifier/Stocker",
+      "company": "Prodigy Solutions Inc.",
+      "location": "Chickasha, OK, US",
+      "url": "https://www.indeed.com/viewjob?jk=07bbb4736304beed",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Chief Bakery Engineer- Weller St.",
+      "company": "Franz Family Bakery",
+      "location": "Seattle, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=4e93ae1cce26d39c",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sports Medicine Territory Manager (Buffalo, NY)",
+      "company": "Smith+Nephew",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=7caf848d613a0e45",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Biologics Sports Medicine Account Manager (Ft. Worth, TX)",
+      "company": "Smith+Nephew",
+      "location": "Fort Worth, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=fe55e2b7ce9ba5ea",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sport Medicine Territory Manager (Dallas/Fort Worth, TX)",
+      "company": "Smith+Nephew",
+      "location": "Dallas, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=655ee6858e47130c",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Birmingham, AL, US",
+      "url": "https://www.indeed.com/viewjob?jk=ef9a1438c3b1bf04",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Glen Rose, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=c27743c96909b1d2",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sales and Operations Trainee",
+      "company": NaN,
+      "location": "Orlando, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=8c2065313f6604e2",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "General Service Technician",
+      "company": "Express Oil Change & Tire Engineers",
+      "location": "Northport, AL, US",
+      "url": "https://www.indeed.com/viewjob?jk=dc5199ea447819fc",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Frisco, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=a879ecc77e5cc59a",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Automotive Technician",
+      "company": "Firestone Complete Auto Care",
+      "location": "Kalamazoo, MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=2e532a701070a29f",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Automotive Technician",
+      "company": "Firestone Complete Auto Care",
+      "location": "Woodstock, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=9b8c82c949fe325a",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Retail Salesperson",
+      "company": "Firestone Complete Auto Care",
+      "location": "Oak Lawn, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=55a21a176ec6bd0e",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Automotive Technician",
+      "company": "Wheel Works",
+      "location": "San Jose, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=a9a3f858ed37acce",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Automotive Technician",
+      "company": "Tires Plus",
+      "location": "Roseville, MN, US",
+      "url": "https://www.indeed.com/viewjob?jk=deff18b8f876bb4d",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Automotive Technician",
+      "company": "Wheel Works",
+      "location": "Los Gatos, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=685c4a1b0225315a",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Automotive Technician",
+      "company": "Firestone Complete Auto Care",
+      "location": "Montclair, NJ, US",
+      "url": "https://www.indeed.com/viewjob?jk=6b8c9023c2138d65",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Store Manager",
+      "company": "Tires Plus",
+      "location": "Titusville, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=da8355eebc626fa9",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Automotive Technician",
+      "company": "Firestone Complete Auto Care",
+      "location": "Kingsport, TN, US",
+      "url": "https://www.indeed.com/viewjob?jk=db26709894520d76",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Automotive Technician",
+      "company": "Tires Plus",
+      "location": "Harrisburg, PA, US",
+      "url": "https://www.indeed.com/viewjob?jk=6cecec17f379f0b3",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Hirig Delivery Driver",
+      "company": "Zippy Delivery",
+      "location": "Dallas, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=1c354185bb143477",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Product Mover- Temp Room-2nd Shift SC",
+      "company": "E.A. Sween",
+      "location": "Hodges, SC, US",
+      "url": "https://www.indeed.com/viewjob?jk=5d24766b563283ec",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "CDL Driver",
+      "company": "Sperry Rail",
+      "location": "Columbia, MD, US",
+      "url": "https://www.indeed.com/viewjob?jk=ca8c3b7aa0ca9a62",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Navigator-OB/GYN Physician Services-FT-Days-MRH-MPC",
+      "company": "Memorial Healthcare System",
+      "location": "Hollywood, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=0700da9668a52327",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Assoc Claims Specialist",
+      "company": "Liberty Mutual Insurance",
+      "location": "Anchorage, AK, US",
+      "url": "https://www.indeed.com/viewjob?jk=e6f6e6bb4eff4c0e",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Assoc Claims Specialist",
+      "company": "Liberty Mutual Insurance",
+      "location": "Ford Island, HI, US",
+      "url": "https://www.indeed.com/viewjob?jk=b47da2cc5c012764",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Assoc Claims Specialist",
+      "company": "Liberty Mutual Insurance",
+      "location": "Orange, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=e93fa516a231a041",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Assoc Claims Specialist",
+      "company": "Liberty Mutual Insurance",
+      "location": "Lake Oswego, OR, US",
+      "url": "https://www.indeed.com/viewjob?jk=bb0047015ec33bcd",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Assoc Claims Specialist",
+      "company": "Liberty Mutual Insurance",
+      "location": "San Diego, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=f4c80ca001667b75",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Assoc Claims Specialist",
+      "company": "Liberty Mutual Insurance",
+      "location": "Las Vegas, NV, US",
+      "url": "https://www.indeed.com/viewjob?jk=a8d9fca34b6b1d8c",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Assoc Claims Specialist",
+      "company": "Liberty Mutual Insurance",
+      "location": "Los Angeles, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=6c0f29b7114f19c4",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Assoc Claims Specialist",
+      "company": "Liberty Mutual Insurance",
+      "location": "Chandler, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=aa279bb9c99b46cd",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Assoc Claims Specialist",
+      "company": "Liberty Mutual Insurance",
+      "location": "Rocklin, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=848fd11413fd6282",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "CDL Driver",
+      "company": "Sperry Rail",
+      "location": "Allentown, PA, US",
+      "url": "https://www.indeed.com/viewjob?jk=ad6e018574189889",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "CDL Driver",
+      "company": "Sperry Rail",
+      "location": "Huntsville, AL, US",
+      "url": "https://www.indeed.com/viewjob?jk=578933aa22f19423",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "CDL Driver",
+      "company": "Sperry Rail",
+      "location": "Fort Wayne, IN, US",
+      "url": "https://www.indeed.com/viewjob?jk=c4b7ad95110918d4",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Administrative Business Partner",
+      "company": "Jack Henry & Associates",
+      "location": "Charlotte, NC, US",
+      "url": "https://www.indeed.com/viewjob?jk=6cd5e92bfa8c3904",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Retail Associate \u2013 Inventory",
+      "company": "WIS International",
+      "location": "Johnstown, PA, US",
+      "url": "https://www.indeed.com/viewjob?jk=e3f3637015e42046",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Rehabilitation Assistant - Fort Dodge",
+      "company": "State of Iowa",
+      "location": "Fort Dodge, IA, US",
+      "url": "https://www.indeed.com/viewjob?jk=116a4ac870ae7b92",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Administrative Support Assistant 3",
+      "company": "State of Iowa",
+      "location": "Marshalltown, IA, US",
+      "url": "https://www.indeed.com/viewjob?jk=65196e387cd2d538",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Generator Specialist - Texas",
+      "company": "Canter Power Systems",
+      "location": "San Antonio, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=36c8bb5be1f7a719",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Staff Counsel: Special Investigation Unit (SIU)",
+      "company": "Liberty Mutual Insurance",
+      "location": "Joliet, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=5b1452566ba6f9a5",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Staff Counsel: Special Investigation Unit (SIU)",
+      "company": "Liberty Mutual Insurance",
+      "location": "Libertyville, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=5b337d9ffbf56a25",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Staff Counsel: Special Investigation Unit (SIU)",
+      "company": "Liberty Mutual Insurance",
+      "location": "Aurora, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=48d2867e68226c2d",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Staff Counsel: Special Investigation Unit (SIU)",
+      "company": "Liberty Mutual Insurance",
+      "location": "Oak Brook, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=8713abd7ec983bc1",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Staff Counsel: Special Investigation Unit (SIU)",
+      "company": "Liberty Mutual Insurance",
+      "location": "Naperville, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=d78e8589f21fa2e7",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Staff Counsel: Special Investigation Unit (SIU)",
+      "company": "Liberty Mutual Insurance",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=7f66b60c6d3aaf97",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Co-Op",
+      "company": "Itential",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=60a102350b641ce2",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Field Service Area Supervisor (ND/SD/IA)",
+      "company": "Eaton",
+      "location": "Horace, ND, US",
+      "url": "https://www.indeed.com/viewjob?jk=c0b3c6d87236480b",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Field Service Area Supervisor (ND/SD/IA)",
+      "company": "Eaton",
+      "location": "Brookings, SD, US",
+      "url": "https://www.indeed.com/viewjob?jk=09bdff97ae8afd00",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Application Engineering Manager - UPS and Power Systems",
+      "company": "Eaton",
+      "location": "Raleigh, NC, US",
+      "url": "https://www.indeed.com/viewjob?jk=3f221f08a3323706",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Certified Roofing Specialist",
+      "company": "Best Choice Roofing",
+      "location": "Columbia, SC, US",
+      "url": "https://www.indeed.com/viewjob?jk=1c7814614a2b505c",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sheraton Minneapolis Downtown - Executive Meeting Manager OEM",
+      "company": "Aimbridge Hospitality",
+      "location": "Minneapolis, MN, US",
+      "url": "https://www.indeed.com/viewjob?jk=59ff986b569d0d7d",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "LHWS Sales Rep",
+      "company": "Leaf Home",
+      "location": "Hauppauge, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=4a1ff7f5f29af4f8",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Entry Level Roof Inspector",
+      "company": "Best Choice Roofing",
+      "location": "Silver Springs Shores, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=6a749ba0294b44cd",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Outside Sales Representative - Stairlift",
+      "company": "Leaf Home",
+      "location": "Boise, ID, US",
+      "url": "https://www.indeed.com/viewjob?jk=8930d1d9136c1687",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Outside Sales Representative - Stairlift",
+      "company": "Leaf Home",
+      "location": "Portland, ME, US",
+      "url": "https://www.indeed.com/viewjob?jk=e518de6948a45bd7",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "LHWS Sales Rep",
+      "company": "Leaf Home",
+      "location": "Columbus, OH, US",
+      "url": "https://www.indeed.com/viewjob?jk=914899b87d9f4ef7",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Outside Sales Representative LF",
+      "company": "Leaf Home",
+      "location": "Pensacola, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=fe4c2bad27643dfd",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Outside Sales Representative LF",
+      "company": "Leaf Home",
+      "location": "Petoskey, MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=dc33c2a8f6761fe8",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Bookkeeper",
+      "company": "BELAY Solutions",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=4e95a1a72d889110",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Embassy Suites Tucson Paloma Village - Chef & B Executive Chef",
+      "company": "Aimbridge Hospitality",
+      "location": "Tucson, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=2b6f269c3cfe035a",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Pool Cleaner Technician",
+      "company": NaN,
+      "location": "Tucson, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=6a55d55359bd6b53",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "LHWS Sales Rep",
+      "company": "Leaf Home",
+      "location": "Egg Harbor Township, NJ, US",
+      "url": "https://www.indeed.com/viewjob?jk=75fb53e7e053d620",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Outside Sales Representative - Stairlift",
+      "company": "Leaf Home",
+      "location": "Mountainside, NJ, US",
+      "url": "https://www.indeed.com/viewjob?jk=f61f04a77a06c89c",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Marriott Minneapolis Northwest - Setup Attendant-Banquets",
+      "company": "Aimbridge Hospitality",
+      "location": "Brooklyn Park, MN, US",
+      "url": "https://www.indeed.com/viewjob?jk=f4816b9554ea6489",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Transportation Program Manager- Chicago ,IL",
+      "company": "HPH Transport",
+      "location": "Des Plaines, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=c88e5dc046cc6d20",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Agency Training Specialist",
+      "company": "Liberty Mutual Insurance",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=faa47d5c71b177b7",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Resilience",
+      "location": "Chicago, IL",
+      "url": "https://www.linkedin.com/jobs/view/4367125855",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Manager, Customer Success",
+      "company": "Jobgether",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4368137790",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Prologue",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367882957",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Experience Operations",
+      "company": "Jobgether",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4368157660",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Head of Customer Success (Remote from US)",
+      "company": "Jobgether",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4368159585",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Service Associate Representative - MD Live - Remote",
+      "company": "The Cigna Group",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4357416349",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "WatchMeGrow",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4247523064",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "GTM Client Success Manager",
+      "company": "Tyfone, Inc.",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367804722",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Opus Training",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367963412",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Service Representative Remote",
+      "company": "Resonance CX Partners",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367735431",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Team Lead Customer Success (Various Verticals)",
+      "company": "First Advantage",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4368128745",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager (Remote)",
+      "company": "The Strickland Group",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367763841",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Support Specialist",
+      "company": "Resonance CX Partners",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367719691",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Service Representative Remote",
+      "company": "Resonance CX Partners",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367738383",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Service Representative Remote",
+      "company": "Resonance CX Partners",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367738376",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Service Representative Remote",
+      "company": "Resonance CX Partners",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367721490",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "CSM II",
+      "company": "Carrot",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4350248009",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Team Manager",
+      "company": "Staples",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367929866",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "VIP Relationship Manager",
+      "company": "Crypto.com",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4350147527",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Support Specialist - Billing, Amazon Healthcare Revenue Cycle",
+      "company": "Amazon",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367907756",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Executive Administrative Partner",
+      "company": "Meta",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4350265507",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Client Success Manager",
+      "company": "Stylitics",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367691735",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Support Specialist - Billing, Amazon Healthcare Revenue Cycle",
+      "company": "Amazon",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367903908",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Rippling",
+      "location": "San Francisco, CA",
+      "url": "https://www.linkedin.com/jobs/view/4367920410",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Manager, Customer Success",
+      "company": "GoGuardian",
+      "location": "El Segundo, CA",
+      "url": "https://www.linkedin.com/jobs/view/4359752994",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Strategic Customer Success Manager",
+      "company": "Samsara",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4347831223",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Technical Customer Success",
+      "company": "Connecteam",
+      "location": "New York, NY",
+      "url": "https://www.linkedin.com/jobs/view/4246967186",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "VIP Relationship Manager",
+      "company": "Crypto.com",
+      "location": "Dallas, TX",
+      "url": "https://www.linkedin.com/jobs/view/4350363408",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager, SMB",
+      "company": "Nooks",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4344814631",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Strategic Customer Success Manager",
+      "company": "Kentik",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367502732",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Agent - Call Center Representative",
+      "company": "Freedom Mortgage",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4335620361",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Startup Customer Success Manager - Americas",
+      "company": "Ashby",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367504507",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Onboarding Specialist",
+      "company": "brightwheel",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367088633",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "C8 Health",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367261299",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Care Advocate",
+      "company": "MetLife",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367275960",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Sera Systems",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367640257",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Experience Manager",
+      "company": "Q2",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4352112470",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Bamboo Health",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4356782172",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Engagement Manager",
+      "company": "Dodge Construction Network",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4359751067",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Support Specialist",
+      "company": "Jobgether",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367400954",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Mural Health",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367371648",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Senior Client Success Manager, Health Plans",
+      "company": "Included Health",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4331510456",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Onboarding Strategist, Mid-Market",
+      "company": "Muck Rack",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367280850",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Lead",
+      "company": "Success Matcher Recruitment",
+      "location": "New York, United States",
+      "url": "https://www.linkedin.com/jobs/view/4367659410",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Staff Customer Success Manager",
+      "company": "Runway",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4360024673",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Omnicell",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367074619",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager, Mid-Market",
+      "company": "Jobgether",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367403970",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Service Specialist - Healthcare Billing, Amazon Healthcare Revenue Cycle",
+      "company": "Amazon",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367428006",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Bloomreach",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4344964684",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Operations Specialist",
+      "company": "TravelNet Solutions",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367393762",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Regional Account Manager, Foodservice - West",
+      "company": "Hint Inc.",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367656649",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Relationship Manager",
+      "company": "One Door",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367634030",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Associate, Customer Enablement",
+      "company": "DoorDash",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4348393957",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Suite Studios",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4344439108",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Manager, Customer Success (Enterprise)",
+      "company": "ChurnZero",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367288781",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Director, Client Success",
+      "company": "SeatGeek",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4337359252",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Hospitality Coordinator, Resy Support (West Coast)",
+      "company": "American Express",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367130091",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Sr. Program Manager I - Customer Success Programs",
+      "company": "Samsara",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4302907650",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Client Success Manager",
+      "company": "Tellihealth",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4329627049",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Head of Customer Success",
+      "company": "Ramp",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4314455279",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Incredible Health",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4366999361",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Director, Client Success",
+      "company": "SeatGeek",
+      "location": "New York, NY",
+      "url": "https://www.linkedin.com/jobs/view/4337448750",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Jobgether",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367103390",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "SVP or VP of Customer",
+      "company": "Faro",
+      "location": "San Diego, CA",
+      "url": "https://www.linkedin.com/jobs/view/4367191206",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Formic",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4344516941",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Service Representative - Remote",
+      "company": "It's Just Lunch",
+      "location": "Miramar, FL",
+      "url": "https://www.linkedin.com/jobs/view/4356596645",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Head of Strategic Customer Success - Americas",
+      "company": "Ashby",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4330857058",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Strategic Customer Success Manager",
+      "company": "Atlan",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4213141520",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager (USA Remote)",
+      "company": "Turnitin",
+      "location": "Atlanta, GA",
+      "url": "https://www.linkedin.com/jobs/view/4358970027",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager (USA Remote)",
+      "company": "Turnitin",
+      "location": "Dallas, TX",
+      "url": "https://www.linkedin.com/jobs/view/4358910078",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Head of Customer Success (Remote from US)",
+      "company": "Jobgether",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367102518",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Consultant",
+      "company": "Granicus",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4358670846",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Partner, Enterprise",
+      "company": "Dandy",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4342895209",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Support Specialist",
+      "company": "ZenGRC",
+      "location": "San Francisco, CA",
+      "url": "https://www.linkedin.com/jobs/view/4366978762",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Client Success Manager",
+      "company": "Medstar Media",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4356655522",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Experience Representative",
+      "company": "SAFe by Scaled Agile, Inc.",
+      "location": "Boulder, CO",
+      "url": "https://www.linkedin.com/jobs/view/4356537910",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Vice President of Customer Success",
+      "company": "Houzz",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4366561740",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Inside Customer Success Representative",
+      "company": "McGraw Hill",
+      "location": "Minnesota, United States",
+      "url": "https://www.linkedin.com/jobs/view/4356433758",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Knowledge & Communications Specialist",
+      "company": "SailPoint",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367324195",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Team Lead",
+      "company": "UberEther",
+      "location": "Sterling, VA",
+      "url": "https://www.linkedin.com/jobs/view/4356420877",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Associate Client Services Specialist",
+      "company": "Omada Health",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4344093885",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Canals",
+      "location": "San Francisco, CA",
+      "url": "https://www.linkedin.com/jobs/view/4366672490",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Concierge - Call Center (Remote, $18/hour)",
+      "company": "EmergeCore Networks",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4366930622",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Advisor",
+      "company": "AutoVitals",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4366789068",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Client Success Manager",
+      "company": "Coretek",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4366901789",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Director of Customer Success",
+      "company": "Recruitment Room - Global",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4366467440",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Zendesk",
+      "location": "California, United States",
+      "url": "https://www.linkedin.com/jobs/view/4366488418",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Canals",
+      "location": "New York, NY",
+      "url": "https://www.linkedin.com/jobs/view/4366672491",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Amazon Content Manager",
+      "company": "Paula's Choice Skincare",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4366684347",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Manager of Customer Support",
+      "company": "ClosedWon Talent",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4366490065",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Canals",
+      "location": "Denver, CO",
+      "url": "https://www.linkedin.com/jobs/view/4366658987",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Team Lead, Customer Success Manager",
+      "company": "Aspire",
+      "location": "San Francisco, CA",
+      "url": "https://www.linkedin.com/jobs/view/4366687438",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Canals",
+      "location": "Austin, TX",
+      "url": "https://www.linkedin.com/jobs/view/4366679057",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Aspire",
+      "location": "San Francisco, CA",
+      "url": "https://www.linkedin.com/jobs/view/4366695287",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Canals",
+      "location": "Miami, FL",
+      "url": "https://www.linkedin.com/jobs/view/4366665645",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager, Small Business",
+      "company": "HSI",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4366798032",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Healthcare Customer Success Manager",
+      "company": "Q-Centrix",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4344163359",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Senior Customer Success Manager",
+      "company": "Orbus Software",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4366765347",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Enterprise Customer Success Manager",
+      "company": "Five9",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4255969048",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Succes Specialist",
+      "company": "Property Leads",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4366738877",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Smart Communications.",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4356500156",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Manager, Digital Client Success",
+      "company": "Finalsite",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4366678851",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Levanta",
+      "location": "Florida, United States",
+      "url": "https://www.linkedin.com/jobs/view/4366391783",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Director of Customer Success",
+      "company": "Resource Innovations",
+      "location": "Salt Lake City, UT",
+      "url": "https://www.linkedin.com/jobs/view/4366377732",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Remote Customer Success Manager",
+      "company": "Talentoma",
+      "location": "Georgia, United States",
+      "url": "https://www.linkedin.com/jobs/view/4366054395",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Director of Customer Success",
+      "company": "Resource Innovations",
+      "location": "Phoenix, AZ",
+      "url": "https://www.linkedin.com/jobs/view/4366365882",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Director of Customer Success",
+      "company": "Resource Innovations",
+      "location": "San Francisco, CA",
+      "url": "https://www.linkedin.com/jobs/view/4366387067",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Director of Customer Success",
+      "company": "OpenLoop",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4366633350",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Director of Customer Success",
+      "company": "Resource Innovations",
+      "location": "Boston, MA",
+      "url": "https://www.linkedin.com/jobs/view/4366385101",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Director of Customer Success",
+      "company": "Resource Innovations",
+      "location": "Chicago, IL",
+      "url": "https://www.linkedin.com/jobs/view/4366380581",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager (SMB)",
+      "company": "Conveyor",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4356006330",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Director of Customer Success",
+      "company": "Resource Innovations",
+      "location": "Portland, OR",
+      "url": "https://www.linkedin.com/jobs/view/4366370819",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Associate Client Success Manager",
+      "company": "Panorama Education",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4366375921",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Client Success Specialist (iSolved)",
+      "company": "Creative Planning",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4366643135",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Motorola Solutions",
+      "location": "Chicago, IL",
+      "url": "https://www.linkedin.com/jobs/view/4366636014",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Operations Manager",
+      "company": "Kobie",
+      "location": "St. Petersburg, FL",
+      "url": "https://www.linkedin.com/jobs/view/4366033182",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Value Manager",
+      "company": "Phenom",
+      "location": "Ambler, PA",
+      "url": "https://www.linkedin.com/jobs/view/4366391921",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Aptly",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4368025595",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager (US)",
+      "company": "Lumar (formerly Deepcrawl)",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4368360419",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Enablement Manager",
+      "company": "Navina",
+      "location": "New York, United States",
+      "url": "https://www.linkedin.com/jobs/view/4331804210",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Experience Manager",
+      "company": "Reveel",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4368396200",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Director of Customer Success",
+      "company": "INNERGY",
+      "location": "Texas, United States",
+      "url": "https://www.linkedin.com/jobs/view/4368405791",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Keeper Security, Inc.",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4361253706",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Specialist I",
+      "company": "PracticeTek",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4368068248",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "VIP Relationship Manager",
+      "company": "Crypto.com",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4328910774",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Associate",
+      "company": "SimplyAgree",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4368677124",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Care Business Analyst",
+      "company": "Kate Farms",
+      "location": "Goleta, CA",
+      "url": "https://www.linkedin.com/jobs/view/4368402760",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Enterprise Customer Success Manager",
+      "company": "SeekOut",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4368685501",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Scheduler - REMOTE",
+      "company": "Lensa",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4368430615",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Finalis",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4329651509",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success & Implementation Manager (SaaS Enterprise)",
+      "company": "Relocity, Inc.",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4361254953",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Associate Customer Success Manager (Remote)",
+      "company": "UrbanBound",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4368633601",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Care Coordinator - Work From Home",
+      "company": "Lensa",
+      "location": "Atlanta, GA",
+      "url": "https://www.linkedin.com/jobs/view/4368437574",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Client Success Manager (Remote)",
+      "company": "Hinge Health",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4275408224",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "VIP Relationship Manager",
+      "company": "Crypto.com",
+      "location": "Los Angeles, CA",
+      "url": "https://www.linkedin.com/jobs/view/4328750986",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Manager, Customer Success",
+      "company": "Spring Health",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4357582566",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Administrative Support Associate",
+      "company": "Storable",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4368039953",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Senior Customer Success Manager",
+      "company": "Trustwell",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4368499547",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Vaco by Highspring",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4365139274",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Associate Partner - Customer Success (Healthcare)",
+      "company": "Innovaccer",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4368399932",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Care Specialist \u2014 Digital Channels",
+      "company": "Nanit",
+      "location": "New York, NY",
+      "url": "https://www.linkedin.com/jobs/view/4368333392",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Director, Customer Success ( Remote )",
+      "company": "Lensa",
+      "location": "Orlando, FL",
+      "url": "https://www.linkedin.com/jobs/view/4368433660",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager - General Contractor Customers",
+      "company": "Clearstory",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4316963408",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Care Coordinator - Work From Home",
+      "company": "Lensa",
+      "location": "Raleigh, NC",
+      "url": "https://www.linkedin.com/jobs/view/4368436644",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Customer Success Manager",
+      "company": "Kipu Health",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4328822629",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Principal Customer Success Manager",
+      "company": "Spring Health",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4345940263",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "VP, Customer Success",
+      "company": "Pindrop",
+      "location": "Atlanta, GA",
+      "url": "https://www.linkedin.com/jobs/view/4368418428",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Senior Manager, Client Success",
+      "company": "Vervent",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4354713715",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Scheduling Coordinator",
+      "company": "Lensa",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4368435607",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Strategic Customer Success Manager",
+      "company": "Cloudinary",
+      "location": "Boston, MA",
+      "url": "https://www.linkedin.com/jobs/view/4360072721",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Winfield, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=2cb34aa81502e497",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Corporate Account Director, Southwest",
+      "company": "IPSEN",
+      "location": "TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=202f5d8704e668e4",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sales Account Manager",
+      "company": "Transportation Company",
+      "location": "Parker, CO, US",
+      "url": "https://www.indeed.com/viewjob?jk=5a1d20793b5471d9",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Corporate Account Executive",
+      "company": "Netcraft",
+      "location": "Lehi, UT, US",
+      "url": "https://www.indeed.com/viewjob?jk=5b105bebbdc74342",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Commercial Lines Account Manager",
+      "company": "Oliver L E Soden Agency",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=7a4cb692fb153794",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Granada Hills, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=29c40fa4d7ba6390",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Millwork Account Manager",
+      "company": "Boise Cascade",
+      "location": "Kansas City, MO, US",
+      "url": "https://www.indeed.com/viewjob?jk=e58101b8d2063903",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Portland, OR, US",
+      "url": "https://www.indeed.com/viewjob?jk=47c9303bcc6bf54f",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Richmond, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=1db260cab3f520b4",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Insurance Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Moline, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=e6f6250bbf4de102",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager/Sales Representative",
+      "company": "Elevate Outdoor",
+      "location": "Grandview, MO, US",
+      "url": "https://www.indeed.com/viewjob?jk=73311672609f925f",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Salem, OR, US",
+      "url": "https://www.indeed.com/viewjob?jk=78de0ed0f9f3316a",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Phoenix, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=ef3b8c31398d2c2f",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Mesquite, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=9d42b76d630c55cb",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager- Retirement",
+      "company": "Lincoln Financial Group",
+      "location": "Fort Wayne, IN, US",
+      "url": "https://www.indeed.com/viewjob?jk=0c55fae92027658c",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Enterprise Account Manager , Energy",
+      "company": "Amazon Web Services",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=64a6683a6014bbe6",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Enterprise Account Manager , Energy",
+      "company": "Amazon Web Services",
+      "location": "Boston, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=15f966a331fb5ca8",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Enterprise Account Manager , Energy",
+      "company": "Amazon Web Services",
+      "location": "Herndon, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=7609a64af385c29b",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr ProServe Account Executive - Manufacturing, NAMER Rtl/Cpg/Manu",
+      "company": "Amazon Web Services",
+      "location": "San Francisco, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=51d0855feb78a26b",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr ProServe Account Executive - Manufacturing, NAMER Rtl/Cpg/Manu",
+      "company": "Amazon Web Services",
+      "location": "Seattle, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=509e6896814cbeeb",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr ProServe Account Executive - Manufacturing, NAMER Rtl/Cpg/Manu",
+      "company": "Amazon Web Services",
+      "location": "Denver, CO, US",
+      "url": "https://www.indeed.com/viewjob?jk=0b6595a897db4042",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr ProServe Account Executive - Manufacturing, NAMER Rtl/Cpg/Manu",
+      "company": "Amazon Web Services",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=e5de38cffa45064b",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr ProServe Account Executive - Manufacturing, NAMER Rtl/Cpg/Manu",
+      "company": "Amazon Web Services",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=1691d609ab13568a",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr ProServe Account Executive - Manufacturing, NAMER Rtl/Cpg/Manu",
+      "company": "Amazon Web Services",
+      "location": "Dallas, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=de2d140a4526126c",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Principal Account Executive, Travel & Hospitality",
+      "company": "Amazon Web Services",
+      "location": "Santa Monica, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=7c4f9bc8a8927851",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Enterprise Account Manager, AWS Automotive & Manufacturing",
+      "company": "Amazon Web Services",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=a639f8ce884bec88",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Enterprise Account Manager, AWS Automotive & Manufacturing",
+      "company": "Amazon Web Services",
+      "location": "Cupertino, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=b1da99d6553327d9",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Enterprise Account Manager, AWS Automotive & Manufacturing",
+      "company": "Amazon Web Services",
+      "location": "Santa Monica, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=e567360cc976e434",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Enterprise Account Manager, AWS Automotive & Manufacturing",
+      "company": "Amazon Web Services",
+      "location": "Seattle, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=cb4a6334f5eb2168",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Principal Account Executive, Travel & Hospitality",
+      "company": "Amazon Web Services",
+      "location": "Tempe, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=c5c1fc771c95c3a3",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Enterprise Account Manager, AWS Automotive & Manufacturing",
+      "company": "Amazon Web Services",
+      "location": "Dallas, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=0d94600a7d5767a2",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Enterprise Account Manager, AWS Automotive & Manufacturing",
+      "company": "Amazon Web Services",
+      "location": "Boston, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=66ab3bc991badc2a",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Enterprise Account Manager, AWS Automotive & Manufacturing",
+      "company": "Amazon Web Services",
+      "location": "Denver, CO, US",
+      "url": "https://www.indeed.com/viewjob?jk=134d61d7de25487c",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Principal Account Executive, Travel & Hospitality",
+      "company": "Amazon Web Services",
+      "location": "Tempe, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=89f2989c3ec53794",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Technical Account Manager (Enterprise), Global Enterprise Services",
+      "company": "Amazon.com",
+      "location": "Arlington, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=9ac47eb276cfed1a",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Technical Account Manager (Enterprise), Global Enterprise Services",
+      "company": "Amazon.com",
+      "location": "Bellevue, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=217e16d7784357c1",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Enterprise Account Manager, AdTech",
+      "company": "Amazon Web Services",
+      "location": "Seattle, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=b322b79b7ad4f4dd",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Enterprise Account Manager, AdTech",
+      "company": "Amazon Web Services",
+      "location": "San Francisco, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=07bb182faffc0b89",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account-Based Marketing Manager , NAMER Strategic Customer and Partner Marketing",
+      "company": "Amazon Web Services",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=9e5a7cc38f41c67d",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account-Based Marketing Manager , NAMER Strategic Customer and Partner Marketing",
+      "company": "Amazon Web Services",
+      "location": "Seattle, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=25a75fba473d13db",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account-Based Marketing Manager , NAMER Strategic Customer and Partner Marketing",
+      "company": "Amazon Web Services",
+      "location": "Arlington, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=927705aa5f41d1cd",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account-Based Marketing Manager , NAMER Strategic Customer and Partner Marketing",
+      "company": "Amazon Web Services",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=a88996e09a569702",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Principal Account Executive, Large Enterprise, Amazon Business",
+      "company": "Amazon.com",
+      "location": "Arlington, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=e53fe78f1a4588e4",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Account Executive, US-FSI-Payments, US Payments",
+      "company": "Amazon Web Services",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=3589d9ef2645d7de",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Principal Account Executive, Large Enterprise, Amazon Business",
+      "company": "Amazon.com",
+      "location": "Seattle, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=8b86a0b036454b92",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Principal Account Executive, Large Enterprise, Amazon Business",
+      "company": "Amazon.com",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=5906c0e706e4f3a9",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Principal Account Executive, Large Enterprise, Amazon Business",
+      "company": "Amazon.com",
+      "location": "Boston, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=10029c9f238df0be",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Account Executive, US-FSI-Payments, US Payments",
+      "company": "Amazon Web Services",
+      "location": "Dallas, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=5d3dfa989a14e2e7",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Principal Account Executive, Large Enterprise, Amazon Business",
+      "company": "Amazon.com",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=beb0bbae9ccc6a07",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Account Executive, US-FSI-Payments, US Payments",
+      "company": "Amazon Web Services",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=4d8104c93ede0021",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Account Executive, US-FSI-Payments, US Payments",
+      "company": "Amazon Web Services",
+      "location": "Arlington, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=f218158e14403dcb",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior ProServe Account Executive, NatSec ProServe",
+      "company": "Amazon Web Services",
+      "location": "Herndon, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=b28ba9b41edf8168",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior ProServe Account Executive, NatSec ProServe",
+      "company": "Amazon Web Services",
+      "location": "Denver, CO, US",
+      "url": "https://www.indeed.com/viewjob?jk=76bcb0b5598aa8ad",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior Account Executive, LCS Consumer Services",
+      "company": "Amazon.com",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=b5dd7dea7c835ca3",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior Account Executive, LCS Consumer Services",
+      "company": "Amazon.com",
+      "location": "Boston, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=cdb8a699bfd557bc",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Cap Markets Account Executive, US-FSI-Capital Markets",
+      "company": "Amazon Web Services",
+      "location": "San Francisco, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=720437c7330c604f",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Cap Markets Account Executive, US-FSI-Capital Markets",
+      "company": "Amazon Web Services",
+      "location": "Irvine, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=3ed06f9110b5152d",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Principal Account Manager, ISV",
+      "company": "Amazon Web Services",
+      "location": "San Francisco, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=dda76c99ef7e33ad",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Principal Account Manager, ISV",
+      "company": "Amazon Web Services",
+      "location": "Seattle, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=5d4fb6adbbf66517",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Enterprise Account Manager, Travel & Hospitality",
+      "company": "Amazon Web Services",
+      "location": "Herndon, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=d2c071b6475a3517",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Enterprise Account Manager, Travel & Hospitality",
+      "company": "Amazon Web Services",
+      "location": "Dallas, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=61fb205e7c6ee32e",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account-Based Marketing Manager , NAMER Strategic Customer and Partner Marketing",
+      "company": "Amazon Web Services",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=ede40ea51580b8a7",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account-Based Marketing Manager , NAMER Strategic Customer and Partner Marketing",
+      "company": "Amazon Web Services",
+      "location": "Arlington, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=0e59ca826504effe",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account-Based Marketing Manager , NAMER Strategic Customer and Partner Marketing",
+      "company": "Amazon Web Services",
+      "location": "Seattle, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=0670883cba324697",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account-Based Marketing Manager , NAMER Strategic Customer and Partner Marketing",
+      "company": "Amazon Web Services",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=a8a568b06c3e44b1",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Principal Account Executive, Consulting & Services",
+      "company": "Amazon Web Services",
+      "location": "Boston, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=5ed9edc62f03965c",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Principal Account Executive, Consulting & Services",
+      "company": "Amazon Web Services",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=8617a192be796f4a",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Account Manager, ISV",
+      "company": "Amazon Web Services",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=f336d4581700e8db",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Account Manager, ISV",
+      "company": "Amazon Web Services",
+      "location": "Boston, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=49ed60d770a1795b",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Account Manager, ISV",
+      "company": "Amazon Web Services",
+      "location": "San Francisco, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=d3e0966c90bfd8f8",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Account Manager, ISV",
+      "company": "Amazon Web Services",
+      "location": "Seattle, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=94afd8de6b63c331",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Account Manager, ISV",
+      "company": "Amazon Web Services",
+      "location": "Santa Monica, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=3383a1215140b627",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "AWS Account Manager, Greenfield",
+      "company": "Amazon Web Services",
+      "location": "Miami, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=a5a3e621866ced9c",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "AWS Account Manager, Greenfield",
+      "company": "Amazon Web Services",
+      "location": "Tampa, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=5b2cdd42fe050f88",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "AWS Account Manager, Greenfield",
+      "company": "Amazon Web Services",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=9546c24ffb0c1815",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior Account Executive , Twitch",
+      "company": "Amazon.com",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=1bac1937132191b7",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior Account Executive , Twitch",
+      "company": "Amazon.com",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=40a0047b6cf1b099",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager I, Amazon Global Logistics",
+      "company": "Amazon.com",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=b744a66e5ebf452c",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager I, Amazon Global Logistics",
+      "company": "Amazon.com",
+      "location": "Irvine, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=5f85025982065879",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager I, Amazon Global Logistics",
+      "company": "Amazon.com",
+      "location": "Bellevue, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=784ea3c983de9d5a",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Sales Account Manager, Amazon Local Ads",
+      "company": "Amazon.com",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=f648fdb8e813d73f",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sales Account Manager, Amazon Local Ads",
+      "company": "Amazon.com",
+      "location": "Culver City, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=e60211a93190511f",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager, Offline Sales and Marketing",
+      "company": "Amazon.com",
+      "location": "Minneapolis, MN, US",
+      "url": "https://www.indeed.com/viewjob?jk=6ed38d87080b1b75",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager, Offline Sales and Marketing",
+      "company": "Amazon.com",
+      "location": "Seattle, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=b1354fe13dcfa6e9",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Enterprise Account Executive, High Tech, Semi, MFG",
+      "company": "Amazon Web Services",
+      "location": "Boston, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=6a3d0a514eb98016",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Enterprise Account Executive, High Tech, Semi, MFG",
+      "company": "Amazon Web Services",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=6af01ed8cc95e300",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Account Manager, ISV",
+      "company": "Amazon Web Services",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=d63ffcdd6fa0fd52",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Account Manager, ISV",
+      "company": "Amazon Web Services",
+      "location": "Boston, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=c6fa26eda11bcefe",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager, Twitch",
+      "company": "Amazon.com",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=067c0d9a1459b16d",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager, Twitch",
+      "company": "Amazon.com",
+      "location": "San Francisco, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=66b287d19b4e1052",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager, Twitch",
+      "company": "Amazon.com",
+      "location": "Santa Monica, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=0603be4bbdf5f020",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager, Twitch",
+      "company": "Amazon.com",
+      "location": "Santa Monica, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=3f8e1f6a636590e7",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager, Twitch",
+      "company": "Amazon.com",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=c2143f7ca96ec88c",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager, Twitch",
+      "company": "Amazon.com",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=1a455f3bc41bc5ed",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager, Twitch",
+      "company": "Amazon.com",
+      "location": "San Francisco, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=00ed5b406e792972",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager, Twitch",
+      "company": "Amazon.com",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=8d25fcd766a35aa0",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager, Twitch",
+      "company": "Amazon.com",
+      "location": "San Francisco, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=a529a5ea7b999de2",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager, Twitch",
+      "company": "Amazon.com",
+      "location": "Santa Monica, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=78baa285774c00c7",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager, Twitch",
+      "company": "Amazon.com",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=cfff55cd1fba442d",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account Manager, Twitch",
+      "company": "Amazon.com",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=cd2feaa2283b67c7",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Account Manager, GenAI ISV",
+      "company": "Amazon Web Services",
+      "location": "East Palo Alto, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=a9313c6a47645501",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Account Manager, GenAI ISV",
+      "company": "Amazon Web Services",
+      "location": "San Francisco, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=5896ebfcee742c59",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Account Manager, GenAI ISV",
+      "company": "Amazon Web Services",
+      "location": "Seattle, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=aede58f082313792",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account-Based Marketing Manager , NAMER Strategic Customer and Partner Marketing",
+      "company": "Amazon Web Services",
+      "location": "Arlington, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=e68893c08a597bae",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account-Based Marketing Manager , NAMER Strategic Customer and Partner Marketing",
+      "company": "Amazon Web Services",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=d2986eb4e53c7134",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account-Based Marketing Manager , NAMER Strategic Customer and Partner Marketing",
+      "company": "Amazon Web Services",
+      "location": "Seattle, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=14ce50dd73996ca1",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Account-Based Marketing Manager , NAMER Strategic Customer and Partner Marketing",
+      "company": "Amazon Web Services",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=937675e3fc20f713",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "AWS Sr. Enterprise Account Manager, FSI-Capital Markets",
+      "company": "Amazon Web Services",
+      "location": "Dallas, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=9c9f769f89b6a27e",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "AWS Sr. Enterprise Account Manager, FSI-Capital Markets",
+      "company": "Amazon Web Services",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=1f7d0b4d3e858ef4",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Enterprise Account Manager, Greenfield, Greenfield, Cross Industry",
+      "company": "Amazon Web Services",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=1033ecc74b382e99",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Enterprise Account Manager, Greenfield, Greenfield, Cross Industry",
+      "company": "Amazon Web Services",
+      "location": "Denver, CO, US",
+      "url": "https://www.indeed.com/viewjob?jk=e8d5e83702d1252f",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. AML and Account Compliance Program Manager, Americas Account Compliance",
+      "company": "Amazon.com",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=3dbcbe1113d706a0",
+      "is_remote": true,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. AML and Account Compliance Program Manager, Americas Account Compliance",
+      "company": "Amazon.com",
+      "location": "Seattle, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=dc90ed09c84c3480",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. AML and Account Compliance Program Manager, Americas Account Compliance",
+      "company": "Amazon.com",
+      "location": "Dallas, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=7044f9bde6723bb4",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. AML and Account Compliance Program Manager, Americas Account Compliance",
+      "company": "Amazon.com",
+      "location": "Tempe, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=022cead8597b1129",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. AML and Account Compliance Program Manager, Americas Account Compliance",
+      "company": "Amazon.com",
+      "location": "Arlington, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=bbc95228726af56f",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. AML and Account Compliance Program Manager, Americas Account Compliance",
+      "company": "Amazon.com",
+      "location": "Washington, DC, US",
+      "url": "https://www.indeed.com/viewjob?jk=4d45de8c372c708f",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. AML and Account Compliance Program Manager, Americas Account Compliance",
+      "company": "Amazon.com",
+      "location": "NJ, US",
+      "url": "https://www.indeed.com/viewjob?jk=d9f9cfb812e29a96",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Account Manager , AWS Enterprise Games, Betting and Gaming",
+      "company": "Amazon Web Services",
+      "location": "Boston, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=7ab7b60d2197a308",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. Account Manager , AWS Enterprise Games, Betting and Gaming",
+      "company": "Amazon Web Services",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=49d3cec14fdd0519",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Games Account Manager , AWS for Games",
+      "company": "Amazon Web Services",
+      "location": "San Francisco, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=d8234ffd1623e79c",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Games Account Manager , AWS for Games",
+      "company": "Amazon Web Services",
+      "location": "Irvine, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=14648270a50574d9",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior ProServe Account Executive, WWPS ProServe FedCiv",
+      "company": "Amazon Web Services",
+      "location": "Herndon, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=154bfb26be42d5c4",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior ProServe Account Executive, WWPS ProServe FedCiv",
+      "company": "Amazon Web Services",
+      "location": "Sterling, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=6d1ee674ade76a88",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior ProServe Account Executive, WWPS ProServe FedCiv",
+      "company": "Amazon Web Services",
+      "location": "Herndon, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=c4d76594891187c2",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior ProServe Account Executive, WWPS ProServe FedCiv",
+      "company": "Amazon Web Services",
+      "location": "Arlington, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=ee7c6660795e063e",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior ProServe Account Executive, WWPS ProServe FedCiv",
+      "company": "Amazon Web Services",
+      "location": "Arlington, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=1282225d7c850d27",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior ProServe Account Executive, WWPS ProServe FedCiv",
+      "company": "Amazon Web Services",
+      "location": "Denver, CO, US",
+      "url": "https://www.indeed.com/viewjob?jk=75b2f69cdd8e096c",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior ProServe Account Executive, WWPS ProServe FedCiv",
+      "company": "Amazon Web Services",
+      "location": "Denver, CO, US",
+      "url": "https://www.indeed.com/viewjob?jk=11291b0c8da7f36e",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior ProServe Account Executive, AWS Professional Services",
+      "company": "Amazon Web Services",
+      "location": "Seattle, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=6bada2048bbc310c",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior ProServe Account Executive, AWS Professional Services",
+      "company": "Amazon Web Services",
+      "location": "Herndon, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=acb626a7a6427571",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior ProServe Account Executive, AWS Professional Services",
+      "company": "Amazon Web Services",
+      "location": "Arlington, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=e8084c181f6e1703",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior ProServe Account Executive, AWS Professional Services",
+      "company": "Amazon Web Services",
+      "location": "Denver, CO, US",
+      "url": "https://www.indeed.com/viewjob?jk=b092cb370cb0546e",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior ProServe Account Executive, WWPS",
+      "company": "Amazon Web Services",
+      "location": "Bellevue, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=06696bd5a0d90441",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior ProServe Account Executive, WWPS",
+      "company": "Amazon Web Services",
+      "location": "Dallas, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=36d59d76fc8502a9",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior ProServe Account Executive, WWPS",
+      "company": "Amazon Web Services",
+      "location": "Denver, CO, US",
+      "url": "https://www.indeed.com/viewjob?jk=4953d8cc0999daa4",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior ProServe Account Executive, WWPS",
+      "company": "Amazon Web Services",
+      "location": "Jersey City, NJ, US",
+      "url": "https://www.indeed.com/viewjob?jk=45dcd41c9abfb8eb",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. AdTech Account Executive, AdTech Sales",
+      "company": "Amazon.com",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=5b958a4569def4b0",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Sr. AdTech Account Executive, AdTech Sales",
+      "company": "Amazon.com",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=02b165d6fc8c49e0",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Technical Account Manager, National Security - ES US-ADC",
+      "company": "Amazon Web Services",
+      "location": "Arlington, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=50be93c54769a88b",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Technical Account Manager, National Security - ES US-ADC",
+      "company": "Amazon Web Services",
+      "location": "Herndon, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=d73333c801803bdb",
+      "is_remote": false,
+      "site": "indeed"
+    },
+    {
+      "title": "Senior National Account Manager, Costco and BJs",
+      "company": "Magic Spoon",
+      "location": "New York, NY",
+      "url": "https://www.linkedin.com/jobs/view/4368306849",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Senior National Account Manager, Costco and BJs",
+      "company": "Magic Spoon",
+      "location": "Marlborough, MA",
+      "url": "https://www.linkedin.com/jobs/view/4368320626",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Senior National Account Manager, Costco and BJs",
+      "company": "Magic Spoon",
+      "location": "Issaquah, WA",
+      "url": "https://www.linkedin.com/jobs/view/4368313718",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Account Manager - HTS Media (100% Remote)",
+      "company": "Hopper",
+      "location": "New York, NY",
+      "url": "https://www.linkedin.com/jobs/view/4367772489",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Account Manager - HTS Media (100% Remote)",
+      "company": "Hopper",
+      "location": "Chicago, IL",
+      "url": "https://www.linkedin.com/jobs/view/4367788388",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Account Manager - HTS Media (100% Remote)",
+      "company": "Hopper",
+      "location": "Los Angeles, CA",
+      "url": "https://www.linkedin.com/jobs/view/4367787471",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Account Manager - HTS Media (100% Remote)",
+      "company": "Hopper",
+      "location": "Austin, TX",
+      "url": "https://www.linkedin.com/jobs/view/4367774502",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Account Manager - HTS Media (100% Remote)",
+      "company": "Hopper",
+      "location": "Boston, MA",
+      "url": "https://www.linkedin.com/jobs/view/4367779533",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Account Manager - HTS Media (100% Remote)",
+      "company": "Hopper",
+      "location": "San Francisco, CA",
+      "url": "https://www.linkedin.com/jobs/view/4367776509",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Account Manager - HTS Media (100% Remote)",
+      "company": "Hopper",
+      "location": "Seattle, WA",
+      "url": "https://www.linkedin.com/jobs/view/4367775542",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "National Account Manager",
+      "company": "WYBOT",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4368140308",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Account Manager - HTS Media (100% Remote)",
+      "company": "Hopper",
+      "location": "Miami, FL",
+      "url": "https://www.linkedin.com/jobs/view/4367786466",
+      "is_remote": true,
+      "site": "linkedin"
+    },
+    {
+      "title": "Key Account Manager",
+      "company": "GEE Group",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4359067736",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Strategic Account Manager",
+      "company": "Boeh Agency",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4368313758",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Key Account Manager (Food & Snacks)",
+      "company": "Jobot",
+      "location": "Boston, MA",
+      "url": "https://www.linkedin.com/jobs/view/4357581213",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "VIP Account Manager",
+      "company": "FanDuel",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4352302228",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Account Manager (St. Louis area)",
+      "company": "ParetoHealth",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4331906625",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Account Manager (South Florida area)",
+      "company": "ParetoHealth",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4331596724",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Account Manager (New York/Southern New England area)",
+      "company": "ParetoHealth",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4331956747",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Sr. Account Manager, Drug",
+      "company": "E.L.F. BEAUTY",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4359716950",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "National Account Manager",
+      "company": "Lowe's Companies, Inc.",
+      "location": "Dallas, TX",
+      "url": "https://www.linkedin.com/jobs/view/4359724317",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Key Account Manager",
+      "company": "UniUni",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367912015",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Social Media Account Manager - (Dallas, TX)",
+      "company": "Casual Fridays",
+      "location": "Dallas, TX",
+      "url": "https://www.linkedin.com/jobs/view/4367681081",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Project and Account Manager",
+      "company": "tmp",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4359418222",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Account Manager- Flavor Systems",
+      "company": "Balchem Corporation",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4331945358",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Technical Account Manager",
+      "company": "GreenSlate",
+      "location": "Atlanta, GA",
+      "url": "https://www.linkedin.com/jobs/view/4367686922",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Senior Account Executive, Strategic",
+      "company": "NetDocuments",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4315505867",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Account Executive, Practice Solutions",
+      "company": "Tebra",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4334810921",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Account Manager",
+      "company": "Celigo",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4350207677",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Senior Account Manager",
+      "company": "Medallion",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4344986546",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Senior Key Account Manager - Strategic & Enterprise Accounts",
+      "company": "EBANX",
+      "location": "San Francisco, CA",
+      "url": "https://www.linkedin.com/jobs/view/4359631794",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Client Account Manager II",
+      "company": "Pinterest",
+      "location": "New York, NY",
+      "url": "https://www.linkedin.com/jobs/view/4358579489",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "National Account Manager, Foodservice - Nationwide",
+      "company": "Lavazza Group",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4356751574",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Sr. Account Manager, Walmart (Arkansas)",
+      "company": "E.L.F. BEAUTY",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4344883736",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Senior Global Account Manager",
+      "company": "Onit",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367374147",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Strategic Account Manager (Amazon)",
+      "company": "Elev8",
+      "location": "Los Angeles, CA",
+      "url": "https://www.linkedin.com/jobs/view/4367497585",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Account Manager (Chicago/Michigan area)",
+      "company": "ParetoHealth",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4331986433",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Account Manager Associate",
+      "company": "Vendoroo",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367231709",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Senior Manager, Account Management",
+      "company": "Absorb Software",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4352133100",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Senior Account Executive",
+      "company": "EDEN",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367279495",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Sales - Account Manager",
+      "company": "Red Hawk",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367366373",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Senior Account Manager",
+      "company": "Devsu",
+      "location": "Tampa, FL",
+      "url": "https://www.linkedin.com/jobs/view/4356731991",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Key Account Manager, Convenience",
+      "company": "Talking Rain Beverage Co\u00ae, makers of Sparkling Ice",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4358257121",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "National Account Manager \u2013 Foodservice (West Coast)",
+      "company": "Bridor North America",
+      "location": "Los Angeles, CA",
+      "url": "https://www.linkedin.com/jobs/view/4347485990",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Regional Account Manager",
+      "company": "The Knot Worldwide",
+      "location": "Austin, Texas Metropolitan Area",
+      "url": "https://www.linkedin.com/jobs/view/4367418545",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "National Account Manager - US",
+      "company": "Mevotech",
+      "location": "Springfield-Branson, Missouri Area",
+      "url": "https://www.linkedin.com/jobs/view/4367515168",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Senior Account Manager",
+      "company": "Devsu",
+      "location": "Miami, FL",
+      "url": "https://www.linkedin.com/jobs/view/4356692183",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Strategic Account Manager - Multifamily Partnerships",
+      "company": "Liberty Rent",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367466961",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Military Account Manager",
+      "company": "SupplyCore",
+      "location": "San Diego, CA",
+      "url": "https://www.linkedin.com/jobs/view/4367625424",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Senior Account Manager",
+      "company": "Devsu",
+      "location": "Orlando, FL",
+      "url": "https://www.linkedin.com/jobs/view/4356742067",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Regional Sales Manager",
+      "company": "Better Earth",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4331530768",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "National Account Sales Manager",
+      "company": "Ventura Foods",
+      "location": "Florida, United States",
+      "url": "https://www.linkedin.com/jobs/view/4354826559",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Military Account Manager",
+      "company": "SupplyCore",
+      "location": "Virginia Beach, VA",
+      "url": "https://www.linkedin.com/jobs/view/4367621434",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Account Manager",
+      "company": "WorldTech IT, LLC",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367630667",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Military Account Manager - PEOs",
+      "company": "SupplyCore",
+      "location": "Orlando, FL",
+      "url": "https://www.linkedin.com/jobs/view/4367638671",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Dealership Account Manager - Brooklyn, NY",
+      "company": "Lendbuzz",
+      "location": "New York, United States",
+      "url": "https://www.linkedin.com/jobs/view/4365240066",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Military Account Manager - Air Force",
+      "company": "SupplyCore",
+      "location": "Washington, DC",
+      "url": "https://www.linkedin.com/jobs/view/4367627642",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Account Manager (PR) \u2013 Media Strategy & Media Outreach",
+      "company": "The Last Layer",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4367507023",
+      "is_remote": false,
+      "site": "linkedin"
+    },
+    {
+      "title": "Strategic Account Manager, Retail",
+      "company": "Square",
+      "location": "",
+      "url": "https://www.linkedin.com/jobs/view/4339045608",
+      "is_remote": false,
+      "site": "linkedin"
+    }
+  ]
+}

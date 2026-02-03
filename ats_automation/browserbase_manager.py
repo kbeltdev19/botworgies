@@ -35,81 +35,10 @@ class BrowserBaseManager:
             platform: 'workday', 'taleo', 'icims', 'successfactors', 'adp', 'dice', 'generic'
             use_proxy: Whether to use residential proxy
         """
-        # Platform-specific configurations
-        configs = {
-            "workday": {
-                "proxies": use_proxy,
-                "fingerprint": {
-                    "browser": "chrome",
-                    "os": "windows",
-                    "screen": {"width": 1920, "height": 1080}
-                }
-            },
-            "taleo": {
-                "proxies": use_proxy,
-                "fingerprint": {
-                    "browser": "firefox",
-                    "os": "windows",
-                    "screen": {"width": 1920, "height": 1080}
-                }
-            },
-            "icims": {
-                "proxies": use_proxy,
-                "fingerprint": {
-                    "browser": "chrome",
-                    "os": "windows",
-                    "screen": {"width": 1366, "height": 768}
-                }
-            },
-            "successfactors": {
-                "proxies": use_proxy,
-                "fingerprint": {
-                    "browser": "chrome",
-                    "os": "macos",
-                    "screen": {"width": 1920, "height": 1080}
-                }
-            },
-            "adp": {
-                "proxies": use_proxy,
-                "fingerprint": {
-                    "browser": "chrome",
-                    "os": "windows",
-                    "screen": {"width": 1920, "height": 1080}
-                }
-            },
-            "dice": {
-                "proxies": use_proxy,
-                "fingerprint": {
-                    "browser": "chrome",
-                    "os": "windows",
-                    "screen": {"width": 1920, "height": 1080}
-                }
-            },
-            "angellist": {
-                "proxies": use_proxy,
-                "fingerprint": {
-                    "browser": "chrome",
-                    "os": "macos",
-                    "screen": {"width": 1440, "height": 900}
-                }
-            },
-            "generic": {
-                "proxies": use_proxy,
-                "fingerprint": {
-                    "browser": "chrome",
-                    "os": "macos",
-                    "screen": {"width": 1920, "height": 1080}
-                }
-            }
-        }
-        
-        config = configs.get(platform, configs["generic"])
-        
         try:
             # Create BrowserBase session
             session = self.bb.sessions.create(
-                project_id=self.project_id,
-                **config
+                project_id=self.project_id
             )
             
             # Import playwright here to avoid issues if not installed
