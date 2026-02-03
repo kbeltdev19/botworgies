@@ -1,15 +1,15 @@
 {
   "test_id": "kent_le_demo_3",
-  "start_time": "2026-02-03T10:56:49.925978",
-  "end_time": "2026-02-03T10:56:50.006798",
+  "start_time": "2026-02-03T11:00:30.975068",
+  "end_time": "2026-02-03T11:01:17.255756",
   "candidate_name": "Kent Le",
   "target_location": "Auburn, AL / Remote",
   "total_jobs": 3,
   "total_successful": 0,
   "total_failed": 3,
   "overall_success_rate": 0.0,
-  "total_duration_minutes": 0.0013459364573160807,
-  "avg_time_per_application_seconds": 0.026918729146321613,
+  "total_duration_minutes": 0.7713440974553426,
+  "avg_time_per_application_seconds": 15.426881949106852,
   "platform_breakdown": {
     "unknown": {
       "attempts": 3,

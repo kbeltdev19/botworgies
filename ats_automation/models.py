@@ -19,6 +19,8 @@ class ATSPlatform(Enum):
     ANGELLIST = "angellist"
     WELLFOUND = "wellfound"
     DICE = "dice"
+    INDEED = "indeed"
+    LINKEDIN = "linkedin"
     UNKNOWN = "unknown"
 
 

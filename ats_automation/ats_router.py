@@ -17,6 +17,8 @@ from .handlers.successfactors import SuccessFactorsHandler
 from .handlers.adp import ADPHandler
 from .handlers.angellist import AngelListHandler, GreenhouseHandler
 from .handlers.dice import DiceHandler
+from .handlers.indeed import IndeedHandler
+from .handlers.linkedin import LinkedInHandler
 
 
 class ATSRouter:
@@ -40,6 +42,8 @@ class ATSRouter:
             AngelListHandler(self.browser, user_profile, ai_client),
             GreenhouseHandler(self.browser, user_profile, ai_client),
             DiceHandler(self.browser, user_profile, ai_client),
+            IndeedHandler(self.browser, user_profile, ai_client),
+            LinkedInHandler(self.browser, user_profile, ai_client),
         ]
     
     async def detect_platform(self, url: str) -> ATSPlatform:
