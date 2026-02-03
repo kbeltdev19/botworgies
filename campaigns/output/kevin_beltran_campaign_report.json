@@ -1,15 +1,15 @@
 {
   "campaign_id": "kevin_beltran_servicenow_1000",
-  "start_time": "2026-02-03T14:15:40.908358",
-  "end_time": "2026-02-03T14:21:44.589752",
+  "start_time": "2026-02-03T14:22:14.317354",
+  "end_time": "2026-02-03T14:26:52.072333",
   "target_jobs": 1000,
   "target_sessions": 1000,
-  "overall_success_rate": 87.8,
+  "overall_success_rate": 88.2,
   "total_attempted": 1000,
-  "total_successful": 878,
-  "total_failed": 122,
-  "duration_seconds": 363.681394,
-  "apps_per_minute": 164.9795700024181,
+  "total_successful": 882,
+  "total_failed": 118,
+  "duration_seconds": 277.754979,
+  "apps_per_minute": 216.01772978478272,
   "by_platform": {
     "linkedin": {
       "platform": "linkedin",
@@ -27,26 +27,26 @@
     "clearancejobs": {
       "platform": "clearancejobs",
       "total_attempts": 334,
-      "successful": 293,
-      "failed": 41,
+      "successful": 297,
+      "failed": 37,
       "rate_limited": 0,
       "blocked": 0,
       "avg_duration_seconds": 0.0,
       "min_duration_seconds": 0.0,
       "max_duration_seconds": 0.0,
-      "success_rate": 87.72455089820359,
+      "success_rate": 88.92215568862275,
       "common_errors": []
     }
   },
   "by_failure_category": {
-    "captcha": 70,
-    "form_error": 51,
+    "captcha": 56,
+    "form_error": 61,
     "timeout": 1
   },
   "what_worked": [
-    "linkedin showed highest success rate at 87.8%",
-    "Excellent overall success rate of 87.8%",
-    "High throughput achieved: 165.0 apps/minute",
+    "clearancejobs showed highest success rate at 88.9%",
+    "Excellent overall success rate of 88.2%",
+    "High throughput achieved: 216.0 apps/minute",
     "Good rate limit avoidance: only 0.0% rate limited"
   ],
   "what_didnt_work": [],

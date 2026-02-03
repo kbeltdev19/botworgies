@@ -1,0 +1,43 @@
+{
+  "campaign_id": "kevin_beltran_production",
+  "start_time": "2026-02-03T14:31:17.260445",
+  "end_time": "2026-02-03T14:31:32.375989",
+  "target_jobs": 1000,
+  "target_sessions": 1000,
+  "overall_success_rate": 80.0,
+  "total_attempted": 120,
+  "total_successful": 96,
+  "total_failed": 24,
+  "duration_seconds": 15.115544,
+  "apps_per_minute": 476.33085517795456,
+  "by_platform": {
+    "linkedin": {
+      "platform": "linkedin",
+      "total_attempts": 120,
+      "successful": 96,
+      "failed": 24,
+      "rate_limited": 0,
+      "blocked": 0,
+      "avg_duration_seconds": 0.0,
+      "min_duration_seconds": 0.0,
+      "max_duration_seconds": 0.0,
+      "success_rate": 80.0,
+      "common_errors": []
+    }
+  },
+  "by_failure_category": {
+    "captcha": 12,
+    "form_error": 12
+  },
+  "what_worked": [
+    "linkedin showed highest success rate at 80.0%",
+    "High throughput achieved: 476.3 apps/minute",
+    "Good rate limit avoidance: only 0.0% rate limited"
+  ],
+  "what_didnt_work": [],
+  "recommendations": [
+    "Continue monitoring platform-specific success rates",
+    "A/B test different application speeds",
+    "Implement dynamic retry logic for transient failures"
+  ]
+}
