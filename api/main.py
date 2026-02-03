@@ -245,6 +245,7 @@ async def register(request: RegisterRequest):
     refresh_token = create_refresh_token(user_id)
 
     logger.info(f"New user registered: {request.email}")
+    log_activity("REGISTER", request.email, {"user_id": user_id})
 
     return {
         "message": "Registration successful",
@@ -269,6 +270,7 @@ async def login(request: LoginRequest):
     refresh_token = create_refresh_token(user["id"])
 
     logger.info(f"User logged in: {request.email}")
+    log_activity("LOGIN", request.email)
 
     return {
         "access_token": access_token,
@@ -384,6 +386,11 @@ async def upload_resume(
     await save_resume(user_id, str(file_path), raw_text, parsed_data)
 
     logger.info(f"Resume uploaded for user {user_id}: {safe_filename}")
+    user = await get_user_by_id(user_id)
+    log_activity("RESUME_UPLOAD", user.get("email") if user else user_id, {
+        "filename": safe_filename,
+        "size_kb": len(content) // 1024
+    })
 
     return {
         "message": "Resume uploaded and parsed",
@@ -423,6 +430,10 @@ async def save_user_profile(profile: UserProfileRequest, user_id: str = Depends(
     """Save user profile for applications."""
     await save_profile(user_id, profile.dict())
     logger.info(f"Profile saved for user {user_id}")
+    log_activity("PROFILE_SAVE", profile.email, {
+        "name": f"{profile.first_name} {profile.last_name}",
+        "phone": profile.phone[:4] + "****" if profile.phone else None
+    })
     return {"message": "Profile saved", "profile": profile.dict()}
 
 
@@ -606,6 +617,13 @@ async def apply_to_job(
             })
 
             log_application(application_id, user_id, request.job_url, result.status.value)
+            user = await get_user_by_id(user_id)
+            log_activity("APPLY", user.get("email") if user else user_id, {
+                "job": job.title,
+                "company": job.company,
+                "platform": platform,
+                "status": result.status.value
+            })
 
         except Exception as e:
             logger.error(f"Application {application_id} failed: {e}")
@@ -912,6 +930,72 @@ async def global_exception_handler(request: Request, exc: Exception):
         status_code=500,
         content={"detail": "Internal server error"}
     )
+
+
+# === Activity Log (Admin View) ===
+
+# In-memory activity log (persists until restart, last 1000 entries)
+activity_log = []
+MAX_LOG_ENTRIES = 1000
+
+def log_activity(action: str, user_email: str = None, details: dict = None):
+    """Log user activity for admin visibility."""
+    entry = {
+        "timestamp": datetime.utcnow().isoformat(),
+        "action": action,
+        "user_email": user_email,
+        "details": details or {}
+    }
+    activity_log.insert(0, entry)
+    if len(activity_log) > MAX_LOG_ENTRIES:
+        activity_log.pop()
+    logger.info(f"Activity: {action} | {user_email} | {details}")
+
+
+@app.get("/admin/activity")
+async def get_activity_log(
+    limit: int = 100,
+    admin_key: str = None
+):
+    """
+    View recent activity log.
+    Requires admin key for access.
+    """
+    # Simple admin auth - check for admin key
+    expected_key = os.environ.get("ADMIN_KEY", "swiftadmin2026")
+    if admin_key != expected_key:
+        raise HTTPException(status_code=403, detail="Invalid admin key")
+    
+    return {
+        "total_entries": len(activity_log),
+        "showing": min(limit, len(activity_log)),
+        "activities": activity_log[:limit]
+    }
+
+
+@app.get("/admin/stats")
+async def get_admin_stats(admin_key: str = None):
+    """Get overall system stats."""
+    expected_key = os.environ.get("ADMIN_KEY", "swiftadmin2026")
+    if admin_key != expected_key:
+        raise HTTPException(status_code=403, detail="Invalid admin key")
+    
+    # Count activities by type
+    action_counts = {}
+    for entry in activity_log:
+        action = entry["action"]
+        action_counts[action] = action_counts.get(action, 0) + 1
+    
+    # Get unique users
+    unique_users = set(e["user_email"] for e in activity_log if e["user_email"])
+    
+    return {
+        "total_activities": len(activity_log),
+        "unique_users": len(unique_users),
+        "users": list(unique_users),
+        "action_counts": action_counts,
+        "recent_activity": activity_log[:10]
+    }
 
 
 # Run with: uvicorn api.main:app --reload --port 8000
