@@ -790,7 +790,7 @@ class BatchApplicationRequest(BaseModel):
     auto_submit: bool = False
     generate_cover_letter: bool = True
     cover_letter_tone: str = Field(default="professional", pattern="^(professional|casual|enthusiastic)$")
-    max_concurrent: int = Field(default=3, ge=1, le=5)
+    max_concurrent: int = Field(default=3, ge=1, le=35)
     target_apps_per_minute: float = Field(default=10.0, ge=1.0, le=20.0)
 
 

@@ -1,0 +1,15 @@
+{
+  "campaign_id": "matt_edwards_atlanta_1000",
+  "candidate": {
+    "name": "Matt Edwards",
+    "email": "edwardsdmatt@gmail.com",
+    "clearance": "Secret",
+    "location_target": "Atlanta, GA + Remote"
+  },
+  "summary": {
+    "jobs_found": 40,
+    "applications_submitted": 0,
+    "timestamp": "2026-02-03T12:51:02.578538"
+  },
+  "applications": []
+}

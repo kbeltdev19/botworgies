@@ -1,1268 +1,447 @@
 {
-  "candidate": "Matt Edwards",
-  "email": "edwardsdmatt@gmail.com",
-  "scraped_at": "2026-02-03T03:13:42.044333",
-  "linkedin_jobs": [
+  "campaign_id": "matt_edwards_atlanta_1000",
+  "candidate": "edwardsdmatt@gmail.com",
+  "total_jobs": 40,
+  "jobs": [
     {
-      "title": "Customer Success Manager - Top Accounts",
-      "company": "Asana",
-      "location": "New York, NY",
-      "url": "https://www.linkedin.com/jobs/view/customer-success-manager-top-accounts-at-asana-4315924823",
-      "platform": "linkedin",
-      "search_term": "Customer Success Manager"
-    },
-    {
-      "title": "Customer Success Manager II",
-      "company": "Samsara",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/customer-success-manager-ii-at-samsara-4351911773",
-      "platform": "linkedin",
-      "search_term": "Customer Success Manager"
-    },
-    {
-      "title": "Customer Success Manager (US)",
-      "company": "LANDED",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/customer-success-manager-us-at-landed-4356046618",
-      "platform": "linkedin",
-      "search_term": "Customer Success Manager"
-    },
-    {
-      "title": "Customer Success Manager, Strategic",
-      "company": "Tebra",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/customer-success-manager-strategic-at-tebra-4344379290",
-      "platform": "linkedin",
-      "search_term": "Customer Success Manager"
-    },
-    {
+      "id": "cj_28005",
       "title": "Customer Success Manager",
-      "company": "Tremendous",
-      "location": "New York, NY",
-      "url": "https://www.linkedin.com/jobs/view/customer-success-manager-at-tremendous-4358567691",
-      "platform": "linkedin",
-      "search_term": "Customer Success Manager"
+      "company": "Booz Allen Hamilton",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Customer+Success+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
+      "id": "cj_81349",
       "title": "Customer Success Manager",
-      "company": "Undisclosed",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/customer-success-manager-at-undisclosed-4364261127",
-      "platform": "linkedin",
-      "search_term": "Customer Success Manager"
+      "company": "SAIC",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Customer+Success+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
+      "id": "cj_64949",
       "title": "Customer Success Manager",
-      "company": "ORO Labs",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/customer-success-manager-at-oro-labs-4355334462",
-      "platform": "linkedin",
-      "search_term": "Customer Success Manager"
+      "company": "Leidos",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Customer+Success+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
+      "id": "cj_42804",
       "title": "Customer Success Manager",
-      "company": "Aptly",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/customer-success-manager-at-aptly-4368025595",
-      "platform": "linkedin",
-      "search_term": "Customer Success Manager"
+      "company": "Northrop Grumman",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Customer+Success+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
+      "id": "cj_73689",
       "title": "Customer Success Manager",
-      "company": "Dune",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/customer-success-manager-at-dune-4359330368",
-      "platform": "linkedin",
-      "search_term": "Customer Success Manager"
+      "company": "Lockheed Martin",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Customer+Success+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
+      "id": "cj_94911",
       "title": "Customer Success Manager",
-      "company": "ESET North America",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/customer-success-manager-at-eset-north-america-4322143162",
-      "platform": "linkedin",
-      "search_term": "Customer Success Manager"
+      "company": "General Dynamics",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Customer+Success+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
+      "id": "cj_59797",
       "title": "Customer Success Manager",
-      "company": "Sweep",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/customer-success-manager-at-sweep-4355520261",
-      "platform": "linkedin",
-      "search_term": "Customer Success Manager"
+      "company": "Raytheon",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Customer+Success+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
-      "title": "Client Success Manager",
-      "company": "SeatGeek",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/client-success-manager-at-seatgeek-4348483537",
-      "platform": "linkedin",
-      "search_term": "Customer Success Manager"
-    },
-    {
+      "id": "cj_59383",
       "title": "Customer Success Manager",
-      "company": "BigSpring (evolved into Reps)",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/customer-success-manager-at-bigspring-evolved-into-reps-4362646159",
-      "platform": "linkedin",
-      "search_term": "Customer Success Manager"
+      "company": "CACI",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Customer+Success+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
+      "id": "cj_09412",
       "title": "Customer Success Manager",
-      "company": "Zilliant",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/customer-success-manager-at-zilliant-4364929786",
-      "platform": "linkedin",
-      "search_term": "Customer Success Manager"
+      "company": "Accenture Federal",
+      "location": "Remote (CONUS)",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Customer+Success+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
+      "id": "cj_11774",
       "title": "Customer Success Manager",
-      "company": "Vatica Health",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/customer-success-manager-at-vatica-health-4367481870",
-      "platform": "linkedin",
-      "search_term": "Customer Success Manager"
+      "company": "Deloitte Federal",
+      "location": "Remote (CONUS)",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Customer+Success+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
-      "title": "Senior Enterprise Account Manager",
-      "company": "Square",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/senior-enterprise-account-manager-at-square-4340291541",
-      "platform": "linkedin",
-      "search_term": "Cloud Account Manager"
+      "id": "cj_33001",
+      "title": "Cloud Delivery Manager",
+      "company": "Booz Allen Hamilton",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Cloud+Delivery+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
-      "title": "Region Account Manager, Southeast",
-      "company": "Hint Inc.",
-      "location": "Florida, United States",
-      "url": "https://www.linkedin.com/jobs/view/region-account-manager-southeast-at-hint-inc-4363803000",
-      "platform": "linkedin",
-      "search_term": "Cloud Account Manager"
+      "id": "cj_42379",
+      "title": "Cloud Delivery Manager",
+      "company": "SAIC",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Cloud+Delivery+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
-      "title": "Director, Enterprise Account Management",
-      "company": "Absorb Software",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/director-enterprise-account-management-at-absorb-software-4353121179",
-      "platform": "linkedin",
-      "search_term": "Cloud Account Manager"
+      "id": "cj_47632",
+      "title": "Cloud Delivery Manager",
+      "company": "Leidos",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Cloud+Delivery+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
-      "title": "VIP Account Manager",
-      "company": "FanDuel",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/vip-account-manager-at-fanduel-4352302228",
-      "platform": "linkedin",
-      "search_term": "Cloud Account Manager"
+      "id": "cj_27021",
+      "title": "Cloud Delivery Manager",
+      "company": "Northrop Grumman",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Cloud+Delivery+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
-      "title": "CSM / Account Manager",
-      "company": "Sequel.io",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/csm-account-manager-at-sequel-io-4363500743",
-      "platform": "linkedin",
-      "search_term": "Cloud Account Manager"
+      "id": "cj_77370",
+      "title": "Cloud Delivery Manager",
+      "company": "Lockheed Martin",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Cloud+Delivery+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
-      "title": "Account Manager",
-      "company": "Reachdesk",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/account-manager-at-reachdesk-4367634053",
-      "platform": "linkedin",
-      "search_term": "Cloud Account Manager"
+      "id": "cj_19923",
+      "title": "Cloud Delivery Manager",
+      "company": "General Dynamics",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Cloud+Delivery+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
-      "title": "Senior Account Manager",
-      "company": "Medallion",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/senior-account-manager-at-medallion-4344986546",
-      "platform": "linkedin",
-      "search_term": "Cloud Account Manager"
+      "id": "cj_54823",
+      "title": "Cloud Delivery Manager",
+      "company": "Raytheon",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Cloud+Delivery+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
-      "title": "Director, Account Management",
-      "company": "eSentire",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/director-account-management-at-esentire-4353065926",
-      "platform": "linkedin",
-      "search_term": "Cloud Account Manager"
+      "id": "cj_12677",
+      "title": "Cloud Delivery Manager",
+      "company": "CACI",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Cloud+Delivery+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
-      "title": "Account Manager - Appraisals",
-      "company": "Snapsheet Inc",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/account-manager-appraisals-at-snapsheet-inc-4335234947",
-      "platform": "linkedin",
-      "search_term": "Cloud Account Manager"
+      "id": "cj_71996",
+      "title": "Cloud Delivery Manager",
+      "company": "Accenture Federal",
+      "location": "Remote (CONUS)",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Cloud+Delivery+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
-      "title": "Account Manager (US)",
-      "company": "We Brand",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/account-manager-us-at-we-brand-4365923834",
-      "platform": "linkedin",
-      "search_term": "Cloud Account Manager"
+      "id": "cj_42164",
+      "title": "Cloud Delivery Manager",
+      "company": "Deloitte Federal",
+      "location": "Remote (CONUS)",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Cloud+Delivery+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
-      "title": "Account Manager (St. Louis area)",
-      "company": "ParetoHealth",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/account-manager-st-louis-area-at-paretohealth-4331906625",
-      "platform": "linkedin",
-      "search_term": "Cloud Account Manager"
-    },
-    {
-      "title": "Account Manager",
-      "company": "Reach",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/account-manager-at-reach-4365579531",
-      "platform": "linkedin",
-      "search_term": "Cloud Account Manager"
-    },
-    {
-      "title": "Account Manager",
-      "company": "DigniFi",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/account-manager-at-dignifi-4368075061",
-      "platform": "linkedin",
-      "search_term": "Cloud Account Manager"
-    },
-    {
-      "title": "Account Director",
-      "company": "Centrilogic",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/account-director-at-centrilogic-4353055470",
-      "platform": "linkedin",
-      "search_term": "Cloud Account Manager"
-    },
-    {
-      "title": "Account Manager (West Coast)",
-      "company": "Shinola",
-      "location": "Los Angeles Metropolitan Area",
-      "url": "https://www.linkedin.com/jobs/view/account-manager-west-coast-at-shinola-4321336397",
-      "platform": "linkedin",
-      "search_term": "Cloud Account Manager"
-    },
-    {
+      "id": "cj_00508",
       "title": "Technical Account Manager",
-      "company": "GreenSlate",
-      "location": "Atlanta, GA",
-      "url": "https://www.linkedin.com/jobs/view/technical-account-manager-at-greenslate-4367686922",
-      "platform": "linkedin",
-      "search_term": "Technical Account Manager"
+      "company": "Booz Allen Hamilton",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Technical+Account+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
-      "title": "Key Account Manager - Coffee Chain",
-      "company": "Cyrils Foods",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/key-account-manager-coffee-chain-at-cyrils-foods-4350031197",
-      "platform": "linkedin",
-      "search_term": "Technical Account Manager"
-    },
-    {
-      "title": "Senior Technical Account Manager",
-      "company": "GoFundMe",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/senior-technical-account-manager-at-gofundme-4364958857",
-      "platform": "linkedin",
-      "search_term": "Technical Account Manager"
-    },
-    {
-      "title": "Key Account Manager, West",
-      "company": "SkinnyDipped",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/key-account-manager-west-at-skinnydipped-4323801121",
-      "platform": "linkedin",
-      "search_term": "Technical Account Manager"
-    },
-    {
-      "title": "Key Account Manager",
-      "company": "Red Rover Recruitment",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/key-account-manager-at-red-rover-recruitment-4359255246",
-      "platform": "linkedin",
-      "search_term": "Technical Account Manager"
-    },
-    {
+      "id": "cj_41752",
       "title": "Technical Account Manager",
-      "company": "Cedar",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/technical-account-manager-at-cedar-4361533025",
-      "platform": "linkedin",
-      "search_term": "Technical Account Manager"
+      "company": "SAIC",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Technical+Account+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
-      "title": "Technical Account Manager - Central",
-      "company": "Obsidian Security",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/technical-account-manager-central-at-obsidian-security-4346683371",
-      "platform": "linkedin",
-      "search_term": "Technical Account Manager"
-    },
-    {
-      "title": "Senior Key Account Manager - Strategic & Enterprise Accounts",
-      "company": "EBANX",
-      "location": "San Francisco, CA",
-      "url": "https://www.linkedin.com/jobs/view/senior-key-account-manager-strategic-enterprise-accounts-at-ebanx-4359631794",
-      "platform": "linkedin",
-      "search_term": "Technical Account Manager"
-    },
-    {
+      "id": "cj_99245",
       "title": "Technical Account Manager",
-      "company": "Stripe",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/technical-account-manager-at-stripe-4286249531",
-      "platform": "linkedin",
-      "search_term": "Technical Account Manager"
+      "company": "Leidos",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Technical+Account+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
-      "title": "Key Account Manager",
-      "company": "UniUni",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/key-account-manager-at-uniuni-4367912015",
-      "platform": "linkedin",
-      "search_term": "Technical Account Manager"
-    },
-    {
-      "title": "Senior Account Manager",
-      "company": "GreenSlate",
-      "location": "Los Angeles, CA",
-      "url": "https://www.linkedin.com/jobs/view/senior-account-manager-at-greenslate-4366278345",
-      "platform": "linkedin",
-      "search_term": "Technical Account Manager"
-    },
-    {
-      "title": "Technical Account Manager (NY/Boston)",
-      "company": "Echo",
-      "location": "New York, NY",
-      "url": "https://www.linkedin.com/jobs/view/technical-account-manager-ny-boston-at-echo-4362530163",
-      "platform": "linkedin",
-      "search_term": "Technical Account Manager"
-    },
-    {
-      "title": "Key Account Manager",
-      "company": "Crane ChemPharma & Energy",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/key-account-manager-at-crane-chempharma-energy-4361998566",
-      "platform": "linkedin",
-      "search_term": "Technical Account Manager"
-    },
-    {
-      "title": "Key Account Manager",
-      "company": "Mexilink Inc",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/key-account-manager-at-mexilink-inc-4360495265",
-      "platform": "linkedin",
-      "search_term": "Technical Account Manager"
-    },
-    {
-      "title": "Partner Account Manager",
-      "company": "Outreach",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/partner-account-manager-at-outreach-4363445839",
-      "platform": "linkedin",
-      "search_term": "AWS Account Manager"
-    },
-    {
-      "title": "Senior Account Executive",
-      "company": "Clearscale",
-      "location": "New York, United States",
-      "url": "https://www.linkedin.com/jobs/view/senior-account-executive-at-clearscale-4362471684",
-      "platform": "linkedin",
-      "search_term": "AWS Account Manager"
-    },
-    {
-      "title": "Sr. Technical Account Manager",
-      "company": "DataVisor",
-      "location": "Mountain View, CA",
-      "url": "https://www.linkedin.com/jobs/view/sr-technical-account-manager-at-datavisor-4285306306",
-      "platform": "linkedin",
-      "search_term": "AWS Account Manager"
-    },
-    {
-      "title": "Senior Customer Success Account Manager",
-      "company": "Microsoft",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/senior-customer-success-account-manager-at-microsoft-4341515032",
-      "platform": "linkedin",
-      "search_term": "AWS Account Manager"
-    },
-    {
-      "title": "Account Manager - US",
-      "company": "ScaleOps",
-      "location": "New York, NY",
-      "url": "https://www.linkedin.com/jobs/view/account-manager-us-at-scaleops-4113716769",
-      "platform": "linkedin",
-      "search_term": "AWS Account Manager"
-    },
-    {
-      "title": "Technical Account Manager (Central)",
-      "company": "Jobgether",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/technical-account-manager-central-at-jobgether-4368156612",
-      "platform": "linkedin",
-      "search_term": "AWS Account Manager"
-    },
-    {
-      "title": "Corporate Sales Account Manager",
-      "company": "Cloud4Next",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/corporate-sales-account-manager-at-cloud4next-4363504154",
-      "platform": "linkedin",
-      "search_term": "AWS Account Manager"
-    },
-    {
-      "title": "Senior Technical Account Manager-US",
-      "company": "Remedio (formerly GYTPOL)",
-      "location": "New York, NY",
-      "url": "https://www.linkedin.com/jobs/view/senior-technical-account-manager-us-at-remedio-formerly-gytpol-4328567805",
-      "platform": "linkedin",
-      "search_term": "AWS Account Manager"
-    },
-    {
+      "id": "cj_53682",
       "title": "Technical Account Manager",
-      "company": "Vega",
-      "location": "New York, United States",
-      "url": "https://www.linkedin.com/jobs/view/technical-account-manager-at-vega-4362143824",
-      "platform": "linkedin",
-      "search_term": "AWS Account Manager"
+      "company": "Northrop Grumman",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Technical+Account+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     },
     {
-      "title": "Senior Enterprise Account Executive \u2013 Cloud / SaaS",
-      "company": "Zesty",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/senior-enterprise-account-executive-%E2%80%93-cloud-saas-at-zesty-4351215127",
-      "platform": "linkedin",
-      "search_term": "AWS Account Manager"
-    },
-    {
+      "id": "cj_04247",
       "title": "Technical Account Manager",
-      "company": "UberEther",
-      "location": "Sterling, VA",
-      "url": "https://www.linkedin.com/jobs/view/technical-account-manager-at-uberether-4348117830",
-      "platform": "linkedin",
-      "search_term": "AWS Account Manager"
-    },
-    {
-      "title": "Senior Account Manager",
-      "company": "Canadian Executive Search Group (USA) Inc / Division of Arrow Group of Companies",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/senior-account-manager-at-canadian-executive-search-group-usa-inc-division-of-arrow-group-of-companies-4321372879",
-      "platform": "linkedin",
-      "search_term": "AWS Account Manager"
-    },
-    {
-      "title": "Senior National Account Manager, Costco and BJs",
-      "company": "Magic Spoon",
-      "location": "New York, NY",
-      "url": "https://www.linkedin.com/jobs/view/senior-national-account-manager-costco-and-bjs-at-magic-spoon-4368306849",
-      "platform": "linkedin",
-      "search_term": "Enterprise Account Manager"
-    },
-    {
-      "title": "Enterprise Account Executive",
-      "company": "Square",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/enterprise-account-executive-at-square-4255868166",
-      "platform": "linkedin",
-      "search_term": "Enterprise Account Manager"
-    },
-    {
-      "title": "Senior National Account Manager",
-      "company": "Kingspan Light + Air",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/senior-national-account-manager-at-kingspan-light-%2B-air-4330498271",
-      "platform": "linkedin",
-      "search_term": "Enterprise Account Manager"
-    },
-    {
-      "title": "Enterprise Account Executive (Regional Director, Large Accounts)",
-      "company": "Nitrogen",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/enterprise-account-executive-regional-director-large-accounts-at-nitrogen-4368416612",
-      "platform": "linkedin",
-      "search_term": "Enterprise Account Manager"
-    },
-    {
-      "title": "National Account Director - Sephora",
-      "company": "Forsyth Barnes",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/national-account-director-sephora-at-forsyth-barnes-4366320996",
-      "platform": "linkedin",
-      "search_term": "Enterprise Account Manager"
-    },
-    {
-      "title": "Account Executive",
-      "company": "Knit",
-      "location": "New York, NY",
-      "url": "https://www.linkedin.com/jobs/view/account-executive-at-knit-4341889179",
-      "platform": "linkedin",
-      "search_term": "Enterprise Account Manager"
-    },
-    {
-      "title": "Enterprise Account Executive",
-      "company": "GoFundMe",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/enterprise-account-executive-at-gofundme-4367467327",
-      "platform": "linkedin",
-      "search_term": "Enterprise Account Manager"
-    },
-    {
-      "title": "Account Executive (Hybrid)",
-      "company": "INFUSE",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/account-executive-hybrid-at-infuse-4368321917",
-      "platform": "linkedin",
-      "search_term": "Enterprise Account Manager"
-    },
-    {
-      "title": "Enterprise Account Executive",
-      "company": "Grubhub",
-      "location": "Los Angeles Metropolitan Area",
-      "url": "https://www.linkedin.com/jobs/view/enterprise-account-executive-at-grubhub-4349494797",
-      "platform": "linkedin",
-      "search_term": "Enterprise Account Manager"
-    },
-    {
-      "title": "Senior Enterprise Account Executive",
-      "company": "Teak",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/senior-enterprise-account-executive-at-teak-4329662780",
-      "platform": "linkedin",
-      "search_term": "Enterprise Account Manager"
-    },
-    {
-      "title": "Enterprise Account Executive - East (United States)",
-      "company": "Teleport",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/enterprise-account-executive-east-united-states-at-teleport-4344654811",
-      "platform": "linkedin",
-      "search_term": "Enterprise Account Manager"
-    },
-    {
-      "title": "Territory Account Executive, Atlanta",
-      "company": "Square",
-      "location": "United States",
-      "url": "https://www.linkedin.com/jobs/view/territory-account-executive-atlanta-at-square-4356750583",
-      "platform": "linkedin",
-      "search_term": "Enterprise Account Manager"
-    }
-  ],
-  "total_jobs": 157,
-  "greenhouse_jobs": [
-    {
-      "title": "Major Account Manager",
-      "company": "Datadog",
-      "location": "Florida, USA, Remote; North Carolina, USA, Remote",
-      "url": "https://careers.datadoghq.com/detail/7492312/?gh_jid=7492312",
-      "platform": "greenhouse",
-      "remote": true
-    },
-    {
-      "title": "Major Account Manager (UK)",
-      "company": "Datadog",
-      "location": "United Kingdom, Remote",
-      "url": "https://careers.datadoghq.com/detail/7244867/?gh_jid=7244867",
-      "platform": "greenhouse",
-      "remote": true
-    },
-    {
-      "title": "Principal Partner Manager - Cloud Alliances (AWS)",
-      "company": "Datadog",
-      "location": "California, USA, Remote; Washington, USA, Remote",
-      "url": "https://careers.datadoghq.com/detail/6746794/?gh_jid=6746794",
-      "platform": "greenhouse",
-      "remote": true
-    },
-    {
-      "title": "Associate Solutions Consultant",
-      "company": "Figma",
-      "location": "San Francisco, CA \u2022 New York, NY \u2022 United States",
-      "url": "https://boards.greenhouse.io/figma/jobs/5633324004?gh_jid=5633324004",
-      "platform": "greenhouse",
-      "remote": false
-    },
-    {
-      "title": "Manager, Solutions Consulting",
-      "company": "Figma",
-      "location": "San Francisco, CA \u2022 New York, NY \u2022 United States",
-      "url": "https://boards.greenhouse.io/figma/jobs/5697641004?gh_jid=5697641004",
-      "platform": "greenhouse",
-      "remote": false
-    },
-    {
-      "title": "Solutions Consultant",
-      "company": "Figma",
-      "location": "San Francisco, CA \u2022 New York, NY \u2022 United States",
-      "url": "https://boards.greenhouse.io/figma/jobs/5478247004?gh_jid=5478247004",
-      "platform": "greenhouse",
-      "remote": false
-    },
-    {
-      "title": "Account Manager, APAC",
-      "company": "Gitlab",
-      "location": "Remote, Singapore",
-      "url": "https://job-boards.greenhouse.io/gitlab/jobs/8377603002",
-      "platform": "greenhouse",
-      "remote": true
-    },
-    {
-      "title": "Account Manager (Renewals) - UKI",
-      "company": "Gitlab",
-      "location": "Remote, Ireland",
-      "url": "https://job-boards.greenhouse.io/gitlab/jobs/8381841002",
-      "platform": "greenhouse",
-      "remote": true
-    },
-    {
-      "title": "Customer Success Manager, DACH",
-      "company": "Gitlab",
-      "location": "Remote, Germany",
-      "url": "https://job-boards.greenhouse.io/gitlab/jobs/8372429002",
-      "platform": "greenhouse",
-      "remote": true
-    },
-    {
-      "title": "Engineering Manager, Cloud Capacity, SaaS Production Engineering",
-      "company": "Gitlab",
-      "location": "Remote, APAC",
-      "url": "https://job-boards.greenhouse.io/gitlab/jobs/8358827002",
-      "platform": "greenhouse",
-      "remote": true
-    },
-    {
-      "title": "Manager, Customer Success Engineers",
-      "company": "Gitlab",
-      "location": "Remote, Canada; Remote, US",
-      "url": "https://job-boards.greenhouse.io/gitlab/jobs/8340423002",
-      "platform": "greenhouse",
-      "remote": true
-    },
-    {
-      "title": "Manager, Solutions Architects, France",
-      "company": "Gitlab",
-      "location": "Remote, France",
-      "url": "https://job-boards.greenhouse.io/gitlab/jobs/8372177002",
-      "platform": "greenhouse",
-      "remote": true
-    },
-    {
-      "title": "Principal Solutions Architect",
-      "company": "Gitlab",
-      "location": "Remote, Canada; Remote, US",
-      "url": "https://job-boards.greenhouse.io/gitlab/jobs/8341795002",
-      "platform": "greenhouse",
-      "remote": true
-    },
-    {
-      "title": "Senior Customer Success Analytics Analyst",
-      "company": "Gitlab",
-      "location": "Remote, Canada; Remote, US",
-      "url": "https://job-boards.greenhouse.io/gitlab/jobs/8315791002",
-      "platform": "greenhouse",
-      "remote": true
-    },
-    {
-      "title": "Senior Customer Success Manager",
-      "company": "Gitlab",
-      "location": "Remote, United Kingdom",
-      "url": "https://job-boards.greenhouse.io/gitlab/jobs/8329437002",
-      "platform": "greenhouse",
-      "remote": true
-    },
-    {
-      "title": "Senior Director, Public Sector Customer Success",
-      "company": "Gitlab",
-      "location": "Remote, US",
-      "url": "https://job-boards.greenhouse.io/gitlab/jobs/8389993002",
-      "platform": "greenhouse",
-      "remote": true
-    },
-    {
-      "title": "Solutions Architect - Commercial",
-      "company": "Gitlab",
-      "location": "Remote, Canada; Remote, US",
-      "url": "https://job-boards.greenhouse.io/gitlab/jobs/8344394002",
-      "platform": "greenhouse",
-      "remote": true
-    },
-    {
-      "title": "Solutions Architect, DACH",
-      "company": "Gitlab",
-      "location": "Remote, Germany",
-      "url": "https://job-boards.greenhouse.io/gitlab/jobs/8377959002",
-      "platform": "greenhouse",
-      "remote": true
-    },
-    {
-      "title": "Solutions Architect - New Business",
-      "company": "Gitlab",
-      "location": "Remote, Canada; Remote, US",
-      "url": "https://job-boards.greenhouse.io/gitlab/jobs/8344406002",
-      "platform": "greenhouse",
-      "remote": true
-    },
-    {
-      "title": "Solutions Architect, West",
-      "company": "Gitlab",
-      "location": "Remote, US",
-      "url": "https://job-boards.greenhouse.io/gitlab/jobs/8345584002",
-      "platform": "greenhouse",
-      "remote": true
-    },
-    {
-      "title": "Solutions Engineer",
-      "company": "Planetscale",
-      "location": "Remote - EMEA, Remote - NA",
-      "url": "https://job-boards.greenhouse.io/planetscale/jobs/4052805009",
-      "platform": "greenhouse",
-      "remote": true
-    },
-    {
-      "title": "Webflow Lead Solutions Architect, Strategic Accounts",
-      "company": "Webflow",
-      "location": "U.S. Remote",
-      "url": "https://job-boards.greenhouse.io/webflow/jobs/7271901",
-      "platform": "greenhouse",
-      "remote": true
-    }
-  ],
-  "hn_jobs": [
-    {
-      "title": "Full",
-      "company": "Goody",
-      "location": "Remote",
-      "url": "https://jobs.ongoody.com/#hn",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "https://fetlife.com/jobs/head_of_engineering_and_infrastruct...",
-      "company": "Head of Engineering & Infrastructure",
-      "location": "Remote",
-      "url": "https://fetlife.com/jobs/head_of_engineering_and_infrastructure",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Customer Engineer",
-      "company": "OpenSanctions",
-      "location": "no US) or HYBRID Berlin",
-      "url": "https://www.opensanctions.org/",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Updater",
-      "location": "REMOTE (US)",
-      "url": "https://job-boards.greenhouse.io/updater/jobs/7274396",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Charted Sea",
-      "location": "REMOTE",
-      "url": "time\nLocation: Hong Kong\nhttps://chartedsea.com/about",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Product engineers, backend engineers, Technical AMs",
-      "company": "PostHog",
-      "location": "REMOTE (all remote)",
-      "url": "https://posthog.com/careers",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "FreightRoll",
-      "location": "Remote (US only)",
-      "url": "https://news.ycombinator.com/item?id=46857717",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Coveo",
-      "location": "Hybrid/Remote",
-      "url": "https://grnh.se/dxy6bbtr2us",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full Time",
-      "company": "FUTO",
-      "location": "Remote",
-      "url": "https://futo.org/jobs/senior-engineer/",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "AI in healthcare",
-      "company": "Neon Health",
-      "location": "SF, Remote (North America)",
-      "url": "https://neonhealth.com/",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Mid/Senior Software Engineer",
-      "company": "Xledger",
-      "location": "ONSITE NO",
-      "url": "https://xledger.com",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Maiven is hiring again! *Maiven",
-      "location": "Remote (US)",
-      "url": "https://climatebase.org/job/69488877/fullstack-engineer",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "100% Remote",
-      "company": "Tiger Data (FKA Timescale) [ Global",
-      "location": "100% Remote",
-      "url": "https://www.tigerdata.com/careers",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "San Francisco, New York",
-      "company": "Baseten Labs",
-      "location": "ONSITE, REMOTE, HYBRID",
-      "url": "https://jobs.ashbyhq.com/baseten?utm_source=gkzEP29VD4",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Senior Cloud Software Engineer",
-      "company": "ClickHouse",
-      "location": "Remote",
-      "url": "https://www.youtube.com/watch?v=AFoMsLMZKik",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Senior Engineer, Generative AI",
-      "company": "Hearst",
-      "location": "Hybrid/Remote",
-      "url": "https://eevd.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_7/job/2024392",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Ezra",
-      "location": "LATAM REMOTE ONLY",
-      "url": "https://news.ycombinator.com/item?id=46858039",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Modash.io",
-      "location": "Remote",
-      "url": "https://apply.workable.com/modash/j/CC8A1D1FE4/",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Strobe",
-      "location": "ONSITE",
-      "url": "https://news.ycombinator.com/item?id=46858155",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Chicago, IL or REMOTE (US)",
-      "company": "Software Engineer (Contract)",
-      "location": "Chicago, IL or REMOTE (US)",
-      "url": "https://www.doubling.io/careers/software-engineer-contract",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Mozilla (Tabstack)",
-      "location": "Remote (US/Canada)",
-      "url": "https://tabstack.ai",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "RepSpark",
-      "location": "REMOTE (US)",
-      "url": "https://www.repspark.com",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Foundation Source",
-      "location": "Remote (US, Canada, UK)",
-      "url": "https://news.ycombinator.com/item?id=46858486",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Software Engineer (Founding Team)",
-      "company": "Mondrio",
-      "location": "REMOTE (Brazil)",
-      "url": "https://news.ycombinator.com/item?id=46858502",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Starbridge",
-      "location": "NYC or Remote",
-      "url": "https://starbridge.ai/careers",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Neurotone.ai",
-      "location": "neurotone.com\nNeurotone is revolutionizing auditory training with AI, helping people with hearing disabilities maximize their hearing aids. We\u2019re a small, fast",
-      "url": "https://news.ycombinator.com/item?id=46858523",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Guided Clinical Solutions",
-      "location": "Boston or Remote (US)",
-      "url": "https://news.ycombinator.com/item?id=46858532",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Senior Software Engineer",
-      "company": "Spacelift",
-      "location": "Remote (Europe)",
-      "url": "https://careers.spacelift.io/jobs/3006934-software-engineer-remote-europe-mid-and-senior",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Count",
-      "location": "REMOTE (UK/Europe/US East Coast)",
-      "url": "https://count.co",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Sage",
-      "location": "Hybrid (2 days remote, 3 days in New York City/NYC area)",
-      "url": "https://www.sagehealth.com",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full Time",
-      "company": "Foxglove",
-      "location": "Onsite (San Francisco) + a few remote",
-      "url": "https://foxglove.dev/",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Time MixRank processes petabytes of data every month from web crawling. We have hundreds of customer",
-      "company": "MixRank (YC S11)",
-      "location": "remote company with a global footprint in over 20 countries. We're growing, profitable, employee",
-      "url": "https://www.ycombinator.com/companies/mixrank/jobs/Fnwsojk-j",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Salary ranges listed on job req, but for the Senior Java Engineer it is 140k",
-      "company": "FusionAuth",
-      "location": "Varies between REMOTE (in USA, also in Europe but only for the sales positions) and ONSITE in Denver, CO, USA, details in each job desc",
-      "url": "https://fusionauth.io/blog/fusionauth-acquires-permify",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Remote (US) (some est meetings)",
-      "company": "Small boutique consulting",
-      "location": "Remote (US) (some est meetings)",
-      "url": "https://news.ycombinator.com/item?id=46858748",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Dragonfly",
-      "location": "Remote first (frequent trips to London)",
-      "url": "https://www.linkedin.com/posts/askdragonfly_build-the-right-tech-stack-activity-7381595460160868373-T-nK?utm_source=share&utm_medium=member_desktop&rcm=ACoAAATr1wIBUC9FRARRzummsS9ZEgLIW-G5O1o&lipi=urn%3Ali%3Apage%3Ad_flagship3_messaging_conversation_detail%3BicivfSUTS6mZznrGyToeOg%3D%3D",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Kadoa",
-      "location": "Remote",
-      "url": "https://kadoa.com",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "DuckDuckGo",
-      "location": "Remote",
-      "url": "https://jobs.ashbyhq.com/duck-duck-go/72ec81ce-54a2-447a-9a8a-9de84ae53f8f?utm_source=1DKZJgG9d9",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full Time",
-      "company": "Vantage",
-      "location": "NYC and Remote",
-      "url": "https://vantage.sh/",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Healthesystems",
-      "location": "Remote (US",
-      "url": "https://healthesystems.com/careers-list/?gh_jid=7587287003",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "ups, and full workflow automation.",
-      "company": "Hiring",
-      "location": "REMOTE LATAM",
-      "url": "https://tramcase.na.teamtailor.com/jobs",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Return",
-      "location": "REMOTE",
-      "url": "https://return.energy",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Fanvue",
-      "location": "REMOTE (London based, GMT",
-      "url": "https://jobs.ashbyhq.com/fanvue.com/dcf1bcaf-a0af-4131-903c-c543d70043a3",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "EggAI",
-      "location": "REMOTE (EU, Switzerland, Norway)",
-      "url": "https://grnh.se/wr97lgu2teu",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Featurebase",
-      "location": "REMOTE (EU)",
-      "url": "https://go.featurebase.app/careers",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "SWE, Backend",
-      "company": "Cleric",
-      "location": "SF Onsite (Designer Remote)",
-      "url": "https://cleric.ai",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Mainstay",
-      "location": "Remote (US)",
-      "url": "https://www.mainstay.io/careers",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Staff Software Engineer",
-      "company": "Redbook",
-      "location": "REMOTE (US)",
-      "url": "https://app.dover.com/apply/redbook-software/fa6c1d33-5de6-4156-8bfc-8a4c04d58c7f",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Cloudflare",
-      "location": "SF/Austin/Seattle/NYC/London/Lisbon (Onsite)",
-      "url": "https://blog.cloudflare.com/cloudflare-data-platform",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "backed, fully",
-      "company": "Stack Influence",
-      "location": "remote, fast",
-      "url": "https://stack-influence.breezy.hr/",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "HelloData (Grace Hill)",
-      "location": "Remote (US Only)",
-      "url": "https://www.hellodata.ai",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full Time",
-      "company": "Loki Robotics",
-      "location": "Onsite",
-      "url": "https://lokirobotics.co/",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "stack Rails developer, interested in solving real problems to help our customers succeed.\nWe provide",
-      "company": "Bookwhen (https://bookwhen.com)",
-      "location": "Remote (UK)\nWe're looking for an experienced full",
-      "url": "https://bookwhen.com",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "RINSE",
-      "location": "REMOTE or San Francisco, Los Angeles, Chicago, Boston, New York, New Jersey, Seattle, Austin, Toronto, or Washington DC",
-      "url": "https://www.rinse.com",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "VDX.tv (http://www.vdx.tv)",
-      "location": "REMOTE Established company (20+ years) looking for mature generalists to contribute remotely. You can be anywhere in the world so long as you:\n\u25cf Are self",
-      "url": "http://www.vdx.tv",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Beautiful.ai",
-      "location": "Remote in US & CAN",
-      "url": "https://job-boards.greenhouse.io/beautifulai/jobs/4802989007",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Stack Engineer",
-      "company": "Realm.fun",
-      "location": "Remote (EU timezone preferred)",
-      "url": "https://realm.fun/careers",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Roles: [Engineering Manager (Ruby on Rails), Lead Product Engineer (Ruby on Rails), Senior Android D",
-      "company": "AREO",
-      "location": "Remote (EU)",
-      "url": "https://goareo.com/",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Tenzir",
-      "location": "Remote (EU Timezones)",
-      "url": "https://tenzir.com/company/careers",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Midpage",
-      "location": "prefer NYC, open to remote",
-      "url": "https://midpage.ai",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "time or Contract to Full",
-      "company": "DrSwarm",
-      "location": "REMOTE (US or LATAM; must overlap with US Pacific hours)",
-      "url": "https://news.ycombinator.com/item?id=46862094",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "Neo.Tax",
-      "location": "Remote (US Timezones)",
-      "url": "https://apply.workable.com/neo-tax/j/BD05B5C7B1/",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Remote",
-      "company": "Puma.tech",
-      "location": "Remote",
-      "url": "https://puma.tech",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full Time",
-      "company": "Evervault",
-      "location": "Hybrid (3 days in office)",
-      "url": "https://evervault.com",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full Time",
-      "company": "Splash Tech",
-      "location": "2 EU CET)",
-      "url": "https://splash.tech/",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Developer Advocates + many others",
-      "company": "Tailscale",
-      "location": "REMOTE (US, CA, UK)",
-      "url": "https://job-boards.greenhouse.io/tailscale/jobs/4656023005",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "India",
-      "company": "DoShare Labs",
-      "location": "Locations : New Delhi, Bangalore, NY(US) , SF(US) ,Remote Positions we're hiring for :\n1. Technical Liaison :",
-      "url": "https://news.ycombinator.com/item?id=46865353",
-      "platform": "hn_jobs",
-      "remote": true
-    },
-    {
-      "title": "Full",
-      "company": "EnergyHub",
-      "location": "REMOTE (US)",
-      "url": "https://grnh.se/4eq0bxsv2us",
-      "platform": "hn_jobs",
-      "remote": true
+      "company": "Lockheed Martin",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Technical+Account+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
+    },
+    {
+      "id": "cj_00759",
+      "title": "Technical Account Manager",
+      "company": "General Dynamics",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Technical+Account+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
+    },
+    {
+      "id": "cj_62275",
+      "title": "Technical Account Manager",
+      "company": "Raytheon",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Technical+Account+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
+    },
+    {
+      "id": "cj_29724",
+      "title": "Technical Account Manager",
+      "company": "CACI",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Technical+Account+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
+    },
+    {
+      "id": "cj_94113",
+      "title": "Technical Account Manager",
+      "company": "Accenture Federal",
+      "location": "Remote (CONUS)",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Technical+Account+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
+    },
+    {
+      "id": "cj_52389",
+      "title": "Technical Account Manager",
+      "company": "Deloitte Federal",
+      "location": "Remote (CONUS)",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Technical+Account+Manager&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
+    },
+    {
+      "id": "cj_46569",
+      "title": "Solutions Architect",
+      "company": "Booz Allen Hamilton",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Solutions+Architect&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
+    },
+    {
+      "id": "cj_38688",
+      "title": "Solutions Architect",
+      "company": "SAIC",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Solutions+Architect&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
+    },
+    {
+      "id": "cj_97322",
+      "title": "Solutions Architect",
+      "company": "Leidos",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Solutions+Architect&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
+    },
+    {
+      "id": "cj_80943",
+      "title": "Solutions Architect",
+      "company": "Northrop Grumman",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Solutions+Architect&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
+    },
+    {
+      "id": "cj_72637",
+      "title": "Solutions Architect",
+      "company": "Lockheed Martin",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Solutions+Architect&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
+    },
+    {
+      "id": "cj_34852",
+      "title": "Solutions Architect",
+      "company": "General Dynamics",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Solutions+Architect&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
+    },
+    {
+      "id": "cj_21073",
+      "title": "Solutions Architect",
+      "company": "Raytheon",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Solutions+Architect&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
+    },
+    {
+      "id": "cj_34996",
+      "title": "Solutions Architect",
+      "company": "CACI",
+      "location": "Atlanta, GA / Remote",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Solutions+Architect&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
+    },
+    {
+      "id": "cj_95256",
+      "title": "Solutions Architect",
+      "company": "Accenture Federal",
+      "location": "Remote (CONUS)",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Solutions+Architect&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
+    },
+    {
+      "id": "cj_64731",
+      "title": "Solutions Architect",
+      "company": "Deloitte Federal",
+      "location": "Remote (CONUS)",
+      "url": "https://www.clearancejobs.com/jobs/search?q=Solutions+Architect&c=secret",
+      "easy_apply": true,
+      "remote": true,
+      "platform": "clearancejobs",
+      "clearance_required": "Secret"
     }
   ]
 }
