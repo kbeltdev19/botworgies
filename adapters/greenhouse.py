@@ -14,12 +14,30 @@ from .base import (
 )
 
 
-# Popular companies using Greenhouse (expandable)
+# Import dynamic company discovery
+try:
+    from .company_discovery import CompanyDiscovery
+    DISCOVERY_AVAILABLE = True
+except ImportError:
+    DISCOVERY_AVAILABLE = False
+
+# Fallback static list
 DEFAULT_GREENHOUSE_COMPANIES = [
     "stripe", "airbnb", "netflix", "coinbase", "figma",
     "notion", "airtable", "plaid", "brex", "ramp",
     "gusto", "lattice", "retool", "vercel", "linear",
     "mercury", "rippling", "anduril", "scale", "anthropic",
+    # Extended list
+    "doordash", "instacart", "pinterest", "twitch", "lyft",
+    "dropbox", "cloudflare", "datadog", "mongodb", "elastic",
+    "confluent", "hashicorp", "snowflake", "databricks", "palantir",
+    "webflow", "loom", "miro", "zapier", "deel",
+    "remote", "oyster", "papaya", "velocity", "maven",
+    "replit", "railway", "render", "fly", "supabase",
+    "planetscale", "neon", "turso", "upstash", "raycast",
+    "perplexity", "cursor", "cal", "dub", "resend",
+    "anthropic", "openai", "cohere", "huggingface", "replicate",
+    "modal", "anyscale", "labelbox", "together", "mistral",
 ]
 
 
@@ -32,10 +50,32 @@ class GreenhouseAdapter(JobPlatformAdapter):
     platform = PlatformType.GREENHOUSE
     tier = "api"  # Easy tier
     
-    def __init__(self, browser_manager=None, companies: List[str] = None):
+    def __init__(
+        self,
+        browser_manager=None,
+        companies: List[str] = None,
+        industries: List[str] = None,
+        sizes: List[str] = None,
+        max_companies: int = 50
+    ):
         super().__init__(browser_manager)
-        self.companies = companies or DEFAULT_GREENHOUSE_COMPANIES
+        
+        # Use dynamic discovery if available
+        if companies:
+            self.companies = companies
+        elif DISCOVERY_AVAILABLE:
+            discovery = CompanyDiscovery()
+            self.companies = discovery.get_companies(
+                "greenhouse",
+                industries=industries,
+                sizes=sizes,
+                limit=max_companies
+            )
+        else:
+            self.companies = DEFAULT_GREENHOUSE_COMPANIES[:max_companies]
+        
         self._session = None
+        print(f"[Greenhouse] Initialized with {len(self.companies)} companies")
     
     async def _get_session(self):
         if not self._session:

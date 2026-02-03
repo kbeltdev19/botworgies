@@ -1,13 +1,22 @@
 """
-LinkedIn Jobs Platform Adapter
-Handles search, job details, and Easy Apply automation.
+LinkedIn Adapter - High risk, high reward.
+
+LinkedIn has the most jobs but best anti-bot detection.
+Requires li_at session cookie from browser.
+
+WARNING: Use sparingly. High ban risk.
+- Max 5 applications per day per account
+- Rotate sessions
+- Human-like delays
 """
 
+import aiohttp
 import asyncio
 import random
-import urllib.parse
-from typing import List, Optional
+import json
+from typing import List, Optional, Dict
 from datetime import datetime
+from urllib.parse import quote
 
 from .base import (
     JobPlatformAdapter, PlatformType, JobPosting, ApplicationResult,
@@ -17,202 +26,227 @@ from .base import (
 
 class LinkedInAdapter(JobPlatformAdapter):
     """
-    LinkedIn Jobs adapter with Easy Apply support.
-    Uses session cookie for authentication when available.
+    LinkedIn job search and Easy Apply automation.
+    
+    Requires authentication via li_at cookie.
+    
+    Usage:
+        adapter = LinkedInAdapter(browser_manager, session_cookie="your_li_at_cookie")
+        jobs = await adapter.search_jobs(criteria)
     """
     
     platform = PlatformType.LINKEDIN
-    BASE_URL = "https://www.linkedin.com/jobs/search"
+    tier = "aggressive"
     
-    def __init__(self, browser_manager, session_cookie: str = None):
+    # Rate limits (conservative to avoid bans)
+    MAX_DAILY_APPLICATIONS = 5
+    MAX_SEARCHES_PER_HOUR = 10
+    COOLDOWN_BETWEEN_ACTIONS = (3, 8)  # seconds
+    
+    BASE_URL = "https://www.linkedin.com"
+    
+    def __init__(self, browser_manager=None, session_cookie: str = None):
         super().__init__(browser_manager)
-        self.session_cookie = session_cookie  # li_at cookie value
+        self.session_cookie = session_cookie
+        self._session = None
+        self._search_count = 0
+        self._application_count = 0
+        self._last_action = None
     
-    async def get_session(self):
-        """Get browser session with LinkedIn auth cookie if available."""
-        session = await super().get_session()
-        
-        # Inject LinkedIn session cookie if provided
-        if self.session_cookie:
-            await session.page.context.add_cookies([{
-                "name": "li_at",
-                "value": self.session_cookie,
-                "domain": ".linkedin.com",
-                "path": "/",
-                "httpOnly": True,
-                "secure": True,
-                "sameSite": "None"
-            }])
-            print("🔐 LinkedIn session cookie injected")
-        
-        return session
+    async def _get_session(self):
+        """Get authenticated aiohttp session."""
+        if not self._session and self.session_cookie:
+            cookies = {
+                "li_at": self.session_cookie,
+                "JSESSIONID": f"ajax:{random.randint(1000000000, 9999999999)}"
+            }
+            headers = {
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+                "Accept": "application/vnd.linkedin.normalized+json+2.1",
+                "X-Restli-Protocol-Version": "2.0.0",
+                "X-Li-Lang": "en_US",
+                "X-Li-Track": json.dumps({
+                    "clientVersion": "1.13.1795",
+                    "mpVersion": "1.13.1795",
+                    "osName": "web",
+                    "timezoneOffset": -8,
+                    "deviceFormFactor": "DESKTOP"
+                })
+            }
+            self._session = aiohttp.ClientSession(cookies=cookies, headers=headers)
+        return self._session
+    
+    async def close(self):
+        """Close session."""
+        if self._session:
+            await self._session.close()
+            self._session = None
+    
+    async def _human_delay(self):
+        """Add human-like delay between actions."""
+        delay = random.uniform(*self.COOLDOWN_BETWEEN_ACTIONS)
+        await asyncio.sleep(delay)
     
     async def search_jobs(self, criteria: SearchConfig) -> List[JobPosting]:
         """
-        Search LinkedIn for jobs matching criteria.
-        """
-        session = await self.get_session()
-        page = session.page
+        Search LinkedIn for jobs.
         
-        # Build search URL
-        location = criteria.locations[0] if criteria.locations else "United States"
+        Note: This uses the Voyager API (private, may break).
+        For more reliability, use browser automation.
+        """
+        if not self.session_cookie:
+            raise ValueError("LinkedIn requires li_at session cookie")
+        
+        session = await self._get_session()
+        
+        await self._human_delay()
+        
+        # Build search query
+        keywords = quote(" ".join(criteria.roles))
+        location = quote(criteria.locations[0] if criteria.locations else "")
+        
+        # LinkedIn Voyager API (private, reverse-engineered)
+        url = f"{self.BASE_URL}/voyager/api/search/dash/clusters"
         params = {
-            "keywords": " ".join(criteria.roles),
-            "location": location,
+            "decorationId": "com.linkedin.voyager.dash.deco.search.SearchClusterCollection-175",
+            "origin": "SWITCH_SEARCH_VERTICAL",
+            "q": "all",
+            "query": f"(keywords:{keywords},locationUnion:(geoId:103644278))",
+            "start": 0,
+            "count": 25,
         }
         
-        # Country/GeoId filter for more accurate results
-        # LinkedIn geoIds: US=103644278, CA=101174742, GB=101165590, DE=101282230
-        country = getattr(criteria, 'country', 'US')
-        if country == 'US' or 'united states' in location.lower():
-            params["geoId"] = "103644278"
-        elif country == 'CA' or 'canada' in location.lower():
-            params["geoId"] = "101174742"
-        elif country == 'GB' or 'united kingdom' in location.lower():
-            params["geoId"] = "101165590"
-        elif country == 'DE' or 'germany' in location.lower():
-            params["geoId"] = "101282230"
-        
-        # Time posted filter
-        if criteria.posted_within_days <= 1:
-            params["f_TPR"] = "r86400"  # Past 24 hours
-        elif criteria.posted_within_days <= 7:
-            params["f_TPR"] = "r604800"  # Past week
-        elif criteria.posted_within_days <= 30:
-            params["f_TPR"] = "r2592000"  # Past month
-        
-        # Remote filter
-        if "remote" in [loc.lower() for loc in criteria.locations]:
-            params["f_WT"] = "2"
-        
-        # Easy apply filter
+        # Add Easy Apply filter
         if criteria.easy_apply_only:
-            params["f_AL"] = "true"
-        
-        url = f"{self.BASE_URL}?{urllib.parse.urlencode(params)}"
-        print(f"📄 Searching LinkedIn: {url}")
-        
-        await page.goto(url, wait_until="domcontentloaded", timeout=60000)
-        await self.browser_manager.wait_for_cloudflare(page)
-        await self.browser_manager.human_like_delay(2, 4)
+            params["query"] += ",f_AL:true"
         
         jobs = []
-        pages_scraped = 0
-        max_pages = 5
         
-        while pages_scraped < max_pages:
-            # Scroll to load lazy content
-            for _ in range(3):
-                await self.browser_manager.human_like_scroll(page, "down")
-            
-            # Extract job cards
-            new_jobs = await self._extract_job_cards(page)
-            jobs.extend(new_jobs)
-            print(f"   Found {len(new_jobs)} jobs on page {pages_scraped + 1}")
-            
-            # Try to go to next page
-            next_btn = page.locator("button[aria-label='View next page']").first
-            if await next_btn.count() > 0 and await next_btn.is_visible():
-                await self.browser_manager.human_like_click(page, "button[aria-label='View next page']")
-                await self.browser_manager.human_like_delay(2, 4)
-                pages_scraped += 1
-            else:
-                break
+        try:
+            async with session.get(url, params=params, timeout=aiohttp.ClientTimeout(total=30)) as resp:
+                if resp.status == 429:
+                    print("[LinkedIn] Rate limited!")
+                    return []
+                
+                if resp.status == 401:
+                    print("[LinkedIn] Session expired - need new li_at cookie")
+                    return []
+                
+                if resp.status != 200:
+                    print(f"[LinkedIn] Search failed: {resp.status}")
+                    return []
+                
+                data = await resp.json()
+                
+                # Parse response (LinkedIn's API is complex)
+                jobs = self._parse_search_results(data)
+                
+        except Exception as e:
+            print(f"[LinkedIn] Search error: {e}")
         
-        # Score and filter jobs
-        scored_jobs = []
-        for job in jobs:
-            score = self._score_job_fit(job, criteria)
-            if score >= 0.5:  # Only keep decent matches
-                scored_jobs.append((job, score))
+        self._search_count += 1
+        print(f"[LinkedIn] Found {len(jobs)} jobs")
         
-        # Sort by score
-        scored_jobs.sort(key=lambda x: x[1], reverse=True)
-        
-        return [job for job, _ in scored_jobs]
+        return jobs
     
-    async def _extract_job_cards(self, page) -> List[JobPosting]:
-        """Extract job postings from the current page."""
+    def _parse_search_results(self, data: dict) -> List[JobPosting]:
+        """Parse LinkedIn Voyager API search results."""
         jobs = []
         
-        # LinkedIn uses various selectors depending on logged-in state
-        selectors = [
-            ".base-card",
-            ".job-search-card",
-            "[data-job-id]",
-            ".jobs-search-results__list-item"
-        ]
-        
-        cards = []
-        for selector in selectors:
-            found = await page.locator(selector).all()
-            if found:
-                cards = found
-                break
-        
-        for card in cards:
-            try:
-                # Extract job details
-                title_el = await card.locator("h3, .base-search-card__title").first.inner_text()
-                company_el = await card.locator("h4, .base-search-card__subtitle").first.inner_text()
-                location_el = await card.locator(".job-search-card__location, .base-search-card__metadata").first.inner_text()
-                
-                # Get job URL
-                link = card.locator("a").first
-                href = await link.get_attribute("href") if await link.count() > 0 else ""
-                
-                # Check for Easy Apply badge
-                easy_apply = await card.locator("span:has-text('Easy Apply')").count() > 0
-                
-                # Generate unique ID from URL or content
-                job_id = href.split("?")[0].split("/")[-1] if href else f"{title_el}-{company_el}"[:50]
-                
-                jobs.append(JobPosting(
-                    id=job_id,
-                    platform=self.platform,
-                    title=title_el.strip(),
-                    company=company_el.strip(),
-                    location=location_el.strip(),
-                    url=href,
-                    easy_apply=easy_apply,
-                    remote="remote" in location_el.lower()
-                ))
-                
-            except Exception as e:
-                # Skip cards that don't have expected structure
-                continue
+        try:
+            # Navigate the complex response structure
+            included = data.get("included", [])
+            
+            for item in included:
+                # Look for job posting entities
+                if item.get("$type") == "com.linkedin.voyager.dash.jobs.JobPosting":
+                    try:
+                        job_id = item.get("dashEntityUrn", "").split(":")[-1]
+                        title = item.get("title", "")
+                        company_name = ""
+                        location = ""
+                        
+                        # Extract company from nested structure
+                        company_ref = item.get("primaryDescription", {})
+                        if company_ref:
+                            company_name = company_ref.get("text", "")
+                        
+                        # Extract location
+                        location_ref = item.get("secondaryDescription", {})
+                        if location_ref:
+                            location = location_ref.get("text", "")
+                        
+                        # Check for Easy Apply
+                        easy_apply = item.get("applyMethod", {}).get("$type", "").endswith("EasyApplyOnlineApplyMethod")
+                        
+                        if title:
+                            jobs.append(JobPosting(
+                                id=f"linkedin_{job_id}",
+                                platform=self.platform,
+                                title=title,
+                                company=company_name or "(see posting)",
+                                location=location,
+                                url=f"{self.BASE_URL}/jobs/view/{job_id}",
+                                easy_apply=easy_apply,
+                                remote="remote" in location.lower()
+                            ))
+                    except Exception:
+                        continue
+                        
+        except Exception as e:
+            print(f"[LinkedIn] Parse error: {e}")
         
         return jobs
     
     async def get_job_details(self, job_url: str) -> JobPosting:
-        """Get full job details from the job page."""
-        session = await self.get_session()
+        """Get full job details (requires browser)."""
+        # LinkedIn job details require browser automation
+        # The API responses are heavily obfuscated
+        
+        if not self.browser_manager:
+            raise ValueError("Job details require browser_manager")
+        
+        session = await self.browser_manager.create_stealth_session("linkedin")
         page = session.page
         
-        await page.goto(job_url, wait_until="domcontentloaded", timeout=60000)
-        await self.browser_manager.human_like_delay(2, 4)
-        
-        # Extract details
-        title = await page.locator("h1, .job-details-jobs-unified-top-card__job-title").first.inner_text()
-        company = await page.locator(".job-details-jobs-unified-top-card__company-name, h4").first.inner_text()
-        
-        # Get job description
-        description_el = page.locator(".jobs-description__content, .description__text").first
-        description = await description_el.inner_text() if await description_el.count() > 0 else ""
-        
-        # Check for Easy Apply
-        easy_apply = await page.locator("button:has-text('Easy Apply')").count() > 0
-        
-        return JobPosting(
-            id=job_url.split("/")[-1].split("?")[0],
-            platform=self.platform,
-            title=title.strip(),
-            company=company.strip(),
-            location="",  # Would need to extract from page
-            url=job_url,
-            description=description,
-            easy_apply=easy_apply
-        )
+        try:
+            # Set cookie
+            await page.context.add_cookies([{
+                "name": "li_at",
+                "value": self.session_cookie,
+                "domain": ".linkedin.com",
+                "path": "/"
+            }])
+            
+            await page.goto(job_url, wait_until="domcontentloaded")
+            await self._human_delay()
+            
+            # Extract details
+            title = await page.locator(".job-details-jobs-unified-top-card__job-title").inner_text()
+            company = await page.locator(".job-details-jobs-unified-top-card__company-name").inner_text()
+            location_el = page.locator(".job-details-jobs-unified-top-card__primary-description-container")
+            location = await location_el.inner_text() if await location_el.count() > 0 else ""
+            
+            desc_el = page.locator(".jobs-description__content")
+            description = await desc_el.inner_text() if await desc_el.count() > 0 else ""
+            
+            # Check for Easy Apply button
+            easy_apply = await page.locator(".jobs-apply-button--top-card").count() > 0
+            
+            return JobPosting(
+                id=job_url.split("/")[-1],
+                platform=self.platform,
+                title=title.strip(),
+                company=company.strip(),
+                location=location.strip(),
+                url=job_url,
+                description=description,
+                easy_apply=easy_apply,
+                remote="remote" in location.lower()
+            )
+            
+        finally:
+            await self.browser_manager.close_session(session.session_id)
     
     async def apply_to_job(
         self,
@@ -223,176 +257,162 @@ class LinkedInAdapter(JobPlatformAdapter):
         auto_submit: bool = False
     ) -> ApplicationResult:
         """
-        Apply to job via LinkedIn Easy Apply.
+        Apply via LinkedIn Easy Apply.
+        
+        WARNING: High ban risk. Use sparingly.
         """
-        session = await self.get_session()
+        if self._application_count >= self.MAX_DAILY_APPLICATIONS:
+            return ApplicationResult(
+                status=ApplicationStatus.ERROR,
+                message="Daily application limit reached"
+            )
+        
+        if not job.easy_apply:
+            return ApplicationResult(
+                status=ApplicationStatus.EXTERNAL_APPLICATION,
+                message="Not Easy Apply - requires external application",
+                external_url=job.url
+            )
+        
+        if not self.browser_manager:
+            return ApplicationResult(
+                status=ApplicationStatus.ERROR,
+                message="Browser automation required for Easy Apply"
+            )
+        
+        session = await self.browser_manager.create_stealth_session("linkedin")
         page = session.page
         
-        # Navigate to job
-        await page.goto(job.url, wait_until="domcontentloaded", timeout=60000)
-        await self.browser_manager.human_like_delay(2, 3)
-        
-        # Check for Easy Apply button
-        easy_apply_btn = page.locator("button:has-text('Easy Apply'), button:has-text('Apply')").first
-        
-        if await easy_apply_btn.count() == 0:
-            return ApplicationResult(
-                status=ApplicationStatus.EXTERNAL_APPLICATION,
-                message="No Easy Apply available - requires external application"
-            )
-        
-        # Check button text to confirm it's Easy Apply
-        btn_text = await easy_apply_btn.inner_text()
-        if "easy" not in btn_text.lower():
-            # Get external link
-            apply_link = page.locator("a:has-text('Apply')").first
-            external_url = await apply_link.get_attribute("href") if await apply_link.count() > 0 else None
+        try:
+            # Set cookie
+            await page.context.add_cookies([{
+                "name": "li_at",
+                "value": self.session_cookie,
+                "domain": ".linkedin.com",
+                "path": "/"
+            }])
             
-            return ApplicationResult(
-                status=ApplicationStatus.EXTERNAL_APPLICATION,
-                message="External application required",
-                external_url=external_url
-            )
-        
-        # Click Easy Apply
-        await self.browser_manager.human_like_click(page, "button:has-text('Easy Apply')")
-        await self.browser_manager.human_like_delay(1, 2)
-        
-        # Handle multi-step form
-        max_steps = 10
-        current_step = 0
-        
-        while current_step < max_steps:
-            step_type = await self._detect_form_step(page)
-            print(f"   Step {current_step + 1}: {step_type}")
+            await page.goto(job.url, wait_until="networkidle")
+            await self._human_delay()
             
-            if step_type == "contact_info":
-                await self._fill_contact_info(page, profile)
-                
-            elif step_type == "resume":
-                await self._handle_resume_step(page, resume)
-                
-            elif step_type == "cover_letter":
-                if cover_letter:
-                    await self._fill_cover_letter(page, cover_letter)
-                    
-            elif step_type == "questions":
-                await self._answer_questions(page, profile)
-                
-            elif step_type == "review":
-                if not auto_submit:
-                    # Take screenshot for review
-                    screenshot_path = f"/tmp/application_review_{job.id}.png"
-                    await page.screenshot(path=screenshot_path)
-                    
-                    return ApplicationResult(
-                        status=ApplicationStatus.PENDING_REVIEW,
-                        message="Application ready for review",
-                        screenshot_path=screenshot_path
-                    )
-                
-                # Auto submit
-                submit_btn = page.locator("button[aria-label='Submit application'], button:has-text('Submit')").first
-                if await submit_btn.count() > 0:
-                    await self.browser_manager.human_like_click(page, "button:has-text('Submit')")
-                    await self.browser_manager.human_like_delay(2, 3)
-                    
-                    return ApplicationResult(
-                        status=ApplicationStatus.SUBMITTED,
-                        message="Application submitted successfully",
-                        submitted_at=datetime.now()
-                    )
-            
-            elif step_type == "done":
+            # Click Easy Apply button
+            easy_apply_btn = page.locator(".jobs-apply-button--top-card, button:has-text('Easy Apply')")
+            if await easy_apply_btn.count() == 0:
                 return ApplicationResult(
-                    status=ApplicationStatus.SUBMITTED,
-                    message="Application submitted",
-                    submitted_at=datetime.now()
+                    status=ApplicationStatus.EXTERNAL_APPLICATION,
+                    message="Easy Apply not available"
                 )
             
-            # Click Next/Continue
-            next_btn = page.locator("button[aria-label='Continue to next step'], button:has-text('Next'), button:has-text('Review')").first
-            if await next_btn.count() > 0:
-                await self.browser_manager.human_like_click(page, "button:has-text('Next'), button:has-text('Continue'), button:has-text('Review')")
-                await self.browser_manager.human_like_delay(1, 2)
-            else:
-                break
+            await self.browser_manager.human_like_click(page, ".jobs-apply-button--top-card")
+            await self._human_delay()
             
-            current_step += 1
-        
-        return ApplicationResult(
-            status=ApplicationStatus.ERROR,
-            message="Max steps exceeded or form navigation failed"
-        )
+            # Handle multi-step form
+            max_steps = 10
+            for step in range(max_steps):
+                # Check for completion
+                success = page.locator('[data-test-modal-close-btn], .artdeco-modal__dismiss')
+                if await success.count() > 0:
+                    self._application_count += 1
+                    return ApplicationResult(
+                        status=ApplicationStatus.SUBMITTED,
+                        message="Application submitted!",
+                        submitted_at=datetime.now()
+                    )
+                
+                # Fill contact info if requested
+                phone_input = page.locator('input[name="phoneNumber"]')
+                if await phone_input.count() > 0:
+                    await phone_input.fill(profile.phone)
+                
+                email_input = page.locator('input[name="email"]')
+                if await email_input.count() > 0:
+                    await email_input.fill(profile.email)
+                
+                # Handle resume upload
+                file_input = page.locator('input[type="file"]')
+                if await file_input.count() > 0:
+                    await file_input.set_input_files(resume.file_path)
+                    await asyncio.sleep(2)
+                
+                # Handle additional questions (basic text inputs)
+                text_inputs = await page.locator('input[type="text"]:not([name="phoneNumber"]):not([name="email"])').all()
+                for inp in text_inputs:
+                    if await inp.input_value() == "":
+                        # Try to auto-fill based on label
+                        await inp.fill(profile.years_experience or "5")
+                
+                # Check for review/submit vs next
+                submit_btn = page.locator('button[aria-label*="Submit"], button:has-text("Submit application")')
+                if await submit_btn.count() > 0:
+                    if auto_submit:
+                        await self.browser_manager.human_like_click(page, 'button[aria-label*="Submit"]')
+                        await asyncio.sleep(3)
+                        self._application_count += 1
+                        return ApplicationResult(
+                            status=ApplicationStatus.SUBMITTED,
+                            message="Application submitted!",
+                            submitted_at=datetime.now()
+                        )
+                    else:
+                        # Screenshot for review
+                        screenshot_path = f"/tmp/linkedin_review_{job.id}.png"
+                        await page.screenshot(path=screenshot_path)
+                        return ApplicationResult(
+                            status=ApplicationStatus.PENDING_REVIEW,
+                            message="Ready for review",
+                            screenshot_path=screenshot_path
+                        )
+                
+                # Click Next
+                next_btn = page.locator('button[aria-label*="Continue"], button:has-text("Next")')
+                if await next_btn.count() > 0:
+                    await self.browser_manager.human_like_click(page, 'button[aria-label*="Continue"]')
+                    await self._human_delay()
+                else:
+                    break
+            
+            return ApplicationResult(
+                status=ApplicationStatus.ERROR,
+                message="Could not complete application flow"
+            )
+            
+        except Exception as e:
+            return ApplicationResult(
+                status=ApplicationStatus.ERROR,
+                message=str(e)
+            )
+            
+        finally:
+            await self.browser_manager.close_session(session.session_id)
+
+
+async def test_linkedin():
+    """Test LinkedIn adapter (requires li_at cookie)."""
+    import os
     
-    async def _detect_form_step(self, page) -> str:
-        """Detect what type of form step we're on."""
-        content = await page.content()
-        content_lower = content.lower()
-        
-        if "submitted" in content_lower or "thank you" in content_lower:
-            return "done"
-        if "review" in content_lower and "submit" in content_lower:
-            return "review"
-        if "resume" in content_lower or "cv" in content_lower:
-            return "resume"
-        if "cover letter" in content_lower:
-            return "cover_letter"
-        if "phone" in content_lower or "email" in content_lower or "contact" in content_lower:
-            return "contact_info"
-        if "question" in content_lower or "?" in content_lower:
-            return "questions"
-        
-        return "unknown"
+    li_at = os.environ.get("LINKEDIN_LI_AT")
+    if not li_at:
+        print("Set LINKEDIN_LI_AT environment variable")
+        return
     
-    async def _fill_contact_info(self, page, profile: UserProfile):
-        """Fill contact information fields."""
-        fields = {
-            "input[name*='firstName'], input[id*='firstName']": profile.first_name,
-            "input[name*='lastName'], input[id*='lastName']": profile.last_name,
-            "input[name*='email'], input[type='email']": profile.email,
-            "input[name*='phone'], input[type='tel']": profile.phone,
-        }
-        
-        for selector, value in fields.items():
-            input_el = page.locator(selector).first
-            if await input_el.count() > 0:
-                await input_el.clear()
-                await self.browser_manager.human_like_type(page, selector, value)
+    adapter = LinkedInAdapter(session_cookie=li_at)
     
-    async def _handle_resume_step(self, page, resume: Resume):
-        """Handle resume upload step."""
-        file_input = page.locator("input[type='file']").first
-        if await file_input.count() > 0:
-            await file_input.set_input_files(resume.file_path)
-            await self.browser_manager.human_like_delay(1, 2)
+    from .base import SearchConfig
+    criteria = SearchConfig(
+        roles=["software engineer"],
+        locations=["San Francisco"],
+        easy_apply_only=True,
+        posted_within_days=7
+    )
     
-    async def _fill_cover_letter(self, page, cover_letter: str):
-        """Fill cover letter text area."""
-        textarea = page.locator("textarea[name*='coverLetter'], textarea[id*='coverLetter']").first
-        if await textarea.count() > 0:
-            await textarea.fill(cover_letter)
-    
-    async def _answer_questions(self, page, profile: UserProfile):
-        """Answer screening questions."""
-        # Common yes/no questions
-        yes_no_questions = {
-            "authorized": profile.work_authorization,
-            "sponsorship": profile.sponsorship_required,
-            "background check": "Yes",
-            "drug test": "Yes",
-        }
-        
-        # Find radio buttons or selects
-        for keyword, answer in yes_no_questions.items():
-            label = page.locator(f"label:has-text('{keyword}')").first
-            if await label.count() > 0:
-                # Try to find associated input
-                radio = page.locator(f"input[type='radio'][value='{answer}']").first
-                if await radio.count() > 0:
-                    await radio.click()
-        
-        # Handle text inputs for years of experience, etc.
-        exp_input = page.locator("input[name*='experience'], input[id*='years']").first
-        if await exp_input.count() > 0 and profile.years_experience:
-            await exp_input.fill(str(profile.years_experience))
+    try:
+        jobs = await adapter.search_jobs(criteria)
+        print(f"Found {len(jobs)} Easy Apply jobs")
+        for job in jobs[:5]:
+            print(f"  - {job.title} at {job.company}")
+    finally:
+        await adapter.close()
+
+
+if __name__ == "__main__":
+    asyncio.run(test_linkedin())
