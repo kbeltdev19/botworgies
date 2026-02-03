@@ -4,35 +4,25 @@ LinkedIn Job Board Handler
 Handles LinkedIn job pages - extracts job details and detects Easy Apply vs external apply
 """
 
+import asyncio
 from typing import Optional
-from playwright.async_api import Page
 from ..models import ATSPlatform, ApplicationResult, UserProfile
 from ..browserbase_manager import BrowserBaseManager
-from .base import BaseHandler
-import asyncio
+from .base_handler import BaseATSHandler
 
 
-class LinkedInHandler(BaseHandler):
+class LinkedInHandler(BaseATSHandler):
     """Handler for LinkedIn job board"""
     
+    IDENTIFIERS = ['linkedin.com/jobs/view', 'linkedin.com/jobs/cmp', 'linkedin.com/job/view']
     PLATFORM = ATSPlatform.LINKEDIN
-    
-    # URL patterns that indicate LinkedIn
-    URL_PATTERNS = [
-        "linkedin.com/jobs/view",
-        "linkedin.com/jobs/cmp",
-        "linkedin.com/job/view",
-    ]
-    
-    def __init__(self, browser: BrowserBaseManager, profile: UserProfile, ai_client=None):
-        super().__init__(browser, profile, ai_client)
     
     async def can_handle(self, url: str) -> bool:
         """Check if URL is a LinkedIn job page"""
         url_lower = url.lower()
-        return any(pattern in url_lower for pattern in self.URL_PATTERNS)
+        return any(id in url_lower for id in self.IDENTIFIERS)
     
-    async def apply(self, job_url: str, auto_submit: bool = False) -> ApplicationResult:
+    async def apply(self, job_url: str) -> ApplicationResult:
         """
         Apply to a LinkedIn job
         
@@ -47,7 +37,7 @@ class LinkedInHandler(BaseHandler):
             
             print(f"Navigating to LinkedIn job: {job_url}")
             await page.goto(job_url, wait_until="domcontentloaded", timeout=30000)
-            await asyncio.sleep(3)  # Let page settle
+            await asyncio.sleep(3)
             
             # Check for Easy Apply button
             easy_apply_selectors = [
@@ -64,12 +54,14 @@ class LinkedInHandler(BaseHandler):
                         text = await button.text_content() or ""
                         if "easy" in text.lower():
                             print("Found LinkedIn Easy Apply button")
-                            # LinkedIn Easy Apply is complex - requires login
                             return ApplicationResult(
                                 success=False,
                                 status="easy_apply_requires_login",
-                                message="LinkedIn Easy Apply requires LinkedIn login - not automated",
-                                platform=ATSPlatform.LINKEDIN
+                                error_message="LinkedIn Easy Apply requires LinkedIn login - not automated",
+                                platform=ATSPlatform.LINKEDIN,
+                                job_id=job_url,
+                                job_url=job_url,
+                                session_id=session["session_id"]
                             )
                 except:
                     continue
@@ -92,19 +84,24 @@ class LinkedInHandler(BaseHandler):
                             return ApplicationResult(
                                 success=False,
                                 status="redirect",
-                                message=f"Redirect to company ATS: {href}",
+                                error_message=f"Redirect to company ATS: {href}",
                                 platform=ATSPlatform.LINKEDIN,
+                                job_id=job_url,
+                                job_url=job_url,
+                                session_id=session["session_id"],
                                 redirect_url=href
                             )
                 except:
                     continue
             
-            # If we get here, couldn't determine application method
             return ApplicationResult(
                 success=False,
                 status="unknown_format",
-                message="Could not detect application method on LinkedIn page",
-                platform=ATSPlatform.LINKEDIN
+                error_message="Could not detect application method on LinkedIn page",
+                platform=ATSPlatform.LINKEDIN,
+                job_id=job_url,
+                job_url=job_url,
+                session_id=session["session_id"]
             )
             
         except Exception as e:
@@ -112,57 +109,12 @@ class LinkedInHandler(BaseHandler):
             return ApplicationResult(
                 success=False,
                 status="error",
-                message=str(e),
-                platform=ATSPlatform.LINKEDIN
+                error_message=str(e),
+                platform=ATSPlatform.LINKEDIN,
+                job_id=job_url,
+                job_url=job_url,
+                session_id=session["session_id"] if session else None
             )
-        finally:
-            if session:
-                await self.browser.close_session(session["session_id"])
-    
-    async def get_job_details(self, job_url: str) -> dict:
-        """Extract job details from LinkedIn page"""
-        session = None
-        try:
-            session = await self.browser.create_stealth_session(platform="linkedin")
-            page = session["page"]
-            
-            await page.goto(job_url, wait_until="domcontentloaded", timeout=30000)
-            await asyncio.sleep(2)
-            
-            details = {
-                "title": "",
-                "company": "",
-                "location": "",
-                "description": ""
-            }
-            
-            # Try to extract job title
-            title_selectors = ['h1', '[data-testid="job-title"]', '.jobs-unified-top-card__job-title']
-            for sel in title_selectors:
-                try:
-                    el = await page.query_selector(sel)
-                    if el:
-                        details["title"] = await el.text_content() or ""
-                        break
-                except:
-                    continue
-            
-            # Try to extract company
-            company_selectors = ['[data-testid="company-name"]', '.jobs-unified-top-card__company-name']
-            for sel in company_selectors:
-                try:
-                    el = await page.query_selector(sel)
-                    if el:
-                        details["company"] = await el.text_content() or ""
-                        break
-                except:
-                    continue
-            
-            return details
-            
-        except Exception as e:
-            print(f"Error getting LinkedIn job details: {e}")
-            return {}
         finally:
             if session:
                 await self.browser.close_session(session["session_id"])

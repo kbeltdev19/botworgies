@@ -91,6 +91,7 @@ class ApplicationResult:
     total_fields: int = 0
     session_id: Optional[str] = None
     duration_seconds: float = 0.0
+    redirect_url: Optional[str] = None  # For job board redirects to external ATS
     
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -103,7 +104,8 @@ class ApplicationResult:
             'error_message': self.error_message,
             'fields_filled': self.fields_filled,
             'total_fields': self.total_fields,
-            'duration_seconds': self.duration_seconds
+            'duration_seconds': self.duration_seconds,
+            'redirect_url': self.redirect_url
         }
 
 

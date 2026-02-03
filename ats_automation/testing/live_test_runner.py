@@ -38,6 +38,7 @@ class TestMetrics:
     fields_filled: int = 0
     total_fields: int = 0
     error_message: Optional[str] = None
+    confirmation_number: Optional[str] = None
     timestamp: datetime = field(default_factory=datetime.now)
 
 
