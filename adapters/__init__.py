@@ -21,6 +21,7 @@ from .workday import WorkdayAdapter
 from .lever import LeverAdapter
 from .company import CompanyWebsiteAdapter
 from .clearancejobs import ClearanceJobsAdapter
+from .rss_adapter import RSSAdapter
 
 
 # Platform URL patterns for detection
@@ -51,6 +52,7 @@ ADAPTERS = {
     "lever": LeverAdapter,
     "clearancejobs": ClearanceJobsAdapter,
     "company": CompanyWebsiteAdapter,
+    "rss": RSSAdapter,
 }
 
 

@@ -90,43 +90,140 @@ class IndeedAdapter(JobPlatformAdapter):
         """Extract job postings from Indeed search results."""
         jobs = []
         
-        cards = await page.locator('.job_seen_beacon, .resultContent, [data-testid="job-card"]').all()
+        # Try multiple card selectors - Indeed changes these frequently
+        card_selectors = [
+            '.mosaic-provider-jobcards .slider_item',
+            '.job_seen_beacon',
+            'div[data-testid="job-card"]',
+            '.resultContent',
+            'li[data-resultid]',
+        ]
+        
+        cards = []
+        for selector in card_selectors:
+            cards = await page.locator(selector).all()
+            if cards:
+                print(f"   Using selector: {selector} ({len(cards)} cards)")
+                break
+        
+        if not cards:
+            # Fallback: try to find job links directly
+            job_links = await page.locator('a[data-jk]').all()
+            print(f"   Fallback: found {len(job_links)} job links")
+            
+            for link in job_links[:20]:  # Limit to 20
+                try:
+                    href = await link.get_attribute('href')
+                    jk = await link.get_attribute('data-jk')
+                    title = await link.inner_text()
+                    
+                    if href and title:
+                        if not href.startswith('http'):
+                            href = f"https://www.indeed.com{href}"
+                        
+                        jobs.append(JobPosting(
+                            id=jk or f"indeed-{len(jobs)}",
+                            platform=self.platform,
+                            title=title.strip(),
+                            company="(see details)",
+                            location="",
+                            url=href,
+                            easy_apply=False,
+                            remote=False
+                        ))
+                except Exception as e:
+                    print(f"   Link extraction error: {e}")
+                    continue
+            
+            return jobs
         
         for card in cards:
             try:
-                # Job title
-                title_el = card.locator('[data-testid="jobTitle"], .jobTitle, h2 a').first
-                title = await title_el.inner_text() if await title_el.count() > 0 else ""
+                # Job title - try multiple selectors
+                title = ""
+                title_selectors = [
+                    'h2 span[title]',
+                    'h2 a span',
+                    'h2 span',
+                    'h2 a',
+                    '[data-testid="jobTitle"]',
+                    '.jobTitle',
+                    'a[data-jk] span',
+                ]
+                for sel in title_selectors:
+                    title_el = card.locator(sel).first
+                    if await title_el.count() > 0:
+                        title = await title_el.inner_text()
+                        if title:
+                            break
                 
-                # Company
-                company_el = card.locator('[data-testid="company-name"], .companyName').first
-                company = await company_el.inner_text() if await company_el.count() > 0 else ""
+                # Company - try multiple selectors
+                company = ""
+                company_selectors = [
+                    '[data-testid="company-name"]',
+                    '.companyName',
+                    'span.css-63koeb',
+                    'span[data-testid="company-name"]',
+                ]
+                for sel in company_selectors:
+                    comp_el = card.locator(sel).first
+                    if await comp_el.count() > 0:
+                        company = await comp_el.inner_text()
+                        if company:
+                            break
                 
                 # Location
-                loc_el = card.locator('[data-testid="text-location"], .companyLocation').first
-                location = await loc_el.inner_text() if await loc_el.count() > 0 else ""
+                location = ""
+                loc_selectors = [
+                    '[data-testid="text-location"]',
+                    '.companyLocation',
+                    'div[data-testid="text-location"]',
+                ]
+                for sel in loc_selectors:
+                    loc_el = card.locator(sel).first
+                    if await loc_el.count() > 0:
+                        location = await loc_el.inner_text()
+                        if location:
+                            break
                 
-                # URL
-                link = card.locator('a').first
-                href = await link.get_attribute('href') if await link.count() > 0 else ""
+                # URL - find job link
+                href = ""
+                link = card.locator('a[data-jk], a[href*="/rc/clk"], a[href*="/viewjob"]').first
+                if await link.count() > 0:
+                    href = await link.get_attribute('href')
+                else:
+                    # Try any link in the card
+                    link = card.locator('a').first
+                    if await link.count() > 0:
+                        href = await link.get_attribute('href')
+                
                 if href and not href.startswith('http'):
                     href = f"https://www.indeed.com{href}"
                 
                 # Easy Apply check
-                easy_apply = await card.locator('span:has-text("Easily apply")').count() > 0
+                easy_apply = await card.locator('span:has-text("Easily apply"), .iaLabel').count() > 0
                 
-                if title and company:
+                # Extract job key from URL or data attribute
+                jk = ""
+                jk_el = card.locator('a[data-jk]').first
+                if await jk_el.count() > 0:
+                    jk = await jk_el.get_attribute('data-jk') or ""
+                if not jk and 'jk=' in href:
+                    jk = href.split('jk=')[1].split('&')[0]
+                
+                if title:  # Only require title, company might be missing
                     jobs.append(JobPosting(
-                        id=href.split('jk=')[1].split('&')[0] if 'jk=' in href else f"{title}-{company}"[:50],
+                        id=jk or f"{title}-{company}"[:50],
                         platform=self.platform,
                         title=title.strip(),
-                        company=company.strip(),
-                        location=location.strip(),
+                        company=company.strip() if company else "(company hidden)",
+                        location=location.strip() if location else "",
                         url=href,
                         easy_apply=easy_apply,
-                        remote="remote" in location.lower()
+                        remote="remote" in location.lower() if location else False
                     ))
-            except:
+            except Exception as e:
+                print(f"   Card extraction error: {e}")
                 continue
         
         return jobs

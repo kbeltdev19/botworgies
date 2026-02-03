@@ -270,17 +270,41 @@ class StealthBrowserManager:
 
         await self.human_like_delay(0.5, 1.5)
 
-    async def wait_for_cloudflare(self, page: Page, timeout: int = 30):
+    async def wait_for_cloudflare(self, page: Page, timeout: int = 15):
         """Wait for Cloudflare challenge to complete."""
         start_time = asyncio.get_event_loop().time()
+        
+        # Known Cloudflare challenge indicators
+        challenge_indicators = [
+            "just a moment",
+            "checking your browser",
+            "please wait",
+            "cloudflare",
+            "ddos protection",
+            "verify you are human",
+        ]
 
         while asyncio.get_event_loop().time() - start_time < timeout:
-            title = await page.title()
-            if "moment" not in title.lower() and "cloudflare" not in title.lower():
-                return True
-            print("[Browser] Waiting for Cloudflare...")
-            await asyncio.sleep(2)
+            try:
+                title = await page.title()
+                title_lower = title.lower()
+                
+                # Check if we're past the challenge
+                is_challenged = any(ind in title_lower for ind in challenge_indicators)
+                
+                if not is_challenged:
+                    # Also check for challenge div
+                    challenge_div = page.locator('#challenge-running, #cf-wrapper, .cf-browser-verification').first
+                    if await challenge_div.count() == 0:
+                        return True
+                
+                print(f"[Browser] Waiting for Cloudflare... (title: {title[:40]})")
+                await asyncio.sleep(2)
+            except Exception as e:
+                print(f"[Browser] Cloudflare check error: {e}")
+                await asyncio.sleep(1)
 
+        print("[Browser] Cloudflare timeout - proceeding anyway")
         return False
 
     async def solve_captcha(self, page: Page, captcha_type: str = "auto") -> bool:

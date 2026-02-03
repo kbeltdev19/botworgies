@@ -24,6 +24,8 @@ class PlatformType(str, Enum):
     SMARTRECRUITERS = "smartrecruiters"
     COMPANY_WEBSITE = "company"  # Generic company career pages
     EXTERNAL = "external"  # External/unknown ATS
+    RSS = "rss"  # RSS feed aggregator
+    DICE = "dice"  # Dice.com
 
 
 class ApplicationStatus(str, Enum):

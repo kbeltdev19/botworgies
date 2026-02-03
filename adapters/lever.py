@@ -1,9 +1,9 @@
 """
-Lever ATS Adapter
-Handles applications on Lever-powered job pages.
-Lever is used by many startups and tech companies.
+Lever Adapter - Tier 1 (API-Based)
+Public JSON API, no browser needed.
 """
 
+import aiohttp
 import asyncio
 from typing import List, Optional
 from datetime import datetime
@@ -14,65 +14,120 @@ from .base import (
 )
 
 
+# Popular companies using Lever
+DEFAULT_LEVER_COMPANIES = [
+    "netflix", "twitch", "lyft", "spotify", "cloudflare",
+    "databricks", "dbt-labs", "hashicorp", "pulumi", "temporal",
+    "cockroachlabs", "materialize", "singlestore", "neon", "supabase",
+    "railway", "render", "fly", "modal", "replicate",
+]
+
+
 class LeverAdapter(JobPlatformAdapter):
     """
-    Lever ATS adapter.
-    URLs typically look like: https://jobs.lever.co/company/job-id
-    Lever has relatively simple single-page forms.
+    Lever job board adapter.
+    Uses public JSON API - no browser needed.
     """
     
     platform = PlatformType.LEVER
+    tier = "api"
+    
+    def __init__(self, browser_manager=None, companies: List[str] = None):
+        super().__init__(browser_manager)
+        self.companies = companies or DEFAULT_LEVER_COMPANIES
+        self._session = None
+    
+    async def _get_session(self):
+        if not self._session:
+            self._session = aiohttp.ClientSession(
+                headers={"User-Agent": "Mozilla/5.0 (compatible; JobBot/1.0)"}
+            )
+        return self._session
+    
+    async def close(self):
+        if self._session:
+            await self._session.close()
+            self._session = None
     
     async def search_jobs(self, criteria: SearchConfig) -> List[JobPosting]:
-        """
-        Lever doesn't have central search.
-        Use company-specific URLs: https://jobs.lever.co/company
-        """
-        return []
+        """Search Lever job boards across multiple companies."""
+        session = await self._get_session()
+        all_jobs = []
+        
+        for company in self.companies:
+            try:
+                url = f"https://api.lever.co/v0/postings/{company}?mode=json"
+                
+                async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as resp:
+                    if resp.status != 200:
+                        continue
+                    
+                    jobs = await resp.json()
+                    
+                    for job in jobs:
+                        title = job.get("text", "").lower()
+                        location = job.get("categories", {}).get("location", "").lower()
+                        
+                        # Filter by role keywords
+                        if not any(kw.lower() in title for kw in criteria.roles):
+                            continue
+                        
+                        # Filter by location if specified
+                        if criteria.locations:
+                            if not any(loc.lower() in location or "remote" in location 
+                                      for loc in criteria.locations):
+                                continue
+                        
+                        all_jobs.append(JobPosting(
+                            id=f"lever_{job['id']}",
+                            platform=self.platform,
+                            title=job.get("text", ""),
+                            company=company.replace("-", " ").title(),
+                            location=job.get("categories", {}).get("location", ""),
+                            url=job.get("hostedUrl", job.get("applyUrl", "")),
+                            description=job.get("descriptionPlain", ""),
+                            easy_apply=True,
+                            remote="remote" in location
+                        ))
+                
+                await asyncio.sleep(0.2)
+                
+            except Exception as e:
+                print(f"[Lever] Error fetching {company}: {e}")
+                continue
+        
+        print(f"[Lever] Found {len(all_jobs)} jobs across {len(self.companies)} companies")
+        return all_jobs
     
     async def get_job_details(self, job_url: str) -> JobPosting:
-        """Get job details from a Lever job page."""
-        session = await self.get_session()
-        page = session.page
+        """Get full job details from Lever."""
+        session = await self._get_session()
         
-        await page.goto(job_url, wait_until="domcontentloaded", timeout=60000)
-        await self.browser_manager.human_like_delay(2, 3)
+        # Extract job ID from URL
+        # Format: https://jobs.lever.co/{company}/{id}
+        parts = job_url.rstrip("/").split("/")
+        job_id = parts[-1]
+        company = parts[-2] if len(parts) >= 2 else "unknown"
         
-        title = ""
-        company = ""
-        location = ""
-        description = ""
+        url = f"https://api.lever.co/v0/postings/{company}/{job_id}"
         
-        # Job title
-        title_el = page.locator('h2, .posting-headline h2').first
-        if await title_el.count() > 0:
-            title = await title_el.inner_text()
-        
-        # Company - from URL: jobs.lever.co/COMPANY/...
-        if 'lever.co/' in job_url:
-            parts = job_url.split('lever.co/')[1].split('/')
-            company = parts[0].replace('-', ' ').title()
-        
-        # Location
-        loc_el = page.locator('.location, .posting-categories .workplaceTypes, .commitment').first
-        if await loc_el.count() > 0:
-            location = await loc_el.inner_text()
-        
-        # Description
-        desc_el = page.locator('.posting-content, [data-qa="job-description"]').first
-        if await desc_el.count() > 0:
-            description = await desc_el.inner_text()
-        
-        return JobPosting(
-            id=job_url.split('/')[-1],
-            platform=self.platform,
-            title=title.strip(),
-            company=company.strip(),
-            location=location.strip(),
-            url=job_url,
-            description=description[:5000],
-            easy_apply=True
-        )
+        async with session.get(url) as resp:
+            if resp.status != 200:
+                raise Exception(f"Job not found: {job_url}")
+            
+            data = await resp.json()
+            
+            return JobPosting(
+                id=f"lever_{job_id}",
+                platform=self.platform,
+                title=data.get("text", ""),
+                company=company.replace("-", " ").title(),
+                location=data.get("categories", {}).get("location", ""),
+                url=data.get("hostedUrl", job_url),
+                description=data.get("descriptionPlain", ""),
+                easy_apply=True,
+                remote="remote" in data.get("categories", {}).get("location", "").lower()
+            )
     
     async def apply_to_job(
         self,
@@ -82,139 +137,34 @@ class LeverAdapter(JobPlatformAdapter):
         cover_letter: Optional[str] = None,
         auto_submit: bool = False
     ) -> ApplicationResult:
-        """Apply to a Lever job posting."""
-        session = await self.get_session()
-        page = session.page
-        
-        # Lever apply URLs are usually: job_url/apply
-        apply_url = job.url if '/apply' in job.url else f"{job.url}/apply"
-        
-        await page.goto(apply_url, wait_until="domcontentloaded", timeout=60000)
-        await self.browser_manager.human_like_delay(2, 3)
-        
-        # Fill the application form
-        # Lever forms are typically straightforward
-        
-        # Full name (Lever sometimes uses single name field)
-        name_input = page.locator('input[name="name"], input[name="full-name"]').first
-        if await name_input.count() > 0:
-            await name_input.fill(f"{profile.first_name} {profile.last_name}")
-        
-        # Email
-        email_input = page.locator('input[name="email"], input[type="email"]').first
-        if await email_input.count() > 0:
-            await email_input.fill(profile.email)
-        
-        # Phone
-        phone_input = page.locator('input[name="phone"], input[type="tel"]').first
-        if await phone_input.count() > 0:
-            await phone_input.fill(profile.phone)
-        
-        # Current company
-        company_input = page.locator('input[name="org"], input[name="company"]').first
-        if await company_input.count() > 0:
-            # Get from resume if available
-            if resume.parsed_data and resume.parsed_data.get('experience'):
-                current_company = resume.parsed_data['experience'][0].get('company', '')
-                await company_input.fill(current_company)
-        
-        # LinkedIn
-        linkedin_input = page.locator('input[name*="linkedin"], input[placeholder*="LinkedIn"]').first
-        if await linkedin_input.count() > 0 and profile.linkedin_url:
-            await linkedin_input.fill(profile.linkedin_url)
-        
-        # Resume upload
-        file_input = page.locator('input[name="resume"], input[type="file"]').first
-        if await file_input.count() > 0:
-            await file_input.set_input_files(resume.file_path)
-            await self.browser_manager.human_like_delay(1, 2)
-        
-        # Cover letter
-        cover_textarea = page.locator('textarea[name*="cover"], textarea[name="comments"]').first
-        if await cover_textarea.count() > 0 and cover_letter:
-            await cover_textarea.fill(cover_letter)
-        
-        # Handle any custom questions
-        await self._handle_custom_questions(page, profile)
-        
-        # Review before submit
-        if not auto_submit:
-            screenshot_path = f"/tmp/lever_review_{job.id}.png"
-            await page.screenshot(path=screenshot_path, full_page=True)
-            return ApplicationResult(
-                status=ApplicationStatus.PENDING_REVIEW,
-                message="Lever application ready for review",
-                screenshot_path=screenshot_path
-            )
-        
-        # Submit
-        submit_btn = page.locator('button[type="submit"], button:has-text("Submit"), .application-submit').first
-        if await submit_btn.count() > 0:
-            await self.browser_manager.human_like_click(page, 'button[type="submit"]')
-            await self.browser_manager.human_like_delay(3, 5)
-            
-            # Check for success
-            content = (await page.content()).lower()
-            if 'thank you' in content or 'received' in content or 'submitted' in content:
-                return ApplicationResult(
-                    status=ApplicationStatus.SUBMITTED,
-                    message="Application submitted",
-                    submitted_at=datetime.now()
-                )
-        
+        """Apply to Lever job."""
         return ApplicationResult(
-            status=ApplicationStatus.ERROR,
-            message="Could not confirm submission"
+            status=ApplicationStatus.EXTERNAL_APPLICATION,
+            message=f"Apply at: {job.url}",
+            external_url=job.url
         )
+
+
+async def test_lever():
+    """Test Lever adapter."""
+    from .base import SearchConfig
     
-    async def _handle_custom_questions(self, page, profile: UserProfile):
-        """Handle Lever custom questions."""
-        # Lever uses cards with custom questions
-        questions = await page.locator('.application-question, .custom-question').all()
-        
-        for q in questions:
-            try:
-                label_el = q.locator('label').first
-                if await label_el.count() == 0:
-                    continue
-                
-                question_text = (await label_el.inner_text()).lower()
-                
-                # Work authorization
-                if 'authorized' in question_text or 'legally' in question_text:
-                    select = q.locator('select').first
-                    if await select.count() > 0:
-                        await select.select_option(label='Yes')
-                    else:
-                        yes_radio = q.locator('input[value="Yes"], input[value="yes"]').first
-                        if await yes_radio.count() > 0:
-                            await yes_radio.click()
-                
-                # Sponsorship
-                elif 'sponsor' in question_text:
-                    select = q.locator('select').first
-                    if await select.count() > 0:
-                        await select.select_option(label='No')
-                    else:
-                        no_radio = q.locator('input[value="No"], input[value="no"]').first
-                        if await no_radio.count() > 0:
-                            await no_radio.click()
-                
-                # Years of experience
-                elif 'years' in question_text or 'experience' in question_text:
-                    if profile.years_experience:
-                        number_input = q.locator('input[type="number"], input[type="text"]').first
-                        if await number_input.count() > 0:
-                            await number_input.fill(str(profile.years_experience))
-                
-                # Use pre-configured answers
-                if profile.custom_answers:
-                    for key, answer in profile.custom_answers.items():
-                        if key.lower() in question_text:
-                            text_input = q.locator('input[type="text"], textarea').first
-                            if await text_input.count() > 0:
-                                await text_input.fill(str(answer))
-                            break
-                            
-            except Exception as e:
-                continue
+    adapter = LeverAdapter()
+    
+    criteria = SearchConfig(
+        roles=["software engineer", "backend", "platform"],
+        locations=["Remote"],
+        posted_within_days=30
+    )
+    
+    try:
+        jobs = await adapter.search_jobs(criteria)
+        print(f"\nFound {len(jobs)} jobs:")
+        for job in jobs[:10]:
+            print(f"  - {job.title} at {job.company} ({job.location})")
+    finally:
+        await adapter.close()
+
+
+if __name__ == "__main__":
+    asyncio.run(test_lever())
