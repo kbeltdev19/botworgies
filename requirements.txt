@@ -31,3 +31,6 @@ pytest-asyncio==0.23.3
 
 # Typing
 typing-extensions>=4.0.0
+
+# Job Scraping
+python-jobspy>=1.1.0

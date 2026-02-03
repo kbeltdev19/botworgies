@@ -1,0 +1,71 @@
+{
+  "campaign_id": "kent_le_1000_simulation",
+  "start_time": "2026-02-02T23:48:29.716022",
+  "end_time": "2026-02-02T23:48:30.023122",
+  "target_jobs": 1000,
+  "target_sessions": 100,
+  "overall_success_rate": 85.0,
+  "total_attempted": 1000,
+  "total_successful": 850,
+  "total_failed": 111,
+  "duration_seconds": 0.3071,
+  "apps_per_minute": 195376.0989905568,
+  "by_platform": {
+    "linkedin": {
+      "platform": "linkedin",
+      "total_attempts": 374,
+      "successful": 316,
+      "failed": 41,
+      "rate_limited": 17,
+      "blocked": 0,
+      "avg_duration_seconds": 0.0,
+      "min_duration_seconds": 0.0,
+      "max_duration_seconds": 0.0,
+      "success_rate": 84.49197860962568,
+      "common_errors": []
+    },
+    "indeed": {
+      "platform": "indeed",
+      "total_attempts": 322,
+      "successful": 276,
+      "failed": 35,
+      "rate_limited": 11,
+      "blocked": 0,
+      "avg_duration_seconds": 0.0,
+      "min_duration_seconds": 0.0,
+      "max_duration_seconds": 0.0,
+      "success_rate": 85.71428571428571,
+      "common_errors": []
+    },
+    "zip_recruiter": {
+      "platform": "zip_recruiter",
+      "total_attempts": 304,
+      "successful": 258,
+      "failed": 35,
+      "rate_limited": 11,
+      "blocked": 0,
+      "avg_duration_seconds": 0.0,
+      "min_duration_seconds": 0.0,
+      "max_duration_seconds": 0.0,
+      "success_rate": 84.86842105263158,
+      "common_errors": []
+    }
+  },
+  "by_failure_category": {
+    "form_error": 45,
+    "captcha": 66,
+    "timeout": 39
+  },
+  "what_worked": [
+    "indeed showed highest success rate at 85.7%",
+    "Excellent overall success rate of 85.0%",
+    "High throughput achieved: 195228.0 apps/minute",
+    "Good rate limit avoidance: only 3.9% rate limited"
+  ],
+  "what_didnt_work": [],
+  "recommendations": [
+    "Continue monitoring platform-specific success rates",
+    "A/B test different application speeds",
+    "Implement dynamic retry logic for transient failures"
+  ]
+}

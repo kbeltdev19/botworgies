@@ -1,0 +1,57 @@
+{
+  "campaign_id": "kent_le_1000_optimized",
+  "start_time": "2026-02-02T23:56:56.598187",
+  "end_time": "2026-02-03T00:00:52.476179",
+  "target_jobs": 1000,
+  "target_sessions": 100,
+  "overall_success_rate": 82.71144278606965,
+  "total_attempted": 804,
+  "total_successful": 665,
+  "total_failed": 100,
+  "duration_seconds": 235.877992,
+  "apps_per_minute": 204.51250916193996,
+  "by_platform": {
+    "indeed": {
+      "platform": "indeed",
+      "total_attempts": 405,
+      "successful": 359,
+      "failed": 30,
+      "rate_limited": 16,
+      "blocked": 0,
+      "avg_duration_seconds": 0.0,
+      "min_duration_seconds": 0.0,
+      "max_duration_seconds": 0.0,
+      "success_rate": 88.64197530864197,
+      "common_errors": []
+    },
+    "linkedin": {
+      "platform": "linkedin",
+      "total_attempts": 399,
+      "successful": 306,
+      "failed": 70,
+      "rate_limited": 23,
+      "blocked": 0,
+      "avg_duration_seconds": 0.0,
+      "min_duration_seconds": 0.0,
+      "max_duration_seconds": 0.0,
+      "success_rate": 76.69172932330827,
+      "common_errors": []
+    }
+  },
+  "by_failure_category": {
+    "timeout": 39,
+    "form_error": 100
+  },
+  "what_worked": [
+    "indeed showed highest success rate at 88.6%",
+    "Excellent overall success rate of 82.7%",
+    "High throughput achieved: 204.5 apps/minute",
+    "Good rate limit avoidance: only 4.9% rate limited"
+  ],
+  "what_didnt_work": [],
+  "recommendations": [
+    "Continue monitoring platform-specific success rates",
+    "A/B test different application speeds",
+    "Implement dynamic retry logic for transient failures"
+  ]
+}
