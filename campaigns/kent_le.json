@@ -1,0 +1,38 @@
+{
+  "campaign_id": "kent_le_2026_02",
+  "candidate": {
+    "name": "Kent Le",
+    "first_name": "Kent",
+    "last_name": "Le",
+    "email": "kle4311@gmail.com",
+    "phone": "+1 (404) 934-0630",
+    "linkedin": "",
+    "location": "Atlanta, GA"
+  },
+  "resume_path": "data/kent_le_resume.pdf",
+  "search_criteria": {
+    "roles": [
+      "Client Success Manager",
+      "Customer Success Manager",
+      "Account Manager",
+      "Sales Representative",
+      "Sales Development Representative",
+      "Business Development Representative",
+      "Account Executive",
+      "Supply Chain Analyst",
+      "Operations Coordinator"
+    ],
+    "locations": ["Remote", "Hybrid", "Auburn", "Alabama", "Atlanta", "United States"],
+    "work_types": ["remote", "hybrid", "in-person", "on-site"],
+    "keywords": ["sales", "customer success", "account", "CRM", "Salesforce", "client"],
+    "posted_within_days": 30
+  },
+  "application_settings": {
+    "max_applications": 1000,
+    "concurrent_sessions": 100,
+    "min_delay_seconds": 15,
+    "max_delay_seconds": 45
+  },
+  "status": "ready",
+  "created_at": "2026-02-03T03:42:00Z"
+}
