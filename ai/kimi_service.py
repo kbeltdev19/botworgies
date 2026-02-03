@@ -274,6 +274,47 @@ Answer:"""
 
         return response.choices[0].message.content.strip()
 
+    async def suggest_job_titles(self, resume_text: str) -> list:
+        """Suggest relevant job titles based on resume content."""
+        prompt = f"""Based on this resume, suggest 8-10 job titles that would be a good fit for this candidate.
+Consider their experience, skills, and career trajectory.
+
+RESUME:
+{resume_text[:3000]}
+
+Return ONLY a JSON array of job title strings, ordered by relevance.
+Include both their current level and potential growth roles.
+Mix specific titles and broader categories.
+
+Example format:
+["Software Engineer", "Senior Software Engineer", "Full Stack Developer", "Technical Lead", "Engineering Manager"]
+
+Return the JSON array now:"""
+
+        try:
+            response = await self._chat_completion(
+                messages=[{"role": "user", "content": prompt}],
+                response_format={"type": "json_object"},
+                temperature=0.5,
+                max_tokens=300
+            )
+            
+            result = json.loads(response.choices[0].message.content)
+            # Handle both {"titles": [...]} and [...] formats
+            if isinstance(result, list):
+                return result[:10]
+            elif isinstance(result, dict) and "titles" in result:
+                return result["titles"][:10]
+            elif isinstance(result, dict):
+                # Try to find any list in the response
+                for value in result.values():
+                    if isinstance(value, list):
+                        return value[:10]
+            return []
+        except Exception as e:
+            print(f"[Kimi] Job title suggestion failed: {e}")
+            return []
+
 
 async def test_kimi():
     """Test the Kimi service."""

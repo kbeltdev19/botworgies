@@ -382,6 +382,13 @@ async def upload_resume(
         logger.error(f"Resume parsing failed: {e}")
         parsed_data = {"error": "Parsing failed", "raw_available": True}
 
+    # Generate suggested job titles based on resume
+    suggested_titles = []
+    try:
+        suggested_titles = await kimi.suggest_job_titles(raw_text[:3000])
+    except Exception as e:
+        logger.warning(f"Job title suggestion failed: {e}")
+
     # Save to database
     await save_resume(user_id, str(file_path), raw_text, parsed_data)
 
@@ -389,13 +396,15 @@ async def upload_resume(
     user = await get_user_by_id(user_id)
     log_activity("RESUME_UPLOAD", user.get("email") if user else user_id, {
         "filename": safe_filename,
-        "size_kb": len(content) // 1024
+        "size_kb": len(content) // 1024,
+        "suggested_titles": suggested_titles[:3] if suggested_titles else []
     })
 
     return {
         "message": "Resume uploaded and parsed",
         "file_path": str(file_path),
-        "parsed_data": parsed_data
+        "parsed_data": parsed_data,
+        "suggested_titles": suggested_titles
     }
 
 

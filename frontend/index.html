@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: 2026-02-03-v4 - Speedometer UI, parallel sessions selector, batch processing -->
+<!-- Version: 2026-02-03-v5 - Auto-suggest job titles from resume, speedometer UI, parallel sessions -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -711,6 +711,8 @@
 
                 const status = document.getElementById('resume-status');
                 status.innerHTML = '';
+                
+                // Show upload success
                 const div = document.createElement('div');
                 div.className = 'p-3 bg-green-50 rounded-lg';
                 const strong = document.createElement('strong');
@@ -720,7 +722,50 @@
                 div.appendChild(strong);
                 div.appendChild(span);
                 status.appendChild(div);
-                showStatus('Resume uploaded!', 'success');
+                
+                // Show suggested job titles if available
+                if (data.suggested_titles && data.suggested_titles.length > 0) {
+                    const titlesDiv = document.createElement('div');
+                    titlesDiv.className = 'mt-3 p-3 bg-purple-50 rounded-lg';
+                    titlesDiv.innerHTML = '<strong class="text-purple-700">🎯 Suggested Job Titles:</strong>';
+                    
+                    const titlesWrap = document.createElement('div');
+                    titlesWrap.className = 'flex flex-wrap gap-2 mt-2';
+                    
+                    data.suggested_titles.forEach(title => {
+                        const chip = document.createElement('button');
+                        chip.className = 'px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm hover:bg-purple-200 transition-colors';
+                        chip.textContent = title;
+                        chip.onclick = () => {
+                            // Add to roles search field
+                            const rolesInput = document.getElementById('roles');
+                            const current = rolesInput.value.trim();
+                            if (current) {
+                                if (!current.toLowerCase().includes(title.toLowerCase())) {
+                                    rolesInput.value = current + ', ' + title;
+                                }
+                            } else {
+                                rolesInput.value = title;
+                            }
+                            chip.className = 'px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm';
+                            chip.textContent = '✓ ' + title;
+                            saveProfileToLocal();
+                        };
+                        titlesWrap.appendChild(chip);
+                    });
+                    
+                    titlesDiv.appendChild(titlesWrap);
+                    status.appendChild(titlesDiv);
+                    
+                    // Also pre-fill roles if empty
+                    const rolesInput = document.getElementById('roles');
+                    if (!rolesInput.value.trim() && data.suggested_titles.length > 0) {
+                        rolesInput.value = data.suggested_titles.slice(0, 3).join(', ');
+                        saveProfileToLocal();
+                    }
+                }
+                
+                showStatus('Resume uploaded! Click suggested titles to add them to your search.', 'success');
             } catch (err) {
                 showStatus('Upload failed: ' + err.message, 'error');
             }
