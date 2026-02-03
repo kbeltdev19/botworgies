@@ -6,7 +6,7 @@ Uses the Moonshot API with retry logic and error handling.
 import json
 import os
 import asyncio
-from typing import Optional
+from typing import Optional, List, Dict, Any
 from openai import AsyncOpenAI
 
 # Retry configuration
@@ -314,6 +314,133 @@ Return the JSON array now:"""
         except Exception as e:
             print(f"[Kimi] Job title suggestion failed: {e}")
             return []
+
+
+    async def suggest_job_titles(self, resume_text: str, count: int = 10) -> List[Dict[str, Any]]:
+        """
+        Analyze resume and suggest relevant job titles for job search.
+        
+        Args:
+            resume_text: Raw resume text
+            count: Number of job title suggestions to return
+            
+        Returns:
+            List of job title suggestions with relevance scores and reasons
+        """
+        prompt = f"""Analyze this resume and suggest the {count} most relevant job titles for this candidate.
+
+RESUME:
+{resume_text[:6000]}
+
+Return a JSON array of job title suggestions. Each suggestion should include:
+- title: The job title
+- relevance_score: Number 0-100 indicating match strength
+- reason: Brief explanation of why this title fits
+- experience_level: entry/mid/senior/executive
+- keywords: List of relevant keywords for job search
+
+Example format:
+[
+    {{
+        "title": "Customer Success Manager",
+        "relevance_score": 95,
+        "reason": "5+ years in customer-facing roles with portfolio management",
+        "experience_level": "senior",
+        "keywords": ["customer success", "account management", "retention"]
+    }},
+    ...
+]
+
+Consider:
+1. Current and past job titles
+2. Years of experience
+3. Key skills and technologies
+4. Industry experience
+5. Seniority level
+6. Management responsibilities
+
+Return ONLY the JSON array."""
+
+        try:
+            response = await self._chat_completion(
+                messages=[{"role": "user", "content": prompt}],
+                response_format={"type": "json_object"},
+                temperature=0.3
+            )
+            
+            result = json.loads(response.choices[0].message.content)
+            
+            # Handle both array and object-with-array formats
+            if isinstance(result, list):
+                return result
+            elif isinstance(result, dict) and "suggestions" in result:
+                return result["suggestions"]
+            elif isinstance(result, dict):
+                # Try to find array in values
+                for key, value in result.items():
+                    if isinstance(value, list):
+                        return value
+            
+            # Fallback
+            return [{"title": "Unable to parse suggestions", "relevance_score": 0, "reason": "Parse error"}]
+            
+        except Exception as e:
+            logger.error(f"Error suggesting job titles: {e}")
+            return [{"title": "Error", "relevance_score": 0, "reason": str(e)}]
+
+    async def suggest_job_search_config(self, resume_text: str) -> Dict[str, Any]:
+        """
+        Generate complete job search configuration based on resume.
+        
+        Returns:
+            Dict with roles, keywords, salary range, experience level
+        """
+        titles = await self.suggest_job_titles(resume_text, count=5)
+        
+        # Extract parsed data for additional context
+        parsed = await self.parse_resume(resume_text)
+        
+        years_exp = parsed.get("contact", {}).get("years_experience", 0)
+        if not years_exp:
+            # Try to calculate from experience dates
+            for exp in parsed.get("experience", []):
+                dates = exp.get("dates", "")
+                if "202" in dates or "201" in dates:
+                    years_exp = 5  # Default assumption
+                    break
+        
+        # Determine experience level
+        if years_exp >= 8:
+            exp_level = "senior"
+        elif years_exp >= 4:
+            exp_level = "mid"
+        elif years_exp >= 1:
+            exp_level = "entry"
+        else:
+            exp_level = "entry"
+        
+        # Estimate salary range based on role and experience
+        top_title = titles[0]["title"] if titles else "Professional"
+        base_salary = 60000
+        if "senior" in top_title.lower() or "director" in top_title.lower() or "manager" in top_title.lower():
+            base_salary = 100000
+        elif "lead" in top_title.lower() or "principal" in top_title.lower():
+            base_salary = 130000
+        
+        salary_multiplier = 1 + (years_exp * 0.05)
+        min_salary = int(base_salary * salary_multiplier * 0.9)
+        max_salary = int(base_salary * salary_multiplier * 1.3)
+        
+        return {
+            "suggested_roles": [t["title"] for t in titles[:5]],
+            "titles_with_scores": titles,
+            "experience_level": exp_level,
+            "years_experience": years_exp,
+            "salary_range": {"min": min_salary, "max": max_salary},
+            "keywords": list(set(sum([t.get("keywords", []) for t in titles], []))),
+            "locations": ["Remote"],  # Default, could be extracted from resume
+            "best_fit": titles[0] if titles else None
+        }
 
 
 async def test_kimi():

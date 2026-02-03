@@ -191,6 +191,25 @@
                             </label>
                         </div>
                         <div id="resume-status" class="mt-4 text-sm text-gray-600"></div>
+                        
+                        <!-- Job Title Suggestions -->
+                        <div id="title-suggestions" class="mt-4 hidden">
+                            <div class="p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg border border-purple-200">
+                                <h3 class="font-semibold text-purple-800 mb-2 flex items-center gap-2">
+                                    💡 AI Job Title Suggestions
+                                    <button onclick="loadTitleSuggestions()" class="text-xs px-2 py-1 bg-purple-100 rounded hover:bg-purple-200">Refresh</button>
+                                </h3>
+                                <div id="suggested-roles-list" class="flex flex-wrap gap-2 mb-3">
+                                    <!-- Dynamically populated -->
+                                </div>
+                                <div id="suggested-titles-details" class="space-y-2 text-sm">
+                                    <!-- Detailed suggestions -->
+                                </div>
+                                <button onclick="useSuggestedRoles()" class="mt-3 w-full py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 text-sm">
+                                    Use Suggested Roles in Search
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Profile -->
@@ -349,6 +368,66 @@
                             <tr><td colspan="5" class="px-4 py-8 text-center text-gray-500">No applications yet</td></tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+
+            <!-- Activity Log (User Visible) -->
+            <div class="card p-6 mt-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-semibold">📋 Activity Log</h2>
+                    <div class="flex gap-2">
+                        <button onclick="loadUserActivity()" class="px-3 py-1 text-sm bg-gray-100 rounded-lg hover:bg-gray-200">Refresh</button>
+                        <button onclick="toggleActivityLog()" class="px-3 py-1 text-sm bg-gray-100 rounded-lg hover:bg-gray-200">Toggle</button>
+                    </div>
+                </div>
+                <div id="activity-log-container" class="max-h-80 overflow-y-auto">
+                    <div id="activity-log-entries" class="space-y-2 text-sm">
+                        <p class="text-gray-500 text-center py-4">Activity log shows all actions performed by the system on your behalf</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Internal Testing Mode (Admin/Internal Use) -->
+            <div id="testing-mode-section" class="card p-6 mt-6 border-2 border-dashed border-amber-300 bg-amber-50">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-semibold text-amber-800">🧪 Internal Testing Mode</h2>
+                    <span class="px-2 py-1 bg-amber-200 text-amber-800 text-xs rounded-full">Internal Use Only</span>
+                </div>
+                <p class="text-sm text-amber-700 mb-4">
+                    Test job application form-filling with mock job files. No real applications are submitted.
+                </p>
+                
+                <div class="space-y-4">
+                    <div class="flex gap-4">
+                        <select id="test-folder-select" class="flex-1 px-4 py-2 border rounded-lg">
+                            <option value="">Select test folder...</option>
+                        </select>
+                        <button onclick="loadTestFolders()" class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">Refresh</button>
+                        <button onclick="createSampleJobs()" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 text-sm">Create Samples</button>
+                    </div>
+                    
+                    <div class="flex items-center gap-4">
+                        <label class="flex items-center gap-2">
+                            <input type="checkbox" id="test-auto-submit" class="rounded">
+                            <span class="text-sm">Simulate submission (still won't actually apply)</span>
+                        </label>
+                        <label class="flex items-center gap-2">
+                            <input type="checkbox" id="test-log-activity" checked class="rounded">
+                            <span class="text-sm">Log activity</span>
+                        </label>
+                    </div>
+                    
+                    <button onclick="runTestCampaign()" class="w-full py-3 bg-amber-500 text-white rounded-lg hover:bg-amber-600 font-medium">
+                        ▶️ Run Test Campaign
+                    </button>
+                </div>
+                
+                <!-- Test Results -->
+                <div id="test-results" class="mt-4 hidden">
+                    <h3 class="font-semibold mb-2">Test Results</h3>
+                    <div id="test-results-content" class="bg-white p-4 rounded-lg text-sm space-y-2 max-h-60 overflow-y-auto">
+                        <!-- Populated dynamically -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -723,7 +802,7 @@
                 div.appendChild(span);
                 status.appendChild(div);
                 
-                // Show suggested job titles if available
+                // Show suggested job titles if available from response
                 if (data.suggested_titles && data.suggested_titles.length > 0) {
                     const titlesDiv = document.createElement('div');
                     titlesDiv.className = 'mt-3 p-3 bg-purple-50 rounded-lg';
@@ -766,6 +845,9 @@
                 }
                 
                 showStatus('Resume uploaded! Click suggested titles to add them to your search.', 'success');
+                
+                // Also load detailed AI-powered title suggestions
+                setTimeout(() => loadTitleSuggestions(), 500);
             } catch (err) {
                 showStatus('Upload failed: ' + err.message, 'error');
             }
@@ -1092,11 +1174,328 @@
             document.getElementById(id)?.addEventListener('change', saveProfileToLocal);
         });
 
+        // === Job Title Suggestions ===
+        
+        let currentSuggestedRoles = [];
+        
+        async function loadTitleSuggestions() {
+            if (!authToken) return;
+            
+            try {
+                const response = await fetch(`${API_BASE}/resume/suggest-titles`, {
+                    headers: authHeaders()
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    displayTitleSuggestions(data);
+                }
+            } catch (e) {
+                console.error('Error loading title suggestions:', e);
+            }
+        }
+        
+        function displayTitleSuggestions(data) {
+            currentSuggestedRoles = data.suggested_roles || [];
+            
+            // Show the container
+            document.getElementById('title-suggestions').classList.remove('hidden');
+            
+            // Display role pills
+            const rolesList = document.getElementById('suggested-roles-list');
+            rolesList.innerHTML = '';
+            
+            data.suggested_roles.forEach((role, idx) => {
+                const pill = document.createElement('span');
+                pill.className = `px-3 py-1 rounded-full text-sm font-medium cursor-pointer transition-colors ${
+                    idx === 0 ? 'bg-purple-600 text-white' : 'bg-purple-100 text-purple-700 hover:bg-purple-200'
+                }`;
+                pill.textContent = role;
+                pill.onclick = () => {
+                    document.getElementById('roles').value = role;
+                    showStatus(`Role "${role}" set in search`, 'success');
+                };
+                rolesList.appendChild(pill);
+            });
+            
+            // Display detailed suggestions
+            const detailsContainer = document.getElementById('suggested-titles-details');
+            detailsContainer.innerHTML = '';
+            
+            if (data.titles && data.titles.length > 0) {
+                data.titles.slice(0, 3).forEach(title => {
+                    const div = document.createElement('div');
+                    div.className = 'flex items-center justify-between p-2 bg-white rounded border';
+                    div.innerHTML = `
+                        <div>
+                            <span class="font-medium">${escapeHtml(title.title)}</span>
+                            <span class="text-xs text-gray-500 ml-2">${escapeHtml(title.experience_level)}</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-16 bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: ${title.relevance_score}%"></div>
+                            </div>
+                            <span class="text-xs text-gray-600">${title.relevance_score}%</span>
+                        </div>
+                    `;
+                    detailsContainer.appendChild(div);
+                });
+            }
+            
+            // Show experience level and salary range
+            if (data.experience_level) {
+                const metaDiv = document.createElement('div');
+                metaDiv.className = 'mt-3 pt-3 border-t border-purple-200 text-xs text-purple-700';
+                metaDiv.innerHTML = `
+                    <div class="flex justify-between">
+                        <span>Experience Level: <strong>${data.experience_level}</strong></span>
+                        <span>Est. Salary: <strong>$${(data.salary_range?.min || 0).toLocaleString()} - $${(data.salary_range?.max || 0).toLocaleString()}</strong></span>
+                    </div>
+                `;
+                detailsContainer.appendChild(metaDiv);
+            }
+        }
+        
+        function useSuggestedRoles() {
+            if (currentSuggestedRoles.length === 0) return;
+            
+            const rolesInput = document.getElementById('roles');
+            rolesInput.value = currentSuggestedRoles.join(', ');
+            showStatus(`Set ${currentSuggestedRoles.length} suggested roles in search`, 'success');
+            
+            // Save to localStorage
+            saveProfileToLocal();
+        }
+        
+        // === User Activity Log ===
+        
+        let activityLogVisible = true;
+        
+        function toggleActivityLog() {
+            const container = document.getElementById('activity-log-container');
+            activityLogVisible = !activityLogVisible;
+            container.classList.toggle('hidden', !activityLogVisible);
+        }
+        
+        async function loadUserActivity() {
+            if (!authToken) return;
+            
+            try {
+                const response = await fetch(`${API_BASE}/user/activity?limit=50`, {
+                    headers: authHeaders()
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    displayActivityLog(data.activities || []);
+                }
+            } catch (e) {
+                console.error('Error loading activity log:', e);
+            }
+        }
+        
+        function displayActivityLog(activities) {
+            const container = document.getElementById('activity-log-entries');
+            
+            if (activities.length === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-center py-4">No recent activity</p>';
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            activities.forEach(activity => {
+                const div = document.createElement('div');
+                div.className = 'flex items-start gap-3 p-2 rounded hover:bg-gray-50';
+                
+                const timestamp = activity.timestamp ? new Date(activity.timestamp).toLocaleTimeString() : '-';
+                const action = activity.action || 'UNKNOWN';
+                
+                // Icon based on action type
+                let icon = '📝';
+                if (action.includes('APPLY')) icon = '🚀';
+                if (action.includes('SEARCH')) icon = '🔍';
+                if (action.includes('RESUME')) icon = '📄';
+                if (action.includes('ERROR')) icon = '❌';
+                if (action.includes('TEST')) icon = '🧪';
+                
+                div.innerHTML = `
+                    <span class="text-lg">${icon}</span>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-start">
+                            <span class="font-medium text-gray-800">${escapeHtml(action)}</span>
+                            <span class="text-xs text-gray-400">${timestamp}</span>
+                        </div>
+                        ${activity.details ? `<div class="text-xs text-gray-500 truncate">${escapeHtml(JSON.stringify(activity.details))}</div>` : ''}
+                    </div>
+                `;
+                
+                container.appendChild(div);
+            });
+        }
+        
+        // === Internal Testing Mode ===
+        
+        async function loadTestFolders() {
+            if (!authToken) return;
+            
+            try {
+                const response = await fetch(`${API_BASE}/test/list-folders`, {
+                    headers: authHeaders()
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    const select = document.getElementById('test-folder-select');
+                    
+                    // Keep first option
+                    select.innerHTML = '<option value="">Select test folder...</option>';
+                    
+                    data.folders.forEach(folder => {
+                        const option = document.createElement('option');
+                        option.value = folder.path;
+                        option.textContent = `${folder.name} (${folder.job_count} jobs)`;
+                        select.appendChild(option);
+                    });
+                    
+                    if (data.folders.length === 0) {
+                        const option = document.createElement('option');
+                        option.value = "";
+                        option.textContent = "No test folders found - create samples below";
+                        option.disabled = true;
+                        select.appendChild(option);
+                    }
+                }
+            } catch (e) {
+                console.error('Error loading test folders:', e);
+                showStatus('Error loading test folders', 'error');
+            }
+        }
+        
+        async function createSampleJobs() {
+            if (!authToken) return;
+            
+            try {
+                const response = await fetch(`${API_BASE}/test/create-sample-jobs?folder_name=sample_jobs`, {
+                    method: 'POST',
+                    headers: authHeaders()
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    showStatus(`Created ${data.files.length} sample job files`, 'success');
+                    loadTestFolders();
+                } else {
+                    showStatus('Failed to create sample jobs', 'error');
+                }
+            } catch (e) {
+                console.error('Error creating sample jobs:', e);
+                showStatus('Error creating sample jobs', 'error');
+            }
+        }
+        
+        async function runTestCampaign() {
+            if (!authToken) return;
+            
+            const folderPath = document.getElementById('test-folder-select').value;
+            if (!folderPath) {
+                showStatus('Please select a test folder', 'error');
+                return;
+            }
+            
+            const autoSubmit = document.getElementById('test-auto-submit').checked;
+            const logActivity = document.getElementById('test-log-activity').checked;
+            
+            showStatus('Running test campaign...', 'info');
+            
+            try {
+                const response = await fetch(`${API_BASE}/test/apply-folder`, {
+                    method: 'POST',
+                    headers: authHeaders(),
+                    body: JSON.stringify({
+                        job_folder_path: folderPath,
+                        auto_submit: autoSubmit,
+                        log_activity: logActivity
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    displayTestResults(data);
+                    loadUserActivity(); // Refresh activity log
+                    showStatus(`Test complete: ${data.successful}/${data.total_jobs} jobs processed`, 'success');
+                } else {
+                    const error = await response.json();
+                    showStatus(error.detail || 'Test campaign failed', 'error');
+                }
+            } catch (e) {
+                console.error('Error running test campaign:', e);
+                showStatus('Error running test campaign', 'error');
+            }
+        }
+        
+        function displayTestResults(data) {
+            const container = document.getElementById('test-results');
+            const content = document.getElementById('test-results-content');
+            
+            container.classList.remove('hidden');
+            
+            let html = `
+                <div class="flex justify-between items-center p-2 bg-gray-100 rounded">
+                    <span><strong>Test ID:</strong> ${escapeHtml(data.test_id)}</span>
+                    <span class="text-green-600 font-bold">${data.successful}/${data.total_jobs} ✓</span>
+                </div>
+                <div class="text-sm text-gray-600">${escapeHtml(data.summary)}</div>
+                <div class="space-y-2 mt-3">
+            `;
+            
+            data.results.forEach((result, idx) => {
+                const statusColor = result.status === 'dry_run_success' ? 'text-green-600' : 
+                                   result.status === 'failed' ? 'text-red-600' : 'text-blue-600';
+                const statusIcon = result.status === 'dry_run_success' ? '✓' : 
+                                  result.status === 'failed' ? '✗' : '→';
+                
+                html += `
+                    <div class="p-2 border rounded ${result.status === 'failed' ? 'bg-red-50' : 'bg-white'}">
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium">${idx + 1}. ${escapeHtml(result.job_title)} @ ${escapeHtml(result.company)}</span>
+                            <span class="${statusColor}">${statusIcon} ${escapeHtml(result.status)}</span>
+                        </div>
+                        <div class="text-xs text-gray-500 mt-1">
+                            Fields filled: ${result.form_fields_filled}/${result.form_fields_total}
+                            ${result.errors.length > 0 ? `<span class="text-red-500 ml-2">Errors: ${result.errors.join(', ')}</span>` : ''}
+                        </div>
+                        ${result.activity_log.length > 0 ? `
+                            <div class="mt-2 pl-3 border-l-2 border-gray-200 text-xs text-gray-600">
+                                ${result.activity_log.slice(0, 5).map(log => `
+                                    <div>• ${escapeHtml(log.action)}: ${escapeHtml(JSON.stringify(log).substring(0, 100))}</div>
+                                `).join('')}
+                                ${result.activity_log.length > 5 ? `<div class="text-gray-400">+ ${result.activity_log.length - 5} more actions</div>` : ''}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            content.innerHTML = html;
+        }
+
         // Initialize
         if (typeof checkAuth === 'function') checkAuth();
         loadProfileFromLocal();
         setInterval(loadRateLimitStatus, 60000);
         setInterval(loadApplications, 30000);
+        setInterval(loadUserActivity, 30000); // Refresh activity log every 30s
+        
+        // Load initial data after auth check
+        setTimeout(() => {
+            if (authToken) {
+                loadUserActivity();
+                loadTestFolders();
+                loadTitleSuggestions();
+            }
+        }, 1000);
     </script>
 </body>
 </html>

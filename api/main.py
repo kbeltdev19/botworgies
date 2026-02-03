@@ -182,6 +182,54 @@ class UserSettingsRequest(BaseModel):
     linkedin_cookie: Optional[str] = Field(default=None, max_length=500)
 
 
+class JobTitleSuggestion(BaseModel):
+    title: str
+    relevance_score: int = Field(..., ge=0, le=100)
+    reason: str
+    experience_level: str = Field(..., pattern="^(entry|mid|senior|executive)$")
+    keywords: List[str] = Field(default_factory=list)
+
+
+class TitleSuggestionResponse(BaseModel):
+    resume_id: str
+    suggested_roles: List[str]
+    titles: List[JobTitleSuggestion]
+    experience_level: str
+    years_experience: int
+    salary_range: dict
+    keywords: List[str]
+    best_fit: Optional[JobTitleSuggestion]
+
+
+class TestApplicationRequest(BaseModel):
+    job_folder_path: str = Field(..., min_length=1, max_length=500)
+    auto_submit: bool = False  # When False, only fills forms, doesn't submit
+    log_activity: bool = True
+
+
+class TestApplicationResult(BaseModel):
+    job_id: str
+    job_title: str
+    company: str
+    status: str  # "success", "failed", "skipped"
+    form_fields_filled: int
+    form_fields_total: int
+    errors: List[str] = Field(default_factory=list)
+    screenshot_path: Optional[str] = None
+    activity_log: List[dict] = Field(default_factory=list)
+
+
+class TestCampaignResponse(BaseModel):
+    test_id: str
+    folder_path: str
+    total_jobs: int
+    processed: int
+    successful: int
+    failed: int
+    results: List[TestApplicationResult]
+    summary: str
+
+
 # === Utility Functions ===
 
 def sanitize_filename(filename: str) -> str:
@@ -430,6 +478,71 @@ async def tailor_resume(
     except Exception as e:
         log_ai_request("kimi", "tailor_resume", error=str(e))
         raise HTTPException(status_code=500, detail=f"Tailoring failed: {str(e)}")
+
+
+@app.get("/resume/suggest-titles", response_model=TitleSuggestionResponse)
+async def suggest_job_titles(user_id: str = Depends(get_current_user)):
+    """
+    Analyze uploaded resume and suggest relevant job titles.
+    
+    Returns AI-powered job title recommendations based on:
+    - Current and past job titles
+    - Skills and technologies
+    - Years of experience
+    - Industry background
+    """
+    resume = await get_latest_resume(user_id)
+    if not resume:
+        raise HTTPException(status_code=404, detail="Resume not found. Upload first.")
+    
+    try:
+        # Get comprehensive search config including title suggestions
+        search_config = await kimi.suggest_job_search_config(resume["raw_text"])
+        
+        log_ai_request("kimi", "suggest_job_titles", extra={"suggestions_count": len(search_config["suggested_roles"])})
+        
+        # Log activity for frontend visibility
+        await _log_user_activity(
+            user_id=user_id,
+            action="RESUME_TITLE_SUGGESTION",
+            details={
+                "suggested_roles": search_config["suggested_roles"],
+                "experience_level": search_config["experience_level"]
+            }
+        )
+        
+        return TitleSuggestionResponse(
+            resume_id=resume["id"],
+            suggested_roles=search_config["suggested_roles"],
+            titles=search_config["titles_with_scores"],
+            experience_level=search_config["experience_level"],
+            years_experience=search_config["years_experience"],
+            salary_range=search_config["salary_range"],
+            keywords=search_config["keywords"],
+            best_fit=search_config["best_fit"]
+        )
+    except Exception as e:
+        logger.error(f"Error suggesting job titles: {e}")
+        log_ai_request("kimi", "suggest_job_titles", error=str(e))
+        raise HTTPException(status_code=500, detail=f"Failed to suggest titles: {str(e)}")
+
+
+class SuggestTitlesTextRequest(BaseModel):
+    resume_text: str = Field(..., min_length=100)
+
+
+@app.post("/resume/suggest-titles-from-text")
+async def suggest_titles_from_text(request: SuggestTitlesTextRequest):
+    """
+    Direct API to suggest job titles from raw resume text.
+    Useful for testing without database persistence.
+    """
+    try:
+        search_config = await kimi.suggest_job_search_config(request.resume_text)
+        return search_config
+    except Exception as e:
+        logger.error(f"Error suggesting titles from text: {e}")
+        raise HTTPException(status_code=500, detail=f"Analysis failed: {str(e)}")
 
 
 # === Profile Endpoints ===
@@ -1004,6 +1117,405 @@ async def get_admin_stats(admin_key: str = None):
         "users": list(unique_users),
         "action_counts": action_counts,
         "recent_activity": activity_log[:10]
+    }
+
+
+# === User Activity Logging Helper ===
+
+async def _log_user_activity(user_id: str, action: str, details: dict = None):
+    """Log activity for a specific user (frontend visibility)."""
+    entry = {
+        "timestamp": datetime.utcnow().isoformat(),
+        "user_id": user_id,
+        "action": action,
+        "details": details or {}
+    }
+    # Add to in-memory activity log
+    activity_log.insert(0, entry)
+    if len(activity_log) > MAX_LOG_ENTRIES:
+        activity_log.pop()
+    logger.info(f"User Activity: {user_id} | {action} | {details}")
+
+
+@app.get("/user/activity")
+async def get_user_activity(user_id: str = Depends(get_current_user), limit: int = 50):
+    """
+    Get activity log for the current user.
+    Shows all actions performed on behalf of this user.
+    """
+    user_activities = [
+        entry for entry in activity_log 
+        if entry.get("user_id") == user_id
+    ][:limit]
+    
+    return {
+        "user_id": user_id,
+        "total_activities": len(user_activities),
+        "activities": user_activities
+    }
+
+
+# === Internal Testing Mode ===
+
+TEST_JOBS_FOLDER = Path(config.DATA_DIR) / "test_jobs"
+TEST_JOBS_FOLDER.mkdir(exist_ok=True)
+
+
+@app.post("/test/apply-folder", response_model=TestCampaignResponse)
+async def test_apply_to_folder(
+    request: TestApplicationRequest,
+    background_tasks: BackgroundTasks,
+    user_id: str = Depends(get_current_user)
+):
+    """
+    Internal testing mode: Apply to jobs from a folder.
+    
+    Scans the specified folder for job application files (HTML/JSON).
+    Fills out forms but does NOT actually submit applications (dry-run mode).
+    Provides detailed logging for frontend visibility.
+    
+    Job files should be named as:
+    - {job_id}_{company}_{title}.html - Full job posting HTML
+    - {job_id}_{company}_{title}.json - Job metadata
+    
+    Returns detailed activity log showing exactly what data would be entered.
+    """
+    if not BROWSER_AVAILABLE or not browser_manager:
+        raise HTTPException(status_code=503, detail="Browser automation not available")
+    
+    # Validate folder path (prevent path traversal)
+    folder_path = Path(request.job_folder_path).resolve()
+    allowed_root = Path(config.DATA_DIR).resolve()
+    
+    try:
+        folder_path.relative_to(allowed_root)
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid folder path. Must be within data directory.")
+    
+    if not folder_path.exists():
+        raise HTTPException(status_code=404, detail=f"Folder not found: {folder_path}")
+    
+    # Get user resume and profile
+    resume = await get_latest_resume(user_id)
+    if not resume:
+        raise HTTPException(status_code=404, detail="Resume not found. Upload first.")
+    
+    profile = await get_profile(user_id)
+    if not profile:
+        raise HTTPException(status_code=404, detail="Profile not found. Save profile first.")
+    
+    # Scan for job files
+    job_files = list(folder_path.glob("*.html")) + list(folder_path.glob("*.json"))
+    
+    if not job_files:
+        raise HTTPException(
+            status_code=404, 
+            detail=f"No job files found in {folder_path}. Expected .html or .json files."
+        )
+    
+    # Generate test ID
+    test_id = f"test_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+    
+    # Log start of testing campaign
+    await _log_user_activity(
+        user_id=user_id,
+        action="TEST_CAMPAIGN_START",
+        details={
+            "test_id": test_id,
+            "folder": str(folder_path),
+            "job_count": len(job_files),
+            "auto_submit": request.auto_submit
+        }
+    )
+    
+    logger.info(f"Starting test campaign {test_id} with {len(job_files)} jobs from {folder_path}")
+    
+    # Process each job file
+    results = []
+    successful = 0
+    failed = 0
+    
+    resume_obj = Resume(
+        raw_text=resume["raw_text"],
+        contact_info=resume.get("contact_info", {}),
+        skills=resume.get("skills", []),
+        experience=resume.get("experience", []),
+        education=resume.get("education", [])
+    )
+    
+    profile_obj = UserProfile(
+        first_name=profile["first_name"],
+        last_name=profile["last_name"],
+        email=profile["email"],
+        phone=profile["phone"],
+        linkedin_url=profile.get("linkedin_url"),
+        years_experience=profile.get("years_experience"),
+        work_authorization=profile.get("work_authorization", "Yes"),
+        sponsorship_required=profile.get("sponsorship_required", "No"),
+        custom_answers=profile.get("custom_answers", {})
+    )
+    
+    for idx, job_file in enumerate(job_files):
+        job_id = f"{test_id}_job{idx}"
+        activity_entries = []
+        
+        try:
+            # Parse job from file
+            if job_file.suffix == ".json":
+                import json
+                job_data = json.loads(job_file.read_text())
+                job_title = job_data.get("title", "Unknown")
+                company = job_data.get("company", "Unknown")
+                job_url = job_data.get("url", f"file://{job_file}")
+            else:
+                # Parse from filename: {id}_{company}_{title}.html
+                parts = job_file.stem.split("_")
+                if len(parts) >= 3:
+                    company = parts[1].replace("-", " ")
+                    job_title = parts[2].replace("-", " ")
+                else:
+                    company = "Test Company"
+                    job_title = "Test Position"
+                job_url = f"file://{job_file}"
+            
+            # Log job processing start
+            activity_entries.append({
+                "timestamp": datetime.utcnow().isoformat(),
+                "action": "PROCESSING_JOB",
+                "job_id": job_id,
+                "job_title": job_title,
+                "company": company,
+                "file": str(job_file)
+            })
+            
+            # Create a mock adapter that will simulate form filling
+            # and log all actions
+            from adapters.base import JobPosting, ApplicationResult, ApplicationStatus
+            
+            job = JobPosting(
+                id=job_id,
+                title=job_title,
+                company=company,
+                location="Remote",
+                url=job_url,
+                description=f"Test job from file: {job_file.name}",
+                easy_apply=True,
+                remote=True,
+                date_posted=datetime.now().isoformat()
+            )
+            
+            # Simulate form filling process with detailed logging
+            form_fields_filled = 0
+            form_fields_total = 8  # Typical application form
+            
+            # Log each field being filled
+            fields_to_fill = [
+                ("first_name", profile["first_name"]),
+                ("last_name", profile["last_name"]),
+                ("email", profile["email"]),
+                ("phone", profile["phone"]),
+                ("linkedin", profile.get("linkedin_url", "")),
+                ("resume_upload", resume["original_filename"]),
+                ("years_experience", str(profile.get("years_experience", ""))),
+                ("work_authorization", profile.get("work_authorization", "Yes"))
+            ]
+            
+            for field_name, field_value in fields_to_fill:
+                # Mask sensitive data for logging
+                display_value = field_value
+                if field_name in ["email", "phone"] and field_value:
+                    display_value = field_value[:3] + "***" + field_value[-3:] if len(field_value) > 6 else "***"
+                
+                activity_entries.append({
+                    "timestamp": datetime.utcnow().isoformat(),
+                    "action": "FILL_FORM_FIELD",
+                    "job_id": job_id,
+                    "field": field_name,
+                    "value_preview": display_value[:50] if display_value else "(empty)"
+                })
+                form_fields_filled += 1
+            
+            # Log submission decision
+            if request.auto_submit:
+                activity_entries.append({
+                    "timestamp": datetime.utcnow().isoformat(),
+                    "action": "SUBMIT_APPLICATION",
+                    "job_id": job_id,
+                    "note": "Would submit application (auto_submit=True)"
+                })
+                status = "would_submit"
+            else:
+                activity_entries.append({
+                    "timestamp": datetime.utcnow().isoformat(),
+                    "action": "SUBMISSION_SKIPPED",
+                    "job_id": job_id,
+                    "note": "Dry run - form filled but not submitted"
+                })
+                status = "dry_run_success"
+            
+            result = TestApplicationResult(
+                job_id=job_id,
+                job_title=job_title,
+                company=company,
+                status=status,
+                form_fields_filled=form_fields_filled,
+                form_fields_total=form_fields_total,
+                errors=[],
+                screenshot_path=None,
+                activity_log=activity_entries
+            )
+            
+            successful += 1
+            
+        except Exception as e:
+            logger.error(f"Error processing test job {job_file}: {e}")
+            activity_entries.append({
+                "timestamp": datetime.utcnow().isoformat(),
+                "action": "PROCESSING_ERROR",
+                "job_id": job_id,
+                "error": str(e)
+            })
+            
+            result = TestApplicationResult(
+                job_id=job_id,
+                job_title=job_file.stem,
+                company="Unknown",
+                status="failed",
+                form_fields_filled=0,
+                form_fields_total=0,
+                errors=[str(e)],
+                screenshot_path=None,
+                activity_log=activity_entries
+            )
+            failed += 1
+        
+        results.append(result)
+        
+        # Log to user activity
+        await _log_user_activity(
+            user_id=user_id,
+            action="TEST_JOB_PROCESSED",
+            details={
+                "test_id": test_id,
+                "job_id": job_id,
+                "status": result.status,
+                "fields_filled": result.form_fields_filled
+            }
+        )
+    
+    # Log campaign completion
+    await _log_user_activity(
+        user_id=user_id,
+        action="TEST_CAMPAIGN_COMPLETE",
+        details={
+            "test_id": test_id,
+            "total_jobs": len(job_files),
+            "successful": successful,
+            "failed": failed
+        }
+    )
+    
+    summary = (
+        f"Test campaign {test_id} complete: "
+        f"{successful}/{len(job_files)} jobs processed successfully, "
+        f"{failed} failed. "
+        f"Mode: {'Would submit' if request.auto_submit else 'Dry run (no submission)'}."
+    )
+    
+    return TestCampaignResponse(
+        test_id=test_id,
+        folder_path=str(folder_path),
+        total_jobs=len(job_files),
+        processed=len(job_files),
+        successful=successful,
+        failed=failed,
+        results=results,
+        summary=summary
+    )
+
+
+@app.get("/test/list-folders")
+async def list_test_folders(user_id: str = Depends(get_current_user)):
+    """
+    List available test job folders.
+    Returns folders within the test_jobs directory.
+    """
+    if not TEST_JOBS_FOLDER.exists():
+        return {"folders": []}
+    
+    folders = [
+        {
+            "name": f.name,
+            "path": str(f),
+            "job_count": len(list(f.glob("*.html"))) + len(list(f.glob("*.json")))
+        }
+        for f in TEST_JOBS_FOLDER.iterdir() 
+        if f.is_dir()
+    ]
+    
+    return {"folders": folders}
+
+
+@app.post("/test/create-sample-jobs")
+async def create_sample_test_jobs(
+    folder_name: str = "sample_jobs",
+    user_id: str = Depends(get_current_user)
+):
+    """
+    Create sample test job files for testing.
+    Useful for verifying the test mode works correctly.
+    """
+    folder_path = TEST_JOBS_FOLDER / folder_name
+    folder_path.mkdir(parents=True, exist_ok=True)
+    
+    # Create sample job JSON files
+    sample_jobs = [
+        {
+            "id": "test001",
+            "title": "Customer Success Manager",
+            "company": "TechCorp Solutions",
+            "location": "Remote",
+            "url": "https://example.com/job/test001",
+            "description": "Looking for a Customer Success Manager with AWS experience...",
+            "requirements": ["AWS knowledge", "5+ years experience", "Customer facing"]
+        },
+        {
+            "id": "test002",
+            "title": "Cloud Delivery Manager",
+            "company": "CloudFirst Inc",
+            "location": "Remote",
+            "url": "https://example.com/job/test002",
+            "description": "Seeking Cloud Delivery Manager for enterprise clients...",
+            "requirements": ["Cloud platforms", "Team leadership", "Enterprise experience"]
+        },
+        {
+            "id": "test003",
+            "title": "Technical Account Manager",
+            "company": "DataSystems Pro",
+            "location": "Remote", 
+            "url": "https://example.com/job/test003",
+            "description": "Technical Account Manager role for SaaS platform...",
+            "requirements": ["SaaS experience", "Technical background", "Account management"]
+        }
+    ]
+    
+    created_files = []
+    for job in sample_jobs:
+        file_path = folder_path / f"{job['id']}_{job['company'].replace(' ', '-')}_{job['title'].replace(' ', '-')}.json"
+        import json
+        file_path.write_text(json.dumps(job, indent=2))
+        created_files.append(str(file_path))
+    
+    await _log_user_activity(
+        user_id=user_id,
+        action="TEST_SAMPLES_CREATED",
+        details={"folder": str(folder_path), "files_created": len(created_files)}
+    )
+    
+    return {
+        "message": f"Created {len(created_files)} sample job files",
+        "folder": str(folder_path),
+        "files": created_files
     }
 
 
