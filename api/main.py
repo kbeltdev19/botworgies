@@ -50,6 +50,13 @@ from adapters import (
     SearchConfig, UserProfile, Resume, ApplicationStatus
 )
 
+# ATS Automation System
+try:
+    from ats_automation.api_endpoints import include_ats_routes
+    ATS_AVAILABLE = True
+except ImportError:
+    ATS_AVAILABLE = False
+
 # Parallel processing for batch applications
 from api.parallel_processor import (
     ParallelApplicationProcessor,
@@ -93,6 +100,11 @@ app.add_middleware(
     allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["Content-Type", "Authorization"],
 )
+
+# Include ATS automation routes
+if ATS_AVAILABLE:
+    include_ats_routes(app)
+    logger.info("ATS automation routes included")
 
 
 # === Request Logging Middleware ===
