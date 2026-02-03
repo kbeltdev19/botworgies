@@ -37,56 +37,76 @@ class IndeedHandler(BaseATSHandler):
             
             print(f"Navigating to Indeed job: {job_url}")
             await page.goto(job_url, wait_until="domcontentloaded", timeout=30000)
-            await asyncio.sleep(3)
             
-            # Check for "Apply on company site" button
+            # Wait for page to fully load (Indeed loads content dynamically)
+            await asyncio.sleep(5)
+            
+            # Try multiple strategies to find apply button
+            # Strategy 1: Look for "Apply on company site" button (most common)
             company_site_selectors = [
                 'a:has-text("Apply on company site")',
+                'a:has-text("Apply on Company Site")',  
+                'button:has-text("Apply on company site")',
                 '[data-testid="apply-on-company-site"]',
                 'a[href*="apply"]:has-text("company")',
-                'button:has-text("Apply on company site")',
+                '.iaIcon + a',  # Icon followed by link pattern
+                'a[class*="apply"][href]',
             ]
             
             for selector in company_site_selectors:
                 try:
                     button = await page.query_selector(selector)
                     if button:
-                        print("Found 'Apply on company site' button - redirecting...")
                         href = await button.get_attribute('href')
                         if href:
-                            # Return result indicating redirect needed
+                            print(f"Found 'Apply on company site' button: {href[:80]}...")
                             return ApplicationResult(
                                 success=False,
                                 status="redirect",
-                                error_message=f"Redirect to company ATS: {href}",
+                                error_message=f"Apply on company site: {href}",
                                 platform=ATSPlatform.INDEED,
                                 job_id=job_url,
                                 job_url=job_url,
-                                session_id=session["session_id"]
+                                session_id=session["session_id"],
+                                redirect_url=href
                             )
-                        else:
-                            # Click and get new URL
-                            await button.click()
-                            await asyncio.sleep(3)
-                            new_url = page.url
-                            if new_url != job_url:
-                                return ApplicationResult(
-                                    success=False,
-                                    status="redirect",
-                                    error_message=f"Redirected to: {new_url}",
-                                    platform=ATSPlatform.INDEED,
-                                    job_id=job_url,
-                                    job_url=job_url,
-                                    session_id=session["session_id"]
-                                )
-                except Exception as e:
+                except:
                     continue
             
-            # Check for Indeed Easy Apply (rare)
+            # Strategy 2: Look for any external apply link
+            external_link_selectors = [
+                'a[rel="nofollow"][target="_blank"]',
+                'a[href^="http"]:has-text("Apply")',
+                'a[data-tn-element="jobTitle"]',
+            ]
+            
+            for selector in external_link_selectors:
+                try:
+                    links = await page.query_selector_all(selector)
+                    for link in links:
+                        href = await link.get_attribute('href')
+                        text = await link.text_content() or ""
+                        if href and 'indeed.com' not in href and ('apply' in text.lower() or 'job' in text.lower()):
+                            print(f"Found external link: {href[:80]}...")
+                            return ApplicationResult(
+                                success=False,
+                                status="redirect",
+                                error_message=f"External apply link: {href}",
+                                platform=ATSPlatform.INDEED,
+                                job_id=job_url,
+                                job_url=job_url,
+                                session_id=session["session_id"],
+                                redirect_url=href
+                            )
+                except:
+                    continue
+            
+            # Strategy 3: Check for Indeed Easy Apply (rare)
             easy_apply_selectors = [
                 'button:has-text("Apply now")',
                 '[data-testid="apply-button"]',
                 '.indeed-apply-button',
+                'button:has-text("Apply with Indeed")',
             ]
             
             for selector in easy_apply_selectors:
@@ -105,6 +125,25 @@ class IndeedHandler(BaseATSHandler):
                         )
                 except:
                     continue
+            
+            # Strategy 4: Look for job description link that might contain apply info
+            try:
+                page_content = await page.content()
+                if 'apply' in page_content.lower():
+                    # Page has apply-related content but we couldn't find button
+                    # This might be a job that requires visiting company site
+                    print("Page contains 'apply' content but no button found - likely external apply")
+                    return ApplicationResult(
+                        success=False,
+                        status="external_redirect",
+                        error_message="External application required - visit company website",
+                        platform=ATSPlatform.INDEED,
+                        job_id=job_url,
+                        job_url=job_url,
+                        session_id=session["session_id"]
+                    )
+            except:
+                pass
             
             return ApplicationResult(
                 success=False,

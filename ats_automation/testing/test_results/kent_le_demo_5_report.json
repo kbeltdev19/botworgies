@@ -1,27 +1,28 @@
 {
   "test_id": "kent_le_demo_5",
-  "start_time": "2026-02-03T10:55:24.622809",
-  "end_time": "2026-02-03T10:55:24.783742",
+  "start_time": "2026-02-03T11:07:11.095802",
+  "end_time": "2026-02-03T11:07:59.660977",
   "candidate_name": "Kent Le",
   "target_location": "Auburn, AL / Remote",
   "total_jobs": 5,
-  "total_successful": 0,
-  "total_failed": 5,
-  "overall_success_rate": 0.0,
-  "total_duration_minutes": 0.0026804645856221515,
-  "avg_time_per_application_seconds": 0.03216557502746582,
+  "total_successful": 1,
+  "total_failed": 4,
+  "overall_success_rate": 20.0,
+  "total_duration_minutes": 0.8094181855519612,
+  "avg_time_per_application_seconds": 9.713018226623536,
   "platform_breakdown": {
-    "unknown": {
+    "indeed": {
       "attempts": 5,
-      "successful": 0,
-      "failed": 5,
-      "success_rate": "0.0%"
+      "successful": 1,
+      "failed": 4,
+      "success_rate": "20.0%"
     }
   },
   "error_categories": {
-    "other": 5
+    "timeout": 1,
+    "other": 3
   },
   "recommendations": [
-    "\u26a0\ufe0f LOW SUCCESS RATE: 0.0% - Consider increasing delays and improving stealth measures"
+    "\u26a0\ufe0f LOW SUCCESS RATE: 20.0% - Consider increasing delays and improving stealth measures"
   ]
 }

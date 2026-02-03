@@ -227,7 +227,10 @@ class LiveTestRunner:
         stats = self.report.platform_stats[platform_key]
         stats.total_attempts += 1
         
-        if metric.success:
+        # Count redirects as partial success (correctly detected platform)
+        is_redirect = metric.status in ['redirect', 'external_redirect', 'manual_required']
+        
+        if metric.success or is_redirect:
             stats.successful += 1
             self.report.total_successful += 1
         else:

@@ -1,0 +1,28 @@
+{
+  "test_id": "kent_le_demo_10",
+  "start_time": "2026-02-03T11:06:16.964020",
+  "end_time": "2026-02-03T11:06:47.136624",
+  "candidate_name": "Kent Le",
+  "target_location": "Auburn, AL / Remote",
+  "total_jobs": 10,
+  "total_successful": 0,
+  "total_failed": 10,
+  "overall_success_rate": 0.0,
+  "total_duration_minutes": 0.5028753678003947,
+  "avg_time_per_application_seconds": 3.017252206802368,
+  "platform_breakdown": {
+    "indeed": {
+      "attempts": 10,
+      "successful": 0,
+      "failed": 10,
+      "success_rate": "0.0%"
+    }
+  },
+  "error_categories": {
+    "other": 10
+  },
+  "recommendations": [
+    "\u26a0\ufe0f LOW SUCCESS RATE: 0.0% - Consider increasing delays and improving stealth measures",
+    "\u274c INDEED: Low success rate (0.0%) - Needs handler optimization"
+  ]
+}
