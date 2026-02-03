@@ -13,6 +13,7 @@ Modules:
 """
 
 from .browser_pool import BrowserPool
+from .browserbase_pool import BrowserBasePool, create_browserbase_pool
 from .job_discovery import JobDiscoveryService, JobQueue
 from .captcha_solver import CaptchaSolver
 from .proxy_manager import ProxyManager

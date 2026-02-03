@@ -14,6 +14,7 @@ from typing import Optional, Dict, Any
 from dataclasses import dataclass, field
 
 from .browser_pool import BrowserPool
+from .browserbase_pool import BrowserBasePool, create_browserbase_pool
 from .job_discovery import JobDiscoveryService, JobQueue
 from .captcha_solver import CaptchaSolver
 from .proxy_manager import ProxyManager
@@ -27,9 +28,10 @@ logger = logging.getLogger(__name__)
 @dataclass
 class OrchestratorConfig:
     """Configuration for the job orchestrator."""
-    # Throughput
-    max_concurrent_applications: int = 10
-    target_applications_per_day: int = 1000
+    # Throughput - BrowserBase supports 100 concurrent!
+    max_concurrent_applications: int = 100
+    target_applications_per_day: int = 5000
+    use_browserbase: bool = True  # Use cloud browsers
     
     # Timing
     min_delay_between_apps: float = 30.0
@@ -72,8 +74,11 @@ class JobOrchestrator:
     def __init__(self, config: OrchestratorConfig):
         self.config = config
         
-        # Initialize components
-        self.browser_pool = BrowserPool(max_browsers=config.max_concurrent_applications)
+        # Initialize components - use BrowserBase for 100 concurrent sessions
+        if config.use_browserbase:
+            self.browser_pool = BrowserBasePool(max_sessions=config.max_concurrent_applications)
+        else:
+            self.browser_pool = BrowserPool(max_browsers=config.max_concurrent_applications)
         self.job_queue = JobQueue(config.database_path)
         self.job_discovery = JobDiscoveryService(
             job_queue=self.job_queue,
