@@ -1,0 +1,34 @@
+{
+  "test_id": "kent_le_mixed_20",
+  "start_time": "2026-02-03T11:27:10.115317",
+  "end_time": "2026-02-03T11:27:56.445546",
+  "candidate_name": "Kent Le",
+  "target_location": "Auburn, AL / Remote",
+  "total_jobs": 20,
+  "total_successful": 9,
+  "total_failed": 11,
+  "overall_success_rate": 45.0,
+  "total_duration_minutes": 0.7721689979235331,
+  "avg_time_per_application_seconds": 2.3165069937705995,
+  "platform_breakdown": {
+    "indeed": {
+      "attempts": 10,
+      "successful": 9,
+      "failed": 1,
+      "success_rate": "90.0%"
+    },
+    "linkedin": {
+      "attempts": 10,
+      "successful": 0,
+      "failed": 10,
+      "success_rate": "0.0%"
+    }
+  },
+  "error_categories": {
+    "other": 11
+  },
+  "recommendations": [
+    "\u26a0\ufe0f LOW SUCCESS RATE: 45.0% - Consider increasing delays and improving stealth measures",
+    "\u274c LINKEDIN: Low success rate (0.0%) - Needs handler optimization"
+  ]
+}

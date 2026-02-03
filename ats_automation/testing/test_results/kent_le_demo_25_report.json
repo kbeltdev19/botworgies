@@ -1,0 +1,27 @@
+{
+  "test_id": "kent_le_demo_25",
+  "start_time": "2026-02-03T11:08:14.508327",
+  "end_time": "2026-02-03T11:09:56.112261",
+  "candidate_name": "Kent Le",
+  "target_location": "Auburn, AL / Remote",
+  "total_jobs": 25,
+  "total_successful": 24,
+  "total_failed": 1,
+  "overall_success_rate": 96.0,
+  "total_duration_minutes": 1.6933973511060079,
+  "avg_time_per_application_seconds": 4.064153642654419,
+  "platform_breakdown": {
+    "indeed": {
+      "attempts": 25,
+      "successful": 24,
+      "failed": 1,
+      "success_rate": "96.0%"
+    }
+  },
+  "error_categories": {
+    "other": 1
+  },
+  "recommendations": [
+    "\u2705 EXCELLENT SUCCESS RATE: 96.0% - System performing well"
+  ]
+}

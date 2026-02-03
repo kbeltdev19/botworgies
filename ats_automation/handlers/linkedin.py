@@ -37,14 +37,18 @@ class LinkedInHandler(BaseATSHandler):
             
             print(f"Navigating to LinkedIn job: {job_url}")
             await page.goto(job_url, wait_until="domcontentloaded", timeout=30000)
-            await asyncio.sleep(3)
             
-            # Check for Easy Apply button
+            # Wait for page to fully load (LinkedIn loads content dynamically)
+            await asyncio.sleep(5)
+            
+            # Strategy 1: Look for Easy Apply button
             easy_apply_selectors = [
                 'button:has-text("Easy Apply")',
+                'button:has-text("Easy apply")',
                 '[data-control-name="jobdetails_topcard_inapply"]',
                 '.jobs-apply-button--top-card',
                 'button.jobs-apply-button',
+                'button[data-job-id]',
             ]
             
             for selector in easy_apply_selectors:
@@ -57,7 +61,7 @@ class LinkedInHandler(BaseATSHandler):
                             return ApplicationResult(
                                 success=False,
                                 status="easy_apply_requires_login",
-                                error_message="LinkedIn Easy Apply requires LinkedIn login - not automated",
+                                error_message="LinkedIn Easy Apply requires login - not automated",
                                 platform=ATSPlatform.LINKEDIN,
                                 job_id=job_url,
                                 job_url=job_url,
@@ -66,12 +70,15 @@ class LinkedInHandler(BaseATSHandler):
                 except:
                     continue
             
-            # Check for external "Apply" button
+            # Strategy 2: Look for external "Apply" button
             external_apply_selectors = [
                 'a:has-text("Apply")',
+                'a:has-text("apply")',
                 '[data-control-name="jobdetails_topcard_external_apple"]',
                 'a.jobs-apply-button[href]',
                 'button:has-text("Apply on company website")',
+                'a[href*="apply"][target="_blank"]',
+                'a[href*://]:not([href*="linkedin.com"])',
             ]
             
             for selector in external_apply_selectors:
@@ -79,8 +86,9 @@ class LinkedInHandler(BaseATSHandler):
                     button = await page.query_selector(selector)
                     if button:
                         href = await button.get_attribute('href')
-                        if href and href.startswith('http'):
-                            print(f"Found external apply link: {href}")
+                        text = await button.text_content() or ""
+                        if href and href.startswith('http') and 'linkedin.com' not in href:
+                            print(f"Found external apply link: {href[:80]}...")
                             return ApplicationResult(
                                 success=False,
                                 status="redirect",
@@ -93,6 +101,47 @@ class LinkedInHandler(BaseATSHandler):
                             )
                 except:
                     continue
+            
+            # Strategy 3: Look for any link that might be an external apply
+            try:
+                all_links = await page.query_selector_all('a[href^="http"]')
+                for link in all_links:
+                    try:
+                        href = await link.get_attribute('href')
+                        text = await link.text_content() or ""
+                        if href and 'linkedin.com' not in href and ('apply' in text.lower() or 'job' in text.lower()):
+                            print(f"Found potential external link: {href[:80]}...")
+                            return ApplicationResult(
+                                success=False,
+                                status="redirect",
+                                error_message=f"Potential external apply: {href}",
+                                platform=ATSPlatform.LINKEDIN,
+                                job_id=job_url,
+                                job_url=job_url,
+                                session_id=session["session_id"],
+                                redirect_url=href
+                            )
+                    except:
+                        continue
+            except:
+                pass
+            
+            # Strategy 4: Check page content for apply-related text
+            try:
+                page_content = await page.content()
+                if 'apply' in page_content.lower():
+                    print("Page contains 'apply' content - likely external apply")
+                    return ApplicationResult(
+                        success=False,
+                        status="external_redirect",
+                        error_message="External application required",
+                        platform=ATSPlatform.LINKEDIN,
+                        job_id=job_url,
+                        job_url=job_url,
+                        session_id=session["session_id"]
+                    )
+            except:
+                pass
             
             return ApplicationResult(
                 success=False,
