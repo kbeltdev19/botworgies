@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Version: 2026-02-02-v3 - Security fixes, authentication, localStorage persistence -->
+<!-- Version: 2026-02-03-v4 - Speedometer UI, parallel sessions selector, batch processing -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -93,6 +93,53 @@
             <!-- Status Bar -->
             <div id="status-bar" class="mb-6 p-4 rounded-lg hidden">
                 <span id="status-message"></span>
+            </div>
+
+            <!-- Speed Settings Card with Speedometer -->
+            <div id="speed-settings-card" class="mb-6 card p-6">
+                <div class="flex items-center justify-between flex-wrap gap-6">
+                    <!-- Speedometer Visual -->
+                    <div class="flex flex-col items-center">
+                        <div class="relative w-40 h-24 overflow-hidden">
+                            <!-- Speedometer arc background -->
+                            <svg viewBox="0 0 100 50" class="w-full h-full">
+                                <!-- Background arc -->
+                                <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#e2e8f0" stroke-width="8" stroke-linecap="round"/>
+                                <!-- Speed zones -->
+                                <path d="M 10 50 A 40 40 0 0 1 30 15" fill="none" stroke="#10b981" stroke-width="8" stroke-linecap="round"/>
+                                <path d="M 30 15 A 40 40 0 0 1 50 10" fill="none" stroke="#f59e0b" stroke-width="8" stroke-linecap="round"/>
+                                <path d="M 50 10 A 40 40 0 0 1 70 15" fill="none" stroke="#f97316" stroke-width="8" stroke-linecap="round"/>
+                                <path d="M 70 15 A 40 40 0 0 1 90 50" fill="none" stroke="#ef4444" stroke-width="8" stroke-linecap="round"/>
+                                <!-- Needle -->
+                                <line id="speed-needle" x1="50" y1="50" x2="50" y2="15" stroke="#1f2937" stroke-width="3" stroke-linecap="round" transform="rotate(-90, 50, 50)"/>
+                                <!-- Center dot -->
+                                <circle cx="50" cy="50" r="5" fill="#1f2937"/>
+                            </svg>
+                        </div>
+                        <div id="speed-label" class="text-2xl font-bold text-gray-800 mt-2">10 sessions</div>
+                        <div class="text-sm text-gray-500">Parallel Speed</div>
+                    </div>
+                    
+                    <!-- Speed Slider -->
+                    <div class="flex-1 max-w-md">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">⚡ Application Speed</label>
+                        <input type="range" id="parallel-sessions" min="1" max="100" value="10" 
+                            class="w-full h-3 bg-gradient-to-r from-green-400 via-yellow-400 via-orange-400 to-red-500 rounded-lg appearance-none cursor-pointer"
+                            oninput="updateSpeedometer(this.value)">
+                        <div class="flex justify-between text-xs text-gray-500 mt-1">
+                            <span>🐢 Slow (1)</span>
+                            <span>🚀 Fast (50)</span>
+                            <span>🔥 Turbo (100)</span>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-2">Higher = faster applications, but uses more BrowserBase sessions</p>
+                    </div>
+
+                    <!-- Speed Stats -->
+                    <div class="text-center bg-gray-50 px-6 py-3 rounded-lg">
+                        <div id="est-rate" class="text-3xl font-bold text-purple-600">~4</div>
+                        <div class="text-xs text-gray-500">apps/minute</div>
+                    </div>
+                </div>
             </div>
 
             <!-- Rate Limit Card -->
@@ -317,6 +364,49 @@
         let selectedJobs = new Set();
         let searchResults = [];
         let linkedInCookieSet = false;
+        let parallelSessions = parseInt(localStorage.getItem('parallel_sessions')) || 10;
+
+        // === Speedometer Functions ===
+        
+        function updateSpeedometer(value) {
+            value = parseInt(value);
+            parallelSessions = value;
+            localStorage.setItem('parallel_sessions', value);
+            
+            // Update needle rotation (-90 to 90 degrees based on 1-100)
+            const rotation = -90 + (value / 100) * 180;
+            const needle = document.getElementById('speed-needle');
+            if (needle) {
+                needle.setAttribute('transform', `rotate(${rotation}, 50, 50)`);
+            }
+            
+            // Update labels
+            const speedLabel = document.getElementById('speed-label');
+            if (speedLabel) {
+                speedLabel.textContent = `${value} session${value > 1 ? 's' : ''}`;
+                // Color based on speed
+                if (value <= 10) speedLabel.className = 'text-2xl font-bold text-green-600 mt-2';
+                else if (value <= 30) speedLabel.className = 'text-2xl font-bold text-yellow-600 mt-2';
+                else if (value <= 60) speedLabel.className = 'text-2xl font-bold text-orange-600 mt-2';
+                else speedLabel.className = 'text-2xl font-bold text-red-600 mt-2';
+            }
+            
+            // Estimate rate (roughly 0.4 apps/min per session based on testing)
+            const estRate = Math.round(value * 0.4);
+            const estRateEl = document.getElementById('est-rate');
+            if (estRateEl) {
+                estRateEl.textContent = `~${estRate}`;
+            }
+        }
+        
+        // Initialize speedometer on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const slider = document.getElementById('parallel-sessions');
+            if (slider) {
+                slider.value = parallelSessions;
+                updateSpeedometer(parallelSessions);
+            }
+        });
 
         // === Utility Functions ===
 
@@ -800,29 +890,60 @@
 
             const autoSubmit = document.getElementById('auto_submit').checked;
             const generateCover = document.getElementById('generate_cover_letter').checked;
-
-            for (let i = 0; i < jobs.length; i++) {
-                const job = jobs[i];
-                document.getElementById('progress-container').classList.remove('hidden');
-                document.getElementById('progress-text').textContent = `${i + 1} / ${jobs.length}`;
-                document.getElementById('progress-bar').style.width = `${((i + 1) / jobs.length) * 100}%`;
-                document.getElementById('progress-status').textContent = `Applying to ${job.company}...`;
-
-                try {
-                    await fetch(`${API_BASE}/apply`, {
-                        method: 'POST',
-                        headers: authHeaders(),
-                        body: JSON.stringify({ job_url: job.url, auto_submit: autoSubmit, generate_cover_letter: generateCover })
-                    });
-                } catch (e) {}
-                await new Promise(r => setTimeout(r, 2000));
+            const sessions = parallelSessions || 10;
+            
+            document.getElementById('progress-container').classList.remove('hidden');
+            
+            let completed = 0;
+            let failed = 0;
+            const startTime = Date.now();
+            
+            // Process jobs in parallel batches
+            const processBatch = async (batch) => {
+                const promises = batch.map(async (job) => {
+                    try {
+                        const res = await fetch(`${API_BASE}/apply`, {
+                            method: 'POST',
+                            headers: authHeaders(),
+                            body: JSON.stringify({ 
+                                job_url: job.url, 
+                                auto_submit: autoSubmit, 
+                                generate_cover_letter: generateCover,
+                                parallel_sessions: sessions
+                            })
+                        });
+                        if (res.ok) completed++;
+                        else failed++;
+                    } catch (e) { 
+                        failed++; 
+                    }
+                    
+                    // Update progress
+                    const total = completed + failed;
+                    const elapsed = (Date.now() - startTime) / 60000; // minutes
+                    const rate = elapsed > 0 ? Math.round(total / elapsed) : 0;
+                    
+                    document.getElementById('progress-text').textContent = `${total} / ${jobs.length}`;
+                    document.getElementById('progress-bar').style.width = `${(total / jobs.length) * 100}%`;
+                    document.getElementById('progress-status').innerHTML = 
+                        `⚡ ${sessions} parallel sessions | ✅ ${completed} | ❌ ${failed} | 📈 ${rate}/min`;
+                });
+                await Promise.all(promises);
+            };
+            
+            // Split jobs into batches of size 'sessions'
+            for (let i = 0; i < jobs.length; i += sessions) {
+                const batch = jobs.slice(i, i + sessions);
+                await processBatch(batch);
             }
 
-            document.getElementById('progress-status').textContent = '✅ Complete!';
-            showStatus(`Applied to ${jobs.length} jobs!`, 'success');
+            const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+            document.getElementById('progress-status').innerHTML = 
+                `✅ Complete! ${completed} submitted, ${failed} failed in ${elapsed}s`;
+            showStatus(`Applied to ${completed} jobs in ${elapsed}s!`, 'success');
             loadApplications();
             loadRateLimitStatus();
-            setTimeout(() => document.getElementById('progress-container').classList.add('hidden'), 3000);
+            setTimeout(() => document.getElementById('progress-container').classList.add('hidden'), 5000);
         });
 
         // === Applications History ===
