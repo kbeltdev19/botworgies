@@ -42,9 +42,9 @@ class OrchestratorConfig:
     max_retries_per_job: int = 3
     max_daily_failures: int = 100
     
-    # Features
-    enable_captcha_solving: bool = True
-    enable_proxy_rotation: bool = True
+    # Features (BrowserBase handles CAPTCHA + proxies natively)
+    enable_captcha_solving: bool = False  # BrowserBase does this
+    enable_proxy_rotation: bool = False   # BrowserBase does this
     enable_session_rotation: bool = True
     
     # Paths

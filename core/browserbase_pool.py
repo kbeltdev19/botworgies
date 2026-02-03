@@ -3,6 +3,16 @@ BrowserBase Pool - 100 concurrent cloud browser sessions.
 
 Uses BrowserBase's cloud infrastructure for massive parallelization.
 No local resource constraints - all browsers run in the cloud.
+
+Features (all built-in, no external services needed):
+- Advanced Stealth Mode: Bypasses bot detection
+- Proxies: Automatic residential proxy rotation
+- CAPTCHA Solving: Auto-solves visual CAPTCHAs
+- Cloudflare Bypass: Signed Agents program
+
+Docs:
+- https://docs.browserbase.com/features/stealth-mode
+- https://docs.browserbase.com/features/proxies
 """
 
 import asyncio
@@ -13,10 +23,14 @@ from datetime import datetime
 from dataclasses import dataclass, field
 from playwright.async_api import async_playwright, Browser, BrowserContext, Page
 
-logger = logging.getLogger(__name__)
+# BrowserBase SDK
+try:
+    from browserbase import Browserbase
+    BROWSERBASE_SDK_AVAILABLE = True
+except ImportError:
+    BROWSERBASE_SDK_AVAILABLE = False
 
-# BrowserBase connection URL format
-BROWSERBASE_WS_URL = "wss://connect.browserbase.com?apiKey={api_key}&projectId={project_id}"
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -106,24 +120,32 @@ class BrowserBasePool:
         logger.info(f"BrowserBase pool initialized: {len(self._sessions)} sessions ready")
     
     async def _create_session(self) -> Optional[BrowserSession]:
-        """Create a new BrowserBase session."""
+        """Create a new BrowserBase session with stealth + proxies."""
         try:
-            # Connect to BrowserBase
-            browser = await self._playwright.chromium.connect_over_cdp(self.ws_url)
+            # Use BrowserBase SDK to create session with advanced features
+            if BROWSERBASE_SDK_AVAILABLE:
+                bb = Browserbase(api_key=self.api_key)
+                bb_session = bb.sessions.create(
+                    project_id=self.project_id,
+                    proxies=True,  # Built-in proxy rotation
+                    browser_settings={
+                        "advancedStealth": True,  # Bypass bot detection
+                        "solveCaptchas": True,    # Auto-solve CAPTCHAs
+                    },
+                )
+                connect_url = bb_session.connect_url
+                session_id = bb_session.id
+            else:
+                # Fallback to direct connection
+                connect_url = f"wss://connect.browserbase.com?apiKey={self.api_key}&projectId={self.project_id}&enableProxy=true"
+                session_id = f"bb_{datetime.now().strftime('%H%M%S')}_{len(self._sessions)}"
             
-            # Create context with stealth settings
-            context = await browser.new_context(
-                viewport={"width": 1920, "height": 1080},
-                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
-                locale="en-US",
-                timezone_id="America/New_York",
-            )
+            # Connect via Playwright CDP
+            browser = await self._playwright.chromium.connect_over_cdp(connect_url)
             
-            # Create page
+            # BrowserBase handles viewport/fingerprint automatically
+            context = await browser.new_context()
             page = await context.new_page()
-            
-            # Generate session ID
-            session_id = f"bb_{datetime.now().strftime('%H%M%S')}_{len(self._sessions)}"
             
             session = BrowserSession(
                 session_id=session_id,
@@ -136,7 +158,7 @@ class BrowserBasePool:
                 self._sessions[session_id] = session
                 self._stats["sessions_created"] += 1
             
-            logger.debug(f"Created BrowserBase session: {session_id}")
+            logger.debug(f"Created BrowserBase session: {session_id} (stealth+proxy enabled)")
             return session
             
         except Exception as e:
