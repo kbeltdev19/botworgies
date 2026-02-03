@@ -1,0 +1,234 @@
+{
+  "timestamp": "2026-02-03T03:20:47.499563",
+  "results": [
+    {
+      "status": "ready",
+      "fields": 4,
+      "job": {
+        "title": "Associate Solutions Consultant",
+        "company": "Figma",
+        "location": "San Francisco, CA \u2022 New York, NY \u2022 United States",
+        "url": "https://boards.greenhouse.io/figma/jobs/5633324004?gh_jid=5633324004",
+        "platform": "greenhouse",
+        "remote": false
+      }
+    },
+    {
+      "status": "ready",
+      "fields": 4,
+      "job": {
+        "title": "Manager, Solutions Consulting",
+        "company": "Figma",
+        "location": "San Francisco, CA \u2022 New York, NY \u2022 United States",
+        "url": "https://boards.greenhouse.io/figma/jobs/5697641004?gh_jid=5697641004",
+        "platform": "greenhouse",
+        "remote": false
+      }
+    },
+    {
+      "status": "ready",
+      "fields": 4,
+      "job": {
+        "title": "Solutions Consultant",
+        "company": "Figma",
+        "location": "San Francisco, CA \u2022 New York, NY \u2022 United States",
+        "url": "https://boards.greenhouse.io/figma/jobs/5478247004?gh_jid=5478247004",
+        "platform": "greenhouse",
+        "remote": false
+      }
+    },
+    {
+      "status": "ready",
+      "fields": 4,
+      "job": {
+        "title": "Account Manager, APAC",
+        "company": "Gitlab",
+        "location": "Remote, Singapore",
+        "url": "https://job-boards.greenhouse.io/gitlab/jobs/8377603002",
+        "platform": "greenhouse",
+        "remote": true
+      }
+    },
+    {
+      "status": "ready",
+      "fields": 4,
+      "job": {
+        "title": "Account Manager (Renewals) - UKI",
+        "company": "Gitlab",
+        "location": "Remote, Ireland",
+        "url": "https://job-boards.greenhouse.io/gitlab/jobs/8381841002",
+        "platform": "greenhouse",
+        "remote": true
+      }
+    },
+    {
+      "status": "ready",
+      "fields": 4,
+      "job": {
+        "title": "Customer Success Manager, DACH",
+        "company": "Gitlab",
+        "location": "Remote, Germany",
+        "url": "https://job-boards.greenhouse.io/gitlab/jobs/8372429002",
+        "platform": "greenhouse",
+        "remote": true
+      }
+    },
+    {
+      "status": "ready",
+      "fields": 4,
+      "job": {
+        "title": "Engineering Manager, Cloud Capacity, SaaS Production Engineering",
+        "company": "Gitlab",
+        "location": "Remote, APAC",
+        "url": "https://job-boards.greenhouse.io/gitlab/jobs/8358827002",
+        "platform": "greenhouse",
+        "remote": true
+      }
+    },
+    {
+      "status": "ready",
+      "fields": 4,
+      "job": {
+        "title": "Manager, Customer Success Engineers",
+        "company": "Gitlab",
+        "location": "Remote, Canada; Remote, US",
+        "url": "https://job-boards.greenhouse.io/gitlab/jobs/8340423002",
+        "platform": "greenhouse",
+        "remote": true
+      }
+    },
+    {
+      "status": "ready",
+      "fields": 4,
+      "job": {
+        "title": "Manager, Solutions Architects, France",
+        "company": "Gitlab",
+        "location": "Remote, France",
+        "url": "https://job-boards.greenhouse.io/gitlab/jobs/8372177002",
+        "platform": "greenhouse",
+        "remote": true
+      }
+    },
+    {
+      "status": "ready",
+      "fields": 4,
+      "job": {
+        "title": "Principal Solutions Architect",
+        "company": "Gitlab",
+        "location": "Remote, Canada; Remote, US",
+        "url": "https://job-boards.greenhouse.io/gitlab/jobs/8341795002",
+        "platform": "greenhouse",
+        "remote": true
+      }
+    },
+    {
+      "status": "ready",
+      "fields": 4,
+      "job": {
+        "title": "Senior Customer Success Analytics Analyst",
+        "company": "Gitlab",
+        "location": "Remote, Canada; Remote, US",
+        "url": "https://job-boards.greenhouse.io/gitlab/jobs/8315791002",
+        "platform": "greenhouse",
+        "remote": true
+      }
+    },
+    {
+      "status": "ready",
+      "fields": 4,
+      "job": {
+        "title": "Senior Customer Success Manager",
+        "company": "Gitlab",
+        "location": "Remote, United Kingdom",
+        "url": "https://job-boards.greenhouse.io/gitlab/jobs/8329437002",
+        "platform": "greenhouse",
+        "remote": true
+      }
+    },
+    {
+      "status": "ready",
+      "fields": 4,
+      "job": {
+        "title": "Senior Director, Public Sector Customer Success",
+        "company": "Gitlab",
+        "location": "Remote, US",
+        "url": "https://job-boards.greenhouse.io/gitlab/jobs/8389993002",
+        "platform": "greenhouse",
+        "remote": true
+      }
+    },
+    {
+      "status": "ready",
+      "fields": 4,
+      "job": {
+        "title": "Solutions Architect - Commercial",
+        "company": "Gitlab",
+        "location": "Remote, Canada; Remote, US",
+        "url": "https://job-boards.greenhouse.io/gitlab/jobs/8344394002",
+        "platform": "greenhouse",
+        "remote": true
+      }
+    },
+    {
+      "status": "ready",
+      "fields": 4,
+      "job": {
+        "title": "Solutions Architect, DACH",
+        "company": "Gitlab",
+        "location": "Remote, Germany",
+        "url": "https://job-boards.greenhouse.io/gitlab/jobs/8377959002",
+        "platform": "greenhouse",
+        "remote": true
+      }
+    },
+    {
+      "status": "ready",
+      "fields": 4,
+      "job": {
+        "title": "Solutions Architect - New Business",
+        "company": "Gitlab",
+        "location": "Remote, Canada; Remote, US",
+        "url": "https://job-boards.greenhouse.io/gitlab/jobs/8344406002",
+        "platform": "greenhouse",
+        "remote": true
+      }
+    },
+    {
+      "status": "ready",
+      "fields": 4,
+      "job": {
+        "title": "Solutions Architect, West",
+        "company": "Gitlab",
+        "location": "Remote, US",
+        "url": "https://job-boards.greenhouse.io/gitlab/jobs/8345584002",
+        "platform": "greenhouse",
+        "remote": true
+      }
+    },
+    {
+      "status": "ready",
+      "fields": 4,
+      "job": {
+        "title": "Solutions Engineer",
+        "company": "Planetscale",
+        "location": "Remote - EMEA, Remote - NA",
+        "url": "https://job-boards.greenhouse.io/planetscale/jobs/4052805009",
+        "platform": "greenhouse",
+        "remote": true
+      }
+    },
+    {
+      "status": "ready",
+      "fields": 4,
+      "job": {
+        "title": "Webflow Lead Solutions Architect, Strategic Accounts",
+        "company": "Webflow",
+        "location": "U.S. Remote",
+        "url": "https://job-boards.greenhouse.io/webflow/jobs/7271901",
+        "platform": "greenhouse",
+        "remote": true
+      }
+    }
+  ],
+  "ready_count": 19
+}

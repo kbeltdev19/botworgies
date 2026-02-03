@@ -1,0 +1,277 @@
+{
+  "timestamp": "2026-02-03T03:25:48.958674",
+  "candidate": "Matt Edwards",
+  "applied": 30,
+  "results": [
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Corporate Account Executive - East",
+        "company": "Webflow",
+        "url": "https://job-boards.greenhouse.io/webflow/jobs/6124408"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Corporate Account Executive - West",
+        "company": "Webflow",
+        "url": "https://job-boards.greenhouse.io/webflow/jobs/6709861"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Engineering Manager, Code Sync",
+        "company": "Webflow",
+        "url": "https://job-boards.greenhouse.io/webflow/jobs/7532377"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Engineering Manager, Localization ",
+        "company": "Webflow",
+        "url": "https://job-boards.greenhouse.io/webflow/jobs/7074561"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Enterprise Account Executive - West",
+        "company": "Webflow",
+        "url": "https://job-boards.greenhouse.io/webflow/jobs/7301903"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Growth Account Executive",
+        "company": "Webflow",
+        "url": "https://job-boards.greenhouse.io/webflow/jobs/7108193"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Manager, GTM Technology",
+        "company": "Webflow",
+        "url": "https://job-boards.greenhouse.io/webflow/jobs/7565928"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Partner Manager, Agencies",
+        "company": "Webflow",
+        "url": "https://job-boards.greenhouse.io/webflow/jobs/7408665"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Principal Product Manager, AI",
+        "company": "Webflow",
+        "url": "https://job-boards.greenhouse.io/webflow/jobs/7456857"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Senior Engineering Manager, Hosting Infrastructure",
+        "company": "Webflow",
+        "url": "https://job-boards.greenhouse.io/webflow/jobs/6835628"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Senior Performance Marketing Manager",
+        "company": "Webflow",
+        "url": "https://job-boards.greenhouse.io/webflow/jobs/7577424"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Senior Technical Program Manager, Security",
+        "company": "Webflow",
+        "url": "https://job-boards.greenhouse.io/webflow/jobs/7376862"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Staff Product Manager, Subscriptions & Payments",
+        "company": "Webflow",
+        "url": "https://job-boards.greenhouse.io/webflow/jobs/7568005"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Strategic Account Executive - East",
+        "company": "Webflow",
+        "url": "https://job-boards.greenhouse.io/webflow/jobs/7527380"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Webflow Lead Solutions Architect, Strategic Accounts",
+        "company": "Webflow",
+        "url": "https://job-boards.greenhouse.io/webflow/jobs/7271901"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Developer Success Engineer ",
+        "company": "Vercel",
+        "url": "https://job-boards.greenhouse.io/vercel/jobs/5530586004"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Manager, Developer Success, EMEA",
+        "company": "Vercel",
+        "url": "https://job-boards.greenhouse.io/vercel/jobs/5635113004"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Senior Technical Engagement Manager",
+        "company": "Vercel",
+        "url": "https://job-boards.greenhouse.io/vercel/jobs/5656954004"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Program Manager, Dispute Experience",
+        "company": "Chime",
+        "url": "https://boards.greenhouse.io/chime/jobs/8326088002?gh_jid=8326088002"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Program Manager, Learning Governance & Maintenance",
+        "company": "Chime",
+        "url": "https://boards.greenhouse.io/chime/jobs/8234902002?gh_jid=8234902002"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Sr. Program Manager, Gen AI Governance",
+        "company": "Chime",
+        "url": "https://boards.greenhouse.io/chime/jobs/8375572002?gh_jid=8375572002"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Technical Program Manager, AI Evaluation Specialist",
+        "company": "Chime",
+        "url": "https://boards.greenhouse.io/chime/jobs/8133306002?gh_jid=8133306002"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Future Opportunities - Customer Success - US ",
+        "company": "Pagerduty",
+        "url": "https://job-boards.greenhouse.io/pagerduty/jobs/5751678004"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Principal Product Manager - Developer Platform",
+        "company": "Pagerduty",
+        "url": "https://job-boards.greenhouse.io/pagerduty/jobs/5703252004"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Principal Product Manager - Developer Platform",
+        "company": "Pagerduty",
+        "url": "https://job-boards.greenhouse.io/pagerduty/jobs/5703257004"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Principal Product Manager, Growth",
+        "company": "Pagerduty",
+        "url": "https://job-boards.greenhouse.io/pagerduty/jobs/5692507004"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Principal Product Manager, Growth",
+        "company": "Pagerduty",
+        "url": "https://job-boards.greenhouse.io/pagerduty/jobs/5692508004"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Product Manager - App Platform",
+        "company": "Pagerduty",
+        "url": "https://job-boards.greenhouse.io/pagerduty/jobs/5708083004"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Product Manager - App Platform",
+        "company": "Pagerduty",
+        "url": "https://job-boards.greenhouse.io/pagerduty/jobs/5691989004"
+      }
+    },
+    {
+      "status": "submitted",
+      "fields": 3,
+      "job": {
+        "title": "Senior Director, Enterprise Customer Success (Regional VP)",
+        "company": "Pagerduty",
+        "url": "https://job-boards.greenhouse.io/pagerduty/jobs/5551945004"
+      }
+    }
+  ]
+}
