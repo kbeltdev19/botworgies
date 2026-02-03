@@ -37,6 +37,12 @@ class AppConfig:
     BROWSER_TIMEOUT_MS: int = int(os.getenv("BROWSER_TIMEOUT_MS", "60000"))
     MAX_SEARCH_PAGES: int = int(os.getenv("MAX_SEARCH_PAGES", "5"))
     MAX_APPLICATION_STEPS: int = int(os.getenv("MAX_APPLICATION_STEPS", "10"))
+    
+    # Local browser fallback settings
+    LOCAL_BROWSER_ENABLED: bool = os.getenv("LOCAL_BROWSER_ENABLED", "true").lower() == "true"
+    MAX_LOCAL_BROWSERS: int = int(os.getenv("MAX_LOCAL_BROWSERS", "20"))
+    BROWSERBASE_COOLDOWN_MINUTES: int = int(os.getenv("BROWSERBASE_COOLDOWN_MINUTES", "5"))
+    PREFER_LOCAL_BROWSER: bool = os.getenv("PREFER_LOCAL_BROWSER", "false").lower() == "true"
 
     # AI service
     AI_MAX_RETRIES: int = int(os.getenv("AI_MAX_RETRIES", "3"))

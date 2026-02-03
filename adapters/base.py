@@ -26,6 +26,21 @@ class PlatformType(str, Enum):
     EXTERNAL = "external"  # External/unknown ATS
     RSS = "rss"  # RSS feed aggregator
     DICE = "dice"  # Dice.com
+    
+    # Additional platforms from job board list
+    REMOTEOK = "remoteok"
+    REMOTIVE = "remotive"
+    WEWORKREMOTELY = "weworkremotely"
+    AUTHENTICJOBS = "authenticjobs"
+    WORKINGNOMADS = "workingnomads"
+    STACKOVERFLOW = "stackoverflow"
+    HACKERNEWS = "hackernews"
+    ANGELLIST = "angellist"
+    ZIPRECRUITER = "ziprecruiter"
+    MONSTER = "monster"
+    CAREERBUILDER = "careerbuilder"
+    SIMPLYHIRED = "simplyhired"
+    CRAIGSLIST = "craigslist"
 
 
 class ApplicationStatus(str, Enum):
@@ -155,11 +170,17 @@ class JobPlatformAdapter(ABC):
         """Apply to a specific job."""
         pass
     
-    async def get_session(self):
-        """Get or create a browser session for this platform."""
+    async def get_session(self, force_local: bool = False):
+        """Get or create a browser session for this platform.
+        
+        Args:
+            force_local: If True, force using local browser instead of BrowserBase.
+        """
         if not self._session:
             self._session = await self.browser_manager.create_stealth_session(
-                self.platform.value
+                self.platform.value,
+                use_proxy=True,
+                force_local=force_local
             )
         return self._session
 

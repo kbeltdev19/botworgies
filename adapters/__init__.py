@@ -2,6 +2,18 @@
 Job Platform Adapters
 Unified interface for applying to jobs across different platforms.
 Supports: LinkedIn, Indeed, Greenhouse, Workday, Lever, ClearanceJobs, and external ATS.
+
+New adapters added:
+- Ashby (API-based)
+- SmartRecruiters (API-based)
+- Dice (Browser-based)
+- RemoteOK (API-based)
+- Remotive (API-based)
+- USAJobs (API-based)
+- WeWorkRemotely (Scraping)
+- HackerNews (API-based)
+- JobSpy (Multi-platform scraper - requires Python 3.10+)
+  * LinkedIn, Indeed, ZipRecruiter, Glassdoor, Google Jobs
 """
 
 from .base import (
@@ -22,6 +34,25 @@ from .lever import LeverAdapter
 from .company import CompanyWebsiteAdapter
 from .clearancejobs import ClearanceJobsAdapter
 from .rss_adapter import RSSAdapter
+from .ashby import AshbyAdapter
+from .smartrecruiters import SmartRecruitersAdapter
+from .dice import DiceAdapter
+from .remoteok import RemoteOKAdapter
+from .remotive import RemotiveAdapter
+from .usajobs import USAJobsAdapter
+from .weworkremotely import WeWorkRemotelyAdapter
+
+# JobSpy integration (requires Python 3.10+)
+try:
+    from .jobspy_scraper import JobSpyScraper, JobSpyConfig, JobSpySearchBuilder
+    from .jobspy_adapter import JobSpyAdapter
+    JOBSY_AVAILABLE = True
+except ImportError:
+    JOBSY_AVAILABLE = False
+    JobSpyScraper = None
+    JobSpyConfig = None
+    JobSpySearchBuilder = None
+    JobSpyAdapter = None
 
 
 # Platform URL patterns for detection
@@ -41,6 +72,22 @@ PLATFORM_PATTERNS = {
     "bamboohr": ["bamboohr.com"],
     "brassring": ["brassring.com"],
     "successfactors": ["successfactors.com", "successfactors.eu"],
+    "dice": ["dice.com"],
+    "remoteok": ["remoteok.com"],
+    "remotive": ["remotive.com"],
+    "weworkremotely": ["weworkremotely.com"],
+    "stackoverflow": ["stackoverflow.com/jobs"],
+    "authenticjobs": ["authenticjobs.com"],
+    "workingnomads": ["workingnomads.co"],
+    "ziprecruiter": ["ziprecruiter.com"],
+    "monster": ["monster.com"],
+    "careerbuilder": ["careerbuilder.com"],
+    "simplyhired": ["simplyhired.com"],
+    "craigslist": ["craigslist.org"],
+    "news.ycombinator": ["news.ycombinator.com"],
+    "ycombinator": ["ycombinator.com"],
+    "wellfound": ["wellfound.com", "angel.co"],
+    "angellist": ["angel.co"],
 }
 
 # Adapters registry
@@ -51,12 +98,20 @@ ADAPTERS = {
     "workday": WorkdayAdapter,
     "lever": LeverAdapter,
     "clearancejobs": ClearanceJobsAdapter,
+    "usajobs": USAJobsAdapter,
+    "smartrecruiters": SmartRecruitersAdapter,
+    "ashby": AshbyAdapter,
+    "ashbyhq": AshbyAdapter,
+    "dice": DiceAdapter,
+    "remoteok": RemoteOKAdapter,
+    "remotive": RemotiveAdapter,
+    "weworkremotely": WeWorkRemotelyAdapter,
     "company": CompanyWebsiteAdapter,
     "rss": RSSAdapter,
 }
 
 
-def get_adapter(platform: str, browser_manager, session_cookie: str = None) -> JobPlatformAdapter:
+def get_adapter(platform: str, browser_manager, session_cookie: str = None, **kwargs) -> JobPlatformAdapter:
     """
     Factory function to get the appropriate adapter for a platform.
 
@@ -64,6 +119,7 @@ def get_adapter(platform: str, browser_manager, session_cookie: str = None) -> J
         platform: Platform identifier or URL
         browser_manager: StealthBrowserManager instance
         session_cookie: Optional session cookie for authenticated platforms
+        **kwargs: Additional arguments to pass to adapter constructor
 
     Returns:
         Appropriate platform adapter
@@ -81,13 +137,13 @@ def get_adapter(platform: str, browser_manager, session_cookie: str = None) -> J
     if not adapter_class:
         # Try to use ClearanceJobs adapter for external sites since it has
         # good external site handling
-        if platform_lower in ["icims", "taleo", "smartrecruiters", "jobvite", "external"]:
+        if platform_lower in ["icims", "taleo", "jobvite", "external"]:
             adapter_class = ClearanceJobsAdapter
         else:
             raise ValueError(f"Unsupported platform: {platform}. Supported: {list(ADAPTERS.keys())}")
 
     # All adapters can accept session_cookie now
-    return adapter_class(browser_manager, session_cookie=session_cookie)
+    return adapter_class(browser_manager, session_cookie=session_cookie, **kwargs)
 
 
 def detect_platform_from_url(url: str) -> str:
@@ -138,6 +194,10 @@ def get_external_platform_type(url: str) -> str:
         "bamboohr": ["bamboohr.com"],
         "ashbyhq": ["ashbyhq.com", "jobs.ashby"],
         "brassring": ["brassring.com"],
+        "ashby": ["jobs.ashbyhq.com"],
+        "dice": ["dice.com"],
+        "usajobs": ["usajobs.gov"],
+        "clearancejobs": ["clearancejobs.com"],
     }
 
     for ats, patterns in ats_patterns.items():
@@ -162,6 +222,42 @@ def is_external_application(url: str, source_platform: str) -> bool:
     return detected != "unknown" and detected != source_platform
 
 
+def get_all_adapters_for_search(browser_manager) -> list:
+    """
+    Get all available adapters for job searching.
+    
+    Returns:
+        List of initialized adapters ready for searching
+    """
+    adapters = []
+    
+    # API-based adapters (no browser needed for search)
+    api_adapters = [
+        GreenhouseAdapter(),
+        LeverAdapter(),
+        AshbyAdapter(),
+        SmartRecruitersAdapter(),
+        RemoteOKAdapter(),
+        RemotiveAdapter(),
+        WeWorkRemotelyAdapter(),
+        USAJobsAdapter(),
+        RSSAdapter(),
+    ]
+    adapters.extend(api_adapters)
+    
+    # Browser-based adapters
+    if browser_manager:
+        browser_adapters = [
+            LinkedInAdapter(browser_manager),
+            IndeedAdapter(browser_manager),
+            DiceAdapter(browser_manager),
+            ClearanceJobsAdapter(browser_manager),
+        ]
+        adapters.extend(browser_adapters)
+    
+    return adapters
+
+
 __all__ = [
     # Base classes
     "JobPlatformAdapter",
@@ -180,9 +276,24 @@ __all__ = [
     "LeverAdapter",
     "ClearanceJobsAdapter",
     "CompanyWebsiteAdapter",
+    "USAJobsAdapter",
+    "SmartRecruitersAdapter",
+    "AshbyAdapter",
+    "DiceAdapter",
+    "RemoteOKAdapter",
+    "RemotiveAdapter",
+    "WeWorkRemotelyAdapter",
+    "RSSAdapter",
+    # JobSpy (if available)
+    "JobSpyScraper",
+    "JobSpyConfig",
+    "JobSpySearchBuilder",
+    "JobSpyAdapter",
+    "JOBSY_AVAILABLE",
     # Factory functions
     "get_adapter",
     "detect_platform_from_url",
     "get_external_platform_type",
     "is_external_application",
+    "get_all_adapters_for_search",
 ]

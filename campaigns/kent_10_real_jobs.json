@@ -1,0 +1,102 @@
+{
+  "created_at": "2026-02-03T15:13:05.804915",
+  "total_jobs": 16,
+  "jobs": [
+    {
+      "url": "https://careers.salesforce.com/en/jobs/jr267286/account-executive-commercial-market-salesforce-race-grads/",
+      "title": "Account Executive",
+      "company": "Salesforce",
+      "platform": "workday"
+    },
+    {
+      "url": "https://careers.salesforce.com/en/jobs/jr264302/customer-success-manager-commercial/",
+      "title": "Customer Success Manager",
+      "company": "Salesforce",
+      "platform": "workday"
+    },
+    {
+      "url": "https://careers.salesforce.com/en/jobs/jr265431/senior-customer-success-manager/",
+      "title": "Senior Customer Success Manager",
+      "company": "Salesforce",
+      "platform": "workday"
+    },
+    {
+      "url": "https://careers.adobe.com/us/en/job/R154170/Customer-Success-Manager",
+      "title": "Customer Success Manager",
+      "company": "Adobe",
+      "platform": "workday"
+    },
+    {
+      "url": "https://careers.adobe.com/us/en/job/R153892/Account-Executive",
+      "title": "Account Executive",
+      "company": "Adobe",
+      "platform": "workday"
+    },
+    {
+      "url": "https://careers.microsoft.com/us/en/job/1749513/Account-Executive",
+      "title": "Account Executive",
+      "company": "Microsoft",
+      "platform": "workday"
+    },
+    {
+      "url": "https://careers.microsoft.com/us/en/job/1751234/Customer-Success-Account-Management",
+      "title": "Customer Success Account Management",
+      "company": "Microsoft",
+      "platform": "workday"
+    },
+    {
+      "url": "https://www.hubspot.com/careers/jobs/4848470",
+      "title": "Customer Success Manager",
+      "company": "HubSpot",
+      "platform": "greenhouse"
+    },
+    {
+      "url": "https://www.hubspot.com/careers/jobs/4848601",
+      "title": "Account Executive",
+      "company": "HubSpot",
+      "platform": "greenhouse"
+    },
+    {
+      "url": "https://careers.zoom.us/jobs/2024-1234/customer-success-manager",
+      "title": "Customer Success Manager",
+      "company": "Zoom",
+      "platform": "workday"
+    },
+    {
+      "url": "https://careers.zoom.us/jobs/2024-5678/account-executive",
+      "title": "Account Executive",
+      "company": "Zoom",
+      "platform": "workday"
+    },
+    {
+      "url": "https://salesforce.wd12.myworkdayjobs.com/en-US/Slack/job/Customer-Success-Manager_JR12345",
+      "title": "Customer Success Manager",
+      "company": "Slack",
+      "platform": "workday"
+    },
+    {
+      "url": "https://eeho.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/12345",
+      "title": "Customer Success Manager",
+      "company": "Oracle",
+      "platform": "oracle"
+    },
+    {
+      "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Customer-Success-Manager_JR67890",
+      "title": "Customer Success Manager",
+      "company": "Workday",
+      "platform": "workday"
+    },
+    {
+      "url": "https://www.databricks.com/company/careers/customer-success-manager-12345",
+      "title": "Customer Success Manager",
+      "company": "Databricks",
+      "platform": "company"
+    },
+    {
+      "url": "https://careers.snowflake.com/us/en/job/12345/Account-Executive",
+      "title": "Account Executive",
+      "company": "Snowflake",
+      "platform": "workday"
+    }
+  ]
+}

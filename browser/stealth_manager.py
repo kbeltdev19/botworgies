@@ -1,7 +1,12 @@
 """
-BrowserBase Stealth Browser Manager
+BrowserBase Stealth Browser Manager with Local Fallback
 Handles anti-detection, captcha solving, and human-like interactions.
 Updated with current user agents and improved stealth patches.
+
+Features:
+- Primary: BrowserBase cloud sessions with residential proxies
+- Fallback: Local Playwright browsers with stealth patches
+- Automatic fallback when BrowserBase is at capacity
 """
 
 import os
@@ -9,9 +14,22 @@ import random
 import asyncio
 from typing import Optional, Dict, Any
 from dataclasses import dataclass
+from enum import Enum
 
-from browserbase import Browserbase
-from playwright.async_api import async_playwright, Page, Browser
+from playwright.async_api import async_playwright, Page, Browser, BrowserContext
+
+# BrowserBase SDK (optional)
+try:
+    from browserbase import Browserbase
+    BROWSERBASE_SDK_AVAILABLE = True
+except ImportError:
+    BROWSERBASE_SDK_AVAILABLE = False
+
+
+class BrowserMode(Enum):
+    """Browser session mode."""
+    BROWSERBASE = "browserbase"
+    LOCAL = "local"
 
 
 # Updated user agents for 2025/2026
@@ -44,6 +62,18 @@ VIEWPORTS = [
     {"width": 1280, "height": 800},
 ]
 
+# Error indicators for BrowserBase capacity issues
+BROWSERBASE_CAPACITY_ERRORS = [
+    "rate limit",
+    "too many requests",
+    "capacity exceeded",
+    "quota exceeded",
+    "concurrent sessions limit",
+    "429",
+    "503",
+    "resource exhausted",
+]
+
 
 def load_browserbase_creds() -> dict:
     """Load BrowserBase credentials from env vars or tokens file."""
@@ -66,29 +96,45 @@ def load_browserbase_creds() -> dict:
     return creds
 
 
+def is_capacity_error(error_msg: str) -> bool:
+    """Check if error is a BrowserBase capacity/rate limit error."""
+    error_lower = error_msg.lower()
+    return any(indicator in error_lower for indicator in BROWSERBASE_CAPACITY_ERRORS)
+
+
 @dataclass
 class BrowserSession:
     """Represents an active browser session."""
     session_id: str
     browser: Browser
+    context: BrowserContext
     page: Page
     platform: str
     connect_url: str
+    mode: BrowserMode = BrowserMode.BROWSERBASE
 
 
 class StealthBrowserManager:
     """
-    Manages stealth browser sessions via BrowserBase.
+    Manages stealth browser sessions with BrowserBase primary and local fallback.
     Handles fingerprinting, proxies, and human-like behavior.
     """
 
-    def __init__(self):
+    def __init__(self, prefer_local: bool = False):
+        """
+        Initialize the browser manager.
+        
+        Args:
+            prefer_local: If True, prefer local browsers even if BrowserBase is available.
+        """
         creds = load_browserbase_creds()
         self.api_key = creds.get("BROWSERBASE_API_KEY")
         self.project_id = creds.get("BROWSERBASE_PROJECT_ID")
-        self.bb = Browserbase(api_key=self.api_key) if self.api_key else None
+        self.bb = Browserbase(api_key=self.api_key) if self.api_key and BROWSERBASE_SDK_AVAILABLE else None
+        self.prefer_local = prefer_local
         self.active_sessions: Dict[str, BrowserSession] = {}
         self.playwright = None
+        self._browserbase_failed = False  # Track if BrowserBase is failing
 
     async def initialize(self):
         """Initialize Playwright instance."""
@@ -98,60 +144,123 @@ class StealthBrowserManager:
     async def create_stealth_session(
         self,
         platform: str,
-        use_proxy: bool = True
+        use_proxy: bool = True,
+        force_local: bool = False
     ) -> BrowserSession:
-        """Create a fingerprint-randomized session for specific platform."""
+        """
+        Create a fingerprint-randomized session for specific platform.
+        
+        Falls back to local browser if BrowserBase is at capacity or unavailable.
+        """
         await self.initialize()
 
-        if self.bb:
-            # Use BrowserBase for stealth session
-            session = self.bb.sessions.create(
-                project_id=self.project_id,
-                proxies=use_proxy,
-            )
-            print(f"[Browser] Created BrowserBase session: {session.id}")
+        # Try BrowserBase first (unless forced local or already failed)
+        if not force_local and not self.prefer_local and not self._browserbase_failed and self.bb:
+            try:
+                session = await self._create_browserbase_session(platform, use_proxy)
+                print(f"[Browser] Created BrowserBase session: {session.session_id}")
+                return session
+            except Exception as e:
+                error_msg = str(e)
+                if is_capacity_error(error_msg):
+                    print(f"[Browser] BrowserBase at capacity ({error_msg}), falling back to local browser...")
+                    self._browserbase_failed = True  # Mark as failed to avoid repeated attempts
+                else:
+                    print(f"[Browser] BrowserBase error: {error_msg}, falling back to local browser...")
 
-            browser = await self.playwright.chromium.connect_over_cdp(
-                session.connect_url,
-                timeout=60000
-            )
-            connect_url = session.connect_url
-            session_id = session.id
-        else:
-            # Fallback to local browser for development
-            print("[Browser] Using local browser (no BrowserBase credentials)")
-            browser = await self.playwright.chromium.launch(headless=True)
-            connect_url = "local"
-            session_id = f"local_{random.randint(1000, 9999)}"
+        # Fallback to local browser
+        return await self._create_local_session(platform, use_proxy)
+
+    async def _create_browserbase_session(
+        self,
+        platform: str,
+        use_proxy: bool = True
+    ) -> BrowserSession:
+        """Create a BrowserBase cloud session."""
+        session = self.bb.sessions.create(
+            project_id=self.project_id,
+            proxies=use_proxy,
+        )
+
+        browser = await self.playwright.chromium.connect_over_cdp(
+            session.connect_url,
+            timeout=60000
+        )
+
+        context = browser.contexts[0] if browser.contexts else await browser.new_context()
+        page = await context.new_page()
+
+        browser_session = BrowserSession(
+            session_id=session.id,
+            browser=browser,
+            context=context,
+            page=page,
+            platform=platform,
+            connect_url=session.connect_url,
+            mode=BrowserMode.BROWSERBASE
+        )
+
+        self.active_sessions[session.id] = browser_session
+        return browser_session
+
+    async def _create_local_session(
+        self,
+        platform: str,
+        use_proxy: bool = True
+    ) -> BrowserSession:
+        """Create a local browser session with stealth patches."""
+        print("[Browser] Using local browser session with stealth patches")
 
         # Random viewport and user agent
         viewport = random.choice(VIEWPORTS)
         user_agent = random.choice(USER_AGENTS)
 
-        context = browser.contexts[0] if browser.contexts else await browser.new_context(
-            viewport=viewport,
-            user_agent=user_agent,
+        # Build launch args for local browser
+        launch_args = [
+            f"--window-size={viewport['width']},{viewport['height']}",
+            "--disable-blink-features=AutomationControlled",
+            "--disable-web-security",
+            "--disable-features=IsolateOrigins,site-per-process",
+        ]
+
+        # Launch browser
+        browser = await self.playwright.chromium.launch(
+            headless=True,
+            args=launch_args
         )
 
-        page = await context.new_page()
+        # Create context with stealth settings
+        context = await browser.new_context(
+            viewport=viewport,
+            user_agent=user_agent,
+            locale="en-US",
+            timezone_id="America/New_York",
+            permissions=["geolocation"],
+            color_scheme="light",
+        )
 
-        # Apply stealth patches
-        await self._apply_stealth_patches(page)
+        # Add stealth init script
+        await context.add_init_script(self._get_stealth_script())
+
+        page = await context.new_page()
+        session_id = f"local_{platform}_{random.randint(1000, 9999)}"
 
         browser_session = BrowserSession(
             session_id=session_id,
             browser=browser,
+            context=context,
             page=page,
             platform=platform,
-            connect_url=connect_url
+            connect_url="local",
+            mode=BrowserMode.LOCAL
         )
 
         self.active_sessions[session_id] = browser_session
         return browser_session
 
-    async def _apply_stealth_patches(self, page: Page):
-        """Apply JavaScript patches to avoid detection."""
-        await page.add_init_script("""
+    def _get_stealth_script(self) -> str:
+        """Get JavaScript stealth patches."""
+        return """
             // Hide webdriver property
             Object.defineProperty(navigator, 'webdriver', {
                 get: () => undefined
@@ -220,7 +329,7 @@ class StealthBrowserManager:
                     return window;
                 }
             });
-        """)
+        """
 
     async def human_like_delay(self, min_sec: float = 1.0, max_sec: float = 3.0):
         """Add human-like random delay."""
@@ -308,17 +417,17 @@ class StealthBrowserManager:
         return False
 
     async def solve_captcha(self, page: Page, captcha_type: str = "auto") -> bool:
-        """Attempt to solve CAPTCHA (BrowserBase handles many automatically)."""
+        """Attempt to solve CAPTCHA (limited support for local browsers)."""
         try:
             recaptcha = page.locator('iframe[src*="recaptcha"]').first
             if await recaptcha.count() > 0:
-                print("[Browser] reCAPTCHA detected - BrowserBase handling...")
+                print("[Browser] reCAPTCHA detected - waiting for manual solve...")
                 await self.human_like_delay(5, 10)
                 return True
 
             hcaptcha = page.locator('iframe[src*="hcaptcha"]').first
             if await hcaptcha.count() > 0:
-                print("[Browser] hCaptcha detected - BrowserBase handling...")
+                print("[Browser] hCaptcha detected - waiting for manual solve...")
                 await self.human_like_delay(5, 10)
                 return True
 
@@ -333,6 +442,7 @@ class StealthBrowserManager:
         if session_id in self.active_sessions:
             session = self.active_sessions[session_id]
             try:
+                await session.context.close()
                 await session.browser.close()
             except Exception:
                 pass
@@ -351,24 +461,65 @@ class StealthBrowserManager:
                 pass
             self.playwright = None
 
+    def get_stats(self) -> Dict[str, Any]:
+        """Get browser manager statistics."""
+        browserbase_count = sum(1 for s in self.active_sessions.values() if s.mode == BrowserMode.BROWSERBASE)
+        local_count = sum(1 for s in self.active_sessions.values() if s.mode == BrowserMode.LOCAL)
+        
+        return {
+            "total_sessions": len(self.active_sessions),
+            "browserbase_sessions": browserbase_count,
+            "local_sessions": local_count,
+            "browserbase_available": self.bb is not None and not self._browserbase_failed,
+            "browserbase_failed": self._browserbase_failed,
+        }
+
+    def reset_browserbase_status(self):
+        """Reset BrowserBase failed status (to retry BrowserBase after a cooldown)."""
+        self._browserbase_failed = False
+        print("[Browser] Reset BrowserBase status - will retry on next session creation")
+
 
 async def test_stealth():
-    """Test the stealth browser manager."""
+    """Test the stealth browser manager with fallback."""
     manager = StealthBrowserManager()
 
     try:
+        # Test 1: Try BrowserBase (or fallback to local)
+        print("=" * 50)
+        print("Test 1: Creating stealth session (BrowserBase -> Local fallback)")
         session = await manager.create_stealth_session("test", use_proxy=True)
         page = session.page
+        print(f"Session mode: {session.mode.value}")
+        print(f"Session ID: {session.session_id}")
 
         print("[Test] Navigating to Indeed...")
         await page.goto("https://www.indeed.com/jobs?q=software+engineer&l=San+Francisco")
-
         await manager.wait_for_cloudflare(page)
-
         print(f"[Test] Title: {await page.title()}")
 
         await page.screenshot(path="/tmp/indeed_test.png")
         print("[Test] Screenshot saved to /tmp/indeed_test.png")
+
+        await manager.close_session(session.session_id)
+
+        # Test 2: Force local browser
+        print("=" * 50)
+        print("Test 2: Creating local browser session (forced)")
+        session = await manager.create_stealth_session("test", use_proxy=True, force_local=True)
+        page = session.page
+        print(f"Session mode: {session.mode.value}")
+
+        print("[Test] Navigating to example.com...")
+        await page.goto("https://example.com")
+        print(f"[Test] Title: {await page.title()}")
+
+        await page.screenshot(path="/tmp/example_local.png")
+        print("[Test] Screenshot saved to /tmp/example_local.png")
+
+        # Print stats
+        print("=" * 50)
+        print("Final stats:", manager.get_stats())
 
     finally:
         await manager.close_all()

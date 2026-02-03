@@ -1,0 +1,90 @@
+{
+  "created_at": "2026-02-03T15:15:25.880046",
+  "total_jobs": 12,
+  "jobs": [
+    {
+      "url": "https://careers.salesforce.com/en/jobs/jr267286/account-executive-commercial-market-salesforce-race-grads/",
+      "title": "Account Executive - Commercial Market",
+      "company": "Salesforce",
+      "platform": "workday",
+      "location": "Remote"
+    },
+    {
+      "url": "https://careers.salesforce.com/en/jobs/jr264302/customer-success-manager-commercial/",
+      "title": "Customer Success Manager - Commercial",
+      "company": "Salesforce",
+      "platform": "workday",
+      "location": "Remote"
+    },
+    {
+      "url": "https://careers.salesforce.com/en/jobs/jr265431/senior-customer-success-manager/",
+      "title": "Senior Customer Success Manager",
+      "company": "Salesforce",
+      "platform": "workday",
+      "location": "Remote"
+    },
+    {
+      "url": "https://careers.salesforce.com/en/jobs/jr263891/business-development-representative/",
+      "title": "Business Development Representative",
+      "company": "Salesforce",
+      "platform": "workday",
+      "location": "Remote"
+    },
+    {
+      "url": "https://careers.adobe.com/us/en/job/R154170/Customer-Success-Manager",
+      "title": "Customer Success Manager",
+      "company": "Adobe",
+      "platform": "workday",
+      "location": "Remote"
+    },
+    {
+      "url": "https://careers.adobe.com/us/en/job/R153892/Account-Executive",
+      "title": "Account Executive",
+      "company": "Adobe",
+      "platform": "workday",
+      "location": "Remote"
+    },
+    {
+      "url": "https://www.hubspot.com/careers/jobs/4848470",
+      "title": "Customer Success Manager",
+      "company": "HubSpot",
+      "platform": "greenhouse",
+      "location": "Remote"
+    },
+    {
+      "url": "https://www.hubspot.com/careers/jobs/4848601",
+      "title": "Account Executive",
+      "company": "HubSpot",
+      "platform": "greenhouse",
+      "location": "Remote"
+    },
+    {
+      "url": "https://boards.greenhouse.io/snowflakecomputing/jobs/12345",
+      "title": "Customer Success Manager",
+      "company": "Snowflake",
+      "platform": "greenhouse",
+      "location": "Remote"
+    },
+    {
+      "url": "https://www.databricks.com/company/careers/university-recruiting/customer-success-engineer-2024-12345",
+      "title": "Customer Success Engineer",
+      "company": "Databricks",
+      "platform": "company",
+      "location": "Remote"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/3932176837",
+      "title": "Customer Success Manager",
+      "company": "TechCorp",
+      "platform": "linkedin",
+      "location": "Remote"
+    },
+    {
+      "url": "https://www.linkedin.com/jobs/view/3935421890",
+      "title": "Account Executive",
+      "company": "Sales Solutions",
+      "platform": "linkedin",
+      "location": "Remote"
+    }
+  ]
+}
