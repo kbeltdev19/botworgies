@@ -1,0 +1,202 @@
+[
+  {
+    "id": "mock_0000",
+    "title": "Customer Success Manager",
+    "company": "AWS",
+    "location": "Atlanta, GA",
+    "url": "https://example.com/job/0",
+    "description": "Mock job description for testing",
+    "platform": "lever",
+    "date_posted": "2026-02-03T21:12:45.862442"
+  },
+  {
+    "id": "mock_0001",
+    "title": "Enterprise Account Manager",
+    "company": "Oracle",
+    "location": "United States",
+    "url": "https://example.com/job/1",
+    "description": "Mock job description for testing",
+    "platform": "indeed",
+    "date_posted": "2026-02-03T21:12:45.862448"
+  },
+  {
+    "id": "mock_0002",
+    "title": "Technical Account Manager",
+    "company": "Microsoft",
+    "location": "Atlanta, GA",
+    "url": "https://example.com/job/2",
+    "description": "Mock job description for testing",
+    "platform": "linkedin",
+    "date_posted": "2026-02-03T21:12:45.862450"
+  },
+  {
+    "id": "mock_0003",
+    "title": "Enterprise Account Manager",
+    "company": "Confluent",
+    "location": "Atlanta, GA",
+    "url": "https://example.com/job/3",
+    "description": "Mock job description for testing",
+    "platform": "lever",
+    "date_posted": "2026-02-03T21:12:45.862452"
+  },
+  {
+    "id": "mock_0004",
+    "title": "Technical Account Manager",
+    "company": "Oracle",
+    "location": "Atlanta, GA",
+    "url": "https://example.com/job/4",
+    "description": "Mock job description for testing",
+    "platform": "linkedin",
+    "date_posted": "2026-02-03T21:12:45.862454"
+  },
+  {
+    "id": "mock_0005",
+    "title": "Customer Success Manager",
+    "company": "Zendesk",
+    "location": "United States",
+    "url": "https://example.com/job/5",
+    "description": "Mock job description for testing",
+    "platform": "indeed",
+    "date_posted": "2026-02-03T21:12:45.862455"
+  },
+  {
+    "id": "mock_0006",
+    "title": "Customer Success Manager",
+    "company": "Twilio",
+    "location": "United States",
+    "url": "https://example.com/job/6",
+    "description": "Mock job description for testing",
+    "platform": "linkedin",
+    "date_posted": "2026-02-03T21:12:45.862457"
+  },
+  {
+    "id": "mock_0007",
+    "title": "Cloud Delivery Manager",
+    "company": "Elastic",
+    "location": "Remote",
+    "url": "https://example.com/job/7",
+    "description": "Mock job description for testing",
+    "platform": "linkedin",
+    "date_posted": "2026-02-03T21:12:45.862458"
+  },
+  {
+    "id": "mock_0008",
+    "title": "Technical Account Manager",
+    "company": "Oracle",
+    "location": "Atlanta, GA",
+    "url": "https://example.com/job/8",
+    "description": "Mock job description for testing",
+    "platform": "linkedin",
+    "date_posted": "2026-02-03T21:12:45.862459"
+  },
+  {
+    "id": "mock_0009",
+    "title": "Cloud Delivery Manager",
+    "company": "Oracle",
+    "location": "Remote",
+    "url": "https://example.com/job/9",
+    "description": "Mock job description for testing",
+    "platform": "indeed",
+    "date_posted": "2026-02-03T21:12:45.862461"
+  },
+  {
+    "id": "mock_0010",
+    "title": "Enterprise Account Manager",
+    "company": "AWS",
+    "location": "Remote",
+    "url": "https://example.com/job/10",
+    "description": "Mock job description for testing",
+    "platform": "linkedin",
+    "date_posted": "2026-02-03T21:12:45.862462"
+  },
+  {
+    "id": "mock_0011",
+    "title": "Technical Account Manager",
+    "company": "MongoDB",
+    "location": "Atlanta, GA",
+    "url": "https://example.com/job/11",
+    "description": "Mock job description for testing",
+    "platform": "lever",
+    "date_posted": "2026-02-03T21:12:45.862464"
+  },
+  {
+    "id": "mock_0012",
+    "title": "Customer Success Manager",
+    "company": "HubSpot",
+    "location": "United States",
+    "url": "https://example.com/job/12",
+    "description": "Mock job description for testing",
+    "platform": "linkedin",
+    "date_posted": "2026-02-03T21:12:45.862465"
+  },
+  {
+    "id": "mock_0013",
+    "title": "Cloud Delivery Manager",
+    "company": "Elastic",
+    "location": "United States",
+    "url": "https://example.com/job/13",
+    "description": "Mock job description for testing",
+    "platform": "linkedin",
+    "date_posted": "2026-02-03T21:12:45.862469"
+  },
+  {
+    "id": "mock_0014",
+    "title": "Customer Success Manager",
+    "company": "Okta",
+    "location": "United States",
+    "url": "https://example.com/job/14",
+    "description": "Mock job description for testing",
+    "platform": "lever",
+    "date_posted": "2026-02-03T21:12:45.862470"
+  },
+  {
+    "id": "mock_0015",
+    "title": "Customer Success Manager",
+    "company": "Salesforce",
+    "location": "United States",
+    "url": "https://example.com/job/15",
+    "description": "Mock job description for testing",
+    "platform": "indeed",
+    "date_posted": "2026-02-03T21:12:45.862471"
+  },
+  {
+    "id": "mock_0016",
+    "title": "Technical Account Manager",
+    "company": "Microsoft",
+    "location": "Atlanta, GA",
+    "url": "https://example.com/job/16",
+    "description": "Mock job description for testing",
+    "platform": "lever",
+    "date_posted": "2026-02-03T21:12:45.862472"
+  },
+  {
+    "id": "mock_0017",
+    "title": "Technical Account Manager",
+    "company": "AWS",
+    "location": "United States",
+    "url": "https://example.com/job/17",
+    "description": "Mock job description for testing",
+    "platform": "indeed",
+    "date_posted": "2026-02-03T21:12:45.862474"
+  },
+  {
+    "id": "mock_0018",
+    "title": "Technical Account Manager",
+    "company": "Microsoft",
+    "location": "Atlanta, GA",
+    "url": "https://example.com/job/18",
+    "description": "Mock job description for testing",
+    "platform": "greenhouse",
+    "date_posted": "2026-02-03T21:12:45.862475"
+  },
+  {
+    "id": "mock_0019",
+    "title": "Technical Account Manager",
+    "company": "Microsoft",
+    "location": "Atlanta, GA",
+    "url": "https://example.com/job/19",
+    "description": "Mock job description for testing",
+    "platform": "linkedin",
+    "date_posted": "2026-02-03T21:12:45.862476"
+  }
+]
