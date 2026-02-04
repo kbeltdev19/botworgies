@@ -1,0 +1,64 @@
+# Matt Edwards Campaign Profile
+# Usage: python -m campaigns run --profile campaigns/profiles/matt_edwards.yaml
+
+name: "Matt Edwards"
+email: "edwardsdmatt@gmail.com"
+phone: "+1-404-555-0123"
+linkedin: "https://www.linkedin.com/in/matt-edwards-/"
+location: "Atlanta, GA"
+
+resume:
+  path: "data/matt_edwards_resume.pdf"
+  # Tailored versions will be auto-generated
+  tailored_versions:
+    - target: "Customer Success"
+    - target: "Cloud Delivery"
+    - target: "Technical Account Management"
+
+search:
+  roles:
+    - "Customer Success Manager"
+    - "Cloud Delivery Manager"
+    - "Technical Account Manager"
+    - "Customer Success Specialist"
+    - "Implementation Manager"
+    - "Onboarding Manager"
+  
+  locations:
+    - "Atlanta, GA"
+    - "Remote"
+    - "Georgia"
+  
+  platforms:
+    - indeed
+    - linkedin
+    - greenhouse
+    - lever
+    - ziprecruiter
+  
+  remote_only: true
+  posted_within_days: 7
+  
+strategy:
+  name: "balanced"
+  max_concurrent: 7
+  delay_range: [5, 15]  # seconds
+  auto_submit: true
+  use_ai_tailoring: false  # Use templates (faster, cheaper)
+  
+targets:
+  total: 1000
+  daily_max: 100
+  
+features:
+  use_captcha_solver: true
+  use_proxy_rotation: true
+  use_session_pooling: true
+  use_ai_caching: true
+  capture_screenshots: true
+  
+output:
+  directory: "campaigns/output/matt_edwards"
+  save_screenshots: true
+  save_logs: true
+  email_notifications: false
