@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-02-03T21:52:10.264502",
+  "progress": "50/564",
+  "stats": {
+    "started_at": "2026-02-03T21:47:01.935715",
+    "completed_at": null,
+    "total_jobs": 564,
+    "attempted": 50,
+    "successful": 0,
+    "failed": 9,
+    "skipped": 41,
+    "by_platform": {},
+    "avg_time_per_app": 2.7117093658447264
+  }
+}

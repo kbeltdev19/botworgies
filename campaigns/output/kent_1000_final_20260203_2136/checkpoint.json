@@ -1,0 +1,1017 @@
+{
+  "stats": {
+    "target": 1000,
+    "previous_submissions": 729,
+    "new_submissions": 0,
+    "total_submissions": 729,
+    "remaining": 271,
+    "attempted": 100,
+    "success_rate": 0.0,
+    "captchas_solved": 0,
+    "total_cost": 0.0,
+    "elapsed_hours": 0.13852581694444446
+  },
+  "results": [
+    {
+      "id": "in-899929a3afb8d986",
+      "title": "Channel Program Success Manager",
+      "company": "Channel Fusion",
+      "location": "Columbus, OH, US",
+      "url": "https://www.indeed.com/viewjob?jk=899929a3afb8d986",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:37:43.195181"
+    },
+    {
+      "id": "in-91d88d4dcd0262a3",
+      "title": "Project Manager \u2013 Customer Success & Implementations",
+      "company": "Recruits Lab",
+      "location": "Skillman, NJ, US",
+      "url": "https://www.indeed.com/viewjob?jk=91d88d4dcd0262a3",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:37:43.566972"
+    },
+    {
+      "id": "in-c411f17e173fe7f0",
+      "title": "Client Success Manager",
+      "company": "ACU-Serve Corp",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=c411f17e173fe7f0",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:37:43.929380"
+    },
+    {
+      "id": "in-a729e45941190e63",
+      "title": "Strategic Key Account Manager - (Remote)",
+      "company": "NovaSource Power Services",
+      "location": "Chandler, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=a729e45941190e63",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:37:44.249167"
+    },
+    {
+      "id": "in-2d9d5513879f1c78",
+      "title": "Group Manager, Customer Success",
+      "company": "Intuit",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=2d9d5513879f1c78",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:37:44.585540"
+    },
+    {
+      "id": "in-a677144fd480a6d4",
+      "title": "Senior Customer Success Manager",
+      "company": "LaunchDarkly",
+      "location": "Oakland, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=a677144fd480a6d4",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:37:44.932756"
+    },
+    {
+      "id": "in-29ad59824efdfc13",
+      "title": "Channel Program Success Manager",
+      "company": "Channel Fusion",
+      "location": "Ann Arbor, MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=29ad59824efdfc13",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:37:45.323203"
+    },
+    {
+      "id": "in-d6a3b095df9bb0d4",
+      "title": "Strategic Key Account Manager - (Remote)",
+      "company": "NovaSource Power Services",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=d6a3b095df9bb0d4",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:37:45.634570"
+    },
+    {
+      "id": "in-67c5dd889de0ba53",
+      "title": "Group Manager, Customer Success",
+      "company": "Intuit",
+      "location": "San Diego, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=67c5dd889de0ba53",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:37:45.952343"
+    },
+    {
+      "id": "in-e0db7188e83ebbcc",
+      "title": "Sr. Customer Success Manager",
+      "company": "Proofpoint",
+      "location": "GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=e0db7188e83ebbcc",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:37:46.268761"
+    },
+    {
+      "id": "in-7005e1ba86a3062d",
+      "title": "Technical Account Manager",
+      "company": "Everbridge",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=7005e1ba86a3062d",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:37:46.577700"
+    },
+    {
+      "id": "in-95d39c66be007dd9",
+      "title": "Customer Success Manager",
+      "company": "Vouched",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=95d39c66be007dd9",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:37:46.886146"
+    },
+    {
+      "id": "in-cb9d7cf6266b3075",
+      "title": "Customer Success Manager - Mailchimp",
+      "company": "Intuit",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=cb9d7cf6266b3075",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:37:47.193448"
+    },
+    {
+      "id": "in-294ed8bf80000a31",
+      "title": "Customer Success Manager - Enterprise - Q1 27",
+      "company": "UserEvidence",
+      "location": "San Luis Obispo, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=294ed8bf80000a31",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:37:47.501657"
+    },
+    {
+      "id": "in-501bf072f9ef32d8",
+      "title": "Customer Success Manager",
+      "company": "Litera",
+      "location": "IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=501bf072f9ef32d8",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:37:47.821588"
+    },
+    {
+      "id": "in-475cbc0c34d385ac",
+      "title": "Technical Account Manager, Puppet",
+      "company": "Perforce Software",
+      "location": "Minneapolis, MN, US",
+      "url": "https://www.indeed.com/viewjob?jk=475cbc0c34d385ac",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:37:48.123503"
+    },
+    {
+      "id": "in-f091ef1d7d417664",
+      "title": "Strategic Account Manager",
+      "company": "Hayward Holdings (Industries)",
+      "location": "Newark, NJ, US",
+      "url": "https://www.indeed.com/viewjob?jk=f091ef1d7d417664",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:37:48.430467"
+    },
+    {
+      "id": "in-c44c30772ad2ca9a",
+      "title": "Industrial Account Manager",
+      "company": "Inline Electric Supply",
+      "location": "Knoxville, TN, US",
+      "url": "https://www.indeed.com/viewjob?jk=c44c30772ad2ca9a",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:37:48.751528"
+    },
+    {
+      "id": "in-2c0b1af68e2c135d",
+      "title": "Customer Success - Solution Account Manager - On-Site & Click Pay Payments",
+      "company": "RealPage Inc",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=2c0b1af68e2c135d",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:38:44.460798"
+    },
+    {
+      "id": "in-c1e9bd942489e79e",
+      "title": "Customer Success Manager",
+      "company": "IDEX Corporation",
+      "location": "Pittsburgh, PA, US",
+      "url": "https://www.indeed.com/viewjob?jk=c1e9bd942489e79e",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:38:44.779299"
+    },
+    {
+      "id": "in-282a771fcc086ee0",
+      "title": "Customer Success Manager",
+      "company": "ON CALL COMPUTER SOLUTIONS",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=282a771fcc086ee0",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:38:45.550090"
+    },
+    {
+      "id": "in-2d9d5513879f1c78",
+      "title": "Group Manager, Customer Success",
+      "company": "Intuit",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=2d9d5513879f1c78",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:38:45.864098"
+    },
+    {
+      "id": "in-cb9d7cf6266b3075",
+      "title": "Customer Success Manager - Mailchimp",
+      "company": "Intuit",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=cb9d7cf6266b3075",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:38:46.181961"
+    },
+    {
+      "id": "in-9aa352083445fbb7",
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Barrington, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=9aa352083445fbb7",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:38:46.510197"
+    },
+    {
+      "id": "in-f091ef1d7d417664",
+      "title": "Strategic Account Manager",
+      "company": "Hayward Holdings (Industries)",
+      "location": "Newark, NJ, US",
+      "url": "https://www.indeed.com/viewjob?jk=f091ef1d7d417664",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:38:46.841191"
+    },
+    {
+      "id": "in-9e30d915d7c19011",
+      "title": "Customer Success Manager",
+      "company": "ON CALL COMPUTER SOLUTIONS",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=9e30d915d7c19011",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:38:47.164964"
+    },
+    {
+      "id": "in-91d88d4dcd0262a3",
+      "title": "Project Manager \u2013 Customer Success & Implementations",
+      "company": "Recruits Lab",
+      "location": "Skillman, NJ, US",
+      "url": "https://www.indeed.com/viewjob?jk=91d88d4dcd0262a3",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:38:47.465303"
+    },
+    {
+      "id": "in-2c0b1af68e2c135d",
+      "title": "Customer Success - Solution Account Manager - On-Site & Click Pay Payments",
+      "company": "RealPage Inc",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=2c0b1af68e2c135d",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:38:47.783481"
+    },
+    {
+      "id": "in-81248410a6a82cb9",
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Morton Grove, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=81248410a6a82cb9",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:38:48.127771"
+    },
+    {
+      "id": "in-c814a235eb69c72c",
+      "title": "Southeast Region Key Account Contract Manager",
+      "company": "Pfizer",
+      "location": "MD, US",
+      "url": "https://www.indeed.com/viewjob?jk=c814a235eb69c72c",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:38:48.415327"
+    },
+    {
+      "id": "in-5147efa0d2d61343",
+      "title": "Account Sales Executive",
+      "company": "Building Controls and Services, Inc.",
+      "location": "Lenexa, KS, US",
+      "url": "https://www.indeed.com/viewjob?jk=5147efa0d2d61343",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:38:48.731494"
+    },
+    {
+      "id": "in-2e802cdc7e027573",
+      "title": "Assistant Account Manager (Commercial Lines P&C)",
+      "company": "Alliant Insurance Services",
+      "location": "Springfield, MO, US",
+      "url": "https://www.indeed.com/viewjob?jk=2e802cdc7e027573",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:39:45.363982"
+    },
+    {
+      "id": "in-0951cf28ae05c30f",
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Richland, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=0951cf28ae05c30f",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:39:45.677779"
+    },
+    {
+      "id": "in-ea444aa2a3c53b29",
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Santa Fe, NM, US",
+      "url": "https://www.indeed.com/viewjob?jk=ea444aa2a3c53b29",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:39:45.998109"
+    },
+    {
+      "id": "in-9cd7eb4cf32dc463",
+      "title": "Account Manager",
+      "company": "Colonial Group Inc",
+      "location": "Savannah, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=9cd7eb4cf32dc463",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:39:46.305512"
+    },
+    {
+      "id": "in-ed5623077f5022a5",
+      "title": "Technical Sales Account Manager - Northeast/Canada",
+      "company": "Amphenol",
+      "location": "Billerica, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=ed5623077f5022a5",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:39:46.788320"
+    },
+    {
+      "id": "in-82d36066a662f2ba",
+      "title": "Key Account Manager III",
+      "company": "Brightstar Lottery",
+      "location": "IN, US",
+      "url": "https://www.indeed.com/viewjob?jk=82d36066a662f2ba",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:39:47.110334"
+    },
+    {
+      "id": "in-30f850c190e07cdf",
+      "title": "Account Manager",
+      "company": "Colonial Group Inc",
+      "location": "Savannah, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=30f850c190e07cdf",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:39:47.453889"
+    },
+    {
+      "id": "in-7209b3b66bc7442f",
+      "title": "Assistant Account Manager (Commercial Lines P&C)",
+      "company": "Alliant Insurance Services",
+      "location": "Springfield, MO, US",
+      "url": "https://www.indeed.com/viewjob?jk=7209b3b66bc7442f",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:39:47.804077"
+    },
+    {
+      "id": "in-10fdbb2d60028a57",
+      "title": "Account Manager",
+      "company": "Colonial Group Inc",
+      "location": "Savannah, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=10fdbb2d60028a57",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:39:48.117124"
+    },
+    {
+      "id": "in-c3966f9a700d1bb8",
+      "title": "International Benefits Account Manager",
+      "company": "Alliant Insurance Services",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=c3966f9a700d1bb8",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:39:48.580266"
+    },
+    {
+      "id": "in-b639965cabb531c5",
+      "title": "International Benefits Account Manager",
+      "company": "Alliant Insurance Services",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=b639965cabb531c5",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:39:48.897930"
+    },
+    {
+      "id": "in-72bf8463502df633",
+      "title": "International Benefits Account Manager",
+      "company": "Alliant Insurance Services",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=72bf8463502df633",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:39:49.222614"
+    },
+    {
+      "id": "in-af002822f56bc600",
+      "title": "Account Manager",
+      "company": "ACAMS",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=af002822f56bc600",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:39:49.534114"
+    },
+    {
+      "id": "in-7bcbafd1f5ca9682",
+      "title": "Account Executive, Mid Market",
+      "company": "Canopy Tax",
+      "location": "South Jordan, UT, US",
+      "url": "https://www.indeed.com/viewjob?jk=7bcbafd1f5ca9682",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:39:49.832456"
+    },
+    {
+      "id": "in-08336073c83651a1",
+      "title": "Account Executive",
+      "company": "iHeartMedia",
+      "location": "Albuquerque, NM, US",
+      "url": "https://www.indeed.com/viewjob?jk=08336073c83651a1",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:40:45.435052"
+    },
+    {
+      "id": "in-4e9a40abf2d09811",
+      "title": "International Benefits Account Manager",
+      "company": "Alliant Insurance Services",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=4e9a40abf2d09811",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:40:45.748565"
+    },
+    {
+      "id": "in-23ed70c3fdce2096",
+      "title": "Account Manager",
+      "company": "Crawford Electric Supply",
+      "location": "Clarksville, TN, US",
+      "url": "https://www.indeed.com/viewjob?jk=23ed70c3fdce2096",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:40:46.069980"
+    },
+    {
+      "id": "in-9c628a66ab985869",
+      "title": "Manager, Account Management",
+      "company": "Synapse Health",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=9c628a66ab985869",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:40:46.376952"
+    },
+    {
+      "id": "in-4383883288d02b0c",
+      "title": "Senior Account Executive",
+      "company": "WEX Inc.",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=4383883288d02b0c",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:40:46.749579"
+    },
+    {
+      "id": "in-41d9711917ea9b5a",
+      "title": "Account Executive, Strategic - TOLA",
+      "company": "Kentik",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=41d9711917ea9b5a",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:41:45.864683"
+    },
+    {
+      "id": "in-eafa88618d3e01d9",
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Bloomer, WI, US",
+      "url": "https://www.indeed.com/viewjob?jk=eafa88618d3e01d9",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:41:46.334523"
+    },
+    {
+      "id": "in-56d5729fe8b97414",
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Aurora, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=56d5729fe8b97414",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:41:46.630219"
+    },
+    {
+      "id": "in-05b43d44cb6eedbd",
+      "title": "Account Executive - Professional Liability",
+      "company": "Jencap",
+      "location": "Troy, MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=05b43d44cb6eedbd",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:41:46.965995"
+    },
+    {
+      "id": "in-2a302611660efcba",
+      "title": "Strategic Major Account Manager, Spectrum Business",
+      "company": "Spectrum",
+      "location": "Coppell, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=2a302611660efcba",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:41:47.282292"
+    },
+    {
+      "id": "in-cd3ba54ccf9d8ed8",
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Plainfield, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=cd3ba54ccf9d8ed8",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:41:47.581798"
+    },
+    {
+      "id": "in-14ef0ef5d7713e18",
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Hawthorne, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=14ef0ef5d7713e18",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:41:47.911407"
+    },
+    {
+      "id": "in-e85959c097285c16",
+      "title": "Account Manager",
+      "company": "Advantage Solutions",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=e85959c097285c16",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:41:48.244278"
+    },
+    {
+      "id": "in-cb24f265f4441964",
+      "title": "Account Manager - Entry Level",
+      "company": "Cycle Specialized Marketing",
+      "location": "Corpus Christi, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=cb24f265f4441964",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:41:48.552442"
+    },
+    {
+      "id": "in-31823bb36fcf0c1a",
+      "title": "Strategic Major Account Executive",
+      "company": "Spectrum",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=31823bb36fcf0c1a",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:41:48.878016"
+    },
+    {
+      "id": "in-0c40bb97d9c59c29",
+      "title": "Account Executive",
+      "company": "Ideagen",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=0c40bb97d9c59c29",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:41:49.180504"
+    },
+    {
+      "id": "in-bfd032009483fab6",
+      "title": "Territory Account Executive",
+      "company": "Schneider Electric",
+      "location": "Salt Lake City, UT, US",
+      "url": "https://www.indeed.com/viewjob?jk=bfd032009483fab6",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:41:49.485452"
+    },
+    {
+      "id": "in-687ae9e1beaa83e0",
+      "title": "Account Manager- Service/Repair (New Orleans)",
+      "company": "TK Elevator",
+      "location": "New Orleans, LA, US",
+      "url": "https://www.indeed.com/viewjob?jk=687ae9e1beaa83e0",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:41:49.800690"
+    },
+    {
+      "id": "in-fbc3a38033c1a673",
+      "title": "Territory Account Executive",
+      "company": "Schneider Electric",
+      "location": "Kansas City, MO, US",
+      "url": "https://www.indeed.com/viewjob?jk=fbc3a38033c1a673",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:41:50.109498"
+    },
+    {
+      "id": "in-de620694e84d505c",
+      "title": "Account Manager",
+      "company": "VML",
+      "location": "Detroit, MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=de620694e84d505c",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:42:46.730495"
+    },
+    {
+      "id": "in-9f40aba15c4155d3",
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=9f40aba15c4155d3",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:42:47.054173"
+    },
+    {
+      "id": "in-abef751dae16e1ac",
+      "title": "Account Manager- Service/Repair (New Orleans)",
+      "company": "TK Elevator",
+      "location": "Baton Rouge, LA, US",
+      "url": "https://www.indeed.com/viewjob?jk=abef751dae16e1ac",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:42:47.382604"
+    },
+    {
+      "id": "in-8f97a69d656457e1",
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Sherman Oaks, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=8f97a69d656457e1",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:42:47.751020"
+    },
+    {
+      "id": "in-686f17b847ebdbc9",
+      "title": "Commercial Landscape Account Manager",
+      "company": "Business Resources One",
+      "location": "Lake in the Hills, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=686f17b847ebdbc9",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:42:48.067428"
+    },
+    {
+      "id": "in-9b038b05c12ce66d",
+      "title": "PATIENT ACCOUNT REPRESENTATIVE",
+      "company": "Sage Memorial Hospital",
+      "location": "Ganado, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=9b038b05c12ce66d",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:42:48.390842"
+    },
+    {
+      "id": "in-0b2716ead74d2e84",
+      "title": "Account Manager",
+      "company": "nan",
+      "location": "San Antonio, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=0b2716ead74d2e84",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:42:49.138915"
+    },
+    {
+      "id": "in-922f6a11605e3c13",
+      "title": "Account Executive - Tampa",
+      "company": "Centella",
+      "location": "Miami, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=922f6a11605e3c13",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:42:49.607298"
+    },
+    {
+      "id": "in-36847e19abb2ca14",
+      "title": "Account Executive, Major",
+      "company": "Canon",
+      "location": "Dedham, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=36847e19abb2ca14",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:42:49.924767"
+    },
+    {
+      "id": "in-8792c89c8c0d4ff3",
+      "title": "Account Executive, Senior",
+      "company": "Canon",
+      "location": "Dedham, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=8792c89c8c0d4ff3",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:42:50.246735"
+    },
+    {
+      "id": "in-d49752f5636be7bd",
+      "title": "Software Sales Account Manager Mid-Market",
+      "company": "Quest Software",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=d49752f5636be7bd",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:42:50.564927"
+    },
+    {
+      "id": "in-2402b55b0b17bd64",
+      "title": "SW Sales Account Manager",
+      "company": "Quest Software",
+      "location": "VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=2402b55b0b17bd64",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:42:50.906405"
+    },
+    {
+      "id": "in-8b61848e463e9982",
+      "title": "Software Sales Account Manager",
+      "company": "Quest Software",
+      "location": "GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=8b61848e463e9982",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:42:51.251529"
+    },
+    {
+      "id": "in-f25932a75422fd21",
+      "title": "Software Sales Account Manager",
+      "company": "Quest Software",
+      "location": "MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=f25932a75422fd21",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:42:51.570327"
+    },
+    {
+      "id": "in-2916c42be34a3dd9",
+      "title": "Software Sales Account Manager",
+      "company": "Quest Software",
+      "location": "OR, US",
+      "url": "https://www.indeed.com/viewjob?jk=2916c42be34a3dd9",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:43:47.353151"
+    },
+    {
+      "id": "in-d70ca1d95b3433f4",
+      "title": "Software Sales Account Manager",
+      "company": "Quest Software",
+      "location": "FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=d70ca1d95b3433f4",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:43:47.666941"
+    },
+    {
+      "id": "in-6752f481964c6100",
+      "title": "SW Sales Account Manager",
+      "company": "Quest Software",
+      "location": "SC, US",
+      "url": "https://www.indeed.com/viewjob?jk=6752f481964c6100",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:43:47.982890"
+    },
+    {
+      "id": "in-1c30d76ca159904d",
+      "title": "Software Sales Account Manager",
+      "company": "Quest Software",
+      "location": "TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=1c30d76ca159904d",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:43:48.381342"
+    },
+    {
+      "id": "in-0b04519126040ac5",
+      "title": "Distribution Software Channel Account Manager",
+      "company": "Quest Software",
+      "location": "FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=0b04519126040ac5",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:43:48.684324"
+    },
+    {
+      "id": "in-c09094c7800c8d1a",
+      "title": "Account Manager - Solid Tumor (Phoenix, AZ)",
+      "company": "BeOne Medicines",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=c09094c7800c8d1a",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:43:48.980541"
+    },
+    {
+      "id": "in-312ce14c96fd1e35",
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Pingree Grove, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=312ce14c96fd1e35",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:43:49.289425"
+    },
+    {
+      "id": "in-7ae57eb7c48bbc62",
+      "title": "Account Manager - WA/OR",
+      "company": "UNFI",
+      "location": "Seattle, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=7ae57eb7c48bbc62",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:43:49.650431"
+    },
+    {
+      "id": "in-293d24adc035dbcd",
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Fort Lauderdale, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=293d24adc035dbcd",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:43:49.949947"
+    },
+    {
+      "id": "in-b88c626fb68f6674",
+      "title": "Senior Account Executive - Audiovisual (AV)",
+      "company": "Avidex",
+      "location": "Waltham, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=b88c626fb68f6674",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:43:50.248266"
+    },
+    {
+      "id": "in-1bdb692abda3d78c",
+      "title": "Account Manager - WA/OR",
+      "company": "UNFI",
+      "location": "Portland, OR, US",
+      "url": "https://www.indeed.com/viewjob?jk=1bdb692abda3d78c",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:43:50.547301"
+    },
+    {
+      "id": "in-6d0b5541beced0bc",
+      "title": "Account Executive",
+      "company": "nan",
+      "location": "Nashville, TN, US",
+      "url": "https://www.indeed.com/viewjob?jk=6d0b5541beced0bc",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:43:50.871518"
+    },
+    {
+      "id": "in-8cd7c44c6d5d013d",
+      "title": "Account Manager, Approved Auto Repair",
+      "company": "AAA Northeast",
+      "location": "Acton, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=8cd7c44c6d5d013d",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:43:51.370663"
+    },
+    {
+      "id": "in-094b53d44dd9a82b",
+      "title": "Account Manager, Approved Auto Repair",
+      "company": "AAA Northeast",
+      "location": "Boston, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=094b53d44dd9a82b",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:43:51.697761"
+    },
+    {
+      "id": "in-033fcab1aff5a846",
+      "title": "Account Manager II, Construction & Infrastructure - NYC",
+      "company": "Aon",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=033fcab1aff5a846",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:43:52.015194"
+    },
+    {
+      "id": "in-d6a3b095df9bb0d4",
+      "title": "Strategic Key Account Manager - (Remote)",
+      "company": "NovaSource Power Services",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=d6a3b095df9bb0d4",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:43:52.316561"
+    },
+    {
+      "id": "in-3193df0cf6a3d4ea",
+      "title": "Senior Account Manager",
+      "company": "Cummings Electrical",
+      "location": "Fort Worth, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=3193df0cf6a3d4ea",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:43:52.657773"
+    },
+    {
+      "id": "in-a729e45941190e63",
+      "title": "Strategic Key Account Manager - (Remote)",
+      "company": "NovaSource Power Services",
+      "location": "Chandler, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=a729e45941190e63",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:43:52.968106"
+    },
+    {
+      "id": "in-b0a60e4cce883026",
+      "title": "Account Executive",
+      "company": "SAS",
+      "location": "Cary, NC, US",
+      "url": "https://www.indeed.com/viewjob?jk=b0a60e4cce883026",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:44:47.581368"
+    },
+    {
+      "id": "in-490b6fbd679eaa60",
+      "title": "Regional Fleet Sales Account Manager-Denver",
+      "company": "Grease Monkey",
+      "location": "Greenwood Village, CO, US",
+      "url": "https://www.indeed.com/viewjob?jk=490b6fbd679eaa60",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:44:47.886691"
+    },
+    {
+      "id": "in-73e805ff39cd8ccb",
+      "title": "Account Manager",
+      "company": "Inhabit",
+      "location": "Mason, OH, US",
+      "url": "https://www.indeed.com/viewjob?jk=73e805ff39cd8ccb",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:44:48.226273"
+    },
+    {
+      "id": "in-0d3f53aee2745fd2",
+      "title": "Technical Account Manager",
+      "company": "Malwarebytes",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=0d3f53aee2745fd2",
+      "status": "error",
+      "message": "Error code: 400 - {'statusCode': 400, 'error': 'Bad Request', 'message': 'Invalid Project ID'}",
+      "timestamp": "2026-02-03T21:44:48.550302"
+    }
+  ],
+  "timestamp": "2026-02-03T21:44:48.550446"
+}

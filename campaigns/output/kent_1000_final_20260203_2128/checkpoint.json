@@ -1,0 +1,3517 @@
+{
+  "stats": {
+    "target": 1000,
+    "previous_submissions": 729,
+    "new_submissions": 0,
+    "total_submissions": 729,
+    "remaining": 271,
+    "attempted": 350,
+    "success_rate": 0.0,
+    "captchas_solved": 0,
+    "total_cost": 0.0,
+    "elapsed_hours": 0.08874244055555555
+  },
+  "results": [
+    {
+      "id": "in-899929a3afb8d986",
+      "title": "Channel Program Success Manager",
+      "company": "Channel Fusion",
+      "location": "Columbus, OH, US",
+      "url": "https://www.indeed.com/viewjob?jk=899929a3afb8d986",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:45.846863"
+    },
+    {
+      "id": "in-91d88d4dcd0262a3",
+      "title": "Project Manager \u2013 Customer Success & Implementations",
+      "company": "Recruits Lab",
+      "location": "Skillman, NJ, US",
+      "url": "https://www.indeed.com/viewjob?jk=91d88d4dcd0262a3",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:45.986998"
+    },
+    {
+      "id": "in-29ad59824efdfc13",
+      "title": "Channel Program Success Manager",
+      "company": "Channel Fusion",
+      "location": "Ann Arbor, MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=29ad59824efdfc13",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.012038"
+    },
+    {
+      "id": "in-7005e1ba86a3062d",
+      "title": "Technical Account Manager",
+      "company": "Everbridge",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=7005e1ba86a3062d",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.018957"
+    },
+    {
+      "id": "in-a677144fd480a6d4",
+      "title": "Senior Customer Success Manager",
+      "company": "LaunchDarkly",
+      "location": "Oakland, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=a677144fd480a6d4",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.036555"
+    },
+    {
+      "id": "in-d6a3b095df9bb0d4",
+      "title": "Strategic Key Account Manager - (Remote)",
+      "company": "NovaSource Power Services",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=d6a3b095df9bb0d4",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.075218"
+    },
+    {
+      "id": "in-67c5dd889de0ba53",
+      "title": "Group Manager, Customer Success",
+      "company": "Intuit",
+      "location": "San Diego, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=67c5dd889de0ba53",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.131829"
+    },
+    {
+      "id": "in-e0db7188e83ebbcc",
+      "title": "Sr. Customer Success Manager",
+      "company": "Proofpoint",
+      "location": "GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=e0db7188e83ebbcc",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.141320"
+    },
+    {
+      "id": "in-a729e45941190e63",
+      "title": "Strategic Key Account Manager - (Remote)",
+      "company": "NovaSource Power Services",
+      "location": "Chandler, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=a729e45941190e63",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.153271"
+    },
+    {
+      "id": "in-c411f17e173fe7f0",
+      "title": "Client Success Manager",
+      "company": "ACU-Serve Corp",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=c411f17e173fe7f0",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.167106"
+    },
+    {
+      "id": "in-2d9d5513879f1c78",
+      "title": "Group Manager, Customer Success",
+      "company": "Intuit",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=2d9d5513879f1c78",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.167144"
+    },
+    {
+      "id": "in-2c0b1af68e2c135d",
+      "title": "Customer Success - Solution Account Manager - On-Site & Click Pay Payments",
+      "company": "RealPage Inc",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=2c0b1af68e2c135d",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.205134"
+    },
+    {
+      "id": "in-cb9d7cf6266b3075",
+      "title": "Customer Success Manager - Mailchimp",
+      "company": "Intuit",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=cb9d7cf6266b3075",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.244271"
+    },
+    {
+      "id": "in-f091ef1d7d417664",
+      "title": "Strategic Account Manager",
+      "company": "Hayward Holdings (Industries)",
+      "location": "Newark, NJ, US",
+      "url": "https://www.indeed.com/viewjob?jk=f091ef1d7d417664",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.300511"
+    },
+    {
+      "id": "in-294ed8bf80000a31",
+      "title": "Customer Success Manager - Enterprise - Q1 27",
+      "company": "UserEvidence",
+      "location": "San Luis Obispo, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=294ed8bf80000a31",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.316015"
+    },
+    {
+      "id": "in-c1e9bd942489e79e",
+      "title": "Customer Success Manager",
+      "company": "IDEX Corporation",
+      "location": "Pittsburgh, PA, US",
+      "url": "https://www.indeed.com/viewjob?jk=c1e9bd942489e79e",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.328910"
+    },
+    {
+      "id": "in-501bf072f9ef32d8",
+      "title": "Customer Success Manager",
+      "company": "Litera",
+      "location": "IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=501bf072f9ef32d8",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.378252"
+    },
+    {
+      "id": "in-91d88d4dcd0262a3",
+      "title": "Project Manager \u2013 Customer Success & Implementations",
+      "company": "Recruits Lab",
+      "location": "Skillman, NJ, US",
+      "url": "https://www.indeed.com/viewjob?jk=91d88d4dcd0262a3",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.396808"
+    },
+    {
+      "id": "in-c44c30772ad2ca9a",
+      "title": "Industrial Account Manager",
+      "company": "Inline Electric Supply",
+      "location": "Knoxville, TN, US",
+      "url": "https://www.indeed.com/viewjob?jk=c44c30772ad2ca9a",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.404877"
+    },
+    {
+      "id": "in-95d39c66be007dd9",
+      "title": "Customer Success Manager",
+      "company": "Vouched",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=95d39c66be007dd9",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.418728"
+    },
+    {
+      "id": "in-475cbc0c34d385ac",
+      "title": "Technical Account Manager, Puppet",
+      "company": "Perforce Software",
+      "location": "Minneapolis, MN, US",
+      "url": "https://www.indeed.com/viewjob?jk=475cbc0c34d385ac",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.430040"
+    },
+    {
+      "id": "in-cb9d7cf6266b3075",
+      "title": "Customer Success Manager - Mailchimp",
+      "company": "Intuit",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=cb9d7cf6266b3075",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.459838"
+    },
+    {
+      "id": "in-282a771fcc086ee0",
+      "title": "Customer Success Manager",
+      "company": "ON CALL COMPUTER SOLUTIONS",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=282a771fcc086ee0",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.480506"
+    },
+    {
+      "id": "in-2d9d5513879f1c78",
+      "title": "Group Manager, Customer Success",
+      "company": "Intuit",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=2d9d5513879f1c78",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.523250"
+    },
+    {
+      "id": "in-9e30d915d7c19011",
+      "title": "Customer Success Manager",
+      "company": "ON CALL COMPUTER SOLUTIONS",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=9e30d915d7c19011",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.537910"
+    },
+    {
+      "id": "in-f091ef1d7d417664",
+      "title": "Strategic Account Manager",
+      "company": "Hayward Holdings (Industries)",
+      "location": "Newark, NJ, US",
+      "url": "https://www.indeed.com/viewjob?jk=f091ef1d7d417664",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.585380"
+    },
+    {
+      "id": "in-0951cf28ae05c30f",
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Richland, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=0951cf28ae05c30f",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.607217"
+    },
+    {
+      "id": "in-2c0b1af68e2c135d",
+      "title": "Customer Success - Solution Account Manager - On-Site & Click Pay Payments",
+      "company": "RealPage Inc",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=2c0b1af68e2c135d",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.607251"
+    },
+    {
+      "id": "in-81248410a6a82cb9",
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Morton Grove, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=81248410a6a82cb9",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.641980"
+    },
+    {
+      "id": "in-c814a235eb69c72c",
+      "title": "Southeast Region Key Account Contract Manager",
+      "company": "Pfizer",
+      "location": "MD, US",
+      "url": "https://www.indeed.com/viewjob?jk=c814a235eb69c72c",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.693263"
+    },
+    {
+      "id": "in-5147efa0d2d61343",
+      "title": "Account Sales Executive",
+      "company": "Building Controls and Services, Inc.",
+      "location": "Lenexa, KS, US",
+      "url": "https://www.indeed.com/viewjob?jk=5147efa0d2d61343",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.702969"
+    },
+    {
+      "id": "in-9aa352083445fbb7",
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Barrington, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=9aa352083445fbb7",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.706055"
+    },
+    {
+      "id": "in-ea444aa2a3c53b29",
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Santa Fe, NM, US",
+      "url": "https://www.indeed.com/viewjob?jk=ea444aa2a3c53b29",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.777173"
+    },
+    {
+      "id": "in-30f850c190e07cdf",
+      "title": "Account Manager",
+      "company": "Colonial Group Inc",
+      "location": "Savannah, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=30f850c190e07cdf",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.778454"
+    },
+    {
+      "id": "in-10fdbb2d60028a57",
+      "title": "Account Manager",
+      "company": "Colonial Group Inc",
+      "location": "Savannah, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=10fdbb2d60028a57",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.782871"
+    },
+    {
+      "id": "in-b639965cabb531c5",
+      "title": "International Benefits Account Manager",
+      "company": "Alliant Insurance Services",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=b639965cabb531c5",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.786620"
+    },
+    {
+      "id": "in-ed5623077f5022a5",
+      "title": "Technical Sales Account Manager - Northeast/Canada",
+      "company": "Amphenol",
+      "location": "Billerica, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=ed5623077f5022a5",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.795302"
+    },
+    {
+      "id": "in-7209b3b66bc7442f",
+      "title": "Assistant Account Manager (Commercial Lines P&C)",
+      "company": "Alliant Insurance Services",
+      "location": "Springfield, MO, US",
+      "url": "https://www.indeed.com/viewjob?jk=7209b3b66bc7442f",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.801921"
+    },
+    {
+      "id": "in-9cd7eb4cf32dc463",
+      "title": "Account Manager",
+      "company": "Colonial Group Inc",
+      "location": "Savannah, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=9cd7eb4cf32dc463",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.808447"
+    },
+    {
+      "id": "in-82d36066a662f2ba",
+      "title": "Key Account Manager III",
+      "company": "Brightstar Lottery",
+      "location": "IN, US",
+      "url": "https://www.indeed.com/viewjob?jk=82d36066a662f2ba",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.825257"
+    },
+    {
+      "id": "in-c3966f9a700d1bb8",
+      "title": "International Benefits Account Manager",
+      "company": "Alliant Insurance Services",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=c3966f9a700d1bb8",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.826553"
+    },
+    {
+      "id": "in-2e802cdc7e027573",
+      "title": "Assistant Account Manager (Commercial Lines P&C)",
+      "company": "Alliant Insurance Services",
+      "location": "Springfield, MO, US",
+      "url": "https://www.indeed.com/viewjob?jk=2e802cdc7e027573",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.826739"
+    },
+    {
+      "id": "in-72bf8463502df633",
+      "title": "International Benefits Account Manager",
+      "company": "Alliant Insurance Services",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=72bf8463502df633",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.830753"
+    },
+    {
+      "id": "in-af002822f56bc600",
+      "title": "Account Manager",
+      "company": "ACAMS",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=af002822f56bc600",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.855075"
+    },
+    {
+      "id": "in-23ed70c3fdce2096",
+      "title": "Account Manager",
+      "company": "Crawford Electric Supply",
+      "location": "Clarksville, TN, US",
+      "url": "https://www.indeed.com/viewjob?jk=23ed70c3fdce2096",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.855188"
+    },
+    {
+      "id": "in-4e9a40abf2d09811",
+      "title": "International Benefits Account Manager",
+      "company": "Alliant Insurance Services",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=4e9a40abf2d09811",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.858584"
+    },
+    {
+      "id": "in-7bcbafd1f5ca9682",
+      "title": "Account Executive, Mid Market",
+      "company": "Canopy Tax",
+      "location": "South Jordan, UT, US",
+      "url": "https://www.indeed.com/viewjob?jk=7bcbafd1f5ca9682",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.880221"
+    },
+    {
+      "id": "in-08336073c83651a1",
+      "title": "Account Executive",
+      "company": "iHeartMedia",
+      "location": "Albuquerque, NM, US",
+      "url": "https://www.indeed.com/viewjob?jk=08336073c83651a1",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.893104"
+    },
+    {
+      "id": "in-9c628a66ab985869",
+      "title": "Manager, Account Management",
+      "company": "Synapse Health",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=9c628a66ab985869",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.902298"
+    },
+    {
+      "id": "in-4383883288d02b0c",
+      "title": "Senior Account Executive",
+      "company": "WEX Inc.",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=4383883288d02b0c",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:28:46.933087"
+    },
+    {
+      "id": "in-31823bb36fcf0c1a",
+      "title": "Strategic Major Account Executive",
+      "company": "Spectrum",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=31823bb36fcf0c1a",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:32.456998"
+    },
+    {
+      "id": "in-56d5729fe8b97414",
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Aurora, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=56d5729fe8b97414",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:32.490426"
+    },
+    {
+      "id": "in-2a302611660efcba",
+      "title": "Strategic Major Account Manager, Spectrum Business",
+      "company": "Spectrum",
+      "location": "Coppell, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=2a302611660efcba",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:32.491813"
+    },
+    {
+      "id": "in-e85959c097285c16",
+      "title": "Account Manager",
+      "company": "Advantage Solutions",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=e85959c097285c16",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:32.528545"
+    },
+    {
+      "id": "in-eafa88618d3e01d9",
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Bloomer, WI, US",
+      "url": "https://www.indeed.com/viewjob?jk=eafa88618d3e01d9",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:32.528629"
+    },
+    {
+      "id": "in-05b43d44cb6eedbd",
+      "title": "Account Executive - Professional Liability",
+      "company": "Jencap",
+      "location": "Troy, MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=05b43d44cb6eedbd",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:32.594934"
+    },
+    {
+      "id": "in-41d9711917ea9b5a",
+      "title": "Account Executive, Strategic - TOLA",
+      "company": "Kentik",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=41d9711917ea9b5a",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:32.668412"
+    },
+    {
+      "id": "in-0c40bb97d9c59c29",
+      "title": "Account Executive",
+      "company": "Ideagen",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=0c40bb97d9c59c29",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:32.705450"
+    },
+    {
+      "id": "in-abef751dae16e1ac",
+      "title": "Account Manager- Service/Repair (New Orleans)",
+      "company": "TK Elevator",
+      "location": "Baton Rouge, LA, US",
+      "url": "https://www.indeed.com/viewjob?jk=abef751dae16e1ac",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:32.705585"
+    },
+    {
+      "id": "in-cd3ba54ccf9d8ed8",
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Plainfield, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=cd3ba54ccf9d8ed8",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:32.706446"
+    },
+    {
+      "id": "in-687ae9e1beaa83e0",
+      "title": "Account Manager- Service/Repair (New Orleans)",
+      "company": "TK Elevator",
+      "location": "New Orleans, LA, US",
+      "url": "https://www.indeed.com/viewjob?jk=687ae9e1beaa83e0",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:32.741990"
+    },
+    {
+      "id": "in-cb24f265f4441964",
+      "title": "Account Manager - Entry Level",
+      "company": "Cycle Specialized Marketing",
+      "location": "Corpus Christi, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=cb24f265f4441964",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:32.748258"
+    },
+    {
+      "id": "in-14ef0ef5d7713e18",
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Hawthorne, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=14ef0ef5d7713e18",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:32.749591"
+    },
+    {
+      "id": "in-de620694e84d505c",
+      "title": "Account Manager",
+      "company": "VML",
+      "location": "Detroit, MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=de620694e84d505c",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:32.749614"
+    },
+    {
+      "id": "in-9b038b05c12ce66d",
+      "title": "PATIENT ACCOUNT REPRESENTATIVE",
+      "company": "Sage Memorial Hospital",
+      "location": "Ganado, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=9b038b05c12ce66d",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:32.749630"
+    },
+    {
+      "id": "in-686f17b847ebdbc9",
+      "title": "Commercial Landscape Account Manager",
+      "company": "Business Resources One",
+      "location": "Lake in the Hills, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=686f17b847ebdbc9",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:32.794455"
+    },
+    {
+      "id": "in-9f40aba15c4155d3",
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=9f40aba15c4155d3",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:32.795322"
+    },
+    {
+      "id": "in-8f97a69d656457e1",
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Sherman Oaks, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=8f97a69d656457e1",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:32.855543"
+    },
+    {
+      "id": "in-bfd032009483fab6",
+      "title": "Territory Account Executive",
+      "company": "Schneider Electric",
+      "location": "Salt Lake City, UT, US",
+      "url": "https://www.indeed.com/viewjob?jk=bfd032009483fab6",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:32.855637"
+    },
+    {
+      "id": "in-fbc3a38033c1a673",
+      "title": "Territory Account Executive",
+      "company": "Schneider Electric",
+      "location": "Kansas City, MO, US",
+      "url": "https://www.indeed.com/viewjob?jk=fbc3a38033c1a673",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:32.904730"
+    },
+    {
+      "id": "in-0b2716ead74d2e84",
+      "title": "Account Manager",
+      "company": "nan",
+      "location": "San Antonio, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=0b2716ead74d2e84",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.216597"
+    },
+    {
+      "id": "in-36847e19abb2ca14",
+      "title": "Account Executive, Major",
+      "company": "Canon",
+      "location": "Dedham, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=36847e19abb2ca14",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.269597"
+    },
+    {
+      "id": "in-922f6a11605e3c13",
+      "title": "Account Executive - Tampa",
+      "company": "Centella",
+      "location": "Miami, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=922f6a11605e3c13",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.302792"
+    },
+    {
+      "id": "in-8b61848e463e9982",
+      "title": "Software Sales Account Manager",
+      "company": "Quest Software",
+      "location": "GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=8b61848e463e9982",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.302835"
+    },
+    {
+      "id": "in-8792c89c8c0d4ff3",
+      "title": "Account Executive, Senior",
+      "company": "Canon",
+      "location": "Dedham, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=8792c89c8c0d4ff3",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.343488"
+    },
+    {
+      "id": "in-2402b55b0b17bd64",
+      "title": "SW Sales Account Manager",
+      "company": "Quest Software",
+      "location": "VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=2402b55b0b17bd64",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.361717"
+    },
+    {
+      "id": "in-d49752f5636be7bd",
+      "title": "Software Sales Account Manager Mid-Market",
+      "company": "Quest Software",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=d49752f5636be7bd",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.361773"
+    },
+    {
+      "id": "in-2916c42be34a3dd9",
+      "title": "Software Sales Account Manager",
+      "company": "Quest Software",
+      "location": "OR, US",
+      "url": "https://www.indeed.com/viewjob?jk=2916c42be34a3dd9",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.361819"
+    },
+    {
+      "id": "in-d70ca1d95b3433f4",
+      "title": "Software Sales Account Manager",
+      "company": "Quest Software",
+      "location": "FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=d70ca1d95b3433f4",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.361840"
+    },
+    {
+      "id": "in-f25932a75422fd21",
+      "title": "Software Sales Account Manager",
+      "company": "Quest Software",
+      "location": "MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=f25932a75422fd21",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.419764"
+    },
+    {
+      "id": "in-6752f481964c6100",
+      "title": "SW Sales Account Manager",
+      "company": "Quest Software",
+      "location": "SC, US",
+      "url": "https://www.indeed.com/viewjob?jk=6752f481964c6100",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.419793"
+    },
+    {
+      "id": "in-0b04519126040ac5",
+      "title": "Distribution Software Channel Account Manager",
+      "company": "Quest Software",
+      "location": "FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=0b04519126040ac5",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.435818"
+    },
+    {
+      "id": "in-1c30d76ca159904d",
+      "title": "Software Sales Account Manager",
+      "company": "Quest Software",
+      "location": "TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=1c30d76ca159904d",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.435872"
+    },
+    {
+      "id": "in-6d0b5541beced0bc",
+      "title": "Account Executive",
+      "company": "nan",
+      "location": "Nashville, TN, US",
+      "url": "https://www.indeed.com/viewjob?jk=6d0b5541beced0bc",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.435900"
+    },
+    {
+      "id": "in-7ae57eb7c48bbc62",
+      "title": "Account Manager - WA/OR",
+      "company": "UNFI",
+      "location": "Seattle, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=7ae57eb7c48bbc62",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.436079"
+    },
+    {
+      "id": "in-312ce14c96fd1e35",
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Pingree Grove, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=312ce14c96fd1e35",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.441681"
+    },
+    {
+      "id": "in-c09094c7800c8d1a",
+      "title": "Account Manager - Solid Tumor (Phoenix, AZ)",
+      "company": "BeOne Medicines",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=c09094c7800c8d1a",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.459432"
+    },
+    {
+      "id": "in-b88c626fb68f6674",
+      "title": "Senior Account Executive - Audiovisual (AV)",
+      "company": "Avidex",
+      "location": "Waltham, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=b88c626fb68f6674",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.464321"
+    },
+    {
+      "id": "in-1bdb692abda3d78c",
+      "title": "Account Manager - WA/OR",
+      "company": "UNFI",
+      "location": "Portland, OR, US",
+      "url": "https://www.indeed.com/viewjob?jk=1bdb692abda3d78c",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.470977"
+    },
+    {
+      "id": "in-293d24adc035dbcd",
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Fort Lauderdale, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=293d24adc035dbcd",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.484978"
+    },
+    {
+      "id": "in-8cd7c44c6d5d013d",
+      "title": "Account Manager, Approved Auto Repair",
+      "company": "AAA Northeast",
+      "location": "Acton, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=8cd7c44c6d5d013d",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.659495"
+    },
+    {
+      "id": "in-033fcab1aff5a846",
+      "title": "Account Manager II, Construction & Infrastructure - NYC",
+      "company": "Aon",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=033fcab1aff5a846",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.661605"
+    },
+    {
+      "id": "in-094b53d44dd9a82b",
+      "title": "Account Manager, Approved Auto Repair",
+      "company": "AAA Northeast",
+      "location": "Boston, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=094b53d44dd9a82b",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.664207"
+    },
+    {
+      "id": "in-d6a3b095df9bb0d4",
+      "title": "Strategic Key Account Manager - (Remote)",
+      "company": "NovaSource Power Services",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=d6a3b095df9bb0d4",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.701087"
+    },
+    {
+      "id": "in-b0a60e4cce883026",
+      "title": "Account Executive",
+      "company": "SAS",
+      "location": "Cary, NC, US",
+      "url": "https://www.indeed.com/viewjob?jk=b0a60e4cce883026",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.704459"
+    },
+    {
+      "id": "in-0d3f53aee2745fd2",
+      "title": "Technical Account Manager",
+      "company": "Malwarebytes",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=0d3f53aee2745fd2",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.714783"
+    },
+    {
+      "id": "in-a729e45941190e63",
+      "title": "Strategic Key Account Manager - (Remote)",
+      "company": "NovaSource Power Services",
+      "location": "Chandler, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=a729e45941190e63",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.721824"
+    },
+    {
+      "id": "in-490b6fbd679eaa60",
+      "title": "Regional Fleet Sales Account Manager-Denver",
+      "company": "Grease Monkey",
+      "location": "Greenwood Village, CO, US",
+      "url": "https://www.indeed.com/viewjob?jk=490b6fbd679eaa60",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.723399"
+    },
+    {
+      "id": "in-3193df0cf6a3d4ea",
+      "title": "Senior Account Manager",
+      "company": "Cummings Electrical",
+      "location": "Fort Worth, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=3193df0cf6a3d4ea",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.724871"
+    },
+    {
+      "id": "in-73e805ff39cd8ccb",
+      "title": "Account Manager",
+      "company": "Inhabit",
+      "location": "Mason, OH, US",
+      "url": "https://www.indeed.com/viewjob?jk=73e805ff39cd8ccb",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:29:33.734830"
+    },
+    {
+      "id": "in-f2b9fc57cb0c617e",
+      "title": "Customer Account Manager",
+      "company": "Nationwide Marketing Group",
+      "location": "Winston-Salem, NC, US",
+      "url": "https://www.indeed.com/viewjob?jk=f2b9fc57cb0c617e",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:18.978129"
+    },
+    {
+      "id": "in-b232090c18f8bc60",
+      "title": "NetSuite Channel Sales Account Manager",
+      "company": "Oracle",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=b232090c18f8bc60",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.007652"
+    },
+    {
+      "id": "in-f7f7d3ef5a73d70c",
+      "title": "Employee Benefits Account Manager",
+      "company": "Aston Sharp, Inc.",
+      "location": "Phoenix, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=f7f7d3ef5a73d70c",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.007684"
+    },
+    {
+      "id": "in-9fbbdef7a2a835ba",
+      "title": "Customer Account Manager",
+      "company": "Nationwide Marketing Group",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=9fbbdef7a2a835ba",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.026972"
+    },
+    {
+      "id": "in-c43bf842df010c5b",
+      "title": "Global Account Manager, MTDC",
+      "company": "Corning",
+      "location": "TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=c43bf842df010c5b",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.039311"
+    },
+    {
+      "id": "in-ae483021db013a4b",
+      "title": "Merchant Service Senior Account Executive, Hybrid",
+      "company": "Intuit",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=ae483021db013a4b",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.067355"
+    },
+    {
+      "id": "in-8a45893e40866bf5",
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Amherst, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=8a45893e40866bf5",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.067416"
+    },
+    {
+      "id": "in-e5664fc0b53a1ae5",
+      "title": "Account Manager - Base Chemicals - Light",
+      "company": "Ecolab",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=e5664fc0b53a1ae5",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.108145"
+    },
+    {
+      "id": "in-85d66895720b64bc",
+      "title": "Account Manager - Base Chemicals - Light",
+      "company": "Ecolab",
+      "location": "Saint Paul, MN, US",
+      "url": "https://www.indeed.com/viewjob?jk=85d66895720b64bc",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.137242"
+    },
+    {
+      "id": "in-9206ed162b72b6af",
+      "title": "Account Manager - Base Chemicals - Paper",
+      "company": "Ecolab",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=9206ed162b72b6af",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.209671"
+    },
+    {
+      "id": "in-a574c39cc43b4373",
+      "title": "Account Manager - Base Chemicals - Light",
+      "company": "Ecolab",
+      "location": "Naperville, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=a574c39cc43b4373",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.209712"
+    },
+    {
+      "id": "in-b41cfee1e53e7e5a",
+      "title": "Account Manager",
+      "company": "Ecolab",
+      "location": "Green Bay, WI, US",
+      "url": "https://www.indeed.com/viewjob?jk=b41cfee1e53e7e5a",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.260765"
+    },
+    {
+      "id": "in-2c149dacb3934f8b",
+      "title": "Account Manager - Base Chemicals - Downstream",
+      "company": "Ecolab",
+      "location": "Naperville, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=2c149dacb3934f8b",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.278742"
+    },
+    {
+      "id": "in-2c6de223d93c9f63",
+      "title": "Account Manager - Base Chemicals - Paper",
+      "company": "Ecolab",
+      "location": "Saint Paul, MN, US",
+      "url": "https://www.indeed.com/viewjob?jk=2c6de223d93c9f63",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.278882"
+    },
+    {
+      "id": "in-bfd62913f93f5df5",
+      "title": "Account Manager - Base Chemicals - Paper",
+      "company": "Ecolab",
+      "location": "Naperville, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=bfd62913f93f5df5",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.278971"
+    },
+    {
+      "id": "in-102bdc6211e44e88",
+      "title": "Account Manager - Base Chemicals - Food & Beverage",
+      "company": "Ecolab",
+      "location": "Naperville, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=102bdc6211e44e88",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.347991"
+    },
+    {
+      "id": "in-d22c3110dff12e72",
+      "title": "Account Manager - Base Chemicals - Food & Beverage",
+      "company": "Ecolab",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=d22c3110dff12e72",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.427070"
+    },
+    {
+      "id": "in-c6bad4cb9ee2ee5c",
+      "title": "Account Manager - Base Chemicals - Downstream",
+      "company": "Ecolab",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=c6bad4cb9ee2ee5c",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.489597"
+    },
+    {
+      "id": "in-3774d87a18e05923",
+      "title": "Account Manager - Base Chemicals - Food & Beverage",
+      "company": "Ecolab",
+      "location": "Philadelphia, PA, US",
+      "url": "https://www.indeed.com/viewjob?jk=3774d87a18e05923",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.522700"
+    },
+    {
+      "id": "in-911d863b666e4580",
+      "title": "Account Manager - Base Chemicals - Food & Beverage",
+      "company": "Ecolab",
+      "location": "Saint Paul, MN, US",
+      "url": "https://www.indeed.com/viewjob?jk=911d863b666e4580",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.549208"
+    },
+    {
+      "id": "in-563f8fa4cdd15310",
+      "title": "Account Manager - Base Chemicals - Downstream",
+      "company": "Ecolab",
+      "location": "Saint Paul, MN, US",
+      "url": "https://www.indeed.com/viewjob?jk=563f8fa4cdd15310",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.583704"
+    },
+    {
+      "id": "in-a0c1bd1ab4f8c722",
+      "title": "Account Director",
+      "company": "Photronics",
+      "location": "Boise, ID, US",
+      "url": "https://www.indeed.com/viewjob?jk=a0c1bd1ab4f8c722",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.626297"
+    },
+    {
+      "id": "in-e9c319a5b9bab5e4",
+      "title": "Junior Account Executive \u2013 B2B Sales (Base + Commission)",
+      "company": "Abstracts Incorporated",
+      "location": "NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=e9c319a5b9bab5e4",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.645472"
+    },
+    {
+      "id": "in-bdf2b590d5a4b474",
+      "title": "Patient Account Representative",
+      "company": "Dermatology Consultants, P.A.",
+      "location": "Woodbury, MN, US",
+      "url": "https://www.indeed.com/viewjob?jk=bdf2b590d5a4b474",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.716622"
+    },
+    {
+      "id": "in-c7494837ee6b0565",
+      "title": "Technology Account Manager",
+      "company": "Prisma Graphic",
+      "location": "Phoenix, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=c7494837ee6b0565",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.716659"
+    },
+    {
+      "id": "in-13a9ec446e6808ff",
+      "title": "Key Account Manager",
+      "company": "Strategic Retail Partners",
+      "location": "Denver, CO, US",
+      "url": "https://www.indeed.com/viewjob?jk=13a9ec446e6808ff",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.716674"
+    },
+    {
+      "id": "in-9d3f44c5098004a3",
+      "title": "Key Account Coordinator I",
+      "company": "CKF",
+      "location": "Omaha, NE, US",
+      "url": "https://www.indeed.com/viewjob?jk=9d3f44c5098004a3",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.824922"
+    },
+    {
+      "id": "in-ae483021db013a4b",
+      "title": "Merchant Service Senior Account Executive, Hybrid",
+      "company": "Intuit",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=ae483021db013a4b",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.825590"
+    },
+    {
+      "id": "in-6d9a705939ebffd9",
+      "title": "Strategic Account Manager",
+      "company": "Harps Tarps",
+      "location": "Stone Mountain, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=6d9a705939ebffd9",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.900832"
+    },
+    {
+      "id": "in-5d8389a18dc2f477",
+      "title": "Account Manager",
+      "company": "Avnet",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=5d8389a18dc2f477",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.900901"
+    },
+    {
+      "id": "in-b57e774b151beee2",
+      "title": "Account Director",
+      "company": "Bandwidth IG",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=b57e774b151beee2",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.900922"
+    },
+    {
+      "id": "in-d49752f5636be7bd",
+      "title": "Software Sales Account Manager Mid-Market",
+      "company": "Quest Software",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=d49752f5636be7bd",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:19.947468"
+    },
+    {
+      "id": "in-9f40aba15c4155d3",
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=9f40aba15c4155d3",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:20.030655"
+    },
+    {
+      "id": "in-9aa352083445fbb7",
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Barrington, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=9aa352083445fbb7",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:20.038041"
+    },
+    {
+      "id": "in-b232090c18f8bc60",
+      "title": "NetSuite Channel Sales Account Manager",
+      "company": "Oracle",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=b232090c18f8bc60",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:20.038121"
+    },
+    {
+      "id": "in-686f17b847ebdbc9",
+      "title": "Commercial Landscape Account Manager",
+      "company": "Business Resources One",
+      "location": "Lake in the Hills, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=686f17b847ebdbc9",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:20.039043"
+    },
+    {
+      "id": "in-81248410a6a82cb9",
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Morton Grove, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=81248410a6a82cb9",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:20.039868"
+    },
+    {
+      "id": "in-cd3ba54ccf9d8ed8",
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Plainfield, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=cd3ba54ccf9d8ed8",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:20.059279"
+    },
+    {
+      "id": "in-56d5729fe8b97414",
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Aurora, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=56d5729fe8b97414",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:20.090572"
+    },
+    {
+      "id": "in-312ce14c96fd1e35",
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Pingree Grove, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=312ce14c96fd1e35",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:20.129624"
+    },
+    {
+      "id": "in-a574c39cc43b4373",
+      "title": "Account Manager - Base Chemicals - Light",
+      "company": "Ecolab",
+      "location": "Naperville, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=a574c39cc43b4373",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:20.151570"
+    },
+    {
+      "id": "in-bfd62913f93f5df5",
+      "title": "Account Manager - Base Chemicals - Paper",
+      "company": "Ecolab",
+      "location": "Naperville, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=bfd62913f93f5df5",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:20.204815"
+    },
+    {
+      "id": "in-2c149dacb3934f8b",
+      "title": "Account Manager - Base Chemicals - Downstream",
+      "company": "Ecolab",
+      "location": "Naperville, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=2c149dacb3934f8b",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:20.225135"
+    },
+    {
+      "id": "in-b2d49acaa1104a29",
+      "title": "Account Executive Sales - Grand Rapids, MI",
+      "company": "Premier Beauty Supply",
+      "location": "Northbrook, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=b2d49acaa1104a29",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:20.227145"
+    },
+    {
+      "id": "in-102bdc6211e44e88",
+      "title": "Account Manager - Base Chemicals - Food & Beverage",
+      "company": "Ecolab",
+      "location": "Naperville, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=102bdc6211e44e88",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:20.231707"
+    },
+    {
+      "id": "in-d607d9a302371fa7",
+      "title": "Account Field Manager",
+      "company": "db3 ConServe",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=d607d9a302371fa7",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:20.232747"
+    },
+    {
+      "id": "in-2744d686f34daa61",
+      "title": "Account Executive - Sales - Toledo, OH",
+      "company": "Premier Beauty Supply",
+      "location": "Northbrook, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=2744d686f34daa61",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:20.241740"
+    },
+    {
+      "id": "in-10156fc073e02267",
+      "title": "Account Manager",
+      "company": "Ignite Insurance Systems",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=10156fc073e02267",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:20.247365"
+    },
+    {
+      "id": "in-63e0d5cd4f06fd6e",
+      "title": "Key Account Manager",
+      "company": "Hi-Cone",
+      "location": "Itasca, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=63e0d5cd4f06fd6e",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:20.257717"
+    },
+    {
+      "id": "in-ed5623077f5022a5",
+      "title": "Technical Sales Account Manager - Northeast/Canada",
+      "company": "Amphenol",
+      "location": "Billerica, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=ed5623077f5022a5",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:30:20.260747"
+    },
+    {
+      "id": "in-5d8389a18dc2f477",
+      "title": "Account Manager",
+      "company": "Avnet",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=5d8389a18dc2f477",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:05.556655"
+    },
+    {
+      "id": "in-36847e19abb2ca14",
+      "title": "Account Executive, Major",
+      "company": "Canon",
+      "location": "Dedham, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=36847e19abb2ca14",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:05.571720"
+    },
+    {
+      "id": "in-b88c626fb68f6674",
+      "title": "Senior Account Executive - Audiovisual (AV)",
+      "company": "Avidex",
+      "location": "Waltham, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=b88c626fb68f6674",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:05.589855"
+    },
+    {
+      "id": "in-8792c89c8c0d4ff3",
+      "title": "Account Executive, Senior",
+      "company": "Canon",
+      "location": "Dedham, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=8792c89c8c0d4ff3",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:05.600228"
+    },
+    {
+      "id": "in-ae483021db013a4b",
+      "title": "Merchant Service Senior Account Executive, Hybrid",
+      "company": "Intuit",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=ae483021db013a4b",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:05.624299"
+    },
+    {
+      "id": "in-094b53d44dd9a82b",
+      "title": "Account Manager, Approved Auto Repair",
+      "company": "AAA Northeast",
+      "location": "Boston, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=094b53d44dd9a82b",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:05.634495"
+    },
+    {
+      "id": "in-c52b65ad24b0ef19",
+      "title": "Sales Assistant",
+      "company": "Smith Douglas Homes",
+      "location": "Hampton, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=c52b65ad24b0ef19",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:05.646321"
+    },
+    {
+      "id": "in-8cd7c44c6d5d013d",
+      "title": "Account Manager, Approved Auto Repair",
+      "company": "AAA Northeast",
+      "location": "Acton, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=8cd7c44c6d5d013d",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:05.657035"
+    },
+    {
+      "id": "in-8ee52845db9420d2",
+      "title": "Manager, Money Outbound",
+      "company": "Intuit",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=8ee52845db9420d2",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:05.680763"
+    },
+    {
+      "id": "in-bb8686f75bab4d2b",
+      "title": "Business Development Representative",
+      "company": "SV Academy",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=bb8686f75bab4d2b",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:05.709317"
+    },
+    {
+      "id": "in-ececa9ce1b868f12",
+      "title": "Sales Representative",
+      "company": "Omada",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=ececa9ce1b868f12",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:05.746915"
+    },
+    {
+      "id": "in-b57e774b151beee2",
+      "title": "Account Director",
+      "company": "Bandwidth IG",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=b57e774b151beee2",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:05.776949"
+    },
+    {
+      "id": "in-c8f24b0f5da6797c",
+      "title": "TestBirthdate",
+      "company": "Oakbridge Insurance",
+      "location": "Zebulon, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=c8f24b0f5da6797c",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:05.798380"
+    },
+    {
+      "id": "in-95da29f8ae5ef529",
+      "title": "Community Development Manager",
+      "company": "iTHINK Financial",
+      "location": "Kennesaw, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=95da29f8ae5ef529",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:05.844085"
+    },
+    {
+      "id": "in-c0e75c9fc9bde21f",
+      "title": "Georgia Branch Manager",
+      "company": "Bisco Industries",
+      "location": "Duluth, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=c0e75c9fc9bde21f",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:05.878823"
+    },
+    {
+      "id": "in-17a42b768e3c3d8e",
+      "title": "Sales Lead, HVAC",
+      "company": "ConServ Building Services, LLC",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=17a42b768e3c3d8e",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:05.903523"
+    },
+    {
+      "id": "in-e89ef0045d5aa11f",
+      "title": "Outside Sales Representative",
+      "company": "Fleetpride",
+      "location": "Forest Park, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=e89ef0045d5aa11f",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:05.982952"
+    },
+    {
+      "id": "in-42c07af4ec3fe141",
+      "title": "Sr. Director, Education ( Delivery)",
+      "company": "Infor",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=42c07af4ec3fe141",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.039088"
+    },
+    {
+      "id": "in-ec3c06eabacead3b",
+      "title": "Sales Development Representative",
+      "company": "Origami Risk LLC",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=ec3c06eabacead3b",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.088570"
+    },
+    {
+      "id": "in-d3e8c049931a4796",
+      "title": "Georgia Branch Manager",
+      "company": "Bisco Industries",
+      "location": "Duluth, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=d3e8c049931a4796",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.120795"
+    },
+    {
+      "id": "in-1b5761f28b07d8c8",
+      "title": "Territory Sales Representative",
+      "company": "Ole Mexican Foods",
+      "location": "Norcross, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=1b5761f28b07d8c8",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.154022"
+    },
+    {
+      "id": "in-fb28e6f63466e75b",
+      "title": "Area Business Director (Gastroenterology) - Atlanta South",
+      "company": "Ardelyx",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=fb28e6f63466e75b",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.179396"
+    },
+    {
+      "id": "in-6d9a705939ebffd9",
+      "title": "Strategic Account Manager",
+      "company": "Harps Tarps",
+      "location": "Stone Mountain, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=6d9a705939ebffd9",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.212354"
+    },
+    {
+      "id": "in-5080c8bf2269bc82",
+      "title": "Aesthetic Experience Manager \u2013 Atlanta East",
+      "company": "Evolus",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=5080c8bf2269bc82",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.235018"
+    },
+    {
+      "id": "in-8605224d7fa69d5f",
+      "title": "Cardiovascular Health and Science Professional (HSP) - Highland Park, IL",
+      "company": "Pfizer",
+      "location": "IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=8605224d7fa69d5f",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.264548"
+    },
+    {
+      "id": "in-2de97bdf85f72630",
+      "title": "Sales Executive",
+      "company": "Briggs & Stratton LLC",
+      "location": "Wauwatosa, WI, US",
+      "url": "https://www.indeed.com/viewjob?jk=2de97bdf85f72630",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.302651"
+    },
+    {
+      "id": "in-a111053474582595",
+      "title": "Enterprise Sales Engineer",
+      "company": "Rubrik Security Cloud",
+      "location": "CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=a111053474582595",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.353911"
+    },
+    {
+      "id": "in-9ddff7ac556a38d5",
+      "title": "Outside Sales Professional",
+      "company": "Terminix",
+      "location": "Dawsonville, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=9ddff7ac556a38d5",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.386262"
+    },
+    {
+      "id": "in-a7efe5c33c6255cd",
+      "title": "Senior Oncology Account Specialist Hematology Denver, CO",
+      "company": "Pfizer",
+      "location": "Denver, CO, US",
+      "url": "https://www.indeed.com/viewjob?jk=a7efe5c33c6255cd",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.458446"
+    },
+    {
+      "id": "in-9aa352083445fbb7",
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Barrington, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=9aa352083445fbb7",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.526751"
+    },
+    {
+      "id": "in-b30189013afe1d51",
+      "title": "SALES REPRESENTATIVE\u00a0-\u00a0HVAC/R AND MECHANICAL-PHILA",
+      "company": "nan",
+      "location": "Philadelphia, PA, US",
+      "url": "https://www.indeed.com/viewjob?jk=b30189013afe1d51",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.550907"
+    },
+    {
+      "id": "in-81248410a6a82cb9",
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Morton Grove, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=81248410a6a82cb9",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.647604"
+    },
+    {
+      "id": "in-f7d3c474a64eb987",
+      "title": "Inside Sales & Service Representative",
+      "company": "Hajoca Corporation",
+      "location": "Ann Arbor, MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=f7d3c474a64eb987",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.686136"
+    },
+    {
+      "id": "in-2d8321f3d26ce131",
+      "title": "Asset Services Associate",
+      "company": "Aquila Commercial",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=2d8321f3d26ce131",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.690521"
+    },
+    {
+      "id": "in-a8e5e5365bf1f47e",
+      "title": "SALES REPRESENTATIVE\u00a0-\u00a0HVAC/R AND MECHANICAL\u00a0-GLASSBORO",
+      "company": "nan",
+      "location": "Glassboro, NJ, US",
+      "url": "https://www.indeed.com/viewjob?jk=a8e5e5365bf1f47e",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.691566"
+    },
+    {
+      "id": "in-bfb2fbac9630b489",
+      "title": "Radio Sales & Promoter (Commission Only)",
+      "company": "Sugar95 Radio",
+      "location": "Washington, DC, US",
+      "url": "https://www.indeed.com/viewjob?jk=bfb2fbac9630b489",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.693704"
+    },
+    {
+      "id": "in-6fb37fdebafb83b7",
+      "title": "All Programs - Energy Advisor II",
+      "company": "nan",
+      "location": "DE, US",
+      "url": "https://www.indeed.com/viewjob?jk=6fb37fdebafb83b7",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.787334"
+    },
+    {
+      "id": "in-50126bf3814a44d1",
+      "title": "SDREN TA DI - Outreach Manager I",
+      "company": "nan",
+      "location": "San Diego, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=50126bf3814a44d1",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.844201"
+    },
+    {
+      "id": "in-5147efa0d2d61343",
+      "title": "Account Sales Executive",
+      "company": "Building Controls and Services, Inc.",
+      "location": "Lenexa, KS, US",
+      "url": "https://www.indeed.com/viewjob?jk=5147efa0d2d61343",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.855653"
+    },
+    {
+      "id": "in-7c17f2b7508911d4",
+      "title": "Residential - Outreach Specialist I",
+      "company": "nan",
+      "location": "Queens, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=7c17f2b7508911d4",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.858088"
+    },
+    {
+      "id": "in-a4eb7828d8f4034a",
+      "title": "Territory Business Sales Manager - Sioux Falls, SD",
+      "company": "Turning Point Brands Inc.",
+      "location": "Sioux Falls, SD, US",
+      "url": "https://www.indeed.com/viewjob?jk=a4eb7828d8f4034a",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.922203"
+    },
+    {
+      "id": "in-19bbfb55d338ff1e",
+      "title": "Territory Business Sales Manager - Tallahassee, FL",
+      "company": "Turning Point Brands Inc.",
+      "location": "Tallahassee, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=19bbfb55d338ff1e",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.928760"
+    },
+    {
+      "id": "in-ec1a6eed54c0fe36",
+      "title": "Sales Engineer",
+      "company": "Building Controls and Services, Inc.",
+      "location": "Lenexa, KS, US",
+      "url": "https://www.indeed.com/viewjob?jk=ec1a6eed54c0fe36",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.964906"
+    },
+    {
+      "id": "in-ad8560b33dfaf831",
+      "title": "Senior Solutions Architect, Financial Services Banking",
+      "company": "NVIDIA",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=ad8560b33dfaf831",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.973286"
+    },
+    {
+      "id": "in-ea444aa2a3c53b29",
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Santa Fe, NM, US",
+      "url": "https://www.indeed.com/viewjob?jk=ea444aa2a3c53b29",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:06.992424"
+    },
+    {
+      "id": "in-45d16d0674bf9000",
+      "title": "Senior Director, ERP Channel",
+      "company": "Corpay",
+      "location": "CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=45d16d0674bf9000",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:07.000575"
+    },
+    {
+      "id": "in-92d334f8203668d5",
+      "title": "Zone Sales Manager - Automotive Refinish - Northeast",
+      "company": "BASF",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=92d334f8203668d5",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:07.010339"
+    },
+    {
+      "id": "in-d2cab85fd4c0aa62",
+      "title": "Sr Agronomic Sales Advisor - Southeast Missouri (Portageville region) - Field",
+      "company": "BASF",
+      "location": "Research Triangle Park, NC, US",
+      "url": "https://www.indeed.com/viewjob?jk=d2cab85fd4c0aa62",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:07.011694"
+    },
+    {
+      "id": "in-59c59373a202927f",
+      "title": "Zone Sales Manager - Automotive Refinish - West",
+      "company": "BASF",
+      "location": "CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=59c59373a202927f",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:07.016565"
+    },
+    {
+      "id": "in-8a57480409c53090",
+      "title": "Zone Sales Manager - Automotive Refinish - South",
+      "company": "BASF",
+      "location": "CO, US",
+      "url": "https://www.indeed.com/viewjob?jk=8a57480409c53090",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:07.023304"
+    },
+    {
+      "id": "in-4fa463bbed920028",
+      "title": "Zone Sales Manager - Automotive Refinish - Southeast",
+      "company": "BASF",
+      "location": "GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=4fa463bbed920028",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.305496"
+    },
+    {
+      "id": "in-48b27d551ec36065",
+      "title": "Zone Sales Manager - Automotive Refinish - Midwest",
+      "company": "BASF",
+      "location": "MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=48b27d551ec36065",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.311658"
+    },
+    {
+      "id": "in-0951cf28ae05c30f",
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Richland, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=0951cf28ae05c30f",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.350753"
+    },
+    {
+      "id": "in-f0e0933dca6ccd86",
+      "title": "Sales Professional",
+      "company": "Colonial Group Inc",
+      "location": "Columbia, SC, US",
+      "url": "https://www.indeed.com/viewjob?jk=f0e0933dca6ccd86",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.363349"
+    },
+    {
+      "id": "in-10fdbb2d60028a57",
+      "title": "Account Manager",
+      "company": "Colonial Group Inc",
+      "location": "Savannah, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=10fdbb2d60028a57",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.380141"
+    },
+    {
+      "id": "in-9cd7eb4cf32dc463",
+      "title": "Account Manager",
+      "company": "Colonial Group Inc",
+      "location": "Savannah, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=9cd7eb4cf32dc463",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.392514"
+    },
+    {
+      "id": "in-3fb12f10dcc7e88a",
+      "title": "Sales Professional",
+      "company": "Colonial Group Inc",
+      "location": "Columbia, SC, US",
+      "url": "https://www.indeed.com/viewjob?jk=3fb12f10dcc7e88a",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.399383"
+    },
+    {
+      "id": "in-30f850c190e07cdf",
+      "title": "Account Manager",
+      "company": "Colonial Group Inc",
+      "location": "Savannah, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=30f850c190e07cdf",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.439857"
+    },
+    {
+      "id": "in-adc6920266303120",
+      "title": "Sales Professional",
+      "company": "Colonial Group Inc",
+      "location": "Columbia, SC, US",
+      "url": "https://www.indeed.com/viewjob?jk=adc6920266303120",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.460079"
+    },
+    {
+      "id": "in-7be6b18536736549",
+      "title": "Sales Representative",
+      "company": "ueiwireless.comCricket Wireless Authorized Retailer",
+      "location": "Vacaville, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=7be6b18536736549",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.490736"
+    },
+    {
+      "id": "in-8537074603b7a89a",
+      "title": "Sales Professional",
+      "company": "Colonial Group Inc",
+      "location": "Columbia, SC, US",
+      "url": "https://www.indeed.com/viewjob?jk=8537074603b7a89a",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.509743"
+    },
+    {
+      "id": "in-82d36066a662f2ba",
+      "title": "Key Account Manager III",
+      "company": "Brightstar Lottery",
+      "location": "IN, US",
+      "url": "https://www.indeed.com/viewjob?jk=82d36066a662f2ba",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.528919"
+    },
+    {
+      "id": "in-57417df1807aedba",
+      "title": "Sales Professional",
+      "company": "Colonial Group Inc",
+      "location": "Columbia, SC, US",
+      "url": "https://www.indeed.com/viewjob?jk=57417df1807aedba",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.562082"
+    },
+    {
+      "id": "in-65512661eb2bc976",
+      "title": "Driver Merchandiser",
+      "company": "Coke Florida",
+      "location": "Daytona Beach, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=65512661eb2bc976",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.592992"
+    },
+    {
+      "id": "in-254821703f720053",
+      "title": "Operations - Warehouse Associate/Retail Sales Representative I",
+      "company": "Continental Battery Systems",
+      "location": "Paso Robles, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=254821703f720053",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.632894"
+    },
+    {
+      "id": "in-879f296139d33516",
+      "title": "Sales Professional",
+      "company": "Colonial Group Inc",
+      "location": "Columbia, SC, US",
+      "url": "https://www.indeed.com/viewjob?jk=879f296139d33516",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.723662"
+    },
+    {
+      "id": "in-08f60eef72cdaf2c",
+      "title": "Outside Sales Representative",
+      "company": "Builders FirstSource",
+      "location": "Bozeman, MT, US",
+      "url": "https://www.indeed.com/viewjob?jk=08f60eef72cdaf2c",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.832036"
+    },
+    {
+      "id": "in-f73a3f973ff6a8cf",
+      "title": "Sales Development Rep",
+      "company": "CareCloud",
+      "location": "Miami, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=f73a3f973ff6a8cf",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.848191"
+    },
+    {
+      "id": "in-63f32572051e713d",
+      "title": "Outside Sales Representative",
+      "company": "Builders FirstSource",
+      "location": "Billings, MT, US",
+      "url": "https://www.indeed.com/viewjob?jk=63f32572051e713d",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.874088"
+    },
+    {
+      "id": "in-22c8ca1745df5a5d",
+      "title": "Outside Sales Representative",
+      "company": "Builders FirstSource",
+      "location": "Butte, MT, US",
+      "url": "https://www.indeed.com/viewjob?jk=22c8ca1745df5a5d",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.901095"
+    },
+    {
+      "id": "in-24421044e5c6f918",
+      "title": "Outside Sales Representative",
+      "company": "Builders FirstSource",
+      "location": "Bozeman, MT, US",
+      "url": "https://www.indeed.com/viewjob?jk=24421044e5c6f918",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.921010"
+    },
+    {
+      "id": "in-6a9d4fef426932b5",
+      "title": "Outside Sales Representative",
+      "company": "Builders FirstSource",
+      "location": "Cody, WY, US",
+      "url": "https://www.indeed.com/viewjob?jk=6a9d4fef426932b5",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.938146"
+    },
+    {
+      "id": "in-ebb7c6327fb2bb49",
+      "title": "Inside Sales Representative",
+      "company": "BOELTER",
+      "location": "Pewaukee, WI, US",
+      "url": "https://www.indeed.com/viewjob?jk=ebb7c6327fb2bb49",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.952894"
+    },
+    {
+      "id": "in-29ea3bfb02612e03",
+      "title": "Outside Sales Representative",
+      "company": "Builders FirstSource",
+      "location": "Great Falls, MT, US",
+      "url": "https://www.indeed.com/viewjob?jk=29ea3bfb02612e03",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.962779"
+    },
+    {
+      "id": "in-9b227749ae7f7111",
+      "title": "Transaction Specialist I",
+      "company": "Auction.com",
+      "location": "Irvine, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=9b227749ae7f7111",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.983593"
+    },
+    {
+      "id": "in-2b189db45ad1bee2",
+      "title": "Sales Director",
+      "company": "Volante Senior Living",
+      "location": "Reno, NV, US",
+      "url": "https://www.indeed.com/viewjob?jk=2b189db45ad1bee2",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:52.993450"
+    },
+    {
+      "id": "in-2419c84353e8e0f8",
+      "title": "Transaction Specialist I",
+      "company": "Auction.com",
+      "location": "Plano, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=2419c84353e8e0f8",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.012539"
+    },
+    {
+      "id": "in-913e892d871a84d0",
+      "title": "Sales Development Rep",
+      "company": "CareCloud",
+      "location": "Fort Lauderdale, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=913e892d871a84d0",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.031418"
+    },
+    {
+      "id": "in-2cd6ae4e2c59be1f",
+      "title": "Inside Sales Representative",
+      "company": "BlueLinx",
+      "location": "Buffalo, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=2cd6ae4e2c59be1f",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.065749"
+    },
+    {
+      "id": "in-a51964ae796ce1b4",
+      "title": "Outside Sales Representative",
+      "company": "Builders FirstSource",
+      "location": "Sidney, MT, US",
+      "url": "https://www.indeed.com/viewjob?jk=a51964ae796ce1b4",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.094061"
+    },
+    {
+      "id": "in-8af904a27c3eeaa2",
+      "title": "Major Market Manager",
+      "company": "Amrize",
+      "location": "Seattle, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=8af904a27c3eeaa2",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.134325"
+    },
+    {
+      "id": "in-464f2c81d872568c",
+      "title": "Sales Specialist",
+      "company": "Sinceri Senior Living",
+      "location": "Orlando, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=464f2c81d872568c",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.136839"
+    },
+    {
+      "id": "in-3ed4cb8e20cff6fd",
+      "title": "New & Used Trucks-Sales Representative",
+      "company": "Ascendance Truck Centers",
+      "location": "York, PA, US",
+      "url": "https://www.indeed.com/viewjob?jk=3ed4cb8e20cff6fd",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.141150"
+    },
+    {
+      "id": "in-1fdb77150c17b192",
+      "title": "Inside Sales Representative",
+      "company": "BlueLinx",
+      "location": "Blasdell, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=1fdb77150c17b192",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.171265"
+    },
+    {
+      "id": "in-3ef5646bca2b6b3e",
+      "title": "New/Used Truck Sales Representative",
+      "company": "Ascendance Truck Centers",
+      "location": "Allentown, PA, US",
+      "url": "https://www.indeed.com/viewjob?jk=3ef5646bca2b6b3e",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.178125"
+    },
+    {
+      "id": "in-688f78ca3789f7e8",
+      "title": "New / Used Truck Sales Representative",
+      "company": "Ascendance Truck Centers",
+      "location": "Williamsport, PA, US",
+      "url": "https://www.indeed.com/viewjob?jk=688f78ca3789f7e8",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.191796"
+    },
+    {
+      "id": "in-fe4285b659297d08",
+      "title": "Membership Consultant (Sales)",
+      "company": "ArchWell Health",
+      "location": "Kansas City, MO, US",
+      "url": "https://www.indeed.com/viewjob?jk=fe4285b659297d08",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.301902"
+    },
+    {
+      "id": "in-ed5623077f5022a5",
+      "title": "Technical Sales Account Manager - Northeast/Canada",
+      "company": "Amphenol",
+      "location": "Billerica, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=ed5623077f5022a5",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.311871"
+    },
+    {
+      "id": "in-2e802cdc7e027573",
+      "title": "Assistant Account Manager (Commercial Lines P&C)",
+      "company": "Alliant Insurance Services",
+      "location": "Springfield, MO, US",
+      "url": "https://www.indeed.com/viewjob?jk=2e802cdc7e027573",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.416205"
+    },
+    {
+      "id": "in-7209b3b66bc7442f",
+      "title": "Assistant Account Manager (Commercial Lines P&C)",
+      "company": "Alliant Insurance Services",
+      "location": "Springfield, MO, US",
+      "url": "https://www.indeed.com/viewjob?jk=7209b3b66bc7442f",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.485947"
+    },
+    {
+      "id": "in-84f7e49af43d36c2",
+      "title": "Sales Associate",
+      "company": "Pest Badger Eau Claire",
+      "location": "Superior, WI, US",
+      "url": "https://www.indeed.com/viewjob?jk=84f7e49af43d36c2",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.493491"
+    },
+    {
+      "id": "in-37408b313b35f486",
+      "title": "Sales Advisor",
+      "company": "Asbury Automotive Group",
+      "location": "Salt Lake City, UT, US",
+      "url": "https://www.indeed.com/viewjob?jk=37408b313b35f486",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.493510"
+    },
+    {
+      "id": "in-daa56d0b3160c5c4",
+      "title": "Sales representative",
+      "company": "Tamayo Gold LLC",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=daa56d0b3160c5c4",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.494701"
+    },
+    {
+      "id": "in-29192e611e4c8885",
+      "title": "Sales Associate",
+      "company": "Pest Badger Eau Claire",
+      "location": "Milwaukee, WI, US",
+      "url": "https://www.indeed.com/viewjob?jk=29192e611e4c8885",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.495892"
+    },
+    {
+      "id": "in-777b52f446cfc889",
+      "title": "Technical Sales Engineer - Modeling",
+      "company": "Yes Energy",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=777b52f446cfc889",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.498984"
+    },
+    {
+      "id": "in-665924f7a9f00252",
+      "title": "Real Estate Development Analyst",
+      "company": "Vertical Bridge",
+      "location": "Delray Beach, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=665924f7a9f00252",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.510194"
+    },
+    {
+      "id": "in-af002822f56bc600",
+      "title": "Account Manager",
+      "company": "ACAMS",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=af002822f56bc600",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.513424"
+    },
+    {
+      "id": "in-23ed70c3fdce2096",
+      "title": "Account Manager",
+      "company": "Crawford Electric Supply",
+      "location": "Clarksville, TN, US",
+      "url": "https://www.indeed.com/viewjob?jk=23ed70c3fdce2096",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.549277"
+    },
+    {
+      "id": "in-1130c0d7e9dc7986",
+      "title": "Sales Professional",
+      "company": "Senior Benefit Services",
+      "location": "Springfield, MO, US",
+      "url": "https://www.indeed.com/viewjob?jk=1130c0d7e9dc7986",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.566477"
+    },
+    {
+      "id": "in-a631847a60099bba",
+      "title": "Treasury Management Sales Advisor II",
+      "company": "Western Alliance Bank",
+      "location": "Phoenix, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=a631847a60099bba",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:31:53.590184"
+    },
+    {
+      "id": "in-4b293bd14ca2c039",
+      "title": "Sales Representative",
+      "company": "Summit Solar & Roofing Inc",
+      "location": "San Bernardino, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=4b293bd14ca2c039",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.110522"
+    },
+    {
+      "id": "in-c60f3bdffb9dae0f",
+      "title": "Reliable Imaging Is Now Hiring A Lead Generator/Telemarketer!",
+      "company": "Cartridge Supply Company, LLC",
+      "location": "Bakersfield, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=c60f3bdffb9dae0f",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.176127"
+    },
+    {
+      "id": "in-7bcbafd1f5ca9682",
+      "title": "Account Executive, Mid Market",
+      "company": "Canopy Tax",
+      "location": "South Jordan, UT, US",
+      "url": "https://www.indeed.com/viewjob?jk=7bcbafd1f5ca9682",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.176221"
+    },
+    {
+      "id": "in-c42968457324919a",
+      "title": "Ink & Toner Cartridge Sales By Phone Starting At $20/Hour!",
+      "company": "Cartridge Supply Company, LLC",
+      "location": "Bakersfield, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=c42968457324919a",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.236607"
+    },
+    {
+      "id": "in-08336073c83651a1",
+      "title": "Account Executive",
+      "company": "iHeartMedia",
+      "location": "Albuquerque, NM, US",
+      "url": "https://www.indeed.com/viewjob?jk=08336073c83651a1",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.264547"
+    },
+    {
+      "id": "in-7ff7cec1fe93ee1e",
+      "title": "Manager, Sales Frontline",
+      "company": "Travel + Leisure Co.",
+      "location": "Wisconsin Dells, WI, US",
+      "url": "https://www.indeed.com/viewjob?jk=7ff7cec1fe93ee1e",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.307318"
+    },
+    {
+      "id": "in-a8819618100911ec",
+      "title": "Director of Sales Operations",
+      "company": "Heed Hospitality",
+      "location": "Tifton, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=a8819618100911ec",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.340851"
+    },
+    {
+      "id": "in-ecc0812dcf7eae3b",
+      "title": "Senior Director of Sales - Sprouts",
+      "company": "C.A. Fortune",
+      "location": "Phoenix, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=ecc0812dcf7eae3b",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.401031"
+    },
+    {
+      "id": "in-b183bbef0570c746",
+      "title": "In House Selling Sales Manager",
+      "company": "Travel + Leisure Co.",
+      "location": "Anaheim, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=b183bbef0570c746",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.453070"
+    },
+    {
+      "id": "in-05b43d44cb6eedbd",
+      "title": "Account Executive - Professional Liability",
+      "company": "Jencap",
+      "location": "Troy, MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=05b43d44cb6eedbd",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.464016"
+    },
+    {
+      "id": "in-8453d4a223ac79fc",
+      "title": "Intern - Inside Sales (Tires)",
+      "company": "WEX Inc.",
+      "location": "Portland, ME, US",
+      "url": "https://www.indeed.com/viewjob?jk=8453d4a223ac79fc",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.464068"
+    },
+    {
+      "id": "in-bb6c6bb459e27e04",
+      "title": "Telemarketing Manager",
+      "company": "California Renewable Energy",
+      "location": "Roseville, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=bb6c6bb459e27e04",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.498555"
+    },
+    {
+      "id": "in-f1b71ef545efb49b",
+      "title": "Outside Sales Representative",
+      "company": "Portal Glass Florida",
+      "location": "Naples, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=f1b71ef545efb49b",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.534371"
+    },
+    {
+      "id": "in-65f9c2e56a9df47b",
+      "title": "Sales Representative",
+      "company": "Travel + Leisure Co.",
+      "location": "Seaside, OR, US",
+      "url": "https://www.indeed.com/viewjob?jk=65f9c2e56a9df47b",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.572926"
+    },
+    {
+      "id": "in-2fda0d883643f7ff",
+      "title": "Senior Director of Sales - Whole Foods Market",
+      "company": "C.A. Fortune",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=2fda0d883643f7ff",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.595141"
+    },
+    {
+      "id": "in-4383883288d02b0c",
+      "title": "Senior Account Executive",
+      "company": "WEX Inc.",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=4383883288d02b0c",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.608551"
+    },
+    {
+      "id": "in-b766dbb77e31e4d4",
+      "title": "Representative, Owner Onboarding \u2022",
+      "company": "Travel + Leisure Co.",
+      "location": "Orlando, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=b766dbb77e31e4d4",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.627062"
+    },
+    {
+      "id": "in-ec67deb55365eb08",
+      "title": "Customer Relations Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Warren, MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=ec67deb55365eb08",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.653523"
+    },
+    {
+      "id": "in-3d3ce5fa9f83f48b",
+      "title": "Temporary Sales Manager",
+      "company": "Travel + Leisure Co.",
+      "location": "Anaheim, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=3d3ce5fa9f83f48b",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.697077"
+    },
+    {
+      "id": "in-eafa88618d3e01d9",
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Bloomer, WI, US",
+      "url": "https://www.indeed.com/viewjob?jk=eafa88618d3e01d9",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.729727"
+    },
+    {
+      "id": "in-56d5729fe8b97414",
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Aurora, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=56d5729fe8b97414",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.766508"
+    },
+    {
+      "id": "in-b9614f01de8ab98c",
+      "title": "Director of Sales",
+      "company": "nan",
+      "location": "Los Angeles, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=b9614f01de8ab98c",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.820360"
+    },
+    {
+      "id": "in-41d9711917ea9b5a",
+      "title": "Account Executive, Strategic - TOLA",
+      "company": "Kentik",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=41d9711917ea9b5a",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.847266"
+    },
+    {
+      "id": "in-9e0f1a5d9b4c39f0",
+      "title": "Direct Sales Distributor",
+      "company": "Poehls Inc",
+      "location": "Brainerd, MN, US",
+      "url": "https://www.indeed.com/viewjob?jk=9e0f1a5d9b4c39f0",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.883962"
+    },
+    {
+      "id": "in-0fa3fcc6fc13c680",
+      "title": "Area Sales Director- Service/Repair (South Area)",
+      "company": "TK Elevator",
+      "location": "Dallas, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=0fa3fcc6fc13c680",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:39.933791"
+    },
+    {
+      "id": "in-2419c84353e8e0f8",
+      "title": "Transaction Specialist I",
+      "company": "Auction.com",
+      "location": "Plano, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=2419c84353e8e0f8",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.001743"
+    },
+    {
+      "id": "in-2a302611660efcba",
+      "title": "Strategic Major Account Manager, Spectrum Business",
+      "company": "Spectrum",
+      "location": "Coppell, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=2a302611660efcba",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.032668"
+    },
+    {
+      "id": "in-2b56d91e62502042",
+      "title": "Business Development Representative II, Spectrum Business",
+      "company": "Spectrum",
+      "location": "Coppell, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=2b56d91e62502042",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.066896"
+    },
+    {
+      "id": "in-cd4b9fca10f44d90",
+      "title": "Market Sales Leader",
+      "company": "Grupo Bimbo",
+      "location": "Wayne, NJ, US",
+      "url": "https://www.indeed.com/viewjob?jk=cd4b9fca10f44d90",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.083604"
+    },
+    {
+      "id": "in-d42aeea2bb829685",
+      "title": "Manager, Money Outbound",
+      "company": "Intuit",
+      "location": "Plano, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=d42aeea2bb829685",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.129712"
+    },
+    {
+      "id": "in-07c63871c1ac9cf1",
+      "title": "Sales Counselor",
+      "company": "Sagora Senior Living",
+      "location": "Cleburne, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=07c63871c1ac9cf1",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.171457"
+    },
+    {
+      "id": "in-b491b221b59ddddb",
+      "title": "Inside Sales Engineer I",
+      "company": "Paragon Energy Solutions",
+      "location": "Fort Worth, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=b491b221b59ddddb",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.177043"
+    },
+    {
+      "id": "in-c2b2852df59d0e54",
+      "title": "Sales Representative",
+      "company": "AutoSavvy",
+      "location": "Duncanville, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=c2b2852df59d0e54",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.191025"
+    },
+    {
+      "id": "in-b4ea65681a84de49",
+      "title": "Industrial Inside Sales Representative",
+      "company": "PURVIS INDUSTRIES",
+      "location": "Dallas, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=b4ea65681a84de49",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.202913"
+    },
+    {
+      "id": "in-4e0b61bfdcd53ace",
+      "title": "Account Representative, UberEats",
+      "company": "Uber",
+      "location": "Dallas, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=4e0b61bfdcd53ace",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.204525"
+    },
+    {
+      "id": "in-14954ee37cf876d3",
+      "title": "Regional Sales Manager - IL, MO, KS, IA, NE",
+      "company": "Sunlight Batteries USA Inc",
+      "location": "The Colony, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=14954ee37cf876d3",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.205746"
+    },
+    {
+      "id": "in-5bfbfe83fccec277",
+      "title": "Sales Manager",
+      "company": "Omni Hotels",
+      "location": "Dallas, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=5bfbfe83fccec277",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.265423"
+    },
+    {
+      "id": "in-7c182300e1be4f17",
+      "title": "Manager, Major Account Sales, Healthcare & Education",
+      "company": "Brother USA",
+      "location": "Dallas, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=7c182300e1be4f17",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.358892"
+    },
+    {
+      "id": "in-a4cc2e179da7741e",
+      "title": "Business Development Representative",
+      "company": "Mindful Health",
+      "location": "Rockwall, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=a4cc2e179da7741e",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.412301"
+    },
+    {
+      "id": "in-950ad28d22df45af",
+      "title": "Bilingual Wireless Retail Sales Representative",
+      "company": "nan",
+      "location": "Forney, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=950ad28d22df45af",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.433462"
+    },
+    {
+      "id": "in-cc80b4e85d49bd5f",
+      "title": "Bilingual Insurance Agent",
+      "company": "ARAMEX INSURANCE AGENCY INC",
+      "location": "Arlington, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=cc80b4e85d49bd5f",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.466642"
+    },
+    {
+      "id": "in-bade0441300e382c",
+      "title": "Real Estate Sales Specialist",
+      "company": "Todd Tramonte Home Selling Realtors",
+      "location": "Richardson, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=bade0441300e382c",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.489866"
+    },
+    {
+      "id": "in-f7c38d558f6b27ec",
+      "title": "Bilingual - Sales Account Manager",
+      "company": "Liz Olvera Insurance Agency",
+      "location": "Dallas, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=f7c38d558f6b27ec",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.542054"
+    },
+    {
+      "id": "in-91b7ac4a1a58cab6",
+      "title": "Outside Sales Representative",
+      "company": "MyAMC",
+      "location": "Dallas, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=91b7ac4a1a58cab6",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.549501"
+    },
+    {
+      "id": "in-daa56d0b3160c5c4",
+      "title": "Sales representative",
+      "company": "Tamayo Gold LLC",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=daa56d0b3160c5c4",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.561414"
+    },
+    {
+      "id": "in-0a8708cec5039adb",
+      "title": "Sr Technical Solution Engineer (Knowledge of Process Simulation Software)",
+      "company": "Aspen Technology",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=0a8708cec5039adb",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.573340"
+    },
+    {
+      "id": "in-b79fb59a27cb34d3",
+      "title": "Sr Principal Technical Support Engineer (Knowledge of Advanced Process Control)",
+      "company": "Aspen Technology",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=b79fb59a27cb34d3",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.575653"
+    },
+    {
+      "id": "in-c42dcc526115525b",
+      "title": "Area Sales Director- Service/Repair (South Area)",
+      "company": "TK Elevator",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=c42dcc526115525b",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.598307"
+    },
+    {
+      "id": "in-ce942bee3a31a8bc",
+      "title": "Setter",
+      "company": "nan",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=ce942bee3a31a8bc",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.614104"
+    },
+    {
+      "id": "in-fe58dff5efd79f74",
+      "title": "Real Estate Sales Specialist",
+      "company": "nan",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=fe58dff5efd79f74",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:32:40.621217"
+    },
+    {
+      "id": "in-e5664fc0b53a1ae5",
+      "title": "Account Manager - Base Chemicals - Light",
+      "company": "Ecolab",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=e5664fc0b53a1ae5",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.152390"
+    },
+    {
+      "id": "in-c6bad4cb9ee2ee5c",
+      "title": "Account Manager - Base Chemicals - Downstream",
+      "company": "Ecolab",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=c6bad4cb9ee2ee5c",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.152578"
+    },
+    {
+      "id": "in-481187d3cb4c3a61",
+      "title": "Route Delivery Driver, CDL B--Houston TX (Mon-Fri, 6am Start Time!)",
+      "company": "Johnson Brothers",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=481187d3cb4c3a61",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.236914"
+    },
+    {
+      "id": "in-68e2967a4d5d67fc",
+      "title": "Marketing/Sales (Clinical) (Home Health) - Full Time- Houston Medical Center",
+      "company": "Harbor Healthcare System",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=68e2967a4d5d67fc",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.236964"
+    },
+    {
+      "id": "in-4f8b122d441a620a",
+      "title": "Sales Representative",
+      "company": "nan",
+      "location": "Sugar Land, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=4f8b122d441a620a",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.256536"
+    },
+    {
+      "id": "in-d22c3110dff12e72",
+      "title": "Account Manager - Base Chemicals - Food & Beverage",
+      "company": "Ecolab",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=d22c3110dff12e72",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.256897"
+    },
+    {
+      "id": "in-c0d89cce386759bc",
+      "title": "Boat Sales & ATV Consultant",
+      "company": "Bass Pro Shops",
+      "location": "Spring, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=c0d89cce386759bc",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.256926"
+    },
+    {
+      "id": "in-d6a3b095df9bb0d4",
+      "title": "Strategic Key Account Manager - (Remote)",
+      "company": "NovaSource Power Services",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=d6a3b095df9bb0d4",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.288482"
+    },
+    {
+      "id": "in-83f8d7b50447095d",
+      "title": "Channel Sales Associate - CPA",
+      "company": "Paychex, Inc.",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=83f8d7b50447095d",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.300166"
+    },
+    {
+      "id": "in-7833f22a32c932e6",
+      "title": "Sales Professional - Inside Sales",
+      "company": "Service Corporation International",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=7833f22a32c932e6",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.309512"
+    },
+    {
+      "id": "in-c9e55f36b4b0ed33",
+      "title": "Inside Sales",
+      "company": "White Cap",
+      "location": "Baytown, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=c9e55f36b4b0ed33",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.325654"
+    },
+    {
+      "id": "in-5b05956e6bfdceda",
+      "title": "Agency Director - In-Home Care Agency",
+      "company": "Caring Senior Service",
+      "location": "Sugar Land, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=5b05956e6bfdceda",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.338575"
+    },
+    {
+      "id": "in-9206ed162b72b6af",
+      "title": "Account Manager - Base Chemicals - Paper",
+      "company": "Ecolab",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=9206ed162b72b6af",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.359304"
+    },
+    {
+      "id": "in-c3680d8d00f43c70",
+      "title": "B2B Outside Sales Representative",
+      "company": "Orkin",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=c3680d8d00f43c70",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.383785"
+    },
+    {
+      "id": "in-1a46a66a48f2e193",
+      "title": "Real Estate Manager",
+      "company": "Service Corporation International",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=1a46a66a48f2e193",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.418849"
+    },
+    {
+      "id": "in-c77718e4e9286df6",
+      "title": "High-Income Roofing & General Construction Sales Representative (1099)",
+      "company": "nan",
+      "location": "Spring, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=c77718e4e9286df6",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.435925"
+    },
+    {
+      "id": "in-a631847a60099bba",
+      "title": "Treasury Management Sales Advisor II",
+      "company": "Western Alliance Bank",
+      "location": "Phoenix, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=a631847a60099bba",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.448120"
+    },
+    {
+      "id": "in-bd124f1ac370c7fc",
+      "title": "Sales Professional - Inside Sales",
+      "company": "Service Corporation International",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=bd124f1ac370c7fc",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.473693"
+    },
+    {
+      "id": "in-433286f6939ff4f2",
+      "title": "Sales Professional - Inside Sales",
+      "company": "Service Corporation International",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=433286f6939ff4f2",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.502148"
+    },
+    {
+      "id": "in-fed63df7411c98cc",
+      "title": "Territory Sales Representative",
+      "company": "Ole Mexican Foods",
+      "location": "Katy, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=fed63df7411c98cc",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.522135"
+    },
+    {
+      "id": "in-ecc0812dcf7eae3b",
+      "title": "Senior Director of Sales - Sprouts",
+      "company": "C.A. Fortune",
+      "location": "Phoenix, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=ecc0812dcf7eae3b",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.570013"
+    },
+    {
+      "id": "in-e4f8f8f74cd6e351",
+      "title": "Athletically Minded Sales Representative (Outside Sales Consultant)",
+      "company": "Vero Exteriors",
+      "location": "Phoenix, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=e4f8f8f74cd6e351",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.616982"
+    },
+    {
+      "id": "in-f7f7d3ef5a73d70c",
+      "title": "Employee Benefits Account Manager",
+      "company": "Aston Sharp, Inc.",
+      "location": "Phoenix, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=f7f7d3ef5a73d70c",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.674372"
+    },
+    {
+      "id": "in-c6ff7bf0b43f90cc",
+      "title": "Delivery Assist",
+      "company": "Hensley Beverage Company",
+      "location": "Chandler, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=c6ff7bf0b43f90cc",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.771005"
+    },
+    {
+      "id": "in-a729e45941190e63",
+      "title": "Strategic Key Account Manager - (Remote)",
+      "company": "NovaSource Power Services",
+      "location": "Chandler, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=a729e45941190e63",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.799190"
+    },
+    {
+      "id": "in-219b485f665760c8",
+      "title": "Service Rep (3)",
+      "company": "Hensley Beverage Company",
+      "location": "Chandler, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=219b485f665760c8",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.829867"
+    },
+    {
+      "id": "in-001594fd1302b49c",
+      "title": "Inside Sales Assistant",
+      "company": "Mutual trading company",
+      "location": "Phoenix, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=001594fd1302b49c",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.844449"
+    },
+    {
+      "id": "in-3b4744887981d473",
+      "title": "Director of Strategic Accounts, DSO",
+      "company": "Darby Dental",
+      "location": "Chandler, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=3b4744887981d473",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.858285"
+    },
+    {
+      "id": "in-4754b676d6fd2b3a",
+      "title": "Sales Manager",
+      "company": "Service Corporation International",
+      "location": "Scottsdale, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=4754b676d6fd2b3a",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.878837"
+    },
+    {
+      "id": "in-96d04f147738eae7",
+      "title": "HVAC Technical Service Advisor",
+      "company": "Ferguson",
+      "location": "Gilbert, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=96d04f147738eae7",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.898300"
+    },
+    {
+      "id": "in-cf9baf5eac5faf3f",
+      "title": "Direct Distributor",
+      "company": "Sheets Marketing",
+      "location": "Phoenix, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=cf9baf5eac5faf3f",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.909763"
+    },
+    {
+      "id": "in-a035e9653bb3542d",
+      "title": "Part-Time Retail Sales Representative",
+      "company": "Wireless Vision, LLC",
+      "location": "Tempe, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=a035e9653bb3542d",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.917164"
+    },
+    {
+      "id": "in-b087b0b47b79566e",
+      "title": "Inside Sales Representative (Early Career)",
+      "company": "Vontier",
+      "location": "Phoenix, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=b087b0b47b79566e",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.917311"
+    },
+    {
+      "id": "in-a649d4b7874b45ea",
+      "title": "Real Estate Assistant",
+      "company": "Shields Real Estate",
+      "location": "Gilbert, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=a649d4b7874b45ea",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.918188"
+    },
+    {
+      "id": "in-4a5b6d319cd3aa53",
+      "title": "Sales Manager",
+      "company": "Service Corporation International",
+      "location": "Scottsdale, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=4a5b6d319cd3aa53",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.918712"
+    },
+    {
+      "id": "in-bbf97235ae9de03a",
+      "title": "Inside Sales Manager",
+      "company": "Vontier",
+      "location": "Phoenix, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=bbf97235ae9de03a",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.919421"
+    },
+    {
+      "id": "in-310748a20b5eb34a",
+      "title": "Sr Sales Manager",
+      "company": "The Westin Tempe",
+      "location": "Tempe, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=310748a20b5eb34a",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.925354"
+    },
+    {
+      "id": "in-ad1749f740d87359",
+      "title": "Sales Executive",
+      "company": "Marriott International",
+      "location": "Scottsdale, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=ad1749f740d87359",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.979545"
+    },
+    {
+      "id": "in-9a1712973c36ee4c",
+      "title": "Sales Manager",
+      "company": "Service Corporation International",
+      "location": "Phoenix, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=9a1712973c36ee4c",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:26.987673"
+    },
+    {
+      "id": "in-a2469f4fa1732552",
+      "title": "Area Sales Manager",
+      "company": "American Refrigeration Supplies Inc",
+      "location": "Phoenix, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=a2469f4fa1732552",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:27.026366"
+    },
+    {
+      "id": "in-4a21e61c1b0bed16",
+      "title": "Outside Sales Representative",
+      "company": "Hibu",
+      "location": "Mesa, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=4a21e61c1b0bed16",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:27.029827"
+    },
+    {
+      "id": "in-63f62808245fa64c",
+      "title": "Outside Sales Representative",
+      "company": "Hibu",
+      "location": "Gilbert, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=63f62808245fa64c",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:27.080081"
+    },
+    {
+      "id": "in-1900cd9709b3ca9b",
+      "title": "Outside Sales Representative",
+      "company": "Hibu",
+      "location": "Chandler, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=1900cd9709b3ca9b",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:27.131716"
+    },
+    {
+      "id": "in-a18af9e065361b51",
+      "title": "Outside Sales Representative",
+      "company": "Hibu",
+      "location": "Glendale, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=a18af9e065361b51",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:27.150256"
+    },
+    {
+      "id": "in-8c0597aadce2aea0",
+      "title": "Outside Sales Representative",
+      "company": "Hibu",
+      "location": "Peoria, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=8c0597aadce2aea0",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:27.152787"
+    },
+    {
+      "id": "in-8a5e20ca8cb56e80",
+      "title": "Outside Sales Representative",
+      "company": "Hibu",
+      "location": "Sun City, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=8a5e20ca8cb56e80",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:27.247408"
+    },
+    {
+      "id": "in-bd5bec61e36c1700",
+      "title": "Outside Sales Representative",
+      "company": "Hibu",
+      "location": "Phoenix, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=bd5bec61e36c1700",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:27.248603"
+    },
+    {
+      "id": "in-e08dba8c6e20ea41",
+      "title": "Outside Sales Representative",
+      "company": "Hibu",
+      "location": "Surprise, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=e08dba8c6e20ea41",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:27.281028"
+    },
+    {
+      "id": "in-8605224d7fa69d5f",
+      "title": "Cardiovascular Health and Science Professional (HSP) - Highland Park, IL",
+      "company": "Pfizer",
+      "location": "IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=8605224d7fa69d5f",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:27.285764"
+    },
+    {
+      "id": "in-f7d3c474a64eb987",
+      "title": "Inside Sales & Service Representative",
+      "company": "Hajoca Corporation",
+      "location": "Ann Arbor, MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=f7d3c474a64eb987",
+      "status": "error",
+      "message": "BrowserBase not available. Check BROWSERBASE_API_KEY.",
+      "timestamp": "2026-02-03T21:33:27.296046"
+    }
+  ],
+  "timestamp": "2026-02-03T21:33:27.296141"
+}
