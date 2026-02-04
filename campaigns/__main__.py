@@ -150,10 +150,16 @@ class UnifiedCampaignRunner:
         return jobs
     
     async def _process_jobs(self, jobs: list, profile: Dict) -> list:
-        """Process jobs with batch processor."""
+        """Process jobs with batch processor using BrowserBase."""
         from campaigns.core.batch_processor import BatchJob
+        from browser.stealth_manager import StealthBrowserManager
         
         logger.info("\n📋 PHASE 2: JOB PROCESSING")
+        logger.info("   Initializing BrowserBase sessions...")
+        
+        # Initialize browser manager
+        browser_manager = StealthBrowserManager(prefer_local=False)
+        await browser_manager.initialize()
         
         # Convert to BatchJobs
         batch_jobs = []
@@ -173,24 +179,80 @@ class UnifiedCampaignRunner:
                 priority=priority
             ))
         
-        # Process
-        results = await self.batch_processor.process_batch(
-            batch_jobs,
-            self._apply_to_job,
-            browser_manager=None  # Will be created by pool
-        )
+        try:
+            # Process with browser manager
+            results = await self.batch_processor.process_batch(
+                batch_jobs,
+                self._apply_to_job,
+                browser_manager=browser_manager
+            )
+        finally:
+            # Cleanup browser manager
+            await browser_manager.close()
+            logger.info("   Browser sessions closed")
         
         return results
     
     async def _apply_to_job(self, batch_job, session) -> Dict:
-        """Apply to a single job."""
-        # This would use the appropriate handler based on platform
-        # For now, return placeholder
-        return {
-            'job_id': batch_job.job_id,
-            'platform': batch_job.platform,
-            'status': 'processed',
+        """Apply to a single job using BrowserBase."""
+        from adapters.handlers.greenhouse_optimized import get_greenhouse_handler
+        from adapters.handlers.lever_optimized import get_lever_handler
+        from adapters.handlers.workday_optimized import get_workday_handler
+        
+        job_data = batch_job.job_data
+        platform = batch_job.platform.lower()
+        
+        # Get profile info from loaded profile
+        profile = {
+            'first_name': 'Kevin',
+            'last_name': 'Beltran',
+            'email': 'beltranrkevin@gmail.com',
+            'phone': '770-378-2545',
+            'linkedin': '',
         }
+        resume_path = 'Test Resumes/Kevin_Beltran_Resume.pdf'
+        
+        try:
+            # Navigate to job URL
+            page = session.page
+            await page.goto(job_data['url'], wait_until='domcontentloaded', timeout=20000)
+            await asyncio.sleep(2)
+            
+            # Apply based on platform
+            if platform == 'greenhouse':
+                handler = get_greenhouse_handler()
+                result = await handler.apply(page, profile, resume_path)
+            elif platform == 'lever':
+                handler = get_lever_handler()
+                result = await handler.apply(page, profile, resume_path)
+            elif platform == 'workday':
+                handler = get_workday_handler()
+                result = await handler.apply(page, profile, resume_path)
+            else:
+                # Generic fallback
+                return {
+                    'job_id': batch_job.job_id,
+                    'platform': platform,
+                    'status': 'skipped',
+                    'reason': 'Platform not supported'
+                }
+            
+            return {
+                'job_id': batch_job.job_id,
+                'platform': platform,
+                'status': 'submitted' if result.success else 'failed',
+                'confirmation_id': result.confirmation_id,
+                'error': result.error,
+            }
+            
+        except Exception as e:
+            logger.error(f"Failed to apply to {batch_job.job_id}: {e}")
+            return {
+                'job_id': batch_job.job_id,
+                'platform': platform,
+                'status': 'failed',
+                'error': str(e)
+            }
     
     def _print_summary(self, results: list):
         """Print campaign summary."""
