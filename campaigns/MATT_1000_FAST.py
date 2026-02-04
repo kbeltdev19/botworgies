@@ -383,21 +383,21 @@ class Matt1000FastCampaign:
         return mock_jobs
         
     async def init_browser_pool(self):
-        """Initialize pool of browser instances."""
+        """Initialize browser pool - each browser can have multiple sessions."""
         if not BROWSER_AVAILABLE or self.test_mode:
             return
             
-        logger.info(f"🌐 Initializing browser pool ({self.max_concurrent} instances)...")
+        logger.info(f"🌐 Initializing browser pool...")
         
-        for i in range(self.max_concurrent):
-            try:
-                manager = StealthBrowserManager()
-                await manager.initialize()
-                self.browser_pool.append(manager)
-                logger.info(f"  ✓ Browser {i+1}/{self.max_concurrent} ready")
-            except Exception as e:
-                logger.error(f"  ✗ Browser {i+1} failed: {e}")
-                
+        # Create one manager that will create multiple sessions
+        try:
+            manager = StealthBrowserManager()
+            await manager.initialize()
+            self.browser_pool.append(manager)
+            logger.info(f"  ✓ Browser manager initialized")
+        except Exception as e:
+            logger.error(f"  ✗ Browser init failed: {e}")
+            
         if not self.browser_pool:
             logger.error("No browsers available! Falling back to test mode.")
             self.test_mode = True
@@ -406,12 +406,29 @@ class Matt1000FastCampaign:
         """Close all browser instances."""
         for manager in self.browser_pool:
             try:
-                await manager.close()
+                # Close all active sessions
+                for session_id in list(manager.active_sessions.keys()):
+                    await manager.close_session(session_id)
             except:
                 pass
         logger.info("✓ Browser pool closed")
         
-    async def apply_single_job(self, job: Dict, browser_manager) -> ApplicationResult:
+    async def get_browser_session(self, job: Dict):
+        """Get or create a browser session for a job."""
+        if not self.browser_pool:
+            return None
+            
+        manager = self.browser_pool[0]  # Use the single manager
+        platform = job.get('platform', 'unknown')
+        
+        try:
+            session = await manager.create_stealth_session(platform=platform)
+            return session
+        except Exception as e:
+            logger.error(f"Failed to create session: {e}")
+            return None
+        
+    async def apply_single_job(self, job: Dict) -> ApplicationResult:
         """Apply to a single job with timeout."""
         start_time = time.time()
         
@@ -427,6 +444,8 @@ class Matt1000FastCampaign:
             submitted_at=datetime.now().isoformat(),
         )
         
+        session = None
+        
         try:
             if not self.auto_submit:
                 result.status = 'skipped'
@@ -439,10 +458,19 @@ class Matt1000FastCampaign:
                 result.confirmation_id = f"TEST_{job['id']}"
                 
             else:
+                # Create browser session
+                session = await self.get_browser_session(job)
+                if not session:
+                    result.status = 'failed'
+                    result.message = 'Could not create browser session'
+                    logger.error(f"  ✗ Failed to create browser session")
+                    result.duration_seconds = time.time() - start_time
+                    return result
+                
                 # Real application with timeout
                 try:
                     await asyncio.wait_for(
-                        self._do_real_application(job, browser_manager, result),
+                        self._do_real_application(job, session, result),
                         timeout=self.max_form_time
                     )
                 except asyncio.TimeoutError:
@@ -455,15 +483,22 @@ class Matt1000FastCampaign:
             result.message = str(e)[:200]
             result.error_details = traceback.format_exc()
             logger.error(f"❌ Error applying to {job['title']}: {e}")
+        finally:
+            # Close session
+            if session and self.browser_pool:
+                try:
+                    await self.browser_pool[0].close_session(session.session_id)
+                except:
+                    pass
             
         result.duration_seconds = time.time() - start_time
         return result
         
-    async def _do_real_application(self, job: Dict, browser_manager, result: ApplicationResult):
+    async def _do_real_application(self, job: Dict, session, result: ApplicationResult):
         """Execute real application with detailed logging."""
         logger.info(f"🌐 Navigating to: {job['url'][:80]}...")
         
-        page = await browser_manager.new_page()
+        page = session.page
         
         try:
             # Fast navigation with shorter timeout
@@ -499,8 +534,6 @@ class Matt1000FastCampaign:
             result.message = f'Application error: {str(e)[:100]}'
             result.error_details = traceback.format_exc()
             logger.error(f"  ✗ Application error: {e}")
-        finally:
-            await page.close()
             
     async def _apply_greenhouse(self, page, result: ApplicationResult, job: Dict):
         """Apply to a Greenhouse job with detailed logging."""
@@ -849,12 +882,7 @@ class Matt1000FastCampaign:
             
             async def apply_with_limit(job):
                 async with semaphore:
-                    # Get browser from pool (round-robin)
-                    browser = None
-                    if self.browser_pool:
-                        browser = self.browser_pool[len(self.results) % len(self.browser_pool)]
-                    
-                    result = await self.apply_single_job(job, browser)
+                    result = await self.apply_single_job(job)
                     
                     # Rate limiting
                     delay = random.randint(self.min_delay, self.max_delay)
