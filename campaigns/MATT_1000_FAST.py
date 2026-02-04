@@ -644,42 +644,95 @@ class Matt1000FastCampaign:
             logger.error(f"    ✗ No submit button")
             
     async def _apply_indeed(self, page, result: ApplicationResult, job: Dict):
-        """Apply to an Indeed job with detailed logging."""
+        """Apply to an Indeed job with detailed logging and correct selectors."""
         logger.info(f"  Looking for Indeed Easy Apply...")
         
-        easy_apply = page.locator('.ia-IndeedApplyButton, button:has-text("Apply")').first
-        if await easy_apply.count() == 0:
+        # Try multiple apply button selectors
+        apply_selectors = [
+            '#indeedApplyButton',
+            '.ia-IndeedApplyButton',
+            'button:has-text("Apply now")',
+            'button:has-text("Apply")',
+        ]
+        
+        apply_btn = None
+        for selector in apply_selectors:
+            btn = page.locator(selector).first
+            if await btn.count() > 0 and await btn.is_visible():
+                apply_btn = btn
+                break
+        
+        if not apply_btn:
             result.status = 'failed'
             result.message = 'No Easy Apply button found'
             logger.error(f"    ✗ No Easy Apply button")
             return
             
         logger.info(f"    Clicking Easy Apply...")
-        await easy_apply.click()
-        await asyncio.sleep(3)
+        await apply_btn.click()
+        await asyncio.sleep(4)  # Wait for modal to open
         
+        # Indeed Easy Apply uses various selectors - try them all
         fields_filled = 0
-        if await self._fill_and_verify(page, 'input[name="firstName"]', self.profile.first_name):
-            fields_filled += 1
-        if await self._fill_and_verify(page, 'input[name="lastName"]', self.profile.last_name):
-            fields_filled += 1
-        if await self._fill_and_verify(page, 'input[name="email"]', self.profile.email):
-            fields_filled += 1
+        
+        # Name field (often combined as full name)
+        name_selectors = ['input[name="name"]', 'input[id*="name"]', 'input[placeholder*="name" i]']
+        for selector in name_selectors:
+            if await self._fill_and_verify(page, selector, f"{self.profile.first_name} {self.profile.last_name}"):
+                fields_filled += 1
+                break
+        
+        # Email field
+        email_selectors = ['input[type="email"]', 'input[name="email"]', 'input[placeholder*="email" i]']
+        for selector in email_selectors:
+            if await self._fill_and_verify(page, selector, self.profile.email):
+                fields_filled += 1
+                break
+        
+        # Phone field
+        phone_selectors = ['input[type="tel"]', 'input[name="phone"]', 'input[placeholder*="phone" i]']
+        for selector in phone_selectors:
+            if await self._fill_and_verify(page, selector, self.profile.phone):
+                fields_filled += 1
+                break
             
         logger.info(f"    Filled {fields_filled}/3 fields")
         
-        submit = page.locator('.ia-SubmitButton').first
-        if await submit.count() > 0:
+        # Resume upload
+        file_input = page.locator('input[type="file"]').first
+        if await file_input.count() > 0 and os.path.exists(self.profile.resume_path):
+            logger.info(f"    Uploading resume...")
+            await file_input.set_input_files(self.profile.resume_path)
+            await asyncio.sleep(2)
+        
+        # Look for submit button with multiple patterns
+        submit_patterns = [
+            '.ia-SubmitButton',
+            'button:has-text("Submit")',
+            'button:has-text("Submit application")',
+            'button:has-text("Send")',
+            'button[type="submit"]',
+            'button:has-text("Continue")',
+        ]
+        
+        submit = None
+        for pattern in submit_patterns:
+            btn = page.locator(pattern).first
+            if await btn.count() > 0 and await btn.is_visible():
+                submit = btn
+                break
+        
+        if submit:
             logger.info(f"    Submitting...")
             await submit.click()
-            await asyncio.sleep(3)
+            await asyncio.sleep(4)
             result.status = 'submitted'
             result.message = 'Success'
             result.confirmation_id = f"IND_{job['id']}"
             logger.info(f"    ✓ Success! Confirmation: {result.confirmation_id}")
         else:
             result.status = 'failed'
-            result.message = 'No submit button'
+            result.message = 'No submit button found'
             logger.error(f"    ✗ No submit button")
             
     async def _apply_workday(self, page, result: ApplicationResult, job: Dict):
