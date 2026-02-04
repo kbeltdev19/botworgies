@@ -35,6 +35,14 @@ from urllib.parse import urljoin, urlparse
 
 import aiohttp
 
+# Capsolver for CAPTCHA solving
+try:
+    import capsolver
+    CAPSOLVER_AVAILABLE = True
+    capsolver.api_key = "CAP-REDACTED"
+except ImportError:
+    CAPSOLVER_AVAILABLE = False
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -64,7 +72,7 @@ except ImportError:
 ATS_PLATFORMS = {
     'greenhouse': {
         'priority': 1,
-        'base_urls': ['boards.greenhouse.io', 'greenhouse.io'],
+        'base_urls': ['boards.greenhouse.io', 'greenhouse.io', 'boards.eu.greenhouse.io'],
         'apply_path': '/jobs',
         'apply_button': '#apply_button, .apply-button, a[href*="/jobs/"]',
     },
@@ -76,7 +84,7 @@ ATS_PLATFORMS = {
     },
     'workday': {
         'priority': 3,
-        'base_urls': ['wd5.myworkdayjobs.com', 'myworkdayjobs.com', 'workday.com'],
+        'base_urls': ['wd5.myworkdayjobs.com', 'myworkdayjobs.com', 'workday.com', 'wd2-impl-services1.workday.com'],
         'apply_path': '',
         'apply_button': 'button[data-automation-id="applyButton"]',
     },
@@ -103,6 +111,36 @@ ATS_PLATFORMS = {
         'base_urls': ['breezy.hr'],
         'apply_path': '/apply',
         'apply_button': '.apply-button, a[href*="/apply"]',
+    },
+    'smartrecruiters': {
+        'priority': 2,
+        'base_urls': ['jobs.smartrecruiters.com', 'smartrecruiters.com'],
+        'apply_path': '',
+        'apply_button': 'a[href*="/apply"]',
+    },
+    'jobscore': {
+        'priority': 2,
+        'base_urls': ['careers.jobscore.com', 'jobscore.com'],
+        'apply_path': '',
+        'apply_button': '.apply-button',
+    },
+    'icims': {
+        'priority': 5,
+        'base_urls': ['icims.com', 'jobs.icims.com'],
+        'apply_path': '',
+        'apply_button': '.iCIMS_Button',
+    },
+    'taleo': {
+        'priority': 5,
+        'base_urls': ['taleo.net', 'oracle.com'],
+        'apply_path': '',
+        'apply_button': 'button:has-text("Apply")',
+    },
+    'sap': {
+        'priority': 5,
+        'base_urls': ['jobs.sap.com', 'sap.com/careers'],
+        'apply_path': '',
+        'apply_button': 'button:has-text("Apply")',
     },
 }
 
@@ -268,10 +306,39 @@ class Kevin1000RealV3Campaign:
     def detect_platform(self, url: str) -> str:
         """Detect ATS platform from URL."""
         url_lower = url.lower()
+        
+        # Check each platform's base URLs
         for platform, config in ATS_PLATFORMS.items():
             for base_url in config['base_urls']:
                 if base_url in url_lower:
                     return platform
+        
+        # Additional pattern matching for common ATS patterns
+        if 'greenhouse' in url_lower:
+            return 'greenhouse'
+        elif 'lever' in url_lower:
+            return 'lever'
+        elif 'workday' in url_lower:
+            return 'workday'
+        elif 'ashby' in url_lower:
+            return 'ashby'
+        elif 'breezy' in url_lower:
+            return 'breezy'
+        elif 'smartrecruiters' in url_lower:
+            return 'smartrecruiters'
+        elif 'jobscore' in url_lower:
+            return 'jobscore'
+        elif 'icims' in url_lower:
+            return 'icims'
+        elif 'taleo' in url_lower:
+            return 'taleo'
+        elif 'sap' in url_lower and 'job' in url_lower:
+            return 'sap'
+        elif 'linkedin' in url_lower:
+            return 'linkedin'
+        elif 'indeed' in url_lower:
+            return 'indeed'
+            
         return 'unknown'
         
     async def scrape_all_sources(self) -> List[Dict]:
@@ -434,18 +501,22 @@ class Kevin1000RealV3Campaign:
         return jobs
         
     async def init_browser_pool(self):
-        """Initialize pool of browser instances."""
+        """Initialize pool of browser instances with BrowserBase CAPTCHA solving."""
         if not BROWSER_AVAILABLE or self.test_mode:
             return
             
-        logger.info(f"🌐 Initializing browser pool ({self.max_concurrent} instances)...")
+        logger.info(f"🌐 Initializing BrowserBase pool ({self.max_concurrent} instances) with CAPTCHA solving...")
         
         for i in range(self.max_concurrent):
             try:
-                manager = StealthBrowserManager()
+                # Force BrowserBase (no local fallback) for CAPTCHA solving
+                manager = StealthBrowserManager(prefer_local=False)
                 await manager.initialize()
+                # Reset any previous failure status
+                if hasattr(manager, '_browserbase_failed'):
+                    manager._browserbase_failed = False
                 self.browser_pool.append(manager)
-                logger.info(f"  ✓ Browser {i+1}/{self.max_concurrent} ready")
+                logger.info(f"  ✓ Browser {i+1}/{self.max_concurrent} ready (BrowserBase)")
             except Exception as e:
                 logger.error(f"  ✗ Browser {i+1} failed: {e}")
                 
@@ -509,17 +580,25 @@ class Kevin1000RealV3Campaign:
         return result
         
     async def _do_real_application(self, job: Dict, browser_manager, result: ApplicationResult):
-        """Execute real application with redirect handling."""
+        """Execute real application with redirect handling and CAPTCHA solving."""
         original_url = job['url']
         platform = job.get('platform', 'unknown')
         
         # LinkedIn session cookie for authenticated access
         LINKEDIN_COOKIE = "AQEFARABAAAAABrX5TEAAAGbrcx_ZwAAAZxC7v9cTgAAs3VybjpsaTplbnRlcnByaXNlQXV0aFRva2VuOmVKeGpaQUFDOXRkYlBvRm96cUp6VFNDYW8vR1pGU09JSWZabjdRTXdnLy9sYXlzR0ZnRHBXUXJRXnVybjpsaTplbnRlcnByaXNlUHJvZmlsZToodXJuOmxpOmVudGVycHJpc2VBY2NvdW50OjEzMjg4Nzc5NCwxNTg1MTg5MTQpXnVybjpsaTptZW1iZXI6OTc0MTk5NzQ0w9GP4wMMKZmU4Rb6x0yjVyoj_dq75XaHpzhdX-7pQv-UfzRc9IJWW0PeNisee3dnI-f34uLhGhvcMP24Y36fgscB3bmMwVu3yapk5yCuRdqVVBoqKvmfM_G9WnyLkVS91URnamLqF3IV03GkF7sn1xBYq8CBfkjpajrROIK7-CtqbMJa30fU2R8gxaouOTmDDHkjYA"
         
-        # Create browser session
+        # Create browser session with CAPTCHA solving enabled
         try:
-            session = await browser_manager.create_stealth_session(platform)
+            session = await browser_manager.create_stealth_session(platform, use_proxy=True)
             page = session.page
+            
+            # Check if we need to solve CAPTCHA using capsolver
+            try:
+                captcha_solved = await self._solve_captcha_with_capsolver(page)
+                if captcha_solved:
+                    logger.debug(f"   CAPTCHA solved for {job['company']}")
+            except Exception as e:
+                logger.debug(f"   CAPTCHA check skipped: {e}")
             
             # Add LinkedIn cookie if accessing LinkedIn
             if 'linkedin.com' in original_url.lower():
@@ -556,16 +635,24 @@ class Kevin1000RealV3Campaign:
                     self.stats.redirects_followed += 1
                     logger.info(f"   ↪ Redirected to: {redirect_url[:60]}...")
                     
-                    # Navigate to redirect URL
-                    await page.goto(redirect_url, wait_until='domcontentloaded', timeout=20000)
-                    await asyncio.sleep(2)
+                    # Navigate to redirect URL with full load
+                    try:
+                        await page.goto(redirect_url, wait_until='networkidle', timeout=30000)
+                    except:
+                        # Fallback to domcontentloaded if networkidle times out
+                        await page.goto(redirect_url, wait_until='domcontentloaded', timeout=20000)
+                    await asyncio.sleep(3)
                     
                     # Detect new platform
                     new_platform = self.detect_platform(redirect_url)
                     if new_platform != 'unknown':
                         platform = new_platform
                         result.platform = new_platform
-                        
+                        logger.info(f"   ↪ Detected platform: {platform}")
+                else:
+                    # No redirect found - try LinkedIn Easy Apply directly
+                    logger.debug(f"   No external redirect found, trying Easy Apply")
+                    
             # Now apply based on detected platform
             if platform == 'greenhouse':
                 await self._apply_greenhouse(page, result)
@@ -591,39 +678,233 @@ class Kevin1000RealV3Campaign:
             except:
                 pass
                 
+    async def _solve_captcha_with_capsolver(self, page) -> bool:
+        """Solve CAPTCHA using capsolver service."""
+        if not CAPSOLVER_AVAILABLE:
+            return False
+            
+        try:
+            # Check for reCAPTCHA
+            recaptcha_iframe = await page.locator('iframe[src*="recaptcha"]').count()
+            if recaptcha_iframe > 0:
+                logger.info("   Solving reCAPTCHA with capsolver...")
+                
+                # Get site key from page
+                site_key = await page.evaluate("""() => {
+                    const el = document.querySelector('[data-sitekey]');
+                    return el ? el.getAttribute('data-sitekey') : null;
+                }""")
+                
+                if site_key:
+                    solution = capsolver.solve({
+                        "type": "ReCaptchaV2TaskProxyLess",
+                        "websiteURL": page.url,
+                        "websiteKey": site_key,
+                    })
+                    
+                    # Inject solution
+                    await page.evaluate(f"""
+                        document.getElementById('g-recaptcha-response').innerHTML = '{solution['gRecaptchaResponse']}';
+                    """)
+                    logger.info("   ✓ reCAPTCHA solved")
+                    return True
+                    
+            # Check for hCaptcha
+            hcaptcha_iframe = await page.locator('iframe[src*="hcaptcha"]').count()
+            if hcaptcha_iframe > 0:
+                logger.info("   Solving hCaptcha with capsolver...")
+                
+                site_key = await page.evaluate("""() => {
+                    const el = document.querySelector('[data-sitekey]');
+                    return el ? el.getAttribute('data-sitekey') : null;
+                }""")
+                
+                if site_key:
+                    solution = capsolver.solve({
+                        "type": "HCaptchaTaskProxyLess",
+                        "websiteURL": page.url,
+                        "websiteKey": site_key,
+                    })
+                    
+                    await page.evaluate(f"""
+                        document.querySelector('textarea[name="h-captcha-response"]').innerHTML = '{solution['gRecaptchaResponse']}';
+                    """)
+                    logger.info("   ✓ hCaptcha solved")
+                    return True
+                    
+        except Exception as e:
+            logger.debug(f"   CAPTCHA solving failed: {e}")
+            
+        return False
+                
     async def _handle_redirect(self, page, platform: str) -> Optional[str]:
         """Handle LinkedIn/Indeed redirects to find external apply URL."""
+        # Comprehensive list of ATS domains to look for
+        ATS_DOMAINS = [
+            'boards.greenhouse.io',
+            'jobs.lever.co',
+            'jobs.ashbyhq.com',
+            'breezy.hr',
+            'workday.com',
+            'myworkdayjobs.com',
+            'careers.jobscore.com',
+            'jobs.smartrecruiters.com',
+            'boards.eu.greenhouse.io',
+            'jobs.hashicorp.com',
+            'stripe.com/jobs',
+            'airbnb.com/careers',
+            'uber.com/careers',
+            'meta.com/careers',
+            'amazon.jobs',
+            'microsoft.com/careers',
+            'google.com/careers',
+            'apple.com/jobs',
+            'netflix.com/careers',
+            'salesforce.com/company/careers',
+            'oracle.com/careers',
+            'adobe.com/careers',
+            'ibm.com/careers',
+            'intel.com/careers',
+            'nvidia.com/careers',
+            'qualcomm.com/careers',
+            'cisco.com/careers',
+            'vmware.com/careers',
+            'dell.com/careers',
+            'hp.com/careers',
+            'lenovo.com/careers',
+            'asus.com/careers',
+            'acer.com/careers',
+            'toshiba.com/careers',
+            'sony.com/careers',
+            'samsung.com/careers',
+            'lg.com/careers',
+            'panasonic.com/careers',
+            'philips.com/careers',
+            'siemens.com/careers',
+            'bosch.com/careers',
+            'thycotic.com/careers',
+            'beyondtrust.com/careers',
+            'cyberark.com/careers',
+            'sentinelone.com/careers',
+            'crowdstrike.com/careers',
+            'paloaltonetworks.com/careers',
+            'zscaler.com/careers',
+            'okta.com/careers',
+            'auth0.com/careers',
+            'cloudflare.com/careers',
+            'fastly.com/careers',
+            'akamai.com/careers',
+            'datadoghq.com/careers',
+            'newrelic.com/careers',
+            'splunk.com/careers',
+            'elastic.co/careers',
+            'mongodb.com/careers',
+            'couchbase.com/careers',
+            'redis.io/careers',
+            'confluent.io/careers',
+            'apache.org/careers',
+            'nginx.com/careers',
+            'jenkins.io/careers',
+            'gitlab.com/careers',
+            'github.com/careers',
+            'bitbucket.org/careers',
+            'atlassian.com/careers',
+            'asana.com/careers',
+            'notion.so/careers',
+            'figma.com/careers',
+            'canva.com/careers',
+            'sketch.com/careers',
+            'invisionapp.com/careers',
+            'zeplin.io/careers',
+            'principleformac.com/careers',
+        ]
+        
         try:
             if platform == 'linkedin':
-                # Look for external apply button
-                external_btn = page.locator(
-                    'button:has-text("Apply"), '
-                    'a[href*="boards.greenhouse.io"], '
-                    'a[href*="jobs.lever.co"], '
-                    'a[href*="workday"], '
-                    'a[href*="ashby"], '
-                    'a[href*="breezy"],'
-                    'a[data-control-name="jobdetails_topcard_inapply"]'
-                ).first
+                # Multiple selectors to find external apply links
+                selectors = [
+                    # Primary apply button
+                    'button:has-text("Apply")',
+                    'a:has-text("Apply")',
+                    # External ATS links
+                    'a[href*="boards.greenhouse.io"]',
+                    'a[href*="jobs.lever.co"]',
+                    'a[href*="workday"]',
+                    'a[href*="ashby"]',
+                    'a[href*="breezy"]',
+                    'a[href*="smartrecruiters"]',
+                    'a[href*="jobscore"]',
+                    # LinkedIn specific
+                    'a[data-control-name="jobdetails_topcard_inapply"]',
+                    'a[data-control-name="jobdetails_topcard_jymbii"]',
+                    # Any apply-related button/link
+                    '[data-test-icon="link-external-medium"]',
+                    'a:has([data-test-icon="link-external-medium"])',
+                ]
                 
-                if await external_btn.count() > 0:
-                    href = await external_btn.get_attribute('href')
-                    if href:
-                        return href
+                for selector in selectors:
+                    try:
+                        element = page.locator(selector).first
+                        if await element.count() > 0:
+                            href = await element.get_attribute('href')
+                            if href:
+                                # Check if it's an external URL
+                                if any(domain in href for domain in ATS_DOMAINS) or \
+                                   (href.startswith('http') and 'linkedin.com' not in href):
+                                    logger.debug(f"   Found external link: {href[:60]}...")
+                                    return href
+                    except:
+                        continue
+                
+                # Try JavaScript extraction as fallback
+                try:
+                    external_url = await page.evaluate("""
+                        () => {
+                            // Look for any external apply links
+                            const links = Array.from(document.querySelectorAll('a[href]'));
+                            for (const link of links) {
+                                const href = link.getAttribute('href');
+                                if (href && (
+                                    href.includes('greenhouse') ||
+                                    href.includes('lever') ||
+                                    href.includes('workday') ||
+                                    href.includes('ashby') ||
+                                    href.includes('smartrecruiters') ||
+                                    href.includes('jobscore') ||
+                                    href.includes('breezy') ||
+                                    (href.startsWith('http') && !href.includes('linkedin.com'))
+                                )) {
+                                    return href;
+                                }
+                            }
+                            return null;
+                        }
+                    """)
+                    if external_url:
+                        logger.debug(f"   Found external URL via JS: {external_url[:60]}...")
+                        return external_url
+                except Exception as e:
+                    logger.debug(f"   JS extraction failed: {e}")
                         
             elif platform == 'indeed':
-                # Look for external apply link
-                external_link = page.locator(
-                    'a[href*="boards.greenhouse.io"], '
-                    'a[href*="jobs.lever.co"], '
-                    'a[href*="workday"], '
-                    'a[href*="apply"]:not([href*="indeed"])'
-                ).first
+                selectors = [
+                    'a[href*="boards.greenhouse.io"]',
+                    'a[href*="jobs.lever.co"]',
+                    'a[href*="workday"]',
+                    'a[href*="apply"]:not([href*="indeed"])',
+                    '.ia-ApplyExternally',
+                    'a:has-text("Apply on company site")',
+                ]
                 
-                if await external_link.count() > 0:
-                    href = await external_link.get_attribute('href')
-                    if href:
-                        return href
+                for selector in selectors:
+                    try:
+                        element = page.locator(selector).first
+                        if await element.count() > 0:
+                            href = await element.get_attribute('href')
+                            if href and href.startswith('http'):
+                                return href
+                    except:
+                        continue
                         
         except Exception as e:
             logger.debug(f"Redirect handling failed: {e}")
@@ -740,11 +1021,43 @@ class Kevin1000RealV3Campaign:
     async def _apply_linkedin(self, page, result: ApplicationResult):
         """Apply via LinkedIn Easy Apply."""
         try:
+            # First check if there's an external apply link we missed
+            external_link = await self._handle_redirect(page, 'linkedin')
+            if external_link and 'linkedin.com' not in external_link:
+                result.redirect_url = external_link
+                self.stats.redirects_followed += 1
+                logger.info(f"   ↪ Late redirect found: {external_link[:60]}...")
+                
+                # Navigate to external site
+                try:
+                    await page.goto(external_link, wait_until='networkidle', timeout=30000)
+                except:
+                    await page.goto(external_link, wait_until='domcontentloaded', timeout=20000)
+                await asyncio.sleep(3)
+                
+                # Detect platform and apply
+                new_platform = self.detect_platform(external_link)
+                if new_platform == 'greenhouse':
+                    await self._apply_greenhouse(page, result)
+                elif new_platform == 'lever':
+                    await self._apply_lever(page, result)
+                elif new_platform == 'workday':
+                    await self._apply_workday(page, result)
+                else:
+                    await self._apply_generic(page, result)
+                return
+            
+            # Look for Easy Apply button
             easy_apply = page.locator('button:has-text("Easy Apply")').first
             
             if await easy_apply.count() == 0:
-                result.status = 'skipped'
-                result.message = 'No Easy Apply button'
+                # Check why - maybe already applied, or external only
+                if await page.locator('button:has-text("Applied")').count() > 0:
+                    result.status = 'skipped'
+                    result.message = 'Already applied'
+                else:
+                    result.status = 'skipped'
+                    result.message = 'No Easy Apply - external apply only'
                 return
                 
             await easy_apply.click()
@@ -756,17 +1069,31 @@ class Kevin1000RealV3Campaign:
             await self._quick_fill(page, 'input[name="email"]', self.profile.email)
             
             # Progress through steps
-            for _ in range(3):  # Max 3 steps
+            for _ in range(5):  # Max 5 steps
                 next_btn = page.locator('button:has-text("Next"), button:has-text("Review"), button:has-text("Submit application")').first
-                if await next_btn.count() > 0:
+                submit_btn = page.locator('button:has-text("Submit application")').first
+                
+                if await submit_btn.count() > 0:
+                    await submit_btn.click()
+                    await asyncio.sleep(3)
+                    result.status = 'submitted'
+                    result.message = 'Submitted via LinkedIn Easy Apply'
+                    result.confirmation_id = f"LI_{int(time.time())}"
+                    return
+                elif await next_btn.count() > 0:
                     await next_btn.click()
                     await asyncio.sleep(2)
                 else:
                     break
                     
-            result.status = 'submitted'
-            result.message = 'Submitted via LinkedIn Easy Apply'
-            result.confirmation_id = f"LI_{int(time.time())}"
+            # If we get here without submitting, check if we succeeded
+            if await page.locator('.artdeco-inline-feedback--success, [aria-label="Application sent"]').count() > 0:
+                result.status = 'submitted'
+                result.message = 'Submitted via LinkedIn Easy Apply'
+                result.confirmation_id = f"LI_{int(time.time())}"
+            else:
+                result.status = 'skipped'
+                result.message = 'Could not complete LinkedIn Easy Apply'
             
         except Exception as e:
             result.status = 'failed'

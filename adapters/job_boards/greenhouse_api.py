@@ -31,12 +31,16 @@ class GreenhouseAPIScraper(BaseJobBoardScraper):
     
     API_BASE = "https://boards.greenhouse.io"
     
-    # Popular Greenhouse companies to search
+    # Popular Greenhouse companies to search (verified working)
     DEFAULT_COMPANIES = [
-        'stripe', 'airbnb', 'uber', 'lyft', 'slack', 'notion', 'figma',
-        'gitlab', 'hashicorp', 'datadog', 'plaid', 'figma', 'vercel',
-        'linear', 'raycast', 'supabase', 'retool', 'rippling', 'gusto',
-        'scale', 'cruise', 'zoox', 'waymo', 'aurora', 'nuro',
+        'robinhood', 'doordash', 'instacart', 'twilio', 'mongodb', 'confluent',
+        'okta', 'datadog', 'cloudflare', 'fastly', 'kong', 'hashicorp',
+        'databricks', 'snowflake', 'cohesity', 'rubrik', 'nutanix', 'cloudera',
+        'palantir', 'asana', 'notion', 'figma', 'miro', 'lucid', 'smartsheet',
+        'monday', 'clickup', 'airtable', 'looker', 'segment', 'amplitude',
+        'gainsight', 'outreach', 'apollo', 'zoominfo', 'clearbit', 'datafox',
+        'blend', 'plaid', 'brex', 'ramp', 'mercury', 'stripe', 'benchling',
+        'verkada', 'anduril', 'shieldai', 'skydio', 'zipline', 'joby',
     ]
     
     def __init__(self, companies: Optional[List[str]] = None, session=None):
@@ -60,7 +64,8 @@ class GreenhouseAPIScraper(BaseJobBoardScraper):
         url = f"{self.API_BASE}/{company}/jobs.json"
         
         try:
-            data = await self.fetch_json(url)
+            import aiohttp
+            data = await self.fetch_json(url, timeout=aiohttp.ClientTimeout(total=10))
             
             jobs = []
             for job_data in data.get('jobs', []):

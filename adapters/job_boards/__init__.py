@@ -12,6 +12,7 @@ from datetime import datetime
 from typing import Dict, List, Optional, Set, Any
 import asyncio
 import aiohttp
+import ssl
 from urllib.parse import urljoin, urlparse
 import logging
 
@@ -85,8 +86,14 @@ class BaseJobBoardScraper(ABC):
         
     async def __aenter__(self):
         if self._owned_session:
+            # Create SSL context that doesn't verify certificates (for systems with cert issues)
+            ssl_context = ssl.create_default_context()
+            ssl_context.check_hostname = False
+            ssl_context.verify_mode = ssl.CERT_NONE
+            
             self.session = aiohttp.ClientSession(
-                headers=self.get_default_headers()
+                headers=self.get_default_headers(),
+                connector=aiohttp.TCPConnector(ssl=ssl_context)
             )
         return self
         

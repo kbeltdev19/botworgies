@@ -39,6 +39,7 @@ logger = logging.getLogger(__name__)
 # Import our new architecture
 from adapters.ats_router import ATSRouter, PlatformCategory
 from adapters.base import UserProfile, Resume, JobPosting, SearchConfig
+from adapters.job_boards import SearchCriteria as JobBoardSearchCriteria
 
 # Import scrapers
 from adapters.job_boards.greenhouse_api import GreenhouseAPIScraper
@@ -104,13 +105,14 @@ class Matt1000UnifiedCampaign:
             last_name="Edwards",
             email="edwardsdmatt@gmail.com",
             phone="404-555-0123",
-            linkedin="https://www.linkedin.com/in/matt-edwards-/",
+            linkedin_url="https://www.linkedin.com/in/matt-edwards-/",
             location="Atlanta, GA"
         )
         
         self.resume = Resume(
             file_path="data/matt_edwards_resume.pdf",
-            text=""  # Would be parsed from PDF
+            raw_text="",  # Would be parsed from PDF
+            parsed_data={}
         )
         
     async def initialize(self):
@@ -166,7 +168,7 @@ class Matt1000UnifiedCampaign:
         # Scrape Greenhouse
         logger.info("\n🔍 Scraping Greenhouse...")
         async with GreenhouseAPIScraper() as scraper:
-            gh_jobs = await scraper.search(SearchConfig(
+            gh_jobs = await scraper.search(JobBoardSearchCriteria(
                 query="Customer Success Manager OR Cloud Delivery Manager OR Technical Account Manager",
                 remote_only=True,
                 max_results=self.config.max_direct_apply // 2
@@ -186,8 +188,8 @@ class Matt1000UnifiedCampaign:
         # Scrape Lever
         logger.info("\n🔍 Scraping Lever...")
         async with LeverAPIScraper() as scraper:
-            lever_jobs = await scraper.search(SearchConfig(
-                query="Customer Success OR Cloud OR Technical Account Manager",
+            lever_jobs = await scraper.search(JobBoardSearchCriteria(
+                query="Customer Success Manager OR Cloud Delivery Manager OR Technical Account Manager",
                 remote_only=True,
                 max_results=self.config.max_direct_apply // 2
             ))
@@ -245,15 +247,16 @@ class Matt1000UnifiedCampaign:
         
         # Indeed
         logger.info("\n🔍 Searching Indeed...")
-        criteria = SearchConfig(
+        search_criteria = SearchConfig(
             roles=["Customer Success Manager", "Cloud Delivery Manager", "Technical Account Manager"],
             locations=["Remote"],
-            posted_within_days=7
+            posted_within_days=7,
+            easy_apply_only=True
         )
         
         results = await handler.search_and_apply(
             platform='indeed',
-            criteria=criteria,
+            criteria=search_criteria,
             resume=self.resume,
             profile=self.profile,
             auto_submit=self.config.auto_submit,

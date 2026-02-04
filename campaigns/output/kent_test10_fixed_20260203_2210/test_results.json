@@ -1,0 +1,116 @@
+{
+  "test_type": "10_JOBS_FIXED_VALIDATION",
+  "timestamp": "2026-02-03T22:16:43.199092",
+  "stats": {
+    "attempted": 10,
+    "real_submissions": 0,
+    "cloudflare_blocked": 5,
+    "external_redirect": 0,
+    "form_errors": 0,
+    "other_errors": 5,
+    "success_rate": 0.0,
+    "cost": 0.9999999999999999
+  },
+  "results": [
+    {
+      "job_number": 1,
+      "company": "Channel Fusion",
+      "title": "Channel Program Success Manager",
+      "url": "https://www.indeed.com/viewjob?jk=29ad59824efdfc13",
+      "status": "error",
+      "message": "Exception: Page.content: Unable to retrieve content because the page is navigating and changing the content.",
+      "confirmation_id": null,
+      "screenshot": null
+    },
+    {
+      "job_number": 2,
+      "company": "Channel Fusion",
+      "title": "Channel Program Success Manager",
+      "url": "https://www.indeed.com/viewjob?jk=899929a3afb8d986",
+      "status": "error",
+      "message": "Cloudflare block on initial load",
+      "confirmation_id": null,
+      "screenshot": null
+    },
+    {
+      "job_number": 3,
+      "company": "LaunchDarkly",
+      "title": "Senior Customer Success Manager",
+      "url": "https://www.indeed.com/viewjob?jk=a677144fd480a6d4",
+      "status": "error",
+      "message": "BLOCKED: Cloudflare/CAPTCHA detected (additional verification required)",
+      "confirmation_id": null,
+      "screenshot": "/Users/tech4/Downloads/botworkieslocsl/botworgies/campaigns/output/kent_test10_fixed_20260203_2210/screenshots/indeed/in-a677144fd480a6d4_20260203_221213.png"
+    },
+    {
+      "job_number": 4,
+      "company": "Recruits Lab",
+      "title": "Project Manager \u2013 Customer Success & Implementations",
+      "url": "https://www.indeed.com/viewjob?jk=91d88d4dcd0262a3",
+      "status": "error",
+      "message": "No apply button or external link found",
+      "confirmation_id": null,
+      "screenshot": null
+    },
+    {
+      "job_number": 5,
+      "company": "ACU-Serve Corp",
+      "title": "Client Success Manager",
+      "url": "https://www.indeed.com/viewjob?jk=c411f17e173fe7f0",
+      "status": "error",
+      "message": "BLOCKED: Cloudflare/CAPTCHA detected (additional verification required)",
+      "confirmation_id": null,
+      "screenshot": "/Users/tech4/Downloads/botworkieslocsl/botworgies/campaigns/output/kent_test10_fixed_20260203_2210/screenshots/indeed/in-c411f17e173fe7f0_20260203_221327.png"
+    },
+    {
+      "job_number": 6,
+      "company": "NovaSource Power Services",
+      "title": "Strategic Key Account Manager - (Remote)",
+      "url": "https://www.indeed.com/viewjob?jk=d6a3b095df9bb0d4",
+      "status": "error",
+      "message": "BLOCKED: Cloudflare/CAPTCHA detected (additional verification required)",
+      "confirmation_id": null,
+      "screenshot": "/Users/tech4/Downloads/botworkieslocsl/botworgies/campaigns/output/kent_test10_fixed_20260203_2210/screenshots/indeed/in-d6a3b095df9bb0d4_20260203_221358.png"
+    },
+    {
+      "job_number": 7,
+      "company": "NovaSource Power Services",
+      "title": "Strategic Key Account Manager - (Remote)",
+      "url": "https://www.indeed.com/viewjob?jk=a729e45941190e63",
+      "status": "error",
+      "message": "Cloudflare block on initial load",
+      "confirmation_id": null,
+      "screenshot": null
+    },
+    {
+      "job_number": 8,
+      "company": "Intuit",
+      "title": "Group Manager, Customer Success",
+      "url": "https://www.indeed.com/viewjob?jk=67c5dd889de0ba53",
+      "status": "error",
+      "message": "No apply button or external link found",
+      "confirmation_id": null,
+      "screenshot": null
+    },
+    {
+      "job_number": 9,
+      "company": "Intuit",
+      "title": "Group Manager, Customer Success",
+      "url": "https://www.indeed.com/viewjob?jk=2d9d5513879f1c78",
+      "status": "error",
+      "message": "No apply button or external link found",
+      "confirmation_id": null,
+      "screenshot": null
+    },
+    {
+      "job_number": 10,
+      "company": "Intuit",
+      "title": "Customer Success Manager - Mailchimp",
+      "url": "https://www.indeed.com/viewjob?jk=cb9d7cf6266b3075",
+      "status": "error",
+      "message": "No apply button or external link found",
+      "confirmation_id": null,
+      "screenshot": null
+    }
+  ]
+}

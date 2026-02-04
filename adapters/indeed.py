@@ -274,76 +274,163 @@ class IndeedAdapter(JobPlatformAdapter):
         cover_letter: Optional[str] = None,
         auto_submit: bool = False
     ) -> ApplicationResult:
-        """Apply to job via Indeed."""
+        """Apply to job via Indeed with CAPTCHA handling."""
         session = await self.get_session()
         page = session.page
         
-        await page.goto(job.url, wait_until="domcontentloaded", timeout=60000)
-        await self.browser_manager.human_like_delay(2, 3)
+        # Navigate to job page with timeout handling
+        try:
+            await page.goto(job.url, wait_until="domcontentloaded", timeout=30000)
+        except Exception:
+            # Try with shorter timeout and less strict wait
+            await page.goto(job.url, wait_until="commit", timeout=20000)
         
-        # Find apply button
-        apply_btn = page.locator('#indeedApplyButton, button:has-text("Apply now")').first
+        await self.browser_manager.human_like_delay(3, 5)
         
-        if await apply_btn.count() == 0:
+        # Handle CAPTCHA if present
+        if hasattr(self.browser_manager, 'solve_captcha'):
+            captcha_solved = await self.browser_manager.solve_captcha(page)
+            if captcha_solved:
+                await self.browser_manager.human_like_delay(2, 3)
+        
+        # Find apply button - try multiple selectors
+        apply_selectors = [
+            'button#indeedApplyButton',
+            'button:has-text("Apply now")',
+            'button:has-text("Apply")',
+            '.ia-ApplyButton',
+            '[data-testid="apply-button"]',
+            'button:has-text("Apply Now")',
+            '.jobsearch-IndeedApplyButton',
+        ]
+        
+        apply_btn = None
+        for selector in apply_selectors:
+            btn = page.locator(selector).first
+            if await btn.count() > 0 and await btn.is_visible():
+                apply_btn = btn
+                break
+        
+        if not apply_btn:
             # Check for external apply link
-            external_link = page.locator('a:has-text("Apply on company site"), a[href*="apply"]').first
-            if await external_link.count() > 0:
-                external_url = await external_link.get_attribute("href")
-                if external_url:
-                    # Use external adapter for company site application
-                    from .external import ExternalApplicationAdapter
-                    external_adapter = ExternalApplicationAdapter(self.browser_manager)
-                    
-                    # Update job with external URL
-                    job.external_apply_url = external_url
-                    
-                    return await external_adapter.apply_to_job(
-                        job=job,
-                        resume=resume,
-                        profile=profile,
-                        cover_letter=cover_letter,
-                        auto_submit=auto_submit
-                    )
+            external_selectors = [
+                'a:has-text("Apply on company site")',
+                'a:has-text("Apply on external site")',
+                'a[href*="apply"]:not([href*="indeed"])',
+                '.jobsearch-ExternalJobLink',
+            ]
+            
+            for selector in external_selectors:
+                external_link = page.locator(selector).first
+                if await external_link.count() > 0:
+                    external_url = await external_link.get_attribute("href")
+                    if external_url:
+                        # Use external adapter for company site application
+                        from .external import ExternalApplicationAdapter
+                        external_adapter = ExternalApplicationAdapter(self.browser_manager)
+                        job.external_apply_url = external_url
+                        
+                        return await external_adapter.apply_to_job(
+                            job=job,
+                            resume=resume,
+                            profile=profile,
+                            cover_letter=cover_letter,
+                            auto_submit=auto_submit
+                        )
             
             return ApplicationResult(
                 status=ApplicationStatus.EXTERNAL_APPLICATION,
                 message="No direct apply available"
             )
         
-        await self.browser_manager.human_like_click(page, '#indeedApplyButton, button:has-text("Apply now")')
-        await self.browser_manager.human_like_delay(2, 3)
+        # Click apply button
+        await apply_btn.click()
+        await self.browser_manager.human_like_delay(3, 5)
+        
+        # Handle CAPTCHA in apply modal if present
+        if hasattr(self.browser_manager, 'solve_captcha'):
+            captcha_solved = await self.browser_manager.solve_captcha(page)
+            if captcha_solved:
+                await self.browser_manager.human_like_delay(2, 3)
+        
+        # Wait for apply modal/iframe to load
+        await asyncio.sleep(2)
         
         # Handle application form
         max_steps = 8
         current_step = 0
         
         while current_step < max_steps:
+            # Check for CAPTCHA at each step
+            if hasattr(self.browser_manager, 'solve_captcha'):
+                captcha_solved = await self.browser_manager.solve_captcha(page)
+                if captcha_solved:
+                    await self.browser_manager.human_like_delay(2, 3)
+            
             # Detect form step
             content = await page.content()
             
-            # Contact info
-            name_input = page.locator('input[name="name"], input[id*="name"]').first
-            if await name_input.count() > 0:
-                await name_input.fill(f"{profile.first_name} {profile.last_name}")
+            # Contact info - try multiple selectors
+            name_selectors = [
+                'input[name="name"]',
+                'input[id*="name" i]',
+                'input[placeholder*="name" i]',
+                'input[aria-label*="name" i]',
+            ]
+            for selector in name_selectors:
+                name_input = page.locator(selector).first
+                if await name_input.count() > 0 and await name_input.is_visible():
+                    await name_input.fill(f"{profile.first_name} {profile.last_name}")
+                    break
             
-            email_input = page.locator('input[name="email"], input[type="email"]').first
-            if await email_input.count() > 0:
-                await email_input.fill(profile.email)
+            email_selectors = [
+                'input[name="email"]',
+                'input[type="email"]',
+                'input[id*="email" i]',
+                'input[placeholder*="email" i]',
+            ]
+            for selector in email_selectors:
+                email_input = page.locator(selector).first
+                if await email_input.count() > 0 and await email_input.is_visible():
+                    await email_input.fill(profile.email)
+                    break
             
-            phone_input = page.locator('input[name="phone"], input[type="tel"]').first
-            if await phone_input.count() > 0:
-                await phone_input.fill(profile.phone)
+            phone_selectors = [
+                'input[name="phone"]',
+                'input[type="tel"]',
+                'input[id*="phone" i]',
+                'input[placeholder*="phone" i]',
+            ]
+            for selector in phone_selectors:
+                phone_input = page.locator(selector).first
+                if await phone_input.count() > 0 and await phone_input.is_visible():
+                    await phone_input.fill(profile.phone)
+                    break
             
             # Resume upload
-            file_input = page.locator('input[type="file"]').first
-            if await file_input.count() > 0:
-                await file_input.set_input_files(resume.file_path)
-                await self.browser_manager.human_like_delay(1, 2)
+            file_selectors = [
+                'input[type="file"]',
+                'input[accept*="pdf"]',
+                'input[id*="resume" i]',
+            ]
+            for selector in file_selectors:
+                file_input = page.locator(selector).first
+                if await file_input.count() > 0 and await file_input.is_visible():
+                    await file_input.set_input_files(resume.file_path)
+                    await self.browser_manager.human_like_delay(1, 2)
+                    break
             
             # Cover letter
-            cover_textarea = page.locator('textarea[name*="cover"], textarea[id*="cover"]').first
-            if await cover_textarea.count() > 0 and cover_letter:
-                await cover_textarea.fill(cover_letter)
+            cover_selectors = [
+                'textarea[name*="cover" i]',
+                'textarea[id*="cover" i]',
+                'textarea[placeholder*="cover" i]',
+            ]
+            for selector in cover_selectors:
+                cover_textarea = page.locator(selector).first
+                if await cover_textarea.count() > 0 and await cover_textarea.is_visible() and cover_letter:
+                    await cover_textarea.fill(cover_letter)
+                    break
             
             # Check for submit/review
             if "review" in content.lower() or "submit" in content.lower():

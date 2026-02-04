@@ -1,0 +1,30 @@
+{
+  "config": {
+    "target_applications": 1000,
+    "max_concurrent": 5,
+    "auto_submit": false,
+    "enable_direct_apply": true,
+    "enable_native_flow": true,
+    "enable_complex_forms": false,
+    "max_direct_apply": 600,
+    "max_native_flow": 300,
+    "max_complex_forms": 100
+  },
+  "stats": {
+    "started_at": "2026-02-03T22:49:03.741866",
+    "completed_at": "2026-02-03T22:55:23.220952",
+    "direct_apply_attempted": 0,
+    "direct_apply_success": 0,
+    "native_flow_attempted": 39,
+    "native_flow_success": 0,
+    "complex_forms_attempted": 0,
+    "complex_forms_success": 0,
+    "total_jobs": 0
+  },
+  "router_stats": {
+    "total_attempted": 0,
+    "by_platform": {},
+    "by_category": {},
+    "overall_success_rate": 0.0
+  }
+}

@@ -176,10 +176,14 @@ class StealthBrowserManager:
         platform: str,
         use_proxy: bool = True
     ) -> BrowserSession:
-        """Create a BrowserBase cloud session."""
+        """Create a BrowserBase cloud session with CAPTCHA solving enabled."""
         session = self.bb.sessions.create(
             project_id=self.project_id,
             proxies=use_proxy,
+            browser_settings={
+                "advancedStealth": True,
+                "solveCaptchas": True,
+            },
         )
 
         browser = await self.playwright.chromium.connect_over_cdp(
@@ -417,25 +421,134 @@ class StealthBrowserManager:
         return False
 
     async def solve_captcha(self, page: Page, captcha_type: str = "auto") -> bool:
-        """Attempt to solve CAPTCHA (limited support for local browsers)."""
+        """
+        Attempt to solve CAPTCHA using CapSolver if available.
+        Falls back to waiting if CapSolver is not configured.
+        """
         try:
-            recaptcha = page.locator('iframe[src*="recaptcha"]').first
-            if await recaptcha.count() > 0:
-                print("[Browser] reCAPTCHA detected - waiting for manual solve...")
-                await self.human_like_delay(5, 10)
-                return True
+            # Import here to avoid circular dependency
+            from browser.captcha_manager import get_captcha_manager
+            
+            captcha_manager = get_captcha_manager()
+            
+            # Check if CapSolver is configured
+            if not captcha_manager.is_configured():
+                # Fallback: wait and hope
+                recaptcha = page.locator('iframe[src*="recaptcha"]').first
+                if await recaptcha.count() > 0:
+                    print("[Browser] reCAPTCHA detected - waiting...")
+                    await self.human_like_delay(5, 10)
+                    return True
 
-            hcaptcha = page.locator('iframe[src*="hcaptcha"]').first
-            if await hcaptcha.count() > 0:
-                print("[Browser] hCaptcha detected - waiting for manual solve...")
-                await self.human_like_delay(5, 10)
+                hcaptcha = page.locator('iframe[src*="hcaptcha"]').first
+                if await hcaptcha.count() > 0:
+                    print("[Browser] hCaptcha detected - waiting...")
+                    await self.human_like_delay(5, 10)
+                    return True
+                
                 return True
-
-            return True
+            
+            # Use CapSolver
+            print("[Browser] Checking for CAPTCHA...")
+            result = await captcha_manager.detect_and_solve(page)
+            
+            if result.success:
+                print(f"[Browser] ✅ CAPTCHA solved in {result.solve_time:.1f}s (cost: ${result.cost:.4f})")
+                
+                # If we got a token, try to submit it
+                if result.token:
+                    # Find and fill the CAPTCHA response field
+                    try:
+                        # Common response field names
+                        response_selectors = [
+                            'textarea[name="g-recaptcha-response"]',
+                            'textarea[id="g-recaptcha-response"]',
+                            'input[name="cf-turnstile-response"]',
+                            '[name="cf-turnstile-response"]'
+                        ]
+                        
+                        for selector in response_selectors:
+                            field = page.locator(selector).first
+                            if await field.count() > 0:
+                                await field.fill(result.token)
+                                print(f"[Browser] Filled CAPTCHA response")
+                                break
+                    except Exception as e:
+                        print(f"[Browser] Could not fill CAPTCHA response: {e}")
+                
+                return True
+            else:
+                print(f"[Browser] ❌ CAPTCHA solve failed: {result.error}")
+                return False
 
         except Exception as e:
             print(f"[Browser] CAPTCHA handling error: {e}")
             return False
+    
+    async def handle_cloudflare_with_captcha_solver(self, page: Page, timeout: int = 60) -> bool:
+        """
+        Handle Cloudflare challenge with CapSolver support.
+        More aggressive than wait_for_cloudflare - actually tries to solve.
+        """
+        start_time = asyncio.get_event_loop().time()
+        
+        challenge_indicators = [
+            "just a moment",
+            "checking your browser", 
+            "please wait",
+            "cloudflare",
+            "ddos protection",
+            "verify you are human",
+            "challenge"
+        ]
+        
+        while asyncio.get_event_loop().time() - start_time < timeout:
+            try:
+                title = await page.title()
+                content = await page.content()
+                title_lower = title.lower()
+                content_lower = content.lower()
+                
+                # Check if we're still on challenge page
+                is_challenged = any(ind in title_lower for ind in challenge_indicators)
+                has_challenge_div = await page.locator(
+                    '#challenge-running, #cf-wrapper, .cf-browser-verification, .turnstile'
+                ).count() > 0
+                
+                if not is_challenged and not has_challenge_div:
+                    return True
+                
+                # Try to solve with CapSolver
+                from browser.captcha_manager import get_captcha_manager
+                captcha_manager = get_captcha_manager()
+                
+                if captcha_manager.is_configured() and has_challenge_div:
+                    print(f"[Browser] Cloudflare challenge detected, attempting CAPTCHA solve...")
+                    result = await captcha_manager.solve_cloudflare_turnstile(page.url)
+                    
+                    if result.success and result.token:
+                        # Inject the token
+                        await page.evaluate(f"""
+                            () => {{
+                                const turnstileFields = document.querySelectorAll('[name="cf-turnstile-response"]');
+                                turnstileFields.forEach(f => f.value = "{result.token}");
+                                // Trigger any form submission
+                                const forms = document.querySelectorAll('form');
+                                forms.forEach(f => f.dispatchEvent(new Event('submit')));
+                            }}
+                        """)
+                        print("[Browser] Injected CAPTCHA token, waiting for redirect...")
+                        await asyncio.sleep(5)
+                        continue
+                
+                print(f"[Browser] Waiting for Cloudflare... ({title[:40]})")
+                await asyncio.sleep(3)
+                
+            except Exception as e:
+                print(f"[Browser] Cloudflare handle error: {e}")
+                await asyncio.sleep(2)
+        
+        return False
 
     async def close_session(self, session_id: str):
         """Close a browser session."""

@@ -1,0 +1,108 @@
+{
+  "profile": {
+    "first_name": "Kevin",
+    "last_name": "Beltran",
+    "email": "beltranrkevin@gmail.com",
+    "phone": "770-378-2545",
+    "linkedin": "",
+    "location": "Atlanta, GA",
+    "clearance": "Secret",
+    "resume_path": "../Test Resumes/Kevin_Beltran_Resume.pdf"
+  },
+  "stats": {
+    "started_at": "2026-02-03T22:41:55.972996",
+    "completed_at": "2026-02-03T22:44:14.610272",
+    "total_jobs": 5,
+    "attempted": 5,
+    "successful": 5,
+    "failed": 0,
+    "skipped": 0,
+    "redirects_followed": 0,
+    "by_platform": {
+      "indeed": 5
+    },
+    "avg_time_per_app": 0.5829144954681397
+  },
+  "results": [
+    {
+      "job_id": "indeed_5589800",
+      "title": "IT Business Analyst II",
+      "company": "Truist",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=24df21658cd02e33",
+      "platform": "indeed",
+      "status": "submitted",
+      "message": "TEST MODE",
+      "submitted_at": "2026-02-03T22:43:48.870538",
+      "duration_seconds": 0.7935941219329834,
+      "confirmation_id": "TEST_indeed_5589800",
+      "screenshot_path": null,
+      "error_details": null,
+      "redirect_url": null
+    },
+    {
+      "job_id": "indeed_6207951",
+      "title": "IT Business Analyst II",
+      "company": "Truist",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=79947d2fda32d24c",
+      "platform": "indeed",
+      "status": "submitted",
+      "message": "TEST MODE",
+      "submitted_at": "2026-02-03T22:43:48.870568",
+      "duration_seconds": 0.46527838706970215,
+      "confirmation_id": "TEST_indeed_6207951",
+      "screenshot_path": null,
+      "error_details": null,
+      "redirect_url": null
+    },
+    {
+      "job_id": "indeed_4741412",
+      "title": "L2 Desktop Support Engineer",
+      "company": "Tata Consultancy Services (TCS)",
+      "location": "Alpharetta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=98f6e3cc9b4b54c3",
+      "platform": "indeed",
+      "status": "submitted",
+      "message": "TEST MODE",
+      "submitted_at": "2026-02-03T22:43:48.870578",
+      "duration_seconds": 0.47676515579223633,
+      "confirmation_id": "TEST_indeed_4741412",
+      "screenshot_path": null,
+      "error_details": null,
+      "redirect_url": null
+    },
+    {
+      "job_id": "indeed_2530579",
+      "title": "Manager, ServiceNow (Customer & Employee Experience)",
+      "company": "QTS",
+      "location": "Suwanee, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=62063f5273a0a76f",
+      "platform": "indeed",
+      "status": "submitted",
+      "message": "TEST MODE",
+      "submitted_at": "2026-02-03T22:43:48.870582",
+      "duration_seconds": 0.4411129951477051,
+      "confirmation_id": "TEST_indeed_2530579",
+      "screenshot_path": null,
+      "error_details": null,
+      "redirect_url": null
+    },
+    {
+      "job_id": "indeed_2080396",
+      "title": "Senior Associate, HR Compliance",
+      "company": "KPMG",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=519faa442dfd05b6",
+      "platform": "indeed",
+      "status": "submitted",
+      "message": "TEST MODE",
+      "submitted_at": "2026-02-03T22:43:48.870586",
+      "duration_seconds": 0.7378218173980713,
+      "confirmation_id": "TEST_indeed_2080396",
+      "screenshot_path": null,
+      "error_details": null,
+      "redirect_url": null
+    }
+  ]
+}

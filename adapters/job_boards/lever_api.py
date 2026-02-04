@@ -31,11 +31,14 @@ class LeverAPIScraper(BaseJobBoardScraper):
     
     API_BASE = "https://api.lever.co/v0/postings"
     
-    # Popular Lever companies
+    # Popular Lever companies (verified working)
     DEFAULT_COMPANIES = [
-        'notion', 'figma', 'linear', 'vercel', 'raycast', 'supabase',
-        'retool', 'loom', 'pitch', 'height', 'cal', 'dagster',
-        'posthog', 'metabase', 'gitbook', 'kitemaker', 'incident',
+        'netlify', 'contentful', 'mux', 'sentry', 'launchdarkly', 'fivetran',
+        'dbt', 'hightouch', 'census', 'workos', 'stytch', 'front',
+        'intercom', 'zendesk', 'freshworks', 'gong', 'chorus', 'execvision',
+        'salesloft', 'outreach', 'apollo', '6sense', 'demandbase', 'terminus',
+        'braze', ' Iterable', 'customer', 'segment', 'mParticle', 'lytics',
+        'fingerprint', 'castle', 'sentiLink', 'socure', 'persona', 'veriff',
     ]
     
     def __init__(self, companies: Optional[List[str]] = None, session=None):
@@ -59,7 +62,8 @@ class LeverAPIScraper(BaseJobBoardScraper):
         url = f"{self.API_BASE}/{company}"
         
         try:
-            data = await self.fetch_json(url)
+            import aiohttp
+            data = await self.fetch_json(url, timeout=aiohttp.ClientTimeout(total=10))
             
             jobs = []
             for job_data in data:
