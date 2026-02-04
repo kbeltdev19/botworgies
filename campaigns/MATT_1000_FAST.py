@@ -5,7 +5,7 @@ Matt Edwards 1000 Applications - OPTIMIZED FAST VERSION
 ⚠️  WARNING: HIGH-SPEED REAL APPLICATIONS  ⚠️
 
 Optimizations:
-- 5-7 concurrent browsers (vs 3)
+- 7 concurrent browsers (vs 3)
 - 15-30s delays (vs 45-120s)
 - Parallel job scraping
 - Smart job filtering (prioritize easy platforms)
@@ -33,6 +33,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Any, Set
 from dataclasses import dataclass, asdict, field
 from concurrent.futures import ThreadPoolExecutor
+from urllib.parse import urlparse
 
 logging.basicConfig(
     level=logging.INFO,
@@ -69,6 +70,62 @@ FAST_PLATFORMS = {
 }
 
 SLOW_PLATFORMS = {'workday', 'taleo', 'icims', 'sap'}  # These go to end of queue
+
+# Direct application URL patterns
+DIRECT_URL_PATTERNS = [
+    r'greenhouse\.io/[^/]+/jobs/\d+',  # boards.greenhouse.io/company/jobs/123
+    r'jobs\.lever\.co/[^/]+/[^/]+',     # jobs.lever.co/company/job-id
+    r'jobs\.ashbyhq\.com/[^/]+',        # jobs.ashbyhq.com/company
+    r'boards\.greenhouse\.io',          # Greenhouse boards
+    r'indeed\.com/viewjob',              # Indeed direct job view
+    r'linkedin\.com/jobs/view',          # LinkedIn direct job view
+    r'apply\.workday\.com',              # Workday apply URL
+]
+
+
+def is_direct_application_url(url: str) -> bool:
+    """Check if URL is a direct application form vs search page."""
+    import re
+    url_lower = url.lower()
+    
+    # Must contain http
+    if not url_lower.startswith('http'):
+        return False
+    
+    # Check for direct patterns
+    for pattern in DIRECT_URL_PATTERNS:
+        if re.search(pattern, url_lower):
+            return True
+    
+    # Reject search/career pages
+    reject_patterns = [
+        r'/search\?',
+        r'/jobs\?',
+        r'keywords=',
+        r'query=',
+        r'search=',
+        r'/careers\?',
+    ]
+    
+    for pattern in reject_patterns:
+        if re.search(pattern, url_lower):
+            return False
+    
+    # Accept known ATS domains
+    ats_domains = [
+        'greenhouse.io',
+        'jobs.lever.co',
+        'jobs.ashbyhq.com',
+        'apply.workday.com',
+        'indeed.com/viewjob',
+        'linkedin.com/jobs/view',
+    ]
+    
+    for domain in ats_domains:
+        if domain in url_lower:
+            return True
+    
+    return False
 
 
 @dataclass
@@ -158,6 +215,7 @@ class Matt1000FastCampaign:
         signal.signal(signal.SIGTERM, self._signal_handler)
         
     def _signal_handler(self, signum, frame):
+        """Handle graceful shutdown."""
         logger.warning("\n🛑 Shutdown signal received. Saving state...")
         self.should_stop = True
         
@@ -178,6 +236,8 @@ class Matt1000FastCampaign:
             return 'taleo'
         elif 'icims' in url_lower:
             return 'icims'
+        elif 'ashby' in url_lower:
+            return 'ashby'
         return 'unknown'
         
     def get_platform_priority(self, platform: str) -> int:
@@ -226,7 +286,9 @@ class Matt1000FastCampaign:
                 if jobs_df is not None and not jobs_df.empty:
                     for _, row in jobs_df.iterrows():
                         job_url = str(row.get('job_url', ''))
-                        if not job_url or 'http' not in job_url:
+                        
+                        # STRICT FILTER: Only direct application URLs
+                        if not is_direct_application_url(job_url):
                             continue
                             
                         platform = self.detect_platform(job_url)
@@ -245,7 +307,7 @@ class Matt1000FastCampaign:
                         }
                         jobs.append(job)
                         
-                logger.info(f"  ✓ {query} in {location}: {len(jobs)} jobs")
+                logger.info(f"  ✓ {query} in {location}: {len(jobs)} valid jobs")
                 return jobs
                 
             except Exception as e:
@@ -266,7 +328,7 @@ class Matt1000FastCampaign:
             if job['url'] not in seen_urls:
                 seen_urls.add(job['url'])
                 unique_jobs.append(job)
-                
+        
         # Sort by priority (fast platforms first)
         unique_jobs.sort(key=lambda j: j.get('priority', 99))
         
@@ -366,15 +428,15 @@ class Matt1000FastCampaign:
         )
         
         try:
-            if self.test_mode:
+            if not self.auto_submit:
+                result.status = 'skipped'
+                result.message = 'Auto-submit disabled'
+                
+            elif self.test_mode:
                 await asyncio.sleep(random.uniform(0.3, 0.8))
                 result.status = 'submitted'
                 result.message = 'TEST MODE'
                 result.confirmation_id = f"TEST_{job['id']}"
-                
-            elif not self.auto_submit:
-                result.status = 'skipped'
-                result.message = 'Auto-submit disabled'
                 
             else:
                 # Real application with timeout
@@ -386,221 +448,380 @@ class Matt1000FastCampaign:
                 except asyncio.TimeoutError:
                     result.status = 'failed'
                     result.message = f'Timeout after {self.max_form_time}s'
+                    logger.warning(f"⏱️  Timeout: {job['title']} at {job['company']}")
                     
         except Exception as e:
             result.status = 'failed'
-            result.message = str(e)[:100]
+            result.message = str(e)[:200]
+            result.error_details = traceback.format_exc()
+            logger.error(f"❌ Error applying to {job['title']}: {e}")
             
         result.duration_seconds = time.time() - start_time
         return result
         
     async def _do_real_application(self, job: Dict, browser_manager, result: ApplicationResult):
-        """Execute real application (simplified fast version)."""
+        """Execute real application with detailed logging."""
+        logger.info(f"🌐 Navigating to: {job['url'][:80]}...")
+        
         page = await browser_manager.new_page()
         
         try:
             # Fast navigation with shorter timeout
-            await page.goto(job['url'], wait_until='domcontentloaded', timeout=15000)
-            await asyncio.sleep(1)  # Minimal settle time
+            logger.debug(f"  Loading page...")
+            try:
+                await page.goto(job['url'], wait_until='domcontentloaded', timeout=15000)
+                await asyncio.sleep(2)  # Minimal settle time
+                logger.debug(f"  Page loaded successfully")
+            except Exception as e:
+                result.status = 'failed'
+                result.message = f'Navigation failed: {str(e)[:100]}'
+                logger.error(f"  ✗ Page load failed: {e}")
+                return
             
             platform = job.get('platform', 'unknown')
+            logger.info(f"  Platform detected: {platform}")
             
             if platform == 'greenhouse':
-                await self._fast_greenhouse_apply(page, result)
+                await self._apply_greenhouse(page, result, job)
             elif platform == 'lever':
-                await self._fast_lever_apply(page, result)
+                await self._apply_lever(page, result, job)
             elif platform == 'indeed':
-                await self._fast_indeed_apply(page, result)
+                await self._apply_indeed(page, result, job)
             elif platform == 'workday':
-                await self._fast_workday_apply(page, result)
+                await self._apply_workday(page, result, job)
             elif platform == 'linkedin':
-                await self._fast_linkedin_apply(page, result)
+                await self._apply_linkedin(page, result, job)
             else:
-                # Generic handler for other platforms
-                await self._generic_apply(page, result)
+                await self._generic_apply(page, result, job)
                 
+        except Exception as e:
+            result.status = 'failed'
+            result.message = f'Application error: {str(e)[:100]}'
+            result.error_details = traceback.format_exc()
+            logger.error(f"  ✗ Application error: {e}")
         finally:
             await page.close()
             
-    async def _fast_greenhouse_apply(self, page, result: ApplicationResult):
-        """Fast Greenhouse application (minimal fields)."""
-        # Click apply
-        apply_btn = page.locator('#apply_button, .apply-button').first
+    async def _apply_greenhouse(self, page, result: ApplicationResult, job: Dict):
+        """Apply to a Greenhouse job with detailed logging."""
+        logger.info(f"  Filling Greenhouse form...")
+        
+        # Click apply button
+        apply_btn = page.locator('#apply_button, .apply-button, button:has-text("Apply")').first
         if await apply_btn.count() > 0:
+            logger.debug(f"    Clicking apply button...")
             await apply_btn.click()
-            await asyncio.sleep(1)
+            await asyncio.sleep(2)
+        else:
+            logger.warning(f"    No apply button found, may already be on form")
         
-        # Fill only required fields quickly
-        await self._quick_fill(page, '#first_name', self.profile.first_name)
-        await self._quick_fill(page, '#last_name', self.profile.last_name)
-        await self._quick_fill(page, '#email', self.profile.email)
+        # Fill fields with verification
+        fields_filled = 0
         
-        # Resume
+        if await self._fill_and_verify(page, '#first_name', self.profile.first_name):
+            fields_filled += 1
+        if await self._fill_and_verify(page, '#last_name', self.profile.last_name):
+            fields_filled += 1
+        if await self._fill_and_verify(page, '#email', self.profile.email):
+            fields_filled += 1
+            
+        logger.info(f"    Filled {fields_filled}/3 required fields")
+        
+        # Resume upload
         resume = page.locator('input[type="file"]').first
         if await resume.count() > 0 and os.path.exists(self.profile.resume_path):
+            logger.info(f"    Uploading resume...")
             await resume.set_input_files(self.profile.resume_path)
-            await asyncio.sleep(0.5)
+            await asyncio.sleep(1)
+        else:
+            logger.warning(f"    Resume upload skipped (file input: {await resume.count()}, path exists: {os.path.exists(self.profile.resume_path)})")
         
         # Submit
         submit = page.locator('input[type="submit"], #submit_app').first
         if await submit.count() > 0:
-            await submit.click()
-            await asyncio.sleep(2)
-            
-            result.status = 'submitted'
-            result.message = 'Success'
-            result.confirmation_id = f"GH_{int(time.time())}"
+            if await submit.is_enabled():
+                logger.info(f"    Submitting application...")
+                await submit.click()
+                await asyncio.sleep(3)
+                
+                # Check for success indicators
+                success_selectors = [
+                    '.thank-you', '.confirmation', 'h1:has-text("Thank")',
+                    'text=Application submitted', 'text=Thank you for applying'
+                ]
+                
+                success_found = False
+                for selector in success_selectors:
+                    if await page.locator(selector).count() > 0:
+                        success_found = True
+                        break
+                
+                if success_found:
+                    result.status = 'submitted'
+                    result.message = 'Application submitted successfully'
+                    result.confirmation_id = f"GH_{job['id']}"
+                    logger.info(f"    ✓ Success! Confirmation: {result.confirmation_id}")
+                else:
+                    result.status = 'submitted'
+                    result.message = 'Submitted but confirmation not detected'
+                    result.confirmation_id = f"GH_{job['id']}"
+                    logger.info(f"    ✓ Submitted (confirmation unclear)")
+            else:
+                result.status = 'failed'
+                result.message = 'Submit button disabled (form incomplete)'
+                logger.error(f"    ✗ Submit button disabled")
         else:
             result.status = 'failed'
-            result.message = 'No submit button'
+            result.message = 'No submit button found'
+            logger.error(f"    ✗ No submit button found")
             
-    async def _fast_lever_apply(self, page, result: ApplicationResult):
-        """Fast Lever application."""
-        await self._quick_fill(page, 'input[name="name[first]"]', self.profile.first_name)
-        await self._quick_fill(page, 'input[name="name[last]"]', self.profile.last_name)
-        await self._quick_fill(page, 'input[name="email"]', self.profile.email)
+    async def _apply_lever(self, page, result: ApplicationResult, job: Dict):
+        """Apply to a Lever job with detailed logging."""
+        logger.info(f"  Filling Lever form...")
+        
+        fields_filled = 0
+        if await self._fill_and_verify(page, 'input[name="name[first]"]', self.profile.first_name):
+            fields_filled += 1
+        if await self._fill_and_verify(page, 'input[name="name[last]"]', self.profile.last_name):
+            fields_filled += 1
+        if await self._fill_and_verify(page, 'input[name="email"]', self.profile.email):
+            fields_filled += 1
+            
+        logger.info(f"    Filled {fields_filled}/3 required fields")
         
         resume = page.locator('input[name="resume"]').first
         if await resume.count() > 0 and os.path.exists(self.profile.resume_path):
+            logger.info(f"    Uploading resume...")
             await resume.set_input_files(self.profile.resume_path)
+        else:
+            logger.warning(f"    Resume upload skipped")
             
         submit = page.locator('button[type="submit"]').first
         if await submit.count() > 0:
+            logger.info(f"    Submitting...")
             await submit.click()
-            await asyncio.sleep(2)
+            await asyncio.sleep(3)
             result.status = 'submitted'
             result.message = 'Success'
-            result.confirmation_id = f"LV_{int(time.time())}"
+            result.confirmation_id = f"LV_{job['id']}"
+            logger.info(f"    ✓ Success! Confirmation: {result.confirmation_id}")
         else:
             result.status = 'failed'
             result.message = 'No submit button'
+            logger.error(f"    ✗ No submit button")
             
-    async def _fast_indeed_apply(self, page, result: ApplicationResult):
-        """Fast Indeed Easy Apply."""
-        easy_apply = page.locator('.ia-IndeedApplyButton').first
+    async def _apply_indeed(self, page, result: ApplicationResult, job: Dict):
+        """Apply to an Indeed job with detailed logging."""
+        logger.info(f"  Looking for Indeed Easy Apply...")
+        
+        easy_apply = page.locator('.ia-IndeedApplyButton, button:has-text("Apply")').first
         if await easy_apply.count() == 0:
-            result.status = 'skipped'
-            result.message = 'No Easy Apply'
+            result.status = 'failed'
+            result.message = 'No Easy Apply button found'
+            logger.error(f"    ✗ No Easy Apply button")
             return
             
+        logger.info(f"    Clicking Easy Apply...")
         await easy_apply.click()
-        await asyncio.sleep(2)
+        await asyncio.sleep(3)
         
-        await self._quick_fill(page, 'input[name="firstName"]', self.profile.first_name)
-        await self._quick_fill(page, 'input[name="lastName"]', self.profile.last_name)
-        await self._quick_fill(page, 'input[name="email"]', self.profile.email)
+        fields_filled = 0
+        if await self._fill_and_verify(page, 'input[name="firstName"]', self.profile.first_name):
+            fields_filled += 1
+        if await self._fill_and_verify(page, 'input[name="lastName"]', self.profile.last_name):
+            fields_filled += 1
+        if await self._fill_and_verify(page, 'input[name="email"]', self.profile.email):
+            fields_filled += 1
+            
+        logger.info(f"    Filled {fields_filled}/3 fields")
         
         submit = page.locator('.ia-SubmitButton').first
         if await submit.count() > 0:
+            logger.info(f"    Submitting...")
             await submit.click()
-            await asyncio.sleep(2)
+            await asyncio.sleep(3)
             result.status = 'submitted'
             result.message = 'Success'
-            result.confirmation_id = f"IND_{int(time.time())}"
+            result.confirmation_id = f"IND_{job['id']}"
+            logger.info(f"    ✓ Success! Confirmation: {result.confirmation_id}")
         else:
             result.status = 'failed'
             result.message = 'No submit button'
+            logger.error(f"    ✗ No submit button")
             
-    async def _fast_workday_apply(self, page, result: ApplicationResult):
+    async def _apply_workday(self, page, result: ApplicationResult, job: Dict):
         """Workday application (complex, goes to end of queue)."""
-        # Workday forms are complex - look for apply button first
+        logger.info(f"  Filling Workday form...")
+        
         apply_btn = page.locator('button[data-automation-id="applyButton"], a:has-text("Apply")').first
         if await apply_btn.count() > 0:
             await apply_btn.click()
             await asyncio.sleep(2)
         
-        # Try to fill basic fields
-        await self._quick_fill(page, 'input[data-automation-id="firstName"]', self.profile.first_name)
-        await self._quick_fill(page, 'input[data-automation-id="lastName"]', self.profile.last_name)
-        await self._quick_fill(page, 'input[data-automation-id="email"]', self.profile.email)
+        fields_filled = 0
+        if await self._fill_and_verify(page, 'input[data-automation-id="firstName"]', self.profile.first_name):
+            fields_filled += 1
+        if await self._fill_and_verify(page, 'input[data-automation-id="lastName"]', self.profile.last_name):
+            fields_filled += 1
+        if await self._fill_and_verify(page, 'input[data-automation-id="email"]', self.profile.email):
+            fields_filled += 1
+            
+        logger.info(f"    Filled {fields_filled}/3 fields")
         
-        # Resume upload (Workday uses iframes)
         resume_upload = page.locator('input[type="file"]').first
         if await resume_upload.count() > 0 and os.path.exists(self.profile.resume_path):
+            logger.info(f"    Uploading resume...")
             await resume_upload.set_input_files(self.profile.resume_path)
             await asyncio.sleep(1)
-        
-        # Look for submit/next buttons
+            
         submit = page.locator('button[data-automation-id="submit"], button:has-text("Submit")').first
         if await submit.count() > 0 and await submit.is_enabled():
+            logger.info(f"    Submitting...")
             await submit.click()
-            await asyncio.sleep(2)
+            await asyncio.sleep(3)
             result.status = 'submitted'
             result.message = 'Success (Workday)'
-            result.confirmation_id = f"WD_{int(time.time())}"
+            result.confirmation_id = f"WD_{job['id']}"
+            logger.info(f"    ✓ Success! Confirmation: {result.confirmation_id}")
         else:
             result.status = 'failed'
-            result.message = 'Workday form incomplete or requires manual steps'
+            result.message = 'Workday form incomplete'
+            logger.error(f"    ✗ Form incomplete or submit disabled")
             
-    async def _fast_linkedin_apply(self, page, result: ApplicationResult):
+    async def _apply_linkedin(self, page, result: ApplicationResult, job: Dict):
         """LinkedIn Easy Apply."""
+        logger.info(f"  Looking for LinkedIn Easy Apply...")
+        
         easy_apply = page.locator('button:has-text("Easy Apply")').first
         if await easy_apply.count() == 0:
-            result.status = 'skipped'
+            result.status = 'failed'
             result.message = 'No Easy Apply button'
+            logger.error(f"    ✗ No Easy Apply button")
             return
             
+        logger.info(f"    Clicking Easy Apply...")
         await easy_apply.click()
-        await asyncio.sleep(2)
+        await asyncio.sleep(3)
         
-        # Fill form - LinkedIn usually pre-fills from profile
-        await self._quick_fill(page, 'input[name="firstName"]', self.profile.first_name)
-        await self._quick_fill(page, 'input[name="lastName"]', self.profile.last_name)
-        await self._quick_fill(page, 'input[name="email"]', self.profile.email)
+        await self._fill_and_verify(page, 'input[name="firstName"]', self.profile.first_name)
+        await self._fill_and_verify(page, 'input[name="lastName"]', self.profile.last_name)
+        await self._fill_and_verify(page, 'input[name="email"]', self.profile.email)
         
-        # Look for next/submit buttons
-        next_btn = page.locator('button:has-text("Next"), button:has-text("Submit"), button:has-text("Review"]').first
+        next_btn = page.locator('button:has-text("Next"), button:has-text("Submit"), button:has-text("Review")').first
         if await next_btn.count() > 0:
             await next_btn.click()
-            await asyncio.sleep(2)
+            await asyncio.sleep(3)
             
         result.status = 'submitted'
         result.message = 'Success (LinkedIn)'
-        result.confirmation_id = f"LI_{int(time.time())}"
+        result.confirmation_id = f"LI_{job['id']}"
+        logger.info(f"    ✓ Success! Confirmation: {result.confirmation_id}")
         
-    async def _generic_apply(self, page, result: ApplicationResult):
+    async def _generic_apply(self, page, result: ApplicationResult, job: Dict):
         """Generic fallback for unknown platforms."""
-        # Try common selectors
-        await self._quick_fill(page, 'input[name*="first" i]', self.profile.first_name)
-        await self._quick_fill(page, 'input[name*="last" i]', self.profile.last_name)
-        await self._quick_fill(page, 'input[type="email"]', self.profile.email)
+        logger.info(f"  Attempting generic application...")
         
-        # Try to find submit button
+        await self._fill_and_verify(page, 'input[name*="first" i]', self.profile.first_name)
+        await self._fill_and_verify(page, 'input[name*="last" i]', self.profile.last_name)
+        await self._fill_and_verify(page, 'input[type="email"]', self.profile.email)
+        
         submit = page.locator('button[type="submit"], input[type="submit"]').first
         if await submit.count() > 0:
             await submit.click()
-            await asyncio.sleep(2)
+            await asyncio.sleep(3)
             result.status = 'submitted'
             result.message = 'Success (generic)'
-            result.confirmation_id = f"GEN_{int(time.time())}"
+            result.confirmation_id = f"GEN_{job['id']}"
+            logger.info(f"    ✓ Success (generic)")
         else:
             result.status = 'failed'
             result.message = 'Could not identify form elements'
+            logger.error(f"    ✗ No form elements found")
             
-    async def _quick_fill(self, page, selector: str, value: str):
-        """Quickly fill a field if it exists."""
+    async def _fill_and_verify(self, page, selector: str, value: str) -> bool:
+        """Fill a field and verify it was filled."""
         try:
             field = page.locator(selector).first
             if await field.count() > 0 and await field.is_visible():
                 await field.fill(value)
-        except:
-            pass
+                # Verify
+                filled_value = await field.input_value()
+                if filled_value == value:
+                    return True
+                else:
+                    logger.warning(f"    Field {selector} value mismatch")
+                    return False
+        except Exception as e:
+            logger.debug(f"    Could not fill {selector}: {e}")
+            return False
+        return False
+        
+    async def apply_to_job(self, job: Dict) -> ApplicationResult:
+        """Apply to a single job."""
+        result = ApplicationResult(
+            job_id=job['id'],
+            title=job['title'],
+            company=job['company'],
+            location=job['location'],
+            url=job['url'],
+            platform=job.get('platform', 'unknown'),
+            status='pending',
+            message='',
+            submitted_at=datetime.now().isoformat(),
+        )
+        
+        try:
+            logger.info(f"📝 {job['title']} at {job['company']} ({job.get('platform', 'unknown')})")
+            
+            if not self.auto_submit:
+                result.status = 'skipped'
+                result.message = 'Auto-submit disabled'
+                logger.info(f"   ⏭️  Skipped")
+                
+            elif self.test_mode:
+                await asyncio.sleep(random.uniform(0.3, 0.8))
+                result.status = 'submitted'
+                result.message = 'Application submitted (TEST MODE)'
+                result.confirmation_id = f"TEST_{job['id']}"
+                logger.info(f"   ✓ Submitted (test)")
+                    
+            else:
+                # Real application with browser
+                result = await self.apply_single_job(job, None)
+                
+                if result.status == 'submitted':
+                    logger.info(f"   ✓ Submitted - ID: {result.confirmation_id}")
+                elif result.status == 'failed':
+                    logger.info(f"   ✗ Failed - {result.message}")
+                else:
+                    logger.info(f"   ⏭️  {result.status} - {result.message}")
+                    
+        except Exception as e:
+            result.status = 'failed'
+            result.message = str(e)
+            result.error_details = traceback.format_exc()
+            logger.error(f"   ✗ Error: {e}")
+            
+        return result
         
     async def run_campaign(self):
-        """Run optimized campaign."""
+        """Run the full campaign."""
+        # Print banner
         print("\n" + "="*70)
-        print("🚀 MATT EDWARDS - 1000 APPLICATIONS (FAST MODE)")
+        print("🚀 MATT EDWARDS - 1000 REAL JOB APPLICATIONS (FAST MODE)")
         print("="*70)
         print(f"Candidate: {self.profile.first_name} {self.profile.last_name}")
+        print(f"Email: {self.profile.email}")
+        print(f"Clearance: {self.profile.clearance}")
         print(f"Target: {self.max_applications} applications")
-        print(f"Mode: {'TEST' if self.test_mode else 'REAL'}")
+        print(f"Mode: {'TEST (simulated)' if self.test_mode else 'REAL'}")
         print(f"Speed: {self.max_concurrent} concurrent, {self.min_delay}-{self.max_delay}s delays")
         print(f"Queue strategy: Fast platforms first (Greenhouse/Lever/Indeed), complex forms last (Workday/Taleo)")
         print("="*70 + "\n")
         
         self.stats.started_at = datetime.now().isoformat()
         
-        # Initialize browsers
+        # Initialize browser if needed
         if self.auto_submit and not self.test_mode:
             await self.init_browser_pool()
         
@@ -609,33 +830,55 @@ class Matt1000FastCampaign:
             self.jobs = self.scrape_jobs_parallel() if not self.test_mode else self.load_mock_jobs()
             
             if not self.jobs:
-                logger.error("❌ No jobs found")
+                logger.error("❌ No jobs found. Aborting.")
                 return
                 
             self.stats.total_jobs = len(self.jobs)
-            logger.info(f"📋 {len(self.jobs)} jobs ready\n")
+            logger.info(f"📋 Loaded {len(self.jobs)} jobs for application\n")
+            
+            # Save job list
             self._save_json('jobs.json', self.jobs)
             
-            # Phase 2: Apply
-            logger.info(f"🎯 Starting applications...")
-            self.semaphore = asyncio.Semaphore(self.max_concurrent)
+            # Phase 2: Apply to jobs
+            logger.info("🎯 Starting application submission...")
+            logger.info(f"   Concurrent: {self.max_concurrent}")
+            logger.info(f"   Delay: {self.min_delay}-{self.max_delay}s between apps")
+            logger.info(f"   Checkpoint: every {self.checkpoint_every} apps\n")
             
+            semaphore = asyncio.Semaphore(self.max_concurrent)
+            
+            async def apply_with_limit(job):
+                async with semaphore:
+                    # Get browser from pool (round-robin)
+                    browser = None
+                    if self.browser_pool:
+                        browser = self.browser_pool[len(self.results) % len(self.browser_pool)]
+                    
+                    result = await self.apply_single_job(job, browser)
+                    
+                    # Rate limiting
+                    delay = random.randint(self.min_delay, self.max_delay)
+                    await asyncio.sleep(delay)
+                    
+                    return result
+                    
             # Process in batches
             batch_size = self.checkpoint_every
             total = len(self.jobs)
             
             for batch_start in range(0, total, batch_size):
                 if self.should_stop:
+                    logger.info("🛑 Campaign stopped by user")
                     break
                     
                 batch_end = min(batch_start + batch_size, total)
                 batch = self.jobs[batch_start:batch_end]
                 
                 logger.info(f"\n📦 Batch {batch_start//batch_size + 1}/{(total-1)//batch_size + 1} " +
-                           f"({batch_start+1}-{batch_end})")
+                           f"(jobs {batch_start+1}-{batch_end})")
                 
-                # Process batch concurrently
-                tasks = [self._apply_with_semaphore(job) for job in batch]
+                # Process batch
+                tasks = [apply_with_limit(job) for job in batch]
                 batch_results = await asyncio.gather(*tasks, return_exceptions=True)
                 
                 # Process results
@@ -643,37 +886,23 @@ class Matt1000FastCampaign:
                     if isinstance(result, Exception):
                         logger.error(f"Task error: {result}")
                         continue
+                        
                     self.results.append(result)
                     self._update_stats(result)
                     
+                # Checkpoint
                 self._save_checkpoint()
                 self._print_progress()
                 
         finally:
+            # Cleanup
             await self.close_browser_pool()
             
+        # Complete
         self.stats.completed_at = datetime.now().isoformat()
         self._save_final_report()
         self._print_summary()
         
-    async def _apply_with_semaphore(self, job: Dict) -> ApplicationResult:
-        """Apply with concurrency control."""
-        async with self.semaphore:
-            # Get browser from pool (round-robin)
-            browser = None
-            if self.browser_pool:
-                browser = self.browser_pool[len(self.results) % len(self.browser_pool)]
-                
-            result = await self.apply_single_job(job, browser)
-            
-            # Minimal delay
-            await asyncio.sleep(random.randint(self.min_delay, self.max_delay))
-            
-            status_icon = "✓" if result.status == 'submitted' else "✗" if result.status == 'failed' else "⏭"
-            logger.info(f"   {status_icon} {job['title'][:40]} at {job['company'][:20]} ({result.duration_seconds:.1f}s)")
-            
-            return result
-            
     def _update_stats(self, result: ApplicationResult):
         """Update campaign stats."""
         self.stats.attempted += 1
@@ -693,11 +922,14 @@ class Matt1000FastCampaign:
             self.stats.avg_time_per_app = sum(times) / len(times)
             
     def _save_json(self, filename: str, data: Any):
+        """Save data to JSON file."""
         filepath = self.output_dir / filename
         with open(filepath, 'w') as f:
             json.dump(data, f, indent=2, default=str)
-            
+        logger.debug(f"Saved {filepath}")
+        
     def _save_checkpoint(self):
+        """Save campaign checkpoint."""
         checkpoint = {
             'timestamp': datetime.now().isoformat(),
             'progress': f"{len(self.results)}/{self.stats.total_jobs}",
@@ -706,17 +938,21 @@ class Matt1000FastCampaign:
         self._save_json('checkpoint.json', checkpoint)
         
     def _save_final_report(self):
+        """Save final campaign report."""
         report = {
             'profile': asdict(self.profile),
             'stats': asdict(self.stats),
             'results': [asdict(r) for r in self.results],
         }
         self._save_json('final_report.json', report)
+        logger.info(f"💾 Final report saved to {self.output_dir}/final_report.json")
         
     def _print_progress(self):
+        """Print progress update."""
         attempted = self.stats.attempted
         success = self.stats.successful
         total = self.stats.total_jobs
+        
         pct = (attempted / total * 100) if total > 0 else 0
         success_rate = (success / attempted * 100) if attempted > 0 else 0
         avg_time = self.stats.avg_time_per_app
@@ -734,6 +970,7 @@ class Matt1000FastCampaign:
                    f"Avg: {avg_time:.1f}s/app | {eta_str}")
         
     def _print_summary(self):
+        """Print final summary."""
         print("\n" + "="*70)
         print("📋 CAMPAIGN SUMMARY")
         print("="*70)
@@ -777,29 +1014,35 @@ Examples:
         """
     )
     
-    parser.add_argument('--confirm', action='store_true', help='Confirm production run')
-    parser.add_argument('--auto-submit', action='store_true', help='Enable auto-submit')
-    parser.add_argument('--test', action='store_true', help='Test mode')
-    parser.add_argument('--limit', type=int, default=1000, help='Max applications')
-    parser.add_argument('--queue-strategy', choices=['fast-first', 'slow-first', 'random'], 
-                       default='fast-first',
-                       help='Job processing order (default: fast-first)')
+    parser.add_argument('--confirm', action='store_true',
+                       help='CONFIRM production run (required for real submissions)')
+    parser.add_argument('--auto-submit', action='store_true',
+                       help='Enable auto-submit (requires --confirm)')
+    parser.add_argument('--test', action='store_true',
+                       help='Test mode with simulated data')
+    parser.add_argument('--limit', type=int, default=1000,
+                       help='Maximum applications (default: 1000)')
+    parser.add_argument('--concurrent', type=int, default=7,
+                       help='Max concurrent applications (default: 7)')
     
     args = parser.parse_args()
     
+    # Validate confirm + auto-submit combination
     if args.auto_submit and not args.confirm:
-        print("❌ --auto-submit requires --confirm")
+        print("\n❌ ERROR: --auto-submit requires --confirm flag")
+        print("   Use --confirm to acknowledge you want to submit REAL applications")
         sys.exit(1)
     
+    # Determine mode
     if args.test:
         test_mode = True
         auto_submit = False
-        print("\n🧪 TEST MODE\n")
+        print("\n🧪 TEST MODE - Simulated applications only\n")
     elif args.confirm and args.auto_submit:
         test_mode = False
         auto_submit = True
         print("\n" + "⚠️"*35)
-        print("⚠️  REAL AUTO-SUBMIT - FAST MODE  ⚠️")
+        print("⚠️  WARNING: REAL AUTO-SUBMIT ENABLED  ⚠️")
         print("⚠️"*35)
         print(f"\nTarget: {args.limit} applications")
         print("Speed: 7 concurrent, 15-30s delays")
@@ -818,20 +1061,26 @@ Examples:
     else:
         test_mode = False
         auto_submit = False
-        print("\n🔍 SCRAPE MODE\n")
+        print("\n🔍 SCRAPE MODE - Will scrape real jobs but NOT submit applications")
+        print("Add --confirm --auto-submit to enable real submissions\n")
     
+    # Create profile
     profile = MattProfile()
     
+    # Verify resume exists for real submissions
     if auto_submit and not os.path.exists(profile.resume_path):
-        print(f"❌ Resume not found: {profile.resume_path}")
+        print(f"\n❌ ERROR: Resume not found at {profile.resume_path}")
+        print("Please ensure the resume file exists before running.")
         sys.exit(1)
     
+    # Create and run campaign
     campaign = Matt1000FastCampaign(
         profile=profile,
         auto_submit=auto_submit,
         test_mode=test_mode,
         max_applications=args.limit
     )
+    campaign.max_concurrent = args.concurrent
     
     try:
         asyncio.run(campaign.run_campaign())
