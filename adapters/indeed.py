@@ -285,6 +285,26 @@ class IndeedAdapter(JobPlatformAdapter):
         apply_btn = page.locator('#indeedApplyButton, button:has-text("Apply now")').first
         
         if await apply_btn.count() == 0:
+            # Check for external apply link
+            external_link = page.locator('a:has-text("Apply on company site"), a[href*="apply"]').first
+            if await external_link.count() > 0:
+                external_url = await external_link.get_attribute("href")
+                if external_url:
+                    # Use external adapter for company site application
+                    from .external import ExternalApplicationAdapter
+                    external_adapter = ExternalApplicationAdapter(self.browser_manager)
+                    
+                    # Update job with external URL
+                    job.external_apply_url = external_url
+                    
+                    return await external_adapter.apply_to_job(
+                        job=job,
+                        resume=resume,
+                        profile=profile,
+                        cover_letter=cover_letter,
+                        auto_submit=auto_submit
+                    )
+            
             return ApplicationResult(
                 status=ApplicationStatus.EXTERNAL_APPLICATION,
                 message="No direct apply available"
@@ -336,13 +356,47 @@ class IndeedAdapter(JobPlatformAdapter):
                         screenshot_path=screenshot_path
                     )
                 
-                submit_btn = page.locator('button:has-text("Submit"), button[type="submit"]').first
-                if await submit_btn.count() > 0:
-                    await self.browser_manager.human_like_click(page, 'button:has-text("Submit")')
-                    return ApplicationResult(
-                        status=ApplicationStatus.SUBMITTED,
-                        submitted_at=datetime.now()
-                    )
+                # Try multiple submit button patterns
+                submit_patterns = [
+                    'button:has-text("Submit")',
+                    'button:has-text("Submit application")',
+                    'button:has-text("Send")',
+                    'button:has-text("Apply")',
+                    'button[type="submit"]',
+                    '[data-testid="apply-button"]',
+                    'button:has-text("Done")',
+                    '.ia-SubmitButton',
+                    'button:has-text("Complete")',
+                ]
+                
+                for pattern in submit_patterns:
+                    btn = page.locator(pattern).first
+                    try:
+                        if await btn.count() > 0 and await btn.is_visible():
+                            await btn.click(timeout=10000)
+                            await self.browser_manager.human_like_delay(3, 5)
+                            
+                            # VALIDATION: Check if submission was successful
+                            from .validation import SubmissionValidator
+                            validation_result = await SubmissionValidator.validate(
+                                page, job.id, platform="indeed"
+                            )
+                            if validation_result['success']:
+                                return ApplicationResult(
+                                    status=ApplicationStatus.SUBMITTED,
+                                    submitted_at=datetime.now(),
+                                    confirmation_id=validation_result.get('confirmation_id'),
+                                    screenshot_path=validation_result.get('screenshot_path'),
+                                    message=validation_result.get('message', 'Application submitted successfully')
+                                )
+                            else:
+                                return ApplicationResult(
+                                    status=ApplicationStatus.ERROR,
+                                    message=f"Submission validation failed: {validation_result.get('message')}",
+                                    screenshot_path=validation_result.get('screenshot_path')
+                                )
+                    except Exception as e:
+                        continue
             
             # Continue button
             continue_btn = page.locator('button:has-text("Continue"), button:has-text("Next")').first

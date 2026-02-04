@@ -1,0 +1,120 @@
+{
+  "started": "2026-02-03T16:42:54.692444",
+  "total": 1000,
+  "completed": 10,
+  "successful": 10,
+  "failed": 0,
+  "success_rate": 100.0,
+  "results": [
+    {
+      "job_id": "job_00002",
+      "title": "Remote Business Analyst - 57510",
+      "company": "Turing",
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/jobs/view/4368345280",
+      "status": "Status.SUCCESS",
+      "error": "",
+      "duration": 15.172297954559326,
+      "timestamp": "2026-02-03T16:43:10.076391"
+    },
+    {
+      "job_id": "job_00003",
+      "title": "Remote Business Analyst - 57510",
+      "company": "Turing",
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/jobs/view/4368346201",
+      "status": "Status.SUCCESS",
+      "error": "",
+      "duration": 16.44406008720398,
+      "timestamp": "2026-02-03T16:43:11.359352"
+    },
+    {
+      "job_id": "job_00004",
+      "title": "Senior Specialist, Oracle HCM Functional Consultant",
+      "company": "KPMG",
+      "platform": "indeed",
+      "url": "https://www.indeed.com/viewjob?jk=02ee3c576df9b3b3",
+      "status": "Status.SUCCESS",
+      "error": "",
+      "duration": 23.1595458984375,
+      "timestamp": "2026-02-03T16:43:18.087659"
+    },
+    {
+      "job_id": "job_00000",
+      "title": "Manager, ServiceNow (Customer & Employee Experience)",
+      "company": "QTS",
+      "platform": "indeed",
+      "url": "https://www.indeed.com/viewjob?jk=62063f5273a0a76f",
+      "status": "Status.SUCCESS",
+      "error": "",
+      "duration": 24.19840097427368,
+      "timestamp": "2026-02-03T16:43:18.891952"
+    },
+    {
+      "job_id": "job_00001",
+      "title": "ServiceNow ITSM Developer _ W2",
+      "company": "Genisis Technology Solutions",
+      "platform": "indeed",
+      "url": "https://www.indeed.com/viewjob?jk=a62247168c1a4f47",
+      "status": "Status.SUCCESS",
+      "error": "",
+      "duration": 26.238327980041504,
+      "timestamp": "2026-02-03T16:43:21.130554"
+    },
+    {
+      "job_id": "job_00007",
+      "title": "Senior Software Engineer",
+      "company": "Harnham",
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/jobs/view/4361595839",
+      "status": "Status.SUCCESS",
+      "error": "",
+      "duration": 15.108715057373047,
+      "timestamp": "2026-02-03T16:43:25.185147"
+    },
+    {
+      "job_id": "job_00010",
+      "title": "Senior Software Engineer, Backend (Affirm Card)",
+      "company": "Affirm",
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/jobs/view/4368271622",
+      "status": "Status.SUCCESS",
+      "error": "",
+      "duration": 12.277699947357178,
+      "timestamp": "2026-02-03T16:43:31.169691"
+    },
+    {
+      "job_id": "job_00009",
+      "title": "Senior Software Engineer - Slideshare (Fullstack)",
+      "company": "Scribd, Inc.",
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/jobs/view/4354831592",
+      "status": "Status.SUCCESS",
+      "error": "",
+      "duration": 13.59985899925232,
+      "timestamp": "2026-02-03T16:43:31.687548"
+    },
+    {
+      "job_id": "job_00008",
+      "title": "AI Senior Business Process Consultant, AI Delivery Acceleration",
+      "company": "Jobs via Dice",
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/jobs/view/4367531028",
+      "status": "Status.SUCCESS",
+      "error": "",
+      "duration": 21.532366037368774,
+      "timestamp": "2026-02-03T16:43:32.891759"
+    },
+    {
+      "job_id": "job_00011",
+      "title": "Senior Software Engineer (Full-Stack, Backend-leaning)",
+      "company": "Jerry",
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/jobs/view/4368444342",
+      "status": "Status.SUCCESS",
+      "error": "",
+      "duration": 15.797686100006104,
+      "timestamp": "2026-02-03T16:43:36.928280"
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "attempted": 3,
+  "forms_reached": 3,
+  "fields_filled": 0,
+  "errors": 17,
+  "jobs": [
+    {
+      "company": "NFinity LLC",
+      "title": "Technical Project Manager",
+      "url": "https://www.indeed.com/viewjob?jk=96ac1e86c45f9d7e",
+      "status": "attempted",
+      "form_found": true,
+      "filled": [
+        "input[type=\"email\"]"
+      ]
+    },
+    {
+      "company": "World Wide Technology",
+      "title": "Business Analyst",
+      "url": "https://www.indeed.com/viewjob?jk=bf262df3473926d2",
+      "status": "attempted",
+      "form_found": true,
+      "filled": []
+    },
+    {
+      "company": "A1fed",
+      "title": "Senior Business Analyst / Configurator/ Developer",
+      "url": "https://www.indeed.com/viewjob?jk=0b627a1eebec47ff",
+      "status": "attempted",
+      "form_found": true,
+      "filled": []
+    },
+    {
+      "company": "Harness",
+      "title": "Senior Director of Product Marketing",
+      "url": "https://www.indeed.com/viewjob?jk=ff0fafe996ce57d0",
+      "status": "attempted",
+      "form_found": false,
+      "filled": []
+    },
+    {
+      "company": "World Wide Technology",
+      "title": "Technical Solutions Architect III -- AI Ops",
+      "url": "https://www.indeed.com/viewjob?jk=12c5e16e1a499dde",
+      "status": "attempted",
+      "form_found": false,
+      "filled": []
+    },
+    {
+      "company": "Premise Health",
+      "title": "Epic Marketing Solutions Architect",
+      "url": "https://www.indeed.com/viewjob?jk=878ad469cd7cb67f",
+      "status": "attempted",
+      "form_found": false,
+      "filled": []
+    },
+    {
+      "company": "jamf",
+      "title": "Technical Business Analyst II",
+      "url": "https://www.indeed.com/viewjob?jk=e6bb52e7595c0b85",
+      "status": "attempted",
+      "form_found": false,
+      "filled": []
+    },
+    {
+      "company": "Premise Health",
+      "title": "Senior Business Applications Developer",
+      "url": "https://www.indeed.com/viewjob?jk=e453c7b72e679c62",
+      "status": "attempted",
+      "form_found": false,
+      "filled": []
+    },
+    {
+      "company": "Tango",
+      "title": "Senior Production Support Engineer",
+      "url": "https://www.indeed.com/viewjob?jk=f07f688096b17122",
+      "status": "attempted",
+      "form_found": false,
+      "filled": []
+    },
+    {
+      "company": "ServOS",
+      "title": "Senior ServiceNow Business Analyst",
+      "url": "https://www.indeed.com/viewjob?jk=e14025bfda90e455",
+      "status": "attempted",
+      "form_found": false,
+      "filled": []
+    },
+    {
+      "company": "HDFC securities",
+      "title": "Business Analyst",
+      "url": "https://www.linkedin.com/jobs/view/4339522037",
+      "status": "attempted",
+      "form_found": false,
+      "filled": []
+    },
+    {
+      "company": "Curefit",
+      "title": "Business Analyst",
+      "url": "https://www.linkedin.com/jobs/view/4357574690",
+      "status": "attempted",
+      "form_found": false,
+      "filled": []
+    },
+    {
+      "company": "Capgemini Engineering",
+      "title": "Business Analyst (Lisbon)",
+      "url": "https://www.linkedin.com/jobs/view/4367825620",
+      "status": "attempted",
+      "form_found": false,
+      "filled": []
+    },
+    {
+      "company": "Armedia",
+      "title": "Senior Business Analyst",
+      "url": "https://www.linkedin.com/jobs/view/4357454941",
+      "status": "attempted",
+      "form_found": false,
+      "filled": []
+    },
+    {
+      "company": "Talent Flow",
+      "title": "Business Analyst - ServiceNow",
+      "url": "https://www.linkedin.com/jobs/view/4357550376",
+      "status": "attempted",
+      "form_found": false,
+      "filled": []
+    },
+    {
+      "company": "EXL",
+      "title": "Business Analyst",
+      "url": "https://www.linkedin.com/jobs/view/4361160613",
+      "status": "attempted",
+      "form_found": false,
+      "filled": []
+    },
+    {
+      "company": "IMG (International Medical Group)",
+      "title": "Senior Business Analyst",
+      "url": "https://www.linkedin.com/jobs/view/4368000271",
+      "status": "attempted",
+      "form_found": false,
+      "filled": []
+    },
+    {
+      "company": "Saltus",
+      "title": "Business Analyst (12 month FTC)",
+      "url": "https://www.linkedin.com/jobs/view/4368183062",
+      "status": "attempted",
+      "form_found": false,
+      "filled": []
+    },
+    {
+      "company": "EXL",
+      "title": "Business Analyst",
+      "url": "https://www.linkedin.com/jobs/view/4328680192",
+      "status": "attempted",
+      "form_found": false,
+      "filled": []
+    },
+    {
+      "company": "Swoon",
+      "title": "Business Analyst",
+      "url": "https://www.linkedin.com/jobs/view/4368000852",
+      "status": "attempted",
+      "form_found": false,
+      "filled": []
+    }
+  ]
+}

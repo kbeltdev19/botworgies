@@ -1,0 +1,1103 @@
+{
+  "stats": {
+    "success": 42,
+    "failed": 659,
+    "external": 0
+  },
+  "results": [
+    {
+      "job_id": "job_000591",
+      "company": "Charter Spectrum",
+      "title": "Cloud Account Manager",
+      "url": "https://jobs.spectrum.com/search?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://jobs.spectrum.com/search?k"
+      },
+      "timestamp": "2026-02-03T18:01:30.076656"
+    },
+    {
+      "job_id": "job_000604",
+      "company": "Snowflake",
+      "title": "Client Success Manager",
+      "url": "https://careers.snowflake.com/us/en/search-results?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:01:32.109567"
+    },
+    {
+      "job_id": "job_000606",
+      "company": "HashiCorp",
+      "title": "Client Success Manager",
+      "url": "https://www.hashicorp.com/careers/jobs?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:01:37.785476"
+    },
+    {
+      "job_id": "job_000608",
+      "company": "Okta",
+      "title": "Client Success Manager",
+      "url": "https://www.okta.com/company/careers/?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:01:40.346280"
+    },
+    {
+      "job_id": "job_000601",
+      "company": "Salesforce",
+      "title": "Client Success Manager",
+      "url": "https://careers.salesforce.com/en/jobs/?search=Client%20Success%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:01:42.972744"
+    },
+    {
+      "job_id": "job_000609",
+      "company": "Cloudflare",
+      "title": "Client Success Manager",
+      "url": "https://www.cloudflare.com/careers/jobs/?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:01:43.523897"
+    },
+    {
+      "job_id": "job_000603",
+      "company": "ServiceNow",
+      "title": "Client Success Manager",
+      "url": "https://careers.servicenow.com/careers/jobs?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:01:45.177215"
+    },
+    {
+      "job_id": "job_000610",
+      "company": "Datadog",
+      "title": "Client Success Manager",
+      "url": "https://careers.datadoghq.com/?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:01:46.968399"
+    },
+    {
+      "job_id": "job_000612",
+      "company": "Confluent",
+      "title": "Client Success Manager",
+      "url": "https://www.confluent.io/careers/positions/?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:01:50.161400"
+    },
+    {
+      "job_id": "job_000611",
+      "company": "MongoDB",
+      "title": "Client Success Manager",
+      "url": "https://www.mongodb.com/careers/jobs?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:01:50.748631"
+    },
+    {
+      "job_id": "job_000613",
+      "company": "Elastic",
+      "title": "Client Success Manager",
+      "url": "https://www.elastic.co/careers/jobs?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:01:50.768167"
+    },
+    {
+      "job_id": "job_000614",
+      "company": "GitLab",
+      "title": "Client Success Manager",
+      "url": "https://about.gitlab.com/jobs/?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:01:53.567316"
+    },
+    {
+      "job_id": "job_000607",
+      "company": "Twilio",
+      "title": "Client Success Manager",
+      "url": "https://www.twilio.com/en-us/company/jobs?search=Client%20Success%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:01:54.959754"
+    },
+    {
+      "job_id": "job_000615",
+      "company": "Fastly",
+      "title": "Client Success Manager",
+      "url": "https://www.fastly.com/about/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:01:55.686539"
+    },
+    {
+      "job_id": "job_000616",
+      "company": "PagerDuty",
+      "title": "Client Success Manager",
+      "url": "https://www.pagerduty.com/careers/jobs/?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:01:56.402576"
+    },
+    {
+      "job_id": "job_000617",
+      "company": "New Relic",
+      "title": "Client Success Manager",
+      "url": "https://newrelic.com/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:01:56.617250"
+    },
+    {
+      "job_id": "job_000618",
+      "company": "LaunchDarkly",
+      "title": "Client Success Manager",
+      "url": "https://launchdarkly.com/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:00.360499"
+    },
+    {
+      "job_id": "job_000619",
+      "company": "CircleCI",
+      "title": "Client Success Manager",
+      "url": "https://circleci.com/careers/jobs/?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:00.944460"
+    },
+    {
+      "job_id": "job_000620",
+      "company": "Miro",
+      "title": "Client Success Manager",
+      "url": "https://miro.com/careers/?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:02.097986"
+    },
+    {
+      "job_id": "job_000621",
+      "company": "Figma",
+      "title": "Client Success Manager",
+      "url": "https://www.figma.com/careers/?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:02.385228"
+    },
+    {
+      "job_id": "job_000622",
+      "company": "Notion",
+      "title": "Client Success Manager",
+      "url": "https://www.notion.so/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:02.501919"
+    },
+    {
+      "job_id": "job_000625",
+      "company": "Airtable",
+      "title": "Client Success Manager",
+      "url": "https://www.airtable.com/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:08.360771"
+    },
+    {
+      "job_id": "job_000627",
+      "company": "Zoom",
+      "title": "Client Success Manager",
+      "url": "https://careers.zoom.us/jobs?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:08.793822"
+    },
+    {
+      "job_id": "job_000624",
+      "company": "Monday.com",
+      "title": "Client Success Manager",
+      "url": "https://monday.com/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:09.732044"
+    },
+    {
+      "job_id": "job_000628",
+      "company": "Webex",
+      "title": "Client Success Manager",
+      "url": "https://jobs.webex.com/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.webex.com/careers?search=Client%20Success%20Ma"
+      },
+      "timestamp": "2026-02-03T18:02:11.582880"
+    },
+    {
+      "job_id": "job_000626",
+      "company": "Slack",
+      "title": "Client Success Manager",
+      "url": "https://slack.com/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:12.249842"
+    },
+    {
+      "job_id": "job_000623",
+      "company": "Asana",
+      "title": "Client Success Manager",
+      "url": "https://asana.com/jobs?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:13.249704"
+    },
+    {
+      "job_id": "job_000629",
+      "company": "Dropbox",
+      "title": "Client Success Manager",
+      "url": "https://www.dropbox.com/jobs?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:15.711926"
+    },
+    {
+      "job_id": "job_000630",
+      "company": "Box",
+      "title": "Client Success Manager",
+      "url": "https://www.box.com/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:17.097548"
+    },
+    {
+      "job_id": "job_000631",
+      "company": "DocuSign",
+      "title": "Client Success Manager",
+      "url": "https://www.docusign.com/company/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:20.991872"
+    },
+    {
+      "job_id": "job_000633",
+      "company": "Canva",
+      "title": "Client Success Manager",
+      "url": "https://www.canva.com/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:22.161524"
+    },
+    {
+      "job_id": "job_000635",
+      "company": "Zendesk",
+      "title": "Client Success Manager",
+      "url": "https://www.zendesk.com/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:23.425648"
+    },
+    {
+      "job_id": "job_000634",
+      "company": "HubSpot",
+      "title": "Client Success Manager",
+      "url": "https://www.hubspot.com/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:24.571846"
+    },
+    {
+      "job_id": "job_000637",
+      "company": "Atlassian",
+      "title": "Client Success Manager",
+      "url": "https://www.atlassian.com/company/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:28.647781"
+    },
+    {
+      "job_id": "job_000636",
+      "company": "Shopify",
+      "title": "Client Success Manager",
+      "url": "https://www.shopify.com/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:29.333676"
+    },
+    {
+      "job_id": "job_000638",
+      "company": "Freshworks",
+      "title": "Client Success Manager",
+      "url": "https://www.freshworks.com/company/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:31.818266"
+    },
+    {
+      "job_id": "job_000641",
+      "company": "AWS",
+      "title": "Client Success Manager",
+      "url": "https://www.amazon.jobs/en/search?base_query=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:36.506344"
+    },
+    {
+      "job_id": "job_000640",
+      "company": "SAP",
+      "title": "Client Success Manager",
+      "url": "https://jobs.sap.com/search?q=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:36.703796"
+    },
+    {
+      "job_id": "job_000639",
+      "company": "Zoho",
+      "title": "Client Success Manager",
+      "url": "https://www.zoho.com/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:37.631954"
+    },
+    {
+      "job_id": "job_000642",
+      "company": "Microsoft",
+      "title": "Client Success Manager",
+      "url": "https://careers.microsoft.com/us/en/search-results?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:38.109377"
+    },
+    {
+      "job_id": "job_000632",
+      "company": "Adobe",
+      "title": "Client Success Manager",
+      "url": "https://careers.adobe.com/us/en/search-results?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:02:39.458133"
+    },
+    {
+      "job_id": "job_000643",
+      "company": "Google Cloud",
+      "title": "Client Success Manager",
+      "url": "https://careers.google.com/jobs/results/?q=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:42.620693"
+    },
+    {
+      "job_id": "job_000645",
+      "company": "IBM",
+      "title": "Client Success Manager",
+      "url": "https://careers.ibm.com/job/search?query=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:43.175641"
+    },
+    {
+      "job_id": "job_000644",
+      "company": "Oracle",
+      "title": "Client Success Manager",
+      "url": "https://careers.oracle.com/jobs/?keyword=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:44.842756"
+    },
+    {
+      "job_id": "job_000647",
+      "company": "Red Hat",
+      "title": "Client Success Manager",
+      "url": "https://careers.redhat.com/jobs?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:46.318363"
+    },
+    {
+      "job_id": "job_000648",
+      "company": "HPE",
+      "title": "Client Success Manager",
+      "url": "https://careers.hpe.com/jobs?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:50.163471"
+    },
+    {
+      "job_id": "job_000649",
+      "company": "Dell",
+      "title": "Client Success Manager",
+      "url": "https://jobs.dell.com/search?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:51.694996"
+    },
+    {
+      "job_id": "job_000651",
+      "company": "Booz Allen Hamilton",
+      "title": "Client Success Manager",
+      "url": "https://careers.boozallen.com/jobs?q=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:53.852846"
+    },
+    {
+      "job_id": "job_000650",
+      "company": "NetApp",
+      "title": "Client Success Manager",
+      "url": "https://careers.netapp.com/jobs?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:53.927278"
+    },
+    {
+      "job_id": "job_000652",
+      "company": "SAIC",
+      "title": "Client Success Manager",
+      "url": "https://jobs.saic.com/search-jobs?q=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:02:55.943789"
+    },
+    {
+      "job_id": "job_000656",
+      "company": "General Dynamics",
+      "title": "Client Success Manager",
+      "url": "https://careers.gd.com/search?q=Client%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.gd.com/search?q=Client%20Success%20Manager\n"
+      },
+      "timestamp": "2026-02-03T18:02:59.093837"
+    },
+    {
+      "job_id": "job_000653",
+      "company": "Leidos",
+      "title": "Client Success Manager",
+      "url": "https://careers.leidos.com/jobs?q=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:00.503149"
+    },
+    {
+      "job_id": "job_000655",
+      "company": "Lockheed Martin",
+      "title": "Client Success Manager",
+      "url": "https://www.lockheedmartinjobs.com/search?q=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:03.000685"
+    },
+    {
+      "job_id": "job_000658",
+      "company": "CACI",
+      "title": "Client Success Manager",
+      "url": "https://careers.caci.com/search?q=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:07.429220"
+    },
+    {
+      "job_id": "job_000646",
+      "company": "VMware",
+      "title": "Client Success Manager",
+      "url": "https://careers.vmware.com/main/jobs?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://careers.vmware.com/main/jo"
+      },
+      "timestamp": "2026-02-03T18:03:11.409122"
+    },
+    {
+      "job_id": "job_000659",
+      "company": "BAE Systems",
+      "title": "Client Success Manager",
+      "url": "https://jobs.baesystems.com/search?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:12.812367"
+    },
+    {
+      "job_id": "job_000657",
+      "company": "Raytheon",
+      "title": "Client Success Manager",
+      "url": "https://careers.rtx.com/search?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:12.843691"
+    },
+    {
+      "job_id": "job_000654",
+      "company": "Northrop Grumman",
+      "title": "Client Success Manager",
+      "url": "https://www.northropgrumman.com/jobs?q=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:13.280145"
+    },
+    {
+      "job_id": "job_000660",
+      "company": "L3Harris",
+      "title": "Client Success Manager",
+      "url": "https://careers.l3harris.com/search?q=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:14.865386"
+    },
+    {
+      "job_id": "job_000662",
+      "company": "Perspecta",
+      "title": "Client Success Manager",
+      "url": "https://jobs.perspecta.com/search?q=Client%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.perspecta.com/search?q=Client%20Success%20Mana"
+      },
+      "timestamp": "2026-02-03T18:03:16.013805"
+    },
+    {
+      "job_id": "job_000661",
+      "company": "Boeing",
+      "title": "Client Success Manager",
+      "url": "https://jobs.boeing.com/search?q=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:17.380952"
+    },
+    {
+      "job_id": "job_000664",
+      "company": "General Atomics",
+      "title": "Client Success Manager",
+      "url": "https://www.ga-careers.com/search?q=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:18.859586"
+    },
+    {
+      "job_id": "job_000663",
+      "company": "ManTech",
+      "title": "Client Success Manager",
+      "url": "https://mantech.com/careers/search?q=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:19.497434"
+    },
+    {
+      "job_id": "job_000666",
+      "company": "SpaceX",
+      "title": "Client Success Manager",
+      "url": "https://www.spacex.com/careers/jobs?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:21.726264"
+    },
+    {
+      "job_id": "job_000667",
+      "company": "Blue Origin",
+      "title": "Client Success Manager",
+      "url": "https://www.blueorigin.com/careers/search?q=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:24.034679"
+    },
+    {
+      "job_id": "job_000668",
+      "company": "Palantir",
+      "title": "Client Success Manager",
+      "url": "https://www.palantir.com/careers/search?q=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:24.514435"
+    },
+    {
+      "job_id": "job_000669",
+      "company": "Anduril",
+      "title": "Client Success Manager",
+      "url": "https://www.anduril.com/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:25.753353"
+    },
+    {
+      "job_id": "job_000670",
+      "company": "Shield AI",
+      "title": "Client Success Manager",
+      "url": "https://www.shield.ai/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:29.395639"
+    },
+    {
+      "job_id": "job_000671",
+      "company": "HawkEye 360",
+      "title": "Client Success Manager",
+      "url": "https://www.he360.com/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:31.002339"
+    },
+    {
+      "job_id": "job_000673",
+      "company": "Maxar",
+      "title": "Client Success Manager",
+      "url": "https://maxar.wd1.myworkdayjobs.com/en-US/Maxar?query=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:33.297342"
+    },
+    {
+      "job_id": "job_000674",
+      "company": "Peraton",
+      "title": "Client Success Manager",
+      "url": "https://careers.peraton.com/search?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:36.173490"
+    },
+    {
+      "job_id": "job_000665",
+      "company": "Sierra Nevada",
+      "title": "Client Success Manager",
+      "url": "https://www.sncorp.com/careers/search?q=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:36.974185"
+    },
+    {
+      "job_id": "job_000675",
+      "company": "VTG",
+      "title": "Client Success Manager",
+      "url": "https://www.vtg.com/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:37.155094"
+    },
+    {
+      "job_id": "job_000676",
+      "company": "Accenture",
+      "title": "Client Success Manager",
+      "url": "https://www.accenture.com/us-en/careers?jk=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:39.271787"
+    },
+    {
+      "job_id": "job_000678",
+      "company": "KPMG",
+      "title": "Client Success Manager",
+      "url": "https://jobs.kpmg.com/us/en/search?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.kpmg.com/us/en/search?keywords=Client%20Succes"
+      },
+      "timestamp": "2026-02-03T18:03:40.125814"
+    },
+    {
+      "job_id": "job_000679",
+      "company": "PwC",
+      "title": "Client Success Manager",
+      "url": "https://pwc.wd3.myworkdayjobs.com?query=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:42.696082"
+    },
+    {
+      "job_id": "job_000677",
+      "company": "Deloitte",
+      "title": "Client Success Manager",
+      "url": "https://apply.deloitte.com/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:44.501229"
+    },
+    {
+      "job_id": "job_000681",
+      "company": "Intuit",
+      "title": "Client Success Manager",
+      "url": "https://careers.intuit.com/search?q=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:45.981786"
+    },
+    {
+      "job_id": "job_000672",
+      "company": "Planet Labs",
+      "title": "Client Success Manager",
+      "url": "https://www.planet.com/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "filled",
+        "note": "Form filled but submit not clicked"
+      },
+      "timestamp": "2026-02-03T18:03:46.644549"
+    },
+    {
+      "job_id": "job_000682",
+      "company": "Splunk",
+      "title": "Client Success Manager",
+      "url": "https://www.splunk.com/careers?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:49.234148"
+    },
+    {
+      "job_id": "job_000685",
+      "company": "Zscaler",
+      "title": "Client Success Manager",
+      "url": "https://www.zscaler.com/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:53.231073"
+    },
+    {
+      "job_id": "job_000684",
+      "company": "Palo Alto Networks",
+      "title": "Client Success Manager",
+      "url": "https://jobs.paloaltonetworks.com/en/jobs/?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:54.834699"
+    },
+    {
+      "job_id": "job_000686",
+      "company": "Fortinet",
+      "title": "Client Success Manager",
+      "url": "https://www.fortinet.com/corporate/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:03:57.657205"
+    },
+    {
+      "job_id": "job_000688",
+      "company": "AT&T",
+      "title": "Client Success Manager",
+      "url": "https://www.att.com/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:00.411210"
+    },
+    {
+      "job_id": "job_000687",
+      "company": "Verizon",
+      "title": "Client Success Manager",
+      "url": "https://www.verizon.com/about/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:01.567005"
+    },
+    {
+      "job_id": "job_000689",
+      "company": "T-Mobile",
+      "title": "Client Success Manager",
+      "url": "https://careers.t-mobile.com/search?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:04.243754"
+    },
+    {
+      "job_id": "job_000680",
+      "company": "Cisco",
+      "title": "Client Success Manager",
+      "url": "https://jobs.cisco.com/jobs?search=Client%20Success%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:04:04.753897"
+    },
+    {
+      "job_id": "job_000690",
+      "company": "Comcast",
+      "title": "Client Success Manager",
+      "url": "https://jobs.comcast.com/search?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:06.972283"
+    },
+    {
+      "job_id": "job_000683",
+      "company": "CrowdStrike",
+      "title": "Client Success Manager",
+      "url": "https://www.crowdstrike.com/careers?keyword=Client%20Success%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:04:09.793304"
+    },
+    {
+      "job_id": "job_000691",
+      "company": "Charter Spectrum",
+      "title": "Client Success Manager",
+      "url": "https://jobs.spectrum.com/search?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:10.284425"
+    },
+    {
+      "job_id": "job_000692",
+      "company": "Cox",
+      "title": "Client Success Manager",
+      "url": "https://jobs.coxenterprises.com/search?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:10.842715"
+    },
+    {
+      "job_id": "job_000694",
+      "company": "Lumen",
+      "title": "Client Success Manager",
+      "url": "https://jobs.lumen.com/search?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:12.510636"
+    },
+    {
+      "job_id": "job_000697",
+      "company": "Windstream",
+      "title": "Client Success Manager",
+      "url": "https://jobs.windstream.com/search?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.windstream.com/search?keywords=Client%20Succes"
+      },
+      "timestamp": "2026-02-03T18:04:14.002820"
+    },
+    {
+      "job_id": "job_000695",
+      "company": "CenturyLink",
+      "title": "Client Success Manager",
+      "url": "https://jobs.centurylink.com/search?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:15.354960"
+    },
+    {
+      "job_id": "job_000696",
+      "company": "Frontier",
+      "title": "Client Success Manager",
+      "url": "https://careers.frontier.com/search?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:16.205383"
+    },
+    {
+      "job_id": "job_000693",
+      "company": "Dish",
+      "title": "Client Success Manager",
+      "url": "https://jobs.dish.com/search?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_TOO_MANY_REDIRECTS at https://jobs.dish.com/search?keywords=Client%20Success%20M"
+      },
+      "timestamp": "2026-02-03T18:04:16.538204"
+    },
+    {
+      "job_id": "job_000698",
+      "company": "Equinix",
+      "title": "Client Success Manager",
+      "url": "https://www.equinix.com/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:17.768522"
+    },
+    {
+      "job_id": "job_000702",
+      "company": "Workday",
+      "title": "AWS Account Manager",
+      "url": "https://careers.workday.com/en-us/jobs.html?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.workday.com/en-us/jobs.html?keywords=AWS%20"
+      },
+      "timestamp": "2026-02-03T18:04:19.704241"
+    },
+    {
+      "job_id": "job_000699",
+      "company": "Digital Realty",
+      "title": "Client Success Manager",
+      "url": "https://www.digitalrealty.com/careers?search=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:22.216013"
+    },
+    {
+      "job_id": "job_000700",
+      "company": "Iron Mountain",
+      "title": "Client Success Manager",
+      "url": "https://jobs.ironmountain.com/search?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:22.219261"
+    }
+  ]
+}

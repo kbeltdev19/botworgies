@@ -1,0 +1,1103 @@
+{
+  "stats": {
+    "success": 28,
+    "failed": 421,
+    "external": 0
+  },
+  "results": [
+    {
+      "job_id": "job_000352",
+      "company": "SAIC",
+      "title": "Solutions Architect",
+      "url": "https://jobs.saic.com/search-jobs?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:04.179799"
+    },
+    {
+      "job_id": "job_000351",
+      "company": "Booz Allen Hamilton",
+      "title": "Solutions Architect",
+      "url": "https://careers.boozallen.com/jobs?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:04.225265"
+    },
+    {
+      "job_id": "job_000356",
+      "company": "General Dynamics",
+      "title": "Solutions Architect",
+      "url": "https://careers.gd.com/search?q=Solutions%20Architect",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.gd.com/search?q=Solutions%20Architect\nCall "
+      },
+      "timestamp": "2026-02-03T17:54:07.398015"
+    },
+    {
+      "job_id": "job_000353",
+      "company": "Leidos",
+      "title": "Solutions Architect",
+      "url": "https://careers.leidos.com/jobs?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:08.110910"
+    },
+    {
+      "job_id": "job_000355",
+      "company": "Lockheed Martin",
+      "title": "Solutions Architect",
+      "url": "https://www.lockheedmartinjobs.com/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:14.116595"
+    },
+    {
+      "job_id": "job_000357",
+      "company": "Raytheon",
+      "title": "Solutions Architect",
+      "url": "https://careers.rtx.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:15.438651"
+    },
+    {
+      "job_id": "job_000358",
+      "company": "CACI",
+      "title": "Solutions Architect",
+      "url": "https://careers.caci.com/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:16.599428"
+    },
+    {
+      "job_id": "job_000346",
+      "company": "VMware",
+      "title": "Solutions Architect",
+      "url": "https://careers.vmware.com/main/jobs?keywords=Solutions%20Architect",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://careers.vmware.com/main/jo"
+      },
+      "timestamp": "2026-02-03T17:54:18.434154"
+    },
+    {
+      "job_id": "job_000354",
+      "company": "Northrop Grumman",
+      "title": "Solutions Architect",
+      "url": "https://www.northropgrumman.com/jobs?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:20.913852"
+    },
+    {
+      "job_id": "job_000360",
+      "company": "L3Harris",
+      "title": "Solutions Architect",
+      "url": "https://careers.l3harris.com/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:21.541256"
+    },
+    {
+      "job_id": "job_000362",
+      "company": "Perspecta",
+      "title": "Solutions Architect",
+      "url": "https://jobs.perspecta.com/search?q=Solutions%20Architect",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.perspecta.com/search?q=Solutions%20Architect\nC"
+      },
+      "timestamp": "2026-02-03T17:54:21.586407"
+    },
+    {
+      "job_id": "job_000361",
+      "company": "Boeing",
+      "title": "Solutions Architect",
+      "url": "https://jobs.boeing.com/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:22.666925"
+    },
+    {
+      "job_id": "job_000359",
+      "company": "BAE Systems",
+      "title": "Solutions Architect",
+      "url": "https://jobs.baesystems.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:23.125675"
+    },
+    {
+      "job_id": "job_000364",
+      "company": "General Atomics",
+      "title": "Solutions Architect",
+      "url": "https://www.ga-careers.com/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:26.827428"
+    },
+    {
+      "job_id": "job_000366",
+      "company": "SpaceX",
+      "title": "Solutions Architect",
+      "url": "https://www.spacex.com/careers/jobs?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:28.346549"
+    },
+    {
+      "job_id": "job_000365",
+      "company": "Sierra Nevada",
+      "title": "Solutions Architect",
+      "url": "https://www.sncorp.com/careers/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:28.933726"
+    },
+    {
+      "job_id": "job_000363",
+      "company": "ManTech",
+      "title": "Solutions Architect",
+      "url": "https://mantech.com/careers/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:29.755822"
+    },
+    {
+      "job_id": "job_000367",
+      "company": "Blue Origin",
+      "title": "Solutions Architect",
+      "url": "https://www.blueorigin.com/careers/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:29.790965"
+    },
+    {
+      "job_id": "job_000368",
+      "company": "Palantir",
+      "title": "Solutions Architect",
+      "url": "https://www.palantir.com/careers/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:33.540185"
+    },
+    {
+      "job_id": "job_000369",
+      "company": "Anduril",
+      "title": "Solutions Architect",
+      "url": "https://www.anduril.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:35.410613"
+    },
+    {
+      "job_id": "job_000371",
+      "company": "HawkEye 360",
+      "title": "Solutions Architect",
+      "url": "https://www.he360.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:35.685194"
+    },
+    {
+      "job_id": "job_000370",
+      "company": "Shield AI",
+      "title": "Solutions Architect",
+      "url": "https://www.shield.ai/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:40.724012"
+    },
+    {
+      "job_id": "job_000373",
+      "company": "Maxar",
+      "title": "Solutions Architect",
+      "url": "https://maxar.wd1.myworkdayjobs.com/en-US/Maxar?query=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:42.519589"
+    },
+    {
+      "job_id": "job_000375",
+      "company": "VTG",
+      "title": "Solutions Architect",
+      "url": "https://www.vtg.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:42.558789"
+    },
+    {
+      "job_id": "job_000374",
+      "company": "Peraton",
+      "title": "Solutions Architect",
+      "url": "https://careers.peraton.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:42.840217"
+    },
+    {
+      "job_id": "job_000378",
+      "company": "KPMG",
+      "title": "Solutions Architect",
+      "url": "https://jobs.kpmg.com/us/en/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.kpmg.com/us/en/search?keywords=Solutions%20Arc"
+      },
+      "timestamp": "2026-02-03T17:54:46.182680"
+    },
+    {
+      "job_id": "job_000376",
+      "company": "Accenture",
+      "title": "Solutions Architect",
+      "url": "https://www.accenture.com/us-en/careers?jk=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:46.607046"
+    },
+    {
+      "job_id": "job_000379",
+      "company": "PwC",
+      "title": "Solutions Architect",
+      "url": "https://pwc.wd3.myworkdayjobs.com?query=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:49.665121"
+    },
+    {
+      "job_id": "job_000377",
+      "company": "Deloitte",
+      "title": "Solutions Architect",
+      "url": "https://apply.deloitte.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:51.292890"
+    },
+    {
+      "job_id": "job_000372",
+      "company": "Planet Labs",
+      "title": "Solutions Architect",
+      "url": "https://www.planet.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "filled",
+        "note": "Form filled but submit not clicked"
+      },
+      "timestamp": "2026-02-03T17:54:51.800771"
+    },
+    {
+      "job_id": "job_000381",
+      "company": "Intuit",
+      "title": "Solutions Architect",
+      "url": "https://careers.intuit.com/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:52.251328"
+    },
+    {
+      "job_id": "job_000382",
+      "company": "Splunk",
+      "title": "Solutions Architect",
+      "url": "https://www.splunk.com/careers?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:56.254085"
+    },
+    {
+      "job_id": "job_000385",
+      "company": "Zscaler",
+      "title": "Solutions Architect",
+      "url": "https://www.zscaler.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:58.424903"
+    },
+    {
+      "job_id": "job_000384",
+      "company": "Palo Alto Networks",
+      "title": "Solutions Architect",
+      "url": "https://jobs.paloaltonetworks.com/en/jobs/?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:00.360207"
+    },
+    {
+      "job_id": "job_000386",
+      "company": "Fortinet",
+      "title": "Solutions Architect",
+      "url": "https://www.fortinet.com/corporate/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:04.139245"
+    },
+    {
+      "job_id": "job_000387",
+      "company": "Verizon",
+      "title": "Solutions Architect",
+      "url": "https://www.verizon.com/about/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:05.115089"
+    },
+    {
+      "job_id": "job_000388",
+      "company": "AT&T",
+      "title": "Solutions Architect",
+      "url": "https://www.att.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:06.082083"
+    },
+    {
+      "job_id": "job_000389",
+      "company": "T-Mobile",
+      "title": "Solutions Architect",
+      "url": "https://careers.t-mobile.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:10.771011"
+    },
+    {
+      "job_id": "job_000390",
+      "company": "Comcast",
+      "title": "Solutions Architect",
+      "url": "https://jobs.comcast.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:11.866154"
+    },
+    {
+      "job_id": "job_000391",
+      "company": "Charter Spectrum",
+      "title": "Solutions Architect",
+      "url": "https://jobs.spectrum.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:14.431320"
+    },
+    {
+      "job_id": "job_000380",
+      "company": "Cisco",
+      "title": "Solutions Architect",
+      "url": "https://jobs.cisco.com/jobs?search=Solutions%20Architect",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:55:14.519731"
+    },
+    {
+      "job_id": "job_000383",
+      "company": "CrowdStrike",
+      "title": "Solutions Architect",
+      "url": "https://www.crowdstrike.com/careers?keyword=Solutions%20Architect",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:55:16.316887"
+    },
+    {
+      "job_id": "job_000393",
+      "company": "Dish",
+      "title": "Solutions Architect",
+      "url": "https://jobs.dish.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_TOO_MANY_REDIRECTS at https://jobs.dish.com/search?keywords=Solutions%20Architec"
+      },
+      "timestamp": "2026-02-03T17:55:18.283466"
+    },
+    {
+      "job_id": "job_000392",
+      "company": "Cox",
+      "title": "Solutions Architect",
+      "url": "https://jobs.coxenterprises.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:19.014979"
+    },
+    {
+      "job_id": "job_000394",
+      "company": "Lumen",
+      "title": "Solutions Architect",
+      "url": "https://jobs.lumen.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:19.849166"
+    },
+    {
+      "job_id": "job_000395",
+      "company": "CenturyLink",
+      "title": "Solutions Architect",
+      "url": "https://jobs.centurylink.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:20.042831"
+    },
+    {
+      "job_id": "job_000397",
+      "company": "Windstream",
+      "title": "Solutions Architect",
+      "url": "https://jobs.windstream.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.windstream.com/search?keywords=Solutions%20Arc"
+      },
+      "timestamp": "2026-02-03T17:55:21.441428"
+    },
+    {
+      "job_id": "job_000396",
+      "company": "Frontier",
+      "title": "Solutions Architect",
+      "url": "https://careers.frontier.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:22.508071"
+    },
+    {
+      "job_id": "job_000398",
+      "company": "Equinix",
+      "title": "Solutions Architect",
+      "url": "https://www.equinix.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:25.450295"
+    },
+    {
+      "job_id": "job_000402",
+      "company": "Workday",
+      "title": "Enterprise Account Manager",
+      "url": "https://careers.workday.com/en-us/jobs.html?keywords=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.workday.com/en-us/jobs.html?keywords=Enterp"
+      },
+      "timestamp": "2026-02-03T17:55:25.724501"
+    },
+    {
+      "job_id": "job_000400",
+      "company": "Iron Mountain",
+      "title": "Solutions Architect",
+      "url": "https://jobs.ironmountain.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:26.728122"
+    },
+    {
+      "job_id": "job_000399",
+      "company": "Digital Realty",
+      "title": "Solutions Architect",
+      "url": "https://www.digitalrealty.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:28.533950"
+    },
+    {
+      "job_id": "job_000405",
+      "company": "Databricks",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.databricks.com/company/careers/open-positions?keywords=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:32.722166"
+    },
+    {
+      "job_id": "job_000404",
+      "company": "Snowflake",
+      "title": "Enterprise Account Manager",
+      "url": "https://careers.snowflake.com/us/en/search-results?keywords=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:34.278105"
+    },
+    {
+      "job_id": "job_000406",
+      "company": "HashiCorp",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.hashicorp.com/careers/jobs?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:40.695566"
+    },
+    {
+      "job_id": "job_000408",
+      "company": "Okta",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.okta.com/company/careers/?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:42.706055"
+    },
+    {
+      "job_id": "job_000409",
+      "company": "Cloudflare",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.cloudflare.com/careers/jobs/?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:46.560605"
+    },
+    {
+      "job_id": "job_000401",
+      "company": "Salesforce",
+      "title": "Enterprise Account Manager",
+      "url": "https://careers.salesforce.com/en/jobs/?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:55:46.769944"
+    },
+    {
+      "job_id": "job_000410",
+      "company": "Datadog",
+      "title": "Enterprise Account Manager",
+      "url": "https://careers.datadoghq.com/?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:49.278581"
+    },
+    {
+      "job_id": "job_000403",
+      "company": "ServiceNow",
+      "title": "Enterprise Account Manager",
+      "url": "https://careers.servicenow.com/careers/jobs?keywords=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:55:50.763769"
+    },
+    {
+      "job_id": "job_000412",
+      "company": "Confluent",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.confluent.io/careers/positions/?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:53.468899"
+    },
+    {
+      "job_id": "job_000411",
+      "company": "MongoDB",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.mongodb.com/careers/jobs?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:53.739433"
+    },
+    {
+      "job_id": "job_000413",
+      "company": "Elastic",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.elastic.co/careers/jobs?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:55.012267"
+    },
+    {
+      "job_id": "job_000414",
+      "company": "GitLab",
+      "title": "Enterprise Account Manager",
+      "url": "https://about.gitlab.com/jobs/?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:57.105135"
+    },
+    {
+      "job_id": "job_000407",
+      "company": "Twilio",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.twilio.com/en-us/company/jobs?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:55:57.336749"
+    },
+    {
+      "job_id": "job_000415",
+      "company": "Fastly",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.fastly.com/about/careers?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:59.008358"
+    },
+    {
+      "job_id": "job_000416",
+      "company": "PagerDuty",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.pagerduty.com/careers/jobs/?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:00.593524"
+    },
+    {
+      "job_id": "job_000417",
+      "company": "New Relic",
+      "title": "Enterprise Account Manager",
+      "url": "https://newrelic.com/careers?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:00.650721"
+    },
+    {
+      "job_id": "job_000419",
+      "company": "CircleCI",
+      "title": "Enterprise Account Manager",
+      "url": "https://circleci.com/careers/jobs/?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:03.349221"
+    },
+    {
+      "job_id": "job_000418",
+      "company": "LaunchDarkly",
+      "title": "Enterprise Account Manager",
+      "url": "https://launchdarkly.com/careers?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:03.720514"
+    },
+    {
+      "job_id": "job_000420",
+      "company": "Miro",
+      "title": "Enterprise Account Manager",
+      "url": "https://miro.com/careers/?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:05.995875"
+    },
+    {
+      "job_id": "job_000421",
+      "company": "Figma",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.figma.com/careers/?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:06.306620"
+    },
+    {
+      "job_id": "job_000422",
+      "company": "Notion",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.notion.so/careers?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:07.331107"
+    },
+    {
+      "job_id": "job_000424",
+      "company": "Monday.com",
+      "title": "Enterprise Account Manager",
+      "url": "https://monday.com/careers?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:11.511208"
+    },
+    {
+      "job_id": "job_000425",
+      "company": "Airtable",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.airtable.com/careers?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:12.624807"
+    },
+    {
+      "job_id": "job_000427",
+      "company": "Zoom",
+      "title": "Enterprise Account Manager",
+      "url": "https://careers.zoom.us/jobs?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:13.198668"
+    },
+    {
+      "job_id": "job_000423",
+      "company": "Asana",
+      "title": "Enterprise Account Manager",
+      "url": "https://asana.com/jobs?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:13.292752"
+    },
+    {
+      "job_id": "job_000428",
+      "company": "Webex",
+      "title": "Enterprise Account Manager",
+      "url": "https://jobs.webex.com/careers?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.webex.com/careers?search=Enterprise%20Account%"
+      },
+      "timestamp": "2026-02-03T17:56:14.694683"
+    },
+    {
+      "job_id": "job_000426",
+      "company": "Slack",
+      "title": "Enterprise Account Manager",
+      "url": "https://slack.com/careers?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:16.251694"
+    },
+    {
+      "job_id": "job_000429",
+      "company": "Dropbox",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.dropbox.com/jobs?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:19.559466"
+    },
+    {
+      "job_id": "job_000430",
+      "company": "Box",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.box.com/careers?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:19.559529"
+    },
+    {
+      "job_id": "job_000431",
+      "company": "DocuSign",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.docusign.com/company/careers?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:20.724470"
+    },
+    {
+      "job_id": "job_000433",
+      "company": "Canva",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.canva.com/careers?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:23.018543"
+    },
+    {
+      "job_id": "job_000434",
+      "company": "HubSpot",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.hubspot.com/careers?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:26.090180"
+    },
+    {
+      "job_id": "job_000435",
+      "company": "Zendesk",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.zendesk.com/careers?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:26.090389"
+    },
+    {
+      "job_id": "job_000436",
+      "company": "Shopify",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.shopify.com/careers?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:30.797848"
+    },
+    {
+      "job_id": "job_000437",
+      "company": "Atlassian",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.atlassian.com/company/careers?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:31.520465"
+    },
+    {
+      "job_id": "job_000438",
+      "company": "Freshworks",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.freshworks.com/company/careers?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:32.308491"
+    },
+    {
+      "job_id": "job_000441",
+      "company": "AWS",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.amazon.jobs/en/search?base_query=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:38.050727"
+    },
+    {
+      "job_id": "job_000439",
+      "company": "Zoho",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.zoho.com/careers?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:38.770488"
+    },
+    {
+      "job_id": "job_000442",
+      "company": "Microsoft",
+      "title": "Enterprise Account Manager",
+      "url": "https://careers.microsoft.com/us/en/search-results?keywords=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:38.809653"
+    },
+    {
+      "job_id": "job_000432",
+      "company": "Adobe",
+      "title": "Enterprise Account Manager",
+      "url": "https://careers.adobe.com/us/en/search-results?keywords=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:56:38.963885"
+    },
+    {
+      "job_id": "job_000440",
+      "company": "SAP",
+      "title": "Enterprise Account Manager",
+      "url": "https://jobs.sap.com/search?q=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:39.984381"
+    },
+    {
+      "job_id": "job_000443",
+      "company": "Google Cloud",
+      "title": "Enterprise Account Manager",
+      "url": "https://careers.google.com/jobs/results/?q=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:44.404079"
+    },
+    {
+      "job_id": "job_000445",
+      "company": "IBM",
+      "title": "Enterprise Account Manager",
+      "url": "https://careers.ibm.com/job/search?query=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:44.584945"
+    },
+    {
+      "job_id": "job_000447",
+      "company": "Red Hat",
+      "title": "Enterprise Account Manager",
+      "url": "https://careers.redhat.com/jobs?keywords=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:45.801283"
+    },
+    {
+      "job_id": "job_000444",
+      "company": "Oracle",
+      "title": "Enterprise Account Manager",
+      "url": "https://careers.oracle.com/jobs/?keyword=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:46.644408"
+    },
+    {
+      "job_id": "job_000448",
+      "company": "HPE",
+      "title": "Enterprise Account Manager",
+      "url": "https://careers.hpe.com/jobs?keywords=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:51.268975"
+    },
+    {
+      "job_id": "job_000449",
+      "company": "Dell",
+      "title": "Enterprise Account Manager",
+      "url": "https://jobs.dell.com/search?keywords=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:53.059107"
+    },
+    {
+      "job_id": "job_000450",
+      "company": "NetApp",
+      "title": "Enterprise Account Manager",
+      "url": "https://careers.netapp.com/jobs?keywords=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:56:54.051858"
+    }
+  ]
+}

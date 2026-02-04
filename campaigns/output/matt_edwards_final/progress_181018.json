@@ -1,0 +1,1103 @@
+{
+  "stats": {
+    "success": 54,
+    "failed": 846,
+    "external": 0
+  },
+  "results": [
+    {
+      "job_id": "job_000805",
+      "company": "Databricks",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.databricks.com/company/careers/open-positions?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:25.248943"
+    },
+    {
+      "job_id": "job_000799",
+      "company": "Digital Realty",
+      "title": "AWS Account Manager",
+      "url": "https://www.digitalrealty.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:25.563155"
+    },
+    {
+      "job_id": "job_000804",
+      "company": "Snowflake",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.snowflake.com/us/en/search-results?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:26.037909"
+    },
+    {
+      "job_id": "job_000808",
+      "company": "Okta",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.okta.com/company/careers/?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:34.097433"
+    },
+    {
+      "job_id": "job_000806",
+      "company": "HashiCorp",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.hashicorp.com/careers/jobs?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:34.394853"
+    },
+    {
+      "job_id": "job_000801",
+      "company": "Salesforce",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.salesforce.com/en/jobs/?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:07:36.190386"
+    },
+    {
+      "job_id": "job_000803",
+      "company": "ServiceNow",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.servicenow.com/careers/jobs?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:07:39.657876"
+    },
+    {
+      "job_id": "job_000809",
+      "company": "Cloudflare",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.cloudflare.com/careers/jobs/?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:39.724214"
+    },
+    {
+      "job_id": "job_000810",
+      "company": "Datadog",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.datadoghq.com/?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:41.280130"
+    },
+    {
+      "job_id": "job_000811",
+      "company": "MongoDB",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.mongodb.com/careers/jobs?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:42.568127"
+    },
+    {
+      "job_id": "job_000812",
+      "company": "Confluent",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.confluent.io/careers/positions/?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:46.224542"
+    },
+    {
+      "job_id": "job_000813",
+      "company": "Elastic",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.elastic.co/careers/jobs?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:47.312990"
+    },
+    {
+      "job_id": "job_000814",
+      "company": "GitLab",
+      "title": "Technical Customer Success Manager",
+      "url": "https://about.gitlab.com/jobs/?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:47.973258"
+    },
+    {
+      "job_id": "job_000815",
+      "company": "Fastly",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.fastly.com/about/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:48.645013"
+    },
+    {
+      "job_id": "job_000807",
+      "company": "Twilio",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.twilio.com/en-us/company/jobs?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:07:51.303886"
+    },
+    {
+      "job_id": "job_000817",
+      "company": "New Relic",
+      "title": "Technical Customer Success Manager",
+      "url": "https://newrelic.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:52.862846"
+    },
+    {
+      "job_id": "job_000816",
+      "company": "PagerDuty",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.pagerduty.com/careers/jobs/?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:53.683473"
+    },
+    {
+      "job_id": "job_000819",
+      "company": "CircleCI",
+      "title": "Technical Customer Success Manager",
+      "url": "https://circleci.com/careers/jobs/?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:55.673541"
+    },
+    {
+      "job_id": "job_000818",
+      "company": "LaunchDarkly",
+      "title": "Technical Customer Success Manager",
+      "url": "https://launchdarkly.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:56.297778"
+    },
+    {
+      "job_id": "job_000820",
+      "company": "Miro",
+      "title": "Technical Customer Success Manager",
+      "url": "https://miro.com/careers/?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:57.984856"
+    },
+    {
+      "job_id": "job_000821",
+      "company": "Figma",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.figma.com/careers/?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:58.564825"
+    },
+    {
+      "job_id": "job_000822",
+      "company": "Notion",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.notion.so/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:59.829255"
+    },
+    {
+      "job_id": "job_000824",
+      "company": "Monday.com",
+      "title": "Technical Customer Success Manager",
+      "url": "https://monday.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:03.826313"
+    },
+    {
+      "job_id": "job_000825",
+      "company": "Airtable",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.airtable.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:05.239150"
+    },
+    {
+      "job_id": "job_000827",
+      "company": "Zoom",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.zoom.us/jobs?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:05.918494"
+    },
+    {
+      "job_id": "job_000828",
+      "company": "Webex",
+      "title": "Technical Customer Success Manager",
+      "url": "https://jobs.webex.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.webex.com/careers?search=Technical%20Customer%"
+      },
+      "timestamp": "2026-02-03T18:08:07.037762"
+    },
+    {
+      "job_id": "job_000823",
+      "company": "Asana",
+      "title": "Technical Customer Success Manager",
+      "url": "https://asana.com/jobs?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:11.990293"
+    },
+    {
+      "job_id": "job_000830",
+      "company": "Box",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.box.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:12.494724"
+    },
+    {
+      "job_id": "job_000829",
+      "company": "Dropbox",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.dropbox.com/jobs?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:12.901941"
+    },
+    {
+      "job_id": "job_000831",
+      "company": "DocuSign",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.docusign.com/company/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:13.820585"
+    },
+    {
+      "job_id": "job_000826",
+      "company": "Slack",
+      "title": "Technical Customer Success Manager",
+      "url": "https://slack.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:15.513299"
+    },
+    {
+      "job_id": "job_000833",
+      "company": "Canva",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.canva.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:20.312963"
+    },
+    {
+      "job_id": "job_000834",
+      "company": "HubSpot",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.hubspot.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:22.348062"
+    },
+    {
+      "job_id": "job_000835",
+      "company": "Zendesk",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.zendesk.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:22.730524"
+    },
+    {
+      "job_id": "job_000836",
+      "company": "Shopify",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.shopify.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:23.074006"
+    },
+    {
+      "job_id": "job_000837",
+      "company": "Atlassian",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.atlassian.com/company/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:26.696032"
+    },
+    {
+      "job_id": "job_000838",
+      "company": "Freshworks",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.freshworks.com/company/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:29.467688"
+    },
+    {
+      "job_id": "job_000840",
+      "company": "SAP",
+      "title": "Technical Customer Success Manager",
+      "url": "https://jobs.sap.com/search?q=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:32.333228"
+    },
+    {
+      "job_id": "job_000839",
+      "company": "Zoho",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.zoho.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:33.150691"
+    },
+    {
+      "job_id": "job_000841",
+      "company": "AWS",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.amazon.jobs/en/search?base_query=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:33.487422"
+    },
+    {
+      "job_id": "job_000842",
+      "company": "Microsoft",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.microsoft.com/us/en/search-results?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:35.990353"
+    },
+    {
+      "job_id": "job_000843",
+      "company": "Google Cloud",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.google.com/jobs/results/?q=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:38.472115"
+    },
+    {
+      "job_id": "job_000845",
+      "company": "IBM",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.ibm.com/job/search?query=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:38.949812"
+    },
+    {
+      "job_id": "job_000832",
+      "company": "Adobe",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.adobe.com/us/en/search-results?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:08:39.490417"
+    },
+    {
+      "job_id": "job_000844",
+      "company": "Oracle",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.oracle.com/jobs/?keyword=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:40.754899"
+    },
+    {
+      "job_id": "job_000847",
+      "company": "Red Hat",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.redhat.com/jobs?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:45.381515"
+    },
+    {
+      "job_id": "job_000848",
+      "company": "HPE",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.hpe.com/jobs?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:47.484972"
+    },
+    {
+      "job_id": "job_000849",
+      "company": "Dell",
+      "title": "Technical Customer Success Manager",
+      "url": "https://jobs.dell.com/search?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:47.973786"
+    },
+    {
+      "job_id": "job_000850",
+      "company": "NetApp",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.netapp.com/jobs?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:50.241061"
+    },
+    {
+      "job_id": "job_000851",
+      "company": "Booz Allen Hamilton",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.boozallen.com/jobs?q=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:52.374771"
+    },
+    {
+      "job_id": "job_000852",
+      "company": "SAIC",
+      "title": "Technical Customer Success Manager",
+      "url": "https://jobs.saic.com/search-jobs?q=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:52.992405"
+    },
+    {
+      "job_id": "job_000856",
+      "company": "General Dynamics",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.gd.com/search?q=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.gd.com/search?q=Technical%20Customer%20Succ"
+      },
+      "timestamp": "2026-02-03T18:08:56.144869"
+    },
+    {
+      "job_id": "job_000853",
+      "company": "Leidos",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.leidos.com/jobs?q=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:59.765104"
+    },
+    {
+      "job_id": "job_000857",
+      "company": "Raytheon",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.rtx.com/search?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:04.287098"
+    },
+    {
+      "job_id": "job_000855",
+      "company": "Lockheed Martin",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.lockheedmartinjobs.com/search?q=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:06.754930"
+    },
+    {
+      "job_id": "job_000854",
+      "company": "Northrop Grumman",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.northropgrumman.com/jobs?q=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:08.243958"
+    },
+    {
+      "job_id": "job_000858",
+      "company": "CACI",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.caci.com/search?q=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:08.286795"
+    },
+    {
+      "job_id": "job_000846",
+      "company": "VMware",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.vmware.com/main/jobs?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://careers.vmware.com/main/jo"
+      },
+      "timestamp": "2026-02-03T18:09:09.419278"
+    },
+    {
+      "job_id": "job_000862",
+      "company": "Perspecta",
+      "title": "Technical Customer Success Manager",
+      "url": "https://jobs.perspecta.com/search?q=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.perspecta.com/search?q=Technical%20Customer%20"
+      },
+      "timestamp": "2026-02-03T18:09:11.557328"
+    },
+    {
+      "job_id": "job_000860",
+      "company": "L3Harris",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.l3harris.com/search?q=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:15.528657"
+    },
+    {
+      "job_id": "job_000861",
+      "company": "Boeing",
+      "title": "Technical Customer Success Manager",
+      "url": "https://jobs.boeing.com/search?q=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:15.581279"
+    },
+    {
+      "job_id": "job_000859",
+      "company": "BAE Systems",
+      "title": "Technical Customer Success Manager",
+      "url": "https://jobs.baesystems.com/search?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:15.685361"
+    },
+    {
+      "job_id": "job_000864",
+      "company": "General Atomics",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.ga-careers.com/search?q=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:17.008408"
+    },
+    {
+      "job_id": "job_000863",
+      "company": "ManTech",
+      "title": "Technical Customer Success Manager",
+      "url": "https://mantech.com/careers/search?q=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:17.640847"
+    },
+    {
+      "job_id": "job_000866",
+      "company": "SpaceX",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.spacex.com/careers/jobs?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:21.242074"
+    },
+    {
+      "job_id": "job_000868",
+      "company": "Palantir",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.palantir.com/careers/search?q=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:22.688630"
+    },
+    {
+      "job_id": "job_000869",
+      "company": "Anduril",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.anduril.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:23.847890"
+    },
+    {
+      "job_id": "job_000867",
+      "company": "Blue Origin",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.blueorigin.com/careers/search?q=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:25.056064"
+    },
+    {
+      "job_id": "job_000871",
+      "company": "HawkEye 360",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.he360.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:28.587592"
+    },
+    {
+      "job_id": "job_000870",
+      "company": "Shield AI",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.shield.ai/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:29.475866"
+    },
+    {
+      "job_id": "job_000865",
+      "company": "Sierra Nevada",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.sncorp.com/careers/search?q=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:31.085075"
+    },
+    {
+      "job_id": "job_000873",
+      "company": "Maxar",
+      "title": "Technical Customer Success Manager",
+      "url": "https://maxar.wd1.myworkdayjobs.com/en-US/Maxar?query=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:32.912504"
+    },
+    {
+      "job_id": "job_000874",
+      "company": "Peraton",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.peraton.com/search?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:35.258060"
+    },
+    {
+      "job_id": "job_000875",
+      "company": "VTG",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.vtg.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:35.544981"
+    },
+    {
+      "job_id": "job_000876",
+      "company": "Accenture",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.accenture.com/us-en/careers?jk=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:36.932500"
+    },
+    {
+      "job_id": "job_000878",
+      "company": "KPMG",
+      "title": "Technical Customer Success Manager",
+      "url": "https://jobs.kpmg.com/us/en/search?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.kpmg.com/us/en/search?keywords=Technical%20Cus"
+      },
+      "timestamp": "2026-02-03T18:09:38.415158"
+    },
+    {
+      "job_id": "job_000877",
+      "company": "Deloitte",
+      "title": "Technical Customer Success Manager",
+      "url": "https://apply.deloitte.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:40.588704"
+    },
+    {
+      "job_id": "job_000879",
+      "company": "PwC",
+      "title": "Technical Customer Success Manager",
+      "url": "https://pwc.wd3.myworkdayjobs.com?query=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:41.095995"
+    },
+    {
+      "job_id": "job_000881",
+      "company": "Intuit",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.intuit.com/search?q=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:44.071512"
+    },
+    {
+      "job_id": "job_000872",
+      "company": "Planet Labs",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.planet.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "filled",
+        "note": "Form filled but submit not clicked"
+      },
+      "timestamp": "2026-02-03T18:09:44.819495"
+    },
+    {
+      "job_id": "job_000882",
+      "company": "Splunk",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.splunk.com/careers?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:46.948780"
+    },
+    {
+      "job_id": "job_000885",
+      "company": "Zscaler",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.zscaler.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:50.996807"
+    },
+    {
+      "job_id": "job_000884",
+      "company": "Palo Alto Networks",
+      "title": "Technical Customer Success Manager",
+      "url": "https://jobs.paloaltonetworks.com/en/jobs/?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:52.596124"
+    },
+    {
+      "job_id": "job_000886",
+      "company": "Fortinet",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.fortinet.com/corporate/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:55.637125"
+    },
+    {
+      "job_id": "job_000887",
+      "company": "Verizon",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.verizon.com/about/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:57.172449"
+    },
+    {
+      "job_id": "job_000888",
+      "company": "AT&T",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.att.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:09:58.041003"
+    },
+    {
+      "job_id": "job_000880",
+      "company": "Cisco",
+      "title": "Technical Customer Success Manager",
+      "url": "https://jobs.cisco.com/jobs?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:10:02.275410"
+    },
+    {
+      "job_id": "job_000889",
+      "company": "T-Mobile",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.t-mobile.com/search?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:10:02.461323"
+    },
+    {
+      "job_id": "job_000890",
+      "company": "Comcast",
+      "title": "Technical Customer Success Manager",
+      "url": "https://jobs.comcast.com/search?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:10:04.532140"
+    },
+    {
+      "job_id": "job_000883",
+      "company": "CrowdStrike",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.crowdstrike.com/careers?keyword=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:10:05.990371"
+    },
+    {
+      "job_id": "job_000891",
+      "company": "Charter Spectrum",
+      "title": "Technical Customer Success Manager",
+      "url": "https://jobs.spectrum.com/search?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:10:06.372713"
+    },
+    {
+      "job_id": "job_000893",
+      "company": "Dish",
+      "title": "Technical Customer Success Manager",
+      "url": "https://jobs.dish.com/search?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_TOO_MANY_REDIRECTS at https://jobs.dish.com/search?keywords=Technical%20Customer"
+      },
+      "timestamp": "2026-02-03T18:10:08.514797"
+    },
+    {
+      "job_id": "job_000892",
+      "company": "Cox",
+      "title": "Technical Customer Success Manager",
+      "url": "https://jobs.coxenterprises.com/search?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:10:08.710067"
+    },
+    {
+      "job_id": "job_000894",
+      "company": "Lumen",
+      "title": "Technical Customer Success Manager",
+      "url": "https://jobs.lumen.com/search?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:10:10.338617"
+    },
+    {
+      "job_id": "job_000897",
+      "company": "Windstream",
+      "title": "Technical Customer Success Manager",
+      "url": "https://jobs.windstream.com/search?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.windstream.com/search?keywords=Technical%20Cus"
+      },
+      "timestamp": "2026-02-03T18:10:11.661024"
+    },
+    {
+      "job_id": "job_000895",
+      "company": "CenturyLink",
+      "title": "Technical Customer Success Manager",
+      "url": "https://jobs.centurylink.com/search?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:10:12.625867"
+    },
+    {
+      "job_id": "job_000896",
+      "company": "Frontier",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.frontier.com/search?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:10:13.636534"
+    },
+    {
+      "job_id": "job_000898",
+      "company": "Equinix",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.equinix.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:10:14.090953"
+    },
+    {
+      "job_id": "job_000902",
+      "company": "Workday",
+      "title": "Cloud Solutions Architect",
+      "url": "https://careers.workday.com/en-us/jobs.html?keywords=Cloud%20Solutions%20Architect",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.workday.com/en-us/jobs.html?keywords=Cloud%"
+      },
+      "timestamp": "2026-02-03T18:10:16.812054"
+    },
+    {
+      "job_id": "job_000900",
+      "company": "Iron Mountain",
+      "title": "Technical Customer Success Manager",
+      "url": "https://jobs.ironmountain.com/search?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:10:18.207159"
+    }
+  ]
+}

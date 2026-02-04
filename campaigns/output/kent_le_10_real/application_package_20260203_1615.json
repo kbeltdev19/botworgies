@@ -1,0 +1,125 @@
+{
+  "candidate": {
+    "name": "Kent Le",
+    "email": "kle4311@gmail.com",
+    "phone": "(404) 934-0630",
+    "location": "Auburn, AL",
+    "linkedin": "https://linkedin.com/in/kent-le",
+    "summary": "Customer Success professional with supply chain background, CRM experience, bilingual English/Vietnamese",
+    "target_salary": "$75,000 - $95,000",
+    "relocation": "Open to remote and hybrid positions",
+    "start_date": "2 weeks notice"
+  },
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Account Manager - Commercial Lines",
+      "company": "Insurance Office of America",
+      "location": "Montgomery, AL (Remote)",
+      "salary": "$70,000 - $90,000",
+      "url": "https://www.indeed.com/viewjob?jk=ac2d8ad926f0a2a8",
+      "type": "External Application",
+      "notes": "Remote position, meets salary requirement, insurance industry"
+    },
+    {
+      "id": 2,
+      "title": "Account Manager - Commercial Lines",
+      "company": "Insurance Office of America",
+      "location": "Columbus, GA (Remote)",
+      "salary": "$70,000 - $90,000",
+      "url": "https://www.indeed.com/viewjob?jk=74a78a0fd7a3bc09",
+      "type": "External Application",
+      "notes": "Remote position, meets salary requirement, same company as #1"
+    },
+    {
+      "id": 3,
+      "title": "Account Executive - MR",
+      "company": "Mobile Communications America Inc",
+      "location": "Columbus, GA (Remote)",
+      "salary": "Not listed (target: $75k+)",
+      "url": "https://www.indeed.com/viewjob?jk=b716ba22b3754783",
+      "type": "External Application",
+      "notes": "Remote AE position, B2B sales, communications industry"
+    },
+    {
+      "id": 4,
+      "title": "Customer Success Manager I or II",
+      "company": "FIS",
+      "location": "Columbus, GA",
+      "salary": "Not listed (target: $75k+)",
+      "url": "https://www.indeed.com/viewjob?jk=b60cb586e34b5de6",
+      "type": "External Application",
+      "notes": "Large fintech company, CSM role matches Kent's target"
+    },
+    {
+      "id": 5,
+      "title": "Customer Relations Representative",
+      "company": "State Farm",
+      "location": "Columbus, GA",
+      "salary": "$45,000 - $60,000",
+      "url": "https://www.indeed.com/viewjob?jk=159be4d691f33e44",
+      "type": "External Application",
+      "notes": "Below target salary but good company, entry point to insurance industry"
+    },
+    {
+      "id": 6,
+      "title": "Team Leader",
+      "company": "Keller Williams Realty",
+      "location": "Columbus, GA",
+      "salary": "$50,000 - $75,000",
+      "url": "https://www.indeed.com/viewjob?jk=bc43f359c595404e",
+      "type": "External Application",
+      "notes": "Leadership role, real estate industry, commission potential"
+    },
+    {
+      "id": 7,
+      "title": "Route Sales Representative",
+      "company": "Community Coffee",
+      "location": "Auburn, AL",
+      "salary": "Not listed",
+      "url": "https://www.indeed.com/viewjob?jk=b70a63193723eb64",
+      "type": "External Application",
+      "notes": "Local to Auburn, sales role, established company"
+    },
+    {
+      "id": 8,
+      "title": "Account Manager [Regional Events Division]",
+      "company": "Greenawalt Hospitality",
+      "location": "Auburn, AL",
+      "salary": "$37,500 - $40,000",
+      "url": "https://www.indeed.com/viewjob?jk=31d3c10320804fe4",
+      "type": "External Application",
+      "notes": "Local Auburn company, hospitality industry, below target but local"
+    },
+    {
+      "id": 9,
+      "title": "Account Manager",
+      "company": "RNR Tire Express",
+      "location": "Opelika, AL",
+      "salary": "Not listed",
+      "url": "https://www.indeed.com/viewjob?jk=bb49edef3821c92a",
+      "type": "External Application",
+      "notes": "Nearby in Opelika, account management role"
+    },
+    {
+      "id": 10,
+      "title": "Real Estate Sales Agent Trainee",
+      "company": "Auburn Area Real Estate",
+      "location": "Auburn, AL",
+      "salary": "$97,000 - $225,000 (commission)",
+      "url": "https://www.indeed.com/viewjob?jk=67d02b59499426c4",
+      "type": "External Application",
+      "notes": "High earning potential, local Auburn, requires real estate license"
+    }
+  ],
+  "generated_at": "2026-02-03T16:15:02.004155",
+  "instructions": [
+    "1. Review each job posting carefully",
+    "2. Tailor resume for each position if needed",
+    "3. Write custom cover letters highlighting relevant experience",
+    "4. Apply via external links provided",
+    "5. Track applications in spreadsheet",
+    "6. Follow up after 1 week if no response"
+  ],
+  "cover_letter_template": "Dear Hiring Manager,\n\nI am writing to express my strong interest in the [POSITION] role at [COMPANY]. With my background in customer relationship management, data analysis, and supply chain operations, I am confident I can make a significant contribution to your team.\n\nKey qualifications I bring:\n\u2022 3+ years of customer-facing experience in fast-paced environments\n\u2022 Proficiency with CRM systems and data analysis tools\n\u2022 Bilingual in English and Vietnamese, enabling effective communication with diverse clients\n\u2022 Strong problem-solving skills and attention to detail\n\u2022 Experience managing accounts and ensuring customer satisfaction\n\nI am particularly drawn to [COMPANY] because [SPECIFIC REASON]. The opportunity to combine my customer success expertise with my analytical skills in a remote/hybrid capacity is exactly what I am looking for in my next career move.\n\nMy salary expectation is $75,000 - $95,000, and I am available to start with two weeks' notice. I am open to remote, hybrid, or in-person arrangements.\n\nThank you for considering my application. I would welcome the opportunity to discuss how my background and skills align with your team's needs.\n\nSincerely,\nKent Le\n(404) 934-0630\nkle4311@gmail.com\nhttps://linkedin.com/in/kent-le\n"
+}

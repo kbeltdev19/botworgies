@@ -1,0 +1,1103 @@
+{
+  "stats": {
+    "success": 22,
+    "failed": 327,
+    "external": 0
+  },
+  "results": [
+    {
+      "job_id": "job_000251",
+      "company": "Booz Allen Hamilton",
+      "title": "Technical Account Manager",
+      "url": "https://careers.boozallen.com/jobs?q=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:07.961853"
+    },
+    {
+      "job_id": "job_000252",
+      "company": "SAIC",
+      "title": "Technical Account Manager",
+      "url": "https://jobs.saic.com/search-jobs?q=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:08.453993"
+    },
+    {
+      "job_id": "job_000256",
+      "company": "General Dynamics",
+      "title": "Technical Account Manager",
+      "url": "https://careers.gd.com/search?q=Technical%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.gd.com/search?q=Technical%20Account%20Manag"
+      },
+      "timestamp": "2026-02-03T17:51:11.606295"
+    },
+    {
+      "job_id": "job_000253",
+      "company": "Leidos",
+      "title": "Technical Account Manager",
+      "url": "https://careers.leidos.com/jobs?q=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:14.991166"
+    },
+    {
+      "job_id": "job_000255",
+      "company": "Lockheed Martin",
+      "title": "Technical Account Manager",
+      "url": "https://www.lockheedmartinjobs.com/search?q=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:16.934448"
+    },
+    {
+      "job_id": "job_000257",
+      "company": "Raytheon",
+      "title": "Technical Account Manager",
+      "url": "https://careers.rtx.com/search?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:20.259550"
+    },
+    {
+      "job_id": "job_000258",
+      "company": "CACI",
+      "title": "Technical Account Manager",
+      "url": "https://careers.caci.com/search?q=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:21.353384"
+    },
+    {
+      "job_id": "job_000246",
+      "company": "VMware",
+      "title": "Technical Account Manager",
+      "url": "https://careers.vmware.com/main/jobs?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://careers.vmware.com/main/jo"
+      },
+      "timestamp": "2026-02-03T17:51:22.841595"
+    },
+    {
+      "job_id": "job_000254",
+      "company": "Northrop Grumman",
+      "title": "Technical Account Manager",
+      "url": "https://www.northropgrumman.com/jobs?q=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:24.999335"
+    },
+    {
+      "job_id": "job_000262",
+      "company": "Perspecta",
+      "title": "Technical Account Manager",
+      "url": "https://jobs.perspecta.com/search?q=Technical%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.perspecta.com/search?q=Technical%20Account%20M"
+      },
+      "timestamp": "2026-02-03T17:51:25.991401"
+    },
+    {
+      "job_id": "job_000259",
+      "company": "BAE Systems",
+      "title": "Technical Account Manager",
+      "url": "https://jobs.baesystems.com/search?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:26.317447"
+    },
+    {
+      "job_id": "job_000260",
+      "company": "L3Harris",
+      "title": "Technical Account Manager",
+      "url": "https://careers.l3harris.com/search?q=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:26.413732"
+    },
+    {
+      "job_id": "job_000261",
+      "company": "Boeing",
+      "title": "Technical Account Manager",
+      "url": "https://jobs.boeing.com/search?q=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:27.121703"
+    },
+    {
+      "job_id": "job_000264",
+      "company": "General Atomics",
+      "title": "Technical Account Manager",
+      "url": "https://www.ga-careers.com/search?q=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:31.282300"
+    },
+    {
+      "job_id": "job_000263",
+      "company": "ManTech",
+      "title": "Technical Account Manager",
+      "url": "https://mantech.com/careers/search?q=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:31.752642"
+    },
+    {
+      "job_id": "job_000266",
+      "company": "SpaceX",
+      "title": "Technical Account Manager",
+      "url": "https://www.spacex.com/careers/jobs?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:32.106243"
+    },
+    {
+      "job_id": "job_000267",
+      "company": "Blue Origin",
+      "title": "Technical Account Manager",
+      "url": "https://www.blueorigin.com/careers/search?q=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:33.698543"
+    },
+    {
+      "job_id": "job_000265",
+      "company": "Sierra Nevada",
+      "title": "Technical Account Manager",
+      "url": "https://www.sncorp.com/careers/search?q=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:33.700468"
+    },
+    {
+      "job_id": "job_000268",
+      "company": "Palantir",
+      "title": "Technical Account Manager",
+      "url": "https://www.palantir.com/careers/search?q=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:36.886737"
+    },
+    {
+      "job_id": "job_000269",
+      "company": "Anduril",
+      "title": "Technical Account Manager",
+      "url": "https://www.anduril.com/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:37.951303"
+    },
+    {
+      "job_id": "job_000270",
+      "company": "Shield AI",
+      "title": "Technical Account Manager",
+      "url": "https://www.shield.ai/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:38.918789"
+    },
+    {
+      "job_id": "job_000271",
+      "company": "HawkEye 360",
+      "title": "Technical Account Manager",
+      "url": "https://www.he360.com/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:40.373035"
+    },
+    {
+      "job_id": "job_000275",
+      "company": "VTG",
+      "title": "Technical Account Manager",
+      "url": "https://www.vtg.com/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:45.375232"
+    },
+    {
+      "job_id": "job_000273",
+      "company": "Maxar",
+      "title": "Technical Account Manager",
+      "url": "https://maxar.wd1.myworkdayjobs.com/en-US/Maxar?query=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:45.747988"
+    },
+    {
+      "job_id": "job_000274",
+      "company": "Peraton",
+      "title": "Technical Account Manager",
+      "url": "https://careers.peraton.com/search?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:45.784795"
+    },
+    {
+      "job_id": "job_000276",
+      "company": "Accenture",
+      "title": "Technical Account Manager",
+      "url": "https://www.accenture.com/us-en/careers?jk=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:46.273970"
+    },
+    {
+      "job_id": "job_000278",
+      "company": "KPMG",
+      "title": "Technical Account Manager",
+      "url": "https://jobs.kpmg.com/us/en/search?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.kpmg.com/us/en/search?keywords=Technical%20Acc"
+      },
+      "timestamp": "2026-02-03T17:51:48.932319"
+    },
+    {
+      "job_id": "job_000279",
+      "company": "PwC",
+      "title": "Technical Account Manager",
+      "url": "https://pwc.wd3.myworkdayjobs.com?query=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:51.900674"
+    },
+    {
+      "job_id": "job_000281",
+      "company": "Intuit",
+      "title": "Technical Account Manager",
+      "url": "https://careers.intuit.com/search?q=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:54.610587"
+    },
+    {
+      "job_id": "job_000277",
+      "company": "Deloitte",
+      "title": "Technical Account Manager",
+      "url": "https://apply.deloitte.com/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:55.042679"
+    },
+    {
+      "job_id": "job_000272",
+      "company": "Planet Labs",
+      "title": "Technical Account Manager",
+      "url": "https://www.planet.com/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "filled",
+        "note": "Form filled but submit not clicked"
+      },
+      "timestamp": "2026-02-03T17:51:55.737940"
+    },
+    {
+      "job_id": "job_000282",
+      "company": "Splunk",
+      "title": "Technical Account Manager",
+      "url": "https://www.splunk.com/careers?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:59.707051"
+    },
+    {
+      "job_id": "job_000285",
+      "company": "Zscaler",
+      "title": "Technical Account Manager",
+      "url": "https://www.zscaler.com/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:02.033432"
+    },
+    {
+      "job_id": "job_000284",
+      "company": "Palo Alto Networks",
+      "title": "Technical Account Manager",
+      "url": "https://jobs.paloaltonetworks.com/en/jobs/?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:03.657574"
+    },
+    {
+      "job_id": "job_000286",
+      "company": "Fortinet",
+      "title": "Technical Account Manager",
+      "url": "https://www.fortinet.com/corporate/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:06.718968"
+    },
+    {
+      "job_id": "job_000287",
+      "company": "Verizon",
+      "title": "Technical Account Manager",
+      "url": "https://www.verizon.com/about/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:08.211249"
+    },
+    {
+      "job_id": "job_000288",
+      "company": "AT&T",
+      "title": "Technical Account Manager",
+      "url": "https://www.att.com/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:09.079785"
+    },
+    {
+      "job_id": "job_000289",
+      "company": "T-Mobile",
+      "title": "Technical Account Manager",
+      "url": "https://careers.t-mobile.com/search?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:13.122273"
+    },
+    {
+      "job_id": "job_000280",
+      "company": "Cisco",
+      "title": "Technical Account Manager",
+      "url": "https://jobs.cisco.com/jobs?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:52:14.187518"
+    },
+    {
+      "job_id": "job_000290",
+      "company": "Comcast",
+      "title": "Technical Account Manager",
+      "url": "https://jobs.comcast.com/search?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:14.974894"
+    },
+    {
+      "job_id": "job_000291",
+      "company": "Charter Spectrum",
+      "title": "Technical Account Manager",
+      "url": "https://jobs.spectrum.com/search?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:17.398028"
+    },
+    {
+      "job_id": "job_000292",
+      "company": "Cox",
+      "title": "Technical Account Manager",
+      "url": "https://jobs.coxenterprises.com/search?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:19.465374"
+    },
+    {
+      "job_id": "job_000293",
+      "company": "Dish",
+      "title": "Technical Account Manager",
+      "url": "https://jobs.dish.com/search?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_TOO_MANY_REDIRECTS at https://jobs.dish.com/search?keywords=Technical%20Account%"
+      },
+      "timestamp": "2026-02-03T17:52:19.605539"
+    },
+    {
+      "job_id": "job_000283",
+      "company": "CrowdStrike",
+      "title": "Technical Account Manager",
+      "url": "https://www.crowdstrike.com/careers?keyword=Technical%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:52:20.308001"
+    },
+    {
+      "job_id": "job_000294",
+      "company": "Lumen",
+      "title": "Technical Account Manager",
+      "url": "https://jobs.lumen.com/search?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:20.459710"
+    },
+    {
+      "job_id": "job_000297",
+      "company": "Windstream",
+      "title": "Technical Account Manager",
+      "url": "https://jobs.windstream.com/search?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.windstream.com/search?keywords=Technical%20Acc"
+      },
+      "timestamp": "2026-02-03T17:52:22.752258"
+    },
+    {
+      "job_id": "job_000295",
+      "company": "CenturyLink",
+      "title": "Technical Account Manager",
+      "url": "https://jobs.centurylink.com/search?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:22.948779"
+    },
+    {
+      "job_id": "job_000298",
+      "company": "Equinix",
+      "title": "Technical Account Manager",
+      "url": "https://www.equinix.com/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:25.559295"
+    },
+    {
+      "job_id": "job_000296",
+      "company": "Frontier",
+      "title": "Technical Account Manager",
+      "url": "https://careers.frontier.com/search?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:25.794346"
+    },
+    {
+      "job_id": "job_000302",
+      "company": "Workday",
+      "title": "Solutions Architect",
+      "url": "https://careers.workday.com/en-us/jobs.html?keywords=Solutions%20Architect",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.workday.com/en-us/jobs.html?keywords=Soluti"
+      },
+      "timestamp": "2026-02-03T17:52:28.737224"
+    },
+    {
+      "job_id": "job_000299",
+      "company": "Digital Realty",
+      "title": "Technical Account Manager",
+      "url": "https://www.digitalrealty.com/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:28.866303"
+    },
+    {
+      "job_id": "job_000300",
+      "company": "Iron Mountain",
+      "title": "Technical Account Manager",
+      "url": "https://jobs.ironmountain.com/search?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:29.150593"
+    },
+    {
+      "job_id": "job_000305",
+      "company": "Databricks",
+      "title": "Solutions Architect",
+      "url": "https://www.databricks.com/company/careers/open-positions?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:35.205174"
+    },
+    {
+      "job_id": "job_000304",
+      "company": "Snowflake",
+      "title": "Solutions Architect",
+      "url": "https://careers.snowflake.com/us/en/search-results?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:38.785386"
+    },
+    {
+      "job_id": "job_000306",
+      "company": "HashiCorp",
+      "title": "Solutions Architect",
+      "url": "https://www.hashicorp.com/careers/jobs?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:42.323941"
+    },
+    {
+      "job_id": "job_000308",
+      "company": "Okta",
+      "title": "Solutions Architect",
+      "url": "https://www.okta.com/company/careers/?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:47.246718"
+    },
+    {
+      "job_id": "job_000301",
+      "company": "Salesforce",
+      "title": "Solutions Architect",
+      "url": "https://careers.salesforce.com/en/jobs/?search=Solutions%20Architect",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:52:47.410492"
+    },
+    {
+      "job_id": "job_000309",
+      "company": "Cloudflare",
+      "title": "Solutions Architect",
+      "url": "https://www.cloudflare.com/careers/jobs/?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:48.344468"
+    },
+    {
+      "job_id": "job_000303",
+      "company": "ServiceNow",
+      "title": "Solutions Architect",
+      "url": "https://careers.servicenow.com/careers/jobs?keywords=Solutions%20Architect",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:52:51.984387"
+    },
+    {
+      "job_id": "job_000311",
+      "company": "MongoDB",
+      "title": "Solutions Architect",
+      "url": "https://www.mongodb.com/careers/jobs?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:53.403782"
+    },
+    {
+      "job_id": "job_000310",
+      "company": "Datadog",
+      "title": "Solutions Architect",
+      "url": "https://careers.datadoghq.com/?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:53.619065"
+    },
+    {
+      "job_id": "job_000312",
+      "company": "Confluent",
+      "title": "Solutions Architect",
+      "url": "https://www.confluent.io/careers/positions/?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:54.862265"
+    },
+    {
+      "job_id": "job_000313",
+      "company": "Elastic",
+      "title": "Solutions Architect",
+      "url": "https://www.elastic.co/careers/jobs?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:57.575149"
+    },
+    {
+      "job_id": "job_000314",
+      "company": "GitLab",
+      "title": "Solutions Architect",
+      "url": "https://about.gitlab.com/jobs/?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:59.786808"
+    },
+    {
+      "job_id": "job_000316",
+      "company": "PagerDuty",
+      "title": "Solutions Architect",
+      "url": "https://www.pagerduty.com/careers/jobs/?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:00.982186"
+    },
+    {
+      "job_id": "job_000307",
+      "company": "Twilio",
+      "title": "Solutions Architect",
+      "url": "https://www.twilio.com/en-us/company/jobs?search=Solutions%20Architect",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:53:01.254090"
+    },
+    {
+      "job_id": "job_000315",
+      "company": "Fastly",
+      "title": "Solutions Architect",
+      "url": "https://www.fastly.com/about/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:01.482808"
+    },
+    {
+      "job_id": "job_000317",
+      "company": "New Relic",
+      "title": "Solutions Architect",
+      "url": "https://newrelic.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:03.043738"
+    },
+    {
+      "job_id": "job_000318",
+      "company": "LaunchDarkly",
+      "title": "Solutions Architect",
+      "url": "https://launchdarkly.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:06.997241"
+    },
+    {
+      "job_id": "job_000319",
+      "company": "CircleCI",
+      "title": "Solutions Architect",
+      "url": "https://circleci.com/careers/jobs/?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:07.074663"
+    },
+    {
+      "job_id": "job_000321",
+      "company": "Figma",
+      "title": "Solutions Architect",
+      "url": "https://www.figma.com/careers/?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:07.102621"
+    },
+    {
+      "job_id": "job_000320",
+      "company": "Miro",
+      "title": "Solutions Architect",
+      "url": "https://miro.com/careers/?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:08.344564"
+    },
+    {
+      "job_id": "job_000322",
+      "company": "Notion",
+      "title": "Solutions Architect",
+      "url": "https://www.notion.so/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:08.708118"
+    },
+    {
+      "job_id": "job_000327",
+      "company": "Zoom",
+      "title": "Solutions Architect",
+      "url": "https://careers.zoom.us/jobs?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:14.976071"
+    },
+    {
+      "job_id": "job_000325",
+      "company": "Airtable",
+      "title": "Solutions Architect",
+      "url": "https://www.airtable.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:16.468331"
+    },
+    {
+      "job_id": "job_000324",
+      "company": "Monday.com",
+      "title": "Solutions Architect",
+      "url": "https://monday.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:17.059263"
+    },
+    {
+      "job_id": "job_000323",
+      "company": "Asana",
+      "title": "Solutions Architect",
+      "url": "https://asana.com/jobs?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:17.981559"
+    },
+    {
+      "job_id": "job_000328",
+      "company": "Webex",
+      "title": "Solutions Architect",
+      "url": "https://jobs.webex.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.webex.com/careers?search=Solutions%20Architect"
+      },
+      "timestamp": "2026-02-03T17:53:18.223085"
+    },
+    {
+      "job_id": "job_000326",
+      "company": "Slack",
+      "title": "Solutions Architect",
+      "url": "https://slack.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:19.147451"
+    },
+    {
+      "job_id": "job_000330",
+      "company": "Box",
+      "title": "Solutions Architect",
+      "url": "https://www.box.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:22.998692"
+    },
+    {
+      "job_id": "job_000329",
+      "company": "Dropbox",
+      "title": "Solutions Architect",
+      "url": "https://www.dropbox.com/jobs?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:23.274819"
+    },
+    {
+      "job_id": "job_000333",
+      "company": "Canva",
+      "title": "Solutions Architect",
+      "url": "https://www.canva.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:26.089573"
+    },
+    {
+      "job_id": "job_000331",
+      "company": "DocuSign",
+      "title": "Solutions Architect",
+      "url": "https://www.docusign.com/company/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:29.182944"
+    },
+    {
+      "job_id": "job_000334",
+      "company": "HubSpot",
+      "title": "Solutions Architect",
+      "url": "https://www.hubspot.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:29.607895"
+    },
+    {
+      "job_id": "job_000335",
+      "company": "Zendesk",
+      "title": "Solutions Architect",
+      "url": "https://www.zendesk.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:31.222798"
+    },
+    {
+      "job_id": "job_000336",
+      "company": "Shopify",
+      "title": "Solutions Architect",
+      "url": "https://www.shopify.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:33.315363"
+    },
+    {
+      "job_id": "job_000337",
+      "company": "Atlassian",
+      "title": "Solutions Architect",
+      "url": "https://www.atlassian.com/company/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:35.294702"
+    },
+    {
+      "job_id": "job_000338",
+      "company": "Freshworks",
+      "title": "Solutions Architect",
+      "url": "https://www.freshworks.com/company/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:37.948962"
+    },
+    {
+      "job_id": "job_000339",
+      "company": "Zoho",
+      "title": "Solutions Architect",
+      "url": "https://www.zoho.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:42.778084"
+    },
+    {
+      "job_id": "job_000332",
+      "company": "Adobe",
+      "title": "Solutions Architect",
+      "url": "https://careers.adobe.com/us/en/search-results?keywords=Solutions%20Architect",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:53:43.061422"
+    },
+    {
+      "job_id": "job_000341",
+      "company": "AWS",
+      "title": "Solutions Architect",
+      "url": "https://www.amazon.jobs/en/search?base_query=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:43.960894"
+    },
+    {
+      "job_id": "job_000342",
+      "company": "Microsoft",
+      "title": "Solutions Architect",
+      "url": "https://careers.microsoft.com/us/en/search-results?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:45.269636"
+    },
+    {
+      "job_id": "job_000340",
+      "company": "SAP",
+      "title": "Solutions Architect",
+      "url": "https://jobs.sap.com/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:47.875693"
+    },
+    {
+      "job_id": "job_000345",
+      "company": "IBM",
+      "title": "Solutions Architect",
+      "url": "https://careers.ibm.com/job/search?query=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:50.209146"
+    },
+    {
+      "job_id": "job_000343",
+      "company": "Google Cloud",
+      "title": "Solutions Architect",
+      "url": "https://careers.google.com/jobs/results/?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:50.864025"
+    },
+    {
+      "job_id": "job_000347",
+      "company": "Red Hat",
+      "title": "Solutions Architect",
+      "url": "https://careers.redhat.com/jobs?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:53.688392"
+    },
+    {
+      "job_id": "job_000344",
+      "company": "Oracle",
+      "title": "Solutions Architect",
+      "url": "https://careers.oracle.com/jobs/?keyword=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:56.413216"
+    },
+    {
+      "job_id": "job_000348",
+      "company": "HPE",
+      "title": "Solutions Architect",
+      "url": "https://careers.hpe.com/jobs?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:58.688806"
+    },
+    {
+      "job_id": "job_000349",
+      "company": "Dell",
+      "title": "Solutions Architect",
+      "url": "https://jobs.dell.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:59.709777"
+    },
+    {
+      "job_id": "job_000350",
+      "company": "NetApp",
+      "title": "Solutions Architect",
+      "url": "https://careers.netapp.com/jobs?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:02.788393"
+    }
+  ]
+}

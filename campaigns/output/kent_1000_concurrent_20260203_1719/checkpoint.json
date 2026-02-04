@@ -1,0 +1,3217 @@
+{
+  "stats": {
+    "target": 589,
+    "attempted": 320,
+    "submitted": 78,
+    "external": 214,
+    "blocked": 0,
+    "failed": 28,
+    "success_rate": 24.375,
+    "total_cost": 31.900000000000183,
+    "elapsed_hours": 0.11140279638888889,
+    "active_sessions": 0
+  },
+  "results": [
+    {
+      "id": "in-9aa42cafc3cbbadc",
+      "title": "Technical Account Manager",
+      "company": "KOMBO",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=9aa42cafc3cbbadc",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:07.957277"
+    },
+    {
+      "id": "in-9d22baebf12ee8a8",
+      "title": "Customer Success Director (Financial Services Vertical)",
+      "company": "FIRST ADVANTAGE",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=9d22baebf12ee8a8",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:08.169780"
+    },
+    {
+      "id": "in-b892223b9e75fe7b",
+      "title": "Customer Success Manager",
+      "company": "Opus Training Inc.",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=b892223b9e75fe7b",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:11.240266"
+    },
+    {
+      "id": "in-476e3f83d0db4867",
+      "title": "Enterprise Customer Success Lead",
+      "company": "Speckle",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=476e3f83d0db4867",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:11.265110"
+    },
+    {
+      "id": "in-f32616eea0d331d2",
+      "title": "Mid-Market Account Executive - Gulf Coast",
+      "company": "Doppel Farmaceutici",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=f32616eea0d331d2",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:11.322301"
+    },
+    {
+      "id": "in-eaf63e5807ade9b0",
+      "title": "Public Relations Account Director - Hybrid",
+      "company": "Broadsheet Communications",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=eaf63e5807ade9b0",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:11.447958"
+    },
+    {
+      "id": "in-c4bc77e5b695e572",
+      "title": "Customer Success Director (Retail Vertical)",
+      "company": "FIRST ADVANTAGE",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=c4bc77e5b695e572",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:11.456475"
+    },
+    {
+      "id": "in-e66fdd78cb25095a",
+      "title": "Account Manager - Commercial Lines",
+      "company": "Insurance Office of America",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=e66fdd78cb25095a",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:11.478591"
+    },
+    {
+      "id": "in-e59ce7369d0a47f2",
+      "title": "Account Manager - Commercial Lines",
+      "company": "Insurance Office of America",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=e59ce7369d0a47f2",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:12.396583"
+    },
+    {
+      "id": "in-d2eae56e97a64f79",
+      "title": "Property Broker",
+      "company": "WTW",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=d2eae56e97a64f79",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:12.406390"
+    },
+    {
+      "id": "in-b0a3fd8bc98903a2",
+      "title": "Manager, Customer Success Management",
+      "company": "Rippling",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=b0a3fd8bc98903a2",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:12.406422"
+    },
+    {
+      "id": "in-59c309ea33df8d6a",
+      "title": "Outside Sales - B2B-B2C",
+      "company": "Coverall",
+      "location": "Madison, WI, US",
+      "url": "https://www.indeed.com/viewjob?jk=59c309ea33df8d6a",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:12.448607"
+    },
+    {
+      "id": "in-3b0c0d43f5baf277",
+      "title": "Senior Account Director, Rio SEO (Local Experience Platform)",
+      "company": "Press Ganey",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=3b0c0d43f5baf277",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:12.459528"
+    },
+    {
+      "id": "in-6aeb9df02f5c8443",
+      "title": "Outside Sales Representative \u2013 Facilities Maintenance",
+      "company": "A Clean Look",
+      "location": "Saint Paul, MN, US",
+      "url": "https://www.indeed.com/viewjob?jk=6aeb9df02f5c8443",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:12.459582"
+    },
+    {
+      "id": "in-52e553b3b87225bd",
+      "title": "Property Broker",
+      "company": "WTW",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=52e553b3b87225bd",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:12.459858"
+    },
+    {
+      "id": "in-56976a6101864443",
+      "title": "Customer Success Manager - INDOPACOM",
+      "company": "accrete",
+      "location": "HI, US",
+      "url": "https://www.indeed.com/viewjob?jk=56976a6101864443",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:20:15.378311"
+    },
+    {
+      "id": "in-e5fc0a3232e11410",
+      "title": "Senior Client Success Manager",
+      "company": "Ambient Skies Productions",
+      "location": "Phoenix, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=e5fc0a3232e11410",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:17.390728"
+    },
+    {
+      "id": "in-bd781f33957068aa",
+      "title": "Clinical Specialist",
+      "company": "Rx Redefined",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=bd781f33957068aa",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:20:17.700784"
+    },
+    {
+      "id": "in-7ac6511181c4a24a",
+      "title": "Customer Success Manager",
+      "company": "accrete",
+      "location": "Alexandria, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=7ac6511181c4a24a",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:20:17.709542"
+    },
+    {
+      "id": "in-e5d5710a55b1dcb1",
+      "title": "Field Sales Account Executive- Minneapolis MN",
+      "company": "Rewards Network",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=e5d5710a55b1dcb1",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:20:17.795418"
+    },
+    {
+      "id": "in-ee2c755f91fd61e3",
+      "title": "Clinical Specialist",
+      "company": "Rx Redefined",
+      "location": "Detroit, MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=ee2c755f91fd61e3",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:20:17.826753"
+    },
+    {
+      "id": "in-2f3eae2c244cd29d",
+      "title": "Customer Success Manager",
+      "company": "Lightricks",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=2f3eae2c244cd29d",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:18.117352"
+    },
+    {
+      "id": "in-0c5a4b1300d41d25",
+      "title": "Customer Success Manager - SMB & Enterprise",
+      "company": "Blooming Health",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=0c5a4b1300d41d25",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:20:18.505498"
+    },
+    {
+      "id": "in-8dc2ba99ea1d2ff0",
+      "title": "Senior Customer Success Manager",
+      "company": "Nexthink",
+      "location": "Boston, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=8dc2ba99ea1d2ff0",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:18.516231"
+    },
+    {
+      "id": "in-5852793c31c464fb",
+      "title": "Business Development Associate",
+      "company": "Carras Services LLC",
+      "location": "Parsippany-Troy Hills, NJ, US",
+      "url": "https://www.indeed.com/viewjob?jk=5852793c31c464fb",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:20:18.516251"
+    },
+    {
+      "id": "in-71dd674225f5d688",
+      "title": "Customer Success Manager",
+      "company": "Macrobond Financial AB",
+      "location": "MN, US",
+      "url": "https://www.indeed.com/viewjob?jk=71dd674225f5d688",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:18.563027"
+    },
+    {
+      "id": "in-061f3a53a18917df",
+      "title": "Customer Success Manager North Carolina (Remote)",
+      "company": "AppCard",
+      "location": "NC, US",
+      "url": "https://www.indeed.com/viewjob?jk=061f3a53a18917df",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:18.605056"
+    },
+    {
+      "id": "in-7e75015f2c399c56",
+      "title": "Customer Success Manager Texas (Remote)",
+      "company": "AppCard",
+      "location": "TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=7e75015f2c399c56",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:18.623042"
+    },
+    {
+      "id": "in-4f2c2c24f2b726ad",
+      "title": "Customer Success Manager (Marketing Solutions)",
+      "company": "Buxton Company",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=4f2c2c24f2b726ad",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:18.623104"
+    },
+    {
+      "id": "in-4943a6dc8cd0fa81",
+      "title": "Customer Success Manager",
+      "company": "Zonda Home",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=4943a6dc8cd0fa81",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:18.800909"
+    },
+    {
+      "id": "in-eee6085f237343da",
+      "title": "Area Business Development Manager",
+      "company": "MHT Lighting",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=eee6085f237343da",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:20:19.984603"
+    },
+    {
+      "id": "in-aa55d12301e614cf",
+      "title": "Customer Success Manager (CSM)",
+      "company": "Worth AI",
+      "location": "Orlando, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=aa55d12301e614cf",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:20.051564"
+    },
+    {
+      "id": "in-d27664afef65784d",
+      "title": "Area Business Development Manager",
+      "company": "MHT Lighting",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=d27664afef65784d",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:20:20.266799"
+    },
+    {
+      "id": "in-1644ba71ec1a46e5",
+      "title": "Customer Success Manager",
+      "company": "Meazure Learning",
+      "location": "McLean, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=1644ba71ec1a46e5",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:21.274125"
+    },
+    {
+      "id": "in-a7e3920aa440e91c",
+      "title": "Senior Customer Success Manager",
+      "company": "Workato",
+      "location": "Palo Alto, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=a7e3920aa440e91c",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:21.471211"
+    },
+    {
+      "id": "in-33d70c9f8e44967a",
+      "title": "Associate Customer Success Manager (Remote)",
+      "company": "UrbanBound",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=33d70c9f8e44967a",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:20:21.627958"
+    },
+    {
+      "id": "in-0b1aebe3c212be3d",
+      "title": "IT Account / Client Success Manager (Microsoft Knowledge Req.)",
+      "company": "GSES",
+      "location": "Folsom, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=0b1aebe3c212be3d",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:20:23.637526"
+    },
+    {
+      "id": "in-41ce7207df625d74",
+      "title": "Area Business Development Manager",
+      "company": "MHT Lighting",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=41ce7207df625d74",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:20:23.656532"
+    },
+    {
+      "id": "in-72b9bf17e2c692bf",
+      "title": "Customer Success Manager",
+      "company": "Lightricks",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=72b9bf17e2c692bf",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:20:23.877635"
+    },
+    {
+      "id": "in-22fd5bbeee10adf7",
+      "title": "Senior Customer Success Manager",
+      "company": "Nexthink",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=22fd5bbeee10adf7",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:20:24.127388"
+    },
+    {
+      "id": "in-4a23f2a3746d1050",
+      "title": "Director, Customer Success Management",
+      "company": "Otelier",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=4a23f2a3746d1050",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:02.436175"
+    },
+    {
+      "id": "in-0fac5d6ae281bf33",
+      "title": "Enterprise Accounts Customer Success Manager",
+      "company": "Visit.org",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=0fac5d6ae281bf33",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:02.487864"
+    },
+    {
+      "id": "in-c8391cbe7c626460",
+      "title": "Enterprise Customer Success Manager - East Coast",
+      "company": "Dovetail",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=c8391cbe7c626460",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:02.495579"
+    },
+    {
+      "id": "in-4f4b27049f107dfb",
+      "title": "Customer Success Manager",
+      "company": "Redpanda",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=4f4b27049f107dfb",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:02.495960"
+    },
+    {
+      "id": "in-04aa6f8cc7597edc",
+      "title": "Customer Success Manager",
+      "company": "Exact Sciences",
+      "location": "Madison, WI, US",
+      "url": "https://www.indeed.com/viewjob?jk=04aa6f8cc7597edc",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:02.528731"
+    },
+    {
+      "id": "in-d9c91d8a9b8056c1",
+      "title": "Sr. Customer Success Manager",
+      "company": "OneSource Virtual",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=d9c91d8a9b8056c1",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:02.547046"
+    },
+    {
+      "id": "in-b61801ff32ed490a",
+      "title": "Associate Director, Customer Success",
+      "company": "nan",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=b61801ff32ed490a",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:02.561558"
+    },
+    {
+      "id": "in-448867c2a6099649",
+      "title": "Customer Success Manager (SOCOM/CENTCOM)",
+      "company": "accrete",
+      "location": "Tampa, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=448867c2a6099649",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:02.588712"
+    },
+    {
+      "id": "in-cb837fe6a5c3a85b",
+      "title": "Customer Success Manager - MLS",
+      "company": "Clear Capital",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=cb837fe6a5c3a85b",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:02.621994"
+    },
+    {
+      "id": "in-f72c896a79b5aefd",
+      "title": "Customer Success Manager",
+      "company": "kontakt.io",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=f72c896a79b5aefd",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:02.622029"
+    },
+    {
+      "id": "in-f4c995360e31a2e0",
+      "title": "Enterprise Customer Success Manager - West Coast",
+      "company": "Dovetail",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=f4c995360e31a2e0",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:02.622057"
+    },
+    {
+      "id": "in-76d6b9e9793ca991",
+      "title": "Customer Success Manager",
+      "company": "Nearmap",
+      "location": "Carlsbad, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=76d6b9e9793ca991",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:02.675292"
+    },
+    {
+      "id": "in-fbe6c682c0d0bcc4",
+      "title": "Customer Success Manager",
+      "company": "Homebot",
+      "location": "Denver, CO, US",
+      "url": "https://www.indeed.com/viewjob?jk=fbe6c682c0d0bcc4",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:02.675333"
+    },
+    {
+      "id": "in-be5824653657b3da",
+      "title": "Customer Success Manager",
+      "company": "SendJim",
+      "location": "Nashville, TN, US",
+      "url": "https://www.indeed.com/viewjob?jk=be5824653657b3da",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:02.763976"
+    },
+    {
+      "id": "in-6b8efa9d2a9c470b",
+      "title": "Customer Success Manager",
+      "company": "Exact Sciences",
+      "location": "Redwood City, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=6b8efa9d2a9c470b",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:02.764327"
+    },
+    {
+      "id": "in-80a0b4174d4fcd6d",
+      "title": "Customer Success Manager - LTX",
+      "company": "Lightricks",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=80a0b4174d4fcd6d",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:02.764371"
+    },
+    {
+      "id": "in-5ef48434db8295c4",
+      "title": "Customer Success Manager - LTX",
+      "company": "Lightricks",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=5ef48434db8295c4",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:21:07.656562"
+    },
+    {
+      "id": "in-4fa3bd143f40fb2e",
+      "title": "Enterprise Accounts Customer Success Manager",
+      "company": "Visit.org",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=4fa3bd143f40fb2e",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:21:07.974905"
+    },
+    {
+      "id": "in-c2c628850f0c5150",
+      "title": "Enterprise Accounts Customer Success Manager",
+      "company": "Visit.org",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=c2c628850f0c5150",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:21:08.207279"
+    },
+    {
+      "id": "in-c8de66d88e04f34c",
+      "title": "JOIN OUR CUSTOMER SUCCESS TEAM - LEAD NURTURE CONVERSION SPECIALIST",
+      "company": "F45 Training",
+      "location": "Round Rock, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=c8de66d88e04f34c",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:21:08.359794"
+    },
+    {
+      "id": "in-2cb2cb1cf6e47f99",
+      "title": "Sr Customer Success Manager",
+      "company": "Sinch",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=2cb2cb1cf6e47f99",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:08.796482"
+    },
+    {
+      "id": "in-414179bf8d358ffe",
+      "title": "Customer Success Manager",
+      "company": "ServiceTitan",
+      "location": "CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=414179bf8d358ffe",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:08.820735"
+    },
+    {
+      "id": "in-816943c6e401a182",
+      "title": "Associate Customer Success Manager",
+      "company": "ServiceNow",
+      "location": "West Palm Beach, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=816943c6e401a182",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:08.862247"
+    },
+    {
+      "id": "in-4d57bf82a8c7e334",
+      "title": "Customer Success Manager",
+      "company": "Ascendion",
+      "location": "Plano, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=4d57bf82a8c7e334",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:09.238591"
+    },
+    {
+      "id": "in-6bf2a2825f938f5e",
+      "title": "Technical Account Manager",
+      "company": "SpyCloud",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=6bf2a2825f938f5e",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:09.238610"
+    },
+    {
+      "id": "in-f9eda67496111f1c",
+      "title": "Customer Success Manager, Enterprise",
+      "company": "Lilt- Lega Italiana per la Lotta contro i Tumori",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=f9eda67496111f1c",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:09.286199"
+    },
+    {
+      "id": "in-67452ae08891ff40",
+      "title": "Customer Success Account Manager",
+      "company": "Jonas Software",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=67452ae08891ff40",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:09.293674"
+    },
+    {
+      "id": "in-a03a626a5538d1c2",
+      "title": "Senior Customer Success Manager, DX",
+      "company": "Atlassian",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=a03a626a5538d1c2",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:09.293766"
+    },
+    {
+      "id": "in-fec81002ce892dc8",
+      "title": "Customer Success Account Manager - CTJ - TS/SCI",
+      "company": "Microsoft",
+      "location": "Washington, DC, US",
+      "url": "https://www.indeed.com/viewjob?jk=fec81002ce892dc8",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:09.293816"
+    },
+    {
+      "id": "in-37d4f97d22b81749",
+      "title": "Principal Customer Success Manager, DX",
+      "company": "Atlassian",
+      "location": "San Francisco, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=37d4f97d22b81749",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:09.324266"
+    },
+    {
+      "id": "in-310483f7caa81b70",
+      "title": "Account Manager- SMB, Growth & Retention (Partner Referred Business)",
+      "company": "Rippling",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=310483f7caa81b70",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:10.944190"
+    },
+    {
+      "id": "in-b8860929189b2a0c",
+      "title": "Account Manager",
+      "company": "Safeguard Global",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=b8860929189b2a0c",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:11.321905"
+    },
+    {
+      "id": "in-ff9e26524991b12d",
+      "title": "Account Manager- SMB, Growth & Retention (Partner Referred Business)",
+      "company": "Rippling",
+      "location": "San Francisco, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=ff9e26524991b12d",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:11.470057"
+    },
+    {
+      "id": "in-8535b340130ae39d",
+      "title": "Manager, Customer Success",
+      "company": "Certinia",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=8535b340130ae39d",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:21:11.689764"
+    },
+    {
+      "id": "in-c10e0d75a50d5df3",
+      "title": "Senior Customer Success Manager",
+      "company": "TRUSTWELL",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=c10e0d75a50d5df3",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:21:11.794006"
+    },
+    {
+      "id": "in-7111dadc2d831849",
+      "title": "Account Manager (Mid-Market) (Hybrid)",
+      "company": "KnowBe4",
+      "location": "Clearwater, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=7111dadc2d831849",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:21:14.250613"
+    },
+    {
+      "id": "in-0594a460940920f2",
+      "title": "A fast-growing B2B SaaS is looking for talented Customer Success Managers!",
+      "company": "eWay System",
+      "location": "Kansas City, MO, US",
+      "url": "https://www.indeed.com/viewjob?jk=0594a460940920f2",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:21:14.510545"
+    },
+    {
+      "id": "in-9af5d92869ffef46",
+      "title": "Director, Technology Customer Success",
+      "company": "JLL",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=9af5d92869ffef46",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:21:14.898750"
+    },
+    {
+      "id": "in-243d5c17714da4fc",
+      "title": "Wholesale Channel Manager & Customer Success Specialist",
+      "company": "BioProtein Technology",
+      "location": "Tampa, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=243d5c17714da4fc",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:21:15.148590"
+    },
+    {
+      "id": "in-53a869b3be0048cb",
+      "title": "Renewal Account Manager",
+      "company": "ServiceNow",
+      "location": "Vienna, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=53a869b3be0048cb",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:21:15.332675"
+    },
+    {
+      "id": "in-b3f16c9754d63905",
+      "title": "Senior Account Manager",
+      "company": "Clarivate",
+      "location": "Philadelphia, PA, US",
+      "url": "https://www.indeed.com/viewjob?jk=b3f16c9754d63905",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:53.371254"
+    },
+    {
+      "id": "in-eec354c4b26b185a",
+      "title": "Entry Level Account Manager- Audio Visual Rentals",
+      "company": "RENT COM, INC",
+      "location": "Elk Grove Village, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=eec354c4b26b185a",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:53.402698"
+    },
+    {
+      "id": "in-36d862f83d73fd7e",
+      "title": "Partner Account Manager - Distribution Support and Sales",
+      "company": "Keysight Technologies",
+      "location": "Santa Clara, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=36d862f83d73fd7e",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:53.426626"
+    },
+    {
+      "id": "in-925bad7fc16eb0bb",
+      "title": "Personal Lines Account Manager",
+      "company": "Zander Insurance Agency",
+      "location": "Nashville, TN, US",
+      "url": "https://www.indeed.com/viewjob?jk=925bad7fc16eb0bb",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:53.432434"
+    },
+    {
+      "id": "in-164e821f6f06df83",
+      "title": "Strategic Account Manager",
+      "company": "Wheel",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=164e821f6f06df83",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:53.440135"
+    },
+    {
+      "id": "in-b436620511441187",
+      "title": "Key Account Manager - Portland, OR",
+      "company": "iRhythm Technologies",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=b436620511441187",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:53.450355"
+    },
+    {
+      "id": "in-2ac4282d2a79a4ef",
+      "title": "Key Account Manager",
+      "company": "Intuit",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=2ac4282d2a79a4ef",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:53.556984"
+    },
+    {
+      "id": "in-12968ae203bcec4f",
+      "title": "Channel Account Manager Enablement Program Manager",
+      "company": "Thales",
+      "location": "Wilmington, DE, US",
+      "url": "https://www.indeed.com/viewjob?jk=12968ae203bcec4f",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:53.562831"
+    },
+    {
+      "id": "in-96c5ae3ef233ccf3",
+      "title": "Senior Provider Engagement Account Manager",
+      "company": "Health Net",
+      "location": "CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=96c5ae3ef233ccf3",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:53.627218"
+    },
+    {
+      "id": "in-249a42c753cae0f1",
+      "title": "Channel Account Manager (LATAM) (Hybrid) (Spanish Speaking)",
+      "company": "KnowBe4",
+      "location": "Clearwater, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=249a42c753cae0f1",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:53.659548"
+    },
+    {
+      "id": "in-b59bf54cd2a8e02d",
+      "title": "Key Account Manager",
+      "company": "Intuit",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=b59bf54cd2a8e02d",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:53.665884"
+    },
+    {
+      "id": "in-20a6a9e6d4ac28aa",
+      "title": "Commercial Insurance Account Manager - J&M",
+      "company": "Texan Insurance",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=20a6a9e6d4ac28aa",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:53.665937"
+    },
+    {
+      "id": "in-3f9f8dff2b8cd8b3",
+      "title": "Commercial Insurance Account Manager - J&M",
+      "company": "Texan Insurance",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=3f9f8dff2b8cd8b3",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:53.665955"
+    },
+    {
+      "id": "in-2a91425720e58620",
+      "title": "Key Account Manager",
+      "company": "Intuit",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=2a91425720e58620",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:53.665976"
+    },
+    {
+      "id": "in-946ae885bc4ce136",
+      "title": "Provider Engagement Account Manager",
+      "company": "Centene",
+      "location": "KY, US",
+      "url": "https://www.indeed.com/viewjob?jk=946ae885bc4ce136",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:53.953720"
+    },
+    {
+      "id": "in-f21870804069a34e",
+      "title": "Account Manager - Reseller",
+      "company": "Uneekor",
+      "location": "Dallas, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=f21870804069a34e",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:53.954245"
+    },
+    {
+      "id": "in-3ff3ef8a6e0308a3",
+      "title": "Partner Account Manager - Distribution Support and Sales",
+      "company": "Keysight Technologies",
+      "location": "Santa Clara, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=3ff3ef8a6e0308a3",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:53.954269"
+    },
+    {
+      "id": "in-5eec83a043855d9c",
+      "title": "Provider Engagement Account Manager",
+      "company": "Centene",
+      "location": "IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=5eec83a043855d9c",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:21:54.138558"
+    },
+    {
+      "id": "in-3544c6dd704570c2",
+      "title": "Channel Account Manager",
+      "company": "Thales",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=3544c6dd704570c2",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:00.456866"
+    },
+    {
+      "id": "in-2841eb6da8a8938b",
+      "title": "Director, Mid Market Customer Success",
+      "company": "LeanData",
+      "location": "Santa Clara, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=2841eb6da8a8938b",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:00.766716"
+    },
+    {
+      "id": "in-531db090c262253e",
+      "title": "Partner Account Manager - SLED",
+      "company": "Pure Storage",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=531db090c262253e",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:00.831150"
+    },
+    {
+      "id": "in-a9b8dd6f37bd727f",
+      "title": "Founding Customer Success Manager",
+      "company": "Granola",
+      "location": "San Francisco, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=a9b8dd6f37bd727f",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:00.850236"
+    },
+    {
+      "id": "in-18c040dd0277db8f",
+      "title": "Account Manager/ Client Success Manager - Digital Marketing Agency",
+      "company": "MVR Digital",
+      "location": "Denver, CO, US",
+      "url": "https://www.indeed.com/viewjob?jk=18c040dd0277db8f",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:00.856398"
+    },
+    {
+      "id": "in-331f83902ed89bef",
+      "title": "Senior Customer Success Manager",
+      "company": "Circadia Health",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=331f83902ed89bef",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:00.882950"
+    },
+    {
+      "id": "in-aa9e369020e33251",
+      "title": "Enterprise Customer Success Manager",
+      "company": "Frontify AG",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=aa9e369020e33251",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:00.886162"
+    },
+    {
+      "id": "in-bdba955ed24fbba7",
+      "title": "Account Manager- Mid-Market, Growth & Retention (Core)",
+      "company": "Rippling",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=bdba955ed24fbba7",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:00.924284"
+    },
+    {
+      "id": "in-5ed210762753dee5",
+      "title": "Group Manager, Customer Success, Mid-Market",
+      "company": "Intuit",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=5ed210762753dee5",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:00.924377"
+    },
+    {
+      "id": "in-7b6a9a57a69985cf",
+      "title": "Client Success Manager",
+      "company": "Kaplan",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=7b6a9a57a69985cf",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:00.924420"
+    },
+    {
+      "id": "in-aa2ab505b7c9d653",
+      "title": "Head of US Customer Success",
+      "company": "Famly",
+      "location": "Washington, DC, US",
+      "url": "https://www.indeed.com/viewjob?jk=aa2ab505b7c9d653",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:22:03.761506"
+    },
+    {
+      "id": "in-e1a5b51e5ee539d5",
+      "title": "Key Account Manager",
+      "company": "Intuit",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=e1a5b51e5ee539d5",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:05.001240"
+    },
+    {
+      "id": "in-8927a19761b0d6b6",
+      "title": "Sales Account Manager",
+      "company": "Burkhart Dental",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=8927a19761b0d6b6",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:22:06.108352"
+    },
+    {
+      "id": "in-5c1c770f2eced228",
+      "title": "Implementation Success Manager",
+      "company": "inquirED",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=5c1c770f2eced228",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:22:06.362194"
+    },
+    {
+      "id": "in-4b9c582466f29c1a",
+      "title": "Allstate Sales Account Manager",
+      "company": "nan",
+      "location": "Lake Charles, LA, US",
+      "url": "https://www.indeed.com/viewjob?jk=4b9c582466f29c1a",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:22:06.389305"
+    },
+    {
+      "id": "in-43121868de92e175",
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "San Marcos, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=43121868de92e175",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:22:06.393916"
+    },
+    {
+      "id": "in-0a584a000e005158",
+      "title": "Account Manager",
+      "company": "CarNow",
+      "location": "Syracuse, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=0a584a000e005158",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:22:06.452066"
+    },
+    {
+      "id": "in-6af9efeb77660921",
+      "title": "N. Austin Account Manager or Account Manager Associate",
+      "company": "Applied Medical",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=6af9efeb77660921",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:22:06.689268"
+    },
+    {
+      "id": "in-be124c4a397b5bdd",
+      "title": "Senior Technical Account Manager (TAM), Team Lead",
+      "company": "SpyCloud",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=be124c4a397b5bdd",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:22:06.738013"
+    },
+    {
+      "id": "in-b1f7e4fcefcd5af5",
+      "title": "Client Success Manager- Chargeback",
+      "company": "Global Payments",
+      "location": "Charlotte, NC, US",
+      "url": "https://www.indeed.com/viewjob?jk=b1f7e4fcefcd5af5",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:22:08.233119"
+    },
+    {
+      "id": "in-7a4990adb4c90617",
+      "title": "Contractor Success Manager",
+      "company": "RoofMarketplace",
+      "location": "Madison, WI, US",
+      "url": "https://www.indeed.com/viewjob?jk=7a4990adb4c90617",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:22:09.007100"
+    },
+    {
+      "id": "in-82f00d00c43094ed",
+      "title": "Global Key Account Manager",
+      "company": "Danfoss",
+      "location": "Milwaukee, WI, US",
+      "url": "https://www.indeed.com/viewjob?jk=82f00d00c43094ed",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:09.340636"
+    },
+    {
+      "id": "in-f27689bfa34f9786",
+      "title": "Senior Enterprise Account Executive - W&B",
+      "company": "CoreWeave",
+      "location": "San Francisco, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=f27689bfa34f9786",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:42.791942"
+    },
+    {
+      "id": "in-c35f6b273058bb00",
+      "title": "Mid-Market Account Executive - Central / West",
+      "company": "Contentsquare",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=c35f6b273058bb00",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:43.005827"
+    },
+    {
+      "id": "in-6455bffd0cb06d08",
+      "title": "Manager, Account Associates",
+      "company": "Atlassian",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=6455bffd0cb06d08",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:43.024998"
+    },
+    {
+      "id": "in-f33b09946f37cef3",
+      "title": "Cell Therapy Account Management - North Carolina/South Carolina",
+      "company": "Iovance Biotherapeutics",
+      "location": "Carolina Forest, NC, US",
+      "url": "https://www.indeed.com/viewjob?jk=f33b09946f37cef3",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:43.222847"
+    },
+    {
+      "id": "in-61bd7130b36fcf88",
+      "title": "Account Executive",
+      "company": "BillionToOne",
+      "location": "Beverly Hills, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=61bd7130b36fcf88",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:43.402443"
+    },
+    {
+      "id": "in-7d163c000f6bd077",
+      "title": "Patient Account Representative",
+      "company": "AQUA Dermatology",
+      "location": "Fort Myers, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=7d163c000f6bd077",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:43.529930"
+    },
+    {
+      "id": "in-2a859a095f63128d",
+      "title": "Account Coordinator | MYMOVE",
+      "company": "Red Ventures",
+      "location": "Charlotte, NC, US",
+      "url": "https://www.indeed.com/viewjob?jk=2a859a095f63128d",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:48.718251"
+    },
+    {
+      "id": "in-524539adefbc7ade",
+      "title": "SMB Account Executive",
+      "company": "FRONT",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=524539adefbc7ade",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:48.772660"
+    },
+    {
+      "id": "in-10e29ae8c4330c3c",
+      "title": "Account Executive, Billing Company",
+      "company": "Tebra",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=10e29ae8c4330c3c",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:48.955811"
+    },
+    {
+      "id": "in-66acdca23d37b202",
+      "title": "SMB Account Executive",
+      "company": "FRONT",
+      "location": "San Francisco, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=66acdca23d37b202",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:49.047282"
+    },
+    {
+      "id": "in-76650cef8eaeacdf",
+      "title": "Account Development Representative",
+      "company": "GHX",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=76650cef8eaeacdf",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:49.047314"
+    },
+    {
+      "id": "in-0a505c0dd0b7e078",
+      "title": "Major Account Executive",
+      "company": "Quadient",
+      "location": "Detroit, MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=0a505c0dd0b7e078",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:49.048402"
+    },
+    {
+      "id": "in-6e5c89446cf1f5c1",
+      "title": "Account Executive - Sports & Entertainment (East)",
+      "company": "Raven Controls",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=6e5c89446cf1f5c1",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:49.048418"
+    },
+    {
+      "id": "in-178215ef0af37306",
+      "title": "Account Executive - Comms, Energy, and Travel",
+      "company": "Equifax",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=178215ef0af37306",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:49.048433"
+    },
+    {
+      "id": "in-47e9e8bf3cffd25e",
+      "title": "Community Safety Account Executive",
+      "company": "Flock Safety",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=47e9e8bf3cffd25e",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:49.048451"
+    },
+    {
+      "id": "in-3566d58cd2351be9",
+      "title": "Account Executive - Medium Enterprise, Customer Base",
+      "company": "Workday",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=3566d58cd2351be9",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:49.048463"
+    },
+    {
+      "id": "in-b538ce84c183c7f8",
+      "title": "Enterprise Account Executive",
+      "company": "Finout",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=b538ce84c183c7f8",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:49.149838"
+    },
+    {
+      "id": "in-256f2d400b2ccfea",
+      "title": "Account Executive, Biopharma",
+      "company": "Pictor Labs",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=256f2d400b2ccfea",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:49.171669"
+    },
+    {
+      "id": "in-50aa3a731d745c9b",
+      "title": "Account Executive",
+      "company": "CANALS",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=50aa3a731d745c9b",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:49.198374"
+    },
+    {
+      "id": "in-723f6cd7a9a711ab",
+      "title": "Account Executive",
+      "company": "TractIQ",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=723f6cd7a9a711ab",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:49.718891"
+    },
+    {
+      "id": "in-75a398c2eeae6b23",
+      "title": "Sr. Enterprise Account Executive III, Financial Services",
+      "company": "Talkdesk",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=75a398c2eeae6b23",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:22:53.587385"
+    },
+    {
+      "id": "in-ddda218d781d8290",
+      "title": "Account Coordinator | Team Whiskey",
+      "company": "Team Velocity Marketing",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=ddda218d781d8290",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:22:54.209669"
+    },
+    {
+      "id": "in-0dae198651c72a1b",
+      "title": "IT Sales Account Executive",
+      "company": "Invid",
+      "location": "San Juan, PR, US",
+      "url": "https://www.indeed.com/viewjob?jk=0dae198651c72a1b",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:22:54.541466"
+    },
+    {
+      "id": "in-1d240ff0ff026eda",
+      "title": "Advertising Account Executive (Contract)",
+      "company": "Handshake",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=1d240ff0ff026eda",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:22:54.557086"
+    },
+    {
+      "id": "in-b6b455e18a7ea00f",
+      "title": "Territory Sales Representative",
+      "company": "Zep, Inc.",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=b6b455e18a7ea00f",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:54.604641"
+    },
+    {
+      "id": "in-1611f76c83c7dcd8",
+      "title": "Account Representative",
+      "company": "nan",
+      "location": "San Marcos, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=1611f76c83c7dcd8",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:22:54.611343"
+    },
+    {
+      "id": "in-eeccc3ffc7eb2954",
+      "title": "Enterprise Account Executive - Delphix",
+      "company": "Perforce Software",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=eeccc3ffc7eb2954",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:55.102838"
+    },
+    {
+      "id": "in-b2599513fecb58ea",
+      "title": "Cybersecurity Sales Account Executive West Region",
+      "company": "Motorola Solutions",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=b2599513fecb58ea",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:55.102904"
+    },
+    {
+      "id": "in-9bc8de504d3e6405",
+      "title": "Senior Sales Account Executive- Data Center Solutions",
+      "company": "Team Housing Solutions, Inc.",
+      "location": "New Braunfels, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=9bc8de504d3e6405",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:22:55.102954"
+    },
+    {
+      "id": "in-0800c2d2cfd4af91",
+      "title": "National Account Executive (Inside Sales)",
+      "company": "Olly Olly",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=0800c2d2cfd4af91",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:55.102965"
+    },
+    {
+      "id": "in-ce9c99c2e8cf32b6",
+      "title": "Sales Director, Specialized Solutions Group",
+      "company": "Sage",
+      "location": "Lawrenceville, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=ce9c99c2e8cf32b6",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:55.106728"
+    },
+    {
+      "id": "in-bebe6a9a82d0ba82",
+      "title": "Manager, Regional Sales",
+      "company": "Progressive Leasing",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=bebe6a9a82d0ba82",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:55.108220"
+    },
+    {
+      "id": "in-0412ac1a8e85aca2",
+      "title": "Associate II, Inside Sales",
+      "company": "Nordson",
+      "location": "Duluth, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=0412ac1a8e85aca2",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:55.108335"
+    },
+    {
+      "id": "in-a2101bbd1b12dea8",
+      "title": "Healthcare Account Representative - Inside Sales (Remote)",
+      "company": "A Place for Mom",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=a2101bbd1b12dea8",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:22:55.129735"
+    },
+    {
+      "id": "in-6bfcb6cda9586427",
+      "title": "Bilingual Account Executive, Spanish",
+      "company": "Brevo",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=6bfcb6cda9586427",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:22:57.692903"
+    },
+    {
+      "id": "in-4edbfad2d8c301b9",
+      "title": "Account Executive, Energy Sector",
+      "company": "nan",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=4edbfad2d8c301b9",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:22:57.799518"
+    },
+    {
+      "id": "in-aba6f09ca3a81f3e",
+      "title": "Energy Consultant I",
+      "company": "Solar Energy Partners LLC",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=aba6f09ca3a81f3e",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:23:00.155314"
+    },
+    {
+      "id": "in-a622b982797b9c59",
+      "title": "Sales Associate",
+      "company": "nan",
+      "location": "Alpharetta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=a622b982797b9c59",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:23:00.209291"
+    },
+    {
+      "id": "in-71bb4324617e1bd9",
+      "title": "Residential Outside Sales Representative (Hybrid)",
+      "company": "Tender Lawn Care (TLC)",
+      "location": "Dallas, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=71bb4324617e1bd9",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:23:00.499273"
+    },
+    {
+      "id": "in-96eaebef38060042",
+      "title": "Commercial Manager (US/Canada Remote)",
+      "company": "Air Products",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=96eaebef38060042",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:23:01.166045"
+    },
+    {
+      "id": "in-03085e3d2a31cd90",
+      "title": "Sales Executive",
+      "company": "Wellness IQ, Inc.",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=03085e3d2a31cd90",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:23:35.789598"
+    },
+    {
+      "id": "in-30b54780b8915faa",
+      "title": "Inside Sales Representative- Loan Consultant",
+      "company": "Achieve Debt Relief",
+      "location": "Orlando, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=30b54780b8915faa",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:23:35.831496"
+    },
+    {
+      "id": "in-2789e1c215e7c39e",
+      "title": "Sales Executive",
+      "company": "Wellness IQ, Inc.",
+      "location": "Alpharetta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=2789e1c215e7c39e",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:23:36.302167"
+    },
+    {
+      "id": "in-0abcf45508ac50af",
+      "title": "Associate Sales Engineer",
+      "company": "Sectigo",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=0abcf45508ac50af",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:23:39.761875"
+    },
+    {
+      "id": "in-cd30340f1a9ea97e",
+      "title": "Clinical Sales Specialist, Surgical Pain - Raleigh, NC (6914)",
+      "company": "Avanos Medical",
+      "location": "NC, US",
+      "url": "https://www.indeed.com/viewjob?jk=cd30340f1a9ea97e",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:23:39.855372"
+    },
+    {
+      "id": "in-ddf364fd6f825360",
+      "title": "Analytical Business Advisor (Analytics Sales Consultant) - Fintech",
+      "company": "Equifax",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=ddf364fd6f825360",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:23:39.888041"
+    },
+    {
+      "id": "in-a7a19d29fb289dc6",
+      "title": "Independent Sales Contractor \u2013 Automotive Software (1099)",
+      "company": "Mitchell 1/Snap-on Tools",
+      "location": "Philadelphia, PA, US",
+      "url": "https://www.indeed.com/viewjob?jk=a7a19d29fb289dc6",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:23:39.994439"
+    },
+    {
+      "id": "in-f2ef0b838b0bfc72",
+      "title": "Independent Sales Contractor \u2013 Automotive Software (1099)",
+      "company": "Mitchell 1/Snap-on Tools",
+      "location": "Washington, DC, US",
+      "url": "https://www.indeed.com/viewjob?jk=f2ef0b838b0bfc72",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:23:40.188252"
+    },
+    {
+      "id": "in-b14b81cdbbccd9d0",
+      "title": "Associate Sales Representative - Acute Care and Monitoring (Atlanta/Charlotte)",
+      "company": "Medtronic",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=b14b81cdbbccd9d0",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:23:40.194813"
+    },
+    {
+      "id": "in-5d47f8c65326a4c1",
+      "title": "Client Care & Sales Consultant",
+      "company": "BA House Cleaning",
+      "location": "Castro Valley, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=5d47f8c65326a4c1",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:23:40.194964"
+    },
+    {
+      "id": "in-21d3a52d6d5bf87d",
+      "title": "Sales Development Representative",
+      "company": "Equifax",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=21d3a52d6d5bf87d",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:23:40.212847"
+    },
+    {
+      "id": "in-833775eec099c909",
+      "title": "Account Executive \u2013 Automotive Retail and Mobility",
+      "company": "Equifax",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=833775eec099c909",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:23:40.238725"
+    },
+    {
+      "id": "in-3a7c705ef4130b18",
+      "title": "Sales Agent",
+      "company": "ClearPath Cards",
+      "location": "Vancouver, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=3a7c705ef4130b18",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:23:43.734821"
+    },
+    {
+      "id": "in-1170e5b5486c9c50",
+      "title": "Associate Sales Engineer",
+      "company": "Sectigo",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=1170e5b5486c9c50",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:23:45.239779"
+    },
+    {
+      "id": "in-32e1ee823fb1f2f7",
+      "title": "Experienced B2B Brokers: Add Business Funding to Your Portfolio",
+      "company": "ND Solutions LLC",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=32e1ee823fb1f2f7",
+      "status": "error",
+      "message": "Page.content: Unable to retrieve content because the page is navigating and changing the content.",
+      "timestamp": "2026-02-03T17:23:45.252415"
+    },
+    {
+      "id": "in-ff3a91dbc0199a10",
+      "title": "Regional Sales Associate",
+      "company": "EcoPro Electric",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=ff3a91dbc0199a10",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:23:45.617943"
+    },
+    {
+      "id": "in-fdf6fe55dcc25129",
+      "title": "Solution Sales Executive - Healthcare - Moveworks",
+      "company": "ServiceNow",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=fdf6fe55dcc25129",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:23:45.719544"
+    },
+    {
+      "id": "in-af85efadd8453f46",
+      "title": "Territory Sales Manager",
+      "company": "Celsius Network",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=af85efadd8453f46",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:23:45.740867"
+    },
+    {
+      "id": "in-d4fbed9727d126e8",
+      "title": "Field Sales Representative",
+      "company": "Roofr",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=d4fbed9727d126e8",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:23:45.773141"
+    },
+    {
+      "id": "in-96ccbab8eb6cbeb6",
+      "title": "Inside Sales Representative- Loan Consultant",
+      "company": "Achieve Debt Relief",
+      "location": "Dallas, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=96ccbab8eb6cbeb6",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:23:45.852870"
+    },
+    {
+      "id": "in-c4327adf5badd834",
+      "title": "Inside Sales Representative- Loan Consultant",
+      "company": "Achieve Debt Relief",
+      "location": "Tempe, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=c4327adf5badd834",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:23:46.096295"
+    },
+    {
+      "id": "in-f08c5be6c09305ae",
+      "title": "Real Estate Agent (Licensed or in the process of obtaining a license)",
+      "company": "Berkshire Hathaway Home Services",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=f08c5be6c09305ae",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:23:46.096433"
+    },
+    {
+      "id": "in-46fecc4ae857aba0",
+      "title": "Director, Sales Engineering",
+      "company": "Digital.ai",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=46fecc4ae857aba0",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:23:46.349529"
+    },
+    {
+      "id": "in-12a0c91f475b67a3",
+      "title": "Dealer Relationship Manager - Atlanta West",
+      "company": "KINETIC ADVANTAGE LLC",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=12a0c91f475b67a3",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:23:46.544819"
+    },
+    {
+      "id": "in-b1b8d8b99da3ed2d",
+      "title": "Clinical Client Success Manager",
+      "company": "MPOWERHealth",
+      "location": "Phoenix, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=b1b8d8b99da3ed2d",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:23:46.851390"
+    },
+    {
+      "id": "in-b9056b8f0779d7b4",
+      "title": "Client Success Manager",
+      "company": "Woundtech",
+      "location": "CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=b9056b8f0779d7b4",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:23:47.864896"
+    },
+    {
+      "id": "in-7dcda9f1ca63a6c4",
+      "title": "Omni-Channel Client Success Manager",
+      "company": "Mspark",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=7dcda9f1ca63a6c4",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:23:49.472307"
+    },
+    {
+      "id": "in-2dab81a98c87888e",
+      "title": "Client Success Manager, Shopper & Retail Media",
+      "company": "nan",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=2dab81a98c87888e",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:23:49.479570"
+    },
+    {
+      "id": "in-b34c92a3f14428cf",
+      "title": "Director of Client Success",
+      "company": "ISOS Technology",
+      "location": "Tempe, AZ, US",
+      "url": "https://www.indeed.com/viewjob?jk=b34c92a3f14428cf",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:23:49.564937"
+    },
+    {
+      "id": "in-1489799760af8d91",
+      "title": "Client Success Manager, Performance Marketing",
+      "company": "MVR Digital",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=1489799760af8d91",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:23:49.574137"
+    },
+    {
+      "id": "in-4eb42526b87bf830",
+      "title": "Client Success Manager, Brands & Agencies",
+      "company": "nan",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=4eb42526b87bf830",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:23:49.605539"
+    },
+    {
+      "id": "in-65feab6a74b2404b",
+      "title": "Experienced Roofing Sales Representative \u2013 $100k+ Potential \u2013 No Cap",
+      "company": "Southeast Roofing and Exteriors LLC",
+      "location": "Cleveland, TN, US",
+      "url": "https://www.indeed.com/viewjob?jk=65feab6a74b2404b",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:23:50.810572"
+    },
+    {
+      "id": "in-64589e869dab4bb1",
+      "title": "Business Development Manager - West Coast (Must reside in CA)",
+      "company": "WaveLynx",
+      "location": "CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=64589e869dab4bb1",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:23:50.829049"
+    },
+    {
+      "id": "in-86334233b2e0e368",
+      "title": "Business Development Manager",
+      "company": "TEXCELL",
+      "location": "Frederick, MD, US",
+      "url": "https://www.indeed.com/viewjob?jk=86334233b2e0e368",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:23:51.095805"
+    },
+    {
+      "id": "in-7efd1d50f78fb428",
+      "title": "Sales Manager Life Insurance/Financial",
+      "company": "Luso-American Financial",
+      "location": "Dublin, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=7efd1d50f78fb428",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:23:51.139323"
+    },
+    {
+      "id": "in-4dd01b79f9668a84",
+      "title": "Entry-Level Systems Specialist",
+      "company": "Hep plumbing",
+      "location": "Knoxville, TN, US",
+      "url": "https://www.indeed.com/viewjob?jk=4dd01b79f9668a84",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:23:51.515914"
+    },
+    {
+      "id": "in-c6e6216fffdf6cb8",
+      "title": "Senior Manager, CX & BPO Partner Management",
+      "company": "FIGS",
+      "location": "Santa Monica, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=c6e6216fffdf6cb8",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:23:52.043553"
+    },
+    {
+      "id": "in-d09e87093c1088f5",
+      "title": "Client Success Manager",
+      "company": "Woundtech",
+      "location": "TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=d09e87093c1088f5",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:23:52.266961"
+    },
+    {
+      "id": "in-dd189c7eb7ac68f2",
+      "title": "SEO Client Success Manager",
+      "company": "Click Here Digital",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=dd189c7eb7ac68f2",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:23:52.428899"
+    },
+    {
+      "id": "in-ae5094685c7ea88a",
+      "title": "Client Success Manager and Coordinator",
+      "company": "Civility Home Care - Danbury",
+      "location": "Danbury, CT, US",
+      "url": "https://www.indeed.com/viewjob?jk=ae5094685c7ea88a",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:23:52.936373"
+    },
+    {
+      "id": "in-34e18b32353146d2",
+      "title": "Account Coordinator",
+      "company": "Stephen Gould Corporation",
+      "location": "El Segundo, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=34e18b32353146d2",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:30.699299"
+    },
+    {
+      "id": "in-4906d38f3559f76a",
+      "title": "Outside Heavy Duty Sales Representative",
+      "company": "Fleetpride",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=4906d38f3559f76a",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:31.495574"
+    },
+    {
+      "id": "in-477c0a653574472a",
+      "title": "Account Executive (IT & Cybersecurity)",
+      "company": "Impact Networking, LLC",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=477c0a653574472a",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:31.532854"
+    },
+    {
+      "id": "in-d615df947946bce3",
+      "title": "Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=d615df947946bce3",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:31.545365"
+    },
+    {
+      "id": "in-59d8e72047f4a16f",
+      "title": "Allstate Insurance Dedicated Sales Producer",
+      "company": "Allstate Insurance",
+      "location": "Johns Creek, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=59d8e72047f4a16f",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:31.561916"
+    },
+    {
+      "id": "in-23249d8708cc191e",
+      "title": "Solar - Sales Consultant",
+      "company": "The Integrated Experts",
+      "location": "Albuquerque, NM, US",
+      "url": "https://www.indeed.com/viewjob?jk=23249d8708cc191e",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:31.592975"
+    },
+    {
+      "id": "in-9c14d099e337ff88",
+      "title": "Account Executive - Austin",
+      "company": "Paycom",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=9c14d099e337ff88",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:31.720677"
+    },
+    {
+      "id": "in-60c9a73696f16f5d",
+      "title": "Account Executive, SLED",
+      "company": "Snowflake",
+      "location": "PA, US",
+      "url": "https://www.indeed.com/viewjob?jk=60c9a73696f16f5d",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:31.720736"
+    },
+    {
+      "id": "in-3c5bb12d5f7b5347",
+      "title": "Outside Sales Representative - Fire and Fabrication",
+      "company": "Ferguson",
+      "location": "Lilburn, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=3c5bb12d5f7b5347",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:31.720771"
+    },
+    {
+      "id": "in-0cc2d4717a5bae1f",
+      "title": "Outside Sales Representative",
+      "company": "Septic Blue",
+      "location": "Orlando, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=0cc2d4717a5bae1f",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:31.720798"
+    },
+    {
+      "id": "in-617c962d8a697da4",
+      "title": "Account Executive",
+      "company": "Heidi",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=617c962d8a697da4",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:31.749774"
+    },
+    {
+      "id": "in-f319f396a0cd42f0",
+      "title": "Insurance Agent (Sales, Customer Service)",
+      "company": "Freeway Insurance Services America, LLC",
+      "location": "Las Vegas, NV, US",
+      "url": "https://www.indeed.com/viewjob?jk=f319f396a0cd42f0",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:31.749879"
+    },
+    {
+      "id": "in-1d6b8d97c55f3739",
+      "title": "Outside Heavy Duty Sales Representative",
+      "company": "Fleetpride",
+      "location": "Cumming, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=1d6b8d97c55f3739",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:31.749909"
+    },
+    {
+      "id": "in-df928483fc8736da",
+      "title": "Real Estate Agent | G First Realty",
+      "company": "G First Realty LLC",
+      "location": "Saint Cloud, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=df928483fc8736da",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:31.879968"
+    },
+    {
+      "id": "in-ec3e001d769d7a08",
+      "title": "Client Success Manager (AI Content & Partnerships)",
+      "company": "Hire Overseas",
+      "location": "Remote, US",
+      "url": "https://www.indeed.com/viewjob?jk=ec3e001d769d7a08",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:31.896880"
+    },
+    {
+      "id": "in-76d993e5dd4d8f08",
+      "title": "Outside Heavy Duty Sales Representative",
+      "company": "Fleetpride",
+      "location": "Forest Park, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=76d993e5dd4d8f08",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:24:34.713816"
+    },
+    {
+      "id": "in-883bd88536a14832",
+      "title": "Client Success Manager",
+      "company": "FreeAxez",
+      "location": "Delran, NJ, US",
+      "url": "https://www.indeed.com/viewjob?jk=883bd88536a14832",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:24:36.308975"
+    },
+    {
+      "id": "in-0583f21506dace91",
+      "title": "Outside Heavy Duty Sales Representative",
+      "company": "Fleetpride",
+      "location": "Marietta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=0583f21506dace91",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:24:37.002084"
+    },
+    {
+      "id": "in-6a2af94de2760379",
+      "title": "Design Sales Representative",
+      "company": "SPF Screens & Awnings",
+      "location": "Bonita Springs, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=6a2af94de2760379",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:37.362115"
+    },
+    {
+      "id": "in-f5f1c9ea28773e86",
+      "title": "Sr. Client Success Manager - Enterprise",
+      "company": "Addepar",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=f5f1c9ea28773e86",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:24:37.396284"
+    },
+    {
+      "id": "in-f2479a804f738ade",
+      "title": "Insurance Account Representative - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=f2479a804f738ade",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:24:37.561442"
+    },
+    {
+      "id": "in-f1961a938391d17d",
+      "title": "Senior, Upmarket Customer Success Manager",
+      "company": "Yotpo",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=f1961a938391d17d",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:38.532336"
+    },
+    {
+      "id": "in-5bf02eef283cb998",
+      "title": "Client Success Manager - SPM Solutions",
+      "company": "STERIS",
+      "location": "Tampa, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=5bf02eef283cb998",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:38.576943"
+    },
+    {
+      "id": "in-b5a3258cda73fe7d",
+      "title": "Customer Success Manager Mid Market",
+      "company": "Bobyard",
+      "location": "San Francisco, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=b5a3258cda73fe7d",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:38.589661"
+    },
+    {
+      "id": "in-2057171eae8dff0c",
+      "title": "Furniture and Mattress Outlet Sales Representative",
+      "company": "Furniture Fair",
+      "location": "Cold Spring, KY, US",
+      "url": "https://www.indeed.com/viewjob?jk=2057171eae8dff0c",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:38.601643"
+    },
+    {
+      "id": "in-6820b0f3d5039f89",
+      "title": "Customer Success Manager",
+      "company": "Proofpoint",
+      "location": "TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=6820b0f3d5039f89",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:39.017699"
+    },
+    {
+      "id": "in-6919d314ab508c5f",
+      "title": "Customer Success Manager, Defense",
+      "company": "Path Robotics, Inc.",
+      "location": "Columbus, OH, US",
+      "url": "https://www.indeed.com/viewjob?jk=6919d314ab508c5f",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:39.019641"
+    },
+    {
+      "id": "in-ef3080b7350fdd08",
+      "title": "Manager of Customer Success",
+      "company": "Waystar",
+      "location": "Lehi, UT, US",
+      "url": "https://www.indeed.com/viewjob?jk=ef3080b7350fdd08",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:39.021950"
+    },
+    {
+      "id": "in-8a79554582504f13",
+      "title": "Customer Success Manager - Mailchimp",
+      "company": "Intuit",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=8a79554582504f13",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:39.023772"
+    },
+    {
+      "id": "in-ac0bb79743a462ab",
+      "title": "Sr Director / Vice President of Customer Success New York, NY (On-site)",
+      "company": "AppCard",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=ac0bb79743a462ab",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:39.279558"
+    },
+    {
+      "id": "in-31a6e5a6050d1a54",
+      "title": "Customer Success Manager",
+      "company": "Proofpoint",
+      "location": "CO, US",
+      "url": "https://www.indeed.com/viewjob?jk=31a6e5a6050d1a54",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:39.444463"
+    },
+    {
+      "id": "in-87ac0a8c35f19bec",
+      "title": "Customer Success Implementation Lead, Uber for Business",
+      "company": "Uber",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=87ac0a8c35f19bec",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:40.256314"
+    },
+    {
+      "id": "in-6318f5996651e010",
+      "title": "Customer Success Implementation Lead, Uber for Business",
+      "company": "Uber",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=6318f5996651e010",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:40.290087"
+    },
+    {
+      "id": "in-4649883233292488",
+      "title": "Senior Customer Success Manager, Amazon Vendor Services",
+      "company": "Amazon.com",
+      "location": "Seattle, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=4649883233292488",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:24:40.536667"
+    },
+    {
+      "id": "in-18b108ce4b3bfd63",
+      "title": "Client Success Manager",
+      "company": "WebMD",
+      "location": "Newark, NJ, US",
+      "url": "https://www.indeed.com/viewjob?jk=18b108ce4b3bfd63",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:24:41.367332"
+    },
+    {
+      "id": "in-9a0cb3fedc3d478d",
+      "title": "Manager, Sales Development - Boston",
+      "company": "Datadog",
+      "location": "Boston, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=9a0cb3fedc3d478d",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:24:43.467234"
+    },
+    {
+      "id": "in-5a6c1e43eddb014b",
+      "title": "Sales Consultant",
+      "company": "GREGG YOUNG AUTO GROUP",
+      "location": "Hortonville, WI, US",
+      "url": "https://www.indeed.com/viewjob?jk=5a6c1e43eddb014b",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:24:44.002918"
+    },
+    {
+      "id": "in-6a1552e482d959db",
+      "title": "Operations/Customer Success Manager",
+      "company": "OPS Security Group",
+      "location": "Philadelphia, PA, US",
+      "url": "https://www.indeed.com/viewjob?jk=6a1552e482d959db",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:24:44.292601"
+    },
+    {
+      "id": "in-ecfa8fdef4fc4641",
+      "title": "Customer Success Manager",
+      "company": "A2Mac1 LLC",
+      "location": "Detroit, MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=ecfa8fdef4fc4641",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:24:44.309411"
+    },
+    {
+      "id": "in-8d0c05bade1fcba7",
+      "title": "Customer Success Manager",
+      "company": "Acrylic Source+",
+      "location": "Arlington, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=8d0c05bade1fcba7",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:24:44.481340"
+    },
+    {
+      "id": "in-0335ca48359a7ea7",
+      "title": "Customer Success Manager",
+      "company": "Censis",
+      "location": "TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=0335ca48359a7ea7",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:23.047745"
+    },
+    {
+      "id": "in-0846508e4922f75b",
+      "title": "Customer Success Account Manager",
+      "company": "Microsoft",
+      "location": "Redmond, WA, US",
+      "url": "https://www.indeed.com/viewjob?jk=0846508e4922f75b",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:23.047766"
+    },
+    {
+      "id": "in-ec1731bb191e9f49",
+      "title": "Customer Success Manager",
+      "company": "Macrobond Financial AB",
+      "location": "MN, US",
+      "url": "https://www.indeed.com/viewjob?jk=ec1731bb191e9f49",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:23.047779"
+    },
+    {
+      "id": "in-f888fd4feffb815e",
+      "title": "Strategic Customer Success Manager",
+      "company": "Litera",
+      "location": "TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=f888fd4feffb815e",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:23.187719"
+    },
+    {
+      "id": "in-eed45282dad13fcf",
+      "title": "Senior Customer Success Manager (Hybrid - NY)",
+      "company": "LexisNexis Risk Solutions",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=eed45282dad13fcf",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:23.187741"
+    },
+    {
+      "id": "in-612aebc677612eb5",
+      "title": "Customer Success Manager",
+      "company": "IRONSCALES",
+      "location": "Sandy Springs, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=612aebc677612eb5",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:23.201685"
+    },
+    {
+      "id": "in-f52005667c0a8b09",
+      "title": "Customer Success Manager",
+      "company": "Trimble",
+      "location": "Princeton, NJ, US",
+      "url": "https://www.indeed.com/viewjob?jk=f52005667c0a8b09",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:23.201777"
+    },
+    {
+      "id": "in-71ca6cdc2572f4b7",
+      "title": "Customer Success Director - Head of Fusion Client Service",
+      "company": "JPMorganChase",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=71ca6cdc2572f4b7",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:23.215620"
+    },
+    {
+      "id": "in-a33b5583fee5fc39",
+      "title": "Associate Customer Success Manager",
+      "company": "LSEG (London Stock Exchange Group)",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=a33b5583fee5fc39",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:23.216979"
+    },
+    {
+      "id": "in-82ffe220c2fd2662",
+      "title": "Team Lead, Customer Success Management",
+      "company": "Optimizely",
+      "location": "US",
+      "url": "https://www.indeed.com/viewjob?jk=82ffe220c2fd2662",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:23.356627"
+    },
+    {
+      "id": "in-ade7bb6bca1eedc1",
+      "title": "Sr Customer Success Manager",
+      "company": "Aspen Technology",
+      "location": "Houston, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=ade7bb6bca1eedc1",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:23.375870"
+    },
+    {
+      "id": "in-46d63deabee63d36",
+      "title": "Principal Customer Success Manager - Enterprise (Logistics Vertical)",
+      "company": "Cognosos",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=46d63deabee63d36",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:23.375987"
+    },
+    {
+      "id": "in-39c0009b0a5844b8",
+      "title": "Senior Enterprise Customer Success Manager",
+      "company": "Frontify AG",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=39c0009b0a5844b8",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:23.376030"
+    },
+    {
+      "id": "in-74bbadcd67f0e203",
+      "title": "Customer Success Manager, Trading",
+      "company": "LSEG (London Stock Exchange Group)",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=74bbadcd67f0e203",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:23.376072"
+    },
+    {
+      "id": "in-4d6206349c079da8",
+      "title": "Senior Customer Success Manager (Hybrid - NY)",
+      "company": "LexisNexis Risk Solutions",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=4d6206349c079da8",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:23.376113"
+    },
+    {
+      "id": "in-6bd643934d1a2a41",
+      "title": "Customer Success Manager",
+      "company": "Euronet Worldwide, Inc.",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=6bd643934d1a2a41",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:23.376149"
+    },
+    {
+      "id": "in-8dd7a11ec375581c",
+      "title": "Customer Success Manager",
+      "company": "Zifo",
+      "location": "San Francisco, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=8dd7a11ec375581c",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:23.456865"
+    },
+    {
+      "id": "in-678ec0167f2d60b4",
+      "title": "Customer Success Manager",
+      "company": "Euronet Worldwide, Inc.",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=678ec0167f2d60b4",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:23.456984"
+    },
+    {
+      "id": "in-51ae7a76df88f965",
+      "title": "Sr. Customer Success Manager",
+      "company": "Conductor",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=51ae7a76df88f965",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:25:25.568267"
+    },
+    {
+      "id": "in-e8e66230f788061c",
+      "title": "Alternatives Account Manager",
+      "company": "S&P Global",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=e8e66230f788061c",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:26.274279"
+    },
+    {
+      "id": "in-231fc2747e95b677",
+      "title": "Alternatives Account Manager",
+      "company": "S&P Global",
+      "location": "San Francisco, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=231fc2747e95b677",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:27.722201"
+    },
+    {
+      "id": "in-2f3f2ecf879900f5",
+      "title": "Major Account Manager, B2B Software Sales",
+      "company": "Thales",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=2f3f2ecf879900f5",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:27.853989"
+    },
+    {
+      "id": "in-141a2ce91b03d9e7",
+      "title": "Customer Success Manager, Executive Director",
+      "company": "JPMorganChase",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=141a2ce91b03d9e7",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:29.228208"
+    },
+    {
+      "id": "in-36bd14fda5b1c6d0",
+      "title": "Customer Success Manager",
+      "company": "DriveCentric",
+      "location": "St. Louis, MO, US",
+      "url": "https://www.indeed.com/viewjob?jk=36bd14fda5b1c6d0",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:25:29.228280"
+    },
+    {
+      "id": "in-10cfcb3f1bf3db2e",
+      "title": "Technical Account Manager",
+      "company": "MathWorks",
+      "location": "Santa Clara, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=10cfcb3f1bf3db2e",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:30.844404"
+    },
+    {
+      "id": "in-28f1c2051cd41cf9",
+      "title": "Alternatives Account Manager",
+      "company": "S&P Global",
+      "location": "Boulder, CO, US",
+      "url": "https://www.indeed.com/viewjob?jk=28f1c2051cd41cf9",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:30.844427"
+    },
+    {
+      "id": "in-2455e4b73add6fb1",
+      "title": "Client Account Manager",
+      "company": "Courser",
+      "location": "Savannah, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=2455e4b73add6fb1",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:30.847986"
+    },
+    {
+      "id": "in-9247987ac57fb7f2",
+      "title": "Account Manager",
+      "company": "Airgas",
+      "location": "San Antonio, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=9247987ac57fb7f2",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:30.855119"
+    },
+    {
+      "id": "in-60744f2d0c035509",
+      "title": "Client Account Manager",
+      "company": "Courser",
+      "location": "Pleasant Grove, UT, US",
+      "url": "https://www.indeed.com/viewjob?jk=60744f2d0c035509",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:30.886421"
+    },
+    {
+      "id": "in-1c0cec55d61bd1db",
+      "title": "Principal Account Manager, Education and Careers",
+      "company": "Google",
+      "location": "San Francisco, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=1c0cec55d61bd1db",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:30.890639"
+    },
+    {
+      "id": "in-f971b5cd9e5820f3",
+      "title": "Principal Account Manager, Home and Consumer Services",
+      "company": "Google",
+      "location": "San Francisco, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=f971b5cd9e5820f3",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:30.901811"
+    },
+    {
+      "id": "in-3420456420e538b5",
+      "title": "Alternatives Account Manager",
+      "company": "S&P Global",
+      "location": "Sacramento, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=3420456420e538b5",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:30.912751"
+    },
+    {
+      "id": "in-4fdde92dfe3eafc1",
+      "title": "Account Manager",
+      "company": "Airgas",
+      "location": "Dorchester, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=4fdde92dfe3eafc1",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:30.916898"
+    },
+    {
+      "id": "in-64a77541fa9d0853",
+      "title": "Account Manager",
+      "company": "Sage",
+      "location": "Lawrenceville, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=64a77541fa9d0853",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:30.917208"
+    },
+    {
+      "id": "in-5c13c9b3247e96f8",
+      "title": "Technical Sales Account Manager",
+      "company": "Behm Consulting LLC",
+      "location": "Milwaukee, WI, US",
+      "url": "https://www.indeed.com/viewjob?jk=5c13c9b3247e96f8",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:30.940416"
+    },
+    {
+      "id": "in-52c90f88bdef7f92",
+      "title": "Enterprise Account Manager",
+      "company": "FXC Intelligence Ltd",
+      "location": "Washington, DC, US",
+      "url": "https://www.indeed.com/viewjob?jk=52c90f88bdef7f92",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:25:31.087104"
+    },
+    {
+      "id": "in-cfab577f62e71a7d",
+      "title": "Customer Success Manager",
+      "company": "TicketManager",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=cfab577f62e71a7d",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:25:34.464295"
+    },
+    {
+      "id": "in-cf7661b5a1a3c9ef",
+      "title": "Sr Manager, SMB Customer Success",
+      "company": "Eulerity",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=cf7661b5a1a3c9ef",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:25:35.508306"
+    },
+    {
+      "id": "in-2fe48fe7a197b3c3",
+      "title": "Technical Account Manager",
+      "company": "LogicGate",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=2fe48fe7a197b3c3",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:25:35.686770"
+    },
+    {
+      "id": "in-0c2aea061f800ed2",
+      "title": "Customer Success Manager \u2013 Mid-Market Accounts",
+      "company": "Paraform",
+      "location": "New York, NY, US",
+      "url": "https://www.indeed.com/viewjob?jk=0c2aea061f800ed2",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:25:36.873136"
+    },
+    {
+      "id": "in-f67f0fcd7e078ef9",
+      "title": "Custodial Account Manager",
+      "company": "C&W Services",
+      "location": "Marlborough, MA, US",
+      "url": "https://www.indeed.com/viewjob?jk=f67f0fcd7e078ef9",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:26:10.368930"
+    },
+    {
+      "id": "in-3cc3f8a768fc7707",
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Florence, MS, US",
+      "url": "https://www.indeed.com/viewjob?jk=3cc3f8a768fc7707",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:26:10.595870"
+    },
+    {
+      "id": "in-cfe137b442593943",
+      "title": "Senior Sales Key Account Manager",
+      "company": "Drops Candies",
+      "location": "Clackamas, OR, US",
+      "url": "https://www.indeed.com/viewjob?jk=cfe137b442593943",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:26:11.123739"
+    },
+    {
+      "id": "in-ec510821eecfaeb4",
+      "title": "Account Manager",
+      "company": "Wallace Management Co.",
+      "location": "Alexandria, LA, US",
+      "url": "https://www.indeed.com/viewjob?jk=ec510821eecfaeb4",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:26:13.907983"
+    },
+    {
+      "id": "in-de247b5a53c129cd",
+      "title": "Account Manager, Memory Sales",
+      "company": "Samsung Semiconductor Inc (US)",
+      "location": "San Jose, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=de247b5a53c129cd",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:26:16.109101"
+    },
+    {
+      "id": "in-8034e9a325717a90",
+      "title": "Key Account Manager",
+      "company": "United Rentals",
+      "location": "San Antonio, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=8034e9a325717a90",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:26:16.890543"
+    },
+    {
+      "id": "in-06bb23d741cf5e3b",
+      "title": "Account Manager (Entertainment)",
+      "company": "nan",
+      "location": "Encino, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=06bb23d741cf5e3b",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:26:16.903097"
+    },
+    {
+      "id": "in-59ebae516eacba03",
+      "title": "Account Manager, Startups",
+      "company": "Amazon Web Services",
+      "location": "Santa Monica, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=59ebae516eacba03",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:26:16.903321"
+    },
+    {
+      "id": "in-c76b413bb7f85a76",
+      "title": "Account Manager (Entertainment)",
+      "company": "Lucas Horsfall",
+      "location": "Encino, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=c76b413bb7f85a76",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:26:16.927364"
+    },
+    {
+      "id": "in-0d1a52fc47fb7106",
+      "title": "Bilingual Licensed Account Manager",
+      "company": "A to Z Insurance",
+      "location": "DE, US",
+      "url": "https://www.indeed.com/viewjob?jk=0d1a52fc47fb7106",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:26:16.936063"
+    },
+    {
+      "id": "in-cb2bbd6bb34e8988",
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "White Lake, MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=cb2bbd6bb34e8988",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:26:17.940960"
+    },
+    {
+      "id": "in-d1918f431028ee90",
+      "title": "Sales Account Manager",
+      "company": "Masas Inc",
+      "location": "Orlando, FL, US",
+      "url": "https://www.indeed.com/viewjob?jk=d1918f431028ee90",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:26:19.478005"
+    },
+    {
+      "id": "in-8495ff8b6a25fd26",
+      "title": "Account Manager | Personal Lines",
+      "company": "Oakbridge Insurance",
+      "location": "Zebulon, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=8495ff8b6a25fd26",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:26:19.517601"
+    },
+    {
+      "id": "in-a5e09ef6f2cf4f58",
+      "title": "Sales Account Manager - Alpharetta, GA",
+      "company": "ADM",
+      "location": "Alpharetta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=a5e09ef6f2cf4f58",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:26:20.658304"
+    },
+    {
+      "id": "in-c02819447e00393a",
+      "title": "Sales Account Manager",
+      "company": "Valley Steel & Wire Co.",
+      "location": "Fort Collins, CO, US",
+      "url": "https://www.indeed.com/viewjob?jk=c02819447e00393a",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:26:20.990921"
+    },
+    {
+      "id": "in-fdfc0d6a1923d345",
+      "title": "Key Account Manager",
+      "company": "Solenis",
+      "location": "TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=fdfc0d6a1923d345",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:26:21.115551"
+    },
+    {
+      "id": "in-3668542de5923888",
+      "title": "Account Manager- Grocery Retail Merchandising",
+      "company": "Dirty Hands",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=3668542de5923888",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:26:21.987031"
+    },
+    {
+      "id": "in-1546a3ff3cf4d1b9",
+      "title": "Account Manager / Outside Sales Representative - Charleston, SC area",
+      "company": "Spectrum Paint",
+      "location": "Charleston, SC, US",
+      "url": "https://www.indeed.com/viewjob?jk=1546a3ff3cf4d1b9",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:26:22.112594"
+    },
+    {
+      "id": "in-0bee25ffceb6cedf",
+      "title": "Account Manager, Partnership Marketing",
+      "company": "U.S. Ski and Snowboard Association",
+      "location": "Park City, UT, US",
+      "url": "https://www.indeed.com/viewjob?jk=0bee25ffceb6cedf",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:26:22.358932"
+    },
+    {
+      "id": "in-365c7d58c67cf97c",
+      "title": "ACCOUNT MANAGER",
+      "company": "Wolter",
+      "location": "Wausau, WI, US",
+      "url": "https://www.indeed.com/viewjob?jk=365c7d58c67cf97c",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:26:22.506423"
+    },
+    {
+      "id": "in-3f552bf3646bb5f7",
+      "title": "Account Manager",
+      "company": "Bridgehead IT",
+      "location": "San Antonio, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=3f552bf3646bb5f7",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:26:22.515728"
+    },
+    {
+      "id": "in-c62ce49a74354988",
+      "title": "In House Commercial Account Manager",
+      "company": "Royal Flush Plumbing",
+      "location": "Lawrenceville, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=c62ce49a74354988",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:26:22.607000"
+    },
+    {
+      "id": "in-f2ab74374d35d3cf",
+      "title": "Account Manager/Sales Representative (JoCo)",
+      "company": "Veritas Wine Selections LLC",
+      "location": "Overland Park, KS, US",
+      "url": "https://www.indeed.com/viewjob?jk=f2ab74374d35d3cf",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:26:22.609946"
+    },
+    {
+      "id": "in-f4feca6ce558470d",
+      "title": "Account Manager - State Farm Agent Team Member",
+      "company": "State Farm",
+      "location": "Roswell, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=f4feca6ce558470d",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:26:22.615796"
+    },
+    {
+      "id": "in-df517b5a75c32b4e",
+      "title": "National Account Manager",
+      "company": "nan",
+      "location": "Rockford, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=df517b5a75c32b4e",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:26:22.651377"
+    },
+    {
+      "id": "in-384f2ea37a40c45b",
+      "title": "Account Manager",
+      "company": "Visionary Broadband",
+      "location": "Gillette, WY, US",
+      "url": "https://www.indeed.com/viewjob?jk=384f2ea37a40c45b",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:26:22.808768"
+    },
+    {
+      "id": "in-4e3e7a6522a9bd6f",
+      "title": "BICSI RCDD (ICT Designer) \u2013 Account Manager",
+      "company": "Technic Solutions",
+      "location": "Cordova, TN, US",
+      "url": "https://www.indeed.com/viewjob?jk=4e3e7a6522a9bd6f",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:26:23.013642"
+    },
+    {
+      "id": "in-420061be057b5f6c",
+      "title": "National Account Manager",
+      "company": "Cogent Communications",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=420061be057b5f6c",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:26:23.164059"
+    },
+    {
+      "id": "in-2ff0ab4e67509596",
+      "title": "National Account Manager",
+      "company": "Cogent Communications",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=2ff0ab4e67509596",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:26:23.983261"
+    },
+    {
+      "id": "in-47ccf9a2f60d1642",
+      "title": "Global Account Manager",
+      "company": "Cogent Communications",
+      "location": "Herndon, VA, US",
+      "url": "https://www.indeed.com/viewjob?jk=47ccf9a2f60d1642",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:26:24.405353"
+    },
+    {
+      "id": "in-bbad9648ce2cf4a5",
+      "title": "Commercial Account Manager / Business Development",
+      "company": "PARKER ELECTRIC",
+      "location": "Goodlettsville, TN, US",
+      "url": "https://www.indeed.com/viewjob?jk=bbad9648ce2cf4a5",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:26:24.831537"
+    },
+    {
+      "id": "in-2b11f04de699c2cc",
+      "title": "Global Account Manager",
+      "company": "Cogent Communications",
+      "location": "Atlanta, GA, US",
+      "url": "https://www.indeed.com/viewjob?jk=2b11f04de699c2cc",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:26:25.057878"
+    },
+    {
+      "id": "in-fdf9a24759b69fec",
+      "title": "Commercial Collaboration Sales Account Manager - Inside Sales Rep 3, Outbound",
+      "company": "HP",
+      "location": "Austin, TX, US",
+      "url": "https://www.indeed.com/viewjob?jk=fdf9a24759b69fec",
+      "status": "external_application",
+      "message": "No direct apply available",
+      "timestamp": "2026-02-03T17:26:25.430431"
+    },
+    {
+      "id": "in-407102645f50c866",
+      "title": "Commercial Insurance Account Manager",
+      "company": "Somers Agency",
+      "location": "Lorain, OH, US",
+      "url": "https://www.indeed.com/viewjob?jk=407102645f50c866",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:26:25.613437"
+    },
+    {
+      "id": "in-6d2c814423853e13",
+      "title": "National Account Manager",
+      "company": "Cogent Communications",
+      "location": "Detroit, MI, US",
+      "url": "https://www.indeed.com/viewjob?jk=6d2c814423853e13",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:26:25.907928"
+    },
+    {
+      "id": "in-b45639e6f100b417",
+      "title": "Personal Lines Account Manager",
+      "company": "FrameCo",
+      "location": "Twinsburg, OH, US",
+      "url": "https://www.indeed.com/viewjob?jk=b45639e6f100b417",
+      "status": "submitted",
+      "message": "",
+      "timestamp": "2026-02-03T17:26:25.953338"
+    },
+    {
+      "id": "in-0aa752d6026420f8",
+      "title": "National Account Manager",
+      "company": "Cogent Communications",
+      "location": "New Orleans, LA, US",
+      "url": "https://www.indeed.com/viewjob?jk=0aa752d6026420f8",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:26:27.836791"
+    },
+    {
+      "id": "in-f48a5a4965f1b2eb",
+      "title": "Global Account Manager",
+      "company": "Cogent Communications",
+      "location": "Chicago, IL, US",
+      "url": "https://www.indeed.com/viewjob?jk=f48a5a4965f1b2eb",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:26:28.112636"
+    },
+    {
+      "id": "in-2395c25fe1a9f847",
+      "title": "Global Account Manager",
+      "company": "Cogent Communications",
+      "location": "Washington, DC, US",
+      "url": "https://www.indeed.com/viewjob?jk=2395c25fe1a9f847",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:26:29.028409"
+    },
+    {
+      "id": "in-79c9c4bc5033b3ea",
+      "title": "Industrial Sales Account Manager",
+      "company": "Baldwin Supply Company",
+      "location": "Des Moines, IA, US",
+      "url": "https://www.indeed.com/viewjob?jk=79c9c4bc5033b3ea",
+      "status": "error",
+      "message": "Could not complete application flow",
+      "timestamp": "2026-02-03T17:26:29.489271"
+    }
+  ],
+  "timestamp": "2026-02-03T17:26:29.489348"
+}

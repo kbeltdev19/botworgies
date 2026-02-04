@@ -1,0 +1,42 @@
+{
+  "campaign_id": "matt_working_20260203_1727",
+  "total": 1000,
+  "submitted": 0,
+  "failed": 5,
+  "success_rate": 0.0,
+  "duration_minutes": 1.7673416499999999,
+  "start": "2026-02-03T17:27:46.631776",
+  "end": "2026-02-03T17:29:32.672275",
+  "results": [
+    {
+      "url": "https://www.indeed.com/viewjob?jk=f5f33e770dc16b50",
+      "success": false,
+      "platform": "indeed",
+      "error": "Error code: 429 - {'statusCode': 429, 'error': 'Too Many Requests', 'message': \"You've exceeded your max concurrent sessions limit (limit 100, currently 100). Please contact support to increase your limit.\"}"
+    },
+    {
+      "url": "https://www.indeed.com/viewjob?jk=a48fa5a64f6e1262",
+      "success": false,
+      "platform": "indeed",
+      "error": "Error code: 429 - {'error': 'Too Many Requests', 'message': \"You've exceeded your burst rate limit (50 requests per 1 minute). You can try again in 56 seconds.\", 'statusCode': 429}"
+    },
+    {
+      "url": "https://www.indeed.com/viewjob?jk=7245e10870694e4a",
+      "success": false,
+      "platform": "indeed",
+      "error": "Error code: 429 - {'statusCode': 429, 'error': 'Too Many Requests', 'message': \"You've exceeded your max concurrent sessions limit (limit 100, currently 100). Please contact support to increase your limit.\"}"
+    },
+    {
+      "url": "https://www.indeed.com/viewjob?jk=314ddb892cb599f7",
+      "success": false,
+      "platform": "indeed",
+      "error": "Error code: 429 - {'statusCode': 429, 'error': 'Too Many Requests', 'message': \"You've exceeded your max concurrent sessions limit (limit 100, currently 100). Please contact support to increase your limit.\"}"
+    },
+    {
+      "url": "https://www.indeed.com/viewjob?jk=39d9f19269c37655",
+      "success": false,
+      "platform": "indeed",
+      "error": "Error code: 429 - {'error': 'Too Many Requests', 'message': \"You've exceeded your burst rate limit (50 requests per 1 minute). You can try again in 53 seconds.\", 'statusCode': 429}"
+    }
+  ]
+}

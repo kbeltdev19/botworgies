@@ -32,6 +32,7 @@ from .greenhouse import GreenhouseAdapter
 from .workday import WorkdayAdapter
 from .lever import LeverAdapter
 from .company import CompanyWebsiteAdapter
+from .external import ExternalApplicationAdapter
 from .clearancejobs import ClearanceJobsAdapter
 from .rss_adapter import RSSAdapter
 from .ashby import AshbyAdapter
@@ -107,6 +108,7 @@ ADAPTERS = {
     "remotive": RemotiveAdapter,
     "weworkremotely": WeWorkRemotelyAdapter,
     "company": CompanyWebsiteAdapter,
+    "external": ExternalApplicationAdapter,
     "rss": RSSAdapter,
 }
 

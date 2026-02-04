@@ -315,22 +315,79 @@
                         </div>
                     </div>
 
+                    <!-- Campaign Mode Selection -->
+                    <div class="card p-6 mb-6 border-2 border-purple-200 bg-purple-50">
+                        <h2 class="text-xl font-semibold mb-4">🎮 Campaign Mode</h2>
+                        <div class="space-y-4">
+                            <!-- Real vs Synthetic Toggle -->
+                            <div class="flex items-center justify-between p-3 bg-white rounded-lg">
+                                <div>
+                                    <span class="font-medium">Application Mode</span>
+                                    <p class="text-xs text-gray-500" id="mode-description">Test mode - no real applications</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm text-blue-600 font-medium">Test</span>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" id="real_mode_toggle" class="sr-only peer">
+                                        <div class="w-14 h-7 bg-blue-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-red-600"></div>
+                                    </label>
+                                    <span class="text-sm text-red-600 font-medium">REAL</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Auto-submit vs Review Toggle -->
+                            <div class="flex items-center justify-between p-3 bg-white rounded-lg">
+                                <div>
+                                    <span class="font-medium">Submit Mode</span>
+                                    <p class="text-xs text-gray-500" id="submit-description">Forms will be filled but NOT submitted</p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-sm text-amber-600 font-medium">Review</span>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" id="submit_mode_toggle" class="sr-only peer">
+                                        <div class="w-14 h-7 bg-amber-500 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-green-600"></div>
+                                    </label>
+                                    <span class="text-sm text-green-600 font-medium">Auto</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Warning Box -->
+                            <div id="real-mode-warning" class="hidden p-4 bg-red-100 border-2 border-red-400 rounded-lg">
+                                <div class="flex items-start gap-3">
+                                    <span class="text-2xl">⚠️</span>
+                                    <div>
+                                        <h3 class="font-bold text-red-800">REAL APPLICATIONS MODE</h3>
+                                        <p class="text-sm text-red-700 mt-1">
+                                            When enabled, the system will ACTUALLY submit job applications. 
+                                            You WILL receive confirmation emails from employers.
+                                        </p>
+                                        <p class="text-sm text-red-700 mt-1 font-semibold" id="auto-submit-warning">
+                                            Auto-submit is OFF - forms will stop for your review.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Cover Letter Option -->
+                            <label class="flex items-center gap-2 p-3 bg-white rounded-lg">
+                                <input type="checkbox" id="generate_cover_letter" checked class="rounded text-purple-600">
+                                <span class="text-sm">Generate cover letters</span>
+                            </label>
+                        </div>
+                    </div>
+
                     <!-- Batch Apply -->
                     <div class="card p-6">
                         <h2 class="text-xl font-semibold mb-4">⚡ Batch Apply</h2>
                         <div class="flex items-center gap-4 mb-4">
-                            <label class="flex items-center gap-2">
-                                <input type="checkbox" id="generate_cover_letter" checked class="rounded text-purple-600">
-                                <span class="text-sm">Generate cover letters</span>
-                            </label>
-                            <label class="flex items-center gap-2">
-                                <input type="checkbox" id="auto_submit" class="rounded text-red-600">
-                                <span class="text-sm text-red-600">Auto-submit</span>
-                            </label>
+                            <button id="batch-apply-btn" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 font-medium disabled:opacity-50" disabled>
+                                🚀 Apply to Selected Jobs (<span id="selected-count">0</span>)
+                            </button>
                         </div>
-                        <button id="batch-apply-btn" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 font-medium disabled:opacity-50" disabled>
-                            🚀 Apply to Selected Jobs (<span id="selected-count">0</span>)
-                        </button>
+                        <p class="text-xs text-gray-500 text-center">
+                            Mode: <span id="current-mode-display" class="font-medium text-blue-600">Test</span> | 
+                            Submit: <span id="current-submit-display" class="font-medium text-amber-600">Review</span>
+                        </p>
                     </div>
 
                     <!-- Single Apply -->
@@ -444,6 +501,80 @@
         let searchResults = [];
         let linkedInCookieSet = false;
         let parallelSessions = parseInt(localStorage.getItem('parallel_sessions')) || 10;
+        
+        // Campaign Mode State
+        let campaignMode = {
+            realMode: false,  // false = test/synthetic, true = real
+            autoSubmit: false // false = review, true = auto-submit
+        };
+
+        // === Campaign Mode Toggle Handlers ===
+        document.addEventListener('DOMContentLoaded', function() {
+            const realModeToggle = document.getElementById('real_mode_toggle');
+            const submitModeToggle = document.getElementById('submit_mode_toggle');
+            const warningBox = document.getElementById('real-mode-warning');
+            const autoSubmitWarning = document.getElementById('auto-submit-warning');
+            const modeDesc = document.getElementById('mode-description');
+            const submitDesc = document.getElementById('submit-description');
+            const modeDisplay = document.getElementById('current-mode-display');
+            const submitDisplay = document.getElementById('current-submit-display');
+            
+            // Real Mode Toggle
+            realModeToggle.addEventListener('change', function() {
+                campaignMode.realMode = this.checked;
+                
+                if (this.checked) {
+                    // Real mode enabled
+                    warningBox.classList.remove('hidden');
+                    modeDesc.textContent = "REAL MODE - Will actually submit applications!";
+                    modeDesc.classList.add('text-red-600', 'font-semibold');
+                    modeDisplay.textContent = "REAL";
+                    modeDisplay.className = "font-medium text-red-600";
+                } else {
+                    // Test mode
+                    warningBox.classList.add('hidden');
+                    modeDesc.textContent = "Test mode - no real applications";
+                    modeDesc.classList.remove('text-red-600', 'font-semibold');
+                    modeDisplay.textContent = "Test";
+                    modeDisplay.className = "font-medium text-blue-600";
+                }
+                
+                updateAutoSubmitWarning();
+            });
+            
+            // Submit Mode Toggle
+            submitModeToggle.addEventListener('change', function() {
+                campaignMode.autoSubmit = this.checked;
+                
+                if (this.checked) {
+                    // Auto-submit enabled
+                    submitDesc.textContent = "Forms will be filled AND submitted automatically";
+                    submitDesc.classList.add('text-green-600');
+                    submitDisplay.textContent = "Auto";
+                    submitDisplay.className = "font-medium text-green-600";
+                } else {
+                    // Review mode
+                    submitDesc.textContent = "Forms will be filled but NOT submitted";
+                    submitDesc.classList.remove('text-green-600');
+                    submitDisplay.textContent = "Review";
+                    submitDisplay.className = "font-medium text-amber-600";
+                }
+                
+                updateAutoSubmitWarning();
+            });
+            
+            function updateAutoSubmitWarning() {
+                if (campaignMode.realMode && campaignMode.autoSubmit) {
+                    autoSubmitWarning.textContent = "⚠️ WARNING: Auto-submit is ON - applications will be submitted automatically!";
+                    autoSubmitWarning.className = "text-sm text-red-700 mt-1 font-bold";
+                } else if (campaignMode.realMode && !campaignMode.autoSubmit) {
+                    autoSubmitWarning.textContent = "Auto-submit is OFF - forms will stop for your review.";
+                    autoSubmitWarning.className = "text-sm text-red-700 mt-1 font-semibold";
+                } else {
+                    autoSubmitWarning.textContent = "";
+                }
+            }
+        });
 
         // === Speedometer Functions ===
         
@@ -1015,9 +1146,30 @@
             const jobs = Array.from(selectedJobs).map(idx => searchResults[idx]);
             if (jobs.length === 0) return;
 
-            const autoSubmit = document.getElementById('auto_submit').checked;
+            // Get campaign mode settings
+            const realMode = document.getElementById('real_mode_toggle').checked;
+            const autoSubmit = document.getElementById('submit_mode_toggle').checked;
             const generateCover = document.getElementById('generate_cover_letter').checked;
             const sessions = parallelSessions || 10;
+            
+            // Confirmation for real mode
+            if (realMode) {
+                const modeText = autoSubmit ? "REAL APPLICATIONS with AUTO-SUBMIT" : "REAL APPLICATIONS with REVIEW";
+                const confirmMessage = autoSubmit 
+                    ? `⚠️ WARNING: You are about to ACTUALLY submit ${jobs.length} job applications!\n\n` +
+                      `Mode: ${modeText}\n` +
+                      `You WILL receive confirmation emails from employers.\n\n` +
+                      `Are you absolutely sure you want to continue?`
+                    : `You are about to process ${jobs.length} jobs in REAL mode.\n\n` +
+                      `Forms will be filled but you'll review each before submission.\n\n` +
+                      `Continue?`;
+                
+                if (!confirm(confirmMessage)) {
+                    return;
+                }
+            } else {
+                showStatus(`Starting TEST campaign for ${jobs.length} jobs...`, 'info');
+            }
             
             document.getElementById('progress-container').classList.remove('hidden');
             
@@ -1036,7 +1188,9 @@
                                 job_url: job.url, 
                                 auto_submit: autoSubmit, 
                                 generate_cover_letter: generateCover,
-                                parallel_sessions: sessions
+                                parallel_sessions: sessions,
+                                real_mode: realMode,
+                                application_mode: realMode ? 'real' : 'synthetic'
                             })
                         });
                         if (res.ok) completed++;
@@ -1052,8 +1206,12 @@
                     
                     document.getElementById('progress-text').textContent = `${total} / ${jobs.length}`;
                     document.getElementById('progress-bar').style.width = `${(total / jobs.length) * 100}%`;
+                    const modeIndicator = realMode ? 
+                        (autoSubmit ? '<span class="text-red-600 font-bold">[REAL-AUTO]</span>' : '<span class="text-amber-600 font-bold">[REAL-REVIEW]</span>') :
+                        '<span class="text-blue-600">[TEST]</span>';
+                    
                     document.getElementById('progress-status').innerHTML = 
-                        `⚡ ${sessions} parallel sessions | ✅ ${completed} | ❌ ${failed} | 📈 ${rate}/min`;
+                        `${modeIndicator} ⚡ ${sessions} sessions | ✅ ${completed} | ❌ ${failed} | 📈 ${rate}/min`;
                 });
                 await Promise.all(promises);
             };

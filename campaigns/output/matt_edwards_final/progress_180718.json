@@ -1,0 +1,1103 @@
+{
+  "stats": {
+    "success": 48,
+    "failed": 752,
+    "external": 0
+  },
+  "results": [
+    {
+      "job_id": "job_000700",
+      "company": "Iron Mountain",
+      "title": "Client Success Manager",
+      "url": "https://jobs.ironmountain.com/search?keywords=Client%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:22.219261"
+    },
+    {
+      "job_id": "job_000705",
+      "company": "Databricks",
+      "title": "AWS Account Manager",
+      "url": "https://www.databricks.com/company/careers/open-positions?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:27.808173"
+    },
+    {
+      "job_id": "job_000704",
+      "company": "Snowflake",
+      "title": "AWS Account Manager",
+      "url": "https://careers.snowflake.com/us/en/search-results?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:28.349136"
+    },
+    {
+      "job_id": "job_000706",
+      "company": "HashiCorp",
+      "title": "AWS Account Manager",
+      "url": "https://www.hashicorp.com/careers/jobs?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:31.224832"
+    },
+    {
+      "job_id": "job_000708",
+      "company": "Okta",
+      "title": "AWS Account Manager",
+      "url": "https://www.okta.com/company/careers/?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:35.944960"
+    },
+    {
+      "job_id": "job_000709",
+      "company": "Cloudflare",
+      "title": "AWS Account Manager",
+      "url": "https://www.cloudflare.com/careers/jobs/?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:36.889644"
+    },
+    {
+      "job_id": "job_000701",
+      "company": "Salesforce",
+      "title": "AWS Account Manager",
+      "url": "https://careers.salesforce.com/en/jobs/?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:04:40.642359"
+    },
+    {
+      "job_id": "job_000710",
+      "company": "Datadog",
+      "title": "AWS Account Manager",
+      "url": "https://careers.datadoghq.com/?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:42.352204"
+    },
+    {
+      "job_id": "job_000703",
+      "company": "ServiceNow",
+      "title": "AWS Account Manager",
+      "url": "https://careers.servicenow.com/careers/jobs?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:04:43.299469"
+    },
+    {
+      "job_id": "job_000711",
+      "company": "MongoDB",
+      "title": "AWS Account Manager",
+      "url": "https://www.mongodb.com/careers/jobs?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:43.339098"
+    },
+    {
+      "job_id": "job_000713",
+      "company": "Elastic",
+      "title": "AWS Account Manager",
+      "url": "https://www.elastic.co/careers/jobs?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:47.970906"
+    },
+    {
+      "job_id": "job_000715",
+      "company": "Fastly",
+      "title": "AWS Account Manager",
+      "url": "https://www.fastly.com/about/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:49.702250"
+    },
+    {
+      "job_id": "job_000714",
+      "company": "GitLab",
+      "title": "AWS Account Manager",
+      "url": "https://about.gitlab.com/jobs/?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:50.105400"
+    },
+    {
+      "job_id": "job_000707",
+      "company": "Twilio",
+      "title": "AWS Account Manager",
+      "url": "https://www.twilio.com/en-us/company/jobs?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:04:52.564115"
+    },
+    {
+      "job_id": "job_000712",
+      "company": "Confluent",
+      "title": "AWS Account Manager",
+      "url": "https://www.confluent.io/careers/positions/?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:53.418720"
+    },
+    {
+      "job_id": "job_000716",
+      "company": "PagerDuty",
+      "title": "AWS Account Manager",
+      "url": "https://www.pagerduty.com/careers/jobs/?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:53.908153"
+    },
+    {
+      "job_id": "job_000717",
+      "company": "New Relic",
+      "title": "AWS Account Manager",
+      "url": "https://newrelic.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:55.537818"
+    },
+    {
+      "job_id": "job_000718",
+      "company": "LaunchDarkly",
+      "title": "AWS Account Manager",
+      "url": "https://launchdarkly.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:57.815258"
+    },
+    {
+      "job_id": "job_000719",
+      "company": "CircleCI",
+      "title": "AWS Account Manager",
+      "url": "https://circleci.com/careers/jobs/?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:04:58.569887"
+    },
+    {
+      "job_id": "job_000720",
+      "company": "Miro",
+      "title": "AWS Account Manager",
+      "url": "https://miro.com/careers/?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:00.716650"
+    },
+    {
+      "job_id": "job_000721",
+      "company": "Figma",
+      "title": "AWS Account Manager",
+      "url": "https://www.figma.com/careers/?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:00.787241"
+    },
+    {
+      "job_id": "job_000722",
+      "company": "Notion",
+      "title": "AWS Account Manager",
+      "url": "https://www.notion.so/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:01.325660"
+    },
+    {
+      "job_id": "job_000724",
+      "company": "Monday.com",
+      "title": "AWS Account Manager",
+      "url": "https://monday.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:06.068779"
+    },
+    {
+      "job_id": "job_000725",
+      "company": "Airtable",
+      "title": "AWS Account Manager",
+      "url": "https://www.airtable.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:06.950099"
+    },
+    {
+      "job_id": "job_000727",
+      "company": "Zoom",
+      "title": "AWS Account Manager",
+      "url": "https://careers.zoom.us/jobs?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:07.421700"
+    },
+    {
+      "job_id": "job_000728",
+      "company": "Webex",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.webex.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.webex.com/careers?search=AWS%20Account%20Manag"
+      },
+      "timestamp": "2026-02-03T18:05:09.272204"
+    },
+    {
+      "job_id": "job_000726",
+      "company": "Slack",
+      "title": "AWS Account Manager",
+      "url": "https://slack.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:10.879969"
+    },
+    {
+      "job_id": "job_000730",
+      "company": "Box",
+      "title": "AWS Account Manager",
+      "url": "https://www.box.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:13.323049"
+    },
+    {
+      "job_id": "job_000729",
+      "company": "Dropbox",
+      "title": "AWS Account Manager",
+      "url": "https://www.dropbox.com/jobs?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:14.164280"
+    },
+    {
+      "job_id": "job_000731",
+      "company": "DocuSign",
+      "title": "AWS Account Manager",
+      "url": "https://www.docusign.com/company/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:17.774260"
+    },
+    {
+      "job_id": "job_000733",
+      "company": "Canva",
+      "title": "AWS Account Manager",
+      "url": "https://www.canva.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:19.502473"
+    },
+    {
+      "job_id": "job_000734",
+      "company": "HubSpot",
+      "title": "AWS Account Manager",
+      "url": "https://www.hubspot.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:20.503193"
+    },
+    {
+      "job_id": "job_000723",
+      "company": "Asana",
+      "title": "AWS Account Manager",
+      "url": "https://asana.com/jobs?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "filled",
+        "note": "Form filled but submit not clicked"
+      },
+      "timestamp": "2026-02-03T18:05:20.680962"
+    },
+    {
+      "job_id": "job_000735",
+      "company": "Zendesk",
+      "title": "AWS Account Manager",
+      "url": "https://www.zendesk.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:23.753318"
+    },
+    {
+      "job_id": "job_000736",
+      "company": "Shopify",
+      "title": "AWS Account Manager",
+      "url": "https://www.shopify.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:26.724040"
+    },
+    {
+      "job_id": "job_000737",
+      "company": "Atlassian",
+      "title": "AWS Account Manager",
+      "url": "https://www.atlassian.com/company/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:26.786706"
+    },
+    {
+      "job_id": "job_000738",
+      "company": "Freshworks",
+      "title": "AWS Account Manager",
+      "url": "https://www.freshworks.com/company/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:29.429818"
+    },
+    {
+      "job_id": "job_000741",
+      "company": "AWS",
+      "title": "AWS Account Manager",
+      "url": "https://www.amazon.jobs/en/search?base_query=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:33.470952"
+    },
+    {
+      "job_id": "job_000739",
+      "company": "Zoho",
+      "title": "AWS Account Manager",
+      "url": "https://www.zoho.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:34.124211"
+    },
+    {
+      "job_id": "job_000740",
+      "company": "SAP",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.sap.com/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:34.613575"
+    },
+    {
+      "job_id": "job_000742",
+      "company": "Microsoft",
+      "title": "AWS Account Manager",
+      "url": "https://careers.microsoft.com/us/en/search-results?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:36.099229"
+    },
+    {
+      "job_id": "job_000732",
+      "company": "Adobe",
+      "title": "AWS Account Manager",
+      "url": "https://careers.adobe.com/us/en/search-results?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:05:37.547899"
+    },
+    {
+      "job_id": "job_000745",
+      "company": "IBM",
+      "title": "AWS Account Manager",
+      "url": "https://careers.ibm.com/job/search?query=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:40.283921"
+    },
+    {
+      "job_id": "job_000743",
+      "company": "Google Cloud",
+      "title": "AWS Account Manager",
+      "url": "https://careers.google.com/jobs/results/?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:40.344424"
+    },
+    {
+      "job_id": "job_000747",
+      "company": "Red Hat",
+      "title": "AWS Account Manager",
+      "url": "https://careers.redhat.com/jobs?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:43.367398"
+    },
+    {
+      "job_id": "job_000744",
+      "company": "Oracle",
+      "title": "AWS Account Manager",
+      "url": "https://careers.oracle.com/jobs/?keyword=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:46.940322"
+    },
+    {
+      "job_id": "job_000748",
+      "company": "HPE",
+      "title": "AWS Account Manager",
+      "url": "https://careers.hpe.com/jobs?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:50.111808"
+    },
+    {
+      "job_id": "job_000749",
+      "company": "Dell",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.dell.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:51.520524"
+    },
+    {
+      "job_id": "job_000750",
+      "company": "NetApp",
+      "title": "AWS Account Manager",
+      "url": "https://careers.netapp.com/jobs?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:52.165010"
+    },
+    {
+      "job_id": "job_000751",
+      "company": "Booz Allen Hamilton",
+      "title": "AWS Account Manager",
+      "url": "https://careers.boozallen.com/jobs?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:54.541122"
+    },
+    {
+      "job_id": "job_000752",
+      "company": "SAIC",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.saic.com/search-jobs?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:56.383384"
+    },
+    {
+      "job_id": "job_000756",
+      "company": "General Dynamics",
+      "title": "AWS Account Manager",
+      "url": "https://careers.gd.com/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.gd.com/search?q=AWS%20Account%20Manager\nCal"
+      },
+      "timestamp": "2026-02-03T18:05:59.536214"
+    },
+    {
+      "job_id": "job_000753",
+      "company": "Leidos",
+      "title": "AWS Account Manager",
+      "url": "https://careers.leidos.com/jobs?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:02.067654"
+    },
+    {
+      "job_id": "job_000755",
+      "company": "Lockheed Martin",
+      "title": "AWS Account Manager",
+      "url": "https://www.lockheedmartinjobs.com/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:04.104424"
+    },
+    {
+      "job_id": "job_000757",
+      "company": "Raytheon",
+      "title": "AWS Account Manager",
+      "url": "https://careers.rtx.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:07.967423"
+    },
+    {
+      "job_id": "job_000746",
+      "company": "VMware",
+      "title": "AWS Account Manager",
+      "url": "https://careers.vmware.com/main/jobs?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://careers.vmware.com/main/jo"
+      },
+      "timestamp": "2026-02-03T18:06:09.252430"
+    },
+    {
+      "job_id": "job_000758",
+      "company": "CACI",
+      "title": "AWS Account Manager",
+      "url": "https://careers.caci.com/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:09.265426"
+    },
+    {
+      "job_id": "job_000754",
+      "company": "Northrop Grumman",
+      "title": "AWS Account Manager",
+      "url": "https://www.northropgrumman.com/jobs?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:10.292639"
+    },
+    {
+      "job_id": "job_000762",
+      "company": "Perspecta",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.perspecta.com/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.perspecta.com/search?q=AWS%20Account%20Manager"
+      },
+      "timestamp": "2026-02-03T18:06:12.447141"
+    },
+    {
+      "job_id": "job_000759",
+      "company": "BAE Systems",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.baesystems.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:13.460334"
+    },
+    {
+      "job_id": "job_000760",
+      "company": "L3Harris",
+      "title": "AWS Account Manager",
+      "url": "https://careers.l3harris.com/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:14.261289"
+    },
+    {
+      "job_id": "job_000761",
+      "company": "Boeing",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.boeing.com/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:15.036725"
+    },
+    {
+      "job_id": "job_000763",
+      "company": "ManTech",
+      "title": "AWS Account Manager",
+      "url": "https://mantech.com/careers/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:17.398812"
+    },
+    {
+      "job_id": "job_000764",
+      "company": "General Atomics",
+      "title": "AWS Account Manager",
+      "url": "https://www.ga-careers.com/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:17.738908"
+    },
+    {
+      "job_id": "job_000766",
+      "company": "SpaceX",
+      "title": "AWS Account Manager",
+      "url": "https://www.spacex.com/careers/jobs?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:20.031501"
+    },
+    {
+      "job_id": "job_000765",
+      "company": "Sierra Nevada",
+      "title": "AWS Account Manager",
+      "url": "https://www.sncorp.com/careers/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:20.877973"
+    },
+    {
+      "job_id": "job_000767",
+      "company": "Blue Origin",
+      "title": "AWS Account Manager",
+      "url": "https://www.blueorigin.com/careers/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:22.038129"
+    },
+    {
+      "job_id": "job_000768",
+      "company": "Palantir",
+      "title": "AWS Account Manager",
+      "url": "https://www.palantir.com/careers/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:22.955867"
+    },
+    {
+      "job_id": "job_000769",
+      "company": "Anduril",
+      "title": "AWS Account Manager",
+      "url": "https://www.anduril.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:23.296278"
+    },
+    {
+      "job_id": "job_000771",
+      "company": "HawkEye 360",
+      "title": "AWS Account Manager",
+      "url": "https://www.he360.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:27.203474"
+    },
+    {
+      "job_id": "job_000774",
+      "company": "Peraton",
+      "title": "AWS Account Manager",
+      "url": "https://careers.peraton.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:30.363595"
+    },
+    {
+      "job_id": "job_000773",
+      "company": "Maxar",
+      "title": "AWS Account Manager",
+      "url": "https://maxar.wd1.myworkdayjobs.com/en-US/Maxar?query=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:30.981320"
+    },
+    {
+      "job_id": "job_000770",
+      "company": "Shield AI",
+      "title": "AWS Account Manager",
+      "url": "https://www.shield.ai/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:31.246142"
+    },
+    {
+      "job_id": "job_000775",
+      "company": "VTG",
+      "title": "AWS Account Manager",
+      "url": "https://www.vtg.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:33.823794"
+    },
+    {
+      "job_id": "job_000778",
+      "company": "KPMG",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.kpmg.com/us/en/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.kpmg.com/us/en/search?keywords=AWS%20Account%2"
+      },
+      "timestamp": "2026-02-03T18:06:34.421125"
+    },
+    {
+      "job_id": "job_000776",
+      "company": "Accenture",
+      "title": "AWS Account Manager",
+      "url": "https://www.accenture.com/us-en/careers?jk=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:36.181747"
+    },
+    {
+      "job_id": "job_000777",
+      "company": "Deloitte",
+      "title": "AWS Account Manager",
+      "url": "https://apply.deloitte.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:40.354212"
+    },
+    {
+      "job_id": "job_000779",
+      "company": "PwC",
+      "title": "AWS Account Manager",
+      "url": "https://pwc.wd3.myworkdayjobs.com?query=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:41.145829"
+    },
+    {
+      "job_id": "job_000781",
+      "company": "Intuit",
+      "title": "AWS Account Manager",
+      "url": "https://careers.intuit.com/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:41.873314"
+    },
+    {
+      "job_id": "job_000772",
+      "company": "Planet Labs",
+      "title": "AWS Account Manager",
+      "url": "https://www.planet.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "filled",
+        "note": "Form filled but submit not clicked"
+      },
+      "timestamp": "2026-02-03T18:06:44.442141"
+    },
+    {
+      "job_id": "job_000782",
+      "company": "Splunk",
+      "title": "AWS Account Manager",
+      "url": "https://www.splunk.com/careers?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:46.514002"
+    },
+    {
+      "job_id": "job_000784",
+      "company": "Palo Alto Networks",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.paloaltonetworks.com/en/jobs/?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:50.414278"
+    },
+    {
+      "job_id": "job_000785",
+      "company": "Zscaler",
+      "title": "AWS Account Manager",
+      "url": "https://www.zscaler.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:50.466204"
+    },
+    {
+      "job_id": "job_000788",
+      "company": "AT&T",
+      "title": "AWS Account Manager",
+      "url": "https://www.att.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:55.979248"
+    },
+    {
+      "job_id": "job_000786",
+      "company": "Fortinet",
+      "title": "AWS Account Manager",
+      "url": "https://www.fortinet.com/corporate/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:57.010898"
+    },
+    {
+      "job_id": "job_000787",
+      "company": "Verizon",
+      "title": "AWS Account Manager",
+      "url": "https://www.verizon.com/about/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:57.705361"
+    },
+    {
+      "job_id": "job_000780",
+      "company": "Cisco",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.cisco.com/jobs?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:07:00.929138"
+    },
+    {
+      "job_id": "job_000789",
+      "company": "T-Mobile",
+      "title": "AWS Account Manager",
+      "url": "https://careers.t-mobile.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:02.314741"
+    },
+    {
+      "job_id": "job_000790",
+      "company": "Comcast",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.comcast.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:04.306104"
+    },
+    {
+      "job_id": "job_000791",
+      "company": "Charter Spectrum",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.spectrum.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:05.850879"
+    },
+    {
+      "job_id": "job_000783",
+      "company": "CrowdStrike",
+      "title": "AWS Account Manager",
+      "url": "https://www.crowdstrike.com/careers?keyword=AWS%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:07:05.890173"
+    },
+    {
+      "job_id": "job_000792",
+      "company": "Cox",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.coxenterprises.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:07.305886"
+    },
+    {
+      "job_id": "job_000793",
+      "company": "Dish",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.dish.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_TOO_MANY_REDIRECTS at https://jobs.dish.com/search?keywords=AWS%20Account%20Mana"
+      },
+      "timestamp": "2026-02-03T18:07:09.487939"
+    },
+    {
+      "job_id": "job_000794",
+      "company": "Lumen",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.lumen.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:09.763004"
+    },
+    {
+      "job_id": "job_000797",
+      "company": "Windstream",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.windstream.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.windstream.com/search?keywords=AWS%20Account%2"
+      },
+      "timestamp": "2026-02-03T18:07:10.462961"
+    },
+    {
+      "job_id": "job_000795",
+      "company": "CenturyLink",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.centurylink.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:11.303331"
+    },
+    {
+      "job_id": "job_000796",
+      "company": "Frontier",
+      "title": "AWS Account Manager",
+      "url": "https://careers.frontier.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:13.474683"
+    },
+    {
+      "job_id": "job_000798",
+      "company": "Equinix",
+      "title": "AWS Account Manager",
+      "url": "https://www.equinix.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:14.866334"
+    },
+    {
+      "job_id": "job_000802",
+      "company": "Workday",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.workday.com/en-us/jobs.html?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.workday.com/en-us/jobs.html?keywords=Techni"
+      },
+      "timestamp": "2026-02-03T18:07:16.678126"
+    },
+    {
+      "job_id": "job_000800",
+      "company": "Iron Mountain",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.ironmountain.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:18.888918"
+    }
+  ]
+}

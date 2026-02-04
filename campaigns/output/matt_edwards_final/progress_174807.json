@@ -1,0 +1,1103 @@
+{
+  "stats": {
+    "success": 10,
+    "failed": 139,
+    "external": 0
+  },
+  "results": [
+    {
+      "job_id": "job_000050",
+      "company": "NetApp",
+      "title": "Customer Success Manager",
+      "url": "https://careers.netapp.com/jobs?keywords=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:07.213724"
+    },
+    {
+      "job_id": "job_000052",
+      "company": "SAIC",
+      "title": "Customer Success Manager",
+      "url": "https://jobs.saic.com/search-jobs?q=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:08.404461"
+    },
+    {
+      "job_id": "job_000056",
+      "company": "General Dynamics",
+      "title": "Customer Success Manager",
+      "url": "https://careers.gd.com/search?q=Customer%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.gd.com/search?q=Customer%20Success%20Manage"
+      },
+      "timestamp": "2026-02-03T17:45:11.566784"
+    },
+    {
+      "job_id": "job_000055",
+      "company": "Lockheed Martin",
+      "title": "Customer Success Manager",
+      "url": "https://www.lockheedmartinjobs.com/search?q=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:15.910353"
+    },
+    {
+      "job_id": "job_000053",
+      "company": "Leidos",
+      "title": "Customer Success Manager",
+      "url": "https://careers.leidos.com/jobs?q=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:17.818260"
+    },
+    {
+      "job_id": "job_000057",
+      "company": "Raytheon",
+      "title": "Customer Success Manager",
+      "url": "https://careers.rtx.com/search?keywords=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:19.980036"
+    },
+    {
+      "job_id": "job_000054",
+      "company": "Northrop Grumman",
+      "title": "Customer Success Manager",
+      "url": "https://www.northropgrumman.com/jobs?q=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:23.674564"
+    },
+    {
+      "job_id": "job_000058",
+      "company": "CACI",
+      "title": "Customer Success Manager",
+      "url": "https://careers.caci.com/search?q=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:23.942306"
+    },
+    {
+      "job_id": "job_000046",
+      "company": "VMware",
+      "title": "Customer Success Manager",
+      "url": "https://careers.vmware.com/main/jobs?keywords=Customer%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://careers.vmware.com/main/jo"
+      },
+      "timestamp": "2026-02-03T17:45:24.961533"
+    },
+    {
+      "job_id": "job_000060",
+      "company": "L3Harris",
+      "title": "Customer Success Manager",
+      "url": "https://careers.l3harris.com/search?q=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:26.284056"
+    },
+    {
+      "job_id": "job_000059",
+      "company": "BAE Systems",
+      "title": "Customer Success Manager",
+      "url": "https://jobs.baesystems.com/search?keywords=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:26.736032"
+    },
+    {
+      "job_id": "job_000062",
+      "company": "Perspecta",
+      "title": "Customer Success Manager",
+      "url": "https://jobs.perspecta.com/search?q=Customer%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.perspecta.com/search?q=Customer%20Success%20Ma"
+      },
+      "timestamp": "2026-02-03T17:45:27.191004"
+    },
+    {
+      "job_id": "job_000061",
+      "company": "Boeing",
+      "title": "Customer Success Manager",
+      "url": "https://jobs.boeing.com/search?q=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:29.550047"
+    },
+    {
+      "job_id": "job_000064",
+      "company": "General Atomics",
+      "title": "Customer Success Manager",
+      "url": "https://www.ga-careers.com/search?q=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:31.936937"
+    },
+    {
+      "job_id": "job_000063",
+      "company": "ManTech",
+      "title": "Customer Success Manager",
+      "url": "https://mantech.com/careers/search?q=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:32.635311"
+    },
+    {
+      "job_id": "job_000066",
+      "company": "SpaceX",
+      "title": "Customer Success Manager",
+      "url": "https://www.spacex.com/careers/jobs?search=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:32.779613"
+    },
+    {
+      "job_id": "job_000067",
+      "company": "Blue Origin",
+      "title": "Customer Success Manager",
+      "url": "https://www.blueorigin.com/careers/search?q=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:37.298644"
+    },
+    {
+      "job_id": "job_000068",
+      "company": "Palantir",
+      "title": "Customer Success Manager",
+      "url": "https://www.palantir.com/careers/search?q=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:37.846625"
+    },
+    {
+      "job_id": "job_000069",
+      "company": "Anduril",
+      "title": "Customer Success Manager",
+      "url": "https://www.anduril.com/careers?search=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:41.376646"
+    },
+    {
+      "job_id": "job_000070",
+      "company": "Shield AI",
+      "title": "Customer Success Manager",
+      "url": "https://www.shield.ai/careers?search=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:42.698473"
+    },
+    {
+      "job_id": "job_000071",
+      "company": "HawkEye 360",
+      "title": "Customer Success Manager",
+      "url": "https://www.he360.com/careers?search=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:45.481068"
+    },
+    {
+      "job_id": "job_000074",
+      "company": "Peraton",
+      "title": "Customer Success Manager",
+      "url": "https://careers.peraton.com/search?keywords=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:49.703351"
+    },
+    {
+      "job_id": "job_000073",
+      "company": "Maxar",
+      "title": "Customer Success Manager",
+      "url": "https://maxar.wd1.myworkdayjobs.com/en-US/Maxar?query=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:49.899666"
+    },
+    {
+      "job_id": "job_000075",
+      "company": "VTG",
+      "title": "Customer Success Manager",
+      "url": "https://www.vtg.com/careers?search=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:53.543891"
+    },
+    {
+      "job_id": "job_000076",
+      "company": "Accenture",
+      "title": "Customer Success Manager",
+      "url": "https://www.accenture.com/us-en/careers?jk=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:55.613750"
+    },
+    {
+      "job_id": "job_000078",
+      "company": "KPMG",
+      "title": "Customer Success Manager",
+      "url": "https://jobs.kpmg.com/us/en/search?keywords=Customer%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.kpmg.com/us/en/search?keywords=Customer%20Succ"
+      },
+      "timestamp": "2026-02-03T17:45:56.724897"
+    },
+    {
+      "job_id": "job_000065",
+      "company": "Sierra Nevada",
+      "title": "Customer Success Manager",
+      "url": "https://www.sncorp.com/careers/search?q=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:56.777110"
+    },
+    {
+      "job_id": "job_000077",
+      "company": "Deloitte",
+      "title": "Customer Success Manager",
+      "url": "https://apply.deloitte.com/careers?search=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:45:58.202823"
+    },
+    {
+      "job_id": "job_000079",
+      "company": "PwC",
+      "title": "Customer Success Manager",
+      "url": "https://pwc.wd3.myworkdayjobs.com?query=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:01.219505"
+    },
+    {
+      "job_id": "job_000072",
+      "company": "Planet Labs",
+      "title": "Customer Success Manager",
+      "url": "https://www.planet.com/careers?search=Customer%20Success%20Manager",
+      "result": {
+        "status": "filled",
+        "note": "Form filled but submit not clicked"
+      },
+      "timestamp": "2026-02-03T17:46:01.917040"
+    },
+    {
+      "job_id": "job_000081",
+      "company": "Intuit",
+      "title": "Customer Success Manager",
+      "url": "https://careers.intuit.com/search?q=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:03.506031"
+    },
+    {
+      "job_id": "job_000082",
+      "company": "Splunk",
+      "title": "Customer Success Manager",
+      "url": "https://www.splunk.com/careers?keywords=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:04.866683"
+    },
+    {
+      "job_id": "job_000085",
+      "company": "Zscaler",
+      "title": "Customer Success Manager",
+      "url": "https://www.zscaler.com/careers?search=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:09.744179"
+    },
+    {
+      "job_id": "job_000084",
+      "company": "Palo Alto Networks",
+      "title": "Customer Success Manager",
+      "url": "https://jobs.paloaltonetworks.com/en/jobs/?search=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:10.855789"
+    },
+    {
+      "job_id": "job_000086",
+      "company": "Fortinet",
+      "title": "Customer Success Manager",
+      "url": "https://www.fortinet.com/corporate/careers?search=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:12.259884"
+    },
+    {
+      "job_id": "job_000087",
+      "company": "Verizon",
+      "title": "Customer Success Manager",
+      "url": "https://www.verizon.com/about/careers?search=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:16.119159"
+    },
+    {
+      "job_id": "job_000088",
+      "company": "AT&T",
+      "title": "Customer Success Manager",
+      "url": "https://www.att.com/careers?search=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:16.251666"
+    },
+    {
+      "job_id": "job_000089",
+      "company": "T-Mobile",
+      "title": "Customer Success Manager",
+      "url": "https://careers.t-mobile.com/search?keywords=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:18.574294"
+    },
+    {
+      "job_id": "job_000090",
+      "company": "Comcast",
+      "title": "Customer Success Manager",
+      "url": "https://jobs.comcast.com/search?keywords=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:22.151177"
+    },
+    {
+      "job_id": "job_000080",
+      "company": "Cisco",
+      "title": "Customer Success Manager",
+      "url": "https://jobs.cisco.com/jobs?search=Customer%20Success%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:46:22.511256"
+    },
+    {
+      "job_id": "job_000091",
+      "company": "Charter Spectrum",
+      "title": "Customer Success Manager",
+      "url": "https://jobs.spectrum.com/search?keywords=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:24.625422"
+    },
+    {
+      "job_id": "job_000092",
+      "company": "Cox",
+      "title": "Customer Success Manager",
+      "url": "https://jobs.coxenterprises.com/search?keywords=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:25.326906"
+    },
+    {
+      "job_id": "job_000093",
+      "company": "Dish",
+      "title": "Customer Success Manager",
+      "url": "https://jobs.dish.com/search?keywords=Customer%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_TOO_MANY_REDIRECTS at https://jobs.dish.com/search?keywords=Customer%20Success%2"
+      },
+      "timestamp": "2026-02-03T17:46:28.074124"
+    },
+    {
+      "job_id": "job_000094",
+      "company": "Lumen",
+      "title": "Customer Success Manager",
+      "url": "https://jobs.lumen.com/search?keywords=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:28.098145"
+    },
+    {
+      "job_id": "job_000083",
+      "company": "CrowdStrike",
+      "title": "Customer Success Manager",
+      "url": "https://www.crowdstrike.com/careers?keyword=Customer%20Success%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:46:28.842257"
+    },
+    {
+      "job_id": "job_000095",
+      "company": "CenturyLink",
+      "title": "Customer Success Manager",
+      "url": "https://jobs.centurylink.com/search?keywords=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:31.273223"
+    },
+    {
+      "job_id": "job_000097",
+      "company": "Windstream",
+      "title": "Customer Success Manager",
+      "url": "https://jobs.windstream.com/search?keywords=Customer%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.windstream.com/search?keywords=Customer%20Succ"
+      },
+      "timestamp": "2026-02-03T17:46:31.274856"
+    },
+    {
+      "job_id": "job_000096",
+      "company": "Frontier",
+      "title": "Customer Success Manager",
+      "url": "https://careers.frontier.com/search?keywords=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:31.560501"
+    },
+    {
+      "job_id": "job_000098",
+      "company": "Equinix",
+      "title": "Customer Success Manager",
+      "url": "https://www.equinix.com/careers?search=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:33.431274"
+    },
+    {
+      "job_id": "job_000102",
+      "company": "Workday",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.workday.com/en-us/jobs.html?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.workday.com/en-us/jobs.html?keywords=Cloud%"
+      },
+      "timestamp": "2026-02-03T17:46:35.277731"
+    },
+    {
+      "job_id": "job_000099",
+      "company": "Digital Realty",
+      "title": "Customer Success Manager",
+      "url": "https://www.digitalrealty.com/careers?search=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:37.989201"
+    },
+    {
+      "job_id": "job_000100",
+      "company": "Iron Mountain",
+      "title": "Customer Success Manager",
+      "url": "https://jobs.ironmountain.com/search?keywords=Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:40.814619"
+    },
+    {
+      "job_id": "job_000105",
+      "company": "Databricks",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.databricks.com/company/careers/open-positions?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:44.752505"
+    },
+    {
+      "job_id": "job_000104",
+      "company": "Snowflake",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.snowflake.com/us/en/search-results?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:46.331414"
+    },
+    {
+      "job_id": "job_000106",
+      "company": "HashiCorp",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.hashicorp.com/careers/jobs?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:49.080269"
+    },
+    {
+      "job_id": "job_000108",
+      "company": "Okta",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.okta.com/company/careers/?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:54.117734"
+    },
+    {
+      "job_id": "job_000109",
+      "company": "Cloudflare",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.cloudflare.com/careers/jobs/?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:46:55.068800"
+    },
+    {
+      "job_id": "job_000101",
+      "company": "Salesforce",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.salesforce.com/en/jobs/?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:46:56.864971"
+    },
+    {
+      "job_id": "job_000110",
+      "company": "Datadog",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.datadoghq.com/?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:00.711977"
+    },
+    {
+      "job_id": "job_000103",
+      "company": "ServiceNow",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.servicenow.com/careers/jobs?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:47:01.723975"
+    },
+    {
+      "job_id": "job_000111",
+      "company": "MongoDB",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.mongodb.com/careers/jobs?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:02.116119"
+    },
+    {
+      "job_id": "job_000112",
+      "company": "Confluent",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.confluent.io/careers/positions/?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:03.720322"
+    },
+    {
+      "job_id": "job_000113",
+      "company": "Elastic",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.elastic.co/careers/jobs?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:06.369371"
+    },
+    {
+      "job_id": "job_000114",
+      "company": "GitLab",
+      "title": "Cloud Delivery Manager",
+      "url": "https://about.gitlab.com/jobs/?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:08.315196"
+    },
+    {
+      "job_id": "job_000116",
+      "company": "PagerDuty",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.pagerduty.com/careers/jobs/?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:09.301432"
+    },
+    {
+      "job_id": "job_000115",
+      "company": "Fastly",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.fastly.com/about/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:09.591355"
+    },
+    {
+      "job_id": "job_000107",
+      "company": "Twilio",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.twilio.com/en-us/company/jobs?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:47:09.683203"
+    },
+    {
+      "job_id": "job_000117",
+      "company": "New Relic",
+      "title": "Cloud Delivery Manager",
+      "url": "https://newrelic.com/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:11.835443"
+    },
+    {
+      "job_id": "job_000118",
+      "company": "LaunchDarkly",
+      "title": "Cloud Delivery Manager",
+      "url": "https://launchdarkly.com/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:15.077637"
+    },
+    {
+      "job_id": "job_000119",
+      "company": "CircleCI",
+      "title": "Cloud Delivery Manager",
+      "url": "https://circleci.com/careers/jobs/?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:15.194648"
+    },
+    {
+      "job_id": "job_000121",
+      "company": "Figma",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.figma.com/careers/?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:15.351724"
+    },
+    {
+      "job_id": "job_000120",
+      "company": "Miro",
+      "title": "Cloud Delivery Manager",
+      "url": "https://miro.com/careers/?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:16.670987"
+    },
+    {
+      "job_id": "job_000122",
+      "company": "Notion",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.notion.so/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:18.328062"
+    },
+    {
+      "job_id": "job_000125",
+      "company": "Airtable",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.airtable.com/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:21.247442"
+    },
+    {
+      "job_id": "job_000124",
+      "company": "Monday.com",
+      "title": "Cloud Delivery Manager",
+      "url": "https://monday.com/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:22.554033"
+    },
+    {
+      "job_id": "job_000123",
+      "company": "Asana",
+      "title": "Cloud Delivery Manager",
+      "url": "https://asana.com/jobs?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:24.376578"
+    },
+    {
+      "job_id": "job_000128",
+      "company": "Webex",
+      "title": "Cloud Delivery Manager",
+      "url": "https://jobs.webex.com/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.webex.com/careers?search=Cloud%20Delivery%20Ma"
+      },
+      "timestamp": "2026-02-03T17:47:24.473880"
+    },
+    {
+      "job_id": "job_000127",
+      "company": "Zoom",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.zoom.us/jobs?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:25.210381"
+    },
+    {
+      "job_id": "job_000126",
+      "company": "Slack",
+      "title": "Cloud Delivery Manager",
+      "url": "https://slack.com/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:28.646063"
+    },
+    {
+      "job_id": "job_000130",
+      "company": "Box",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.box.com/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:30.511547"
+    },
+    {
+      "job_id": "job_000129",
+      "company": "Dropbox",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.dropbox.com/jobs?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:31.372209"
+    },
+    {
+      "job_id": "job_000131",
+      "company": "DocuSign",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.docusign.com/company/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:32.094424"
+    },
+    {
+      "job_id": "job_000133",
+      "company": "Canva",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.canva.com/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:35.163936"
+    },
+    {
+      "job_id": "job_000134",
+      "company": "HubSpot",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.hubspot.com/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:37.332076"
+    },
+    {
+      "job_id": "job_000135",
+      "company": "Zendesk",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.zendesk.com/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:38.444537"
+    },
+    {
+      "job_id": "job_000137",
+      "company": "Atlassian",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.atlassian.com/company/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:41.650684"
+    },
+    {
+      "job_id": "job_000136",
+      "company": "Shopify",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.shopify.com/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:41.888617"
+    },
+    {
+      "job_id": "job_000138",
+      "company": "Freshworks",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.freshworks.com/company/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:43.654500"
+    },
+    {
+      "job_id": "job_000141",
+      "company": "AWS",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.amazon.jobs/en/search?base_query=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:48.720667"
+    },
+    {
+      "job_id": "job_000132",
+      "company": "Adobe",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.adobe.com/us/en/search-results?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:47:50.787532"
+    },
+    {
+      "job_id": "job_000140",
+      "company": "SAP",
+      "title": "Cloud Delivery Manager",
+      "url": "https://jobs.sap.com/search?q=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:51.485406"
+    },
+    {
+      "job_id": "job_000142",
+      "company": "Microsoft",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.microsoft.com/us/en/search-results?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:51.934027"
+    },
+    {
+      "job_id": "job_000143",
+      "company": "Google Cloud",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.google.com/jobs/results/?q=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:54.867853"
+    },
+    {
+      "job_id": "job_000145",
+      "company": "IBM",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.ibm.com/job/search?query=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:57.011703"
+    },
+    {
+      "job_id": "job_000139",
+      "company": "Zoho",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.zoho.com/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:57.453986"
+    },
+    {
+      "job_id": "job_000144",
+      "company": "Oracle",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.oracle.com/jobs/?keyword=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:47:58.678488"
+    },
+    {
+      "job_id": "job_000147",
+      "company": "Red Hat",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.redhat.com/jobs?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:00.868910"
+    },
+    {
+      "job_id": "job_000148",
+      "company": "HPE",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.hpe.com/jobs?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:04.209413"
+    },
+    {
+      "job_id": "job_000149",
+      "company": "Dell",
+      "title": "Cloud Delivery Manager",
+      "url": "https://jobs.dell.com/search?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:06.995989"
+    },
+    {
+      "job_id": "job_000150",
+      "company": "NetApp",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.netapp.com/jobs?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:07.795247"
+    }
+  ]
+}

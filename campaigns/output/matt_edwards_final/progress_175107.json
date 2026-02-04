@@ -1,0 +1,1103 @@
+{
+  "stats": {
+    "success": 16,
+    "failed": 233,
+    "external": 0
+  },
+  "results": [
+    {
+      "job_id": "job_000151",
+      "company": "Booz Allen Hamilton",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.boozallen.com/jobs?q=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:08.270578"
+    },
+    {
+      "job_id": "job_000152",
+      "company": "SAIC",
+      "title": "Cloud Delivery Manager",
+      "url": "https://jobs.saic.com/search-jobs?q=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:14.270615"
+    },
+    {
+      "job_id": "job_000156",
+      "company": "General Dynamics",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.gd.com/search?q=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.gd.com/search?q=Cloud%20Delivery%20Manager\n"
+      },
+      "timestamp": "2026-02-03T17:48:17.543345"
+    },
+    {
+      "job_id": "job_000153",
+      "company": "Leidos",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.leidos.com/jobs?q=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:17.869550"
+    },
+    {
+      "job_id": "job_000155",
+      "company": "Lockheed Martin",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.lockheedmartinjobs.com/search?q=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:18.727314"
+    },
+    {
+      "job_id": "job_000146",
+      "company": "VMware",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.vmware.com/main/jobs?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://careers.vmware.com/main/jo"
+      },
+      "timestamp": "2026-02-03T17:48:25.084384"
+    },
+    {
+      "job_id": "job_000157",
+      "company": "Raytheon",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.rtx.com/search?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:26.431972"
+    },
+    {
+      "job_id": "job_000158",
+      "company": "CACI",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.caci.com/search?q=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:26.455581"
+    },
+    {
+      "job_id": "job_000154",
+      "company": "Northrop Grumman",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.northropgrumman.com/jobs?q=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:27.214458"
+    },
+    {
+      "job_id": "job_000159",
+      "company": "BAE Systems",
+      "title": "Cloud Delivery Manager",
+      "url": "https://jobs.baesystems.com/search?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:28.565806"
+    },
+    {
+      "job_id": "job_000162",
+      "company": "Perspecta",
+      "title": "Cloud Delivery Manager",
+      "url": "https://jobs.perspecta.com/search?q=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.perspecta.com/search?q=Cloud%20Delivery%20Mana"
+      },
+      "timestamp": "2026-02-03T17:48:29.607735"
+    },
+    {
+      "job_id": "job_000160",
+      "company": "L3Harris",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.l3harris.com/search?q=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:30.981216"
+    },
+    {
+      "job_id": "job_000161",
+      "company": "Boeing",
+      "title": "Cloud Delivery Manager",
+      "url": "https://jobs.boeing.com/search?q=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:32.418734"
+    },
+    {
+      "job_id": "job_000163",
+      "company": "ManTech",
+      "title": "Cloud Delivery Manager",
+      "url": "https://mantech.com/careers/search?q=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:33.506396"
+    },
+    {
+      "job_id": "job_000164",
+      "company": "General Atomics",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.ga-careers.com/search?q=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:33.875941"
+    },
+    {
+      "job_id": "job_000166",
+      "company": "SpaceX",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.spacex.com/careers/jobs?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:36.572711"
+    },
+    {
+      "job_id": "job_000167",
+      "company": "Blue Origin",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.blueorigin.com/careers/search?q=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:39.067830"
+    },
+    {
+      "job_id": "job_000168",
+      "company": "Palantir",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.palantir.com/careers/search?q=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:39.160251"
+    },
+    {
+      "job_id": "job_000169",
+      "company": "Anduril",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.anduril.com/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:40.187638"
+    },
+    {
+      "job_id": "job_000165",
+      "company": "Sierra Nevada",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.sncorp.com/careers/search?q=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:43.398111"
+    },
+    {
+      "job_id": "job_000170",
+      "company": "Shield AI",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.shield.ai/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:43.401905"
+    },
+    {
+      "job_id": "job_000171",
+      "company": "HawkEye 360",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.he360.com/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:44.822290"
+    },
+    {
+      "job_id": "job_000173",
+      "company": "Maxar",
+      "title": "Cloud Delivery Manager",
+      "url": "https://maxar.wd1.myworkdayjobs.com/en-US/Maxar?query=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:46.533303"
+    },
+    {
+      "job_id": "job_000175",
+      "company": "VTG",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.vtg.com/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:49.885540"
+    },
+    {
+      "job_id": "job_000174",
+      "company": "Peraton",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.peraton.com/search?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:50.066826"
+    },
+    {
+      "job_id": "job_000176",
+      "company": "Accenture",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.accenture.com/us-en/careers?jk=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:50.655290"
+    },
+    {
+      "job_id": "job_000178",
+      "company": "KPMG",
+      "title": "Cloud Delivery Manager",
+      "url": "https://jobs.kpmg.com/us/en/search?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.kpmg.com/us/en/search?keywords=Cloud%20Deliver"
+      },
+      "timestamp": "2026-02-03T17:48:53.040464"
+    },
+    {
+      "job_id": "job_000177",
+      "company": "Deloitte",
+      "title": "Cloud Delivery Manager",
+      "url": "https://apply.deloitte.com/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:54.838832"
+    },
+    {
+      "job_id": "job_000179",
+      "company": "PwC",
+      "title": "Cloud Delivery Manager",
+      "url": "https://pwc.wd3.myworkdayjobs.com?query=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:55.728791"
+    },
+    {
+      "job_id": "job_000181",
+      "company": "Intuit",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.intuit.com/search?q=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:48:58.593573"
+    },
+    {
+      "job_id": "job_000182",
+      "company": "Splunk",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.splunk.com/careers?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:01.076406"
+    },
+    {
+      "job_id": "job_000172",
+      "company": "Planet Labs",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.planet.com/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "filled",
+        "note": "Form filled but submit not clicked"
+      },
+      "timestamp": "2026-02-03T17:49:01.283864"
+    },
+    {
+      "job_id": "job_000185",
+      "company": "Zscaler",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.zscaler.com/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:07.494906"
+    },
+    {
+      "job_id": "job_000184",
+      "company": "Palo Alto Networks",
+      "title": "Cloud Delivery Manager",
+      "url": "https://jobs.paloaltonetworks.com/en/jobs/?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:08.490198"
+    },
+    {
+      "job_id": "job_000186",
+      "company": "Fortinet",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.fortinet.com/corporate/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:11.938425"
+    },
+    {
+      "job_id": "job_000188",
+      "company": "AT&T",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.att.com/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:13.911340"
+    },
+    {
+      "job_id": "job_000187",
+      "company": "Verizon",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.verizon.com/about/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:14.888956"
+    },
+    {
+      "job_id": "job_000180",
+      "company": "Cisco",
+      "title": "Cloud Delivery Manager",
+      "url": "https://jobs.cisco.com/jobs?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:49:16.694142"
+    },
+    {
+      "job_id": "job_000189",
+      "company": "T-Mobile",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.t-mobile.com/search?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:18.814262"
+    },
+    {
+      "job_id": "job_000183",
+      "company": "CrowdStrike",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.crowdstrike.com/careers?keyword=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:49:20.583811"
+    },
+    {
+      "job_id": "job_000190",
+      "company": "Comcast",
+      "title": "Cloud Delivery Manager",
+      "url": "https://jobs.comcast.com/search?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:21.229617"
+    },
+    {
+      "job_id": "job_000191",
+      "company": "Charter Spectrum",
+      "title": "Cloud Delivery Manager",
+      "url": "https://jobs.spectrum.com/search?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:23.228443"
+    },
+    {
+      "job_id": "job_000192",
+      "company": "Cox",
+      "title": "Cloud Delivery Manager",
+      "url": "https://jobs.coxenterprises.com/search?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:23.635912"
+    },
+    {
+      "job_id": "job_000193",
+      "company": "Dish",
+      "title": "Cloud Delivery Manager",
+      "url": "https://jobs.dish.com/search?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_TOO_MANY_REDIRECTS at https://jobs.dish.com/search?keywords=Cloud%20Delivery%20M"
+      },
+      "timestamp": "2026-02-03T17:49:24.342762"
+    },
+    {
+      "job_id": "job_000194",
+      "company": "Lumen",
+      "title": "Cloud Delivery Manager",
+      "url": "https://jobs.lumen.com/search?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:26.205824"
+    },
+    {
+      "job_id": "job_000197",
+      "company": "Windstream",
+      "title": "Cloud Delivery Manager",
+      "url": "https://jobs.windstream.com/search?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.windstream.com/search?keywords=Cloud%20Deliver"
+      },
+      "timestamp": "2026-02-03T17:49:26.790988"
+    },
+    {
+      "job_id": "job_000195",
+      "company": "CenturyLink",
+      "title": "Cloud Delivery Manager",
+      "url": "https://jobs.centurylink.com/search?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:26.947776"
+    },
+    {
+      "job_id": "job_000196",
+      "company": "Frontier",
+      "title": "Cloud Delivery Manager",
+      "url": "https://careers.frontier.com/search?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:29.483803"
+    },
+    {
+      "job_id": "job_000198",
+      "company": "Equinix",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.equinix.com/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:29.588501"
+    },
+    {
+      "job_id": "job_000202",
+      "company": "Workday",
+      "title": "Technical Account Manager",
+      "url": "https://careers.workday.com/en-us/jobs.html?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.workday.com/en-us/jobs.html?keywords=Techni"
+      },
+      "timestamp": "2026-02-03T17:49:32.642842"
+    },
+    {
+      "job_id": "job_000200",
+      "company": "Iron Mountain",
+      "title": "Cloud Delivery Manager",
+      "url": "https://jobs.ironmountain.com/search?keywords=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:33.147053"
+    },
+    {
+      "job_id": "job_000199",
+      "company": "Digital Realty",
+      "title": "Cloud Delivery Manager",
+      "url": "https://www.digitalrealty.com/careers?search=Cloud%20Delivery%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:35.211605"
+    },
+    {
+      "job_id": "job_000205",
+      "company": "Databricks",
+      "title": "Technical Account Manager",
+      "url": "https://www.databricks.com/company/careers/open-positions?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:38.858111"
+    },
+    {
+      "job_id": "job_000204",
+      "company": "Snowflake",
+      "title": "Technical Account Manager",
+      "url": "https://careers.snowflake.com/us/en/search-results?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:41.893058"
+    },
+    {
+      "job_id": "job_000206",
+      "company": "HashiCorp",
+      "title": "Technical Account Manager",
+      "url": "https://www.hashicorp.com/careers/jobs?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:43.977915"
+    },
+    {
+      "job_id": "job_000209",
+      "company": "Cloudflare",
+      "title": "Technical Account Manager",
+      "url": "https://www.cloudflare.com/careers/jobs/?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:50.116723"
+    },
+    {
+      "job_id": "job_000208",
+      "company": "Okta",
+      "title": "Technical Account Manager",
+      "url": "https://www.okta.com/company/careers/?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:50.800743"
+    },
+    {
+      "job_id": "job_000201",
+      "company": "Salesforce",
+      "title": "Technical Account Manager",
+      "url": "https://careers.salesforce.com/en/jobs/?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:49:51.125552"
+    },
+    {
+      "job_id": "job_000203",
+      "company": "ServiceNow",
+      "title": "Technical Account Manager",
+      "url": "https://careers.servicenow.com/careers/jobs?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:49:54.433834"
+    },
+    {
+      "job_id": "job_000210",
+      "company": "Datadog",
+      "title": "Technical Account Manager",
+      "url": "https://careers.datadoghq.com/?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:49:56.617508"
+    },
+    {
+      "job_id": "job_000213",
+      "company": "Elastic",
+      "title": "Technical Account Manager",
+      "url": "https://www.elastic.co/careers/jobs?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:00.650941"
+    },
+    {
+      "job_id": "job_000211",
+      "company": "MongoDB",
+      "title": "Technical Account Manager",
+      "url": "https://www.mongodb.com/careers/jobs?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:00.848850"
+    },
+    {
+      "job_id": "job_000212",
+      "company": "Confluent",
+      "title": "Technical Account Manager",
+      "url": "https://www.confluent.io/careers/positions/?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:02.530916"
+    },
+    {
+      "job_id": "job_000207",
+      "company": "Twilio",
+      "title": "Technical Account Manager",
+      "url": "https://www.twilio.com/en-us/company/jobs?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:50:03.568471"
+    },
+    {
+      "job_id": "job_000214",
+      "company": "GitLab",
+      "title": "Technical Account Manager",
+      "url": "https://about.gitlab.com/jobs/?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:04.494693"
+    },
+    {
+      "job_id": "job_000215",
+      "company": "Fastly",
+      "title": "Technical Account Manager",
+      "url": "https://www.fastly.com/about/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:07.272606"
+    },
+    {
+      "job_id": "job_000217",
+      "company": "New Relic",
+      "title": "Technical Account Manager",
+      "url": "https://newrelic.com/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:08.401160"
+    },
+    {
+      "job_id": "job_000216",
+      "company": "PagerDuty",
+      "title": "Technical Account Manager",
+      "url": "https://www.pagerduty.com/careers/jobs/?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:09.043758"
+    },
+    {
+      "job_id": "job_000219",
+      "company": "CircleCI",
+      "title": "Technical Account Manager",
+      "url": "https://circleci.com/careers/jobs/?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:10.432682"
+    },
+    {
+      "job_id": "job_000218",
+      "company": "LaunchDarkly",
+      "title": "Technical Account Manager",
+      "url": "https://launchdarkly.com/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:13.627070"
+    },
+    {
+      "job_id": "job_000221",
+      "company": "Figma",
+      "title": "Technical Account Manager",
+      "url": "https://www.figma.com/careers/?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:14.248364"
+    },
+    {
+      "job_id": "job_000220",
+      "company": "Miro",
+      "title": "Technical Account Manager",
+      "url": "https://miro.com/careers/?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:14.465172"
+    },
+    {
+      "job_id": "job_000222",
+      "company": "Notion",
+      "title": "Technical Account Manager",
+      "url": "https://www.notion.so/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:15.172769"
+    },
+    {
+      "job_id": "job_000225",
+      "company": "Airtable",
+      "title": "Technical Account Manager",
+      "url": "https://www.airtable.com/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:20.673140"
+    },
+    {
+      "job_id": "job_000227",
+      "company": "Zoom",
+      "title": "Technical Account Manager",
+      "url": "https://careers.zoom.us/jobs?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:21.214831"
+    },
+    {
+      "job_id": "job_000224",
+      "company": "Monday.com",
+      "title": "Technical Account Manager",
+      "url": "https://monday.com/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:21.894855"
+    },
+    {
+      "job_id": "job_000223",
+      "company": "Asana",
+      "title": "Technical Account Manager",
+      "url": "https://asana.com/jobs?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:21.935788"
+    },
+    {
+      "job_id": "job_000226",
+      "company": "Slack",
+      "title": "Technical Account Manager",
+      "url": "https://slack.com/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:23.915779"
+    },
+    {
+      "job_id": "job_000228",
+      "company": "Webex",
+      "title": "Technical Account Manager",
+      "url": "https://jobs.webex.com/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.webex.com/careers?search=Technical%20Account%2"
+      },
+      "timestamp": "2026-02-03T17:50:23.955236"
+    },
+    {
+      "job_id": "job_000230",
+      "company": "Box",
+      "title": "Technical Account Manager",
+      "url": "https://www.box.com/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:28.007337"
+    },
+    {
+      "job_id": "job_000229",
+      "company": "Dropbox",
+      "title": "Technical Account Manager",
+      "url": "https://www.dropbox.com/jobs?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:28.324585"
+    },
+    {
+      "job_id": "job_000231",
+      "company": "DocuSign",
+      "title": "Technical Account Manager",
+      "url": "https://www.docusign.com/company/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:29.777170"
+    },
+    {
+      "job_id": "job_000233",
+      "company": "Canva",
+      "title": "Technical Account Manager",
+      "url": "https://www.canva.com/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:30.381651"
+    },
+    {
+      "job_id": "job_000235",
+      "company": "Zendesk",
+      "title": "Technical Account Manager",
+      "url": "https://www.zendesk.com/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:34.534274"
+    },
+    {
+      "job_id": "job_000234",
+      "company": "HubSpot",
+      "title": "Technical Account Manager",
+      "url": "https://www.hubspot.com/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:35.305396"
+    },
+    {
+      "job_id": "job_000237",
+      "company": "Atlassian",
+      "title": "Technical Account Manager",
+      "url": "https://www.atlassian.com/company/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:36.855334"
+    },
+    {
+      "job_id": "job_000236",
+      "company": "Shopify",
+      "title": "Technical Account Manager",
+      "url": "https://www.shopify.com/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:37.847262"
+    },
+    {
+      "job_id": "job_000238",
+      "company": "Freshworks",
+      "title": "Technical Account Manager",
+      "url": "https://www.freshworks.com/company/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:40.825664"
+    },
+    {
+      "job_id": "job_000241",
+      "company": "AWS",
+      "title": "Technical Account Manager",
+      "url": "https://www.amazon.jobs/en/search?base_query=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:44.640283"
+    },
+    {
+      "job_id": "job_000239",
+      "company": "Zoho",
+      "title": "Technical Account Manager",
+      "url": "https://www.zoho.com/careers?search=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:45.895576"
+    },
+    {
+      "job_id": "job_000242",
+      "company": "Microsoft",
+      "title": "Technical Account Manager",
+      "url": "https://careers.microsoft.com/us/en/search-results?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:47.587046"
+    },
+    {
+      "job_id": "job_000240",
+      "company": "SAP",
+      "title": "Technical Account Manager",
+      "url": "https://jobs.sap.com/search?q=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:49.691902"
+    },
+    {
+      "job_id": "job_000232",
+      "company": "Adobe",
+      "title": "Technical Account Manager",
+      "url": "https://careers.adobe.com/us/en/search-results?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:50:50.372804"
+    },
+    {
+      "job_id": "job_000243",
+      "company": "Google Cloud",
+      "title": "Technical Account Manager",
+      "url": "https://careers.google.com/jobs/results/?q=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:52.700495"
+    },
+    {
+      "job_id": "job_000245",
+      "company": "IBM",
+      "title": "Technical Account Manager",
+      "url": "https://careers.ibm.com/job/search?query=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:53.181259"
+    },
+    {
+      "job_id": "job_000247",
+      "company": "Red Hat",
+      "title": "Technical Account Manager",
+      "url": "https://careers.redhat.com/jobs?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:56.723070"
+    },
+    {
+      "job_id": "job_000244",
+      "company": "Oracle",
+      "title": "Technical Account Manager",
+      "url": "https://careers.oracle.com/jobs/?keyword=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:50:59.127786"
+    },
+    {
+      "job_id": "job_000248",
+      "company": "HPE",
+      "title": "Technical Account Manager",
+      "url": "https://careers.hpe.com/jobs?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:03.007574"
+    },
+    {
+      "job_id": "job_000249",
+      "company": "Dell",
+      "title": "Technical Account Manager",
+      "url": "https://jobs.dell.com/search?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:04.589623"
+    },
+    {
+      "job_id": "job_000250",
+      "company": "NetApp",
+      "title": "Technical Account Manager",
+      "url": "https://careers.netapp.com/jobs?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:51:07.023960"
+    }
+  ]
+}

@@ -1,0 +1,1103 @@
+{
+  "stats": {
+    "success": 24,
+    "failed": 376,
+    "external": 0
+  },
+  "results": [
+    {
+      "job_id": "job_000300",
+      "company": "Iron Mountain",
+      "title": "Technical Account Manager",
+      "url": "https://jobs.ironmountain.com/search?keywords=Technical%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:29.150593"
+    },
+    {
+      "job_id": "job_000305",
+      "company": "Databricks",
+      "title": "Solutions Architect",
+      "url": "https://www.databricks.com/company/careers/open-positions?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:35.205174"
+    },
+    {
+      "job_id": "job_000304",
+      "company": "Snowflake",
+      "title": "Solutions Architect",
+      "url": "https://careers.snowflake.com/us/en/search-results?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:38.785386"
+    },
+    {
+      "job_id": "job_000306",
+      "company": "HashiCorp",
+      "title": "Solutions Architect",
+      "url": "https://www.hashicorp.com/careers/jobs?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:42.323941"
+    },
+    {
+      "job_id": "job_000308",
+      "company": "Okta",
+      "title": "Solutions Architect",
+      "url": "https://www.okta.com/company/careers/?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:47.246718"
+    },
+    {
+      "job_id": "job_000301",
+      "company": "Salesforce",
+      "title": "Solutions Architect",
+      "url": "https://careers.salesforce.com/en/jobs/?search=Solutions%20Architect",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:52:47.410492"
+    },
+    {
+      "job_id": "job_000309",
+      "company": "Cloudflare",
+      "title": "Solutions Architect",
+      "url": "https://www.cloudflare.com/careers/jobs/?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:48.344468"
+    },
+    {
+      "job_id": "job_000303",
+      "company": "ServiceNow",
+      "title": "Solutions Architect",
+      "url": "https://careers.servicenow.com/careers/jobs?keywords=Solutions%20Architect",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:52:51.984387"
+    },
+    {
+      "job_id": "job_000311",
+      "company": "MongoDB",
+      "title": "Solutions Architect",
+      "url": "https://www.mongodb.com/careers/jobs?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:53.403782"
+    },
+    {
+      "job_id": "job_000310",
+      "company": "Datadog",
+      "title": "Solutions Architect",
+      "url": "https://careers.datadoghq.com/?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:53.619065"
+    },
+    {
+      "job_id": "job_000312",
+      "company": "Confluent",
+      "title": "Solutions Architect",
+      "url": "https://www.confluent.io/careers/positions/?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:54.862265"
+    },
+    {
+      "job_id": "job_000313",
+      "company": "Elastic",
+      "title": "Solutions Architect",
+      "url": "https://www.elastic.co/careers/jobs?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:57.575149"
+    },
+    {
+      "job_id": "job_000314",
+      "company": "GitLab",
+      "title": "Solutions Architect",
+      "url": "https://about.gitlab.com/jobs/?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:52:59.786808"
+    },
+    {
+      "job_id": "job_000316",
+      "company": "PagerDuty",
+      "title": "Solutions Architect",
+      "url": "https://www.pagerduty.com/careers/jobs/?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:00.982186"
+    },
+    {
+      "job_id": "job_000307",
+      "company": "Twilio",
+      "title": "Solutions Architect",
+      "url": "https://www.twilio.com/en-us/company/jobs?search=Solutions%20Architect",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:53:01.254090"
+    },
+    {
+      "job_id": "job_000315",
+      "company": "Fastly",
+      "title": "Solutions Architect",
+      "url": "https://www.fastly.com/about/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:01.482808"
+    },
+    {
+      "job_id": "job_000317",
+      "company": "New Relic",
+      "title": "Solutions Architect",
+      "url": "https://newrelic.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:03.043738"
+    },
+    {
+      "job_id": "job_000318",
+      "company": "LaunchDarkly",
+      "title": "Solutions Architect",
+      "url": "https://launchdarkly.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:06.997241"
+    },
+    {
+      "job_id": "job_000319",
+      "company": "CircleCI",
+      "title": "Solutions Architect",
+      "url": "https://circleci.com/careers/jobs/?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:07.074663"
+    },
+    {
+      "job_id": "job_000321",
+      "company": "Figma",
+      "title": "Solutions Architect",
+      "url": "https://www.figma.com/careers/?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:07.102621"
+    },
+    {
+      "job_id": "job_000320",
+      "company": "Miro",
+      "title": "Solutions Architect",
+      "url": "https://miro.com/careers/?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:08.344564"
+    },
+    {
+      "job_id": "job_000322",
+      "company": "Notion",
+      "title": "Solutions Architect",
+      "url": "https://www.notion.so/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:08.708118"
+    },
+    {
+      "job_id": "job_000327",
+      "company": "Zoom",
+      "title": "Solutions Architect",
+      "url": "https://careers.zoom.us/jobs?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:14.976071"
+    },
+    {
+      "job_id": "job_000325",
+      "company": "Airtable",
+      "title": "Solutions Architect",
+      "url": "https://www.airtable.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:16.468331"
+    },
+    {
+      "job_id": "job_000324",
+      "company": "Monday.com",
+      "title": "Solutions Architect",
+      "url": "https://monday.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:17.059263"
+    },
+    {
+      "job_id": "job_000323",
+      "company": "Asana",
+      "title": "Solutions Architect",
+      "url": "https://asana.com/jobs?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:17.981559"
+    },
+    {
+      "job_id": "job_000328",
+      "company": "Webex",
+      "title": "Solutions Architect",
+      "url": "https://jobs.webex.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.webex.com/careers?search=Solutions%20Architect"
+      },
+      "timestamp": "2026-02-03T17:53:18.223085"
+    },
+    {
+      "job_id": "job_000326",
+      "company": "Slack",
+      "title": "Solutions Architect",
+      "url": "https://slack.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:19.147451"
+    },
+    {
+      "job_id": "job_000330",
+      "company": "Box",
+      "title": "Solutions Architect",
+      "url": "https://www.box.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:22.998692"
+    },
+    {
+      "job_id": "job_000329",
+      "company": "Dropbox",
+      "title": "Solutions Architect",
+      "url": "https://www.dropbox.com/jobs?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:23.274819"
+    },
+    {
+      "job_id": "job_000333",
+      "company": "Canva",
+      "title": "Solutions Architect",
+      "url": "https://www.canva.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:26.089573"
+    },
+    {
+      "job_id": "job_000331",
+      "company": "DocuSign",
+      "title": "Solutions Architect",
+      "url": "https://www.docusign.com/company/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:29.182944"
+    },
+    {
+      "job_id": "job_000334",
+      "company": "HubSpot",
+      "title": "Solutions Architect",
+      "url": "https://www.hubspot.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:29.607895"
+    },
+    {
+      "job_id": "job_000335",
+      "company": "Zendesk",
+      "title": "Solutions Architect",
+      "url": "https://www.zendesk.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:31.222798"
+    },
+    {
+      "job_id": "job_000336",
+      "company": "Shopify",
+      "title": "Solutions Architect",
+      "url": "https://www.shopify.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:33.315363"
+    },
+    {
+      "job_id": "job_000337",
+      "company": "Atlassian",
+      "title": "Solutions Architect",
+      "url": "https://www.atlassian.com/company/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:35.294702"
+    },
+    {
+      "job_id": "job_000338",
+      "company": "Freshworks",
+      "title": "Solutions Architect",
+      "url": "https://www.freshworks.com/company/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:37.948962"
+    },
+    {
+      "job_id": "job_000339",
+      "company": "Zoho",
+      "title": "Solutions Architect",
+      "url": "https://www.zoho.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:42.778084"
+    },
+    {
+      "job_id": "job_000332",
+      "company": "Adobe",
+      "title": "Solutions Architect",
+      "url": "https://careers.adobe.com/us/en/search-results?keywords=Solutions%20Architect",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:53:43.061422"
+    },
+    {
+      "job_id": "job_000341",
+      "company": "AWS",
+      "title": "Solutions Architect",
+      "url": "https://www.amazon.jobs/en/search?base_query=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:43.960894"
+    },
+    {
+      "job_id": "job_000342",
+      "company": "Microsoft",
+      "title": "Solutions Architect",
+      "url": "https://careers.microsoft.com/us/en/search-results?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:45.269636"
+    },
+    {
+      "job_id": "job_000340",
+      "company": "SAP",
+      "title": "Solutions Architect",
+      "url": "https://jobs.sap.com/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:47.875693"
+    },
+    {
+      "job_id": "job_000345",
+      "company": "IBM",
+      "title": "Solutions Architect",
+      "url": "https://careers.ibm.com/job/search?query=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:50.209146"
+    },
+    {
+      "job_id": "job_000343",
+      "company": "Google Cloud",
+      "title": "Solutions Architect",
+      "url": "https://careers.google.com/jobs/results/?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:50.864025"
+    },
+    {
+      "job_id": "job_000347",
+      "company": "Red Hat",
+      "title": "Solutions Architect",
+      "url": "https://careers.redhat.com/jobs?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:53.688392"
+    },
+    {
+      "job_id": "job_000344",
+      "company": "Oracle",
+      "title": "Solutions Architect",
+      "url": "https://careers.oracle.com/jobs/?keyword=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:56.413216"
+    },
+    {
+      "job_id": "job_000348",
+      "company": "HPE",
+      "title": "Solutions Architect",
+      "url": "https://careers.hpe.com/jobs?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:58.688806"
+    },
+    {
+      "job_id": "job_000349",
+      "company": "Dell",
+      "title": "Solutions Architect",
+      "url": "https://jobs.dell.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:53:59.709777"
+    },
+    {
+      "job_id": "job_000350",
+      "company": "NetApp",
+      "title": "Solutions Architect",
+      "url": "https://careers.netapp.com/jobs?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:02.788393"
+    },
+    {
+      "job_id": "job_000352",
+      "company": "SAIC",
+      "title": "Solutions Architect",
+      "url": "https://jobs.saic.com/search-jobs?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:04.179799"
+    },
+    {
+      "job_id": "job_000351",
+      "company": "Booz Allen Hamilton",
+      "title": "Solutions Architect",
+      "url": "https://careers.boozallen.com/jobs?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:04.225265"
+    },
+    {
+      "job_id": "job_000356",
+      "company": "General Dynamics",
+      "title": "Solutions Architect",
+      "url": "https://careers.gd.com/search?q=Solutions%20Architect",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.gd.com/search?q=Solutions%20Architect\nCall "
+      },
+      "timestamp": "2026-02-03T17:54:07.398015"
+    },
+    {
+      "job_id": "job_000353",
+      "company": "Leidos",
+      "title": "Solutions Architect",
+      "url": "https://careers.leidos.com/jobs?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:08.110910"
+    },
+    {
+      "job_id": "job_000355",
+      "company": "Lockheed Martin",
+      "title": "Solutions Architect",
+      "url": "https://www.lockheedmartinjobs.com/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:14.116595"
+    },
+    {
+      "job_id": "job_000357",
+      "company": "Raytheon",
+      "title": "Solutions Architect",
+      "url": "https://careers.rtx.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:15.438651"
+    },
+    {
+      "job_id": "job_000358",
+      "company": "CACI",
+      "title": "Solutions Architect",
+      "url": "https://careers.caci.com/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:16.599428"
+    },
+    {
+      "job_id": "job_000346",
+      "company": "VMware",
+      "title": "Solutions Architect",
+      "url": "https://careers.vmware.com/main/jobs?keywords=Solutions%20Architect",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://careers.vmware.com/main/jo"
+      },
+      "timestamp": "2026-02-03T17:54:18.434154"
+    },
+    {
+      "job_id": "job_000354",
+      "company": "Northrop Grumman",
+      "title": "Solutions Architect",
+      "url": "https://www.northropgrumman.com/jobs?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:20.913852"
+    },
+    {
+      "job_id": "job_000360",
+      "company": "L3Harris",
+      "title": "Solutions Architect",
+      "url": "https://careers.l3harris.com/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:21.541256"
+    },
+    {
+      "job_id": "job_000362",
+      "company": "Perspecta",
+      "title": "Solutions Architect",
+      "url": "https://jobs.perspecta.com/search?q=Solutions%20Architect",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.perspecta.com/search?q=Solutions%20Architect\nC"
+      },
+      "timestamp": "2026-02-03T17:54:21.586407"
+    },
+    {
+      "job_id": "job_000361",
+      "company": "Boeing",
+      "title": "Solutions Architect",
+      "url": "https://jobs.boeing.com/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:22.666925"
+    },
+    {
+      "job_id": "job_000359",
+      "company": "BAE Systems",
+      "title": "Solutions Architect",
+      "url": "https://jobs.baesystems.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:23.125675"
+    },
+    {
+      "job_id": "job_000364",
+      "company": "General Atomics",
+      "title": "Solutions Architect",
+      "url": "https://www.ga-careers.com/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:26.827428"
+    },
+    {
+      "job_id": "job_000366",
+      "company": "SpaceX",
+      "title": "Solutions Architect",
+      "url": "https://www.spacex.com/careers/jobs?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:28.346549"
+    },
+    {
+      "job_id": "job_000365",
+      "company": "Sierra Nevada",
+      "title": "Solutions Architect",
+      "url": "https://www.sncorp.com/careers/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:28.933726"
+    },
+    {
+      "job_id": "job_000363",
+      "company": "ManTech",
+      "title": "Solutions Architect",
+      "url": "https://mantech.com/careers/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:29.755822"
+    },
+    {
+      "job_id": "job_000367",
+      "company": "Blue Origin",
+      "title": "Solutions Architect",
+      "url": "https://www.blueorigin.com/careers/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:29.790965"
+    },
+    {
+      "job_id": "job_000368",
+      "company": "Palantir",
+      "title": "Solutions Architect",
+      "url": "https://www.palantir.com/careers/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:33.540185"
+    },
+    {
+      "job_id": "job_000369",
+      "company": "Anduril",
+      "title": "Solutions Architect",
+      "url": "https://www.anduril.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:35.410613"
+    },
+    {
+      "job_id": "job_000371",
+      "company": "HawkEye 360",
+      "title": "Solutions Architect",
+      "url": "https://www.he360.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:35.685194"
+    },
+    {
+      "job_id": "job_000370",
+      "company": "Shield AI",
+      "title": "Solutions Architect",
+      "url": "https://www.shield.ai/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:40.724012"
+    },
+    {
+      "job_id": "job_000373",
+      "company": "Maxar",
+      "title": "Solutions Architect",
+      "url": "https://maxar.wd1.myworkdayjobs.com/en-US/Maxar?query=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:42.519589"
+    },
+    {
+      "job_id": "job_000375",
+      "company": "VTG",
+      "title": "Solutions Architect",
+      "url": "https://www.vtg.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:42.558789"
+    },
+    {
+      "job_id": "job_000374",
+      "company": "Peraton",
+      "title": "Solutions Architect",
+      "url": "https://careers.peraton.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:42.840217"
+    },
+    {
+      "job_id": "job_000378",
+      "company": "KPMG",
+      "title": "Solutions Architect",
+      "url": "https://jobs.kpmg.com/us/en/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.kpmg.com/us/en/search?keywords=Solutions%20Arc"
+      },
+      "timestamp": "2026-02-03T17:54:46.182680"
+    },
+    {
+      "job_id": "job_000376",
+      "company": "Accenture",
+      "title": "Solutions Architect",
+      "url": "https://www.accenture.com/us-en/careers?jk=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:46.607046"
+    },
+    {
+      "job_id": "job_000379",
+      "company": "PwC",
+      "title": "Solutions Architect",
+      "url": "https://pwc.wd3.myworkdayjobs.com?query=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:49.665121"
+    },
+    {
+      "job_id": "job_000377",
+      "company": "Deloitte",
+      "title": "Solutions Architect",
+      "url": "https://apply.deloitte.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:51.292890"
+    },
+    {
+      "job_id": "job_000372",
+      "company": "Planet Labs",
+      "title": "Solutions Architect",
+      "url": "https://www.planet.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "filled",
+        "note": "Form filled but submit not clicked"
+      },
+      "timestamp": "2026-02-03T17:54:51.800771"
+    },
+    {
+      "job_id": "job_000381",
+      "company": "Intuit",
+      "title": "Solutions Architect",
+      "url": "https://careers.intuit.com/search?q=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:52.251328"
+    },
+    {
+      "job_id": "job_000382",
+      "company": "Splunk",
+      "title": "Solutions Architect",
+      "url": "https://www.splunk.com/careers?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:56.254085"
+    },
+    {
+      "job_id": "job_000385",
+      "company": "Zscaler",
+      "title": "Solutions Architect",
+      "url": "https://www.zscaler.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:54:58.424903"
+    },
+    {
+      "job_id": "job_000384",
+      "company": "Palo Alto Networks",
+      "title": "Solutions Architect",
+      "url": "https://jobs.paloaltonetworks.com/en/jobs/?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:00.360207"
+    },
+    {
+      "job_id": "job_000386",
+      "company": "Fortinet",
+      "title": "Solutions Architect",
+      "url": "https://www.fortinet.com/corporate/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:04.139245"
+    },
+    {
+      "job_id": "job_000387",
+      "company": "Verizon",
+      "title": "Solutions Architect",
+      "url": "https://www.verizon.com/about/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:05.115089"
+    },
+    {
+      "job_id": "job_000388",
+      "company": "AT&T",
+      "title": "Solutions Architect",
+      "url": "https://www.att.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:06.082083"
+    },
+    {
+      "job_id": "job_000389",
+      "company": "T-Mobile",
+      "title": "Solutions Architect",
+      "url": "https://careers.t-mobile.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:10.771011"
+    },
+    {
+      "job_id": "job_000390",
+      "company": "Comcast",
+      "title": "Solutions Architect",
+      "url": "https://jobs.comcast.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:11.866154"
+    },
+    {
+      "job_id": "job_000391",
+      "company": "Charter Spectrum",
+      "title": "Solutions Architect",
+      "url": "https://jobs.spectrum.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:14.431320"
+    },
+    {
+      "job_id": "job_000380",
+      "company": "Cisco",
+      "title": "Solutions Architect",
+      "url": "https://jobs.cisco.com/jobs?search=Solutions%20Architect",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:55:14.519731"
+    },
+    {
+      "job_id": "job_000383",
+      "company": "CrowdStrike",
+      "title": "Solutions Architect",
+      "url": "https://www.crowdstrike.com/careers?keyword=Solutions%20Architect",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:55:16.316887"
+    },
+    {
+      "job_id": "job_000393",
+      "company": "Dish",
+      "title": "Solutions Architect",
+      "url": "https://jobs.dish.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_TOO_MANY_REDIRECTS at https://jobs.dish.com/search?keywords=Solutions%20Architec"
+      },
+      "timestamp": "2026-02-03T17:55:18.283466"
+    },
+    {
+      "job_id": "job_000392",
+      "company": "Cox",
+      "title": "Solutions Architect",
+      "url": "https://jobs.coxenterprises.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:19.014979"
+    },
+    {
+      "job_id": "job_000394",
+      "company": "Lumen",
+      "title": "Solutions Architect",
+      "url": "https://jobs.lumen.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:19.849166"
+    },
+    {
+      "job_id": "job_000395",
+      "company": "CenturyLink",
+      "title": "Solutions Architect",
+      "url": "https://jobs.centurylink.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:20.042831"
+    },
+    {
+      "job_id": "job_000397",
+      "company": "Windstream",
+      "title": "Solutions Architect",
+      "url": "https://jobs.windstream.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.windstream.com/search?keywords=Solutions%20Arc"
+      },
+      "timestamp": "2026-02-03T17:55:21.441428"
+    },
+    {
+      "job_id": "job_000396",
+      "company": "Frontier",
+      "title": "Solutions Architect",
+      "url": "https://careers.frontier.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:22.508071"
+    },
+    {
+      "job_id": "job_000398",
+      "company": "Equinix",
+      "title": "Solutions Architect",
+      "url": "https://www.equinix.com/careers?search=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:25.450295"
+    },
+    {
+      "job_id": "job_000402",
+      "company": "Workday",
+      "title": "Enterprise Account Manager",
+      "url": "https://careers.workday.com/en-us/jobs.html?keywords=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.workday.com/en-us/jobs.html?keywords=Enterp"
+      },
+      "timestamp": "2026-02-03T17:55:25.724501"
+    },
+    {
+      "job_id": "job_000400",
+      "company": "Iron Mountain",
+      "title": "Solutions Architect",
+      "url": "https://jobs.ironmountain.com/search?keywords=Solutions%20Architect",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:55:26.728122"
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+{
+  "campaign_id": "kevin_50_test",
+  "candidate_name": "Kevin Beltran",
+  "start_time": "2026-02-03T16:27:12.673669",
+  "end_time": "2026-02-03T16:27:21.652632",
+  "target_applications": 50,
+  "overall_stats": {
+    "total_attempted": 50,
+    "total_successful": 40,
+    "total_failed": 10,
+    "total_rate_limited": 3,
+    "total_blocked": 0,
+    "overall_success_rate": 80.0,
+    "overall_error_rate": 20.0,
+    "total_duration_seconds": 8.978958129882812,
+    "avg_apps_per_minute": 334.11448818496206
+  },
+  "platform_stats": {
+    "indeed": {
+      "total_attempts": 13,
+      "successful": 11,
+      "failed": 2,
+      "success_rate": 84.61538461538461,
+      "error_rate": 15.384615384615385,
+      "captcha_count": 0,
+      "login_required_count": 1,
+      "form_validation_errors": 0,
+      "timeout_count": 0,
+      "network_errors": 0,
+      "rate_limit_count": 1,
+      "ip_blocked_count": 0,
+      "browser_crashes": 0,
+      "unknown_errors": 0
+    },
+    "workday": {
+      "total_attempts": 1,
+      "successful": 1,
+      "failed": 0,
+      "success_rate": 100.0,
+      "error_rate": 0.0,
+      "captcha_count": 0,
+      "login_required_count": 0,
+      "form_validation_errors": 0,
+      "timeout_count": 0,
+      "network_errors": 0,
+      "rate_limit_count": 0,
+      "ip_blocked_count": 0,
+      "browser_crashes": 0,
+      "unknown_errors": 0
+    },
+    "clearancejobs": {
+      "total_attempts": 10,
+      "successful": 8,
+      "failed": 2,
+      "success_rate": 80.0,
+      "error_rate": 20.0,
+      "captcha_count": 0,
+      "login_required_count": 0,
+      "form_validation_errors": 1,
+      "timeout_count": 0,
+      "network_errors": 0,
+      "rate_limit_count": 1,
+      "ip_blocked_count": 0,
+      "browser_crashes": 0,
+      "unknown_errors": 0
+    },
+    "linkedin": {
+      "total_attempts": 17,
+      "successful": 12,
+      "failed": 5,
+      "success_rate": 70.58823529411765,
+      "error_rate": 29.411764705882355,
+      "captcha_count": 3,
+      "login_required_count": 0,
+      "form_validation_errors": 0,
+      "timeout_count": 1,
+      "network_errors": 0,
+      "rate_limit_count": 1,
+      "ip_blocked_count": 0,
+      "browser_crashes": 0,
+      "unknown_errors": 0
+    },
+    "greenhouse": {
+      "total_attempts": 7,
+      "successful": 7,
+      "failed": 0,
+      "success_rate": 100.0,
+      "error_rate": 0.0,
+      "captcha_count": 0,
+      "login_required_count": 0,
+      "form_validation_errors": 0,
+      "timeout_count": 0,
+      "network_errors": 0,
+      "rate_limit_count": 0,
+      "ip_blocked_count": 0,
+      "browser_crashes": 0,
+      "unknown_errors": 0
+    },
+    "lever": {
+      "total_attempts": 2,
+      "successful": 1,
+      "failed": 1,
+      "success_rate": 50.0,
+      "error_rate": 50.0,
+      "captcha_count": 0,
+      "login_required_count": 0,
+      "form_validation_errors": 1,
+      "timeout_count": 0,
+      "network_errors": 0,
+      "rate_limit_count": 0,
+      "ip_blocked_count": 0,
+      "browser_crashes": 0,
+      "unknown_errors": 0
+    }
+  },
+  "error_by_category": {
+    "platform_rate_limit": 3,
+    "form_validation_error": 2,
+    "captcha": 3,
+    "timeout": 1,
+    "login_required": 1
+  },
+  "error_timeline": [
+    {
+      "timestamp": "2026-02-03T16:27:20.543913",
+      "elapsed_seconds": 7.870229959487915,
+      "total_attempted": 50,
+      "total_successful": 40,
+      "total_failed": 10,
+      "success_rate": 80.0,
+      "error_rate": 20.0,
+      "apps_per_minute": 381.18327106609706,
+      "platform_breakdown": {
+        "indeed": {
+          "attempts": 13,
+          "success_rate": 84.61538461538461,
+          "error_rate": 15.384615384615385
+        },
+        "workday": {
+          "attempts": 1,
+          "success_rate": 100.0,
+          "error_rate": 0.0
+        },
+        "clearancejobs": {
+          "attempts": 10,
+          "success_rate": 80.0,
+          "error_rate": 20.0
+        },
+        "linkedin": {
+          "attempts": 17,
+          "success_rate": 70.58823529411765,
+          "error_rate": 29.411764705882355
+        },
+        "greenhouse": {
+          "attempts": 7,
+          "success_rate": 100.0,
+          "error_rate": 0.0
+        },
+        "lever": {
+          "attempts": 2,
+          "success_rate": 50.0,
+          "error_rate": 50.0
+        }
+      }
+    }
+  ]
+}

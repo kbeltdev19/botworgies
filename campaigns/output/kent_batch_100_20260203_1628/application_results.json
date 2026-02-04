@@ -1,0 +1,919 @@
+{
+  "stats": {
+    "total": 100,
+    "attempted": 100,
+    "successful": 0,
+    "failed": 33,
+    "external": 67,
+    "by_platform": {
+      "indeed": {
+        "attempted": 100,
+        "successful": 0
+      }
+    },
+    "start_time": "2026-02-03T16:32:59.875937"
+  },
+  "results": [
+    {
+      "job_id": 1,
+      "title": "Enterprise Customer Success Lead",
+      "company": "Speckle",
+      "url": "https://www.indeed.com/viewjob?jk=476e3f83d0db4867",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:33:03.572886"
+    },
+    {
+      "job_id": 2,
+      "title": "Customer Success Manager - SMB & Enterprise",
+      "company": "Blooming Health",
+      "url": "https://www.indeed.com/viewjob?jk=0c5a4b1300d41d25",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:33:11.602966"
+    },
+    {
+      "job_id": 3,
+      "title": "Customer Success Manager",
+      "company": "accrete",
+      "url": "https://www.indeed.com/viewjob?jk=7ac6511181c4a24a",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:33:20.419620"
+    },
+    {
+      "job_id": 4,
+      "title": "Customer Success Manager - INDOPACOM",
+      "company": "accrete",
+      "url": "https://www.indeed.com/viewjob?jk=56976a6101864443",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:33:31.213970"
+    },
+    {
+      "job_id": 5,
+      "title": "Customer Success Director (Retail Vertical)",
+      "company": "FIRST ADVANTAGE",
+      "url": "https://www.indeed.com/viewjob?jk=c4bc77e5b695e572",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:33:38.400838"
+    },
+    {
+      "job_id": 6,
+      "title": "Customer Success Director (Financial Services Vertical)",
+      "company": "FIRST ADVANTAGE",
+      "url": "https://www.indeed.com/viewjob?jk=9d22baebf12ee8a8",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:33:46.418668"
+    },
+    {
+      "job_id": 7,
+      "title": "Customer Success Manager",
+      "company": "Opus Training Inc.",
+      "url": "https://www.indeed.com/viewjob?jk=b892223b9e75fe7b",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:33:52.559342"
+    },
+    {
+      "job_id": 8,
+      "title": "EverPro - Customer Success Manager, Technical Onboarding (Remote, US)",
+      "company": "Evercommerce",
+      "url": "https://www.indeed.com/viewjob?jk=2b73923623a4522b",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:34:00.299736"
+    },
+    {
+      "job_id": 9,
+      "title": "Technical Account Manager",
+      "company": "KOMBO",
+      "url": "https://www.indeed.com/viewjob?jk=9aa42cafc3cbbadc",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:34:09.358393"
+    },
+    {
+      "job_id": 10,
+      "title": "Associate Customer Success Manager (Remote)",
+      "company": "UrbanBound",
+      "url": "https://www.indeed.com/viewjob?jk=33d70c9f8e44967a",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:34:21.194935"
+    },
+    {
+      "job_id": 11,
+      "title": "Enterprise Accounts Customer Success Manager",
+      "company": "Visit.org",
+      "url": "https://www.indeed.com/viewjob?jk=4fa3bd143f40fb2e",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:34:30.295416"
+    },
+    {
+      "job_id": 12,
+      "title": "Enterprise Accounts Customer Success Manager",
+      "company": "Visit.org",
+      "url": "https://www.indeed.com/viewjob?jk=0fac5d6ae281bf33",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:34:40.174785"
+    },
+    {
+      "job_id": 13,
+      "title": "Enterprise Accounts Customer Success Manager",
+      "company": "Visit.org",
+      "url": "https://www.indeed.com/viewjob?jk=c2c628850f0c5150",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:34:50.847283"
+    },
+    {
+      "job_id": 14,
+      "title": "Senior Customer Success Manager",
+      "company": "TRUSTWELL",
+      "url": "https://www.indeed.com/viewjob?jk=c10e0d75a50d5df3",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:34:58.719381"
+    },
+    {
+      "job_id": 15,
+      "title": "Account Manager/ Client Success Manager - Digital Marketing Agency",
+      "company": "MVR Digital",
+      "url": "https://www.indeed.com/viewjob?jk=18c040dd0277db8f",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:35:10.045477"
+    },
+    {
+      "job_id": 16,
+      "title": "Senior Client Success Manager",
+      "company": "Ambient Skies Productions",
+      "url": "https://www.indeed.com/viewjob?jk=e5fc0a3232e11410",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:35:17.878971"
+    },
+    {
+      "job_id": 17,
+      "title": "IT Account / Client Success Manager (Microsoft Knowledge Req.)",
+      "company": "GSES",
+      "url": "https://www.indeed.com/viewjob?jk=0b1aebe3c212be3d",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:35:29.681414"
+    },
+    {
+      "job_id": 18,
+      "title": "Customer Success Manager",
+      "company": "Lightricks",
+      "url": "https://www.indeed.com/viewjob?jk=2f3eae2c244cd29d",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:35:38.234805"
+    },
+    {
+      "job_id": 19,
+      "title": "Customer Success Manager",
+      "company": "Lightricks",
+      "url": "https://www.indeed.com/viewjob?jk=72b9bf17e2c692bf",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:35:44.855714"
+    },
+    {
+      "job_id": 20,
+      "title": "Senior Customer Success Manager",
+      "company": "Nexthink",
+      "url": "https://www.indeed.com/viewjob?jk=22fd5bbeee10adf7",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:35:52.278103"
+    },
+    {
+      "job_id": 21,
+      "title": "Senior Customer Success Manager",
+      "company": "Nexthink",
+      "url": "https://www.indeed.com/viewjob?jk=8dc2ba99ea1d2ff0",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:36:03.776946"
+    },
+    {
+      "job_id": 22,
+      "title": "Customer Success Manager (Marketing Solutions)",
+      "company": "Buxton Company",
+      "url": "https://www.indeed.com/viewjob?jk=4f2c2c24f2b726ad",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:36:11.489354"
+    },
+    {
+      "job_id": 23,
+      "title": "Customer Success Manager",
+      "company": "Macrobond Financial AB",
+      "url": "https://www.indeed.com/viewjob?jk=71dd674225f5d688",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:36:19.759715"
+    },
+    {
+      "job_id": 24,
+      "title": "Customer Success Manager Texas (Remote)",
+      "company": "AppCard",
+      "url": "https://www.indeed.com/viewjob?jk=7e75015f2c399c56",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:36:27.008810"
+    },
+    {
+      "job_id": 25,
+      "title": "Customer Success Manager North Carolina (Remote)",
+      "company": "AppCard",
+      "url": "https://www.indeed.com/viewjob?jk=061f3a53a18917df",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:36:34.389024"
+    },
+    {
+      "job_id": 26,
+      "title": "Customer Success Manager",
+      "company": "Zonda Home",
+      "url": "https://www.indeed.com/viewjob?jk=4943a6dc8cd0fa81",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:36:45.422746"
+    },
+    {
+      "job_id": 27,
+      "title": "Customer Success Manager (CSM)",
+      "company": "Worth AI",
+      "url": "https://www.indeed.com/viewjob?jk=aa55d12301e614cf",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:36:52.393145"
+    },
+    {
+      "job_id": 28,
+      "title": "Senior Customer Success Manager",
+      "company": "Workato",
+      "url": "https://www.indeed.com/viewjob?jk=a7e3920aa440e91c",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:37:04.376651"
+    },
+    {
+      "job_id": 29,
+      "title": "Customer Success Manager",
+      "company": "Meazure Learning",
+      "url": "https://www.indeed.com/viewjob?jk=1644ba71ec1a46e5",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:37:10.621623"
+    },
+    {
+      "job_id": 30,
+      "title": "Enterprise Customer Success Manager - East Coast",
+      "company": "Dovetail",
+      "url": "https://www.indeed.com/viewjob?jk=c8391cbe7c626460",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:37:16.912348"
+    },
+    {
+      "job_id": 31,
+      "title": "Enterprise Customer Success Manager - West Coast",
+      "company": "Dovetail",
+      "url": "https://www.indeed.com/viewjob?jk=f4c995360e31a2e0",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:37:24.247103"
+    },
+    {
+      "job_id": 32,
+      "title": "Customer Success Manager - LTX",
+      "company": "Lightricks",
+      "url": "https://www.indeed.com/viewjob?jk=80a0b4174d4fcd6d",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:37:31.272397"
+    },
+    {
+      "job_id": 33,
+      "title": "Director, Customer Success Management",
+      "company": "Otelier",
+      "url": "https://www.indeed.com/viewjob?jk=4a23f2a3746d1050",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:37:40.681930"
+    },
+    {
+      "job_id": 34,
+      "title": "Sr. Customer Success Manager",
+      "company": "OneSource Virtual",
+      "url": "https://www.indeed.com/viewjob?jk=d9c91d8a9b8056c1",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:37:47.731795"
+    },
+    {
+      "job_id": 35,
+      "title": "Customer Success Manager - MLS",
+      "company": "Clear Capital",
+      "url": "https://www.indeed.com/viewjob?jk=cb837fe6a5c3a85b",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:37:55.567374"
+    },
+    {
+      "job_id": 36,
+      "title": "Customer Success Manager",
+      "company": "kontakt.io",
+      "url": "https://www.indeed.com/viewjob?jk=f72c896a79b5aefd",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:38:02.816133"
+    },
+    {
+      "job_id": 37,
+      "title": "Associate Director, Customer Success",
+      "company": "nan",
+      "url": "https://www.indeed.com/viewjob?jk=b61801ff32ed490a",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:38:11.342908"
+    },
+    {
+      "job_id": 38,
+      "title": "Customer Success Manager",
+      "company": "Nearmap",
+      "url": "https://www.indeed.com/viewjob?jk=76d6b9e9793ca991",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:38:20.806667"
+    },
+    {
+      "job_id": 39,
+      "title": "Customer Success Manager",
+      "company": "Redpanda",
+      "url": "https://www.indeed.com/viewjob?jk=4f4b27049f107dfb",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:38:27.243191"
+    },
+    {
+      "job_id": 40,
+      "title": "Customer Success Manager - LTX",
+      "company": "Lightricks",
+      "url": "https://www.indeed.com/viewjob?jk=5ef48434db8295c4",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:38:35.529211"
+    },
+    {
+      "job_id": 41,
+      "title": "JOIN OUR CUSTOMER SUCCESS TEAM - LEAD NURTURE CONVERSION SPECIALIST",
+      "company": "F45 Training",
+      "url": "https://www.indeed.com/viewjob?jk=c8de66d88e04f34c",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:38:46.267063"
+    },
+    {
+      "job_id": 42,
+      "title": "Customer Success Manager",
+      "company": "Homebot",
+      "url": "https://www.indeed.com/viewjob?jk=fbe6c682c0d0bcc4",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:38:53.507891"
+    },
+    {
+      "job_id": 43,
+      "title": "Customer Success Manager",
+      "company": "Exact Sciences",
+      "url": "https://www.indeed.com/viewjob?jk=04aa6f8cc7597edc",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:38:59.802632"
+    },
+    {
+      "job_id": 44,
+      "title": "Customer Success Manager",
+      "company": "Exact Sciences",
+      "url": "https://www.indeed.com/viewjob?jk=6b8efa9d2a9c470b",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:39:07.021665"
+    },
+    {
+      "job_id": 45,
+      "title": "Sr Customer Success Manager",
+      "company": "Happy Returns, Inc.",
+      "url": "https://www.indeed.com/viewjob?jk=491e99a079b5be16",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:39:12.769295"
+    },
+    {
+      "job_id": 46,
+      "title": "Sr Customer Success Manager",
+      "company": "Sinch",
+      "url": "https://www.indeed.com/viewjob?jk=2cb2cb1cf6e47f99",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:39:20.551874"
+    },
+    {
+      "job_id": 47,
+      "title": "Customer Success Manager",
+      "company": "SendJim",
+      "url": "https://www.indeed.com/viewjob?jk=be5824653657b3da",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:39:32.050274"
+    },
+    {
+      "job_id": 48,
+      "title": "Customer Success Manager",
+      "company": "ServiceTitan",
+      "url": "https://www.indeed.com/viewjob?jk=414179bf8d358ffe",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:39:42.729184"
+    },
+    {
+      "job_id": 49,
+      "title": "Associate Customer Success Manager",
+      "company": "ServiceNow",
+      "url": "https://www.indeed.com/viewjob?jk=816943c6e401a182",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:39:53.367294"
+    },
+    {
+      "job_id": 50,
+      "title": "Manager, Customer Success",
+      "company": "Certinia",
+      "url": "https://www.indeed.com/viewjob?jk=8535b340130ae39d",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:40:03.736108"
+    },
+    {
+      "job_id": 51,
+      "title": "A fast-growing B2B SaaS is looking for talented Customer Success Managers!",
+      "company": "eWay System",
+      "url": "https://www.indeed.com/viewjob?jk=0594a460940920f2",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:40:13.097998"
+    },
+    {
+      "job_id": 52,
+      "title": "Customer Success Account Manager",
+      "company": "Jonas Software",
+      "url": "https://www.indeed.com/viewjob?jk=67452ae08891ff40",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:40:21.186345"
+    },
+    {
+      "job_id": 53,
+      "title": "Customer Success Manager (SOCOM/CENTCOM)",
+      "company": "accrete",
+      "url": "https://www.indeed.com/viewjob?jk=448867c2a6099649",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:40:32.059145"
+    },
+    {
+      "job_id": 54,
+      "title": "Wholesale Channel Manager & Customer Success Specialist",
+      "company": "BioProtein Technology",
+      "url": "https://www.indeed.com/viewjob?jk=243d5c17714da4fc",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:40:40.106261"
+    },
+    {
+      "job_id": 55,
+      "title": "Customer Success Manager",
+      "company": "Ascendion",
+      "url": "https://www.indeed.com/viewjob?jk=4d57bf82a8c7e334",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:40:46.652538"
+    },
+    {
+      "job_id": 56,
+      "title": "Principal Customer Success Manager, DX",
+      "company": "Atlassian",
+      "url": "https://www.indeed.com/viewjob?jk=37d4f97d22b81749",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:40:53.316117"
+    },
+    {
+      "job_id": 57,
+      "title": "Mid-Market Customer Success Manager",
+      "company": "Handshake",
+      "url": "https://www.indeed.com/viewjob?jk=a4f351b7f602ba5b",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:41:04.631318"
+    },
+    {
+      "job_id": 58,
+      "title": "Customer Success Account Manager - CTJ - TS/SCI",
+      "company": "Microsoft",
+      "url": "https://www.indeed.com/viewjob?jk=fec81002ce892dc8",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:41:12.064129"
+    },
+    {
+      "job_id": 59,
+      "title": "Technical Account Manager",
+      "company": "SpyCloud",
+      "url": "https://www.indeed.com/viewjob?jk=6bf2a2825f938f5e",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:41:21.313512"
+    },
+    {
+      "job_id": 60,
+      "title": "Account Manager- SMB, Growth & Retention (Partner Referred Business)",
+      "company": "Rippling",
+      "url": "https://www.indeed.com/viewjob?jk=ff9e26524991b12d",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:41:29.409712"
+    },
+    {
+      "job_id": 61,
+      "title": "Account Manager- SMB, Growth & Retention (Partner Referred Business)",
+      "company": "Rippling",
+      "url": "https://www.indeed.com/viewjob?jk=310483f7caa81b70",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:41:36.615533"
+    },
+    {
+      "job_id": 62,
+      "title": "Account Manager",
+      "company": "Safeguard Global",
+      "url": "https://www.indeed.com/viewjob?jk=b8860929189b2a0c",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:41:45.001642"
+    },
+    {
+      "job_id": 63,
+      "title": "Renewal Account Manager",
+      "company": "ServiceNow",
+      "url": "https://www.indeed.com/viewjob?jk=53a869b3be0048cb",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:41:53.717428"
+    },
+    {
+      "job_id": 64,
+      "title": "Account Manager - Reseller",
+      "company": "Uneekor",
+      "url": "https://www.indeed.com/viewjob?jk=f21870804069a34e",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:42:00.813970"
+    },
+    {
+      "job_id": 65,
+      "title": "Partner Account Manager - Distribution Support and Sales",
+      "company": "Keysight Technologies",
+      "url": "https://www.indeed.com/viewjob?jk=3ff3ef8a6e0308a3",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:42:07.770216"
+    },
+    {
+      "job_id": 66,
+      "title": "Partner Account Manager - Distribution Support and Sales",
+      "company": "Keysight Technologies",
+      "url": "https://www.indeed.com/viewjob?jk=36d862f83d73fd7e",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:42:15.304213"
+    },
+    {
+      "job_id": 67,
+      "title": "Senior Account Manager",
+      "company": "Clarivate",
+      "url": "https://www.indeed.com/viewjob?jk=b3f16c9754d63905",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:42:24.857574"
+    },
+    {
+      "job_id": 68,
+      "title": "Strategic Account Manager",
+      "company": "Wheel",
+      "url": "https://www.indeed.com/viewjob?jk=164e821f6f06df83",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:42:33.211053"
+    },
+    {
+      "job_id": 69,
+      "title": "Key Account Manager - Portland, OR",
+      "company": "iRhythm Technologies",
+      "url": "https://www.indeed.com/viewjob?jk=b436620511441187",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:42:39.473788"
+    },
+    {
+      "job_id": 70,
+      "title": "Senior Account Manager",
+      "company": "Telesystem",
+      "url": "https://www.indeed.com/viewjob?jk=587eae4d0e89d839",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:42:47.518030"
+    },
+    {
+      "job_id": 71,
+      "title": "Channel Account Manager Enablement Program Manager",
+      "company": "Thales",
+      "url": "https://www.indeed.com/viewjob?jk=12968ae203bcec4f",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:42:57.824550"
+    },
+    {
+      "job_id": 72,
+      "title": "Channel Account Manager (LATAM) (Hybrid) (Spanish Speaking)",
+      "company": "KnowBe4",
+      "url": "https://www.indeed.com/viewjob?jk=249a42c753cae0f1",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:43:08.365823"
+    },
+    {
+      "job_id": 73,
+      "title": "Key Account Manager",
+      "company": "Intuit",
+      "url": "https://www.indeed.com/viewjob?jk=b59bf54cd2a8e02d",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:43:17.319355"
+    },
+    {
+      "job_id": 74,
+      "title": "Key Account Manager",
+      "company": "Intuit",
+      "url": "https://www.indeed.com/viewjob?jk=2ac4282d2a79a4ef",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:43:23.294708"
+    },
+    {
+      "job_id": 75,
+      "title": "Key Account Manager",
+      "company": "Intuit",
+      "url": "https://www.indeed.com/viewjob?jk=2a91425720e58620",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:43:31.911532"
+    },
+    {
+      "job_id": 76,
+      "title": "Key Account Manager",
+      "company": "Intuit",
+      "url": "https://www.indeed.com/viewjob?jk=e1a5b51e5ee539d5",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:43:39.955156"
+    },
+    {
+      "job_id": 77,
+      "title": "Corporate Account Manager, Research Solutions",
+      "company": "Clarivate",
+      "url": "https://www.indeed.com/viewjob?jk=fa7923b9b628d3f4",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:43:48.359879"
+    },
+    {
+      "job_id": 78,
+      "title": "Technical Account Manager",
+      "company": "ACI Worldwide",
+      "url": "https://www.indeed.com/viewjob?jk=a1db2dcc9b70618b",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:43:56.623556"
+    },
+    {
+      "job_id": 79,
+      "title": "Contractor Success Manager",
+      "company": "RoofMarketplace",
+      "url": "https://www.indeed.com/viewjob?jk=7a4990adb4c90617",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:44:06.756416"
+    },
+    {
+      "job_id": 80,
+      "title": "Client Success Manager, Performance Marketing",
+      "company": "MVR Digital",
+      "url": "https://www.indeed.com/viewjob?jk=1489799760af8d91",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:44:18.210536"
+    },
+    {
+      "job_id": 81,
+      "title": "Customer Success Manager Mid Market",
+      "company": "Bobyard",
+      "url": "https://www.indeed.com/viewjob?jk=b5a3258cda73fe7d",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:44:29.099801"
+    },
+    {
+      "job_id": 82,
+      "title": "Head of US Customer Success",
+      "company": "Famly",
+      "url": "https://www.indeed.com/viewjob?jk=aa2ab505b7c9d653",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:44:36.327327"
+    },
+    {
+      "job_id": 83,
+      "title": "Senior Customer Success Manager",
+      "company": "Circadia Health",
+      "url": "https://www.indeed.com/viewjob?jk=331f83902ed89bef",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:44:47.883052"
+    },
+    {
+      "job_id": 84,
+      "title": "Customer Success Implementation Lead, Uber for Business",
+      "company": "Uber",
+      "url": "https://www.indeed.com/viewjob?jk=6318f5996651e010",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:44:55.802893"
+    },
+    {
+      "job_id": 85,
+      "title": "Customer Success Implementation Lead, Uber for Business",
+      "company": "Uber",
+      "url": "https://www.indeed.com/viewjob?jk=87ac0a8c35f19bec",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:45:02.365580"
+    },
+    {
+      "job_id": 86,
+      "title": "Group Manager, Customer Success, Mid-Market",
+      "company": "Intuit",
+      "url": "https://www.indeed.com/viewjob?jk=5ed210762753dee5",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:45:08.857766"
+    },
+    {
+      "job_id": 87,
+      "title": "Founding Customer Success Manager",
+      "company": "Granola",
+      "url": "https://www.indeed.com/viewjob?jk=a9b8dd6f37bd727f",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:45:15.851443"
+    },
+    {
+      "job_id": 88,
+      "title": "Account Manager",
+      "company": "CarNow",
+      "url": "https://www.indeed.com/viewjob?jk=0a584a000e005158",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:45:26.437219"
+    },
+    {
+      "job_id": 89,
+      "title": "Implementation Success Manager",
+      "company": "inquirED",
+      "url": "https://www.indeed.com/viewjob?jk=5c1c770f2eced228",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:45:32.661713"
+    },
+    {
+      "job_id": 90,
+      "title": "Client Success Manager",
+      "company": "Kaplan",
+      "url": "https://www.indeed.com/viewjob?jk=7b6a9a57a69985cf",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:45:40.164128"
+    },
+    {
+      "job_id": 91,
+      "title": "Client Success Manager",
+      "company": "Woundtech",
+      "url": "https://www.indeed.com/viewjob?jk=b9056b8f0779d7b4",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:45:50.690006"
+    },
+    {
+      "job_id": 92,
+      "title": "Client Success Manager",
+      "company": "Woundtech",
+      "url": "https://www.indeed.com/viewjob?jk=d09e87093c1088f5",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:45:58.911537"
+    },
+    {
+      "job_id": 93,
+      "title": "Clinical Client Success Manager",
+      "company": "MPOWERHealth",
+      "url": "https://www.indeed.com/viewjob?jk=b1b8d8b99da3ed2d",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:46:08.018412"
+    },
+    {
+      "job_id": 94,
+      "title": "SEO Client Success Manager",
+      "company": "Click Here Digital",
+      "url": "https://www.indeed.com/viewjob?jk=dd189c7eb7ac68f2",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:46:17.466801"
+    },
+    {
+      "job_id": 95,
+      "title": "Director of Client Success",
+      "company": "ISOS Technology",
+      "url": "https://www.indeed.com/viewjob?jk=b34c92a3f14428cf",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:46:27.068355"
+    },
+    {
+      "job_id": 96,
+      "title": "Client Success Manager, Shopper & Retail Media",
+      "company": "nan",
+      "url": "https://www.indeed.com/viewjob?jk=2dab81a98c87888e",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:46:34.534200"
+    },
+    {
+      "job_id": 97,
+      "title": "Client Success Manager, Brands & Agencies",
+      "company": "nan",
+      "url": "https://www.indeed.com/viewjob?jk=4eb42526b87bf830",
+      "status": "external",
+      "message": "Apply at: None",
+      "timestamp": "2026-02-03T16:46:42.832213"
+    },
+    {
+      "job_id": 98,
+      "title": "Client Success Manager- Chargeback",
+      "company": "Global Payments",
+      "url": "https://www.indeed.com/viewjob?jk=b1f7e4fcefcd5af5",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:46:51.970554"
+    },
+    {
+      "job_id": 99,
+      "title": "Client Success Manager and Coordinator",
+      "company": "Civility Home Care - Danbury",
+      "url": "https://www.indeed.com/viewjob?jk=ae5094685c7ea88a",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:47:04.027592"
+    },
+    {
+      "job_id": 100,
+      "title": "Omni-Channel Client Success Manager",
+      "company": "Mspark",
+      "url": "https://www.indeed.com/viewjob?jk=7dcda9f1ca63a6c4",
+      "status": "failed",
+      "message": "Ready for review",
+      "timestamp": "2026-02-03T16:47:13.367696"
+    }
+  ],
+  "end_time": "2026-02-03T16:47:21.110659"
+}

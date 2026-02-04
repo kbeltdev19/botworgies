@@ -1,0 +1,1103 @@
+{
+  "stats": {
+    "success": 36,
+    "failed": 561,
+    "external": 0
+  },
+  "results": [
+    {
+      "job_id": "job_000498",
+      "company": "Equinix",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.equinix.com/careers?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:58:13.370307"
+    },
+    {
+      "job_id": "job_000502",
+      "company": "Workday",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.workday.com/en-us/jobs.html?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.workday.com/en-us/jobs.html?keywords=Cloud%"
+      },
+      "timestamp": "2026-02-03T17:58:17.079744"
+    },
+    {
+      "job_id": "job_000500",
+      "company": "Iron Mountain",
+      "title": "Enterprise Account Manager",
+      "url": "https://jobs.ironmountain.com/search?keywords=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:58:17.539670"
+    },
+    {
+      "job_id": "job_000499",
+      "company": "Digital Realty",
+      "title": "Enterprise Account Manager",
+      "url": "https://www.digitalrealty.com/careers?search=Enterprise%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:58:18.172523"
+    },
+    {
+      "job_id": "job_000505",
+      "company": "Databricks",
+      "title": "Cloud Account Manager",
+      "url": "https://www.databricks.com/company/careers/open-positions?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:58:23.153842"
+    },
+    {
+      "job_id": "job_000504",
+      "company": "Snowflake",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.snowflake.com/us/en/search-results?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:58:26.346781"
+    },
+    {
+      "job_id": "job_000506",
+      "company": "HashiCorp",
+      "title": "Cloud Account Manager",
+      "url": "https://www.hashicorp.com/careers/jobs?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:58:27.008189"
+    },
+    {
+      "job_id": "job_000509",
+      "company": "Cloudflare",
+      "title": "Cloud Account Manager",
+      "url": "https://www.cloudflare.com/careers/jobs/?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:58:32.658210"
+    },
+    {
+      "job_id": "job_000508",
+      "company": "Okta",
+      "title": "Cloud Account Manager",
+      "url": "https://www.okta.com/company/careers/?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:58:34.205763"
+    },
+    {
+      "job_id": "job_000501",
+      "company": "Salesforce",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.salesforce.com/en/jobs/?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:58:34.971623"
+    },
+    {
+      "job_id": "job_000503",
+      "company": "ServiceNow",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.servicenow.com/careers/jobs?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:58:38.947100"
+    },
+    {
+      "job_id": "job_000510",
+      "company": "Datadog",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.datadoghq.com/?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:58:39.100724"
+    },
+    {
+      "job_id": "job_000511",
+      "company": "MongoDB",
+      "title": "Cloud Account Manager",
+      "url": "https://www.mongodb.com/careers/jobs?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:58:40.502308"
+    },
+    {
+      "job_id": "job_000512",
+      "company": "Confluent",
+      "title": "Cloud Account Manager",
+      "url": "https://www.confluent.io/careers/positions/?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:58:42.775029"
+    },
+    {
+      "job_id": "job_000513",
+      "company": "Elastic",
+      "title": "Cloud Account Manager",
+      "url": "https://www.elastic.co/careers/jobs?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:58:44.789668"
+    },
+    {
+      "job_id": "job_000514",
+      "company": "GitLab",
+      "title": "Cloud Account Manager",
+      "url": "https://about.gitlab.com/jobs/?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:58:45.593221"
+    },
+    {
+      "job_id": "job_000515",
+      "company": "Fastly",
+      "title": "Cloud Account Manager",
+      "url": "https://www.fastly.com/about/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:58:46.526624"
+    },
+    {
+      "job_id": "job_000507",
+      "company": "Twilio",
+      "title": "Cloud Account Manager",
+      "url": "https://www.twilio.com/en-us/company/jobs?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:58:48.073771"
+    },
+    {
+      "job_id": "job_000516",
+      "company": "PagerDuty",
+      "title": "Cloud Account Manager",
+      "url": "https://www.pagerduty.com/careers/jobs/?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:58:48.246452"
+    },
+    {
+      "job_id": "job_000517",
+      "company": "New Relic",
+      "title": "Cloud Account Manager",
+      "url": "https://newrelic.com/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:58:50.256263"
+    },
+    {
+      "job_id": "job_000521",
+      "company": "Figma",
+      "title": "Cloud Account Manager",
+      "url": "https://www.figma.com/careers/?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:58:54.213070"
+    },
+    {
+      "job_id": "job_000520",
+      "company": "Miro",
+      "title": "Cloud Account Manager",
+      "url": "https://miro.com/careers/?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:58:55.529800"
+    },
+    {
+      "job_id": "job_000522",
+      "company": "Notion",
+      "title": "Cloud Account Manager",
+      "url": "https://www.notion.so/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:58:56.150046"
+    },
+    {
+      "job_id": "job_000519",
+      "company": "CircleCI",
+      "title": "Cloud Account Manager",
+      "url": "https://circleci.com/careers/jobs/?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:58:57.430440"
+    },
+    {
+      "job_id": "job_000518",
+      "company": "LaunchDarkly",
+      "title": "Cloud Account Manager",
+      "url": "https://launchdarkly.com/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:58:59.780395"
+    },
+    {
+      "job_id": "job_000525",
+      "company": "Airtable",
+      "title": "Cloud Account Manager",
+      "url": "https://www.airtable.com/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:03.312956"
+    },
+    {
+      "job_id": "job_000527",
+      "company": "Zoom",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.zoom.us/jobs?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:05.613661"
+    },
+    {
+      "job_id": "job_000523",
+      "company": "Asana",
+      "title": "Cloud Account Manager",
+      "url": "https://asana.com/jobs?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:05.868041"
+    },
+    {
+      "job_id": "job_000528",
+      "company": "Webex",
+      "title": "Cloud Account Manager",
+      "url": "https://jobs.webex.com/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.webex.com/careers?search=Cloud%20Account%20Man"
+      },
+      "timestamp": "2026-02-03T17:59:06.612549"
+    },
+    {
+      "job_id": "job_000524",
+      "company": "Monday.com",
+      "title": "Cloud Account Manager",
+      "url": "https://monday.com/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:08.883762"
+    },
+    {
+      "job_id": "job_000526",
+      "company": "Slack",
+      "title": "Cloud Account Manager",
+      "url": "https://slack.com/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:09.136060"
+    },
+    {
+      "job_id": "job_000530",
+      "company": "Box",
+      "title": "Cloud Account Manager",
+      "url": "https://www.box.com/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:11.940968"
+    },
+    {
+      "job_id": "job_000529",
+      "company": "Dropbox",
+      "title": "Cloud Account Manager",
+      "url": "https://www.dropbox.com/jobs?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:12.782002"
+    },
+    {
+      "job_id": "job_000531",
+      "company": "DocuSign",
+      "title": "Cloud Account Manager",
+      "url": "https://www.docusign.com/company/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:13.811227"
+    },
+    {
+      "job_id": "job_000533",
+      "company": "Canva",
+      "title": "Cloud Account Manager",
+      "url": "https://www.canva.com/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:15.587991"
+    },
+    {
+      "job_id": "job_000534",
+      "company": "HubSpot",
+      "title": "Cloud Account Manager",
+      "url": "https://www.hubspot.com/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:18.545242"
+    },
+    {
+      "job_id": "job_000535",
+      "company": "Zendesk",
+      "title": "Cloud Account Manager",
+      "url": "https://www.zendesk.com/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:18.985717"
+    },
+    {
+      "job_id": "job_000537",
+      "company": "Atlassian",
+      "title": "Cloud Account Manager",
+      "url": "https://www.atlassian.com/company/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:21.515984"
+    },
+    {
+      "job_id": "job_000536",
+      "company": "Shopify",
+      "title": "Cloud Account Manager",
+      "url": "https://www.shopify.com/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:22.121091"
+    },
+    {
+      "job_id": "job_000538",
+      "company": "Freshworks",
+      "title": "Cloud Account Manager",
+      "url": "https://www.freshworks.com/company/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:27.135553"
+    },
+    {
+      "job_id": "job_000541",
+      "company": "AWS",
+      "title": "Cloud Account Manager",
+      "url": "https://www.amazon.jobs/en/search?base_query=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:29.084239"
+    },
+    {
+      "job_id": "job_000540",
+      "company": "SAP",
+      "title": "Cloud Account Manager",
+      "url": "https://jobs.sap.com/search?q=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:29.775257"
+    },
+    {
+      "job_id": "job_000539",
+      "company": "Zoho",
+      "title": "Cloud Account Manager",
+      "url": "https://www.zoho.com/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:29.880149"
+    },
+    {
+      "job_id": "job_000542",
+      "company": "Microsoft",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.microsoft.com/us/en/search-results?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:33.528729"
+    },
+    {
+      "job_id": "job_000532",
+      "company": "Adobe",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.adobe.com/us/en/search-results?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T17:59:34.938816"
+    },
+    {
+      "job_id": "job_000543",
+      "company": "Google Cloud",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.google.com/jobs/results/?q=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:35.296619"
+    },
+    {
+      "job_id": "job_000545",
+      "company": "IBM",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.ibm.com/job/search?query=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:35.500480"
+    },
+    {
+      "job_id": "job_000544",
+      "company": "Oracle",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.oracle.com/jobs/?keyword=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:37.837157"
+    },
+    {
+      "job_id": "job_000547",
+      "company": "Red Hat",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.redhat.com/jobs?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:40.925093"
+    },
+    {
+      "job_id": "job_000549",
+      "company": "Dell",
+      "title": "Cloud Account Manager",
+      "url": "https://jobs.dell.com/search?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:44.320410"
+    },
+    {
+      "job_id": "job_000548",
+      "company": "HPE",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.hpe.com/jobs?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:46.021530"
+    },
+    {
+      "job_id": "job_000550",
+      "company": "NetApp",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.netapp.com/jobs?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:46.641653"
+    },
+    {
+      "job_id": "job_000552",
+      "company": "SAIC",
+      "title": "Cloud Account Manager",
+      "url": "https://jobs.saic.com/search-jobs?q=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:52.058180"
+    },
+    {
+      "job_id": "job_000551",
+      "company": "Booz Allen Hamilton",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.boozallen.com/jobs?q=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:52.200855"
+    },
+    {
+      "job_id": "job_000556",
+      "company": "General Dynamics",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.gd.com/search?q=Cloud%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.gd.com/search?q=Cloud%20Account%20Manager\nC"
+      },
+      "timestamp": "2026-02-03T17:59:55.350683"
+    },
+    {
+      "job_id": "job_000553",
+      "company": "Leidos",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.leidos.com/jobs?q=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T17:59:58.995351"
+    },
+    {
+      "job_id": "job_000555",
+      "company": "Lockheed Martin",
+      "title": "Cloud Account Manager",
+      "url": "https://www.lockheedmartinjobs.com/search?q=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:01.597483"
+    },
+    {
+      "job_id": "job_000557",
+      "company": "Raytheon",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.rtx.com/search?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:03.067261"
+    },
+    {
+      "job_id": "job_000554",
+      "company": "Northrop Grumman",
+      "title": "Cloud Account Manager",
+      "url": "https://www.northropgrumman.com/jobs?q=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:05.553019"
+    },
+    {
+      "job_id": "job_000546",
+      "company": "VMware",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.vmware.com/main/jobs?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://careers.vmware.com/main/jo"
+      },
+      "timestamp": "2026-02-03T18:00:06.675480"
+    },
+    {
+      "job_id": "job_000560",
+      "company": "L3Harris",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.l3harris.com/search?q=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:09.455495"
+    },
+    {
+      "job_id": "job_000558",
+      "company": "CACI",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.caci.com/search?q=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:09.466744"
+    },
+    {
+      "job_id": "job_000562",
+      "company": "Perspecta",
+      "title": "Cloud Account Manager",
+      "url": "https://jobs.perspecta.com/search?q=Cloud%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.perspecta.com/search?q=Cloud%20Account%20Manag"
+      },
+      "timestamp": "2026-02-03T18:00:09.838188"
+    },
+    {
+      "job_id": "job_000561",
+      "company": "Boeing",
+      "title": "Cloud Account Manager",
+      "url": "https://jobs.boeing.com/search?q=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:11.638931"
+    },
+    {
+      "job_id": "job_000559",
+      "company": "BAE Systems",
+      "title": "Cloud Account Manager",
+      "url": "https://jobs.baesystems.com/search?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:13.301545"
+    },
+    {
+      "job_id": "job_000564",
+      "company": "General Atomics",
+      "title": "Cloud Account Manager",
+      "url": "https://www.ga-careers.com/search?q=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:14.825417"
+    },
+    {
+      "job_id": "job_000563",
+      "company": "ManTech",
+      "title": "Cloud Account Manager",
+      "url": "https://mantech.com/careers/search?q=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:16.330384"
+    },
+    {
+      "job_id": "job_000566",
+      "company": "SpaceX",
+      "title": "Cloud Account Manager",
+      "url": "https://www.spacex.com/careers/jobs?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:17.159665"
+    },
+    {
+      "job_id": "job_000568",
+      "company": "Palantir",
+      "title": "Cloud Account Manager",
+      "url": "https://www.palantir.com/careers/search?q=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:20.335223"
+    },
+    {
+      "job_id": "job_000565",
+      "company": "Sierra Nevada",
+      "title": "Cloud Account Manager",
+      "url": "https://www.sncorp.com/careers/search?q=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:21.546776"
+    },
+    {
+      "job_id": "job_000569",
+      "company": "Anduril",
+      "title": "Cloud Account Manager",
+      "url": "https://www.anduril.com/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:22.233874"
+    },
+    {
+      "job_id": "job_000567",
+      "company": "Blue Origin",
+      "title": "Cloud Account Manager",
+      "url": "https://www.blueorigin.com/careers/search?q=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:23.863373"
+    },
+    {
+      "job_id": "job_000570",
+      "company": "Shield AI",
+      "title": "Cloud Account Manager",
+      "url": "https://www.shield.ai/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:24.743558"
+    },
+    {
+      "job_id": "job_000571",
+      "company": "HawkEye 360",
+      "title": "Cloud Account Manager",
+      "url": "https://www.he360.com/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:27.193214"
+    },
+    {
+      "job_id": "job_000574",
+      "company": "Peraton",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.peraton.com/search?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:31.512513"
+    },
+    {
+      "job_id": "job_000575",
+      "company": "VTG",
+      "title": "Cloud Account Manager",
+      "url": "https://www.vtg.com/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:31.539486"
+    },
+    {
+      "job_id": "job_000573",
+      "company": "Maxar",
+      "title": "Cloud Account Manager",
+      "url": "https://maxar.wd1.myworkdayjobs.com/en-US/Maxar?query=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:33.183391"
+    },
+    {
+      "job_id": "job_000576",
+      "company": "Accenture",
+      "title": "Cloud Account Manager",
+      "url": "https://www.accenture.com/us-en/careers?jk=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:33.226326"
+    },
+    {
+      "job_id": "job_000578",
+      "company": "KPMG",
+      "title": "Cloud Account Manager",
+      "url": "https://jobs.kpmg.com/us/en/search?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.kpmg.com/us/en/search?keywords=Cloud%20Account"
+      },
+      "timestamp": "2026-02-03T18:00:34.705484"
+    },
+    {
+      "job_id": "job_000579",
+      "company": "PwC",
+      "title": "Cloud Account Manager",
+      "url": "https://pwc.wd3.myworkdayjobs.com?query=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:39.520660"
+    },
+    {
+      "job_id": "job_000577",
+      "company": "Deloitte",
+      "title": "Cloud Account Manager",
+      "url": "https://apply.deloitte.com/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:39.584546"
+    },
+    {
+      "job_id": "job_000572",
+      "company": "Planet Labs",
+      "title": "Cloud Account Manager",
+      "url": "https://www.planet.com/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "filled",
+        "note": "Form filled but submit not clicked"
+      },
+      "timestamp": "2026-02-03T18:00:42.790364"
+    },
+    {
+      "job_id": "job_000581",
+      "company": "Intuit",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.intuit.com/search?q=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:43.355276"
+    },
+    {
+      "job_id": "job_000582",
+      "company": "Splunk",
+      "title": "Cloud Account Manager",
+      "url": "https://www.splunk.com/careers?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:45.973102"
+    },
+    {
+      "job_id": "job_000585",
+      "company": "Zscaler",
+      "title": "Cloud Account Manager",
+      "url": "https://www.zscaler.com/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:49.537196"
+    },
+    {
+      "job_id": "job_000584",
+      "company": "Palo Alto Networks",
+      "title": "Cloud Account Manager",
+      "url": "https://jobs.paloaltonetworks.com/en/jobs/?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:51.480744"
+    },
+    {
+      "job_id": "job_000586",
+      "company": "Fortinet",
+      "title": "Cloud Account Manager",
+      "url": "https://www.fortinet.com/corporate/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:54.251968"
+    },
+    {
+      "job_id": "job_000587",
+      "company": "Verizon",
+      "title": "Cloud Account Manager",
+      "url": "https://www.verizon.com/about/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:55.951220"
+    },
+    {
+      "job_id": "job_000588",
+      "company": "AT&T",
+      "title": "Cloud Account Manager",
+      "url": "https://www.att.com/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:00:56.934444"
+    },
+    {
+      "job_id": "job_000589",
+      "company": "T-Mobile",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.t-mobile.com/search?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:01:00.657033"
+    },
+    {
+      "job_id": "job_000580",
+      "company": "Cisco",
+      "title": "Cloud Account Manager",
+      "url": "https://jobs.cisco.com/jobs?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:01:01.877590"
+    },
+    {
+      "job_id": "job_000583",
+      "company": "CrowdStrike",
+      "title": "Cloud Account Manager",
+      "url": "https://www.crowdstrike.com/careers?keyword=Cloud%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:01:04.939033"
+    },
+    {
+      "job_id": "job_000592",
+      "company": "Cox",
+      "title": "Cloud Account Manager",
+      "url": "https://jobs.coxenterprises.com/search?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:01:06.959386"
+    },
+    {
+      "job_id": "job_000593",
+      "company": "Dish",
+      "title": "Cloud Account Manager",
+      "url": "https://jobs.dish.com/search?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_TOO_MANY_REDIRECTS at https://jobs.dish.com/search?keywords=Cloud%20Account%20Ma"
+      },
+      "timestamp": "2026-02-03T18:01:07.594954"
+    },
+    {
+      "job_id": "job_000594",
+      "company": "Lumen",
+      "title": "Cloud Account Manager",
+      "url": "https://jobs.lumen.com/search?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:01:10.445726"
+    },
+    {
+      "job_id": "job_000595",
+      "company": "CenturyLink",
+      "title": "Cloud Account Manager",
+      "url": "https://jobs.centurylink.com/search?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:01:13.516581"
+    },
+    {
+      "job_id": "job_000597",
+      "company": "Windstream",
+      "title": "Cloud Account Manager",
+      "url": "https://jobs.windstream.com/search?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.windstream.com/search?keywords=Cloud%20Account"
+      },
+      "timestamp": "2026-02-03T18:01:13.595097"
+    },
+    {
+      "job_id": "job_000596",
+      "company": "Frontier",
+      "title": "Cloud Account Manager",
+      "url": "https://careers.frontier.com/search?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:01:13.633239"
+    },
+    {
+      "job_id": "job_000598",
+      "company": "Equinix",
+      "title": "Cloud Account Manager",
+      "url": "https://www.equinix.com/careers?search=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:01:18.812073"
+    },
+    {
+      "job_id": "job_000600",
+      "company": "Iron Mountain",
+      "title": "Cloud Account Manager",
+      "url": "https://jobs.ironmountain.com/search?keywords=Cloud%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:01:19.914197"
+    }
+  ]
+}

@@ -1,0 +1,1103 @@
+{
+  "stats": {
+    "success": 52,
+    "failed": 797,
+    "external": 0
+  },
+  "results": [
+    {
+      "job_id": "job_000751",
+      "company": "Booz Allen Hamilton",
+      "title": "AWS Account Manager",
+      "url": "https://careers.boozallen.com/jobs?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:54.541122"
+    },
+    {
+      "job_id": "job_000752",
+      "company": "SAIC",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.saic.com/search-jobs?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:05:56.383384"
+    },
+    {
+      "job_id": "job_000756",
+      "company": "General Dynamics",
+      "title": "AWS Account Manager",
+      "url": "https://careers.gd.com/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.gd.com/search?q=AWS%20Account%20Manager\nCal"
+      },
+      "timestamp": "2026-02-03T18:05:59.536214"
+    },
+    {
+      "job_id": "job_000753",
+      "company": "Leidos",
+      "title": "AWS Account Manager",
+      "url": "https://careers.leidos.com/jobs?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:02.067654"
+    },
+    {
+      "job_id": "job_000755",
+      "company": "Lockheed Martin",
+      "title": "AWS Account Manager",
+      "url": "https://www.lockheedmartinjobs.com/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:04.104424"
+    },
+    {
+      "job_id": "job_000757",
+      "company": "Raytheon",
+      "title": "AWS Account Manager",
+      "url": "https://careers.rtx.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:07.967423"
+    },
+    {
+      "job_id": "job_000746",
+      "company": "VMware",
+      "title": "AWS Account Manager",
+      "url": "https://careers.vmware.com/main/jobs?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://careers.vmware.com/main/jo"
+      },
+      "timestamp": "2026-02-03T18:06:09.252430"
+    },
+    {
+      "job_id": "job_000758",
+      "company": "CACI",
+      "title": "AWS Account Manager",
+      "url": "https://careers.caci.com/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:09.265426"
+    },
+    {
+      "job_id": "job_000754",
+      "company": "Northrop Grumman",
+      "title": "AWS Account Manager",
+      "url": "https://www.northropgrumman.com/jobs?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:10.292639"
+    },
+    {
+      "job_id": "job_000762",
+      "company": "Perspecta",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.perspecta.com/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.perspecta.com/search?q=AWS%20Account%20Manager"
+      },
+      "timestamp": "2026-02-03T18:06:12.447141"
+    },
+    {
+      "job_id": "job_000759",
+      "company": "BAE Systems",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.baesystems.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:13.460334"
+    },
+    {
+      "job_id": "job_000760",
+      "company": "L3Harris",
+      "title": "AWS Account Manager",
+      "url": "https://careers.l3harris.com/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:14.261289"
+    },
+    {
+      "job_id": "job_000761",
+      "company": "Boeing",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.boeing.com/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:15.036725"
+    },
+    {
+      "job_id": "job_000763",
+      "company": "ManTech",
+      "title": "AWS Account Manager",
+      "url": "https://mantech.com/careers/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:17.398812"
+    },
+    {
+      "job_id": "job_000764",
+      "company": "General Atomics",
+      "title": "AWS Account Manager",
+      "url": "https://www.ga-careers.com/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:17.738908"
+    },
+    {
+      "job_id": "job_000766",
+      "company": "SpaceX",
+      "title": "AWS Account Manager",
+      "url": "https://www.spacex.com/careers/jobs?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:20.031501"
+    },
+    {
+      "job_id": "job_000765",
+      "company": "Sierra Nevada",
+      "title": "AWS Account Manager",
+      "url": "https://www.sncorp.com/careers/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:20.877973"
+    },
+    {
+      "job_id": "job_000767",
+      "company": "Blue Origin",
+      "title": "AWS Account Manager",
+      "url": "https://www.blueorigin.com/careers/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:22.038129"
+    },
+    {
+      "job_id": "job_000768",
+      "company": "Palantir",
+      "title": "AWS Account Manager",
+      "url": "https://www.palantir.com/careers/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:22.955867"
+    },
+    {
+      "job_id": "job_000769",
+      "company": "Anduril",
+      "title": "AWS Account Manager",
+      "url": "https://www.anduril.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:23.296278"
+    },
+    {
+      "job_id": "job_000771",
+      "company": "HawkEye 360",
+      "title": "AWS Account Manager",
+      "url": "https://www.he360.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:27.203474"
+    },
+    {
+      "job_id": "job_000774",
+      "company": "Peraton",
+      "title": "AWS Account Manager",
+      "url": "https://careers.peraton.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:30.363595"
+    },
+    {
+      "job_id": "job_000773",
+      "company": "Maxar",
+      "title": "AWS Account Manager",
+      "url": "https://maxar.wd1.myworkdayjobs.com/en-US/Maxar?query=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:30.981320"
+    },
+    {
+      "job_id": "job_000770",
+      "company": "Shield AI",
+      "title": "AWS Account Manager",
+      "url": "https://www.shield.ai/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:31.246142"
+    },
+    {
+      "job_id": "job_000775",
+      "company": "VTG",
+      "title": "AWS Account Manager",
+      "url": "https://www.vtg.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:33.823794"
+    },
+    {
+      "job_id": "job_000778",
+      "company": "KPMG",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.kpmg.com/us/en/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.kpmg.com/us/en/search?keywords=AWS%20Account%2"
+      },
+      "timestamp": "2026-02-03T18:06:34.421125"
+    },
+    {
+      "job_id": "job_000776",
+      "company": "Accenture",
+      "title": "AWS Account Manager",
+      "url": "https://www.accenture.com/us-en/careers?jk=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:36.181747"
+    },
+    {
+      "job_id": "job_000777",
+      "company": "Deloitte",
+      "title": "AWS Account Manager",
+      "url": "https://apply.deloitte.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:40.354212"
+    },
+    {
+      "job_id": "job_000779",
+      "company": "PwC",
+      "title": "AWS Account Manager",
+      "url": "https://pwc.wd3.myworkdayjobs.com?query=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:41.145829"
+    },
+    {
+      "job_id": "job_000781",
+      "company": "Intuit",
+      "title": "AWS Account Manager",
+      "url": "https://careers.intuit.com/search?q=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:41.873314"
+    },
+    {
+      "job_id": "job_000772",
+      "company": "Planet Labs",
+      "title": "AWS Account Manager",
+      "url": "https://www.planet.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "filled",
+        "note": "Form filled but submit not clicked"
+      },
+      "timestamp": "2026-02-03T18:06:44.442141"
+    },
+    {
+      "job_id": "job_000782",
+      "company": "Splunk",
+      "title": "AWS Account Manager",
+      "url": "https://www.splunk.com/careers?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:46.514002"
+    },
+    {
+      "job_id": "job_000784",
+      "company": "Palo Alto Networks",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.paloaltonetworks.com/en/jobs/?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:50.414278"
+    },
+    {
+      "job_id": "job_000785",
+      "company": "Zscaler",
+      "title": "AWS Account Manager",
+      "url": "https://www.zscaler.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:50.466204"
+    },
+    {
+      "job_id": "job_000788",
+      "company": "AT&T",
+      "title": "AWS Account Manager",
+      "url": "https://www.att.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:55.979248"
+    },
+    {
+      "job_id": "job_000786",
+      "company": "Fortinet",
+      "title": "AWS Account Manager",
+      "url": "https://www.fortinet.com/corporate/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:57.010898"
+    },
+    {
+      "job_id": "job_000787",
+      "company": "Verizon",
+      "title": "AWS Account Manager",
+      "url": "https://www.verizon.com/about/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:06:57.705361"
+    },
+    {
+      "job_id": "job_000780",
+      "company": "Cisco",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.cisco.com/jobs?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:07:00.929138"
+    },
+    {
+      "job_id": "job_000789",
+      "company": "T-Mobile",
+      "title": "AWS Account Manager",
+      "url": "https://careers.t-mobile.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:02.314741"
+    },
+    {
+      "job_id": "job_000790",
+      "company": "Comcast",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.comcast.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:04.306104"
+    },
+    {
+      "job_id": "job_000791",
+      "company": "Charter Spectrum",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.spectrum.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:05.850879"
+    },
+    {
+      "job_id": "job_000783",
+      "company": "CrowdStrike",
+      "title": "AWS Account Manager",
+      "url": "https://www.crowdstrike.com/careers?keyword=AWS%20Account%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:07:05.890173"
+    },
+    {
+      "job_id": "job_000792",
+      "company": "Cox",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.coxenterprises.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:07.305886"
+    },
+    {
+      "job_id": "job_000793",
+      "company": "Dish",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.dish.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_TOO_MANY_REDIRECTS at https://jobs.dish.com/search?keywords=AWS%20Account%20Mana"
+      },
+      "timestamp": "2026-02-03T18:07:09.487939"
+    },
+    {
+      "job_id": "job_000794",
+      "company": "Lumen",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.lumen.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:09.763004"
+    },
+    {
+      "job_id": "job_000797",
+      "company": "Windstream",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.windstream.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.windstream.com/search?keywords=AWS%20Account%2"
+      },
+      "timestamp": "2026-02-03T18:07:10.462961"
+    },
+    {
+      "job_id": "job_000795",
+      "company": "CenturyLink",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.centurylink.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:11.303331"
+    },
+    {
+      "job_id": "job_000796",
+      "company": "Frontier",
+      "title": "AWS Account Manager",
+      "url": "https://careers.frontier.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:13.474683"
+    },
+    {
+      "job_id": "job_000798",
+      "company": "Equinix",
+      "title": "AWS Account Manager",
+      "url": "https://www.equinix.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:14.866334"
+    },
+    {
+      "job_id": "job_000802",
+      "company": "Workday",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.workday.com/en-us/jobs.html?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://careers.workday.com/en-us/jobs.html?keywords=Techni"
+      },
+      "timestamp": "2026-02-03T18:07:16.678126"
+    },
+    {
+      "job_id": "job_000800",
+      "company": "Iron Mountain",
+      "title": "AWS Account Manager",
+      "url": "https://jobs.ironmountain.com/search?keywords=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:18.888918"
+    },
+    {
+      "job_id": "job_000805",
+      "company": "Databricks",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.databricks.com/company/careers/open-positions?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:25.248943"
+    },
+    {
+      "job_id": "job_000799",
+      "company": "Digital Realty",
+      "title": "AWS Account Manager",
+      "url": "https://www.digitalrealty.com/careers?search=AWS%20Account%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:25.563155"
+    },
+    {
+      "job_id": "job_000804",
+      "company": "Snowflake",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.snowflake.com/us/en/search-results?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:26.037909"
+    },
+    {
+      "job_id": "job_000808",
+      "company": "Okta",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.okta.com/company/careers/?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:34.097433"
+    },
+    {
+      "job_id": "job_000806",
+      "company": "HashiCorp",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.hashicorp.com/careers/jobs?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:34.394853"
+    },
+    {
+      "job_id": "job_000801",
+      "company": "Salesforce",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.salesforce.com/en/jobs/?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:07:36.190386"
+    },
+    {
+      "job_id": "job_000803",
+      "company": "ServiceNow",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.servicenow.com/careers/jobs?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:07:39.657876"
+    },
+    {
+      "job_id": "job_000809",
+      "company": "Cloudflare",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.cloudflare.com/careers/jobs/?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:39.724214"
+    },
+    {
+      "job_id": "job_000810",
+      "company": "Datadog",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.datadoghq.com/?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:41.280130"
+    },
+    {
+      "job_id": "job_000811",
+      "company": "MongoDB",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.mongodb.com/careers/jobs?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:42.568127"
+    },
+    {
+      "job_id": "job_000812",
+      "company": "Confluent",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.confluent.io/careers/positions/?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:46.224542"
+    },
+    {
+      "job_id": "job_000813",
+      "company": "Elastic",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.elastic.co/careers/jobs?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:47.312990"
+    },
+    {
+      "job_id": "job_000814",
+      "company": "GitLab",
+      "title": "Technical Customer Success Manager",
+      "url": "https://about.gitlab.com/jobs/?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:47.973258"
+    },
+    {
+      "job_id": "job_000815",
+      "company": "Fastly",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.fastly.com/about/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:48.645013"
+    },
+    {
+      "job_id": "job_000807",
+      "company": "Twilio",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.twilio.com/en-us/company/jobs?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:07:51.303886"
+    },
+    {
+      "job_id": "job_000817",
+      "company": "New Relic",
+      "title": "Technical Customer Success Manager",
+      "url": "https://newrelic.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:52.862846"
+    },
+    {
+      "job_id": "job_000816",
+      "company": "PagerDuty",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.pagerduty.com/careers/jobs/?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:53.683473"
+    },
+    {
+      "job_id": "job_000819",
+      "company": "CircleCI",
+      "title": "Technical Customer Success Manager",
+      "url": "https://circleci.com/careers/jobs/?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:55.673541"
+    },
+    {
+      "job_id": "job_000818",
+      "company": "LaunchDarkly",
+      "title": "Technical Customer Success Manager",
+      "url": "https://launchdarkly.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:56.297778"
+    },
+    {
+      "job_id": "job_000820",
+      "company": "Miro",
+      "title": "Technical Customer Success Manager",
+      "url": "https://miro.com/careers/?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:57.984856"
+    },
+    {
+      "job_id": "job_000821",
+      "company": "Figma",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.figma.com/careers/?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:58.564825"
+    },
+    {
+      "job_id": "job_000822",
+      "company": "Notion",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.notion.so/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:07:59.829255"
+    },
+    {
+      "job_id": "job_000824",
+      "company": "Monday.com",
+      "title": "Technical Customer Success Manager",
+      "url": "https://monday.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:03.826313"
+    },
+    {
+      "job_id": "job_000825",
+      "company": "Airtable",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.airtable.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:05.239150"
+    },
+    {
+      "job_id": "job_000827",
+      "company": "Zoom",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.zoom.us/jobs?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:05.918494"
+    },
+    {
+      "job_id": "job_000828",
+      "company": "Webex",
+      "title": "Technical Customer Success Manager",
+      "url": "https://jobs.webex.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "error",
+        "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jobs.webex.com/careers?search=Technical%20Customer%"
+      },
+      "timestamp": "2026-02-03T18:08:07.037762"
+    },
+    {
+      "job_id": "job_000823",
+      "company": "Asana",
+      "title": "Technical Customer Success Manager",
+      "url": "https://asana.com/jobs?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:11.990293"
+    },
+    {
+      "job_id": "job_000830",
+      "company": "Box",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.box.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:12.494724"
+    },
+    {
+      "job_id": "job_000829",
+      "company": "Dropbox",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.dropbox.com/jobs?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:12.901941"
+    },
+    {
+      "job_id": "job_000831",
+      "company": "DocuSign",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.docusign.com/company/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:13.820585"
+    },
+    {
+      "job_id": "job_000826",
+      "company": "Slack",
+      "title": "Technical Customer Success Manager",
+      "url": "https://slack.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:15.513299"
+    },
+    {
+      "job_id": "job_000833",
+      "company": "Canva",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.canva.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:20.312963"
+    },
+    {
+      "job_id": "job_000834",
+      "company": "HubSpot",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.hubspot.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:22.348062"
+    },
+    {
+      "job_id": "job_000835",
+      "company": "Zendesk",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.zendesk.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:22.730524"
+    },
+    {
+      "job_id": "job_000836",
+      "company": "Shopify",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.shopify.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:23.074006"
+    },
+    {
+      "job_id": "job_000837",
+      "company": "Atlassian",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.atlassian.com/company/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:26.696032"
+    },
+    {
+      "job_id": "job_000838",
+      "company": "Freshworks",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.freshworks.com/company/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:29.467688"
+    },
+    {
+      "job_id": "job_000840",
+      "company": "SAP",
+      "title": "Technical Customer Success Manager",
+      "url": "https://jobs.sap.com/search?q=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:32.333228"
+    },
+    {
+      "job_id": "job_000839",
+      "company": "Zoho",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.zoho.com/careers?search=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:33.150691"
+    },
+    {
+      "job_id": "job_000841",
+      "company": "AWS",
+      "title": "Technical Customer Success Manager",
+      "url": "https://www.amazon.jobs/en/search?base_query=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:33.487422"
+    },
+    {
+      "job_id": "job_000842",
+      "company": "Microsoft",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.microsoft.com/us/en/search-results?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:35.990353"
+    },
+    {
+      "job_id": "job_000843",
+      "company": "Google Cloud",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.google.com/jobs/results/?q=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:38.472115"
+    },
+    {
+      "job_id": "job_000845",
+      "company": "IBM",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.ibm.com/job/search?query=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:38.949812"
+    },
+    {
+      "job_id": "job_000832",
+      "company": "Adobe",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.adobe.com/us/en/search-results?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "success"
+      },
+      "timestamp": "2026-02-03T18:08:39.490417"
+    },
+    {
+      "job_id": "job_000844",
+      "company": "Oracle",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.oracle.com/jobs/?keyword=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:40.754899"
+    },
+    {
+      "job_id": "job_000847",
+      "company": "Red Hat",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.redhat.com/jobs?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:45.381515"
+    },
+    {
+      "job_id": "job_000848",
+      "company": "HPE",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.hpe.com/jobs?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:47.484972"
+    },
+    {
+      "job_id": "job_000849",
+      "company": "Dell",
+      "title": "Technical Customer Success Manager",
+      "url": "https://jobs.dell.com/search?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:47.973786"
+    },
+    {
+      "job_id": "job_000850",
+      "company": "NetApp",
+      "title": "Technical Customer Success Manager",
+      "url": "https://careers.netapp.com/jobs?keywords=Technical%20Customer%20Success%20Manager",
+      "result": {
+        "status": "failed",
+        "error": "No apply button found"
+      },
+      "timestamp": "2026-02-03T18:08:50.241061"
+    }
+  ]
+}
