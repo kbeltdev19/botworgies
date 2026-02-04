@@ -326,6 +326,7 @@ from .indeed_rss import IndeedRssScraper
 from .greenhouse_api import GreenhouseAPIScraper
 from .lever_api import LeverAPIScraper
 from .jobspy_scraper import JobSpyScraper, scrape_jobs_with_jobspy
+from .browserbase_scraper import BrowserBaseScraper, scrape_with_browserbase
 from .hybrid_scraper import HybridScraper, scrape_jobs_hybrid
 
 __all__ = [
@@ -342,6 +343,8 @@ __all__ = [
     'LeverAPIScraper',
     'JobSpyScraper',
     'scrape_jobs_with_jobspy',
+    'BrowserBaseScraper',
+    'scrape_with_browserbase',
     'HybridScraper',
     'scrape_jobs_hybrid',
 ]

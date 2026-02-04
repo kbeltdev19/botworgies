@@ -20,24 +20,45 @@ logger = logging.getLogger(__name__)
 
 class HybridScraper(BaseJobBoardScraper):
     """
-    Hybrid scraper that combines jobspy with direct API access.
+    Hybrid scraper that combines jobspy with BrowserBase and direct API access.
     
     Strategy:
-    1. Use jobspy for Indeed/LinkedIn/ZipRecruiter (primary)
-    2. Use direct APIs for Greenhouse/Lever (ATS-specific)
-    3. Merge and deduplicate results
+    1. Use jobspy for Indeed/LinkedIn/ZipRecruiter (primary - HTTP)
+    2. Use BrowserBase for JavaScript-heavy sites (LinkedIn, Indeed if jobspy fails)
+    3. Use direct APIs for Greenhouse/Lever (ATS-specific)
+    4. Merge and deduplicate results
     """
     
-    def __init__(self, use_jobspy: bool = True, use_direct_apis: bool = True):
+    def __init__(self, use_jobspy: bool = True, use_browserbase: bool = True, use_direct_apis: bool = False):
         super().__init__()
         self.use_jobspy = use_jobspy
+        self.use_browserbase = use_browserbase
         self.use_direct_apis = use_direct_apis
         self.name = "hybrid"
+        self.browser_manager = None
         
         # Initialize sub-scrapers
         self.jobspy = JobSpyScraper() if use_jobspy else None
+        self.browserbase = None  # Will be initialized with shared browser_manager
         self.greenhouse = GreenhouseAPIScraper() if use_direct_apis else None
         self.lever = LeverAPIScraper() if use_direct_apis else None
+    
+    async def initialize(self):
+        """Initialize browser manager if using BrowserBase."""
+        if self.use_browserbase:
+            from browser.stealth_manager import StealthBrowserManager
+            self.browser_manager = StealthBrowserManager(prefer_local=False)
+            await self.browser_manager.initialize()
+            
+            # Initialize BrowserBase scraper with shared manager
+            from .browserbase_scraper import BrowserBaseScraper
+            self.browserbase = BrowserBaseScraper(self.browser_manager)
+    
+    async def close(self):
+        """Cleanup browser manager."""
+        if self.browser_manager:
+            await self.browser_manager.close()
+            self.browser_manager = None
         
     def get_default_headers(self) -> Dict[str, str]:
         return {"User-Agent": "Mozilla/5.0 (JobBot/1.0)"}
@@ -112,6 +133,11 @@ class HybridScraper(BaseJobBoardScraper):
         """
         Parallel batch search for large targets.
         
+        Strategy:
+        1. Try jobspy first (fastest, HTTP-based)
+        2. If insufficient, use BrowserBase (handles JavaScript, anti-bot)
+        3. If still need more, use direct APIs
+        
         Args:
             queries: List of job titles
             locations: List of locations
@@ -124,10 +150,10 @@ class HybridScraper(BaseJobBoardScraper):
         all_jobs = []
         seen_urls = set()
         
-        # Use jobspy for parallel batch scraping
+        # 1. Use jobspy for parallel batch scraping (primary)
         if self.jobspy and self.jobspy.available:
             try:
-                logger.info(f"[Hybrid] Starting parallel batch search for {total_target} jobs...")
+                logger.info(f"[Hybrid] Phase 1: JobSpy batch search for {total_target} jobs...")
                 jobs = await self.jobspy.search_in_batches(
                     queries=queries,
                     locations=locations,
@@ -139,22 +165,42 @@ class HybridScraper(BaseJobBoardScraper):
                         seen_urls.add(job.url)
                         all_jobs.append(job)
                 
-                logger.info(f"[Hybrid] JobSpy batch search: {len(all_jobs)} jobs")
+                logger.info(f"[Hybrid] JobSpy found: {len(all_jobs)} jobs")
             except Exception as e:
                 logger.warning(f"[Hybrid] JobSpy batch failed: {e}")
         
-        # If we still need more, try direct APIs
+        # 2. Use BrowserBase if we need more jobs (handles JavaScript-heavy sites)
         remaining = total_target - len(all_jobs)
-        if remaining > 100 and self.use_direct_apis:
-            # Search direct APIs with broader criteria
-            for query in queries[:3]:  # Top 3 queries
+        if remaining > 50 and self.use_browserbase and self.browserbase:
+            try:
+                logger.info(f"[Hybrid] Phase 2: BrowserBase scraping for {remaining} more jobs...")
+                bb_jobs = await self.browserbase.search_parallel(
+                    queries=queries[:3],  # Top 3 queries
+                    locations=locations[:2],  # Top 2 locations
+                    total_target=remaining
+                )
+                
+                for job in bb_jobs:
+                    if job.url not in seen_urls:
+                        seen_urls.add(job.url)
+                        all_jobs.append(job)
+                
+                logger.info(f"[Hybrid] BrowserBase found: {len(bb_jobs)} jobs (total: {len(all_jobs)})")
+            except Exception as e:
+                logger.warning(f"[Hybrid] BrowserBase scraping failed: {e}")
+        
+        # 3. Use direct APIs as final fallback
+        remaining = total_target - len(all_jobs)
+        if remaining > 50 and self.use_direct_apis:
+            logger.info(f"[Hybrid] Phase 3: Direct API search for {remaining} more jobs...")
+            for query in queries[:2]:  # Top 2 queries
                 if len(all_jobs) >= total_target:
                     break
                 
                 criteria = SearchCriteria(
                     query=query,
                     location=locations[0] if locations else "Remote",
-                    max_results=remaining // 3,
+                    max_results=remaining // 2,
                 )
                 
                 try:
@@ -191,7 +237,8 @@ async def scrape_jobs_hybrid(
     locations: List[str],
     total_target: int = 1000,
     use_jobspy: bool = True,
-    use_direct_apis: bool = True
+    use_browserbase: bool = True,
+    use_direct_apis: bool = False
 ) -> List[JobPosting]:
     """
     Quick function to scrape jobs using hybrid approach.
@@ -200,19 +247,31 @@ async def scrape_jobs_hybrid(
         queries: List of job titles
         locations: List of locations
         total_target: Total jobs needed
-        use_jobspy: Use jobspy scraper
-        use_direct_apis: Use direct API scrapers
+        use_jobspy: Use jobspy scraper (HTTP - fastest)
+        use_browserbase: Use BrowserBase (handles JavaScript/anti-bot)
+        use_direct_apis: Use direct API scrapers (Greenhouse/Lever)
         
     Returns:
         List of JobPosting objects
     """
     scraper = HybridScraper(
         use_jobspy=use_jobspy,
+        use_browserbase=use_browserbase,
         use_direct_apis=use_direct_apis
     )
     
-    return await scraper.search_parallel(
-        queries=queries,
-        locations=locations,
-        total_target=total_target
-    )
+    # Initialize BrowserBase if needed
+    if use_browserbase:
+        await scraper.initialize()
+    
+    try:
+        jobs = await scraper.search_parallel(
+            queries=queries,
+            locations=locations,
+            total_target=total_target
+        )
+    finally:
+        if use_browserbase:
+            await scraper.close()
+    
+    return jobs
