@@ -1,0 +1,76 @@
+{
+  "profile": {
+    "first_name": "Kevin",
+    "last_name": "Beltran",
+    "email": "beltranrkevin@gmail.com",
+    "phone": "770-378-2545",
+    "linkedin": "",
+    "location": "Atlanta, GA",
+    "clearance": "Secret",
+    "resume_path": "../Test Resumes/Kevin_Beltran_Resume.pdf"
+  },
+  "stats": {
+    "started_at": "2026-02-04T00:59:31.944067",
+    "completed_at": "2026-02-04T01:01:36.277175",
+    "total_jobs": 3,
+    "attempted": 3,
+    "successful": 3,
+    "failed": 0,
+    "skipped": 0,
+    "redirects_followed": 0,
+    "by_platform": {
+      "indeed": 3
+    },
+    "avg_time_per_app": 0.42850224177042645
+  },
+  "results": [
+    {
+      "job_id": "indeed_9823984",
+      "title": "Senior Staff Software Engineer, Agentic AI Systems - Moveworks",
+      "company": "ServiceNow",
+      "location": "Mountain View, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=a74392b63dbbf4c1",
+      "platform": "indeed",
+      "status": "submitted",
+      "message": "TEST MODE",
+      "submitted_at": "2026-02-04T01:01:08.936104",
+      "duration_seconds": 0.5482077598571777,
+      "confirmation_id": "TEST_indeed_9823984",
+      "screenshot_path": null,
+      "error_details": null,
+      "redirect_url": null
+    },
+    {
+      "job_id": "indeed_1599340",
+      "title": "Engineering Manager, ML Infrastructure - Moveworks",
+      "company": "ServiceNow",
+      "location": "Mountain View, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=10daafd8d08e2941",
+      "platform": "indeed",
+      "status": "submitted",
+      "message": "TEST MODE",
+      "submitted_at": "2026-02-04T01:01:08.936153",
+      "duration_seconds": 0.33948493003845215,
+      "confirmation_id": "TEST_indeed_1599340",
+      "screenshot_path": null,
+      "error_details": null,
+      "redirect_url": null
+    },
+    {
+      "job_id": "indeed_2763767",
+      "title": "Senior Software Engineer, Core Platform - Moveworks",
+      "company": "ServiceNow",
+      "location": "Mountain View, CA, US",
+      "url": "https://www.indeed.com/viewjob?jk=289966ef4e5133fe",
+      "platform": "indeed",
+      "status": "submitted",
+      "message": "TEST MODE",
+      "submitted_at": "2026-02-04T01:01:08.936170",
+      "duration_seconds": 0.3978140354156494,
+      "confirmation_id": "TEST_indeed_2763767",
+      "screenshot_path": null,
+      "error_details": null,
+      "redirect_url": null
+    }
+  ]
+}

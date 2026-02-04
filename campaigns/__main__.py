@@ -119,7 +119,11 @@ class UnifiedCampaignRunner:
     
     async def _scrape_jobs(self, search_config: Dict, limit: int) -> list:
         """Scrape jobs using optimized scrapers."""
-        from adapters.job_boards import UnifiedJobPipeline, SearchCriteria
+        from adapters.job_boards import (
+            UnifiedJobPipeline, SearchCriteria,
+            GreenhouseAPIScraper, LeverAPIScraper,
+            DiceScraper, ClearanceJobsScraper
+        )
         
         logger.info("\n📋 PHASE 1: JOB SCRAPING")
         
@@ -127,6 +131,21 @@ class UnifiedCampaignRunner:
         
         # Add scrapers based on search config
         platforms = search_config.get('platforms', ['indeed', 'linkedin', 'greenhouse', 'lever'])
+        
+        # Add Greenhouse scraper
+        if 'greenhouse' in platforms:
+            pipeline.add_scraper(GreenhouseAPIScraper())
+            logger.info("  ✓ Added Greenhouse scraper")
+        
+        # Add Lever scraper
+        if 'lever' in platforms:
+            pipeline.add_scraper(LeverAPIScraper())
+            logger.info("  ✓ Added Lever scraper")
+        
+        # Add Dice scraper
+        if 'dice' in platforms:
+            pipeline.add_scraper(DiceScraper())
+            logger.info("  ✓ Added Dice scraper")
         
         # Create criteria
         criteria = SearchCriteria(

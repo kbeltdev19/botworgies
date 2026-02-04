@@ -1,0 +1,32 @@
+{
+  "total_submitted": 3,
+  "submissions_with_screenshots": 0,
+  "screenshot_directory": "campaigns/output/kevin_1000_real_v3/screenshots",
+  "instructions": "Review screenshots to verify actual submissions. Check email for confirmation messages.",
+  "submissions": [
+    {
+      "job_id": "indeed_9823984",
+      "company": "ServiceNow",
+      "title": "Senior Staff Software Engineer, Agentic AI Systems - Moveworks",
+      "confirmation_id": "TEST_indeed_9823984",
+      "screenshot": null,
+      "url": "https://www.indeed.com/viewjob?jk=a74392b63dbbf4c1"
+    },
+    {
+      "job_id": "indeed_1599340",
+      "company": "ServiceNow",
+      "title": "Engineering Manager, ML Infrastructure - Moveworks",
+      "confirmation_id": "TEST_indeed_1599340",
+      "screenshot": null,
+      "url": "https://www.indeed.com/viewjob?jk=10daafd8d08e2941"
+    },
+    {
+      "job_id": "indeed_2763767",
+      "company": "ServiceNow",
+      "title": "Senior Software Engineer, Core Platform - Moveworks",
+      "confirmation_id": "TEST_indeed_2763767",
+      "screenshot": null,
+      "url": "https://www.indeed.com/viewjob?jk=289966ef4e5133fe"
+    }
+  ]
+}
