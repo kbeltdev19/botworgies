@@ -118,48 +118,33 @@ class UnifiedCampaignRunner:
             return yaml.safe_load(f)
     
     async def _scrape_jobs(self, search_config: Dict, limit: int) -> list:
-        """Scrape jobs using optimized scrapers."""
-        from adapters.job_boards import (
-            UnifiedJobPipeline, SearchCriteria,
-            GreenhouseAPIScraper, LeverAPIScraper,
-            DiceScraper, ClearanceJobsScraper
-        )
+        """Scrape jobs using jobspy with batch processing."""
+        from adapters.job_boards import scrape_jobs_with_jobspy
         
         logger.info("\n📋 PHASE 1: JOB SCRAPING")
+        logger.info(f"   Target: {limit} jobs")
+        logger.info(f"   Roles: {search_config['roles']}")
+        logger.info(f"   Locations: {search_config.get('locations', ['Remote'])}")
         
-        pipeline = UnifiedJobPipeline()
-        
-        # Add scrapers based on search config
-        platforms = search_config.get('platforms', ['indeed', 'linkedin', 'greenhouse', 'lever'])
-        
-        # Add Greenhouse scraper
-        if 'greenhouse' in platforms:
-            pipeline.add_scraper(GreenhouseAPIScraper())
-            logger.info("  ✓ Added Greenhouse scraper")
-        
-        # Add Lever scraper
-        if 'lever' in platforms:
-            pipeline.add_scraper(LeverAPIScraper())
-            logger.info("  ✓ Added Lever scraper")
-        
-        # Add Dice scraper
-        if 'dice' in platforms:
-            pipeline.add_scraper(DiceScraper())
-            logger.info("  ✓ Added Dice scraper")
-        
-        # Create criteria
-        criteria = SearchCriteria(
-            query=' OR '.join(search_config['roles']),
-            location=search_config.get('locations', ['Remote'])[0],
-            remote_only=search_config.get('remote_only', True),
-            max_results=limit,
+        # Use jobspy for parallel batch scraping
+        jobs = await scrape_jobs_with_jobspy(
+            queries=search_config['roles'],
+            locations=search_config.get('locations', ['Remote']),
+            total_target=limit,
+            sites=search_config.get('platforms', ['indeed', 'linkedin', 'zip_recruiter'])
         )
-        
-        # Scrape
-        jobs = await pipeline.search_all(criteria)
         
         self.stats['jobs_scraped'] = len(jobs)
         logger.info(f"✅ Scraped {len(jobs)} jobs")
+        
+        # Log breakdown by platform
+        by_platform = {}
+        for job in jobs:
+            platform = getattr(job, 'platform', 'unknown')
+            by_platform[platform] = by_platform.get(platform, 0) + 1
+        
+        for platform, count in sorted(by_platform.items(), key=lambda x: -x[1]):
+            logger.info(f"   - {platform}: {count}")
         
         return jobs
     

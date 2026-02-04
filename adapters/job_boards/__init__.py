@@ -325,6 +325,7 @@ from .clearancejobs import ClearanceJobsScraper
 from .indeed_rss import IndeedRssScraper
 from .greenhouse_api import GreenhouseAPIScraper
 from .lever_api import LeverAPIScraper
+from .jobspy_scraper import JobSpyScraper, scrape_jobs_with_jobspy
 
 __all__ = [
     'JobPosting',
@@ -338,4 +339,6 @@ __all__ = [
     'IndeedRssScraper',
     'GreenhouseAPIScraper',
     'LeverAPIScraper',
+    'JobSpyScraper',
+    'scrape_jobs_with_jobspy',
 ]
