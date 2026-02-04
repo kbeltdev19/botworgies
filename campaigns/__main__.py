@@ -118,20 +118,21 @@ class UnifiedCampaignRunner:
             return yaml.safe_load(f)
     
     async def _scrape_jobs(self, search_config: Dict, limit: int) -> list:
-        """Scrape jobs using jobspy with batch processing."""
-        from adapters.job_boards import scrape_jobs_with_jobspy
+        """Scrape jobs using hybrid approach (jobspy + direct APIs)."""
+        from adapters.job_boards import scrape_jobs_hybrid
         
         logger.info("\n📋 PHASE 1: JOB SCRAPING")
         logger.info(f"   Target: {limit} jobs")
         logger.info(f"   Roles: {search_config['roles']}")
         logger.info(f"   Locations: {search_config.get('locations', ['Remote'])}")
         
-        # Use jobspy for parallel batch scraping
-        jobs = await scrape_jobs_with_jobspy(
+        # Use hybrid scraper (jobspy + direct APIs)
+        jobs = await scrape_jobs_hybrid(
             queries=search_config['roles'],
             locations=search_config.get('locations', ['Remote']),
             total_target=limit,
-            sites=search_config.get('platforms', ['indeed', 'linkedin', 'zip_recruiter'])
+            use_jobspy=True,
+            use_direct_apis=True
         )
         
         self.stats['jobs_scraped'] = len(jobs)
@@ -140,7 +141,7 @@ class UnifiedCampaignRunner:
         # Log breakdown by platform
         by_platform = {}
         for job in jobs:
-            platform = getattr(job, 'platform', 'unknown')
+            platform = getattr(job, 'source', 'unknown')
             by_platform[platform] = by_platform.get(platform, 0) + 1
         
         for platform, count in sorted(by_platform.items(), key=lambda x: -x[1]):
