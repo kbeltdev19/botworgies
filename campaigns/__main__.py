@@ -39,7 +39,11 @@ class UnifiedCampaignRunner:
         self.browser_pool = get_browser_pool(max_sessions=10)
         self.rate_limiter = get_rate_limiter()
         self.batch_processor = BatchProcessor(batch_size=25, max_concurrent=7)
-        self.ai_service = create_cached_kimi_service()
+        try:
+            self.ai_service = create_cached_kimi_service()
+        except Exception as e:
+            logger.warning(f"AI service not available: {e}")
+            self.ai_service = None
         
         self.stats = {
             'jobs_scraped': 0,
@@ -198,9 +202,10 @@ class UnifiedCampaignRunner:
         logger.info(f"Success Rate: {stats.get('success_rate', '0%')}")
         
         # AI cache stats
-        ai_stats = self.ai_service.get_stats()
-        logger.info(f"\nAI Cache Hit Rate: {ai_stats.get('hit_rate', '0%')}")
-        logger.info(f"Estimated Cost Saved: {ai_stats.get('estimated_cost_saved', '$0')}")
+        if self.ai_service:
+            ai_stats = self.ai_service.get_stats()
+            logger.info(f"\nAI Cache Hit Rate: {ai_stats.get('hit_rate', '0%')}")
+            logger.info(f"Estimated Cost Saved: {ai_stats.get('estimated_cost_saved', '$0')}")
 
 
 def main():

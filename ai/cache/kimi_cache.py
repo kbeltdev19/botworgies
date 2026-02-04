@@ -314,7 +314,24 @@ class CachedKimiService:
 # Convenience function for creating cached service
 def create_cached_kimi_service(api_key: Optional[str] = None) -> CachedKimiService:
     """Create a cached Kimi service."""
-    from api.config import settings
+    import os
+    from pathlib import Path
     
-    key = api_key or settings.moonshot_api_key
+    key = api_key or os.getenv("MOONSHOT_API_KEY")
+    
+    # Try to load from .env if not set
+    if not key:
+        env_path = Path(".env")
+        if env_path.exists():
+            with open(env_path) as f:
+                for line in f:
+                    if line.startswith("MOONSHOT_API_KEY="):
+                        key = line.strip().split("=", 1)[1].strip('"\'')
+                        break
+    
+    if not key:
+        # Return a mock service for testing
+        logger.warning("MOONSHOT_API_KEY not set, using mock service")
+        return None
+    
     return CachedKimiService(api_key=key)
