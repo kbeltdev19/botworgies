@@ -39,7 +39,7 @@ logger = logging.getLogger(__name__)
 # Import our new architecture
 from adapters.ats_router import ATSRouter, PlatformCategory
 from adapters.base import UserProfile, Resume, JobPosting, SearchConfig
-from adapters.job_boards import SearchCriteria as JobBoardSearchCriteria
+from adapters.job_boards import SearchCriteria as SearchCriteria
 
 # Import scrapers
 from adapters.job_boards.greenhouse_api import GreenhouseAPIScraper
@@ -168,7 +168,7 @@ class Matt1000UnifiedCampaign:
         # Scrape Greenhouse
         logger.info("\n🔍 Scraping Greenhouse...")
         async with GreenhouseAPIScraper() as scraper:
-            gh_jobs = await scraper.search(JobBoardSearchCriteria(
+            gh_jobs = await scraper.search(SearchCriteria(
                 query="Customer Success Manager OR Cloud Delivery Manager OR Technical Account Manager",
                 remote_only=True,
                 max_results=self.config.max_direct_apply // 2
@@ -188,7 +188,7 @@ class Matt1000UnifiedCampaign:
         # Scrape Lever
         logger.info("\n🔍 Scraping Lever...")
         async with LeverAPIScraper() as scraper:
-            lever_jobs = await scraper.search(JobBoardSearchCriteria(
+            lever_jobs = await scraper.search(SearchCriteria(
                 query="Customer Success Manager OR Cloud Delivery Manager OR Technical Account Manager",
                 remote_only=True,
                 max_results=self.config.max_direct_apply // 2

@@ -4,6 +4,7 @@ Handles job search and Easy Apply on Indeed.
 """
 
 import asyncio
+import logging
 import random
 import urllib.parse
 from typing import List, Optional
@@ -13,6 +14,8 @@ from .base import (
     JobPlatformAdapter, PlatformType, JobPosting, ApplicationResult,
     ApplicationStatus, SearchConfig, UserProfile, Resume
 )
+
+logger = logging.getLogger(__name__)
 
 
 class IndeedAdapter(JobPlatformAdapter):
@@ -200,8 +203,38 @@ class IndeedAdapter(JobPlatformAdapter):
                 if href and not href.startswith('http'):
                     href = f"https://www.indeed.com{href}"
                 
-                # Easy Apply check
-                easy_apply = await card.locator('span:has-text("Easily apply"), .iaLabel').count() > 0
+                # Easy Apply check - try multiple selectors
+                # Note: Indeed search results don't always show Easy Apply badges
+                # We'll check on the job detail page instead
+                easy_apply_indicators = [
+                    'span:has-text("Easily apply")',
+                    'span:has-text("Easy Apply")',
+                    '.iaLabel',
+                    '.iaIcon',
+                    '[data-testid="indeedApplyBadge"]',
+                    'span:has-text("Apply easily")',
+                    'span:has-text("Apply with Indeed")',
+                    '.jobsearch-IndeedApplyButton',
+                    'button:has-text("Apply now")',
+                    'svg[aria-label*="apply"]',  # SVG icon
+                    '[data-testid="job-apply-button"]',  # Test ID
+                ]
+                easy_apply = False
+                for indicator in easy_apply_indicators:
+                    try:
+                        if await card.locator(indicator).count() > 0:
+                            easy_apply = True
+                            break
+                    except:
+                        continue
+                
+                # If no indicator found, default to True and check on detail page
+                # This ensures we don't miss Easy Apply jobs due to selector changes
+                if not easy_apply:
+                    # Check for external-only indicators
+                    external_only = await card.locator('span:has-text("Apply on company site")').count() > 0
+                    if not external_only:
+                        easy_apply = True  # Assume Easy Apply unless explicitly external
                 
                 # Extract job key from URL or data attribute
                 jk = ""
@@ -279,13 +312,32 @@ class IndeedAdapter(JobPlatformAdapter):
         page = session.page
         
         # Navigate to job page with timeout handling
-        try:
-            await page.goto(job.url, wait_until="domcontentloaded", timeout=30000)
-        except Exception:
-            # Try with shorter timeout and less strict wait
-            await page.goto(job.url, wait_until="commit", timeout=20000)
+        # Convert redirect URL to direct viewjob URL if needed
+        job_url = job.url
+        if '/rc/clk' in job_url and 'jk=' in job_url:
+            # Extract job key and construct direct URL
+            try:
+                jk = job_url.split('jk=')[1].split('&')[0]
+                job_url = f"https://www.indeed.com/viewjob?jk={jk}"
+                logger.info(f"[Indeed] Using direct URL: {job_url[:60]}...")
+            except:
+                pass
         
-        await self.browser_manager.human_like_delay(3, 5)
+        logger.info(f"[Indeed] Navigating to job...")
+        try:
+            await page.goto(job_url, wait_until="domcontentloaded", timeout=30000)
+        except Exception as e:
+            logger.debug(f"[Indeed] Navigation timeout: {e}")
+            try:
+                await page.goto(job_url, wait_until="commit", timeout=20000)
+            except:
+                pass
+        
+        await self.browser_manager.human_like_delay(4, 6)
+        
+        # Get current URL (might be different due to redirects)
+        current_url = page.url
+        logger.info(f"[Indeed] On page: {current_url[:60]}...")
         
         # Handle CAPTCHA if present
         if hasattr(self.browser_manager, 'solve_captcha'):
@@ -293,25 +345,123 @@ class IndeedAdapter(JobPlatformAdapter):
             if captcha_solved:
                 await self.browser_manager.human_like_delay(2, 3)
         
-        # Find apply button - try multiple selectors
+        # Wait for page to fully load (Indeed loads dynamically)
+        logger.info(f"[Indeed] Waiting for page to load...")
+        
+        # Wait for key elements to appear
+        for _ in range(10):  # Try for 10 seconds
+            await asyncio.sleep(1)
+            # Check if job title is loaded
+            title_el = page.locator('h1, .jobsearch-JobInfoHeader-title, [data-testid="jobsearch-JobInfoHeader-title"]').first
+            if await title_el.count() > 0:
+                title_text = await title_el.inner_text()
+                if title_text.strip():
+                    logger.info(f"[Indeed] Page loaded, job title: {title_text[:50]}")
+                    break
+        
+        # Additional wait for apply button to appear
+        await asyncio.sleep(3)
+        
+        # Try scrolling to trigger lazy loading
+        await page.evaluate("window.scrollTo(0, 300)")
+        await asyncio.sleep(2)
+        
+        # Check for apply button in iframes (Indeed uses iframes for apply)
+        iframe_selectors = [
+            'iframe[name="indeedapply"]',
+            'iframe[src*="apply"]',
+            'iframe[data-testid="indeed-apply-iframe"]',
+        ]
+        
+        for iframe_sel in iframe_selectors:
+            iframe = page.locator(iframe_sel).first
+            if await iframe.count() > 0:
+                logger.info(f"[Indeed] Found apply iframe: {iframe_sel}")
+                try:
+                    frame = await iframe.content_frame()
+                    if frame:
+                        # Look for apply button inside iframe
+                        btn = frame.locator('button:has-text("Apply now"), button:has-text("Apply"), button#indeedApplyButton').first
+                        if await btn.count() > 0 and await btn.is_visible():
+                            logger.info(f"[Indeed] Found apply button in iframe")
+                            apply_btn = btn
+                            # Click the button inside iframe
+                            await btn.click()
+                            await asyncio.sleep(3)
+                            # Continue with form handling in the iframe context
+                            # ... (will be handled below)
+                            break
+                except Exception as e:
+                    logger.debug(f"[Indeed] Iframe error: {e}")
+        
+        # Get all buttons on page for debugging
+        try:
+            all_buttons = await page.locator('button').all()
+            logger.info(f"[Indeed] Found {len(all_buttons)} buttons on page")
+            for i, btn in enumerate(all_buttons[:5]):
+                try:
+                    text = await btn.inner_text()
+                    visible = await btn.is_visible()
+                    logger.info(f"[Indeed]   Button {i}: '{text[:40]}' visible={visible}")
+                except:
+                    pass
+        except Exception as e:
+            logger.debug(f"[Indeed] Error listing buttons: {e}")
+        
+        # Find apply button - try multiple selectors based on actual Indeed UI
         apply_selectors = [
-            'button#indeedApplyButton',
-            'button:has-text("Apply now")',
-            'button:has-text("Apply")',
-            '.ia-ApplyButton',
-            '[data-testid="apply-button"]',
-            'button:has-text("Apply Now")',
+            'button:has-text("Apply now")',  # Most common Indeed button
+            '.ia-IndeedApplyButton',  # Indeed apply button class
             '.jobsearch-IndeedApplyButton',
+            'button[data-testid="indeed-apply-button"]',
+            'button#indeedApplyButton',
+            '.ia-ApplyButton',
+            'button:has-text("Apply Now")',
+            'button:has-text("Apply")',
+            '[data-testid="apply-button"]',
+            '.indeed-apply-button',
+            'button[data-indeed-apply]',
+            'a:has-text("Apply now")',
+            'a:has-text("Apply")',
+            'button[class*="apply"]',
+            'a[class*="apply"]',
+            'button[class*="Apply"]',
         ]
         
         apply_btn = None
+        logger.info(f"[Indeed] Looking for apply button...")
         for selector in apply_selectors:
-            btn = page.locator(selector).first
-            if await btn.count() > 0 and await btn.is_visible():
-                apply_btn = btn
-                break
+            try:
+                btn = page.locator(selector).first
+                count = await btn.count()
+                if count > 0:
+                    visible = await btn.is_visible()
+                    text = await btn.inner_text() if visible else ""
+                    logger.info(f"[Indeed]   Selector '{selector}': found={count}, visible={visible}, text='{text[:30]}'")
+                    if visible:
+                        apply_btn = btn
+                        break
+            except Exception as e:
+                logger.debug(f"[Indeed]   Selector '{selector}' error: {e}")
         
         if not apply_btn:
+            # Check if this is a job page or redirect page
+            if '/rc/clk' in page.url:
+                logger.info(f"[Indeed] Still on redirect page, waiting longer...")
+                await asyncio.sleep(5)
+                # Try again
+                for selector in apply_selectors[:5]:
+                    try:
+                        btn = page.locator(selector).first
+                        if await btn.count() > 0 and await btn.is_visible():
+                            apply_btn = btn
+                            logger.info(f"[Indeed] Found button after wait: {selector}")
+                            break
+                    except:
+                        pass
+            
+            if not apply_btn:
+                logger.info(f"[Indeed] No apply button found on page")
             # Check for external apply link
             external_selectors = [
                 'a:has-text("Apply on company site")',

@@ -1,0 +1,211 @@
+{
+  "timestamp": "2026-02-04T00:27:47.474781",
+  "stats": {
+    "total_attempted": 20,
+    "real_submissions": 0,
+    "cloudflare_blocked": 0,
+    "captcha_solved": 0,
+    "captcha_failed": 5,
+    "form_errors": 0,
+    "external_redirect": 0,
+    "other_errors": 20,
+    "captcha_cost": 0.0,
+    "browserbase_cost": 0.0,
+    "start_time": "2026-02-04 00:04:59.306689",
+    "end_time": null,
+    "real_success_rate": 0.0,
+    "duration_minutes": 22.80280198333333
+  },
+  "recent_results": [
+    {
+      "job_id": "in-8bd6b755f2cadbb4",
+      "title": "Senior Full Stack Node-React Developer",
+      "company": "Leidos",
+      "url": "https://www.indeed.com/viewjob?jk=8bd6b755f2cadbb4",
+      "timestamp": "2026-02-04T00:21:10.650874",
+      "success": false,
+      "validation": {
+        "success": false,
+        "message": "ERROR: error occurred",
+        "screenshot_path": "/tmp/validated_submissions/indeed/in-8bd6b755f2cadbb4_20260204_002137.png",
+        "is_cloudflare": false,
+        "is_error": true,
+        "confirmation_id": null
+      },
+      "error": "ERROR: error occurred",
+      "captcha_solved": false,
+      "screenshot": "/Users/tech4/Downloads/botworkieslocsl/botworgies/campaigns/output/kent_1000_capsolver_20260204_0004/screenshots/in-8bd6b755f2cadbb4.png"
+    },
+    {
+      "job_id": "in-5f0b5531c93f108c",
+      "title": "Staff Software Engineer, Core, Agentic Infrastructure",
+      "company": "Google",
+      "url": "https://www.indeed.com/viewjob?jk=5f0b5531c93f108c",
+      "timestamp": "2026-02-04T00:21:45.805736",
+      "success": false,
+      "validation": {
+        "success": false,
+        "message": "ERROR: error occurred",
+        "screenshot_path": "/tmp/validated_submissions/indeed/in-5f0b5531c93f108c_20260204_002217.png",
+        "is_cloudflare": false,
+        "is_error": true,
+        "confirmation_id": null
+      },
+      "error": "ERROR: error occurred",
+      "captcha_solved": false,
+      "screenshot": "/Users/tech4/Downloads/botworkieslocsl/botworgies/campaigns/output/kent_1000_capsolver_20260204_0004/screenshots/in-5f0b5531c93f108c.png"
+    },
+    {
+      "job_id": "in-823b25bd6d426dd7",
+      "title": "Software Engineer III, Engineering Productivity, Tools and Infra",
+      "company": "Google",
+      "url": "https://www.indeed.com/viewjob?jk=823b25bd6d426dd7",
+      "timestamp": "2026-02-04T00:22:26.979979",
+      "success": false,
+      "validation": {
+        "success": false,
+        "message": "ERROR: error occurred",
+        "screenshot_path": "/tmp/validated_submissions/indeed/in-823b25bd6d426dd7_20260204_002255.png",
+        "is_cloudflare": false,
+        "is_error": true,
+        "confirmation_id": null
+      },
+      "error": "ERROR: error occurred",
+      "captcha_solved": false,
+      "screenshot": "/Users/tech4/Downloads/botworkieslocsl/botworgies/campaigns/output/kent_1000_capsolver_20260204_0004/screenshots/in-823b25bd6d426dd7.png"
+    },
+    {
+      "job_id": "in-b9a51e956abbdf72",
+      "title": "Staff Software Engineer, Core, Agentic Infrastructure",
+      "company": "Google",
+      "url": "https://www.indeed.com/viewjob?jk=b9a51e956abbdf72",
+      "timestamp": "2026-02-04T00:23:02.699578",
+      "success": false,
+      "validation": {
+        "success": false,
+        "message": "ERROR: error occurred",
+        "screenshot_path": "/tmp/validated_submissions/indeed/in-b9a51e956abbdf72_20260204_002336.png",
+        "is_cloudflare": false,
+        "is_error": true,
+        "confirmation_id": null
+      },
+      "error": "ERROR: error occurred",
+      "captcha_solved": false,
+      "screenshot": "/Users/tech4/Downloads/botworkieslocsl/botworgies/campaigns/output/kent_1000_capsolver_20260204_0004/screenshots/in-b9a51e956abbdf72.png"
+    },
+    {
+      "job_id": "in-9e468b9529767a90",
+      "title": "Staff Software Engineer, Core, Agentic Infrastructure",
+      "company": "Google",
+      "url": "https://www.indeed.com/viewjob?jk=9e468b9529767a90",
+      "timestamp": "2026-02-04T00:23:44.290320",
+      "success": false,
+      "validation": {
+        "success": false,
+        "message": "ERROR: error occurred",
+        "screenshot_path": "/tmp/validated_submissions/indeed/in-9e468b9529767a90_20260204_002412.png",
+        "is_cloudflare": false,
+        "is_error": true,
+        "confirmation_id": null
+      },
+      "error": "ERROR: error occurred",
+      "captcha_solved": false,
+      "screenshot": "/Users/tech4/Downloads/botworkieslocsl/botworgies/campaigns/output/kent_1000_capsolver_20260204_0004/screenshots/in-9e468b9529767a90.png"
+    },
+    {
+      "job_id": "in-ec927de530d075bd",
+      "title": "Senior Software Engineer, Infrastructure, Google ACI",
+      "company": "Google",
+      "url": "https://www.indeed.com/viewjob?jk=ec927de530d075bd",
+      "timestamp": "2026-02-04T00:24:23.552035",
+      "success": false,
+      "validation": {
+        "success": false,
+        "message": "ERROR: error occurred",
+        "screenshot_path": "/tmp/validated_submissions/indeed/in-ec927de530d075bd_20260204_002452.png",
+        "is_cloudflare": false,
+        "is_error": true,
+        "confirmation_id": null
+      },
+      "error": "ERROR: error occurred",
+      "captcha_solved": false,
+      "screenshot": "/Users/tech4/Downloads/botworkieslocsl/botworgies/campaigns/output/kent_1000_capsolver_20260204_0004/screenshots/in-ec927de530d075bd.png"
+    },
+    {
+      "job_id": "in-9c11d4e8d155abff",
+      "title": "Senior Software Engineer, GenAI, Foundation Model Quality",
+      "company": "Google",
+      "url": "https://www.indeed.com/viewjob?jk=9c11d4e8d155abff",
+      "timestamp": "2026-02-04T00:25:01.658142",
+      "success": false,
+      "validation": {
+        "success": false,
+        "message": "ERROR: error occurred",
+        "screenshot_path": "/tmp/validated_submissions/indeed/in-9c11d4e8d155abff_20260204_002530.png",
+        "is_cloudflare": false,
+        "is_error": true,
+        "confirmation_id": null
+      },
+      "error": "ERROR: error occurred",
+      "captcha_solved": false,
+      "screenshot": "/Users/tech4/Downloads/botworkieslocsl/botworgies/campaigns/output/kent_1000_capsolver_20260204_0004/screenshots/in-9c11d4e8d155abff.png"
+    },
+    {
+      "job_id": "in-6680887411b62784",
+      "title": "Senior Software Engineer, GenAI, Foundation Model Quality",
+      "company": "Google",
+      "url": "https://www.indeed.com/viewjob?jk=6680887411b62784",
+      "timestamp": "2026-02-04T00:25:42.242395",
+      "success": false,
+      "validation": {
+        "success": false,
+        "message": "ERROR: error occurred",
+        "screenshot_path": "/tmp/validated_submissions/indeed/in-6680887411b62784_20260204_002619.png",
+        "is_cloudflare": false,
+        "is_error": true,
+        "confirmation_id": null
+      },
+      "error": "ERROR: error occurred",
+      "captcha_solved": false,
+      "screenshot": "/Users/tech4/Downloads/botworkieslocsl/botworgies/campaigns/output/kent_1000_capsolver_20260204_0004/screenshots/in-6680887411b62784.png"
+    },
+    {
+      "job_id": "in-d4d2a54e0fac0c59",
+      "title": "Software Engineer III, Front End, Vertex AI Studio",
+      "company": "Google",
+      "url": "https://www.indeed.com/viewjob?jk=d4d2a54e0fac0c59",
+      "timestamp": "2026-02-04T00:26:30.992084",
+      "success": false,
+      "validation": {
+        "success": false,
+        "message": "ERROR: error occurred",
+        "screenshot_path": "/tmp/validated_submissions/indeed/in-d4d2a54e0fac0c59_20260204_002705.png",
+        "is_cloudflare": false,
+        "is_error": true,
+        "confirmation_id": null
+      },
+      "error": "ERROR: error occurred",
+      "captcha_solved": false,
+      "screenshot": "/Users/tech4/Downloads/botworkieslocsl/botworgies/campaigns/output/kent_1000_capsolver_20260204_0004/screenshots/in-d4d2a54e0fac0c59.png"
+    },
+    {
+      "job_id": "in-4875d356842f75a4",
+      "title": "Senior Software Engineer, Infrastructure, Google ACI",
+      "company": "Google",
+      "url": "https://www.indeed.com/viewjob?jk=4875d356842f75a4",
+      "timestamp": "2026-02-04T00:27:14.514635",
+      "success": false,
+      "validation": {
+        "success": false,
+        "message": "ERROR: error occurred",
+        "screenshot_path": "/tmp/validated_submissions/indeed/in-4875d356842f75a4_20260204_002743.png",
+        "is_cloudflare": false,
+        "is_error": true,
+        "confirmation_id": null
+      },
+      "error": "ERROR: error occurred",
+      "captcha_solved": false,
+      "screenshot": "/Users/tech4/Downloads/botworkieslocsl/botworgies/campaigns/output/kent_1000_capsolver_20260204_0004/screenshots/in-4875d356842f75a4.png"
+    }
+  ]
+}

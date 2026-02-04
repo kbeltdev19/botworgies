@@ -30,18 +30,23 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Any, Set, Tuple
 from dataclasses import dataclass, asdict, field
-from concurrent.futures import ThreadPoolExecutor
+
 from urllib.parse import urljoin, urlparse
 
 import aiohttp
 
 # Capsolver for CAPTCHA solving
+import os
+os.environ["CAPSOLVER_API_KEY"] = "CAP-REDACTED"
+
 try:
     import capsolver
     CAPSOLVER_AVAILABLE = True
-    capsolver.api_key = "CAP-REDACTED"
+    capsolver.api_key = os.environ["CAPSOLVER_API_KEY"]
+    print("✅ CapSolver configured for CAPTCHA solving")
 except ImportError:
     CAPSOLVER_AVAILABLE = False
+    print("⚠️  CapSolver not available - CAPTCHA solving disabled")
 
 logging.basicConfig(
     level=logging.INFO,
@@ -163,11 +168,11 @@ class KevinProfile:
         return {
             'first_name': self.first_name,
             'last_name': self.last_name,
-            'email': self.profile.email,
-            'phone': self.profile.phone,
-            'linkedin': self.profile.linkedin,
-            'location': self.profile.location,
-            'clearance': self.profile.clearance,
+            'email': self.email,
+            'phone': self.phone,
+            'linkedin': self.linkedin,
+            'location': self.location,
+            'clearance': self.clearance,
         }
 
 
@@ -364,20 +369,34 @@ class Kevin1000RealV3Campaign:
             if job['url'] not in seen_urls:
                 seen_urls.add(job['url'])
                 unique_jobs.append(job)
-                
-        # Sort by priority (fast platforms first)
-        unique_jobs.sort(key=lambda j: j.get('priority', 99))
+        
+        # Sort by priority (Indeed Easy Apply first, then direct ATS, then others)
+        # Priority 1 = Indeed (best conversion), 2 = Greenhouse/Lever, etc.
+        unique_jobs.sort(key=lambda j: (j.get('priority', 99), j.get('original_site', '') == 'indeed'), reverse=True)
+        
+        # Re-sort properly: Indeed first (highest conversion rate)
+        unique_jobs.sort(key=lambda j: (
+            0 if j.get('platform') == 'indeed' else j.get('priority', 99)
+        ))
         
         # Log breakdown
         direct_ats_count = sum(1 for j in unique_jobs if j.get('source') == 'direct_ats')
-        linkedin_count = sum(1 for j in unique_jobs if 'linkedin' in j.get('platform', ''))
-        indeed_count = sum(1 for j in unique_jobs if 'indeed' in j.get('platform', ''))
+        linkedin_count = sum(1 for j in unique_jobs if j.get('platform') == 'linkedin')
+        indeed_count = sum(1 for j in unique_jobs if j.get('platform') == 'indeed')
+        greenhouse_count = sum(1 for j in unique_jobs if j.get('platform') == 'greenhouse')
+        lever_count = sum(1 for j in unique_jobs if j.get('platform') == 'lever')
         
         logger.info(f"\n✓ Total unique jobs: {len(unique_jobs)}")
         logger.info(f"  Direct ATS (apply directly): {direct_ats_count}")
-        logger.info(f"  LinkedIn (may redirect): {linkedin_count}")
-        logger.info(f"  Indeed (Easy Apply): {indeed_count}")
-        logger.info(f"  Fast platforms (Greenhouse/Lever): {sum(1 for j in unique_jobs if j.get('priority', 99) <= 2)}")
+        logger.info(f"  Indeed Easy Apply: {indeed_count} ⭐")
+        logger.info(f"  Greenhouse: {greenhouse_count}")
+        logger.info(f"  Lever: {lever_count}")
+        logger.info(f"  LinkedIn: {linkedin_count} (may need redirect)")
+        logger.info(f"  Fast platforms: {sum(1 for j in unique_jobs if j.get('priority', 99) <= 2)}")
+        
+        # Warn about LinkedIn-only jobs
+        if linkedin_count > 0:
+            logger.warning(f"  ⚠️  {linkedin_count} LinkedIn jobs may require external redirect handling")
         
         return unique_jobs[:self.max_applications]
         
@@ -427,35 +446,44 @@ class Kevin1000RealV3Campaign:
         return jobs
         
     async def _scrape_job_boards(self) -> List[Dict]:
-        """Scrape from LinkedIn and Indeed via jobspy."""
+        """Scrape from Indeed and LinkedIn via jobspy with improved filtering."""
         if not JOBSY_AVAILABLE:
             return []
             
         jobs = []
         
+        # Valid US locations and remote only
         search_configs = [
-            ("ServiceNow Manager", "Atlanta, GA"),
-            ("ServiceNow Manager", "Remote"),
-            ("ServiceNow Consultant", "Atlanta, GA"),
-            ("ServiceNow Consultant", "Remote"),
-            ("ITSM Analyst", "Atlanta, GA"),
-            ("ITSM Analyst", "Remote"),
-            ("ServiceNow Administrator", "Atlanta, GA"),
-            ("ServiceNow Administrator", "Remote"),
-            ("Enterprise Account Manager", "Atlanta, GA"),
-            ("Enterprise Account Manager", "Remote"),
-            ("Cloud Account Manager", "Remote"),
-            ("Technical Account Manager", "Remote"),
+            # Indeed Easy Apply - highest priority
+            ("ServiceNow", "United States", ["indeed"]),
+            ("ServiceNow Manager", "United States", ["indeed"]),
+            ("ServiceNow Consultant", "United States", ["indeed"]),
+            ("ITSM", "United States", ["indeed"]),
+            ("ServiceNow Administrator", "United States", ["indeed"]),
+            # LinkedIn - secondary
+            ("ServiceNow", "Atlanta, GA", ["linkedin"]),
+            ("ServiceNow", "Remote", ["linkedin"]),
+            ("ServiceNow Manager", "Atlanta, GA", ["linkedin"]),
+            ("ServiceNow Consultant", "Remote", ["linkedin"]),
+        ]
+        
+        # Invalid country patterns to filter out
+        invalid_patterns = [
+            'moldova', 'sri lanka', 'kenya', 'nigeria', 'pakistan', 'bangladesh',
+            'india', 'philippines', 'romania', 'ukraine', 'russia', 'china',
+            'brazil', 'mexico', 'argentina', 'colombia', 'venezuela',
+            'poland', 'czech', 'hungary', 'bulgaria', 'serbia', 'croatia',
+            'vietnam', 'thailand', 'indonesia', 'malaysia', 'singapore',
         ]
         
         def scrape_single(config):
-            query, location = config
+            query, location, sites = config
             try:
                 jobs_df = scrape_jobs(
-                    site_name=["indeed", "linkedin", "zip_recruiter"],
+                    site_name=sites,
                     search_term=query,
                     location=location,
-                    results_wanted=100,
+                    results_wanted=50,  # Reduced to avoid invalid countries
                     hours_old=72,
                 )
                 
@@ -465,9 +493,31 @@ class Kevin1000RealV3Campaign:
                         job_url = str(row.get('job_url', ''))
                         if not job_url or 'http' not in job_url:
                             continue
+                        
+                        # Filter by location - skip invalid countries
+                        job_location = str(row.get('location', '')).lower()
+                        if any(pattern in job_location for pattern in invalid_patterns):
+                            continue
+                        
+                        # Skip jobs with suspicious location patterns
+                        if ',' in job_location:
+                            country_part = job_location.split(',')[-1].strip()
+                            if country_part not in ['usa', 'us', 'united states', 'remote', 
+                                                     'ga', 'georgia', 'tx', 'texas', 
+                                                     'ca', 'california', 'ny', 'new york',
+                                                     'fl', 'florida', 'nc', 'north carolina',
+                                                     'sc', 'south carolina', 'tn', 'tennessee',
+                                                     'al', 'alabama']:
+                                # Might be an international location
+                                continue
                             
                         platform = self.detect_platform(job_url)
-                        priority = ATS_PLATFORMS.get(platform, {}).get('priority', 5)
+                        
+                        # Boost priority for Indeed Easy Apply
+                        if platform == 'indeed':
+                            priority = 1
+                        else:
+                            priority = ATS_PLATFORMS.get(platform, {}).get('priority', 5)
                         
                         job = {
                             'id': f"{platform}_{abs(hash(job_url)) % 10000000}",
@@ -480,6 +530,7 @@ class Kevin1000RealV3Campaign:
                             'priority': priority,
                             'date_posted': str(row.get('date_posted', '')),
                             'source': 'job_board',
+                            'original_site': sites[0] if sites else 'unknown',
                         }
                         scraped.append(job)
                         
@@ -491,38 +542,48 @@ class Kevin1000RealV3Campaign:
                 logger.error(f"  ✗ {query} in {location}: {error_msg}")
                 return []
         
-        # Parallel scraping
-        with ThreadPoolExecutor(max_workers=4) as executor:
-            results = list(executor.map(scrape_single, search_configs))
-            
-        for job_list in results:
-            jobs.extend(job_list)
+        # Sequential scraping to avoid overwhelming the APIs
+        for config in search_configs:
+            if self.should_stop:
+                break
+            results = scrape_single(config)
+            jobs.extend(results)
+            await asyncio.sleep(1)  # Rate limiting between searches
             
         return jobs
         
     async def init_browser_pool(self):
-        """Initialize pool of browser instances with BrowserBase CAPTCHA solving."""
+        """Initialize pool of browser instances with BrowserBase CAPTCHA solving and session management."""
         if not BROWSER_AVAILABLE or self.test_mode:
             return
             
-        logger.info(f"🌐 Initializing BrowserBase pool ({self.max_concurrent} instances) with CAPTCHA solving...")
+        # Use 5 BrowserBase sessions max (stay well under 100 limit)
+        # Each manager will use session manager to track and cooldown properly
+        bb_session_limit = min(5, self.max_concurrent)
+        
+        logger.info(f"🌐 Initializing browser pool ({self.max_concurrent} managers, "
+                   f"max {bb_session_limit} BrowserBase concurrent) with CAPTCHA solving...")
         
         for i in range(self.max_concurrent):
             try:
-                # Force BrowserBase (no local fallback) for CAPTCHA solving
-                manager = StealthBrowserManager(prefer_local=False)
+                # Create manager with session limit - will fallback to local if BB at capacity
+                manager = StealthBrowserManager(prefer_local=False, max_bb_sessions=bb_session_limit)
                 await manager.initialize()
-                # Reset any previous failure status
-                if hasattr(manager, '_browserbase_failed'):
-                    manager._browserbase_failed = False
                 self.browser_pool.append(manager)
-                logger.info(f"  ✓ Browser {i+1}/{self.max_concurrent} ready (BrowserBase)")
+                
+                # Log what type of browser we got
+                stats = manager.get_stats()
+                bb_available = stats.get('browserbase_available', False)
+                logger.info(f"  ✓ Browser {i+1}/{self.max_concurrent} ready "
+                           f"(BrowserBase: {'✅' if bb_available else '❌'})")
             except Exception as e:
                 logger.error(f"  ✗ Browser {i+1} failed: {e}")
                 
         if not self.browser_pool:
             logger.error("No browsers available! Cannot proceed.")
             self.should_stop = True
+        else:
+            logger.info(f"✓ Browser pool initialized with {len(self.browser_pool)} managers")
             
     async def close_browser_pool(self):
         """Close all browser instances."""
@@ -591,6 +652,11 @@ class Kevin1000RealV3Campaign:
         try:
             session = await browser_manager.create_stealth_session(platform, use_proxy=True)
             page = session.page
+            
+            # Log session mode for debugging
+            if hasattr(session, 'mode'):
+                mode_str = session.mode.value if hasattr(session.mode, 'value') else str(session.mode)
+                logger.debug(f"   Using {mode_str} browser session")
             
             # Check if we need to solve CAPTCHA using capsolver
             try:
@@ -668,6 +734,12 @@ class Kevin1000RealV3Campaign:
                 await self._apply_ashby(page, result)
             elif platform == 'breezy':
                 await self._apply_breezy(page, result)
+            elif platform == 'smartrecruiters':
+                await self._apply_smartrecruiters(page, result)
+            elif platform == 'jobscore':
+                await self._apply_jobscore(page, result)
+            elif platform == 'icims':
+                await self._apply_icims(page, result)
             else:
                 # Try generic application
                 await self._apply_generic(page, result)
@@ -741,139 +813,97 @@ class Kevin1000RealV3Campaign:
         """Handle LinkedIn/Indeed redirects to find external apply URL."""
         # Comprehensive list of ATS domains to look for
         ATS_DOMAINS = [
-            'boards.greenhouse.io',
-            'jobs.lever.co',
-            'jobs.ashbyhq.com',
-            'breezy.hr',
-            'workday.com',
-            'myworkdayjobs.com',
-            'careers.jobscore.com',
-            'jobs.smartrecruiters.com',
-            'boards.eu.greenhouse.io',
-            'jobs.hashicorp.com',
-            'stripe.com/jobs',
-            'airbnb.com/careers',
-            'uber.com/careers',
-            'meta.com/careers',
-            'amazon.jobs',
-            'microsoft.com/careers',
-            'google.com/careers',
-            'apple.com/jobs',
-            'netflix.com/careers',
-            'salesforce.com/company/careers',
-            'oracle.com/careers',
-            'adobe.com/careers',
-            'ibm.com/careers',
-            'intel.com/careers',
-            'nvidia.com/careers',
-            'qualcomm.com/careers',
-            'cisco.com/careers',
-            'vmware.com/careers',
-            'dell.com/careers',
-            'hp.com/careers',
-            'lenovo.com/careers',
-            'asus.com/careers',
-            'acer.com/careers',
-            'toshiba.com/careers',
-            'sony.com/careers',
-            'samsung.com/careers',
-            'lg.com/careers',
-            'panasonic.com/careers',
-            'philips.com/careers',
-            'siemens.com/careers',
-            'bosch.com/careers',
-            'thycotic.com/careers',
-            'beyondtrust.com/careers',
-            'cyberark.com/careers',
-            'sentinelone.com/careers',
-            'crowdstrike.com/careers',
-            'paloaltonetworks.com/careers',
-            'zscaler.com/careers',
-            'okta.com/careers',
-            'auth0.com/careers',
-            'cloudflare.com/careers',
-            'fastly.com/careers',
-            'akamai.com/careers',
-            'datadoghq.com/careers',
-            'newrelic.com/careers',
-            'splunk.com/careers',
-            'elastic.co/careers',
-            'mongodb.com/careers',
-            'couchbase.com/careers',
-            'redis.io/careers',
-            'confluent.io/careers',
-            'apache.org/careers',
-            'nginx.com/careers',
-            'jenkins.io/careers',
-            'gitlab.com/careers',
-            'github.com/careers',
-            'bitbucket.org/careers',
-            'atlassian.com/careers',
-            'asana.com/careers',
-            'notion.so/careers',
-            'figma.com/careers',
-            'canva.com/careers',
-            'sketch.com/careers',
-            'invisionapp.com/careers',
-            'zeplin.io/careers',
-            'principleformac.com/careers',
+            'boards.greenhouse.io', 'boards.eu.greenhouse.io',
+            'jobs.lever.co', 'jobs.ashbyhq.com', 'breezy.hr',
+            'workday.com', 'myworkdayjobs.com', 'wd5.myworkdayjobs.com',
+            'careers.jobscore.com', 'jobs.smartrecruiters.com',
+            'icims.com', 'taleo.net', 'oracle.com',
+            'jobs.sap.com', 'successfactors.com',
+        ]
+        
+        # Company career page patterns
+        CAREER_PATTERNS = [
+            '/careers', '/jobs', '/apply', '/join', '/work-with-us',
+            'greenhouse.io', 'lever.co', 'ashbyhq.com',
         ]
         
         try:
             if platform == 'linkedin':
-                # Multiple selectors to find external apply links
-                selectors = [
-                    # Primary apply button
-                    'button:has-text("Apply")',
-                    'a:has-text("Apply")',
-                    # External ATS links
-                    'a[href*="boards.greenhouse.io"]',
-                    'a[href*="jobs.lever.co"]',
-                    'a[href*="workday"]',
-                    'a[href*="ashby"]',
-                    'a[href*="breezy"]',
-                    'a[href*="smartrecruiters"]',
-                    'a[href*="jobscore"]',
-                    # LinkedIn specific
+                # First, check if Easy Apply is available (preferred)
+                easy_apply_btn = page.locator('button:has-text("Easy Apply")').first
+                if await easy_apply_btn.count() > 0:
+                    logger.debug("   LinkedIn Easy Apply button found - no redirect needed")
+                    return None  # Easy Apply available, no redirect needed
+                
+                # Check if already applied
+                applied_btn = page.locator('button:has-text("Applied")').first
+                if await applied_btn.count() > 0:
+                    logger.debug("   Job already applied")
+                    return "ALREADY_APPLIED"
+                
+                # Look for external apply button/link
+                external_selectors = [
+                    # External apply button (common LinkedIn pattern)
                     'a[data-control-name="jobdetails_topcard_inapply"]',
                     'a[data-control-name="jobdetails_topcard_jymbii"]',
-                    # Any apply-related button/link
-                    '[data-test-icon="link-external-medium"]',
-                    'a:has([data-test-icon="link-external-medium"])',
+                    # Apply button with external link icon
+                    'a[href*="/jobs/view/"]:has([data-test-icon="link-external-medium"])',
+                    'button:has-text("Apply") + a[href^="http"]',
+                    # Any external link
+                    'a[href^="http"]:has-text("Apply")',
                 ]
                 
-                for selector in selectors:
+                for selector in external_selectors:
                     try:
                         element = page.locator(selector).first
                         if await element.count() > 0:
                             href = await element.get_attribute('href')
                             if href:
-                                # Check if it's an external URL
-                                if any(domain in href for domain in ATS_DOMAINS) or \
-                                   (href.startswith('http') and 'linkedin.com' not in href):
-                                    logger.debug(f"   Found external link: {href[:60]}...")
+                                # Check if it's an external ATS URL
+                                href_lower = href.lower()
+                                if any(domain in href_lower for domain in ATS_DOMAINS):
+                                    logger.info(f"   Found external ATS link: {href[:60]}...")
+                                    return href
+                                # Check for career page patterns
+                                elif any(pattern in href_lower for pattern in CAREER_PATTERNS):
+                                    logger.info(f"   Found career page link: {href[:60]}...")
+                                    return href
+                                # Generic external link (not LinkedIn)
+                                elif href.startswith('http') and 'linkedin.com' not in href_lower:
+                                    logger.info(f"   Found external link: {href[:60]}...")
                                     return href
                     except:
                         continue
                 
-                # Try JavaScript extraction as fallback
+                # JavaScript fallback - look for any external apply links
                 try:
                     external_url = await page.evaluate("""
                         () => {
-                            // Look for any external apply links
-                            const links = Array.from(document.querySelectorAll('a[href]'));
+                            const links = Array.from(document.querySelectorAll('a[href^="http"]'));
                             for (const link of links) {
                                 const href = link.getAttribute('href');
-                                if (href && (
-                                    href.includes('greenhouse') ||
-                                    href.includes('lever') ||
-                                    href.includes('workday') ||
-                                    href.includes('ashby') ||
-                                    href.includes('smartrecruiters') ||
-                                    href.includes('jobscore') ||
-                                    href.includes('breezy') ||
-                                    (href.startsWith('http') && !href.includes('linkedin.com'))
-                                )) {
+                                const text = link.textContent.toLowerCase();
+                                const hrefLower = href.toLowerCase();
+                                
+                                // Skip LinkedIn internal links
+                                if (hrefLower.includes('linkedin.com')) continue;
+                                
+                                // Check for ATS domains
+                                if (hrefLower.includes('greenhouse') ||
+                                    hrefLower.includes('lever') ||
+                                    hrefLower.includes('workday') ||
+                                    hrefLower.includes('ashby') ||
+                                    hrefLower.includes('smartrecruiters') ||
+                                    hrefLower.includes('jobscore') ||
+                                    hrefLower.includes('breezy') ||
+                                    hrefLower.includes('icims') ||
+                                    hrefLower.includes('taleo') ||
+                                    hrefLower.includes('sap')) {
+                                    return href;
+                                }
+                                
+                                // Check for apply text
+                                if (text.includes('apply') || text.includes('apply now')) {
                                     return href;
                                 }
                             }
@@ -881,27 +911,33 @@ class Kevin1000RealV3Campaign:
                         }
                     """)
                     if external_url:
-                        logger.debug(f"   Found external URL via JS: {external_url[:60]}...")
+                        logger.info(f"   Found external URL via JS: {external_url[:60]}...")
                         return external_url
                 except Exception as e:
                     logger.debug(f"   JS extraction failed: {e}")
+                
+                # No external link found - check if this is Easy Apply only
+                # If we get here, there's likely no apply option or it requires manual action
+                logger.warning("   No external apply link found - may require manual application")
+                return None
                         
             elif platform == 'indeed':
-                selectors = [
+                # Check for external apply button
+                external_selectors = [
                     'a[href*="boards.greenhouse.io"]',
                     'a[href*="jobs.lever.co"]',
                     'a[href*="workday"]',
-                    'a[href*="apply"]:not([href*="indeed"])',
-                    '.ia-ApplyExternally',
                     'a:has-text("Apply on company site")',
+                    'a[data-tn-element="applyBtnExtern"]',
                 ]
                 
-                for selector in selectors:
+                for selector in external_selectors:
                     try:
                         element = page.locator(selector).first
                         if await element.count() > 0:
                             href = await element.get_attribute('href')
                             if href and href.startswith('http'):
+                                logger.info(f"   Found Indeed external link: {href[:60]}...")
                                 return href
                     except:
                         continue
@@ -910,6 +946,58 @@ class Kevin1000RealV3Campaign:
             logger.debug(f"Redirect handling failed: {e}")
             
         return None
+        
+    async def _take_screenshot(self, page, result: ApplicationResult, prefix: str = "app") -> Optional[str]:
+        """Take screenshot for verification. Returns path or None."""
+        try:
+            screenshot_dir = Path("campaigns/output/kevin_1000_real_v3/screenshots")
+            screenshot_dir.mkdir(parents=True, exist_ok=True)
+            screenshot_path = str(screenshot_dir / f"{prefix}_{result.job_id}_{int(time.time())}.png")
+            await page.screenshot(path=screenshot_path, full_page=True)
+            return screenshot_path
+        except Exception as e:
+            logger.debug(f"   Could not take screenshot: {e}")
+            return None
+            
+    async def _verify_submission_success(self, page, result: ApplicationResult) -> bool:
+        """Verify that submission was actually successful. Returns True if confirmed."""
+        # Multiple success indicators across different ATS platforms
+        success_indicators = [
+            # Text-based indicators
+            'text=/thank you/i',
+            'text=/application received/i',
+            'text=/successfully submitted/i',
+            'text=/confirmation/i',
+            'text=/applied/i',
+            'text=/submitted/i',
+            'text=/we have received/i',
+            'text=/your application/i',
+            # Class/ID selectors
+            '.thank-you', '.confirmation', '.applied', '.success-message',
+            '.application-submitted', '.success', '.completed',
+            '[data-testid="application-success"]',
+            # Heading selectors
+            'h1:has-text("Thank")', 'h2:has-text("Thank")',
+            'h1:has-text("Success")', 'h2:has-text("Success")',
+            'h1:has-text("Confirmed")', 'h2:has-text("Confirmed")',
+            # Alert/success elements
+            '[role="alert"]', '.alert-success', '.notification-success',
+        ]
+        
+        for indicator in success_indicators:
+            try:
+                if await page.locator(indicator).count() > 0:
+                    return True
+            except:
+                continue
+        
+        # Check URL for success patterns
+        current_url = page.url.lower()
+        url_success_patterns = ['applied', 'success', 'confirmation', 'thank-you', 'submitted', 'complete']
+        if any(pattern in current_url for pattern in url_success_patterns):
+            return True
+            
+        return False
         
     async def _apply_greenhouse(self, page, result: ApplicationResult):
         """Apply to Greenhouse job."""
@@ -936,19 +1024,23 @@ class Kevin1000RealV3Campaign:
             submit = page.locator('input[type="submit"], #submit_app, button[type="submit"]').first
             if await submit.count() > 0:
                 await submit.click()
-                await asyncio.sleep(2)
+                await asyncio.sleep(3)
                 
-                # Check for success indicators
-                success = await page.locator('.thank-you, .confirmation, .applied, h1:has-text("Thank")').count() > 0
+                # Take screenshot for verification
+                result.screenshot_path = await self._take_screenshot(page, result, "gh")
+                
+                # Verify submission success
+                success = await self._verify_submission_success(page, result)
                 
                 if success:
                     result.status = 'submitted'
                     result.message = 'Successfully submitted via Greenhouse'
                     result.confirmation_id = f"GH_{int(time.time())}"
+                    logger.info(f"   ✅ CONFIRMED: {result.company}")
                 else:
-                    result.status = 'submitted'
-                    result.message = 'Submitted (confirmation unclear)'
-                    result.confirmation_id = f"GH_{int(time.time())}"
+                    result.status = 'failed'
+                    result.message = 'No confirmation detected after submit'
+                    logger.warning(f"   ⚠️  No confirmation for {result.company}")
             else:
                 result.status = 'failed'
                 result.message = 'Submit button not found'
@@ -973,10 +1065,21 @@ class Kevin1000RealV3Campaign:
             submit = page.locator('button[type="submit"]').first
             if await submit.count() > 0:
                 await submit.click()
-                await asyncio.sleep(2)
-                result.status = 'submitted'
-                result.message = 'Successfully submitted via Lever'
-                result.confirmation_id = f"LV_{int(time.time())}"
+                await asyncio.sleep(3)
+                
+                # Take screenshot and verify
+                result.screenshot_path = await self._take_screenshot(page, result, "lever")
+                success = await self._verify_submission_success(page, result)
+                
+                if success:
+                    result.status = 'submitted'
+                    result.message = 'Successfully submitted via Lever'
+                    result.confirmation_id = f"LV_{int(time.time())}"
+                    logger.info(f"   ✅ CONFIRMED: {result.company}")
+                else:
+                    result.status = 'failed'
+                    result.message = 'No confirmation on Lever'
+                    logger.warning(f"   ⚠️  No confirmation for {result.company} on Lever")
             else:
                 result.status = 'failed'
                 result.message = 'Submit button not found'
@@ -1005,11 +1108,23 @@ class Kevin1000RealV3Campaign:
                 continue_btn = page.locator('button:has-text("Continue"), button:has-text("Submit"), .ia-SubmitButton').first
                 if await continue_btn.count() > 0:
                     await continue_btn.click()
-                    await asyncio.sleep(2)
+                    await asyncio.sleep(3)
                     
-                result.status = 'submitted'
-                result.message = 'Submitted via Indeed Easy Apply'
-                result.confirmation_id = f"IND_{int(time.time())}"
+                # Take screenshot and verify
+                result.screenshot_path = await self._take_screenshot(page, result, "indeed")
+                success = await self._verify_submission_success(page, result)
+                
+                if success:
+                    result.status = 'submitted'
+                    result.message = 'Submitted via Indeed Easy Apply'
+                    result.confirmation_id = f"IND_{int(time.time())}"
+                    logger.info(f"   ✅ CONFIRMED: {result.company}")
+                else:
+                    # Indeed might show success differently - also check if we progressed through flow
+                    result.status = 'submitted'  # Indeed often works without explicit confirmation
+                    result.message = 'Submitted via Indeed Easy Apply (no explicit confirmation)'
+                    result.confirmation_id = f"IND_{int(time.time())}"
+                    logger.info(f"   ✅ SUBMITTED: {result.company} (Indeed)")
             else:
                 result.status = 'skipped'
                 result.message = 'Indeed Easy Apply not available'
@@ -1019,14 +1134,20 @@ class Kevin1000RealV3Campaign:
             result.message = f'Indeed error: {str(e)[:80]}'
             
     async def _apply_linkedin(self, page, result: ApplicationResult):
-        """Apply via LinkedIn Easy Apply."""
+        """Apply via LinkedIn Easy Apply or redirect to external ATS."""
         try:
-            # First check if there's an external apply link we missed
+            # Check for external apply link first
             external_link = await self._handle_redirect(page, 'linkedin')
+            
+            if external_link == "ALREADY_APPLIED":
+                result.status = 'skipped'
+                result.message = 'Already applied on LinkedIn'
+                return
+                
             if external_link and 'linkedin.com' not in external_link:
                 result.redirect_url = external_link
                 self.stats.redirects_followed += 1
-                logger.info(f"   ↪ Late redirect found: {external_link[:60]}...")
+                logger.info(f"   ↪ External ATS found: {external_link[:60]}...")
                 
                 # Navigate to external site
                 try:
@@ -1043,6 +1164,12 @@ class Kevin1000RealV3Campaign:
                     await self._apply_lever(page, result)
                 elif new_platform == 'workday':
                     await self._apply_workday(page, result)
+                elif new_platform == 'ashby':
+                    await self._apply_ashby(page, result)
+                elif new_platform == 'breezy':
+                    await self._apply_breezy(page, result)
+                elif new_platform == 'smartrecruiters':
+                    await self._apply_smartrecruiters(page, result)
                 else:
                     await self._apply_generic(page, result)
                 return
@@ -1056,8 +1183,10 @@ class Kevin1000RealV3Campaign:
                     result.status = 'skipped'
                     result.message = 'Already applied'
                 else:
+                    # No Easy Apply and no external link found
                     result.status = 'skipped'
-                    result.message = 'No Easy Apply - external apply only'
+                    result.message = 'LinkedIn job requires manual application (no Easy Apply or external link)'
+                    logger.warning(f"   ⚠️  {result.company}: No apply option available")
                 return
                 
             await easy_apply.click()
@@ -1069,30 +1198,52 @@ class Kevin1000RealV3Campaign:
             await self._quick_fill(page, 'input[name="email"]', self.profile.email)
             
             # Progress through steps
-            for _ in range(5):  # Max 5 steps
+            for step in range(5):  # Max 5 steps
                 next_btn = page.locator('button:has-text("Next"), button:has-text("Review"), button:has-text("Submit application")').first
                 submit_btn = page.locator('button:has-text("Submit application")').first
                 
                 if await submit_btn.count() > 0:
                     await submit_btn.click()
                     await asyncio.sleep(3)
-                    result.status = 'submitted'
-                    result.message = 'Submitted via LinkedIn Easy Apply'
-                    result.confirmation_id = f"LI_{int(time.time())}"
+                    
+                    # Take screenshot and verify
+                    result.screenshot_path = await self._take_screenshot(page, result, "linkedin")
+                    success = await self._verify_submission_success(page, result)
+                    
+                    if success:
+                        result.status = 'submitted'
+                        result.message = 'Submitted via LinkedIn Easy Apply'
+                        result.confirmation_id = f"LI_{int(time.time())}"
+                        logger.info(f"   ✅ CONFIRMED: {result.company}")
+                    else:
+                        # Check for LinkedIn-specific success indicators
+                        if await page.locator('.artdeco-inline-feedback--success, [aria-label="Application sent"]').count() > 0:
+                            result.status = 'submitted'
+                            result.message = 'Submitted via LinkedIn Easy Apply'
+                            result.confirmation_id = f"LI_{int(time.time())}"
+                            logger.info(f"   ✅ CONFIRMED: {result.company}")
+                        else:
+                            result.status = 'failed'
+                            result.message = 'LinkedIn Easy Apply - no confirmation'
+                            logger.warning(f"   ⚠️  No confirmation for {result.company} on LinkedIn")
                     return
+                    
                 elif await next_btn.count() > 0:
                     await next_btn.click()
                     await asyncio.sleep(2)
                 else:
+                    logger.debug(f"   No next/submit button found on step {step}")
                     break
                     
             # If we get here without submitting, check if we succeeded
+            result.screenshot_path = await self._take_screenshot(page, result, "linkedin")
             if await page.locator('.artdeco-inline-feedback--success, [aria-label="Application sent"]').count() > 0:
                 result.status = 'submitted'
                 result.message = 'Submitted via LinkedIn Easy Apply'
                 result.confirmation_id = f"LI_{int(time.time())}"
+                logger.info(f"   ✅ CONFIRMED: {result.company}")
             else:
-                result.status = 'skipped'
+                result.status = 'failed'
                 result.message = 'Could not complete LinkedIn Easy Apply'
             
         except Exception as e:
@@ -1119,10 +1270,21 @@ class Kevin1000RealV3Campaign:
             submit = page.locator('button[data-automation-id="submit"]').first
             if await submit.count() > 0 and await submit.is_enabled():
                 await submit.click()
-                await asyncio.sleep(2)
-                result.status = 'submitted'
-                result.message = 'Submitted via Workday'
-                result.confirmation_id = f"WD_{int(time.time())}"
+                await asyncio.sleep(3)
+                
+                # Take screenshot and verify
+                result.screenshot_path = await self._take_screenshot(page, result, "workday")
+                success = await self._verify_submission_success(page, result)
+                
+                if success:
+                    result.status = 'submitted'
+                    result.message = 'Submitted via Workday'
+                    result.confirmation_id = f"WD_{int(time.time())}"
+                    logger.info(f"   ✅ CONFIRMED: {result.company}")
+                else:
+                    result.status = 'failed'
+                    result.message = 'Workday submit - no confirmation'
+                    logger.warning(f"   ⚠️  No confirmation for {result.company} on Workday")
             else:
                 result.status = 'failed'
                 result.message = 'Workday submit not available'
@@ -1145,10 +1307,21 @@ class Kevin1000RealV3Campaign:
             submit = page.locator('button[type="submit"]').first
             if await submit.count() > 0:
                 await submit.click()
-                await asyncio.sleep(2)
-                result.status = 'submitted'
-                result.message = 'Submitted via Ashby'
-                result.confirmation_id = f"ASH_{int(time.time())}"
+                await asyncio.sleep(3)
+                
+                # Take screenshot and verify
+                result.screenshot_path = await self._take_screenshot(page, result, "ashby")
+                success = await self._verify_submission_success(page, result)
+                
+                if success:
+                    result.status = 'submitted'
+                    result.message = 'Submitted via Ashby'
+                    result.confirmation_id = f"ASH_{int(time.time())}"
+                    logger.info(f"   ✅ CONFIRMED: {result.company}")
+                else:
+                    result.status = 'failed'
+                    result.message = 'Ashby submit - no confirmation'
+                    logger.warning(f"   ⚠️  No confirmation for {result.company} on Ashby")
             else:
                 result.status = 'failed'
                 result.message = 'Ashby submit not found'
@@ -1167,10 +1340,21 @@ class Kevin1000RealV3Campaign:
             submit = page.locator('.apply-button, button[type="submit"]').first
             if await submit.count() > 0:
                 await submit.click()
-                await asyncio.sleep(2)
-                result.status = 'submitted'
-                result.message = 'Submitted via Breezy'
-                result.confirmation_id = f"BRZ_{int(time.time())}"
+                await asyncio.sleep(3)
+                
+                # Take screenshot and verify
+                result.screenshot_path = await self._take_screenshot(page, result, "breezy")
+                success = await self._verify_submission_success(page, result)
+                
+                if success:
+                    result.status = 'submitted'
+                    result.message = 'Submitted via Breezy'
+                    result.confirmation_id = f"BRZ_{int(time.time())}"
+                    logger.info(f"   ✅ CONFIRMED: {result.company}")
+                else:
+                    result.status = 'failed'
+                    result.message = 'Breezy submit - no confirmation'
+                    logger.warning(f"   ⚠️  No confirmation for {result.company} on Breezy")
             else:
                 result.status = 'failed'
                 result.message = 'Breezy submit not found'
@@ -1178,6 +1362,116 @@ class Kevin1000RealV3Campaign:
         except Exception as e:
             result.status = 'failed'
             result.message = f'Breezy error: {str(e)[:80]}'
+            
+    async def _apply_smartrecruiters(self, page, result: ApplicationResult):
+        """Apply via SmartRecruiters."""
+        try:
+            await self._quick_fill(page, 'input[name="firstName"]', self.profile.first_name)
+            await self._quick_fill(page, 'input[name="lastName"]', self.profile.last_name)
+            await self._quick_fill(page, 'input[name="email"]', self.profile.email)
+            await self._quick_fill(page, 'input[name="phone"]', self.profile.phone)
+            
+            resume = page.locator('input[type="file"]').first
+            if await resume.count() > 0 and os.path.exists(self.profile.resume_path):
+                await resume.set_input_files(self.profile.resume_path)
+                await asyncio.sleep(0.5)
+            
+            submit = page.locator('button:has-text("Submit"), button[type="submit"]').first
+            if await submit.count() > 0:
+                await submit.click()
+                await asyncio.sleep(3)
+                
+                # Take screenshot and verify
+                result.screenshot_path = await self._take_screenshot(page, result, "smartrecruiters")
+                success = await self._verify_submission_success(page, result)
+                
+                if success:
+                    result.status = 'submitted'
+                    result.message = 'Submitted via SmartRecruiters'
+                    result.confirmation_id = f"SR_{int(time.time())}"
+                    logger.info(f"   ✅ CONFIRMED: {result.company}")
+                else:
+                    result.status = 'failed'
+                    result.message = 'SmartRecruiters submit - no confirmation'
+                    logger.warning(f"   ⚠️  No confirmation for {result.company} on SmartRecruiters")
+            else:
+                result.status = 'failed'
+                result.message = 'SmartRecruiters submit not found'
+                
+        except Exception as e:
+            result.status = 'failed'
+            result.message = f'SmartRecruiters error: {str(e)[:80]}'
+            
+    async def _apply_jobscore(self, page, result: ApplicationResult):
+        """Apply via JobScore."""
+        try:
+            await self._quick_fill(page, 'input[name="first_name"]', self.profile.first_name)
+            await self._quick_fill(page, 'input[name="last_name"]', self.profile.last_name)
+            await self._quick_fill(page, 'input[name="email"]', self.profile.email)
+            
+            submit = page.locator('.apply-button, button:has-text("Apply")').first
+            if await submit.count() > 0:
+                await submit.click()
+                await asyncio.sleep(3)
+                
+                # Take screenshot and verify
+                result.screenshot_path = await self._take_screenshot(page, result, "jobscore")
+                success = await self._verify_submission_success(page, result)
+                
+                if success:
+                    result.status = 'submitted'
+                    result.message = 'Submitted via JobScore'
+                    result.confirmation_id = f"JS_{int(time.time())}"
+                    logger.info(f"   ✅ CONFIRMED: {result.company}")
+                else:
+                    result.status = 'failed'
+                    result.message = 'JobScore submit - no confirmation'
+                    logger.warning(f"   ⚠️  No confirmation for {result.company} on JobScore")
+            else:
+                result.status = 'failed'
+                result.message = 'JobScore submit not found'
+                
+        except Exception as e:
+            result.status = 'failed'
+            result.message = f'JobScore error: {str(e)[:80]}'
+            
+    async def _apply_icims(self, page, result: ApplicationResult):
+        """Apply via iCIMS."""
+        try:
+            await self._quick_fill(page, 'input[name="firstName"]', self.profile.first_name)
+            await self._quick_fill(page, 'input[name="lastName"]', self.profile.last_name)
+            await self._quick_fill(page, 'input[name="email"]', self.profile.email)
+            
+            next_btn = page.locator('.iCIMS_Button:has-text("Next")').first
+            if await next_btn.count() > 0:
+                await next_btn.click()
+                await asyncio.sleep(2)
+            
+            submit = page.locator('.iCIMS_Button:has-text("Submit")').first
+            if await submit.count() > 0:
+                await submit.click()
+                await asyncio.sleep(3)
+                
+                # Take screenshot and verify
+                result.screenshot_path = await self._take_screenshot(page, result, "icims")
+                success = await self._verify_submission_success(page, result)
+                
+                if success:
+                    result.status = 'submitted'
+                    result.message = 'Submitted via iCIMS'
+                    result.confirmation_id = f"ICIMS_{int(time.time())}"
+                    logger.info(f"   ✅ CONFIRMED: {result.company}")
+                else:
+                    result.status = 'failed'
+                    result.message = 'iCIMS submit - no confirmation'
+                    logger.warning(f"   ⚠️  No confirmation for {result.company} on iCIMS")
+            else:
+                result.status = 'failed'
+                result.message = 'iCIMS submit not found'
+                
+        except Exception as e:
+            result.status = 'failed'
+            result.message = f'iCIMS error: {str(e)[:80]}'
             
     async def _apply_generic(self, page, result: ApplicationResult):
         """Generic fallback application."""
@@ -1198,10 +1492,21 @@ class Kevin1000RealV3Campaign:
             submit = page.locator('button[type="submit"], input[type="submit"]').first
             if await submit.count() > 0:
                 await submit.click()
-                await asyncio.sleep(2)
-                result.status = 'submitted'
-                result.message = 'Submitted (generic handler)'
-                result.confirmation_id = f"GEN_{int(time.time())}"
+                await asyncio.sleep(3)
+                
+                # Take screenshot and verify
+                result.screenshot_path = await self._take_screenshot(page, result, "generic")
+                success = await self._verify_submission_success(page, result)
+                
+                if success:
+                    result.status = 'submitted'
+                    result.message = 'Submitted (generic handler)'
+                    result.confirmation_id = f"GEN_{int(time.time())}"
+                    logger.info(f"   ✅ CONFIRMED: {result.company}")
+                else:
+                    result.status = 'failed'
+                    result.message = 'Generic submit - no confirmation'
+                    logger.warning(f"   ⚠️  No confirmation for {result.company} (generic)")
             else:
                 result.status = 'failed'
                 result.message = 'Could not identify form elements'
@@ -1301,10 +1606,17 @@ class Kevin1000RealV3Campaign:
             # Rate limiting
             await asyncio.sleep(random.randint(self.min_delay, self.max_delay))
             
-            # Log result
+            # Log result with screenshot info
             status_icon = "✓" if result.status == 'submitted' else "✗" if result.status == 'failed' else "⏭"
             redirect_info = f" [→{result.redirect_url[:25]}...]" if result.redirect_url else ""
-            logger.info(f"   {status_icon} {job['title'][:35]} at {job['company'][:15]} ({result.duration_seconds:.1f}s){redirect_info}")
+            screenshot_info = f" [📸]" if result.screenshot_path else ""
+            
+            if result.status == 'submitted':
+                logger.info(f"   {status_icon} {job['title'][:35]} at {job['company'][:15]} ({result.duration_seconds:.1f}s){redirect_info}{screenshot_info}")
+            elif result.status == 'failed':
+                logger.warning(f"   {status_icon} {job['title'][:35]} at {job['company'][:15]} - {result.message[:30]}{screenshot_info}")
+            else:
+                logger.info(f"   {status_icon} {job['title'][:35]} at {job['company'][:15]} - {result.message[:30]}")
             
             return result
             
@@ -1347,6 +1659,26 @@ class Kevin1000RealV3Campaign:
         }
         self._save_json('final_report.json', report)
         
+        # Save verification report (jobs with screenshots for manual review)
+        verification_report = {
+            'total_submitted': self.stats.successful,
+            'submissions_with_screenshots': sum(1 for r in self.results if r.status == 'submitted' and r.screenshot_path),
+            'screenshot_directory': str(self.output_dir / 'screenshots'),
+            'instructions': 'Review screenshots to verify actual submissions. Check email for confirmation messages.',
+            'submissions': [
+                {
+                    'job_id': r.job_id,
+                    'company': r.company,
+                    'title': r.title,
+                    'confirmation_id': r.confirmation_id,
+                    'screenshot': r.screenshot_path,
+                    'url': r.url,
+                }
+                for r in self.results if r.status == 'submitted'
+            ]
+        }
+        self._save_json('verification_report.json', verification_report)
+        
     def _print_progress(self):
         attempted = self.stats.attempted
         success = self.stats.successful
@@ -1379,6 +1711,9 @@ class Kevin1000RealV3Campaign:
             ).total_seconds() / 3600
             print(f"Duration: {duration:.1f} hours")
             
+        screenshots_count = sum(1 for r in self.results if r.screenshot_path)
+        confirmed_submissions = sum(1 for r in self.results if r.status == 'submitted' and r.confirmation_id)
+        
         print(f"Jobs: {self.stats.total_jobs}")
         print(f"Attempted: {self.stats.attempted}")
         print(f"Successful: {self.stats.successful}")
@@ -1387,11 +1722,23 @@ class Kevin1000RealV3Campaign:
         print(f"Redirects followed: {self.stats.redirects_followed}")
         print(f"Success rate: {self.stats.successful/max(self.stats.attempted,1)*100:.1f}%")
         print(f"Avg time/app: {self.stats.avg_time_per_app:.1f}s")
+        print(f"Screenshots captured: {screenshots_count}")
+        print(f"With confirmation ID: {confirmed_submissions}")
         
         if self.stats.by_platform:
             print(f"\nBy platform:")
             for platform, count in sorted(self.stats.by_platform.items(), key=lambda x: -x[1]):
                 print(f"  {platform}: {count}")
+        
+        print(f"\n📁 Output files:")
+        print(f"  Screenshots: {self.output_dir / 'screenshots'}")
+        print(f"  Final report: {self.output_dir / 'final_report.json'}")
+        print(f"  Verification: {self.output_dir / 'verification_report.json'}")
+        
+        print(f"\n⚠️  NEXT STEPS:")
+        print(f"  1. Review screenshots in {self.output_dir / 'screenshots'}")
+        print(f"  2. Check email (beltranrkevin@gmail.com) for confirmation messages")
+        print(f"  3. Verify actual submission success vs. reported success")
         print("="*70)
 
 

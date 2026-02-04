@@ -1,0 +1,13 @@
+{
+  "campaign_id": "matt_edwards_real_20260203_1721",
+  "mode": "REAL_APPLICATIONS",
+  "total_jobs": 1000,
+  "completed": 998,
+  "successful": 0,
+  "failed": 998,
+  "success_rate": 0.0,
+  "duration_minutes": 359.97566775,
+  "auto_submit": true,
+  "start_time": "2026-02-03T17:21:05.877274",
+  "end_time": "2026-02-03T23:21:04.417339"
+}

@@ -321,7 +321,7 @@ class Kent1000CapSolverCampaign:
             print("   Set CAPSOLVER_API_KEY to continue")
             return
         
-        confirm = "CAPSOLVER1000"  # Auto-confirmed for overnight run
+        confirm = input("\nType 'CAPSOLVER1000' to start: ")
         if confirm.strip() != "CAPSOLVER1000":
             print("❌ Cancelled")
             return

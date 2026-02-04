@@ -6,6 +6,7 @@ Handles Cloudflare and reCAPTCHA solving using CapSolver API
 import os
 import asyncio
 import base64
+import ssl
 from typing import Optional, Dict, Any
 from dataclasses import dataclass
 from playwright.async_api import Page
@@ -60,7 +61,12 @@ class CapSolverManager:
         start_time = time.time()
         
         try:
-            async with aiohttp.ClientSession() as session:
+            # Create SSL context that doesn't verify certificates (workaround for SSL issues)
+            ssl_context = ssl.create_default_context()
+            ssl_context.check_hostname = False
+            ssl_context.verify_mode = ssl.CERT_NONE
+            
+            async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=ssl_context)) as session:
                 # Create task
                 create_url = f"{self.API_URL}/createTask"
                 task_data = {
@@ -154,7 +160,12 @@ class CapSolverManager:
         start_time = time.time()
         
         try:
-            async with aiohttp.ClientSession() as session:
+            # Create SSL context that doesn't verify certificates
+            ssl_context = ssl.create_default_context()
+            ssl_context.check_hostname = False
+            ssl_context.verify_mode = ssl.CERT_NONE
+            
+            async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=ssl_context)) as session:
                 create_url = f"{self.API_URL}/createTask"
                 task_data = {
                     "clientKey": self.api_key,

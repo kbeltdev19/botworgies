@@ -1,0 +1,65 @@
+# Kevin Beltran Campaign Profile
+# Usage: python -m campaigns run --profile campaigns/profiles/kevin_beltran.yaml
+
+name: "Kevin Beltran"
+email: "beltranrkevin@gmail.com"
+phone: "+1-770-378-2545"
+linkedin: ""
+location: "Atlanta, GA"
+clearance: "Secret"
+
+resume:
+  path: "Test Resumes/Kevin_Beltran_Resume.pdf"
+  # Tailored versions will be auto-generated
+  tailored_versions:
+    - target: "ServiceNow"
+    - target: "IT Management"
+    - target: "Account Management"
+
+search:
+  roles:
+    - "ServiceNow Manager"
+    - "ServiceNow Consultant"
+    - "IT Project Manager"
+    - "ITSM Analyst"
+    - "ServiceNow Administrator"
+    - "Technical Account Manager"
+  
+  locations:
+    - "Atlanta, GA"
+    - "Remote"
+    - "Georgia"
+  
+  platforms:
+    - indeed
+    - linkedin
+    - greenhouse
+    - lever
+    - ziprecruiter
+  
+  remote_only: false
+  posted_within_days: 7
+  
+strategy:
+  name: "balanced"
+  max_concurrent: 7
+  delay_range: [5, 15]  # seconds
+  auto_submit: true
+  use_ai_tailoring: false  # Use templates (faster, cheaper)
+  
+targets:
+  total: 1000
+  daily_max: 100
+  
+features:
+  use_captcha_solver: true
+  use_proxy_rotation: true
+  use_session_pooling: true
+  use_ai_caching: true
+  capture_screenshots: true
+  
+output:
+  directory: "campaigns/output/kevin_beltran"
+  save_screenshots: true
+  save_logs: true
+  email_notifications: false

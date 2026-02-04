@@ -1,0 +1,60 @@
+# Kent Le Campaign Profile
+# Usage: python -m campaigns run --profile campaigns/profiles/kent_le.yaml
+
+name: "Kent Le"
+email: "kle4311@gmail.com"
+phone: "+1-404-934-0630"
+linkedin: ""
+location: "Auburn, AL"
+
+resume:
+  path: "Test Resumes/Kent_Le_Resume.pdf"
+  tailored_versions:
+    - target: "Customer Success"
+    - target: "Account Management"
+    - target: "Sales"
+
+search:
+  roles:
+    - "Customer Success Manager"
+    - "Account Manager"
+    - "Sales Representative"
+    - "Client Success Manager"
+    - "Business Development Representative"
+  
+  locations:
+    - "Atlanta, GA"
+    - "Birmingham, AL"
+    - "Remote"
+  
+  platforms:
+    - indeed
+    - linkedin
+    - greenhouse
+    - lever
+  
+  remote_only: false
+  posted_within_days: 7
+  
+strategy:
+  name: "aggressive"
+  max_concurrent: 10
+  delay_range: [3, 10]  # seconds
+  auto_submit: true
+  use_ai_tailoring: false
+  
+targets:
+  total: 1000
+  daily_max: 150
+  
+features:
+  use_captcha_solver: true
+  use_proxy_rotation: true
+  use_session_pooling: true
+  use_ai_caching: true
+  capture_screenshots: true
+  
+output:
+  directory: "campaigns/output/kent_le"
+  save_screenshots: true
+  save_logs: true

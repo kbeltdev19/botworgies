@@ -12,6 +12,7 @@ Features:
 import os
 import random
 import asyncio
+import time
 from typing import Optional, Dict, Any
 from dataclasses import dataclass
 from enum import Enum
@@ -114,18 +115,115 @@ class BrowserSession:
     mode: BrowserMode = BrowserMode.BROWSERBASE
 
 
+class BrowserBaseSessionManager:
+    """
+    Manages BrowserBase session lifecycle with proper cleanup and retry logic.
+    """
+    
+    def __init__(self, max_concurrent: int = 10):
+        self.max_concurrent = max_concurrent
+        self.active_sessions: Dict[str, Any] = {}
+        self.session_history: List[Dict] = []
+        self.failed_at: Optional[float] = None
+        self.retry_count: int = 0
+        self.max_retries: int = 3
+        self.retry_delay: float = 60.0  # 60 second cooldown
+        
+    def can_create_session(self) -> bool:
+        """Check if we can create a new BrowserBase session."""
+        # Check if we're in cooldown period
+        if self.failed_at:
+            elapsed = time.time() - self.failed_at
+            if elapsed < self.retry_delay:
+                print(f"[BrowserBase] In cooldown period ({elapsed:.0f}s / {self.retry_delay:.0f}s)")
+                return False
+            else:
+                # Reset failed status after cooldown
+                print("[BrowserBase] Cooldown complete, retrying...")
+                self.failed_at = None
+                self.retry_count = 0
+                
+        # Check concurrent session limit
+        active_count = len(self.active_sessions)
+        if active_count >= self.max_concurrent:
+            print(f"[BrowserBase] At max concurrent sessions ({active_count}/{self.max_concurrent})")
+            return False
+            
+        return True
+        
+    def register_session(self, session_id: str, metadata: Dict = None):
+        """Register a new active session."""
+        self.active_sessions[session_id] = {
+            "created_at": time.time(),
+            "metadata": metadata or {},
+        }
+        self.session_history.append({
+            "session_id": session_id,
+            "action": "created",
+            "timestamp": time.time(),
+        })
+        print(f"[BrowserBase] Registered session {session_id} ({len(self.active_sessions)} active)")
+        
+    def unregister_session(self, session_id: str):
+        """Unregister a session (cleanup)."""
+        if session_id in self.active_sessions:
+            del self.active_sessions[session_id]
+            self.session_history.append({
+                "session_id": session_id,
+                "action": "closed",
+                "timestamp": time.time(),
+            })
+            print(f"[BrowserBase] Unregistered session {session_id} ({len(self.active_sessions)} active)")
+            
+    def mark_failed(self, error: str):
+        """Mark BrowserBase as failed with cooldown."""
+        self.failed_at = time.time()
+        self.retry_count += 1
+        
+        # Exponential backoff: 60s, 120s, 240s
+        self.retry_delay = min(60 * (2 ** (self.retry_count - 1)), 300)
+        
+        print(f"[BrowserBase] Marked failed (attempt {self.retry_count}/{self.max_retries}), "
+              f"cooldown: {self.retry_delay:.0f}s")
+        
+        # If max retries exceeded, use longer cooldown
+        if self.retry_count >= self.max_retries:
+            self.retry_delay = 600  # 10 minute cooldown
+            print(f"[BrowserBase] Max retries exceeded, extended cooldown: {self.retry_delay:.0f}s")
+            
+    def get_stats(self) -> Dict:
+        """Get session manager statistics."""
+        return {
+            "active_sessions": len(self.active_sessions),
+            "max_concurrent": self.max_concurrent,
+            "failed_at": self.failed_at,
+            "retry_count": self.retry_count,
+            "retry_delay": self.retry_delay,
+            "in_cooldown": self.failed_at is not None,
+            "total_history": len(self.session_history),
+        }
+        
+    def force_reset(self):
+        """Force reset failed status (use with caution)."""
+        self.failed_at = None
+        self.retry_count = 0
+        self.retry_delay = 60.0
+        print("[BrowserBase] Force reset complete")
+
+
 class StealthBrowserManager:
     """
     Manages stealth browser sessions with BrowserBase primary and local fallback.
     Handles fingerprinting, proxies, and human-like behavior.
     """
 
-    def __init__(self, prefer_local: bool = False):
+    def __init__(self, prefer_local: bool = False, max_bb_sessions: int = 10):
         """
         Initialize the browser manager.
         
         Args:
             prefer_local: If True, prefer local browsers even if BrowserBase is available.
+            max_bb_sessions: Maximum concurrent BrowserBase sessions (default 10 to stay under limits).
         """
         creds = load_browserbase_creds()
         self.api_key = creds.get("BROWSERBASE_API_KEY")
@@ -135,6 +233,9 @@ class StealthBrowserManager:
         self.active_sessions: Dict[str, BrowserSession] = {}
         self.playwright = None
         self._browserbase_failed = False  # Track if BrowserBase is failing
+        
+        # Session manager for better BrowserBase handling
+        self.bb_manager = BrowserBaseSessionManager(max_concurrent=max_bb_sessions) if self.bb else None
 
     async def initialize(self):
         """Initialize Playwright instance."""
@@ -151,23 +252,36 @@ class StealthBrowserManager:
         Create a fingerprint-randomized session for specific platform.
         
         Falls back to local browser if BrowserBase is at capacity or unavailable.
+        Uses session manager for proper cleanup and retry logic.
         """
         await self.initialize()
 
-        # Try BrowserBase first (unless forced local or already failed)
-        if not force_local and not self.prefer_local and not self._browserbase_failed and self.bb:
-            try:
-                session = await self._create_browserbase_session(platform, use_proxy)
-                print(f"[Browser] Created BrowserBase session: {session.session_id}")
-                return session
-            except Exception as e:
-                error_msg = str(e)
-                if is_capacity_error(error_msg):
-                    print(f"[Browser] BrowserBase at capacity ({error_msg}), falling back to local browser...")
-                    self._browserbase_failed = True  # Mark as failed to avoid repeated attempts
-                else:
-                    print(f"[Browser] BrowserBase error: {error_msg}, falling back to local browser...")
-
+        # Try BrowserBase first (unless forced local or failed/cooldown)
+        if not force_local and not self.prefer_local and self.bb and self.bb_manager:
+            if self.bb_manager.can_create_session():
+                try:
+                    session = await self._create_browserbase_session(platform, use_proxy)
+                    # Register with session manager
+                    self.bb_manager.register_session(
+                        session.session_id,
+                        {"platform": platform, "use_proxy": use_proxy}
+                    )
+                    print(f"[Browser] ✅ BrowserBase session created: {session.session_id}")
+                    return session
+                except Exception as e:
+                    error_msg = str(e)
+                    if is_capacity_error(error_msg):
+                        print(f"[Browser] ❌ BrowserBase at capacity, falling back to local...")
+                        self.bb_manager.mark_failed(error_msg)
+                    else:
+                        print(f"[Browser] ❌ BrowserBase error ({error_msg[:50]}...), falling back...")
+            else:
+                # Session manager says we can't create (cooldown or at limit)
+                bb_stats = self.bb_manager.get_stats()
+                print(f"[Browser] ⚠️  BrowserBase unavailable (cooldown: {bb_stats['in_cooldown']}, "
+                      f"active: {bb_stats['active_sessions']}/{bb_stats['max_concurrent']}), "
+                      f"using local...")
+        
         # Fallback to local browser
         return await self._create_local_session(platform, use_proxy)
 
@@ -176,15 +290,36 @@ class StealthBrowserManager:
         platform: str,
         use_proxy: bool = True
     ) -> BrowserSession:
-        """Create a BrowserBase cloud session with CAPTCHA solving enabled."""
-        session = self.bb.sessions.create(
-            project_id=self.project_id,
-            proxies=use_proxy,
-            browser_settings={
-                "advancedStealth": True,
-                "solveCaptchas": True,
-            },
-        )
+        """
+        Create a BrowserBase cloud session with CAPTCHA solving.
+        Tries Advanced Stealth first, falls back to Basic Stealth if needed.
+        """
+        # Try Advanced Stealth first (Scale plan)
+        try:
+            session = self.bb.sessions.create(
+                project_id=self.project_id,
+                proxies=use_proxy,
+                browser_settings={
+                    "advancedStealth": True,
+                    "solveCaptchas": True,
+                },
+            )
+            print("[Browser] ✅ BrowserBase Advanced Stealth session created")
+        except Exception as e:
+            error_msg = str(e).lower()
+            if "enterprise" in error_msg or "scale" in error_msg or "plan" in error_msg:
+                print("[Browser] ⚠️  Advanced Stealth not available on your plan, using Basic Stealth...")
+                # Fall back to Basic Stealth (CAPTCHA solving enabled by default)
+                session = self.bb.sessions.create(
+                    project_id=self.project_id,
+                    proxies=use_proxy,
+                    browser_settings={
+                        "solveCaptchas": True,
+                    },
+                )
+                print("[Browser] ✅ BrowserBase Basic Stealth session created")
+            else:
+                raise
 
         browser = await self.playwright.chromium.connect_over_cdp(
             session.connect_url,
@@ -212,7 +347,7 @@ class StealthBrowserManager:
         platform: str,
         use_proxy: bool = True
     ) -> BrowserSession:
-        """Create a local browser session with stealth patches."""
+        """Create a local browser session with stealth patches and optional proxy."""
         print("[Browser] Using local browser session with stealth patches")
 
         # Random viewport and user agent
@@ -227,6 +362,20 @@ class StealthBrowserManager:
             "--disable-features=IsolateOrigins,site-per-process",
         ]
 
+        # Try to add proxy if requested
+        proxy_config = None
+        if use_proxy:
+            try:
+                from browser.proxy_config import get_proxy_for_local_browser
+                proxy_config = get_proxy_for_local_browser()
+                if proxy_config:
+                    print(f"[Browser] ✅ Proxy enabled for local browser")
+                    launch_args.append(f"--proxy-server={proxy_config['server']}")
+                else:
+                    print("[Browser] ⚠️  No proxy configured for local browser")
+            except Exception as e:
+                print(f"[Browser] ⚠️  Proxy config error: {e}")
+
         # Launch browser
         browser = await self.playwright.chromium.launch(
             headless=True,
@@ -234,14 +383,20 @@ class StealthBrowserManager:
         )
 
         # Create context with stealth settings
-        context = await browser.new_context(
-            viewport=viewport,
-            user_agent=user_agent,
-            locale="en-US",
-            timezone_id="America/New_York",
-            permissions=["geolocation"],
-            color_scheme="light",
-        )
+        context_args = {
+            "viewport": viewport,
+            "user_agent": user_agent,
+            "locale": "en-US",
+            "timezone_id": "America/New_York",
+            "permissions": ["geolocation"],
+            "color_scheme": "light",
+        }
+        
+        # Add proxy auth if configured
+        if proxy_config and proxy_config.get("username"):
+            context_args["proxy"] = proxy_config
+            
+        context = await browser.new_context(**context_args)
 
         # Add stealth init script
         await context.add_init_script(self._get_stealth_script())
@@ -551,7 +706,7 @@ class StealthBrowserManager:
         return False
 
     async def close_session(self, session_id: str):
-        """Close a browser session."""
+        """Close a browser session and cleanup."""
         if session_id in self.active_sessions:
             session = self.active_sessions[session_id]
             try:
@@ -560,6 +715,11 @@ class StealthBrowserManager:
             except Exception:
                 pass
             del self.active_sessions[session_id]
+            
+            # Unregister from session manager if BrowserBase
+            if session.mode == BrowserMode.BROWSERBASE and self.bb_manager:
+                self.bb_manager.unregister_session(session_id)
+            
             print(f"[Browser] Closed session: {session_id}")
 
     async def close_all(self):
@@ -573,24 +733,33 @@ class StealthBrowserManager:
             except Exception:
                 pass
             self.playwright = None
+            
+        print("[Browser] All sessions closed and Playwright stopped")
 
     def get_stats(self) -> Dict[str, Any]:
-        """Get browser manager statistics."""
+        """Get browser manager statistics including session manager status."""
         browserbase_count = sum(1 for s in self.active_sessions.values() if s.mode == BrowserMode.BROWSERBASE)
         local_count = sum(1 for s in self.active_sessions.values() if s.mode == BrowserMode.LOCAL)
         
-        return {
+        stats = {
             "total_sessions": len(self.active_sessions),
             "browserbase_sessions": browserbase_count,
             "local_sessions": local_count,
-            "browserbase_available": self.bb is not None and not self._browserbase_failed,
-            "browserbase_failed": self._browserbase_failed,
+            "browserbase_available": self.bb is not None,
         }
+        
+        # Add session manager stats if available
+        if self.bb_manager:
+            stats["session_manager"] = self.bb_manager.get_stats()
+            
+        return stats
 
     def reset_browserbase_status(self):
-        """Reset BrowserBase failed status (to retry BrowserBase after a cooldown)."""
-        self._browserbase_failed = False
-        print("[Browser] Reset BrowserBase status - will retry on next session creation")
+        """Reset BrowserBase failed status via session manager."""
+        if self.bb_manager:
+            self.bb_manager.force_reset()
+        else:
+            print("[Browser] No session manager available")
 
 
 async def test_stealth():
