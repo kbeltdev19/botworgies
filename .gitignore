@@ -65,3 +65,5 @@ playwright/.auth/
 tmp/
 temp/
 *.tmp
+campaign_output/
+*.log
