@@ -433,7 +433,8 @@ class CompanySpecificHandler:
             
             # Check if there's a login prompt
             login_keywords = ['sign in', 'login', 'create account', 'register']
-            page_text = await self.page.inner_text('body').lower()
+            page_text_content = await self.page.inner_text('body')
+            page_text = page_text_content.lower()
             if any(kw in page_text for kw in login_keywords):
                 logger.info("Login required for this application")
                 return ApplicationResult(
