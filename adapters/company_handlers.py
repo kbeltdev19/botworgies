@@ -3,6 +3,8 @@ Company-Specific Application Handlers
 
 Handles ATS platforms for specific companies with custom implementations.
 Each company may have unique Workday configurations, login flows, or form layouts.
+
+AI-Powered: Uses Moonshot AI to detect selectors when pre-configured ones fail.
 """
 
 import asyncio
@@ -15,6 +17,11 @@ from playwright.async_api import Page, BrowserContext
 
 from adapters.base import JobPosting, ApplicationResult, ApplicationStatus, UserProfile, Resume
 from browser.stealth_manager import StealthBrowserManager
+
+# AI Integration
+import sys
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from ai.selector_ai import SelectorAI, SelectorLearningDB
 
 logger = logging.getLogger(__name__)
 
@@ -124,6 +131,11 @@ class CompanySpecificHandler:
         self.config: Optional[CompanyConfig] = None
         self.page: Optional[Page] = None
         self.context: Optional[BrowserContext] = None
+        
+        # AI Components
+        self.selector_ai = SelectorAI()
+        self.learning_db = SelectorLearningDB()
+        logger.info("🤖 AI Selector Detection initialized")
     
     def detect_company(self, url: str) -> Optional[str]:
         """Detect company from URL."""
@@ -136,6 +148,49 @@ class CompanySpecificHandler:
                     return company_id
         
         return None
+    
+    async def _get_selectors_with_ai(self, company_id: str, page_html: str, url: str) -> Dict[str, str]:
+        """
+        Get form selectors using AI when pre-configured ones fail.
+        
+        Tries in order:
+        1. Learning database (previous successes)
+        2. Pre-configured selectors
+        3. AI analysis of HTML
+        """
+        # 1. Check learning database
+        learned = self.learning_db.get_selectors(company_id, 'workday')
+        if learned:
+            logger.info(f"📚 Using learned selectors for {company_id}")
+            return learned.get('selectors', {})
+        
+        # 2. Check pre-configured
+        if company_id in COMPANY_CONFIGS:
+            logger.info(f"📋 Using pre-configured selectors for {company_id}")
+            return COMPANY_CONFIGS[company_id].selectors
+        
+        # 3. Use AI to analyze
+        logger.info(f"🤖 Using AI to detect selectors for {company_id}")
+        try:
+            suggestions = await self.selector_ai.analyze_form(page_html, url)
+            
+            # Convert suggestions to selector dict
+            selectors = {}
+            for field_name, suggestion in suggestions.items():
+                if suggestion.confidence > 0.6:  # Use medium+ confidence
+                    selectors[field_name] = suggestion.selector
+                    logger.info(f"  AI suggests: {field_name} = {suggestion.selector} (confidence: {suggestion.confidence:.2f})")
+            
+            if selectors:
+                logger.info(f"✅ AI found {len(selectors)} selectors")
+                return selectors
+            else:
+                logger.warning("⚠️  AI found no high-confidence selectors")
+                
+        except Exception as e:
+            logger.error(f"❌ AI selector detection failed: {e}")
+        
+        return {}
     
     async def apply(
         self,
@@ -343,8 +398,35 @@ class CompanySpecificHandler:
                 continue
         
         if not form_found:
+            # Try AI to detect selectors
+            logger.info("🤖 Trying AI to detect form selectors...")
+            try:
+                page_html = await self.page.content()
+                company_id = self.detect_company(job.url) or 'unknown'
+                ai_selectors = await self._get_selectors_with_ai(company_id, page_html, self.page.url)
+                
+                if ai_selectors:
+                    logger.info(f"✅ AI found {len(ai_selectors)} selectors, retrying form detection...")
+                    # Update selectors and retry
+                    selectors = {**selectors, **ai_selectors}
+                    
+                    # Retry form detection with AI selectors
+                    for sel in [ai_selectors.get('first_name', ''), ai_selectors.get('email', '')]:
+                        if sel:
+                            try:
+                                element = self.page.locator(sel).first
+                                if await element.count() > 0 and await element.is_visible():
+                                    form_found = True
+                                    logger.info(f"✅ Form found with AI selector: {sel}")
+                                    break
+                            except:
+                                continue
+            except Exception as e:
+                logger.error(f"❌ AI detection failed: {e}")
+            
+        if not form_found:
             # Try to detect what's actually on the page
-            logger.warning("Could not find standard application form")
+            logger.warning("Could not find standard application form (even with AI)")
             
             # Take screenshot for debugging
             screenshot = await self._capture_screenshot(job.id, 'no_form')
@@ -427,6 +509,10 @@ class CompanySpecificHandler:
                         # Check for success
                         success = await self._check_success(selectors['success_indicator'])
                         if success:
+                            # Store successful selectors in learning database
+                            company_id = self.detect_company(job.url) or self.config.name.lower()
+                            await self._store_successful_selectors(company_id, 'workday', selectors)
+                            
                             return ApplicationResult(
                                 status=ApplicationStatus.SUBMITTED,
                                 message=f"Application submitted to {job.company}",
@@ -601,6 +687,14 @@ class CompanySpecificHandler:
         except Exception as e:
             logger.error(f"Screenshot failed: {e}")
             return None
+    
+    async def _store_successful_selectors(self, company_id: str, platform: str, selectors: Dict[str, str]):
+        """Store successful selectors in learning database."""
+        try:
+            self.learning_db.record_success(company_id, platform, selectors)
+            logger.info(f"📚 Stored {len(selectors)} selectors in learning database for {company_id}")
+        except Exception as e:
+            logger.debug(f"Could not store selectors: {e}")
 
 
 # Test function
