@@ -99,6 +99,20 @@ class SmartRateLimiter:
     - Indeed: Medium limits
     """
     
+    # AGGRESSIVE_MODE: Set via AGGRESSIVE_RATE_LIMITS=1 env var for 2x speed
+    # Default mode is conservative to avoid bans
+    PLATFORM_LIMITS_AGGRESSIVE = {
+        'greenhouse': PlatformLimits(60, 1000, 10, (1, 2)),      # 2x faster
+        'lever': PlatformLimits(40, 600, 6, (1.5, 3)),           # 2x faster
+        'workday': PlatformLimits(20, 200, 4, (5, 10)),          # 2x faster
+        'linkedin': PlatformLimits(20, 200, 3, (10, 20)),        # Conservative for LinkedIn
+        'indeed': PlatformLimits(40, 600, 6, (2, 5)),            # 2x faster
+        'ashby': PlatformLimits(50, 800, 6, (1.5, 3)),
+        'breezy': PlatformLimits(50, 800, 6, (1.5, 3)),
+        'smartrecruiters': PlatformLimits(40, 600, 5, (2, 5)),
+        'default': PlatformLimits(30, 400, 5, (2, 8)),
+    }
+    
     PLATFORM_LIMITS = {
         'greenhouse': PlatformLimits(30, 500, 5, (2, 5)),
         'lever': PlatformLimits(20, 300, 3, (3, 6)),
@@ -111,14 +125,23 @@ class SmartRateLimiter:
         'default': PlatformLimits(15, 200, 3, (5, 15)),
     }
     
-    def __init__(self):
+    def __init__(self, aggressive: bool = False):
         self.semaphores: Dict[str, asyncio.Semaphore] = {}
         self.last_request: Dict[str, float] = {}
         self.request_counts: Dict[str, Dict[str, int]] = {}
         self.circuit_breakers: Dict[str, CircuitBreaker] = {}
         self.stats: Dict[str, Dict] = {}
         
-        for platform, limits in self.PLATFORM_LIMITS.items():
+        # Check for aggressive mode via env var or parameter
+        import os
+        self.aggressive = aggressive or os.getenv('AGGRESSIVE_RATE_LIMITS', '0') == '1'
+        
+        limits_dict = self.PLATFORM_LIMITS_AGGRESSIVE if self.aggressive else self.PLATFORM_LIMITS
+        
+        if self.aggressive:
+            logger.warning("[RateLimiter] AGGRESSIVE MODE ENABLED - 2x faster but higher ban risk")
+        
+        for platform, limits in limits_dict.items():
             self.semaphores[platform] = asyncio.Semaphore(limits.burst_allowance)
             self.last_request[platform] = 0
             self.request_counts[platform] = {'minute': 0, 'hour': 0, 'total': 0}
@@ -215,11 +238,11 @@ class SmartRateLimiter:
 _limiter: Optional[SmartRateLimiter] = None
 
 
-def get_rate_limiter() -> SmartRateLimiter:
+def get_rate_limiter(aggressive: bool = False) -> SmartRateLimiter:
     """Get global rate limiter."""
     global _limiter
     if _limiter is None:
-        _limiter = SmartRateLimiter()
+        _limiter = SmartRateLimiter(aggressive=aggressive)
     return _limiter
 
 

@@ -82,7 +82,7 @@ class BrowserBaseScraper(BaseJobBoardScraper):
     
     async def __aexit__(self, exc_type, exc_val, exc_tb):
         if self._owns_manager and self.browser_manager:
-            await self.browser_manager.close()
+            await self.browser_manager.close_all()
     
     async def search(self, criteria: SearchCriteria) -> List[JobPosting]:
         """Search for jobs using BrowserBase."""
@@ -267,6 +267,10 @@ class BrowserBaseScraper(BaseJobBoardScraper):
         all_jobs = []
         seen_urls = set()
         
+        # Skip Indeed if it consistently returns 0 jobs
+        indeed_failures = 0
+        skip_indeed = False
+        
         for query in queries:
             if len(all_jobs) >= total_target:
                 break
@@ -282,11 +286,26 @@ class BrowserBaseScraper(BaseJobBoardScraper):
                 )
                 
                 try:
-                    jobs = await self.search(criteria)
+                    # Only scrape LinkedIn if Indeed keeps failing
+                    if skip_indeed:
+                        jobs = await self._scrape_linkedin(criteria)
+                        indeed_count = 0
+                    else:
+                        jobs = await self.search(criteria)
+                        # Count Indeed jobs
+                        indeed_count = len([j for j in jobs if 'indeed.com' in j.url])
+                    
                     for job in jobs:
                         if job.url not in seen_urls:
                             seen_urls.add(job.url)
                             all_jobs.append(job)
+                    
+                    # Track Indeed failures
+                    if indeed_count == 0 and not skip_indeed:
+                        indeed_failures += 1
+                        if indeed_failures >= 2:
+                            logger.warning("[BrowserBase] Indeed returning 0 jobs, skipping to save time")
+                            skip_indeed = True
                     
                     logger.info(f"[BrowserBase] Progress: {len(all_jobs)}/{total_target}")
                     

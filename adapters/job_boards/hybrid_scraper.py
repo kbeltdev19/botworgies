@@ -57,7 +57,7 @@ class HybridScraper(BaseJobBoardScraper):
     async def close(self):
         """Cleanup browser manager."""
         if self.browser_manager:
-            await self.browser_manager.close()
+            await self.browser_manager.close_all()
             self.browser_manager = None
         
     def get_default_headers(self) -> Dict[str, str]:
@@ -133,10 +133,9 @@ class HybridScraper(BaseJobBoardScraper):
         """
         Parallel batch search for large targets.
         
-        Strategy:
-        1. Try jobspy first (fastest, HTTP-based)
-        2. If insufficient, use BrowserBase (handles JavaScript, anti-bot)
-        3. If still need more, use direct APIs
+        STRATEGY:
+        1. BrowserBase for LinkedIn Easy Apply - PRIMARY (highest success)
+        2. JobSpy as fallback - SECONDARY (fast but often blocked)
         
         Args:
             queries: List of job titles
@@ -150,33 +149,16 @@ class HybridScraper(BaseJobBoardScraper):
         all_jobs = []
         seen_urls = set()
         
-        # 1. Use jobspy for parallel batch scraping (primary)
-        if self.jobspy and self.jobspy.available:
-            try:
-                logger.info(f"[Hybrid] Phase 1: JobSpy batch search for {total_target} jobs...")
-                jobs = await self.jobspy.search_in_batches(
-                    queries=queries,
-                    locations=locations,
-                    total_target=total_target
-                )
-                
-                for job in jobs:
-                    if job.url not in seen_urls:
-                        seen_urls.add(job.url)
-                        all_jobs.append(job)
-                
-                logger.info(f"[Hybrid] JobSpy found: {len(all_jobs)} jobs")
-            except Exception as e:
-                logger.warning(f"[Hybrid] JobSpy batch failed: {e}")
+        # Phase 1: BrowserBase for LinkedIn Easy Apply (HIGHEST SUCCESS)
+        logger.info(f"[Hybrid] Phase 1: BrowserBase scraping for {total_target} jobs...")
         
-        # 2. Use BrowserBase if we need more jobs (handles JavaScript-heavy sites)
         remaining = total_target - len(all_jobs)
-        if remaining > 50 and self.use_browserbase and self.browserbase:
+        if remaining > 0 and self.use_browserbase and self.browserbase:
             try:
-                logger.info(f"[Hybrid] Phase 2: BrowserBase scraping for {remaining} more jobs...")
+                logger.info(f"[Hybrid] Starting BrowserBase for up to {remaining} jobs...")
                 bb_jobs = await self.browserbase.search_parallel(
-                    queries=queries[:3],  # Top 3 queries
-                    locations=locations[:2],  # Top 2 locations
+                    queries=queries[:2],
+                    locations=locations[:2],
                     total_target=remaining
                 )
                 
@@ -185,34 +167,68 @@ class HybridScraper(BaseJobBoardScraper):
                         seen_urls.add(job.url)
                         all_jobs.append(job)
                 
-                logger.info(f"[Hybrid] BrowserBase found: {len(bb_jobs)} jobs (total: {len(all_jobs)})")
+                logger.info(f"[Hybrid] BrowserBase: {len(bb_jobs)} jobs (total: {len(all_jobs)})")
             except Exception as e:
                 logger.warning(f"[Hybrid] BrowserBase scraping failed: {e}")
         
-        # 3. Use direct APIs as final fallback
+        # Phase 2: Direct ATS Scrapers (Greenhouse, Lever, Workday)
         remaining = total_target - len(all_jobs)
-        if remaining > 50 and self.use_direct_apis:
-            logger.info(f"[Hybrid] Phase 3: Direct API search for {remaining} more jobs...")
-            for query in queries[:2]:  # Top 2 queries
-                if len(all_jobs) >= total_target:
-                    break
+        if remaining > 0:
+            try:
+                logger.info(f"[Hybrid] Phase 2: Direct ATS scrapers for {remaining} jobs...")
+                from .direct_scrapers import scrape_direct_jobs
                 
-                criteria = SearchCriteria(
-                    query=query,
-                    location=locations[0] if locations else "Remote",
-                    max_results=remaining // 2,
+                direct_jobs = await scrape_direct_jobs(
+                    keywords=queries[:3],
+                    max_per_source=min(50, remaining // 3)
                 )
                 
-                try:
-                    more_jobs = await self.search(criteria)
-                    for job in more_jobs:
-                        if job.url not in seen_urls:
-                            seen_urls.add(job.url)
-                            all_jobs.append(job)
-                except Exception as e:
-                    logger.warning(f"[Hybrid] Direct API search failed: {e}")
+                # Convert DirectJobPosting to JobPosting
+                for djob in direct_jobs:
+                    if djob.url not in seen_urls:
+                        seen_urls.add(djob.url)
+                        # Create compatible JobPosting
+                        from . import JobPosting
+                        job = JobPosting(
+                            id=djob.id,
+                            title=djob.title,
+                            company=djob.company,
+                            location=djob.location,
+                            description=djob.description,
+                            url=djob.url,
+                            source=djob.ats_type,
+                            platform=djob.ats_type,
+                            posted_date=djob.posted_date,
+                            employment_type=djob.employment_type,
+                        )
+                        all_jobs.append(job)
+                
+                logger.info(f"[Hybrid] Direct ATS: {len(direct_jobs)} jobs (total: {len(all_jobs)})")
+            except Exception as e:
+                logger.warning(f"[Hybrid] Direct ATS scraping failed: {e}")
+        
+        # Phase 3: JobSpy as final fallback
+        remaining = total_target - len(all_jobs)
+        if remaining > 0 and self.jobspy and self.jobspy.available:
+            try:
+                logger.info(f"[Hybrid] Phase 3: JobSpy for {remaining} more jobs...")
+                jobs = await self.jobspy.search_in_batches(
+                    queries=queries[:2],
+                    locations=locations[:2],
+                    total_target=remaining
+                )
+                
+                for job in jobs:
+                    if job.url not in seen_urls:
+                        seen_urls.add(job.url)
+                        all_jobs.append(job)
+                
+                logger.info(f"[Hybrid] JobSpy: {len(jobs)} jobs (total: {len(all_jobs)})")
+            except Exception as e:
+                logger.warning(f"[Hybrid] JobSpy failed: {e}")
         
         logger.info(f"[Hybrid] Final total: {len(all_jobs)} jobs")
+        logger.info(f"[Hybrid] Sources: BrowserBase + Direct ATS + JobSpy")
         return all_jobs[:total_target]
     
     def get_ats_type(self, url: str) -> Optional[str]:

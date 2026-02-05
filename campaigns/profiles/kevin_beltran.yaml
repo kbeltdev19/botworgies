@@ -40,11 +40,13 @@ search:
   posted_within_days: 7
   
 strategy:
-  name: "balanced"
-  max_concurrent: 7
-  delay_range: [5, 15]  # seconds
+  name: "aggressive"  # Options: conservative, balanced, aggressive
+  max_concurrent: 12   # Increased from 7 for 2x speed
+  delay_range: [2, 8]  # Reduced from [5, 15] for faster applications
   auto_submit: true
   use_ai_tailoring: false  # Use templates (faster, cheaper)
+  aggressive_mode: true    # Enable 2x faster rate limits
+  use_pipeline: true       # Enable concurrent scraping + applying (40% faster)
   
 targets:
   total: 1000

@@ -158,7 +158,8 @@ class JobSpyScraper(BaseJobBoardScraper):
         queries: List[str],
         locations: List[str],
         max_results: int = 100,
-        max_workers: int = 4
+        max_workers: int = 4,
+        per_search_timeout: int = 30
     ) -> List[JobPosting]:
         """
         Search multiple queries/locations in parallel.
@@ -168,6 +169,7 @@ class JobSpyScraper(BaseJobBoardScraper):
             locations: List of locations
             max_results: Max results per search
             max_workers: Max parallel workers
+            per_search_timeout: Timeout per search in seconds
             
         Returns:
             Combined list of unique jobs
@@ -201,7 +203,7 @@ class JobSpyScraper(BaseJobBoardScraper):
             # Collect results as they complete
             for i, future in enumerate(futures):
                 try:
-                    jobs = future.result(timeout=120)
+                    jobs = future.result(timeout=per_search_timeout)
                     logger.info(f"[JobSpy] Search {i+1}/{len(search_configs)}: {len(jobs)} jobs")
                     
                     # Deduplicate
@@ -211,7 +213,7 @@ class JobSpyScraper(BaseJobBoardScraper):
                             all_jobs.append(job)
                     
                 except Exception as e:
-                    logger.warning(f"[JobSpy] Search failed: {e}")
+                    logger.warning(f"[JobSpy] Search failed or timed out: {e}")
         
         logger.info(f"[JobSpy] Total unique jobs: {len(all_jobs)}")
         return all_jobs
@@ -226,7 +228,8 @@ class JobSpyScraper(BaseJobBoardScraper):
         queries: List[str],
         locations: List[str],
         total_target: int = 1000,
-        batch_size: int = 200
+        batch_size: int = 200,
+        max_search_time: int = 30  # Max seconds to spend on JobSpy (reduced for faster fallback)
     ) -> List[JobPosting]:
         """
         Search in batches until target is reached.
@@ -236,6 +239,7 @@ class JobSpyScraper(BaseJobBoardScraper):
             locations: Locations
             total_target: Total jobs needed
             batch_size: Jobs per batch
+            max_search_time: Max seconds to spend before giving up
             
         Returns:
             List of jobs (up to total_target)
@@ -243,24 +247,33 @@ class JobSpyScraper(BaseJobBoardScraper):
         if not self.available:
             return []
         
+        import time
+        start_time = time.time()
         all_jobs = []
         seen_urls = set()
         
-        # Process queries in chunks
-        query_chunks = [queries[i:i+3] for i in range(0, len(queries), 3)]
+        # Process queries in chunks (smaller chunks for faster response)
+        query_chunks = [queries[i:i+2] for i in range(0, len(queries), 2)]
         
         for chunk_num, query_chunk in enumerate(query_chunks):
+            # Check if we've exceeded max search time
+            elapsed = time.time() - start_time
+            if elapsed > max_search_time:
+                logger.warning(f"[JobSpy] Max search time ({max_search_time}s) exceeded, returning {len(all_jobs)} jobs")
+                break
+            
             if len(all_jobs) >= total_target:
                 break
             
             logger.info(f"[JobSpy] Batch {chunk_num+1}: Searching {query_chunk}")
             
-            # Search this chunk
+            # Search this chunk with shorter timeout per search
             jobs = await self.search_parallel(
                 queries=query_chunk,
-                locations=locations,
+                locations=locations[:2],  # Limit to top 2 locations
                 max_results=50,
-                max_workers=3
+                max_workers=2,  # Reduced parallelism
+                per_search_timeout=15  # 15 seconds per search max
             )
             
             # Add unique jobs
@@ -272,10 +285,10 @@ class JobSpyScraper(BaseJobBoardScraper):
                     if len(all_jobs) >= total_target:
                         break
             
-            logger.info(f"[JobSpy] Progress: {len(all_jobs)}/{total_target} jobs")
+            logger.info(f"[JobSpy] Progress: {len(all_jobs)}/{total_target} jobs (elapsed: {elapsed:.1f}s)")
             
             # Small delay between batches
-            await asyncio.sleep(1)
+            await asyncio.sleep(0.5)
         
         return all_jobs[:total_target]
     

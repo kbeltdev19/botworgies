@@ -32,13 +32,10 @@ class LeverAPIScraper(BaseJobBoardScraper):
     API_BASE = "https://api.lever.co/v0/postings"
     
     # Popular Lever companies (verified working)
+    # Reduced list for speed - top companies most likely to have relevant jobs
     DEFAULT_COMPANIES = [
-        'netlify', 'contentful', 'mux', 'sentry', 'launchdarkly', 'fivetran',
-        'dbt', 'hightouch', 'census', 'workos', 'stytch', 'front',
-        'intercom', 'zendesk', 'freshworks', 'gong', 'chorus', 'execvision',
-        'salesloft', 'outreach', 'apollo', '6sense', 'demandbase', 'terminus',
-        'braze', ' Iterable', 'customer', 'segment', 'mParticle', 'lytics',
-        'fingerprint', 'castle', 'sentiLink', 'socure', 'persona', 'veriff',
+        'netlify', 'sentry', 'launchdarkly', 'fivetran', 'dbt', 'front',
+        'intercom', 'zendesk', 'gong', 'salesloft', 'braze', 'segment',
     ]
     
     def __init__(self, companies: Optional[List[str]] = None, session=None):

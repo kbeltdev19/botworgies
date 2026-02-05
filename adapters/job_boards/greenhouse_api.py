@@ -31,16 +31,12 @@ class GreenhouseAPIScraper(BaseJobBoardScraper):
     
     API_BASE = "https://boards.greenhouse.io"
     
-    # Popular Greenhouse companies to search (verified working)
+    # Popular Greenhouse companies to search (reduced list for speed)
+    # Full list of 45+ companies takes too long - use top 15 most relevant
     DEFAULT_COMPANIES = [
-        'robinhood', 'doordash', 'instacart', 'twilio', 'mongodb', 'confluent',
-        'okta', 'datadog', 'cloudflare', 'fastly', 'kong', 'hashicorp',
-        'databricks', 'snowflake', 'cohesity', 'rubrik', 'nutanix', 'cloudera',
-        'palantir', 'asana', 'notion', 'figma', 'miro', 'lucid', 'smartsheet',
-        'monday', 'clickup', 'airtable', 'looker', 'segment', 'amplitude',
-        'gainsight', 'outreach', 'apollo', 'zoominfo', 'clearbit', 'datafox',
-        'blend', 'plaid', 'brex', 'ramp', 'mercury', 'stripe', 'benchling',
-        'verkada', 'anduril', 'shieldai', 'skydio', 'zipline', 'joby',
+        'twilio', 'mongodb', 'confluent', 'okta', 'datadog', 'cloudflare', 
+        'fastly', 'databricks', 'snowflake', 'asana', 'notion', 'figma',
+        'stripe', 'plaid', 'benchling',
     ]
     
     def __init__(self, companies: Optional[List[str]] = None, session=None):

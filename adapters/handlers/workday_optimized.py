@@ -48,7 +48,7 @@ class WorkdayOptimizedHandler:
     }
     
     SUCCESS_SELECTORS = [
-        '[data-automation-id="applicationSubmitted"],
+        '[data-automation-id="applicationSubmitted"]',
         '.wd-application-submitted',
         'h1:has-text("Application Submitted")',
         'h2:has-text("Thank You")',
