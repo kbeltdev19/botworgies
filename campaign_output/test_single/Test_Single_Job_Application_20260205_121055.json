@@ -1,0 +1,20 @@
+{
+  "campaign_name": "Test Single Job Application",
+  "start_time": "2026-02-05T12:10:45.847533",
+  "end_time": "2026-02-05T12:10:55.851968",
+  "duration_seconds": 10.004435,
+  "total_jobs": 550,
+  "attempted": 1,
+  "successful": 0,
+  "failed": 1,
+  "skipped": 549,
+  "success_rate": 0.0,
+  "platform_stats": {
+    "unknown": {
+      "attempted": 1,
+      "successful": 0,
+      "failed": 1,
+      "success_rate": 0.0
+    }
+  }
+}

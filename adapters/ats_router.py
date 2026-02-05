@@ -83,6 +83,44 @@ class ATSRouter:
             'avg_time': 50,
         },
         
+        # Complex Form Platforms (Workday, Taleo, etc.)
+        'workday': {
+            'category': PlatformCategory.COMPLEX_FORM,
+            'priority': 20,
+            'success_rate': 0.35,
+            'avg_time': 120,
+        },
+        'myworkday': {
+            'category': PlatformCategory.COMPLEX_FORM,
+            'priority': 20,
+            'success_rate': 0.35,
+            'avg_time': 120,
+        },
+        'taleo': {
+            'category': PlatformCategory.COMPLEX_FORM,
+            'priority': 21,
+            'success_rate': 0.30,
+            'avg_time': 150,
+        },
+        'icims': {
+            'category': PlatformCategory.COMPLEX_FORM,
+            'priority': 22,
+            'success_rate': 0.30,
+            'avg_time': 150,
+        },
+        'successfactors': {
+            'category': PlatformCategory.COMPLEX_FORM,
+            'priority': 23,
+            'success_rate': 0.25,
+            'avg_time': 180,
+        },
+        'oracle': {
+            'category': PlatformCategory.COMPLEX_FORM,
+            'priority': 24,
+            'success_rate': 0.25,
+            'avg_time': 180,
+        },
+        
         # Native Flow Platforms
         'indeed': {
             'category': PlatformCategory.NATIVE_FLOW,
@@ -143,9 +181,40 @@ class ATSRouter:
         """Detect platform from job URL."""
         url_lower = url.lower()
         
+        # Direct pattern matching
         for platform, config in self.PLATFORM_PATTERNS.items():
             if platform in url_lower:
                 return platform
+        
+        # Heuristic detection for Workday custom domains
+        # Workday sites often have URLs like careers.company.com or company.wd12.myworkdayjobs.com
+        import re
+        
+        # Check for Workday patterns
+        if any(pattern in url_lower for pattern in ['wd12.myworkday', 'wd5.myworkday', 'myworkdayjobs']):
+            return 'workday'
+        
+        # Check for career pages that might be Workday
+        # Pattern: careers.company.com/jobs or company.com/careers/jobs
+        if re.search(r'careers?\.[a-z-]+\.(com|io|ai|co)', url_lower):
+            # Many career pages use Workday - mark as workday for now
+            return 'workday'
+        
+        # Check for Taleo
+        if 'taleo' in url_lower or re.search(r'\.taleo\.net', url_lower):
+            return 'taleo'
+        
+        # Check for ICIMS
+        if 'icims' in url_lower or re.search(r'careers-[a-z]+\.icims\.com', url_lower):
+            return 'icims'
+        
+        # Check for SuccessFactors
+        if 'successfactors' in url_lower or 'career5' in url_lower:
+            return 'successfactors'
+        
+        # Check for Oracle Cloud
+        if 'oraclecloud' in url_lower or 'hcmui' in url_lower:
+            return 'oracle'
                 
         return 'unknown'
         

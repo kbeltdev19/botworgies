@@ -1,0 +1,43 @@
+# Test with just 1 job to verify application works
+name: "Test Single Job Application"
+
+applicant:
+  first_name: "Matt"
+  last_name: "Edwards"
+  email: "edwardsdmatt@gmail.com"
+  phone: "404-680-8472"
+  location: "Atlanta, GA"
+  linkedin_url: "https://www.linkedin.com/in/matt-edwards-/"
+  years_experience: 5
+  custom_answers:
+    salary_expectations: "$100,000 - $130,000"
+    notice_period: "2 weeks"
+    work_authorization: "US Citizen"
+
+resume:
+  path: "data/matt_edwards_resume.pdf"
+
+job_file: "campaigns/kent_le_real_jobs_1000.json"
+
+search:
+  roles:
+    - "Customer Success Manager"
+  locations:
+    - "Remote"
+
+platforms:
+  - greenhouse
+
+limits:
+  max_applications: 1
+  max_per_platform: 1
+
+settings:
+  auto_submit: false  # Review mode first
+  delay_between_applications: [5, 10]
+  retry_attempts: 1
+
+output:
+  dir: "./campaign_output/test_single"
+  save_screenshots: true
+  generate_report: true

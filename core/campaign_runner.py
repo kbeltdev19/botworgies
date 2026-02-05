@@ -401,9 +401,9 @@ class CampaignRunner:
                     logger.info(f"Waiting {self.config.retry_delay}s before retry...")
                     await asyncio.sleep(self.config.retry_delay)
         
+        from adapters.base import ApplicationStatus
         return ApplicationResult(
-            status='error',
-            success=False,
+            status=ApplicationStatus.ERROR,
             message=f"Failed after {self.config.retry_attempts} attempts"
         )
     
@@ -411,42 +411,64 @@ class CampaignRunner:
         """
         Get the appropriate working adapter for a job.
         
-        Uses proven legacy adapters that have working form-filling logic.
-        Unified adapters will be used once fully implemented and tested.
+        Uses handlers with actual browser automation for form filling.
+        Detects platform from URL if platform type is generic.
         """
         from adapters.base import PlatformType
+        from adapters import get_external_platform_type
         
         platform = job.platform
+        url = job.url.lower()
         
-        # Map platforms to working adapters
-        if platform == PlatformType.GREENHOUSE:
-            from adapters.greenhouse import GreenhouseAdapter
-            return GreenhouseAdapter(self.browser)
+        # Detect platform from URL for generic platforms
+        if platform in [PlatformType.EXTERNAL, PlatformType.COMPANY_WEBSITE]:
+            detected = get_external_platform_type(url)
+            logger.info(f"Detected platform from URL: {detected}")
+        else:
+            detected = platform.value if hasattr(platform, 'value') else str(platform)
         
-        elif platform == PlatformType.LEVER:
-            from adapters.lever import LeverAdapter
-            return LeverAdapter(self.browser)
+        # Use direct_apply for Greenhouse, Lever, Ashby (has browser automation)
+        if detected == 'greenhouse' or 'greenhouse' in url:
+            from adapters.direct_apply import DirectApplyHandler
+            handler = DirectApplyHandler(self.browser)
+            handler.platform_type = 'greenhouse'
+            return handler
         
-        elif platform == PlatformType.WORKDAY:
-            from adapters.workday import WorkdayAdapter
-            return WorkdayAdapter(self.browser)
+        elif detected == 'lever' or 'lever.co' in url:
+            from adapters.direct_apply import DirectApplyHandler
+            handler = DirectApplyHandler(self.browser)
+            handler.platform_type = 'lever'
+            return handler
         
-        elif platform == PlatformType.LINKEDIN:
+        elif detected == 'ashby' or 'ashby' in url:
+            from adapters.direct_apply import DirectApplyHandler
+            handler = DirectApplyHandler(self.browser)
+            handler.platform_type = 'ashby'
+            return handler
+        
+        # Use complex_forms for Workday, Taleo, etc.
+        elif detected == 'workday' or 'myworkday' in url or 'workday.com' in url:
+            from adapters.complex_forms import ComplexFormHandler
+            return ComplexFormHandler(self.browser)
+        
+        elif detected == 'icims' or 'icims' in url:
+            from adapters.complex_forms import ComplexFormHandler
+            return ComplexFormHandler(self.browser)
+        
+        elif detected == 'taleo' or 'taleo' in url:
+            from adapters.complex_forms import ComplexFormHandler
+            return ComplexFormHandler(self.browser)
+        
+        elif platform == PlatformType.LINKEDIN or 'linkedin' in url:
             from adapters.linkedin import LinkedInAdapter
             return LinkedInAdapter(self.browser)
         
-        elif platform == PlatformType.INDEED:
+        elif platform == PlatformType.INDEED or 'indeed' in url:
             from adapters.indeed import IndeedAdapter
             return IndeedAdapter(self.browser)
         
-        elif platform in [PlatformType.EXTERNAL, PlatformType.ICIMS, 
-                          PlatformType.TALEO, PlatformType.ASHBY]:
-            # Use direct_apply for external/ATS platforms
-            from adapters.direct_apply import DirectApplyHandler
-            return DirectApplyHandler(self.browser)
-        
         else:
-            # Fallback to router
+            # Fallback to router which detects from URL
             from adapters.ats_router import ATSRouter
             return ATSRouter(self.browser)
     

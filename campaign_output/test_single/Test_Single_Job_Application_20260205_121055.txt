@@ -1,0 +1,19 @@
+
+======================================================================
+CAMPAIGN REPORT: Test Single Job Application
+======================================================================
+
+Duration: 0.2 minutes
+
+SUMMARY:
+  Total Jobs Found: 550
+  Attempted: 1
+  Successful: 0
+  Failed: 1
+  Skipped: 549
+  Success Rate: 0.0%
+
+PLATFORM BREAKDOWN:
+  unknown        : 0/1 (0.0%)
+
+======================================================================
