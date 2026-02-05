@@ -376,8 +376,9 @@ class CampaignRunner:
         """Apply to a job with retry logic."""
         for attempt in range(self.config.retry_attempts):
             try:
-                from adapters import get_adapter
-                adapter = get_adapter(job.platform.value, self.browser)
+                # Use working legacy adapters for now
+                # Unified adapters will be swapped in once fully tested
+                adapter = self._get_working_adapter(job)
                 
                 result = await adapter.apply_to_job(
                     job=job,
@@ -405,6 +406,49 @@ class CampaignRunner:
             success=False,
             message=f"Failed after {self.config.retry_attempts} attempts"
         )
+    
+    def _get_working_adapter(self, job: JobPosting):
+        """
+        Get the appropriate working adapter for a job.
+        
+        Uses proven legacy adapters that have working form-filling logic.
+        Unified adapters will be used once fully implemented and tested.
+        """
+        from adapters.base import PlatformType
+        
+        platform = job.platform
+        
+        # Map platforms to working adapters
+        if platform == PlatformType.GREENHOUSE:
+            from adapters.greenhouse import GreenhouseAdapter
+            return GreenhouseAdapter(self.browser)
+        
+        elif platform == PlatformType.LEVER:
+            from adapters.lever import LeverAdapter
+            return LeverAdapter(self.browser)
+        
+        elif platform == PlatformType.WORKDAY:
+            from adapters.workday import WorkdayAdapter
+            return WorkdayAdapter(self.browser)
+        
+        elif platform == PlatformType.LINKEDIN:
+            from adapters.linkedin import LinkedInAdapter
+            return LinkedInAdapter(self.browser)
+        
+        elif platform == PlatformType.INDEED:
+            from adapters.indeed import IndeedAdapter
+            return IndeedAdapter(self.browser)
+        
+        elif platform in [PlatformType.EXTERNAL, PlatformType.ICIMS, 
+                          PlatformType.TALEO, PlatformType.ASHBY]:
+            # Use direct_apply for external/ATS platforms
+            from adapters.direct_apply import DirectApplyHandler
+            return DirectApplyHandler(self.browser)
+        
+        else:
+            # Fallback to router
+            from adapters.ats_router import ATSRouter
+            return ATSRouter(self.browser)
     
     def _should_stop_early(self) -> bool:
         """Check if campaign should stop due to low success rate."""
