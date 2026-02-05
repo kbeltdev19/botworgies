@@ -1,0 +1,13 @@
+{
+  "campaign_name": "Matt Edwards - 1000 Job Production Campaign",
+  "start_time": "2026-02-05T11:39:40.583517",
+  "end_time": "2026-02-05T11:39:47.611994",
+  "duration_seconds": 7.028477,
+  "total_jobs": 0,
+  "attempted": 0,
+  "successful": 0,
+  "failed": 0,
+  "skipped": 0,
+  "success_rate": 0.0,
+  "platform_stats": {}
+}

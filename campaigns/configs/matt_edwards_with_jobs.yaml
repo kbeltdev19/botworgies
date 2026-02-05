@@ -1,7 +1,7 @@
-# Matt Edwards Production Campaign
-# Migrated from: campaigns/MATT_1000_PRODUCTION.py
+# Matt Edwards Production Campaign with Pre-Scraped Jobs
+# Uses job file to avoid SSL/API issues
 
-name: "Matt Edwards - 1000 Job Production Campaign"
+name: "Matt Edwards - Production Campaign (With Job File)"
 
 applicant:
   first_name: "Matt"
@@ -21,54 +21,30 @@ applicant:
 resume:
   path: "data/matt_edwards_resume.pdf"
 
+# Use pre-scraped jobs instead of API search
+job_file: "campaigns/kent_le_real_jobs_1000.json"
+
 search:
   roles:
     - "Software Engineer"
-    - "Backend Engineer"
-    - "Full Stack Developer"
-    - "Python Developer"
   locations:
     - "Remote"
-    - "Atlanta, GA"
-    - "Georgia"
-  required_keywords:
-    - "Python"
-    - "AWS"
-    - "Django"
-    - "FastAPI"
-  exclude_keywords:
-    - "Senior Staff"
-    - "Principal"
-    - "10+ years"
-
-# Use pre-scraped jobs to avoid SSL/API issues
-# job_file: "campaigns/kent_le_real_jobs_1000.json"
 
 platforms:
+  - workday
   - greenhouse
-  - lever
-  - ashby
-  - linkedin
-  - indeed
 
 limits:
-  max_applications: 1000
-  max_per_platform: 400
+  max_applications: 10
+  max_per_platform: 5
   min_match_score: 0.6
 
 settings:
   auto_submit: false
   delay_between_applications: [30, 60]
-  delay_between_platforms: 300
   retry_attempts: 3
   enable_iteration: true
   enable_monitoring: true
-  stop_on_low_success_rate: true
-  min_success_rate: 0.3
-  max_concurrent: 20
-
-exclude_companies:
-  - "Company Name Here"
 
 output:
   dir: "./campaign_output/matt_edwards"

@@ -43,7 +43,7 @@ class AshbyAdapter(JobPlatformAdapter):
     # Ashby GraphQL endpoint
     API_URL = "https://jobs.ashbyhq.com/api/non-user-graphql"
     
-    def __init__(self, browser_manager=None, companies: List[str] = None):
+    def __init__(self, browser_manager=None, companies: List[str] = None, session_cookie: str = None):
         super().__init__(browser_manager)
         self.companies = companies or DEFAULT_ASHBY_COMPANIES
         self._session = None

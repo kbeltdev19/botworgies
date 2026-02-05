@@ -32,7 +32,7 @@ class LeverAdapter(JobPlatformAdapter):
     platform = PlatformType.LEVER
     tier = "api"
     
-    def __init__(self, browser_manager=None, companies: List[str] = None):
+    def __init__(self, browser_manager=None, companies: List[str] = None, session_cookie: str = None):
         super().__init__(browser_manager)
         self.companies = companies or DEFAULT_LEVER_COMPANIES
         self._session = None

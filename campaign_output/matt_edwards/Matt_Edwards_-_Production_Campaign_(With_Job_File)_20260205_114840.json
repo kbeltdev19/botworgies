@@ -1,0 +1,13 @@
+{
+  "campaign_name": "Matt Edwards - Production Campaign (With Job File)",
+  "start_time": "2026-02-05T11:48:40.197402",
+  "end_time": "2026-02-05T11:48:40.199941",
+  "duration_seconds": 0.002539,
+  "total_jobs": 550,
+  "attempted": 0,
+  "successful": 0,
+  "failed": 0,
+  "skipped": 550,
+  "success_rate": 0.0,
+  "platform_stats": {}
+}

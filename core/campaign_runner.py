@@ -14,7 +14,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Any, Tuple
 
-from adapters.base import JobPosting, UserProfile, Resume, ApplicationResult, SearchConfig
+from adapters.base import JobPosting, UserProfile, Resume, ApplicationResult, SearchConfig, PlatformType
 from .adapter_base import UnifiedJobAdapter
 from monitoring.application_monitor import get_monitor
 from monitoring.iteration_engine import get_iteration_engine
@@ -59,6 +59,9 @@ class CampaignConfig:
     enable_monitoring: bool = True
     stop_on_low_success_rate: bool = True
     min_success_rate: float = 0.3
+    
+    # Job source
+    job_file: Optional[str] = None  # Path to JSON file with pre-scraped jobs
     
     # Output
     output_dir: Path = field(default_factory=lambda: Path("./campaign_output"))
@@ -254,6 +257,32 @@ class CampaignRunner:
         """Search for jobs across all configured platforms."""
         all_jobs = []
         
+        # Try to load from job file first (if specified in config)
+        job_file = getattr(self.config, 'job_file', None)
+        if job_file and Path(job_file).exists():
+            logger.info(f"Loading jobs from file: {job_file}")
+            try:
+                import json
+                data = json.loads(Path(job_file).read_text())
+                file_jobs = data.get('jobs', [])
+                for job_data in file_jobs:
+                    all_jobs.append(JobPosting(
+                        id=job_data.get('id', f"file_{len(all_jobs)}"),
+                        platform=PlatformType(job_data.get('platform', 'external')),
+                        title=job_data.get('title', 'Unknown'),
+                        company=job_data.get('company', 'Unknown'),
+                        location=job_data.get('location', 'Remote'),
+                        url=job_data.get('url', ''),
+                        description=job_data.get('description', ''),
+                        easy_apply=job_data.get('easy_apply', True),
+                        remote=job_data.get('is_remote', True)
+                    ))
+                logger.info(f"Loaded {len(all_jobs)} jobs from file")
+                return all_jobs
+            except Exception as e:
+                logger.error(f"Failed to load job file: {e}")
+        
+        # Fall back to API search
         for platform_name in self.config.platforms:
             try:
                 logger.info(f"Searching {platform_name}...")
@@ -509,6 +538,7 @@ PLATFORM BREAKDOWN:
         # Build CampaignConfig
         limits = data.get('limits', {})
         settings = data.get('settings', {})
+        output = data.get('output', {})
         
         return CampaignConfig(
             name=data['name'],
@@ -521,7 +551,10 @@ PLATFORM BREAKDOWN:
             auto_submit=settings.get('auto_submit', False),
             delay_between_applications=settings.get('delay_between_applications', [30, 60]),
             retry_attempts=settings.get('retry_attempts', 3),
-            output_dir=Path(data.get('output_dir', './campaign_output'))
+            job_file=data.get('job_file'),
+            output_dir=Path(output.get('dir', './campaign_output')),
+            save_screenshots=output.get('save_screenshots', True),
+            generate_report=output.get('generate_report', True)
         )
 
 

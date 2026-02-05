@@ -1,0 +1,13 @@
+{
+  "campaign_name": "Test Campaign - 2 Jobs",
+  "start_time": "2026-02-05T11:45:46.503837",
+  "end_time": "2026-02-05T11:45:52.277304",
+  "duration_seconds": 5.773467,
+  "total_jobs": 0,
+  "attempted": 0,
+  "successful": 0,
+  "failed": 0,
+  "skipped": 0,
+  "success_rate": 0.0,
+  "platform_stats": {}
+}

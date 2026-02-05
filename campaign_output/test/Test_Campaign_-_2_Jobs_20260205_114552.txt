@@ -1,0 +1,18 @@
+
+======================================================================
+CAMPAIGN REPORT: Test Campaign - 2 Jobs
+======================================================================
+
+Duration: 0.1 minutes
+
+SUMMARY:
+  Total Jobs Found: 0
+  Attempted: 0
+  Successful: 0
+  Failed: 0
+  Skipped: 0
+  Success Rate: 0.0%
+
+PLATFORM BREAKDOWN:
+
+======================================================================

@@ -1,0 +1,40 @@
+# Small test campaign for verification
+name: "Test Campaign - 2 Jobs"
+
+applicant:
+  first_name: "Test"
+  last_name: "User"
+  email: "test@example.com"
+  phone: "555-123-4567"
+  linkedin_url: "https://linkedin.com/in/testuser"
+  years_experience: 5
+  custom_answers:
+    salary_expectations: "$100,000 - $130,000"
+    notice_period: "2 weeks"
+    work_authorization: "US Citizen"
+
+resume:
+  path: "data/matt_edwards_resume.pdf"
+
+search:
+  roles:
+    - "Software Engineer"
+  locations:
+    - "Remote"
+
+platforms:
+  - greenhouse
+
+limits:
+  max_applications: 2
+  max_per_platform: 2
+
+settings:
+  auto_submit: false
+  delay_between_applications: [5, 10]
+  retry_attempts: 1
+
+output:
+  dir: "./campaign_output/test"
+  save_screenshots: true
+  generate_report: true

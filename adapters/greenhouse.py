@@ -56,7 +56,8 @@ class GreenhouseAdapter(JobPlatformAdapter):
         companies: List[str] = None,
         industries: List[str] = None,
         sizes: List[str] = None,
-        max_companies: int = 50
+        max_companies: int = 50,
+        session_cookie: str = None
     ):
         super().__init__(browser_manager)
         
