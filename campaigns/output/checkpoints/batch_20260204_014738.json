@@ -1,0 +1,47 @@
+{
+  "timestamp": "2026-02-04T01:47:38.939199",
+  "stats": {
+    "batches_processed": 1,
+    "jobs_processed": 5,
+    "jobs_succeeded": 0,
+    "jobs_failed": 5,
+    "jobs_retried": 15
+  },
+  "results": [
+    {
+      "job_id": "linkedin_8468907",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.506068229675293,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_5373017",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.50490689277649,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_6382145",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.506237268447876,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_4153731",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.50575876235962,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_5403424",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.5070960521698,
+      "retries": 3
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "config": {
+    "target_jobs": 30,
+    "daily_limit": 5,
+    "direct_ats_weight": 0.7,
+    "linkedin_weight": 0.3,
+    "use_pipeline": false,
+    "use_visual_agent": true
+  },
+  "stats": {
+    "started_at": "2026-02-04T19:07:40.294506",
+    "ended_at": "2026-02-04T19:09:24.744074",
+    "elapsed_minutes": 1.7408262166666666,
+    "jobs_discovered": 0,
+    "jobs_from_direct_ats": 0,
+    "jobs_from_linkedin": 0,
+    "applications_attempted": 2,
+    "applications_successful": 0,
+    "applications_failed": 2,
+    "success_rate": 0.0,
+    "direct_ats_success": 0,
+    "linkedin_success": 0,
+    "visual_agent_success": 0,
+    "platform_stats": {
+      "unknown": {
+        "attempted": 2,
+        "successful": 0,
+        "failed": 2
+      }
+    },
+    "captchas_solved": 0,
+    "captchas_failed": 0
+  },
+  "results": [
+    {
+      "success": false,
+      "method": "direct_ats",
+      "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.indeed.com/viewjob?jk=71584c1e4a522685\", waiting until \"networkidle\"\n",
+      "confirmation_id": null
+    },
+    {
+      "success": false,
+      "method": "direct_ats",
+      "error": "Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.linkedin.com/jobs/view/4367686922\", waiting until \"networkidle\"\n",
+      "confirmation_id": null
+    }
+  ]
+}

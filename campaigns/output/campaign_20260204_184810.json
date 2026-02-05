@@ -1,0 +1,29 @@
+{
+  "config": {
+    "target_jobs": 5,
+    "daily_limit": 3,
+    "direct_ats_weight": 0.7,
+    "linkedin_weight": 0.3,
+    "use_pipeline": false,
+    "use_visual_agent": true
+  },
+  "stats": {
+    "started_at": "2026-02-04T18:48:03.060437",
+    "ended_at": "2026-02-04T18:48:10.328320",
+    "elapsed_minutes": 0.12113143333333333,
+    "jobs_discovered": 0,
+    "jobs_from_direct_ats": 0,
+    "jobs_from_linkedin": 0,
+    "applications_attempted": 0,
+    "applications_successful": 0,
+    "applications_failed": 0,
+    "success_rate": 0.0,
+    "direct_ats_success": 0,
+    "linkedin_success": 0,
+    "visual_agent_success": 0,
+    "platform_stats": {},
+    "captchas_solved": 0,
+    "captchas_failed": 0
+  },
+  "results": []
+}

@@ -7,15 +7,19 @@ Features:
 - Primary: BrowserBase cloud sessions with residential proxies
 - Fallback: Local Playwright browsers with stealth patches
 - Automatic fallback when BrowserBase is at capacity
+- Screenshot capture on success/failure
+- HAR and video recording for debugging
 """
 
 import os
 import random
 import asyncio
 import time
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, List
 from dataclasses import dataclass
 from enum import Enum
+from datetime import datetime
+from pathlib import Path
 
 from playwright.async_api import async_playwright, Page, Browser, BrowserContext
 
@@ -76,6 +80,18 @@ BROWSERBASE_CAPACITY_ERRORS = [
 ]
 
 
+@dataclass
+class SessionConfig:
+    """Configuration for a browser session."""
+    platform: str
+    record_video: bool = True
+    record_har: bool = True
+    capture_screenshots: bool = True
+    screenshot_dir: str = "/tmp/browser_screenshots"
+    video_dir: str = "/tmp/browser_videos"
+    har_dir: str = "/tmp/browser_har"
+
+
 def load_browserbase_creds() -> dict:
     """Load BrowserBase credentials from env vars or tokens file."""
     creds = {}
@@ -113,102 +129,9 @@ class BrowserSession:
     platform: str
     connect_url: str
     mode: BrowserMode = BrowserMode.BROWSERBASE
-
-
-class BrowserBaseSessionManager:
-    """
-    Manages BrowserBase session lifecycle with proper cleanup and retry logic.
-    """
-    
-    def __init__(self, max_concurrent: int = 10):
-        self.max_concurrent = max_concurrent
-        self.active_sessions: Dict[str, Any] = {}
-        self.session_history: List[Dict] = []
-        self.failed_at: Optional[float] = None
-        self.retry_count: int = 0
-        self.max_retries: int = 3
-        self.retry_delay: float = 60.0  # 60 second cooldown
-        
-    def can_create_session(self) -> bool:
-        """Check if we can create a new BrowserBase session."""
-        # Check if we're in cooldown period
-        if self.failed_at:
-            elapsed = time.time() - self.failed_at
-            if elapsed < self.retry_delay:
-                print(f"[BrowserBase] In cooldown period ({elapsed:.0f}s / {self.retry_delay:.0f}s)")
-                return False
-            else:
-                # Reset failed status after cooldown
-                print("[BrowserBase] Cooldown complete, retrying...")
-                self.failed_at = None
-                self.retry_count = 0
-                
-        # Check concurrent session limit
-        active_count = len(self.active_sessions)
-        if active_count >= self.max_concurrent:
-            print(f"[BrowserBase] At max concurrent sessions ({active_count}/{self.max_concurrent})")
-            return False
-            
-        return True
-        
-    def register_session(self, session_id: str, metadata: Dict = None):
-        """Register a new active session."""
-        self.active_sessions[session_id] = {
-            "created_at": time.time(),
-            "metadata": metadata or {},
-        }
-        self.session_history.append({
-            "session_id": session_id,
-            "action": "created",
-            "timestamp": time.time(),
-        })
-        print(f"[BrowserBase] Registered session {session_id} ({len(self.active_sessions)} active)")
-        
-    def unregister_session(self, session_id: str):
-        """Unregister a session (cleanup)."""
-        if session_id in self.active_sessions:
-            del self.active_sessions[session_id]
-            self.session_history.append({
-                "session_id": session_id,
-                "action": "closed",
-                "timestamp": time.time(),
-            })
-            print(f"[BrowserBase] Unregistered session {session_id} ({len(self.active_sessions)} active)")
-            
-    def mark_failed(self, error: str):
-        """Mark BrowserBase as failed with cooldown."""
-        self.failed_at = time.time()
-        self.retry_count += 1
-        
-        # Exponential backoff: 60s, 120s, 240s
-        self.retry_delay = min(60 * (2 ** (self.retry_count - 1)), 300)
-        
-        print(f"[BrowserBase] Marked failed (attempt {self.retry_count}/{self.max_retries}), "
-              f"cooldown: {self.retry_delay:.0f}s")
-        
-        # If max retries exceeded, use longer cooldown
-        if self.retry_count >= self.max_retries:
-            self.retry_delay = 600  # 10 minute cooldown
-            print(f"[BrowserBase] Max retries exceeded, extended cooldown: {self.retry_delay:.0f}s")
-            
-    def get_stats(self) -> Dict:
-        """Get session manager statistics."""
-        return {
-            "active_sessions": len(self.active_sessions),
-            "max_concurrent": self.max_concurrent,
-            "failed_at": self.failed_at,
-            "retry_count": self.retry_count,
-            "retry_delay": self.retry_delay,
-            "in_cooldown": self.failed_at is not None,
-            "total_history": len(self.session_history),
-        }
-        
-    def force_reset(self):
-        """Force reset failed status (use with caution)."""
-        self.failed_at = None
-        self.retry_count = 0
-        self.retry_delay = 60.0
-        print("[BrowserBase] Force reset complete")
+    config: SessionConfig = None
+    video_path: Optional[str] = None
+    har_path: Optional[str] = None
 
 
 class StealthBrowserManager:
@@ -217,13 +140,16 @@ class StealthBrowserManager:
     Handles fingerprinting, proxies, and human-like behavior.
     """
 
-    def __init__(self, prefer_local: bool = False, max_bb_sessions: int = 10):
+    def __init__(self, prefer_local: bool = False, max_bb_sessions: int = 10, 
+                 record_video: bool = False, record_har: bool = False):
         """
         Initialize the browser manager.
         
         Args:
             prefer_local: If True, prefer local browsers even if BrowserBase is available.
-            max_bb_sessions: Maximum concurrent BrowserBase sessions (default 10 to stay under limits).
+            max_bb_sessions: Maximum concurrent BrowserBase sessions.
+            record_video: Enable video recording for debugging.
+            record_har: Enable HAR (network) recording for debugging.
         """
         creds = load_browserbase_creds()
         self.api_key = creds.get("BROWSERBASE_API_KEY")
@@ -232,10 +158,19 @@ class StealthBrowserManager:
         self.prefer_local = prefer_local
         self.active_sessions: Dict[str, BrowserSession] = {}
         self.playwright = None
-        self._browserbase_failed = False  # Track if BrowserBase is failing
+        self._browserbase_failed = False
         
-        # Session manager for better BrowserBase handling
-        self.bb_manager = BrowserBaseSessionManager(max_concurrent=max_bb_sessions) if self.bb else None
+        # Recording settings
+        self.record_video = record_video
+        self.record_har = record_har
+        
+        # Create directories
+        self.screenshot_dir = Path("/tmp/browser_screenshots")
+        self.video_dir = Path("/tmp/browser_videos")
+        self.har_dir = Path("/tmp/browser_har")
+        
+        for dir_path in [self.screenshot_dir, self.video_dir, self.har_dir]:
+            dir_path.mkdir(exist_ok=True)
 
     async def initialize(self):
         """Initialize Playwright instance."""
@@ -246,55 +181,49 @@ class StealthBrowserManager:
         self,
         platform: str,
         use_proxy: bool = True,
-        force_local: bool = False
+        force_local: bool = False,
+        record_video: bool = None,
+        record_har: bool = None
     ) -> BrowserSession:
         """
         Create a fingerprint-randomized session for specific platform.
         
-        Falls back to local browser if BrowserBase is at capacity or unavailable.
-        Uses session manager for proper cleanup and retry logic.
+        Args:
+            platform: Platform identifier (linkedin, workday, etc.)
+            use_proxy: Whether to use proxy
+            force_local: Force using local browser
+            record_video: Override default video recording setting
+            record_har: Override default HAR recording setting
         """
         await self.initialize()
-
-        # Try BrowserBase first (unless forced local or failed/cooldown)
-        if not force_local and not self.prefer_local and self.bb and self.bb_manager:
-            if self.bb_manager.can_create_session():
-                try:
-                    session = await self._create_browserbase_session(platform, use_proxy)
-                    # Register with session manager
-                    self.bb_manager.register_session(
-                        session.session_id,
-                        {"platform": platform, "use_proxy": use_proxy}
-                    )
-                    print(f"[Browser] ✅ BrowserBase session created: {session.session_id}")
-                    return session
-                except Exception as e:
-                    error_msg = str(e)
-                    if is_capacity_error(error_msg):
-                        print(f"[Browser] ❌ BrowserBase at capacity, falling back to local...")
-                        self.bb_manager.mark_failed(error_msg)
-                    else:
-                        print(f"[Browser] ❌ BrowserBase error ({error_msg[:50]}...), falling back...")
-            else:
-                # Session manager says we can't create (cooldown or at limit)
-                bb_stats = self.bb_manager.get_stats()
-                print(f"[Browser] ⚠️  BrowserBase unavailable (cooldown: {bb_stats['in_cooldown']}, "
-                      f"active: {bb_stats['active_sessions']}/{bb_stats['max_concurrent']}), "
-                      f"using local...")
+        
+        # Determine recording settings
+        should_record_video = record_video if record_video is not None else self.record_video
+        should_record_har = record_har if record_har is not None else self.record_har
+        
+        # Try BrowserBase first (unless forced local)
+        if not force_local and not self.prefer_local and self.bb:
+            try:
+                session = await self._create_browserbase_session(platform, use_proxy)
+                print(f"[Browser] ✅ BrowserBase session created: {session.session_id}")
+                return session
+            except Exception as e:
+                error_msg = str(e)
+                if is_capacity_error(error_msg):
+                    print(f"[Browser] ❌ BrowserBase at capacity, falling back to local...")
+                else:
+                    print(f"[Browser] ❌ BrowserBase error ({error_msg[:50]}...), falling back...")
         
         # Fallback to local browser
-        return await self._create_local_session(platform, use_proxy)
+        return await self._create_local_session(platform, use_proxy, should_record_video, should_record_har)
 
     async def _create_browserbase_session(
         self,
         platform: str,
         use_proxy: bool = True
     ) -> BrowserSession:
-        """
-        Create a BrowserBase cloud session with CAPTCHA solving.
-        Tries Advanced Stealth first, falls back to Basic Stealth if needed.
-        """
-        # Try Advanced Stealth first (Scale plan)
+        """Create a BrowserBase cloud session with CAPTCHA solving."""
+        # Try Advanced Stealth first
         try:
             session = self.bb.sessions.create(
                 project_id=self.project_id,
@@ -308,8 +237,7 @@ class StealthBrowserManager:
         except Exception as e:
             error_msg = str(e).lower()
             if "enterprise" in error_msg or "scale" in error_msg or "plan" in error_msg:
-                print("[Browser] ⚠️  Advanced Stealth not available on your plan, using Basic Stealth...")
-                # Fall back to Basic Stealth (CAPTCHA solving enabled by default)
+                print("[Browser] ⚠️  Advanced Stealth not available, using Basic Stealth...")
                 session = self.bb.sessions.create(
                     project_id=self.project_id,
                     proxies=use_proxy,
@@ -345,16 +273,18 @@ class StealthBrowserManager:
     async def _create_local_session(
         self,
         platform: str,
-        use_proxy: bool = True
+        use_proxy: bool = True,
+        record_video: bool = False,
+        record_har: bool = False
     ) -> BrowserSession:
-        """Create a local browser session with stealth patches and optional proxy."""
+        """Create a local browser session with stealth patches and optional recording."""
         print("[Browser] Using local browser session with stealth patches")
 
         # Random viewport and user agent
         viewport = random.choice(VIEWPORTS)
         user_agent = random.choice(USER_AGENTS)
 
-        # Build launch args for local browser
+        # Build launch args
         launch_args = [
             f"--window-size={viewport['width']},{viewport['height']}",
             "--disable-blink-features=AutomationControlled",
@@ -362,7 +292,7 @@ class StealthBrowserManager:
             "--disable-features=IsolateOrigins,site-per-process",
         ]
 
-        # Try to add proxy if requested
+        # Try to add proxy
         proxy_config = None
         if use_proxy:
             try:
@@ -382,7 +312,7 @@ class StealthBrowserManager:
             args=launch_args
         )
 
-        # Create context with stealth settings
+        # Create context with stealth settings and recording options
         context_args = {
             "viewport": viewport,
             "user_agent": user_agent,
@@ -392,17 +322,34 @@ class StealthBrowserManager:
             "color_scheme": "light",
         }
         
-        # Add proxy auth if configured
+        # Add recording options
+        if record_video:
+            video_path = self.video_dir / f"{platform}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+            video_path.mkdir(exist_ok=True)
+            context_args["record_video_dir"] = str(video_path)
+            context_args["record_video_size"] = {"width": viewport["width"], "height": viewport["height"]}
+        
         if proxy_config and proxy_config.get("username"):
             context_args["proxy"] = proxy_config
-            
+
         context = await browser.new_context(**context_args)
+        
+        # Enable HAR recording if requested
+        har_path = None
+        if record_har:
+            har_path = str(self.har_dir / f"{platform}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.har")
+            await context.route_from_har(har_path, update=True)
 
         # Add stealth init script
         await context.add_init_script(self._get_stealth_script())
 
         page = await context.new_page()
         session_id = f"local_{platform}_{random.randint(1000, 9999)}"
+        
+        # Set up video path tracking
+        video_path_str = None
+        if record_video:
+            video_path_str = str(video_path)
 
         browser_session = BrowserSession(
             session_id=session_id,
@@ -411,7 +358,9 @@ class StealthBrowserManager:
             page=page,
             platform=platform,
             connect_url="local",
-            mode=BrowserMode.LOCAL
+            mode=BrowserMode.LOCAL,
+            video_path=video_path_str,
+            har_path=har_path
         )
 
         self.active_sessions[session_id] = browser_session
@@ -538,11 +487,40 @@ class StealthBrowserManager:
 
         await self.human_like_delay(0.5, 1.5)
 
+    async def capture_screenshot(self, page: Page, name: str, full_page: bool = True) -> str:
+        """Capture a screenshot with timestamp."""
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"{name}_{timestamp}.png"
+        filepath = self.screenshot_dir / filename
+        
+        try:
+            await page.screenshot(path=str(filepath), full_page=full_page)
+            print(f"[Browser] Screenshot saved: {filepath}")
+            return str(filepath)
+        except Exception as e:
+            print(f"[Browser] Screenshot failed: {e}")
+            return ""
+
+    async def capture_element_screenshot(self, page: Page, selector: str, name: str) -> str:
+        """Capture screenshot of a specific element."""
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"{name}_element_{timestamp}.png"
+        filepath = self.screenshot_dir / filename
+        
+        try:
+            element = page.locator(selector).first
+            if await element.count() > 0:
+                await element.screenshot(path=str(filepath))
+                print(f"[Browser] Element screenshot saved: {filepath}")
+                return str(filepath)
+        except Exception as e:
+            print(f"[Browser] Element screenshot failed: {e}")
+        return ""
+
     async def wait_for_cloudflare(self, page: Page, timeout: int = 15):
         """Wait for Cloudflare challenge to complete."""
         start_time = asyncio.get_event_loop().time()
         
-        # Known Cloudflare challenge indicators
         challenge_indicators = [
             "just a moment",
             "checking your browser",
@@ -557,11 +535,9 @@ class StealthBrowserManager:
                 title = await page.title()
                 title_lower = title.lower()
                 
-                # Check if we're past the challenge
                 is_challenged = any(ind in title_lower for ind in challenge_indicators)
                 
                 if not is_challenged:
-                    # Also check for challenge div
                     challenge_div = page.locator('#challenge-running, #cf-wrapper, .cf-browser-verification').first
                     if await challenge_div.count() == 0:
                         return True
@@ -575,151 +551,24 @@ class StealthBrowserManager:
         print("[Browser] Cloudflare timeout - proceeding anyway")
         return False
 
-    async def solve_captcha(self, page: Page, captcha_type: str = "auto") -> bool:
-        """
-        Attempt to solve CAPTCHA using CapSolver if available.
-        Falls back to waiting if CapSolver is not configured.
-        """
-        try:
-            # Import here to avoid circular dependency
-            from browser.captcha_manager import get_captcha_manager
-            
-            captcha_manager = get_captcha_manager()
-            
-            # Check if CapSolver is configured
-            if not captcha_manager.is_configured():
-                # Fallback: wait and hope
-                recaptcha = page.locator('iframe[src*="recaptcha"]').first
-                if await recaptcha.count() > 0:
-                    print("[Browser] reCAPTCHA detected - waiting...")
-                    await self.human_like_delay(5, 10)
-                    return True
-
-                hcaptcha = page.locator('iframe[src*="hcaptcha"]').first
-                if await hcaptcha.count() > 0:
-                    print("[Browser] hCaptcha detected - waiting...")
-                    await self.human_like_delay(5, 10)
-                    return True
-                
-                return True
-            
-            # Use CapSolver
-            print("[Browser] Checking for CAPTCHA...")
-            result = await captcha_manager.detect_and_solve(page)
-            
-            if result.success:
-                print(f"[Browser] ✅ CAPTCHA solved in {result.solve_time:.1f}s (cost: ${result.cost:.4f})")
-                
-                # If we got a token, try to submit it
-                if result.token:
-                    # Find and fill the CAPTCHA response field
-                    try:
-                        # Common response field names
-                        response_selectors = [
-                            'textarea[name="g-recaptcha-response"]',
-                            'textarea[id="g-recaptcha-response"]',
-                            'input[name="cf-turnstile-response"]',
-                            '[name="cf-turnstile-response"]'
-                        ]
-                        
-                        for selector in response_selectors:
-                            field = page.locator(selector).first
-                            if await field.count() > 0:
-                                await field.fill(result.token)
-                                print(f"[Browser] Filled CAPTCHA response")
-                                break
-                    except Exception as e:
-                        print(f"[Browser] Could not fill CAPTCHA response: {e}")
-                
-                return True
-            else:
-                print(f"[Browser] ❌ CAPTCHA solve failed: {result.error}")
-                return False
-
-        except Exception as e:
-            print(f"[Browser] CAPTCHA handling error: {e}")
-            return False
-    
-    async def handle_cloudflare_with_captcha_solver(self, page: Page, timeout: int = 60) -> bool:
-        """
-        Handle Cloudflare challenge with CapSolver support.
-        More aggressive than wait_for_cloudflare - actually tries to solve.
-        """
-        start_time = asyncio.get_event_loop().time()
-        
-        challenge_indicators = [
-            "just a moment",
-            "checking your browser", 
-            "please wait",
-            "cloudflare",
-            "ddos protection",
-            "verify you are human",
-            "challenge"
-        ]
-        
-        while asyncio.get_event_loop().time() - start_time < timeout:
-            try:
-                title = await page.title()
-                content = await page.content()
-                title_lower = title.lower()
-                content_lower = content.lower()
-                
-                # Check if we're still on challenge page
-                is_challenged = any(ind in title_lower for ind in challenge_indicators)
-                has_challenge_div = await page.locator(
-                    '#challenge-running, #cf-wrapper, .cf-browser-verification, .turnstile'
-                ).count() > 0
-                
-                if not is_challenged and not has_challenge_div:
-                    return True
-                
-                # Try to solve with CapSolver
-                from browser.captcha_manager import get_captcha_manager
-                captcha_manager = get_captcha_manager()
-                
-                if captcha_manager.is_configured() and has_challenge_div:
-                    print(f"[Browser] Cloudflare challenge detected, attempting CAPTCHA solve...")
-                    result = await captcha_manager.solve_cloudflare_turnstile(page.url)
-                    
-                    if result.success and result.token:
-                        # Inject the token
-                        await page.evaluate(f"""
-                            () => {{
-                                const turnstileFields = document.querySelectorAll('[name="cf-turnstile-response"]');
-                                turnstileFields.forEach(f => f.value = "{result.token}");
-                                // Trigger any form submission
-                                const forms = document.querySelectorAll('form');
-                                forms.forEach(f => f.dispatchEvent(new Event('submit')));
-                            }}
-                        """)
-                        print("[Browser] Injected CAPTCHA token, waiting for redirect...")
-                        await asyncio.sleep(5)
-                        continue
-                
-                print(f"[Browser] Waiting for Cloudflare... ({title[:40]})")
-                await asyncio.sleep(3)
-                
-            except Exception as e:
-                print(f"[Browser] Cloudflare handle error: {e}")
-                await asyncio.sleep(2)
-        
-        return False
-
     async def close_session(self, session_id: str):
         """Close a browser session and cleanup."""
         if session_id in self.active_sessions:
             session = self.active_sessions[session_id]
+            
+            # Capture final screenshot if page is still accessible
+            try:
+                await self.capture_screenshot(session.page, f"final_{session_id}")
+            except:
+                pass
+            
             try:
                 await session.context.close()
                 await session.browser.close()
             except Exception:
                 pass
+            
             del self.active_sessions[session_id]
-            
-            # Unregister from session manager if BrowserBase
-            if session.mode == BrowserMode.BROWSERBASE and self.bb_manager:
-                self.bb_manager.unregister_session(session_id)
-            
             print(f"[Browser] Closed session: {session_id}")
 
     async def close_all(self):
@@ -737,34 +586,21 @@ class StealthBrowserManager:
         print("[Browser] All sessions closed and Playwright stopped")
 
     def get_stats(self) -> Dict[str, Any]:
-        """Get browser manager statistics including session manager status."""
+        """Get browser manager statistics."""
         browserbase_count = sum(1 for s in self.active_sessions.values() if s.mode == BrowserMode.BROWSERBASE)
         local_count = sum(1 for s in self.active_sessions.values() if s.mode == BrowserMode.LOCAL)
         
-        stats = {
+        return {
             "total_sessions": len(self.active_sessions),
             "browserbase_sessions": browserbase_count,
             "local_sessions": local_count,
             "browserbase_available": self.bb is not None,
         }
-        
-        # Add session manager stats if available
-        if self.bb_manager:
-            stats["session_manager"] = self.bb_manager.get_stats()
-            
-        return stats
-
-    def reset_browserbase_status(self):
-        """Reset BrowserBase failed status via session manager."""
-        if self.bb_manager:
-            self.bb_manager.force_reset()
-        else:
-            print("[Browser] No session manager available")
 
 
 async def test_stealth():
     """Test the stealth browser manager with fallback."""
-    manager = StealthBrowserManager()
+    manager = StealthBrowserManager(record_video=True, record_har=True)
 
     try:
         # Test 1: Try BrowserBase (or fallback to local)
@@ -775,29 +611,15 @@ async def test_stealth():
         print(f"Session mode: {session.mode.value}")
         print(f"Session ID: {session.session_id}")
 
-        print("[Test] Navigating to Indeed...")
-        await page.goto("https://www.indeed.com/jobs?q=software+engineer&l=San+Francisco")
-        await manager.wait_for_cloudflare(page)
-        print(f"[Test] Title: {await page.title()}")
-
-        await page.screenshot(path="/tmp/indeed_test.png")
-        print("[Test] Screenshot saved to /tmp/indeed_test.png")
-
-        await manager.close_session(session.session_id)
-
-        # Test 2: Force local browser
-        print("=" * 50)
-        print("Test 2: Creating local browser session (forced)")
-        session = await manager.create_stealth_session("test", use_proxy=True, force_local=True)
-        page = session.page
-        print(f"Session mode: {session.mode.value}")
-
         print("[Test] Navigating to example.com...")
         await page.goto("https://example.com")
         print(f"[Test] Title: {await page.title()}")
+        
+        # Capture screenshot
+        screenshot = await manager.capture_screenshot(page, "test_example")
+        print(f"[Test] Screenshot: {screenshot}")
 
-        await page.screenshot(path="/tmp/example_local.png")
-        print("[Test] Screenshot saved to /tmp/example_local.png")
+        await manager.close_session(session.session_id)
 
         # Print stats
         print("=" * 50)

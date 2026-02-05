@@ -1,0 +1,53 @@
+{
+  "config": {
+    "target_jobs": 50,
+    "daily_limit": 5,
+    "direct_ats_weight": 0.7,
+    "linkedin_weight": 0.3,
+    "use_pipeline": false,
+    "use_visual_agent": true
+  },
+  "stats": {
+    "started_at": "2026-02-04T19:12:23.974595",
+    "ended_at": "2026-02-04T19:13:15.836789",
+    "elapsed_minutes": 0.8643702833333333,
+    "jobs_discovered": 0,
+    "jobs_from_direct_ats": 0,
+    "jobs_from_linkedin": 0,
+    "applications_attempted": 2,
+    "applications_successful": 0,
+    "applications_failed": 2,
+    "success_rate": 0.0,
+    "direct_ats_success": 0,
+    "linkedin_success": 0,
+    "visual_agent_success": 0,
+    "platform_stats": {
+      "indeed": {
+        "attempted": 1,
+        "successful": 0,
+        "failed": 1
+      },
+      "linkedin": {
+        "attempted": 1,
+        "successful": 0,
+        "failed": 1
+      }
+    },
+    "captchas_solved": 0,
+    "captchas_failed": 0
+  },
+  "results": [
+    {
+      "success": false,
+      "method": "visual_agent",
+      "error": null,
+      "confirmation_id": null
+    },
+    {
+      "success": false,
+      "method": "linkedin",
+      "error": "'DirectJobPosting' object is not subscriptable",
+      "confirmation_id": null
+    }
+  ]
+}

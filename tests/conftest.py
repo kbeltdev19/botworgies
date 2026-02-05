@@ -150,6 +150,163 @@ def mock_browser_manager():
     return mock
 
 
+# === Real Browser Fixtures for E2E Tests ===
+
+@pytest.fixture(scope="session")
+async def real_browser_manager():
+    """
+    Create a real browser manager for E2E tests.
+    
+    Uses local browser with recording enabled for debugging.
+    """
+    from browser.stealth_manager import StealthBrowserManager
+    
+    manager = StealthBrowserManager(
+        prefer_local=True,
+        record_video=True,
+        record_har=True
+    )
+    yield manager
+    await manager.close_all()
+
+
+@pytest.fixture
+def visual_regression_helper():
+    """Create visual regression helper for screenshot comparison."""
+    from tests.utils.visual_regression import VisualRegressionHelper
+    
+    helper = VisualRegressionHelper(
+        baseline_dir="/tmp/baselines",
+        output_dir="/tmp/visual_diffs"
+    )
+    return helper
+
+
+@pytest.fixture
+def form_progress_tracker():
+    """Create form progress tracker for multi-step forms."""
+    from tests.utils.visual_regression import FormProgressTracker
+    
+    return FormProgressTracker()
+
+
+@pytest.fixture
+def test_user_profile():
+    """Test user profile for live submission tests."""
+    from adapters.base import UserProfile
+    
+    return UserProfile(
+        first_name="Test",
+        last_name="Applicant",
+        email="test.applicant@example.com",
+        phone="555-123-4567",
+        linkedin_url="https://linkedin.com/in/testapplicant",
+        years_experience=3,
+        work_authorization="Yes",
+        sponsorship_required="No",
+        custom_answers={
+            "salary_expectations": "$80,000 - $100,000",
+            "notice_period": "2 weeks",
+            "willing_to_relocate": "No"
+        }
+    )
+
+
+@pytest.fixture
+def test_resume_object():
+    """Test resume object for live submission tests."""
+    from adapters.base import Resume
+    
+    resume_text = """
+Test Applicant
+Software Engineer | test@example.com | 555-123-4567
+
+EXPERIENCE
+Software Engineer at TechCorp (2021-Present)
+- Built Python microservices serving 100K+ requests/day
+- Implemented CI/CD pipelines reducing deployment time by 50%
+- Mentored junior developers and conducted code reviews
+
+Junior Developer at StartupCo (2019-2021)
+- Developed React frontend applications
+- Created REST APIs using Node.js and Express
+- Managed PostgreSQL database schemas
+
+EDUCATION
+BS Computer Science, State University (2019)
+
+SKILLS
+Python, JavaScript, React, Node.js, PostgreSQL, Docker, AWS, Git
+"""
+    
+    return Resume(
+        file_path="/tmp/test_resume.pdf",
+        raw_text=resume_text,
+        parsed_data={
+            "name": "Test Applicant",
+            "email": "test@example.com",
+            "skills": ["Python", "JavaScript", "React", "Node.js", "PostgreSQL"],
+            "experience": [
+                {"company": "TechCorp", "title": "Software Engineer", "years": 2},
+                {"company": "StartupCo", "title": "Junior Developer", "years": 2}
+            ]
+        }
+    )
+
+
+@pytest.fixture
+def test_job_postings():
+    """Sample job postings for testing."""
+    from adapters.base import JobPosting, PlatformType
+    
+    return [
+        JobPosting(
+            id="gh_test_123",
+            platform=PlatformType.GREENHOUSE,
+            title="Software Engineer",
+            company="TestCorp",
+            location="Remote",
+            url="https://boards.greenhouse.io/testcorp/jobs/123",
+            description="Python, Kubernetes, React",
+            easy_apply=True,
+            remote=True
+        ),
+        JobPosting(
+            id="lv_test_456",
+            platform=PlatformType.LEVER,
+            title="Backend Developer",
+            company="StartupCo",
+            location="San Francisco",
+            url="https://jobs.lever.co/startupco/456",
+            description="Go, PostgreSQL, AWS",
+            easy_apply=True,
+            remote=False
+        ),
+        JobPosting(
+            id="wd_test_789",
+            platform=PlatformType.WORKDAY,
+            title="Senior Software Engineer",
+            company="EnterpriseCorp",
+            location="New York",
+            url="https://enterprisecorp.wd5.myworkdayjobs.com/External/job/123",
+            description="Java, Spring Boot, microservices",
+            easy_apply=False,
+            remote=False
+        ),
+        JobPosting(
+            id="li_test_abc",
+            platform=PlatformType.LINKEDIN,
+            title="Full Stack Engineer",
+            company="TechCo",
+            location="Remote",
+            url="https://www.linkedin.com/jobs/view/1234567890",
+            description="React, Node.js, PostgreSQL",
+            easy_apply=True,
+            remote=True
+        )
+    ]
+
+
 # === Test Environment Setup ===
 
 @pytest.fixture(autouse=True)
@@ -212,6 +369,15 @@ def auth_headers():
     return {"Authorization": f"Bearer {token}"}
 
 
+@pytest.fixture
+def client():
+    """Create a test client without authentication."""
+    from fastapi.testclient import TestClient
+    from api.main import app
+    
+    return TestClient(app)
+
+
 # === Markers ===
 
 def pytest_configure(config):
@@ -220,3 +386,5 @@ def pytest_configure(config):
     config.addinivalue_line("markers", "stealth: Anti-detection tests")
     config.addinivalue_line("markers", "safety: Hallucination/safety tests")
     config.addinivalue_line("markers", "performance: Performance benchmarks")
+    config.addinivalue_line("markers", "live: Live site tests with real submissions")
+    config.addinivalue_line("markers", "visual: Visual regression tests")

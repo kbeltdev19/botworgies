@@ -1,0 +1,80 @@
+# Example Campaign Configuration
+# This replaces an entire Python file with just YAML configuration
+
+name: "Software Engineer - Remote Campaign"
+
+applicant:
+  first_name: "Your"
+  last_name: "Name"
+  email: "your.email@example.com"
+  phone: "555-123-4567"
+  linkedin_url: "https://linkedin.com/in/yourprofile"
+  years_experience: 5
+  custom_answers:
+    salary_expectations: "$100,000 - $130,000"
+    notice_period: "2 weeks"
+    willing_to_relocate: "No"
+    work_authorization: "US Citizen"
+    require_sponsorship: "No"
+
+resume:
+  path: "/path/to/your/resume.pdf"
+
+search:
+  roles:
+    - "Software Engineer"
+    - "Backend Engineer"
+    - "Full Stack Developer"
+    - "Python Developer"
+  locations:
+    - "Remote"
+    - "San Francisco"
+    - "New York"
+    - "Austin"
+    - "Seattle"
+  required_keywords:
+    - "Python"
+    - "AWS"
+    - "Django" 
+    - "FastAPI"
+  exclude_keywords:
+    - "Senior Staff"
+    - "Principal"
+    - "Staff Engineer"
+    - "10+ years"
+
+platforms:
+  - greenhouse
+  - lever
+  - ashby
+  - linkedin
+  # - workday  # Can be added once implemented
+
+limits:
+  max_applications: 100
+  max_per_platform: 40
+  min_match_score: 0.6
+
+settings:
+  auto_submit: false  # Always review before submitting
+  delay_between_applications: [30, 60]  # Random delay between 30-60 seconds
+  delay_between_platforms: 300  # 5 minutes between platform switches
+  retry_attempts: 3
+  enable_iteration: true
+  enable_monitoring: true
+  stop_on_low_success_rate: true
+  min_success_rate: 0.3  # Stop if success rate drops below 30%
+
+exclude_companies:
+  - "Company You Don't Like"
+  - "Another Company"
+
+exclude_titles:
+  - "Senior Principal"
+  - "Staff"
+  - "Architect"
+
+output:
+  dir: "./campaign_output"
+  save_screenshots: true
+  generate_report: true

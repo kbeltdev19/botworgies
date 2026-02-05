@@ -1,0 +1,42 @@
+{
+  "config": {
+    "target_jobs": 2,
+    "daily_limit": 1,
+    "direct_ats_weight": 0.7,
+    "linkedin_weight": 0.3,
+    "use_pipeline": false,
+    "use_visual_agent": true
+  },
+  "stats": {
+    "started_at": "2026-02-04T20:36:35.785509",
+    "ended_at": "2026-02-04T20:37:58.002457",
+    "elapsed_minutes": 1.3702827333333334,
+    "jobs_discovered": 0,
+    "jobs_from_direct_ats": 0,
+    "jobs_from_linkedin": 0,
+    "applications_attempted": 1,
+    "applications_successful": 1,
+    "applications_failed": 0,
+    "success_rate": 100.0,
+    "direct_ats_success": 0,
+    "linkedin_success": 1,
+    "visual_agent_success": 1,
+    "platform_stats": {
+      "linkedin": {
+        "attempted": 1,
+        "successful": 1,
+        "failed": 0
+      }
+    },
+    "captchas_solved": 0,
+    "captchas_failed": 0
+  },
+  "results": [
+    {
+      "success": true,
+      "method": "visual_agent",
+      "error": null,
+      "confirmation_id": "VA_0"
+    }
+  ]
+}

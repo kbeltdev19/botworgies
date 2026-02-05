@@ -1,0 +1,73 @@
+# Matt Edwards Production Campaign
+# Migrated from: campaigns/MATT_1000_PRODUCTION.py
+
+name: "Matt Edwards - 1000 Job Production Campaign"
+
+applicant:
+  first_name: "Matt"
+  last_name: "Edwards"
+  email: "edwardsdmatt@gmail.com"
+  phone: "404-680-8472"
+  location: "Atlanta, GA"
+  linkedin_url: "https://www.linkedin.com/in/matt-edwards-/"
+  years_experience: 5
+  clearance: "Secret"
+  custom_answers:
+    salary_expectations: "$100,000 - $130,000"
+    notice_period: "2 weeks"
+    willing_to_relocate: "No"
+    work_authorization: "US Citizen"
+
+resume:
+  path: "data/matt_edwards_resume.pdf"
+
+search:
+  roles:
+    - "Software Engineer"
+    - "Backend Engineer"
+    - "Full Stack Developer"
+    - "Python Developer"
+  locations:
+    - "Remote"
+    - "Atlanta, GA"
+    - "Georgia"
+  required_keywords:
+    - "Python"
+    - "AWS"
+    - "Django"
+    - "FastAPI"
+  exclude_keywords:
+    - "Senior Staff"
+    - "Principal"
+    - "10+ years"
+
+platforms:
+  - greenhouse
+  - lever
+  - ashby
+  - linkedin
+  - indeed
+
+limits:
+  max_applications: 1000
+  max_per_platform: 400
+  min_match_score: 0.6
+
+settings:
+  auto_submit: false
+  delay_between_applications: [30, 60]
+  delay_between_platforms: 300
+  retry_attempts: 3
+  enable_iteration: true
+  enable_monitoring: true
+  stop_on_low_success_rate: true
+  min_success_rate: 0.3
+  max_concurrent: 20
+
+exclude_companies:
+  - "Company Name Here"
+
+output:
+  dir: "./campaign_output/matt_edwards"
+  save_screenshots: true
+  generate_report: true

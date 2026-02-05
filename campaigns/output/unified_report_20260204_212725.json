@@ -1,0 +1,547 @@
+{
+  "campaign_config": {
+    "target_jobs": 20,
+    "daily_limit": 20,
+    "sources": [
+      "indeed",
+      "zip_recruiter"
+    ],
+    "locations": [
+      "Remote",
+      "United States"
+    ]
+  },
+  "stats": {
+    "jobs_discovered": 128,
+    "jobs_filtered": 20,
+    "applications_attempted": 20,
+    "applications_successful": 0,
+    "applications_failed": 20,
+    "success_rate": 0.0,
+    "elapsed_minutes": 4.3983593,
+    "by_platform": {}
+  },
+  "results": [
+    {
+      "job": {
+        "id": "dcdc39a181fb",
+        "title": "ServiceNow Developer, Jr.",
+        "company": "Accenture Federal Services",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=3fc8dbfc3334ad6c",
+        "apply_url": "https://grnh.se/5dqpfgbb6us",
+        "source": "indeed",
+        "platform": "greenhouse",
+        "description": "At Accenture Federal Services, nothing matters more than helping the US federal government make the nation stronger and safer and life better for people. Our 13,000\\+ people are united in a shared purpose to pursue the limitless potential of technology and ingenuity for clients across defense, national security, public safety, civilian, and military health organizations.  \n\n  \n\nJoin Accenture Federal Services, a technology company and part of global Accenture, to do work that matters in a collab",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": null,
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:23:01.754705"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:23:17.132977"
+    },
+    {
+      "job": {
+        "id": "aeb8b584a0c5",
+        "title": "ServiceNow Developer, Mid.",
+        "company": "Accenture Federal Services",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=adc1ef5ae5ecf50c",
+        "apply_url": "https://grnh.se/yefni4gx6us",
+        "source": "indeed",
+        "platform": "greenhouse",
+        "description": "At Accenture Federal Services, nothing matters more than helping the US federal government make the nation stronger and safer and life better for people. Our 13,000\\+ people are united in a shared purpose to pursue the limitless potential of technology and ingenuity for clients across defense, national security, public safety, civilian, and military health organizations.  \n\n  \n\nJoin Accenture Federal Services, a technology company and part of global Accenture, to do work that matters in a collab",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": null,
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:23:01.754770"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:23:32.639848"
+    },
+    {
+      "job": {
+        "id": "c318d62fd702",
+        "title": "ServiceNow Developer \u2013 ITSM & ITOM Specialist",
+        "company": "JPS Tech Solutions LLC",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=0b92edd3695ec5fc",
+        "apply_url": "http://www.indeed.com/job/servicenow-developer-itsm-itom-specialist-0b92edd3695ec5fc",
+        "source": "indeed",
+        "platform": "indeed",
+        "description": "**Role: ServiceNow Developer \u2013 ITSM \\& ITOM Specialist**  \n**Location : 100% Remote** \n\nHighly experienced **ServiceNow Developer** with over **12\\+ years of overall IT experience** and **10\\+ years of hands\\-on expertise in ServiceNow ITSM and ITOM** implementations. Strong background in **Discovery, CMDB, Service Mapping, and CSDM framework alignment** across hybrid environments including **on\\-premise, AWS, and Azure**.\n\nExpert in designing scalable ServiceNow solutions that improve **service",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": "contract",
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:23:01.754943"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:23:48.303439"
+    },
+    {
+      "job": {
+        "id": "523dfc6087d2",
+        "title": "ServiceNow Developer",
+        "company": "GovCIO",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=8704114a4a8e2e69",
+        "apply_url": "https://careers-govcio.icims.com/jobs/7554/job?utm_source=indeed_integration&iis=Job%20Board&iisn=Indeed&indeed-apply-token=73a2d2b2a8d6d5c0a62696875eaebd669103652d3f0c2cd5445d3e66b1592b0f",
+        "source": "indeed",
+        "platform": "icims",
+        "description": "Overview:\n\nGovCIO is currently hiring for a ServiceNow Developer to perform ServiceNow Development.\nResponsibilities:\n\nBuilds and codes applications and/or modules using languages such as C\\+\\+, visual basic, ABAP, JAVA, XTML, etc. Provides patches and upgrades to existing systems. Involved in planning of system and development deployment as well as responsible for meeting software compliance standards. May design graphical user interface (GUI) to meet the specific needs of users. Prepares opera",
+        "posted_date": "2026-02-03T00:00:00",
+        "employment_type": "fulltime",
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:23:01.755000"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:23:57.376830"
+    },
+    {
+      "job": {
+        "id": "5c8b9aad653c",
+        "title": "ServiceNow Project Manager",
+        "company": "Evora IT",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=28a403893227b007",
+        "apply_url": "https://t.gohiring.com/h/4454f61bdac76374429c92dbbc873a94f7c9965a07018fb0503ea8b2a327f98f?source=Indeed",
+        "source": "indeed",
+        "platform": "indeed",
+        "description": "#### **Who We Are**\n\n\nEvora IT Solutions is a trusted ServiceNow partner specializing in innovative digital maintenance and field service solutions grounded in real\\-world use cases. Our expertise is centered on ServiceNow Customer Workflows, with a strong focus on Field Service Management, where we aim to be the leading implementation partner in the market. We believe great work happens when people are supported, challenged, and valued, so we invest heavily in our employees and offer one of the",
+        "posted_date": "2026-02-03T00:00:00",
+        "employment_type": null,
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:23:01.755056"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:24:13.036417"
+    },
+    {
+      "job": {
+        "id": "a090b2ef1787",
+        "title": "ServiceNow Project Manager (W2 only)",
+        "company": "NEOTECRA, INC.",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=98c0537b5baa518b",
+        "apply_url": "http://www.indeed.com/job/servicenow-project-manager-w2-only-98c0537b5baa518b",
+        "source": "indeed",
+        "platform": "indeed",
+        "description": "**Overview**\n\nThe ServiceNow Project Manager is responsible for managing and delivering ServiceNow modernization initiatives across the organization. This role oversees the planning, execution, and delivery of ServiceNow implementation and enhancement projects, ensuring alignment with business objectives, timelines, budgets, and quality standards. The Project Manager works closely with business stakeholders, IT teams, and external vendors to drive successful adoption of ServiceNow solutions acro",
+        "posted_date": "2026-02-02T00:00:00",
+        "employment_type": "contract",
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:23:01.755109"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:24:28.262954"
+    },
+    {
+      "job": {
+        "id": "cc0e93808e6a",
+        "title": "ServiceNow software Engineer SaaS",
+        "company": "All Logistics Cargo Inc",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=90392d304f87ce80",
+        "apply_url": "http://www.indeed.com/job/servicenow-software-engineer-saas-90392d304f87ce80",
+        "source": "indeed",
+        "platform": "indeed",
+        "description": "**Job Overview**  \nWe are seeking an energetic and results\\-driven SaaS Sales professional to join our dynamic team. In this role, you will be at the forefront of promoting innovative cloud\\-based solutions, engaging with prospective clients, and demonstrating the value of our SaaS offerings. Your expertise will drive revenue growth by identifying customer needs, delivering compelling product demos, and guiding clients through the technical sales process. This position offers an exciting opportu",
+        "posted_date": "2026-02-02T00:00:00",
+        "employment_type": "fulltime, contract",
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:23:01.755162"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:24:43.971203"
+    },
+    {
+      "job": {
+        "id": "8ce74ff9ee59",
+        "title": "Lead ServiceNow Integration Engineer",
+        "company": "Recruitinflux Private Solution",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=26e0b3e2b20d86dc",
+        "apply_url": "http://www.indeed.com/job/lead-servicenow-integration-engineer-26e0b3e2b20d86dc",
+        "source": "indeed",
+        "platform": "indeed",
+        "description": "We are looking for an experienced Lead ServiceNow M\\&A IT Integration Engineer to lead the technical evaluation and integration of IT environments as part of merger and acquisition (M\\&A) activity. This role focuses on reviewing IT Service Management (ITSM) processes, tools, and infrastructure within newly acquired or onboarded entities and aligning them with the enterprise\u2019s existing IT standards.You will work cross\\-functionally with IT, security, infrastructure, and operations teams to suppor",
+        "posted_date": "2026-02-02T00:00:00",
+        "employment_type": "contract",
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:23:01.755267"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:24:59.817213"
+    },
+    {
+      "job": {
+        "id": "55510a077498",
+        "title": "Senior ServiceNow Developer",
+        "company": "A1fed",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=6eb7eb35f8265280",
+        "apply_url": "https://a1fed.freshteam.com/jobs/LExmwPQNhgGp/senior-servicenow-developer-fully-remote-within-u-s-remote",
+        "source": "indeed",
+        "platform": "unknown",
+        "description": "**Position Overview:**\nWe are seeking a Senior ServiceNow Developer to support and enhance our enterprise ServiceNow platform across multiple product lines, including IT Service Management (ITSM), Strategic Portfolio Management (SPM), Human Resources Service Delivery (HRSD), Employee Center Pro (ECP), Governance Risk \\& Compliance (GRC), Security Operations (SecOps), Vulnerability Response (VR), and Nuvolo.  \n\nThis role is ideal for a hands\\-on technical expert who can lead complex development e",
+        "posted_date": "2026-01-31T00:00:00",
+        "employment_type": "fulltime",
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:23:01.755318"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:25:08.941696"
+    },
+    {
+      "job": {
+        "id": "fbfad7408204",
+        "title": "ServiceNow Senior Technical Consultant - CX",
+        "company": "INRY",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=cd5521446edffe84",
+        "apply_url": "https://pass.inry.com/ats_applicant?id=job_desc&job_id=f4076be493743610aa68b1847aba105e",
+        "source": "indeed",
+        "platform": "unknown",
+        "description": "5 \\- 10 Years\nUS \\- Remote\n3mo ago\n3 months ago\n**Job Description:**INRY, a Cprime company, is an Elite ServiceNow partner and one of America's fastest\\-growing companies (recognised in the Inc. 5000, Financial Times). As a leading ServiceNow partner for over twelve years, we have been closely aligned with ServiceNow in every step of their growth. We drove success for over 400 Fortune 500 customers.\n\n\n\nOur success and identity are built on the following:\n\n\n* Rapid time to value.\n* Easy to work w",
+        "posted_date": "2025-10-29T00:00:00",
+        "employment_type": "fulltime",
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:23:01.755372"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:25:20.830803"
+    },
+    {
+      "job": {
+        "id": "4d666aae70ba",
+        "title": "ServiceNow Developer",
+        "company": "Texas Health and Human Services Commission",
+        "location": "Austin, TX, US",
+        "url": "https://www.indeed.com/viewjob?jk=e98b85a26e222627",
+        "apply_url": "https://careers.hhs.texas.gov/dfpsjobs/job/AUSTIN-ServiceNow-Developer-TX-73301/1362103500/",
+        "source": "indeed",
+        "platform": "unknown",
+        "description": "ServiceNow Developer\n\n\n**Date:** Feb 4, 2026\n**Location:**AUSTIN, TX\nThe Texas Department of Family and Protective Services (DFPS) works to build on strengths of families and communities to keep children and vulnerable adults safe, so they thrive. We do this through investigations, services, and referrals.  \n\n\n**What You Get Beyond Your Paycheck**\n\nWhen you join the State of Texas, your monthly paycheck is just one part of your real income. Our benefits provide extra value that many private empl",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": "fulltime",
+        "remote": false,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:23:02.208495"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:25:31.886344"
+    },
+    {
+      "job": {
+        "id": "82078c9cadf3",
+        "title": "ServiceNow Developer",
+        "company": "Bowhead",
+        "location": "Washington, DC, US",
+        "url": "https://www.indeed.com/viewjob?jk=321f08a2884ad679",
+        "apply_url": "https://bowheadcareers-uicalaska.icims.com/jobs/24558/job?utm_source=indeed_integration&iis=Job%20Board&iisn=Indeed&indeed-apply-token=73a2d2b2a8d6d5c0a62696875eaebd669103652d3f0c2cd5445d3e66b1592b0f",
+        "source": "indeed",
+        "platform": "icims",
+        "description": "Overview:\n\nSERVICENOW DEVELOPER (HUDSN):  \n\nBowhead seeks a ServiceNow Developer to support the Department of Housing and Urban Development (HUD), Enterprise Service Delivery (ESD) modernization program, enabling enterprise\\-wide services related to Human Resources, IT, Facilities Management, Financial Management, Acquisitions, and more. This role supports HUD\u2019s mission to consolidate platforms, improve service delivery, and enhance customer experience through scalable ServiceNow solutions. This",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": "fulltime",
+        "remote": false,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:23:02.208654"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:25:43.044204"
+    },
+    {
+      "job": {
+        "id": "09d904c91534",
+        "title": "Principal Inbound Product Manager, AI Assistant (Core ML) - MoveWorks",
+        "company": "ServiceNow",
+        "location": "Mountain View, CA, US",
+        "url": "https://www.indeed.com/viewjob?jk=56f74e2754564dd9",
+        "apply_url": "https://jobs.smartrecruiters.com/ServiceNow/744000107435258-principal-inbound-product-manager-ai-assistant-core-ml-moveworks",
+        "source": "indeed",
+        "platform": "smartrecruiters",
+        "description": "**Company Description**  \n\nIt all started in sunny San Diego, California in 2004 when a visionary engineer, Fred Luddy, saw the potential to transform how we work. Fast forward to today \u2014 ServiceNow stands as a global market leader, bringing innovative AI\\-enhanced technology to over 8,100 customers, including 85% of the Fortune 500\u00ae. Our intelligent cloud\\-based platform seamlessly connects people, systems, and processes to empower organizations to find smarter, faster, and better ways to work.",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": "fulltime",
+        "remote": false,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:23:02.208714"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:25:53.264095"
+    },
+    {
+      "job": {
+        "id": "033d1ed00227",
+        "title": "Principal Inbound Product Manager - AI Assistant (Agentic Workflows)- MoveWorks",
+        "company": "ServiceNow",
+        "location": "Mountain View, CA, US",
+        "url": "https://www.indeed.com/viewjob?jk=523aa5573482d8f0",
+        "apply_url": "https://jobs.smartrecruiters.com/ServiceNow/744000107431655-principal-inbound-product-manager-ai-assistant-agentic-workflows-moveworks",
+        "source": "indeed",
+        "platform": "smartrecruiters",
+        "description": "**Company Description**  \n\nIt all started in sunny San Diego, California in 2004 when a visionary engineer, Fred Luddy, saw the potential to transform how we work. Fast forward to today \u2014 ServiceNow stands as a global market leader, bringing innovative AI\\-enhanced technology to over 8,100 customers, including 85% of the Fortune 500\u00ae. Our intelligent cloud\\-based platform seamlessly connects people, systems, and processes to empower organizations to find smarter, faster, and better ways to work.",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": "fulltime",
+        "remote": false,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:23:02.208826"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:26:02.777826"
+    },
+    {
+      "job": {
+        "id": "10f3aec07c13",
+        "title": "Applications Developer II - ServiceNow",
+        "company": "Uber",
+        "location": "Sunnyvale, CA, US",
+        "url": "https://www.indeed.com/viewjob?jk=948c57c19ab31233",
+        "apply_url": "https://tnl2.jometer.com/v2/job?jz=5wqzsf952e108775e3d2589fe8b488dabb91fKMAAKAAAAABQ&iis=Job%20Board%20-%20Recruitment%20Marketing&iisn=Indeed%20Organic",
+        "source": "indeed",
+        "platform": "indeed",
+        "description": "**About the Role**\n  \n\n  \n\nThe Application Developer, ServiceNow Platform is responsible for designing, developing, configuring, and supporting scalable ServiceNow solutions that meet complex business and operational requirements. Working closely with product owners, business analysts, and architects, this role delivers high\\-quality solutions across **ITSM, CMDB, Now Assist, and core platform capabilities**, following ServiceNow development standards and best practices.  \n\n  \n\nWe are seeking a ",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": "fulltime",
+        "remote": false,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:23:02.208890"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:26:18.581668"
+    },
+    {
+      "job": {
+        "id": "d19484270562",
+        "title": "Applications Developer II - ServiceNow",
+        "company": "Uber",
+        "location": "San Francisco, CA, US",
+        "url": "https://www.indeed.com/viewjob?jk=c9814c56a963e699",
+        "apply_url": "https://tnl2.jometer.com/v2/job?jz=5wqzse29ffbb29d794b6a573becce042ad314KMAAKAAAAABQ&iis=Job%20Board%20-%20Recruitment%20Marketing&iisn=Indeed%20Organic",
+        "source": "indeed",
+        "platform": "indeed",
+        "description": "**About the Role**\n  \n\n  \n\nThe Application Developer, ServiceNow Platform is responsible for designing, developing, configuring, and supporting scalable ServiceNow solutions that meet complex business and operational requirements. Working closely with product owners, business analysts, and architects, this role delivers high\\-quality solutions across **ITSM, CMDB, Now Assist, and core platform capabilities**, following ServiceNow development standards and best practices.  \n\n  \n\nWe are seeking a ",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": "fulltime",
+        "remote": false,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:23:02.208945"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:26:33.665364"
+    },
+    {
+      "job": {
+        "id": "bc13e4ed8553",
+        "title": "Application Developer - ServiceNow Platform",
+        "company": "Uber",
+        "location": "San Francisco, CA, US",
+        "url": "https://www.indeed.com/viewjob?jk=59944f7d97830d2a",
+        "apply_url": "https://tnl2.jometer.com/v2/job?jz=5wqzs3d46f1d438523046157a800cc8fb62d6KMAAKAAAAABQ&iis=Job%20Board%20-%20Recruitment%20Marketing&iisn=Indeed%20Organic",
+        "source": "indeed",
+        "platform": "indeed",
+        "description": "**About the Role**\n  \n\n  \n\nThe Application Developer, ServiceNow Platform is responsible for designing, developing, configuring, and supporting scalable ServiceNow solutions that meet complex business and operational requirements. Working closely with product owners, business analysts, and architects, this role delivers high\\-quality solutions across **HRSD, Enterprise Onboarding, Integrations, Workplace Service Delivery (WSD), Now Assist, and core platform capabilities**, following ServiceNow d",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": "fulltime",
+        "remote": false,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:23:02.208998"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:26:49.225611"
+    },
+    {
+      "job": {
+        "id": "433313e72286",
+        "title": "Application Developer - ServiceNow Platform",
+        "company": "Uber",
+        "location": "Sunnyvale, CA, US",
+        "url": "https://www.indeed.com/viewjob?jk=bdaaae7299fe8707",
+        "apply_url": "https://tnl2.jometer.com/v2/job?jz=5wqzsb9fbc348e79d1f74dbbf9352b1d28d07KMAAKAAAAABQ&iis=Job%20Board%20-%20Recruitment%20Marketing&iisn=Indeed%20Organic",
+        "source": "indeed",
+        "platform": "indeed",
+        "description": "**About the Role**\n  \n\n  \n\nThe Application Developer, ServiceNow Platform is responsible for designing, developing, configuring, and supporting scalable ServiceNow solutions that meet complex business and operational requirements. Working closely with product owners, business analysts, and architects, this role delivers high\\-quality solutions across **HRSD, Enterprise Onboarding, Integrations, Workplace Service Delivery (WSD), Now Assist, and core platform capabilities**, following ServiceNow d",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": "fulltime",
+        "remote": false,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:23:02.209050"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:27:04.417888"
+    },
+    {
+      "job": {
+        "id": "92ec33b53b88",
+        "title": "Senior Identity & Access Management Engineer - Moveworks",
+        "company": "ServiceNow",
+        "location": "Mountain View, CA, US",
+        "url": "https://www.indeed.com/viewjob?jk=5e0e01c807abe539",
+        "apply_url": "https://jobs.smartrecruiters.com/ServiceNow/744000107401017-senior-identity-access-management-engineer-moveworks",
+        "source": "indeed",
+        "platform": "smartrecruiters",
+        "description": "**Company Description** **Who we are**\n\n\nMoveworks is the Agentic AI Assistant platform that empowers the entire workforce.\n\n\nOur platform enables employees to converse with all of their business systems through natural language to quickly find answers and automate tasks. Powered by the world's most advanced LLMs, our proprietary models, and a sophisticated Agentic AI platform, we're transforming how work gets done by allowing AI to take initiative, streamline complex workflows, and continuously",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": "fulltime",
+        "remote": false,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:23:02.209097"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:27:13.818196"
+    },
+    {
+      "job": {
+        "id": "793d559e9725",
+        "title": "Principal Inbound Product Manager - MoveWorks",
+        "company": "ServiceNow",
+        "location": "Santa Clara, CA, US",
+        "url": "https://www.indeed.com/viewjob?jk=d1345f08e802d199",
+        "apply_url": "https://jobs.smartrecruiters.com/ServiceNow/744000107397190-principal-inbound-product-manager-moveworks",
+        "source": "indeed",
+        "platform": "smartrecruiters",
+        "description": "**Company Description**  \n\nIt all started in sunny San Diego, California in 2004 when a visionary engineer, Fred Luddy, saw the potential to transform how we work. Fast forward to today \u2014 ServiceNow stands as a global market leader, bringing innovative AI\\-enhanced technology to over 8,100 customers, including 85% of the Fortune 500\u00ae. Our intelligent cloud\\-based platform seamlessly connects people, systems, and processes to empower organizations to find smarter, faster, and better ways to work.",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": "fulltime",
+        "remote": false,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:23:02.209144"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:27:23.145115"
+    }
+  ],
+  "generated_at": "2026-02-04T21:27:25.146867"
+}

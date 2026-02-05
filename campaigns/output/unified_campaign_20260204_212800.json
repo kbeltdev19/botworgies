@@ -1,0 +1,270 @@
+{
+  "stats": {
+    "jobs_discovered": 59,
+    "applications_attempted": 10,
+    "applications_successful": 9
+  },
+  "results": [
+    {
+      "job": {
+        "id": "dcdc39a181fb",
+        "title": "ServiceNow Developer, Jr.",
+        "company": "Accenture Federal Services",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=3fc8dbfc3334ad6c",
+        "apply_url": "https://grnh.se/5dqpfgbb6us",
+        "source": "indeed",
+        "platform": "greenhouse",
+        "description": "At Accenture Federal Services, nothing matters more than helping the US federal government make the nation stronger and safer and life better for people. Our 13,000\\+ people are united in a shared purpose to pursue the limitless potential of technology and ingenuity for clients across defense, national security, public safety, civilian, and military health organizations.  \n\n  \n\nJoin Accenture Federal Services, a technology company and part of global Accenture, to do work that matters in a collab",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": null,
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:28:01.052717"
+      },
+      "result": {
+        "success": true,
+        "method": "visual_agent",
+        "error": null,
+        "confirmation_id": "VA_4"
+      },
+      "timestamp": "2026-02-04T21:28:18.344008"
+    },
+    {
+      "job": {
+        "id": "aeb8b584a0c5",
+        "title": "ServiceNow Developer, Mid.",
+        "company": "Accenture Federal Services",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=adc1ef5ae5ecf50c",
+        "apply_url": "https://grnh.se/yefni4gx6us",
+        "source": "indeed",
+        "platform": "greenhouse",
+        "description": "At Accenture Federal Services, nothing matters more than helping the US federal government make the nation stronger and safer and life better for people. Our 13,000\\+ people are united in a shared purpose to pursue the limitless potential of technology and ingenuity for clients across defense, national security, public safety, civilian, and military health organizations.  \n\n  \n\nJoin Accenture Federal Services, a technology company and part of global Accenture, to do work that matters in a collab",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": null,
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:28:01.052781"
+      },
+      "result": {
+        "success": true,
+        "method": "visual_agent",
+        "error": null,
+        "confirmation_id": "VA_4"
+      },
+      "timestamp": "2026-02-04T21:28:36.302427"
+    },
+    {
+      "job": {
+        "id": "87a0d8b77528",
+        "title": "ServiceNow Business Analyst, Jr.",
+        "company": "Accenture Federal Services",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=41a530cf16a0b203",
+        "apply_url": "https://grnh.se/q6v7i9to6us",
+        "source": "indeed",
+        "platform": "greenhouse",
+        "description": "At Accenture Federal Services, nothing matters more than helping the US federal government make the nation stronger and safer and life better for people. Our 13,000\\+ people are united in a shared purpose to pursue the limitless potential of technology and ingenuity for clients across defense, national security, public safety, civilian, and military health organizations.  \n\n  \n\nJoin Accenture Federal Services, a technology company and part of global Accenture, to do work that matters in a collab",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": null,
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:28:01.052835"
+      },
+      "result": {
+        "success": true,
+        "method": "visual_agent",
+        "error": null,
+        "confirmation_id": "VA_4"
+      },
+      "timestamp": "2026-02-04T21:29:14.327653"
+    },
+    {
+      "job": {
+        "id": "8fffbd4393f0",
+        "title": "ServiceNow Technical Architect",
+        "company": "Accenture Federal Services",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=a12454621ac3ecd2",
+        "apply_url": "https://grnh.se/rrfh2oh46us",
+        "source": "indeed",
+        "platform": "greenhouse",
+        "description": "At Accenture Federal Services, nothing matters more than helping the US federal government make the nation stronger and safer and life better for people. Our 13,000\\+ people are united in a shared purpose to pursue the limitless potential of technology and ingenuity for clients across defense, national security, public safety, civilian, and military health organizations.  \n\n  \n\nJoin Accenture Federal Services, a technology company and part of global Accenture, to do work that matters in a collab",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": null,
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:28:01.052888"
+      },
+      "result": {
+        "success": true,
+        "method": "visual_agent",
+        "error": null,
+        "confirmation_id": "VA_4"
+      },
+      "timestamp": "2026-02-04T21:29:44.602117"
+    },
+    {
+      "job": {
+        "id": "523dfc6087d2",
+        "title": "ServiceNow Developer",
+        "company": "GovCIO",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=8704114a4a8e2e69",
+        "apply_url": "https://careers-govcio.icims.com/jobs/7554/job?utm_source=indeed_integration&iis=Job%20Board&iisn=Indeed&indeed-apply-token=73a2d2b2a8d6d5c0a62696875eaebd669103652d3f0c2cd5445d3e66b1592b0f",
+        "source": "indeed",
+        "platform": "icims",
+        "description": "Overview:\n\nGovCIO is currently hiring for a ServiceNow Developer to perform ServiceNow Development.\nResponsibilities:\n\nBuilds and codes applications and/or modules using languages such as C\\+\\+, visual basic, ABAP, JAVA, XTML, etc. Provides patches and upgrades to existing systems. Involved in planning of system and development deployment as well as responsible for meeting software compliance standards. May design graphical user interface (GUI) to meet the specific needs of users. Prepares opera",
+        "posted_date": "2026-02-03T00:00:00",
+        "employment_type": "fulltime",
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:28:01.053006"
+      },
+      "result": {
+        "success": true,
+        "method": "visual_agent",
+        "error": null,
+        "confirmation_id": "VA_0"
+      },
+      "timestamp": "2026-02-04T21:30:18.067421"
+    },
+    {
+      "job": {
+        "id": "5c8b9aad653c",
+        "title": "ServiceNow Project Manager",
+        "company": "Evora IT",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=28a403893227b007",
+        "apply_url": "https://t.gohiring.com/h/4454f61bdac76374429c92dbbc873a94f7c9965a07018fb0503ea8b2a327f98f?source=Indeed",
+        "source": "indeed",
+        "platform": "indeed",
+        "description": "#### **Who We Are**\n\n\nEvora IT Solutions is a trusted ServiceNow partner specializing in innovative digital maintenance and field service solutions grounded in real\\-world use cases. Our expertise is centered on ServiceNow Customer Workflows, with a strong focus on Field Service Management, where we aim to be the leading implementation partner in the market. We believe great work happens when people are supported, challenged, and valued, so we invest heavily in our employees and offer one of the",
+        "posted_date": "2026-02-03T00:00:00",
+        "employment_type": null,
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:28:01.053062"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:30:51.108188"
+    },
+    {
+      "job": {
+        "id": "60bfc6dd812d",
+        "title": "ServiceNow Architect with CTA certification",
+        "company": "A1fed",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=695a19911b51668d",
+        "apply_url": "https://a1fed.freshteam.com/jobs/mzuwfrgjs9V5/servicenow-architect-with-cta-certification-remote",
+        "source": "indeed",
+        "platform": "unknown",
+        "description": "**About the Role:**\nWe are seeking a highly experienced ServiceNow Architect to lead the architecture, design, and implementation of enterprise\\-wide solutions on the ServiceNow platform. You will provide hands\\-on technical leadership across multiple functional areas including IT Service Management (ITSM), Strategic Portfolio Management (SPM), Human Resources Service Delivery (HRSD), Employee Center Pro (ECP), Governance, Risk, and Compliance (GRC), Security Operations (SecOps), Vulnerability R",
+        "posted_date": "2026-02-02T00:00:00",
+        "employment_type": "fulltime",
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:28:01.053226"
+      },
+      "result": {
+        "success": true,
+        "method": "visual_agent",
+        "error": null,
+        "confirmation_id": "VA_1"
+      },
+      "timestamp": "2026-02-04T21:31:21.281465"
+    },
+    {
+      "job": {
+        "id": "55510a077498",
+        "title": "Senior ServiceNow Developer",
+        "company": "A1fed",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=6eb7eb35f8265280",
+        "apply_url": "https://a1fed.freshteam.com/jobs/LExmwPQNhgGp/senior-servicenow-developer-fully-remote-within-u-s-remote",
+        "source": "indeed",
+        "platform": "unknown",
+        "description": "**Position Overview:**\nWe are seeking a Senior ServiceNow Developer to support and enhance our enterprise ServiceNow platform across multiple product lines, including IT Service Management (ITSM), Strategic Portfolio Management (SPM), Human Resources Service Delivery (HRSD), Employee Center Pro (ECP), Governance Risk \\& Compliance (GRC), Security Operations (SecOps), Vulnerability Response (VR), and Nuvolo.  \n\nThis role is ideal for a hands\\-on technical expert who can lead complex development e",
+        "posted_date": "2026-01-31T00:00:00",
+        "employment_type": "fulltime",
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:28:01.053333"
+      },
+      "result": {
+        "success": true,
+        "method": "visual_agent",
+        "error": null,
+        "confirmation_id": "VA_1"
+      },
+      "timestamp": "2026-02-04T21:31:53.354864"
+    },
+    {
+      "job": {
+        "id": "13f8270491e8",
+        "title": "Senior ServiceNow Engineer (Remote)",
+        "company": "Trace3",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=0f4e287e19c5cbe7",
+        "apply_url": "https://grnh.se/ssbc4ccm1us",
+        "source": "indeed",
+        "platform": "greenhouse",
+        "description": "Who is **Trace3**?\n\n\n\nTrace3 is a leading Transformative IT Authority, providing unique technology solutions and consulting services to our clients. Equipped with elite engineering and dynamic innovation, we empower IT executives and their organizations to achieve competitive advantage through a process of Integrate, Automate, Innovate.\n\n\n\nOur culture at Trace3 embodies the spirit of a startup with the advantage of a scalable business. Employees can grow their career and have fun while doing it!",
+        "posted_date": "2026-01-30T00:00:00",
+        "employment_type": null,
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:28:01.053377"
+      },
+      "result": {
+        "success": true,
+        "method": "visual_agent",
+        "error": null,
+        "confirmation_id": "VA_4"
+      },
+      "timestamp": "2026-02-04T21:32:22.427064"
+    },
+    {
+      "job": {
+        "id": "fbfad7408204",
+        "title": "ServiceNow Senior Technical Consultant - CX",
+        "company": "INRY",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=cd5521446edffe84",
+        "apply_url": "https://pass.inry.com/ats_applicant?id=job_desc&job_id=f4076be493743610aa68b1847aba105e",
+        "source": "indeed",
+        "platform": "unknown",
+        "description": "5 \\- 10 Years\nUS \\- Remote\n3mo ago\n3 months ago\n**Job Description:**INRY, a Cprime company, is an Elite ServiceNow partner and one of America's fastest\\-growing companies (recognised in the Inc. 5000, Financial Times). As a leading ServiceNow partner for over twelve years, we have been closely aligned with ServiceNow in every step of their growth. We drove success for over 400 Fortune 500 customers.\n\n\n\nOur success and identity are built on the following:\n\n\n* Rapid time to value.\n* Easy to work w",
+        "posted_date": "2025-10-29T00:00:00",
+        "employment_type": "fulltime",
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:28:01.053428"
+      },
+      "result": {
+        "success": true,
+        "method": "visual_agent",
+        "error": null,
+        "confirmation_id": "VA_1"
+      },
+      "timestamp": "2026-02-04T21:32:43.185544"
+    }
+  ],
+  "timestamp": "2026-02-04T21:32:43.185566"
+}

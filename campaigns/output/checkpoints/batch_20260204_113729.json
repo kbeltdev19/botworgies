@@ -1,0 +1,1412 @@
+{
+  "timestamp": "2026-02-04T11:37:29.105588",
+  "stats": {
+    "batches_processed": 8,
+    "jobs_processed": 200,
+    "jobs_succeeded": 200,
+    "jobs_failed": 0,
+    "jobs_retried": 0
+  },
+  "results": [
+    {
+      "job_id": "linkedin_8124128",
+      "success": true,
+      "error": null,
+      "duration": 4.742645025253296,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4127081",
+      "success": true,
+      "error": null,
+      "duration": 4.400413990020752,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1996777",
+      "success": true,
+      "error": null,
+      "duration": 4.359416961669922,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7936456",
+      "success": true,
+      "error": null,
+      "duration": 4.321377992630005,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9794655",
+      "success": true,
+      "error": null,
+      "duration": 4.50075888633728,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3911225",
+      "success": true,
+      "error": null,
+      "duration": 4.292122840881348,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9785803",
+      "success": true,
+      "error": null,
+      "duration": 4.296379089355469,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9406897",
+      "success": true,
+      "error": null,
+      "duration": 4.33681321144104,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1954646",
+      "success": true,
+      "error": null,
+      "duration": 4.3041839599609375,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2040082",
+      "success": true,
+      "error": null,
+      "duration": 4.286947011947632,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_298226",
+      "success": true,
+      "error": null,
+      "duration": 4.363995790481567,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2066413",
+      "success": true,
+      "error": null,
+      "duration": 4.37544322013855,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7822977",
+      "success": true,
+      "error": null,
+      "duration": 4.315083980560303,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_829088",
+      "success": true,
+      "error": null,
+      "duration": 4.304965019226074,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_6353569",
+      "success": true,
+      "error": null,
+      "duration": 4.301784992218018,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_602777",
+      "success": true,
+      "error": null,
+      "duration": 4.30596399307251,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7342260",
+      "success": true,
+      "error": null,
+      "duration": 4.322033166885376,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9185225",
+      "success": true,
+      "error": null,
+      "duration": 4.338268995285034,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3553592",
+      "success": true,
+      "error": null,
+      "duration": 4.353318929672241,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9111940",
+      "success": true,
+      "error": null,
+      "duration": 4.388374090194702,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2499512",
+      "success": true,
+      "error": null,
+      "duration": 4.611120700836182,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4328362",
+      "success": true,
+      "error": null,
+      "duration": 4.398228883743286,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3889044",
+      "success": true,
+      "error": null,
+      "duration": 4.279113054275513,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_634539",
+      "success": true,
+      "error": null,
+      "duration": 4.284491062164307,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_6762597",
+      "success": true,
+      "error": null,
+      "duration": 4.318457841873169,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2193225",
+      "success": true,
+      "error": null,
+      "duration": 4.304991006851196,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1336959",
+      "success": true,
+      "error": null,
+      "duration": 4.327132940292358,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_8558450",
+      "success": true,
+      "error": null,
+      "duration": 4.31272292137146,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4966983",
+      "success": true,
+      "error": null,
+      "duration": 4.313071966171265,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2010204",
+      "success": true,
+      "error": null,
+      "duration": 4.317032814025879,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7989307",
+      "success": true,
+      "error": null,
+      "duration": 4.316812038421631,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_392349",
+      "success": true,
+      "error": null,
+      "duration": 4.2986671924591064,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1061777",
+      "success": true,
+      "error": null,
+      "duration": 4.308578014373779,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1030300",
+      "success": true,
+      "error": null,
+      "duration": 4.349487066268921,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3184957",
+      "success": true,
+      "error": null,
+      "duration": 4.3530590534210205,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_28945",
+      "success": true,
+      "error": null,
+      "duration": 4.286800861358643,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9435913",
+      "success": true,
+      "error": null,
+      "duration": 4.32393479347229,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4739789",
+      "success": true,
+      "error": null,
+      "duration": 4.309140920639038,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7821094",
+      "success": true,
+      "error": null,
+      "duration": 4.341392755508423,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_862643",
+      "success": true,
+      "error": null,
+      "duration": 4.326899290084839,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4169402",
+      "success": true,
+      "error": null,
+      "duration": 4.397696018218994,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3820731",
+      "success": true,
+      "error": null,
+      "duration": 4.310946226119995,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_456935",
+      "success": true,
+      "error": null,
+      "duration": 4.4754860401153564,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1286691",
+      "success": true,
+      "error": null,
+      "duration": 4.281446218490601,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3818403",
+      "success": true,
+      "error": null,
+      "duration": 4.310539960861206,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1033728",
+      "success": true,
+      "error": null,
+      "duration": 4.295904159545898,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2588611",
+      "success": true,
+      "error": null,
+      "duration": 4.342858076095581,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_591851",
+      "success": true,
+      "error": null,
+      "duration": 4.362562894821167,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_8396726",
+      "success": true,
+      "error": null,
+      "duration": 4.370002269744873,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4035295",
+      "success": true,
+      "error": null,
+      "duration": 4.321233034133911,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_6985076",
+      "success": true,
+      "error": null,
+      "duration": 4.168271064758301,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2417926",
+      "success": true,
+      "error": null,
+      "duration": 4.447060823440552,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_774498",
+      "success": true,
+      "error": null,
+      "duration": 4.347048997879028,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_102021",
+      "success": true,
+      "error": null,
+      "duration": 4.39087700843811,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_6410926",
+      "success": true,
+      "error": null,
+      "duration": 4.3474202156066895,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2014632",
+      "success": true,
+      "error": null,
+      "duration": 4.385010004043579,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_754338",
+      "success": true,
+      "error": null,
+      "duration": 4.670096158981323,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3399463",
+      "success": true,
+      "error": null,
+      "duration": 4.359399080276489,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_5269636",
+      "success": true,
+      "error": null,
+      "duration": 4.320485830307007,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4361977",
+      "success": true,
+      "error": null,
+      "duration": 4.3286988735198975,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1751433",
+      "success": true,
+      "error": null,
+      "duration": 4.345150947570801,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7283832",
+      "success": true,
+      "error": null,
+      "duration": 4.309560060501099,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1568809",
+      "success": true,
+      "error": null,
+      "duration": 4.298797845840454,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7824918",
+      "success": true,
+      "error": null,
+      "duration": 4.283900260925293,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4005219",
+      "success": true,
+      "error": null,
+      "duration": 4.457382917404175,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2457439",
+      "success": true,
+      "error": null,
+      "duration": 4.308182001113892,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7629003",
+      "success": true,
+      "error": null,
+      "duration": 4.341886043548584,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2986241",
+      "success": true,
+      "error": null,
+      "duration": 4.349553346633911,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_5047162",
+      "success": true,
+      "error": null,
+      "duration": 4.371615886688232,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4669862",
+      "success": true,
+      "error": null,
+      "duration": 4.3708789348602295,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_6856066",
+      "success": true,
+      "error": null,
+      "duration": 5.870055913925171,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_6057845",
+      "success": true,
+      "error": null,
+      "duration": 4.412380933761597,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7686656",
+      "success": true,
+      "error": null,
+      "duration": 4.810235023498535,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3393353",
+      "success": true,
+      "error": null,
+      "duration": 4.348539352416992,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2584972",
+      "success": true,
+      "error": null,
+      "duration": 4.7327117919921875,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_925818",
+      "success": true,
+      "error": null,
+      "duration": 4.873187780380249,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_8773773",
+      "success": true,
+      "error": null,
+      "duration": 4.407157897949219,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_5955284",
+      "success": true,
+      "error": null,
+      "duration": 4.688278913497925,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_259956",
+      "success": true,
+      "error": null,
+      "duration": 4.834891080856323,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_8220708",
+      "success": true,
+      "error": null,
+      "duration": 4.6078200340271,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1835712",
+      "success": true,
+      "error": null,
+      "duration": 4.493366718292236,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1544506",
+      "success": true,
+      "error": null,
+      "duration": 4.645543813705444,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4713926",
+      "success": true,
+      "error": null,
+      "duration": 4.414060831069946,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1192047",
+      "success": true,
+      "error": null,
+      "duration": 4.309916973114014,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_5178309",
+      "success": true,
+      "error": null,
+      "duration": 4.7799060344696045,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7044961",
+      "success": true,
+      "error": null,
+      "duration": 4.915788173675537,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4955107",
+      "success": true,
+      "error": null,
+      "duration": 4.692726135253906,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4262010",
+      "success": true,
+      "error": null,
+      "duration": 4.4398980140686035,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_8078634",
+      "success": true,
+      "error": null,
+      "duration": 4.866444826126099,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2138572",
+      "success": true,
+      "error": null,
+      "duration": 4.679465055465698,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2547805",
+      "success": true,
+      "error": null,
+      "duration": 4.755266904830933,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1903572",
+      "success": true,
+      "error": null,
+      "duration": 4.454543828964233,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7748049",
+      "success": true,
+      "error": null,
+      "duration": 4.325163841247559,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9487099",
+      "success": true,
+      "error": null,
+      "duration": 4.4718029499053955,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_6395417",
+      "success": true,
+      "error": null,
+      "duration": 4.749895095825195,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_5589015",
+      "success": true,
+      "error": null,
+      "duration": 4.560429096221924,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_5696054",
+      "success": true,
+      "error": null,
+      "duration": 4.398262023925781,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7858173",
+      "success": true,
+      "error": null,
+      "duration": 4.738739967346191,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9685232",
+      "success": true,
+      "error": null,
+      "duration": 4.407499074935913,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4578857",
+      "success": true,
+      "error": null,
+      "duration": 4.787530899047852,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_681156",
+      "success": true,
+      "error": null,
+      "duration": 4.414421081542969,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4482930",
+      "success": true,
+      "error": null,
+      "duration": 4.809576988220215,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9928741",
+      "success": true,
+      "error": null,
+      "duration": 4.393569231033325,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_8996359",
+      "success": true,
+      "error": null,
+      "duration": 4.6881489753723145,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2855606",
+      "success": true,
+      "error": null,
+      "duration": 4.441027879714966,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3891210",
+      "success": true,
+      "error": null,
+      "duration": 4.721775770187378,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_140993",
+      "success": true,
+      "error": null,
+      "duration": 4.485065937042236,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_5013688",
+      "success": true,
+      "error": null,
+      "duration": 4.742517948150635,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_8037840",
+      "success": true,
+      "error": null,
+      "duration": 4.725178956985474,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3707166",
+      "success": true,
+      "error": null,
+      "duration": 4.511811017990112,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1571837",
+      "success": true,
+      "error": null,
+      "duration": 4.369373083114624,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_745819",
+      "success": true,
+      "error": null,
+      "duration": 4.2912867069244385,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7175141",
+      "success": true,
+      "error": null,
+      "duration": 4.404866933822632,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2154099",
+      "success": true,
+      "error": null,
+      "duration": 4.637845993041992,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2308020",
+      "success": true,
+      "error": null,
+      "duration": 4.409665107727051,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2251407",
+      "success": true,
+      "error": null,
+      "duration": 4.4230687618255615,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_994563",
+      "success": true,
+      "error": null,
+      "duration": 4.487895250320435,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4384678",
+      "success": true,
+      "error": null,
+      "duration": 4.552860975265503,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_8571519",
+      "success": true,
+      "error": null,
+      "duration": 4.687613248825073,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2608374",
+      "success": true,
+      "error": null,
+      "duration": 4.674734115600586,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_6231883",
+      "success": true,
+      "error": null,
+      "duration": 4.769816875457764,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7062715",
+      "success": true,
+      "error": null,
+      "duration": 4.6975648403167725,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1348654",
+      "success": true,
+      "error": null,
+      "duration": 4.3064680099487305,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9658886",
+      "success": true,
+      "error": null,
+      "duration": 4.402509927749634,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2412068",
+      "success": true,
+      "error": null,
+      "duration": 4.692674875259399,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3519404",
+      "success": true,
+      "error": null,
+      "duration": 4.860095024108887,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_6674702",
+      "success": true,
+      "error": null,
+      "duration": 4.828694820404053,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_196426",
+      "success": true,
+      "error": null,
+      "duration": 4.373844861984253,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_6272633",
+      "success": true,
+      "error": null,
+      "duration": 4.685302019119263,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9666266",
+      "success": true,
+      "error": null,
+      "duration": 10.865676164627075,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3380593",
+      "success": true,
+      "error": null,
+      "duration": 4.621049165725708,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1104282",
+      "success": true,
+      "error": null,
+      "duration": 4.325751066207886,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2612694",
+      "success": true,
+      "error": null,
+      "duration": 4.66694974899292,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_6988156",
+      "success": true,
+      "error": null,
+      "duration": 4.367794752120972,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4752873",
+      "success": true,
+      "error": null,
+      "duration": 4.747834920883179,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_8229318",
+      "success": true,
+      "error": null,
+      "duration": 4.369152069091797,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_5353722",
+      "success": true,
+      "error": null,
+      "duration": 4.792656898498535,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2584949",
+      "success": true,
+      "error": null,
+      "duration": 4.371300935745239,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3914138",
+      "success": true,
+      "error": null,
+      "duration": 4.639369964599609,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3916486",
+      "success": true,
+      "error": null,
+      "duration": 4.430176019668579,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_5968923",
+      "success": true,
+      "error": null,
+      "duration": 4.364457845687866,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7818861",
+      "success": true,
+      "error": null,
+      "duration": 4.292654037475586,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_5622722",
+      "success": true,
+      "error": null,
+      "duration": 4.356442213058472,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9691582",
+      "success": true,
+      "error": null,
+      "duration": 4.374105215072632,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_6463368",
+      "success": true,
+      "error": null,
+      "duration": 4.2914910316467285,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9728670",
+      "success": true,
+      "error": null,
+      "duration": 4.30833101272583,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1233255",
+      "success": true,
+      "error": null,
+      "duration": 4.285388708114624,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_6183446",
+      "success": true,
+      "error": null,
+      "duration": 4.304479122161865,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1788285",
+      "success": true,
+      "error": null,
+      "duration": 4.281409025192261,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_192595",
+      "success": true,
+      "error": null,
+      "duration": 4.302781105041504,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3153095",
+      "success": true,
+      "error": null,
+      "duration": 4.152846097946167,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_5003378",
+      "success": true,
+      "error": null,
+      "duration": 4.301776170730591,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7690571",
+      "success": true,
+      "error": null,
+      "duration": 4.320321083068848,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1986625",
+      "success": true,
+      "error": null,
+      "duration": 4.354871034622192,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7963999",
+      "success": true,
+      "error": null,
+      "duration": 4.276372194290161,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4729997",
+      "success": true,
+      "error": null,
+      "duration": 4.341055870056152,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_8334592",
+      "success": true,
+      "error": null,
+      "duration": 4.304068088531494,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1107508",
+      "success": true,
+      "error": null,
+      "duration": 4.384943246841431,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_5852105",
+      "success": true,
+      "error": null,
+      "duration": 4.305071115493774,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3534678",
+      "success": true,
+      "error": null,
+      "duration": 4.28574800491333,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2597523",
+      "success": true,
+      "error": null,
+      "duration": 4.3730628490448,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1280120",
+      "success": true,
+      "error": null,
+      "duration": 4.304932117462158,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_875854",
+      "success": true,
+      "error": null,
+      "duration": 4.291956901550293,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_5217168",
+      "success": true,
+      "error": null,
+      "duration": 4.388545989990234,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4289148",
+      "success": true,
+      "error": null,
+      "duration": 4.279231071472168,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7308362",
+      "success": true,
+      "error": null,
+      "duration": 4.3168230056762695,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9658010",
+      "success": true,
+      "error": null,
+      "duration": 4.275508880615234,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_8523306",
+      "success": true,
+      "error": null,
+      "duration": 4.278887748718262,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9826483",
+      "success": true,
+      "error": null,
+      "duration": 4.304480075836182,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4392405",
+      "success": true,
+      "error": null,
+      "duration": 4.275309801101685,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2025489",
+      "success": true,
+      "error": null,
+      "duration": 4.3261048793792725,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9420191",
+      "success": true,
+      "error": null,
+      "duration": 4.371802091598511,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_8360710",
+      "success": true,
+      "error": null,
+      "duration": 4.355069160461426,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2908217",
+      "success": true,
+      "error": null,
+      "duration": 4.3289079666137695,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2552157",
+      "success": true,
+      "error": null,
+      "duration": 4.331269979476929,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1626749",
+      "success": true,
+      "error": null,
+      "duration": 4.446436166763306,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7124190",
+      "success": true,
+      "error": null,
+      "duration": 4.287528038024902,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_6061385",
+      "success": true,
+      "error": null,
+      "duration": 4.44885516166687,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_8979860",
+      "success": true,
+      "error": null,
+      "duration": 4.339071989059448,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9983586",
+      "success": true,
+      "error": null,
+      "duration": 4.40163516998291,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_8783583",
+      "success": true,
+      "error": null,
+      "duration": 4.279909133911133,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_6257051",
+      "success": true,
+      "error": null,
+      "duration": 4.313215970993042,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3488501",
+      "success": true,
+      "error": null,
+      "duration": 4.3287107944488525,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7571084",
+      "success": true,
+      "error": null,
+      "duration": 4.300511360168457,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2758515",
+      "success": true,
+      "error": null,
+      "duration": 4.283141136169434,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7798130",
+      "success": true,
+      "error": null,
+      "duration": 4.29295802116394,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9147763",
+      "success": true,
+      "error": null,
+      "duration": 4.306134939193726,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4641298",
+      "success": true,
+      "error": null,
+      "duration": 4.421282052993774,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4808600",
+      "success": true,
+      "error": null,
+      "duration": 4.317993879318237,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_5096300",
+      "success": true,
+      "error": null,
+      "duration": 4.392175197601318,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4467646",
+      "success": true,
+      "error": null,
+      "duration": 4.315207242965698,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_102646",
+      "success": true,
+      "error": null,
+      "duration": 4.319533109664917,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2205167",
+      "success": true,
+      "error": null,
+      "duration": 4.31899094581604,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9899657",
+      "success": true,
+      "error": null,
+      "duration": 4.30692982673645,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_5190019",
+      "success": true,
+      "error": null,
+      "duration": 4.309327125549316,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3277251",
+      "success": true,
+      "error": null,
+      "duration": 4.280145883560181,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_131510",
+      "success": true,
+      "error": null,
+      "duration": 4.272830009460449,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7688221",
+      "success": true,
+      "error": null,
+      "duration": 4.333591938018799,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9136619",
+      "success": true,
+      "error": null,
+      "duration": 4.34699273109436,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3975475",
+      "success": true,
+      "error": null,
+      "duration": 4.294898271560669,
+      "retries": 0
+    }
+  ]
+}

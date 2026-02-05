@@ -1,0 +1,157 @@
+{
+  "campaign_config": {
+    "target_jobs": 5,
+    "daily_limit": 5,
+    "sources": [
+      "indeed",
+      "zip_recruiter"
+    ],
+    "locations": [
+      "Remote",
+      "United States"
+    ]
+  },
+  "stats": {
+    "jobs_discovered": 105,
+    "jobs_filtered": 5,
+    "applications_attempted": 5,
+    "applications_successful": 0,
+    "applications_failed": 5,
+    "success_rate": 0.0,
+    "elapsed_minutes": 1.38577975,
+    "by_platform": {}
+  },
+  "results": [
+    {
+      "job": {
+        "id": "bd6923a414e2",
+        "title": "Principal Software Engineer - Mobile",
+        "company": "nan",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=ea5a8e469824b4d5",
+        "apply_url": null,
+        "source": "indeed",
+        "platform": "indeed",
+        "description": "We are looking for an experienced Principal Mobile Engineer to drive the architecture, development, and delivery of high\\-quality and highly\\-scaled mobile applications. You will be a hands\\-on coder while leading a team of mobile engineers. As the Principal Engineer, you will be setting technical standards and best practices for mobile development.\n\n### **Employment Type**\n\n***This is a full\\-time independent contractor position. We are not currently hiring for direct employee positions.***\n\n##",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": "contract",
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:20:10.090564"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:20:25.740936"
+    },
+    {
+      "job": {
+        "id": "53a078870232",
+        "title": "Principal Software Engineer In Test (SDET)",
+        "company": "nan",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=a185c2650f9935af",
+        "apply_url": null,
+        "source": "indeed",
+        "platform": "indeed",
+        "description": "We are looking for a Principal Software Engineer in Test to lead and evolve our quality engineering practice across backend services and client applications. This role is hands\\-on, highly technical, and focused on building robust, scalable test automation for REST and WebSocket APIs, as well as web, mobile, and desktop client UIs.\n\n\nAs a principal\\-level engineer, you will define testing strategy, design automation frameworks, and partner closely with backend, frontend, mobile, and platform tea",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": "contract",
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:20:10.090668"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:20:41.233139"
+    },
+    {
+      "job": {
+        "id": "abe6b10e9875",
+        "title": "Software Quality Engineer III",
+        "company": "DriveCentric",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=2498b8595832a660",
+        "apply_url": null,
+        "source": "indeed",
+        "platform": "indeed",
+        "description": "Are you tired of not being challenged, not having a voice, or having to work with outdated technologies? Do you want to be a direct contributor in a company that is an innovation leader and has the awards to prove it?\n\n\nDriveCentric is the premier customer relationship management (CRM) and marketing technology company that connects automotive dealerships to customers in innovative, award\\-winning ways.\n\n\nWe're seeking a detail\\-oriented Software Quality Engineer to join our QA team and ensure ex",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": null,
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:20:10.090736"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:20:57.550012"
+    },
+    {
+      "job": {
+        "id": "a3a232126ea2",
+        "title": "Sr. Software Engineer (MANTL)",
+        "company": "Alkami Technology",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=a76a42d8f8109957",
+        "apply_url": null,
+        "source": "indeed",
+        "platform": "indeed",
+        "description": "Alkami is a leading cloud\\-based digital banking solutions provider for financial institutions in the United States that helps clients to transform through retail and business banking, digital account opening and loan origination, payment fraud prevention, and data analytics and engagement solutions. *Alkami\u2019s Mobile App Platform has been certified by J.D. Power for providing clients with \u201cAn Outstanding Mobile Banking Platform Experience.\u201d*\nFounded in 2009, we continue to be recognized for our ",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": "fulltime",
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:20:10.090796"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:21:13.518719"
+    },
+    {
+      "job": {
+        "id": "6d1bfa89e779",
+        "title": "Staff Software Engineer - Cloud Services",
+        "company": "Agiloft",
+        "location": "Remote, US",
+        "url": "https://www.indeed.com/viewjob?jk=de5d9e14295e074c",
+        "apply_url": null,
+        "source": "indeed",
+        "platform": "indeed",
+        "description": "As the most trusted global leader in data\\-first contract lifecycle management (CLM) software, Agiloft helps organizations manage the end\\-to\\-end process of proposing, negotiating, signing, and leveraging contracts using our flexible Data\\-first Agreement Platform (DAP). With contract data as the foundation, customers quickly and collaboratively reach agreement and leverage contract visibility to thrive with competitive advantage. Employing powerful, pragmatic artificial intelligence as a legal",
+        "posted_date": "2026-02-04T00:00:00",
+        "employment_type": "fulltime",
+        "remote": true,
+        "salary": null,
+        "easy_apply": false,
+        "discovered_at": "2026-02-04T21:20:10.090853"
+      },
+      "result": {
+        "success": false,
+        "method": "basic_automation",
+        "error": null,
+        "confirmation_id": null
+      },
+      "timestamp": "2026-02-04T21:21:30.234724"
+    }
+  ],
+  "generated_at": "2026-02-04T21:21:32.235113"
+}

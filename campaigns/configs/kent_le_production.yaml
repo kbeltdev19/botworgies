@@ -1,0 +1,76 @@
+# Kent Le Production Campaign
+# Migrated from: campaigns/KENT_1000_PRODUCTION.py
+
+name: "Kent Le - 1000 Production Applications"
+
+applicant:
+  first_name: "Kent"
+  last_name: "Le"
+  email: "kle4311@gmail.com"
+  phone: "(404) 934-0630"
+  location: "Auburn, AL"
+  linkedin_url: "https://linkedin.com/in/kent-le"
+  years_experience: 5
+  custom_answers:
+    salary_expectations: "$75,000 - $95,000"
+    notice_period: "2 weeks"
+    willing_to_relocate: "Yes - Southeast US"
+    work_authorization: "US Citizen"
+
+resume:
+  path: "Test Resumes/Kent_Le_Resume.pdf"
+
+search:
+  roles:
+    - "Software Engineer"
+    - "Data Analyst"
+    - "Business Analyst"
+    - "Product Manager"
+    - "Technical Support"
+  locations:
+    - "Remote"
+    - "Auburn, AL"
+    - "Atlanta, GA"
+    - "Birmingham, AL"
+    - "Nashville, TN"
+  required_keywords:
+    - "Python"
+    - "SQL"
+    - "Data"
+    - "Analytics"
+  exclude_keywords:
+    - "Senior Staff"
+    - "Principal"
+    - "10+ years experience"
+
+platforms:
+  - linkedin
+  - indeed
+  - greenhouse
+  - lever
+  - ashby
+
+limits:
+  max_applications: 1000
+  max_per_platform: 300
+  min_match_score: 0.6
+
+settings:
+  auto_submit: false
+  delay_between_applications: [30, 60]
+  delay_between_platforms: 300
+  retry_attempts: 3
+  enable_iteration: true
+  enable_monitoring: true
+  stop_on_low_success_rate: true
+  min_success_rate: 0.3
+
+exclude_companies:
+  - "Salesforce"
+  - "HubSpot"
+  - "Zoom"
+
+output:
+  dir: "./campaign_output/kent_le"
+  save_screenshots: true
+  generate_report: true

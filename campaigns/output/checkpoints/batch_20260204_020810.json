@@ -1,0 +1,362 @@
+{
+  "timestamp": "2026-02-04T02:08:10.957909",
+  "stats": {
+    "batches_processed": 2,
+    "jobs_processed": 50,
+    "jobs_succeeded": 24,
+    "jobs_failed": 26,
+    "jobs_retried": 81
+  },
+  "results": [
+    {
+      "job_id": "linkedin_2702252",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.505887031555176,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_9188396",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.504218816757202,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_4022666",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.504795789718628,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_2651134",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.503575086593628,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_1460721",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.504007816314697,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_328223",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.505000829696655,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_4816207",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.503985166549683,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_2367775",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.505038976669312,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_7619913",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.503743886947632,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_806054",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.503844022750854,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_7924480",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.503098249435425,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_4721271",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.504998922348022,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_5473931",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.503747940063477,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_4392075",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.504241943359375,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_6835545",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.50465178489685,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_3644546",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.504071235656738,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_9494646",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.504866123199463,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_4223617",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.504909753799438,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_953518",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.504559993743896,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_9959758",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.504698038101196,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_8108414",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.502706050872803,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_6840603",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.50462794303894,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_4779053",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.504812240600586,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_5265204",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.504724979400635,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_403429",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.503829002380371,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_7753807",
+      "success": false,
+      "error": "unterminated string literal (detected at line 51) (workday_optimized.py, line 51)",
+      "duration": 8.504707098007202,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_9508399",
+      "success": true,
+      "error": null,
+      "duration": 11.283013105392456,
+      "retries": 3
+    },
+    {
+      "job_id": "linkedin_7753775",
+      "success": true,
+      "error": null,
+      "duration": 2.7234251499176025,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2864505",
+      "success": true,
+      "error": null,
+      "duration": 2.815493106842041,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_6115089",
+      "success": true,
+      "error": null,
+      "duration": 2.73557186126709,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_816686",
+      "success": true,
+      "error": null,
+      "duration": 2.8024790287017822,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2677985",
+      "success": true,
+      "error": null,
+      "duration": 2.6540892124176025,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7515868",
+      "success": true,
+      "error": null,
+      "duration": 2.742326021194458,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4265604",
+      "success": true,
+      "error": null,
+      "duration": 2.7021608352661133,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3452931",
+      "success": true,
+      "error": null,
+      "duration": 2.720933198928833,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_8420404",
+      "success": true,
+      "error": null,
+      "duration": 2.8211708068847656,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_241489",
+      "success": true,
+      "error": null,
+      "duration": 2.688507318496704,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2327715",
+      "success": true,
+      "error": null,
+      "duration": 2.7218880653381348,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9793462",
+      "success": true,
+      "error": null,
+      "duration": 2.792268753051758,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_5280144",
+      "success": true,
+      "error": null,
+      "duration": 2.761892080307007,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3883261",
+      "success": true,
+      "error": null,
+      "duration": 2.764435052871704,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7314053",
+      "success": true,
+      "error": null,
+      "duration": 2.8191096782684326,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7080673",
+      "success": true,
+      "error": null,
+      "duration": 2.6472089290618896,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4471872",
+      "success": true,
+      "error": null,
+      "duration": 2.7643489837646484,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_6538665",
+      "success": true,
+      "error": null,
+      "duration": 2.7227251529693604,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1262272",
+      "success": true,
+      "error": null,
+      "duration": 2.703042984008789,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9258968",
+      "success": true,
+      "error": null,
+      "duration": 2.6794397830963135,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_22807",
+      "success": true,
+      "error": null,
+      "duration": 2.708763837814331,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_6545817",
+      "success": true,
+      "error": null,
+      "duration": 2.8304998874664307,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4686176",
+      "success": true,
+      "error": null,
+      "duration": 2.662431001663208,
+      "retries": 0
+    }
+  ]
+}

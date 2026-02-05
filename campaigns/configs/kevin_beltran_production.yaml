@@ -1,0 +1,69 @@
+# Kevin Beltran Production Campaign
+# Migrated from: campaigns/KEVIN_1000_PRODUCTION.py
+
+name: "Kevin Beltran - ServiceNow 1000 Applications"
+
+applicant:
+  first_name: "Kevin"
+  last_name: "Beltran"
+  email: "beltranrkevin@gmail.com"
+  phone: "770-378-2545"
+  location: "Atlanta, GA"
+  linkedin_url: ""
+  years_experience: 5
+  summary: "ServiceNow Business Analyst with federal and VA experience"
+  custom_answers:
+    salary_expectations: "$80,000 - $110,000"
+    notice_period: "2 weeks"
+    willing_to_relocate: "No"
+    work_authorization: "US Citizen"
+
+resume:
+  path: "Test Resumes/Kevin_Beltran_Resume.pdf"
+
+search:
+  roles:
+    - "ServiceNow Business Analyst"
+    - "ServiceNow Consultant"
+    - "ServiceNow Administrator"
+    - "ITSM Analyst"
+    - "ServiceNow Developer"
+  locations:
+    - "Remote"
+    - "Atlanta, GA"
+    - "Georgia"
+  required_keywords:
+    - "ServiceNow"
+    - "ITSM"
+    - "Business Analysis"
+    - "Federal"
+  exclude_keywords:
+    - "Senior Principal"
+    - "Staff"
+
+platforms:
+  - linkedin
+  - indeed
+  - greenhouse
+  - lever
+  - clearancejobs
+
+limits:
+  max_applications: 1000
+  max_per_platform: 350
+  min_match_score: 0.7
+
+settings:
+  auto_submit: false
+  delay_between_applications: [30, 60]
+  delay_between_platforms: 300
+  retry_attempts: 3
+  enable_iteration: true
+  enable_monitoring: true
+  stop_on_low_success_rate: true
+  min_success_rate: 0.3
+
+output:
+  dir: "./campaign_output/kevin_beltran"
+  save_screenshots: true
+  generate_report: true

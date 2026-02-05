@@ -1,0 +1,187 @@
+{
+  "timestamp": "2026-02-04T10:01:52.364937",
+  "stats": {
+    "batches_processed": 1,
+    "jobs_processed": 25,
+    "jobs_succeeded": 25,
+    "jobs_failed": 0,
+    "jobs_retried": 0
+  },
+  "results": [
+    {
+      "job_id": "linkedin_4736667",
+      "success": true,
+      "error": null,
+      "duration": 5.677279949188232,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3879752",
+      "success": true,
+      "error": null,
+      "duration": 5.842386960983276,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1932982",
+      "success": true,
+      "error": null,
+      "duration": 5.613755226135254,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4023936",
+      "success": true,
+      "error": null,
+      "duration": 5.676456928253174,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4070124",
+      "success": true,
+      "error": null,
+      "duration": 5.837626218795776,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_1172286",
+      "success": true,
+      "error": null,
+      "duration": 5.71386981010437,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7542812",
+      "success": true,
+      "error": null,
+      "duration": 5.663266181945801,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2343452",
+      "success": true,
+      "error": null,
+      "duration": 5.825592756271362,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_271756",
+      "success": true,
+      "error": null,
+      "duration": 5.805905103683472,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4264371",
+      "success": true,
+      "error": null,
+      "duration": 5.650460958480835,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3923012",
+      "success": true,
+      "error": null,
+      "duration": 5.8347179889678955,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9333220",
+      "success": true,
+      "error": null,
+      "duration": 5.915779113769531,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_8748783",
+      "success": true,
+      "error": null,
+      "duration": 5.898015975952148,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_6904578",
+      "success": true,
+      "error": null,
+      "duration": 5.635412216186523,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_8827239",
+      "success": true,
+      "error": null,
+      "duration": 5.853697061538696,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_7852404",
+      "success": true,
+      "error": null,
+      "duration": 5.793959140777588,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2280108",
+      "success": true,
+      "error": null,
+      "duration": 5.784215211868286,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9279863",
+      "success": true,
+      "error": null,
+      "duration": 5.8052818775177,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_8082241",
+      "success": true,
+      "error": null,
+      "duration": 5.800426959991455,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_9360106",
+      "success": true,
+      "error": null,
+      "duration": 5.80299711227417,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_3511306",
+      "success": true,
+      "error": null,
+      "duration": 5.778678894042969,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_2108574",
+      "success": true,
+      "error": null,
+      "duration": 5.797176837921143,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_4479745",
+      "success": true,
+      "error": null,
+      "duration": 5.773707866668701,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_5775463",
+      "success": true,
+      "error": null,
+      "duration": 5.882745027542114,
+      "retries": 0
+    },
+    {
+      "job_id": "linkedin_5949667",
+      "success": true,
+      "error": null,
+      "duration": 5.7207701206207275,
+      "retries": 0
+    }
+  ]
+}
