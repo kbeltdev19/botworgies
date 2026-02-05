@@ -4,19 +4,6 @@ Campaign Runner CLI
 
 Run job application campaigns from YAML configuration files.
 Replaces individual campaign scripts with a single configurable tool.
-
-Usage:
-    # Run a campaign
-    python campaigns/run_campaign.py --config campaigns/configs/my_campaign.yaml
-    
-    # Run in auto-submit mode (production)
-    python campaigns/run_campaign.py --config campaigns/configs/my_campaign.yaml --auto-submit
-    
-    # Dry run - search only, no applications
-    python campaigns/run_campaign.py --config campaigns/configs/my_campaign.yaml --dry-run
-    
-    # Resume a failed campaign
-    python campaigns/run_campaign.py --config campaigns/configs/my_campaign.yaml --resume
 """
 
 import argparse
@@ -28,6 +15,10 @@ from pathlib import Path
 
 # Add parent to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
+
+# Load environment variables
+from dotenv import load_dotenv
+load_dotenv()
 
 from core.campaign_runner import CampaignRunner, CampaignConfig
 

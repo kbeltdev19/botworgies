@@ -49,7 +49,7 @@ platforms:
   - clearancejobs
 
 limits:
-  max_applications: 1000
+  max_applications: 10  # Start with 10 for testing
   max_per_platform: 350
   min_match_score: 0.7
 
@@ -62,6 +62,9 @@ settings:
   enable_monitoring: true
   stop_on_low_success_rate: true
   min_success_rate: 0.3
+
+# Use pre-scraped jobs file
+job_file: "campaigns/output/kevin_1000_real_v3/jobs.json"
 
 output:
   dir: "./campaign_output/kevin_beltran"
