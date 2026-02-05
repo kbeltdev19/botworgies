@@ -399,9 +399,9 @@ class DiceAdapter(JobPlatformAdapter):
 async def test_dice():
     """Test Dice adapter."""
     from .base import SearchConfig
-    from browser.stealth_manager import StealthBrowserManager
+    from core import UnifiedBrowserManager
     
-    browser_manager = StealthBrowserManager()
+    browser_manager = UnifiedBrowserManager()
     adapter = DiceAdapter(browser_manager)
     
     criteria = SearchConfig(

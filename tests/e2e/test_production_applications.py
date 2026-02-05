@@ -142,9 +142,9 @@ Python, JavaScript, React, Node.js, PostgreSQL, Kubernetes, Docker, AWS, Git
 @pytest.fixture(scope="module")
 async def monitored_browser():
     """Browser manager with monitoring enabled."""
-    from browser.stealth_manager import StealthBrowserManager
+    from core import UnifiedBrowserManager
     
-    manager = StealthBrowserManager(
+    manager = UnifiedBrowserManager(
         prefer_local=True,
         record_video=True,
         record_har=True

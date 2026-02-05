@@ -55,9 +55,9 @@ class TestUnifiedAdapterProduction:
             pytest.skip("PRODUCTION_GREENHOUSE_URL not set")
         
         from core.example_adapters import GreenhouseAdapter
-        from browser.stealth_manager import StealthBrowserManager
+        from core import UnifiedBrowserManager
         
-        browser = StealthBrowserManager()
+        browser = UnifiedBrowserManager()
         adapter = GreenhouseAdapter(browser, config=AdapterConfig(
             auto_submit=False,
             capture_screenshots=True
@@ -95,9 +95,9 @@ class TestUnifiedAdapterProduction:
             pytest.skip("PRODUCTION_LEVER_URL not set")
         
         from core.example_adapters import LeverAdapter
-        from browser.stealth_manager import StealthBrowserManager
+        from core import UnifiedBrowserManager
         
-        browser = StealthBrowserManager()
+        browser = UnifiedBrowserManager()
         adapter = LeverAdapter(browser, config=AdapterConfig(
             auto_submit=False,
             capture_screenshots=True

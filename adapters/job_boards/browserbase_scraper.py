@@ -75,8 +75,8 @@ class BrowserBaseScraper(BaseJobBoardScraper):
     
     async def __aenter__(self):
         if self._owns_manager:
-            from browser.stealth_manager import StealthBrowserManager
-            self.browser_manager = StealthBrowserManager(prefer_local=False)
+            from core import UnifiedBrowserManager
+            self.browser_manager = UnifiedBrowserManager(prefer_local=False)
             await self.browser_manager.initialize()
         return self
     

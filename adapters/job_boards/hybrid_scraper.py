@@ -46,8 +46,8 @@ class HybridScraper(BaseJobBoardScraper):
     async def initialize(self):
         """Initialize browser manager if using BrowserBase."""
         if self.use_browserbase:
-            from browser.stealth_manager import StealthBrowserManager
-            self.browser_manager = StealthBrowserManager(prefer_local=False)
+            from core import UnifiedBrowserManager
+            self.browser_manager = UnifiedBrowserManager(prefer_local=False)
             await self.browser_manager.initialize()
             
             # Initialize BrowserBase scraper with shared manager

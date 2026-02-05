@@ -27,9 +27,9 @@ pytestmark = [
 @pytest.fixture(scope="module")
 async def real_browser_manager():
     """Create a real browser manager for E2E tests."""
-    from browser.stealth_manager import StealthBrowserManager
+    from core import UnifiedBrowserManager
     
-    manager = StealthBrowserManager(prefer_local=True)
+    manager = UnifiedBrowserManager(prefer_local=True)
     yield manager
     await manager.close_all()
 

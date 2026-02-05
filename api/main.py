@@ -39,10 +39,10 @@ from ai.kimi_service import KimiResumeOptimizer
 
 # Browser manager is optional - may not be available on serverless
 try:
-    from browser.stealth_manager import StealthBrowserManager
+    from core import UnifiedBrowserManager
     BROWSER_AVAILABLE = True
 except ImportError:
-    StealthBrowserManager = None
+    UnifiedBrowserManager = None
     BROWSER_AVAILABLE = False
 
 from adapters import (
@@ -267,7 +267,7 @@ def validate_file_extension(filename: str) -> bool:
 
 # Initialize services
 kimi = KimiResumeOptimizer()
-browser_manager = StealthBrowserManager() if BROWSER_AVAILABLE else None
+browser_manager = UnifiedBrowserManager() if BROWSER_AVAILABLE else None
 
 
 # === API Endpoints ===

@@ -26,7 +26,7 @@ from datetime import datetime
 from pathlib import Path
 
 try:
-    from browser import Stagehand, StagehandConfig, StagehandAgent
+    from core.browser import Stagehand, StagehandConfig, StagehandAgent
     from stagehand.schemas import AgentConfig, AgentExecuteOptions, AgentProvider
     STAGEHAND_AVAILABLE = True
 except ImportError:

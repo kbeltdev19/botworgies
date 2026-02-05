@@ -159,9 +159,9 @@ async def real_browser_manager():
     
     Uses local browser with recording enabled for debugging.
     """
-    from browser.stealth_manager import StealthBrowserManager
+    from core import UnifiedBrowserManager
     
-    manager = StealthBrowserManager(
+    manager = UnifiedBrowserManager(
         prefer_local=True,
         record_video=True,
         record_har=True

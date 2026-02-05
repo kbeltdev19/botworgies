@@ -26,8 +26,8 @@ class TestBotDetection:
         ]
         
         # Verify at least one patch strategy exists
-        from browser.stealth_manager import StealthBrowserManager
-        manager = StealthBrowserManager.__new__(StealthBrowserManager)
+        from core import UnifiedBrowserManager
+        manager = UnifiedBrowserManager.__new__(UnifiedBrowserManager)
         
         # Check stealth scripts if available
         if hasattr(manager, 'STEALTH_SCRIPTS'):
@@ -67,7 +67,7 @@ class TestBotDetection:
         ]
         
         # Would verify actual headers in real test
-        from browser.stealth_manager import StealthBrowserManager
+        from core import UnifiedBrowserManager
         
         # Check that stealth config includes language settings
         assert True  # Placeholder - real test would check headers
@@ -114,7 +114,7 @@ class TestBehavioralBiometrics:
     @pytest.mark.asyncio
     async def test_mouse_movement_natural(self, mock_browser_manager):
         """Verify mouse movements follow curved, not linear paths."""
-        from browser.stealth_manager import StealthBrowserManager
+        from core import UnifiedBrowserManager
         
         # Generate simulated mouse path
         def bezier_curve_points(start, end, control_points=2, num_points=50):

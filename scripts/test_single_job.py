@@ -25,7 +25,7 @@ def load_env():
 
 load_env()
 
-from browser.stealth_manager import StealthBrowserManager
+from core import UnifiedBrowserManager
 from adapters.indeed import IndeedAdapter
 from adapters import SearchConfig, UserProfile, Resume
 
@@ -34,7 +34,7 @@ async def test_search():
     """Test Indeed job search."""
     print("\n=== Testing Indeed Search ===")
     
-    manager = StealthBrowserManager()
+    manager = UnifiedBrowserManager()
     adapter = IndeedAdapter(manager)
     
     criteria = SearchConfig(
@@ -71,7 +71,7 @@ async def test_job_details(job_url: str):
     print(f"\n=== Testing Job Details ===")
     print(f"URL: {job_url}")
     
-    manager = StealthBrowserManager()
+    manager = UnifiedBrowserManager()
     adapter = IndeedAdapter(manager)
     
     try:

@@ -11,7 +11,7 @@ from typing import Optional, Tuple
 from playwright.async_api import BrowserContext, Page
 
 try:
-    from browser import Stagehand, StagehandConfig
+    from core.browser import Stagehand, StagehandConfig
     STAGEHAND_AVAILABLE = True
 except ImportError:
     STAGEHAND_AVAILABLE = False

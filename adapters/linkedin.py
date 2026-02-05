@@ -865,9 +865,9 @@ async def test_linkedin():
         print("Set LINKEDIN_LI_AT environment variable")
         return
     
-    from browser.stealth_manager import StealthBrowserManager
+    from core import UnifiedBrowserManager
     
-    manager = StealthBrowserManager(prefer_local=True)
+    manager = UnifiedBrowserManager(prefer_local=True)
     adapter = LinkedInAdapter(manager, session_cookie=li_at)
     
     from adapters.base import SearchConfig

@@ -38,10 +38,10 @@ pytestmark = [
 @pytest.fixture(scope="module")
 async def browser_manager():
     """Create browser manager for live tests."""
-    from browser.stealth_manager import StealthBrowserManager
+    from core import UnifiedBrowserManager
     
     # Enable recording for debugging
-    manager = StealthBrowserManager(
+    manager = UnifiedBrowserManager(
         prefer_local=True,  # Use local for more control
         record_video=True,
         record_har=True
