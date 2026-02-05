@@ -83,6 +83,9 @@ class CUACampaign:
         """Discover jobs using hybrid approach."""
         logger.info("\n[Phase 1] Discovering jobs...")
         
+        import sys
+        from pathlib import Path
+        sys.path.insert(0, str(Path(__file__).parent.parent))
         from ai.exa_job_search import HybridJobDiscovery
         
         discovery = HybridJobDiscovery()
@@ -118,7 +121,7 @@ class CUACampaign:
         logger.info("\n[Phase 2] Applying with CUA Agent...")
         
         from adapters.handlers.browser_manager import BrowserManager
-        from ai.job_agent_cua import JobAgentCUA
+        from ai.job_agent_cua import JobAgentCUA  # sys.path already set above
         
         browser = BrowserManager(headless=False)
         
