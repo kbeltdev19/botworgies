@@ -611,6 +611,8 @@ class CampaignRunnerV2:
             logger.info(f"✅ SUCCESS: {result.get('confirmation_id', 'N/A')}")
         else:
             logger.warning(f"❌ FAILED: {result.get('error', 'Unknown error')}")
+        
+        return result
     
     async def _apply_direct_ats(self, job) -> Dict:
         """Apply to a Direct ATS job using Visual Form Agent."""
