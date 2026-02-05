@@ -53,7 +53,7 @@ class CampaignConfig:
     output_dir: Path = field(default_factory=lambda: Path("./campaign_output"))
     save_screenshots: bool = True
     generate_report: bool = True
-    use_unified_adapter: bool = True  # Use new AI-powered adapter
+    use_unified_adapter: bool = False  # Use legacy adapters (unified requires OpenAI)
 
 
 @dataclass

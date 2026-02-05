@@ -1,0 +1,18 @@
+
+======================================================================
+CAMPAIGN REPORT: Kevin Beltran - ServiceNow 1000 Applications
+======================================================================
+
+Duration: 5.0 minutes
+
+SUMMARY:
+  Total Jobs Found: 0
+  Attempted: 0
+  Successful: 0
+  Failed: 0
+  Skipped: 0
+  Success Rate: 0.0%
+
+PLATFORM BREAKDOWN:
+
+======================================================================

@@ -69,7 +69,7 @@ class UnifiedBrowserManager:
         # Navigate
         await page.goto("https://example.com")
         
-        # AI-powered actions
+        # AI-powered actions (requires OpenAI API key)
         await page.act("click the apply button")
         
         # Extract data
@@ -83,7 +83,7 @@ class UnifiedBrowserManager:
         api_key: Optional[str] = None,
         project_id: Optional[str] = None,
         model_api_key: Optional[str] = None,
-        model_name: str = "moonshot-v1-8k-vision-preview",
+        model_name: str = "gpt-4o",  # Stagehand works best with OpenAI models
         env: str = "BROWSERBASE"
     ):
         """
@@ -92,8 +92,8 @@ class UnifiedBrowserManager:
         Args:
             api_key: BrowserBase API key (or from BROWSERBASE_API_KEY env)
             project_id: BrowserBase project ID (or from BROWSERBASE_PROJECT_ID env)
-            model_api_key: Model API key (or from MOONSHOT_API_KEY env)
-            model_name: Model name to use
+            model_api_key: OpenAI API key for AI features (or from OPENAI_API_KEY env)
+            model_name: Model name to use (gpt-4o recommended for Stagehand)
             env: "BROWSERBASE" or "LOCAL"
         """
         if not STAGEHAND_AVAILABLE:
@@ -103,7 +103,8 @@ class UnifiedBrowserManager:
         
         self.api_key = api_key or os.getenv("BROWSERBASE_API_KEY")
         self.project_id = project_id or os.getenv("BROWSERBASE_PROJECT_ID")
-        self.model_api_key = model_api_key or os.getenv("MOONSHOT_API_KEY")
+        # Stagehand AI features work best with OpenAI, not Moonshot
+        self.model_api_key = model_api_key or os.getenv("OPENAI_API_KEY") or os.getenv("MOONSHOT_API_KEY")
         self.model_name = model_name
         self.env = env
         
@@ -115,17 +116,22 @@ class UnifiedBrowserManager:
         if not self.project_id:
             logger.warning("BROWSERBASE_PROJECT_ID not set")
         if not self.model_api_key:
-            logger.warning("MOONSHOT_API_KEY not set")
+            logger.warning("OPENAI_API_KEY not set - AI features (act/extract/observe) will not work")
     
     async def init(self):
         """Initialize the browser manager."""
-        self._config = StagehandConfig(
-            env=self.env,
-            api_key=self.api_key,
-            project_id=self.project_id,
-            model_name=self.model_name,
-            model_client_options={"apiKey": self.model_api_key}
-        )
+        # Build config - only include model options if API key is available
+        config_args = {
+            "env": self.env,
+            "api_key": self.api_key,
+            "project_id": self.project_id,
+        }
+        
+        if self.model_api_key:
+            config_args["model_name"] = self.model_name
+            config_args["model_client_options"] = {"apiKey": self.model_api_key}
+        
+        self._config = StagehandConfig(**config_args)
         logger.info(f"UnifiedBrowserManager initialized ({self.env} mode)")
         return self
     
@@ -142,20 +148,24 @@ class UnifiedBrowserManager:
         if not self._config:
             await self.init()
         
-        stagehand = Stagehand(config=self._config)
-        await stagehand.init()
-        
-        session = BrowserSession(
-            session_id=stagehand.session_id or f"session_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
-            stagehand=stagehand,
-            page=stagehand.page,
-            metadata={"platform": platform}
-        )
-        
-        self._sessions[session.session_id] = session
-        logger.info(f"Created browser session: {session.session_id}")
-        
-        return session
+        try:
+            stagehand = Stagehand(config=self._config)
+            await stagehand.init()
+            
+            session = BrowserSession(
+                session_id=stagehand.session_id or f"session_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
+                stagehand=stagehand,
+                page=stagehand.page,
+                metadata={"platform": platform}
+            )
+            
+            self._sessions[session.session_id] = session
+            logger.info(f"Created browser session: {session.session_id}")
+            
+            return session
+        except Exception as e:
+            logger.error(f"Failed to create session: {e}")
+            raise
     
     async def get_session(self, session_id: str) -> Optional[BrowserSession]:
         """Get an existing session by ID."""
