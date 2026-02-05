@@ -313,23 +313,18 @@ class CampaignRunner:
         """Apply to a job with retry logic."""
         for attempt in range(self.config.retry_attempts):
             try:
-                if self.config.use_unified_adapter:
-                    # Use new unified adapter
-                    adapter = UnifiedPlatformAdapter(
-                        user_profile=self.config.applicant_profile,
-                        browser_manager=self.browser,
-                        ai_service=self.ai
-                    )
-                    result = await adapter.apply(job, self.config.resume)
-                else:
-                    # Use legacy adapter
-                    adapter = get_adapter(job.platform.value, self.browser)
-                    result = await adapter.apply_to_job(
-                        job=job,
-                        resume=self.config.resume,
-                        profile=self.config.applicant_profile,
-                        auto_submit=self.config.auto_submit
-                    )
+                # Always use legacy adapters for now - unified adapter requires OpenAI
+                from adapters import get_adapter
+                
+                platform_str = job.platform.value if hasattr(job.platform, 'value') else str(job.platform)
+                adapter = get_adapter(platform_str, self.browser, use_unified=False)
+                
+                result = await adapter.apply_to_job(
+                    job=job,
+                    resume=self.config.resume,
+                    profile=self.config.applicant_profile,
+                    auto_submit=self.config.auto_submit
+                )
                 
                 if result.success:
                     logger.info(f"✅ Application successful! Confirmation: {result.confirmation_id}")
