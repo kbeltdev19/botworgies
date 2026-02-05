@@ -192,7 +192,11 @@ class CampaignRunner:
             logger.info(f"📁 Loading jobs from file: {self.config.job_file}")
             try:
                 data = json.loads(Path(self.config.job_file).read_text())
-                file_jobs = data.get('jobs', [])
+                # Handle both list format and dict with 'jobs' key
+                if isinstance(data, list):
+                    file_jobs = data
+                else:
+                    file_jobs = data.get('jobs', [])
                 for job_data in file_jobs:
                     all_jobs.append(JobPosting(
                         id=job_data.get('id', f"file_{len(all_jobs)}"),
