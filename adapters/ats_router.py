@@ -270,8 +270,14 @@ class ATSRouter:
         start_time = time.time()
         
         try:
-            # Route to appropriate handler
-            if category == PlatformCategory.DIRECT_APPLY:
+            # Try company-specific handler first
+            from .company_handlers import CompanySpecificHandler
+            company_handler = CompanySpecificHandler(self.browser_manager)
+            
+            if company_handler.detect_company(job.url):
+                logger.info(f"🏢 Using company-specific handler for {job.company}")
+                result = await company_handler.apply(job, resume, profile, auto_submit)
+            elif category == PlatformCategory.DIRECT_APPLY:
                 result = await self._handle_direct_apply(job, resume, profile, auto_submit)
             elif category == PlatformCategory.NATIVE_FLOW:
                 result = await self._handle_native_flow(job, resume, profile, auto_submit)
