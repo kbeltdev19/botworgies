@@ -42,7 +42,7 @@ from .remoteok import RemoteOKAdapter
 from .remotive import RemotiveAdapter
 from .usajobs import USAJobsAdapter
 from .weworkremotely import WeWorkRemotelyAdapter
-from .hn_jobs import HackerNewsAdapter
+from .hn_jobs import HNJobsAdapter as HackerNewsAdapter
 
 
 # Platform URL patterns for detection

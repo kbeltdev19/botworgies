@@ -1,24 +1,31 @@
+#!/usr/bin/env python3
 """
-Unified Campaign Runner
+Unified Campaign Runner - Updated for Consolidated Architecture
 
-Replaces 20+ individual campaign files with a single configurable runner.
-Campaigns are defined via YAML configuration files, not code.
+Uses the new unified core modules:
+- core.browser.UnifiedBrowserManager (Stagehand)
+- core.ai.UnifiedAIService (Moonshot)
+- adapters.UnifiedPlatformAdapter (AI-powered)
 """
 
 import asyncio
 import logging
 import random
 import yaml
+import json
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Any, Tuple
 
-from adapters.base import JobPosting, UserProfile, Resume, ApplicationResult, SearchConfig, PlatformType
-from .adapter_base import UnifiedJobAdapter
-from monitoring.application_monitor import get_monitor
-from monitoring.iteration_engine import get_iteration_engine
-from browser.stealth_manager import StealthBrowserManager
+# New unified imports
+from core.models import (
+    JobPosting, UserProfile, Resume, ApplicationResult, 
+    SearchConfig, PlatformType, ApplicationStatus
+)
+from core.browser import UnifiedBrowserManager
+from core.ai import UnifiedAIService
+from adapters import UnifiedPlatformAdapter, get_adapter
 
 logger = logging.getLogger(__name__)
 
@@ -26,47 +33,27 @@ logger = logging.getLogger(__name__)
 @dataclass
 class CampaignConfig:
     """Configuration for a job application campaign."""
-    # Identity
     name: str
     applicant_profile: UserProfile
     resume: Resume
-    
-    # Job search criteria
     search_criteria: SearchConfig
     platforms: List[str] = field(default_factory=lambda: ['greenhouse', 'lever'])
-    
-    # Limits
-    max_applications: int = 100
+    max_applications: int = 10  # Conservative default
     max_per_platform: Optional[int] = None
-    
-    # Application settings
     auto_submit: bool = False
     min_match_score: float = 0.6
     exclude_companies: List[str] = field(default_factory=list)
     exclude_titles: List[str] = field(default_factory=list)
-    
-    # Rate limiting
     delay_between_applications: Tuple[int, int] = (30, 60)
-    delay_between_platforms: int = 300  # 5 minutes
-    max_concurrent: int = 1  # Sequential by default for safety
-    
-    # Retry settings
+    delay_between_platforms: int = 300
+    max_concurrent: int = 1
     retry_attempts: int = 3
     retry_delay: int = 300
-    
-    # Features
-    enable_iteration: bool = True
-    enable_monitoring: bool = True
-    stop_on_low_success_rate: bool = True
-    min_success_rate: float = 0.3
-    
-    # Job source
-    job_file: Optional[str] = None  # Path to JSON file with pre-scraped jobs
-    
-    # Output
+    job_file: Optional[str] = None
     output_dir: Path = field(default_factory=lambda: Path("./campaign_output"))
     save_screenshots: bool = True
     generate_report: bool = True
+    use_unified_adapter: bool = True  # Use new AI-powered adapter
 
 
 @dataclass
@@ -111,122 +98,66 @@ class CampaignResult:
 
 class CampaignRunner:
     """
-    Unified campaign runner for job applications.
-    
-    Replaces individual campaign files (matt_1000.py, kevin_1000.py, etc.)
-    with a single configurable runner.
+    Unified campaign runner using the new consolidated architecture.
     
     Usage:
-        # Load campaign from YAML
-        config = CampaignRunner.load_config("campaigns/matt_edwards.yaml")
-        
-        # Run campaign
+        config = CampaignRunner.load_config("campaigns/configs/my_campaign.yaml")
         runner = CampaignRunner(config)
         result = await runner.run()
-        
-        # Save results
-        runner.save_results(result)
-    
-    Example YAML config:
-        ```yaml
-        name: "Matt Edwards - 1000 Applications"
-        
-        applicant:
-          first_name: "Matt"
-          last_name: "Edwards"
-          email: "matt@example.com"
-          phone: "555-123-4567"
-          linkedin_url: "https://linkedin.com/in/mattedwards"
-          years_experience: 5
-          custom_answers:
-            salary_expectations: "$100k - $130k"
-            notice_period: "2 weeks"
-        
-        resume:
-          path: "/path/to/resume.pdf"
-        
-        search:
-          roles:
-            - "Software Engineer"
-            - "Backend Developer"
-          locations:
-            - "Remote"
-            - "San Francisco"
-          required_keywords:
-            - "Python"
-            - "AWS"
-        
-        platforms:
-          - greenhouse
-          - lever
-          - linkedin
-        
-        limits:
-          max_applications: 1000
-          max_per_platform: 400
-        
-        settings:
-          auto_submit: false
-          delay_between_applications: [30, 60]
-          retry_attempts: 3
-        ```
     """
     
     def __init__(self, config: CampaignConfig):
         self.config = config
-        self.browser = StealthBrowserManager()
-        self.monitor = get_monitor() if config.enable_monitoring else None
-        self.iterator = get_iteration_engine() if config.enable_iteration else None
+        self.browser = UnifiedBrowserManager()
+        self.ai = UnifiedAIService()
+        self.results: List[ApplicationResult] = []
+        self.platform_counts: Dict[str, int] = {}
         
         # Create output directory
         self.config.output_dir.mkdir(parents=True, exist_ok=True)
-        
-        # Stats
-        self.results: List[ApplicationResult] = []
-        self.platform_counts: Dict[str, int] = {}
     
     async def run(self) -> CampaignResult:
         """Execute the campaign."""
         start_time = datetime.now()
-        logger.info(f"Starting campaign: {self.config.name}")
-        logger.info(f"Configuration: {self.config}")
+        logger.info(f"🚀 Starting campaign: {self.config.name}")
+        logger.info(f"👤 Applicant: {self.config.applicant_profile.full_name}")
+        logger.info(f"🎯 Max Applications: {self.config.max_applications}")
+        logger.info(f"✅ Auto-Submit: {self.config.auto_submit}")
         
-        # 1. Search for jobs across platforms
-        all_jobs = await self._search_all_platforms()
+        # Initialize browser
+        await self.browser.init()
         
-        # 2. Filter and rank jobs
-        filtered_jobs = self._filter_jobs(all_jobs)
-        
-        # 3. Apply to each job
-        for i, job in enumerate(filtered_jobs[:self.config.max_applications]):
-            logger.info(f"\n[{i+1}/{min(len(filtered_jobs), self.config.max_applications)}] Processing: {job.title} at {job.company}")
+        try:
+            # 1. Search for jobs
+            all_jobs = await self._search_all_platforms()
             
-            # Check if we should stop due to low success rate
-            if self._should_stop_early():
-                logger.warning("Stopping campaign due to low success rate")
-                break
+            # 2. Filter and rank jobs
+            filtered_jobs = self._filter_jobs(all_jobs)
             
-            # Apply with retry
-            result = await self._apply_with_retry(job)
-            self.results.append(result)
+            # 3. Apply to each job
+            for i, job in enumerate(filtered_jobs[:self.config.max_applications]):
+                logger.info(f"\n[{i+1}/{min(len(filtered_jobs), self.config.max_applications)}] {job.title} at {job.company}")
+                
+                # Apply with retry
+                result = await self._apply_with_retry(job)
+                self.results.append(result)
+                
+                # Update stats
+                platform_key = job.platform.value if hasattr(job.platform, 'value') else str(job.platform)
+                self.platform_counts[platform_key] = self.platform_counts.get(platform_key, 0) + 1
+                
+                # Log progress
+                self._log_progress(i + 1)
+                
+                # Rate limiting
+                if i < len(filtered_jobs) - 1 and i < self.config.max_applications - 1:
+                    delay = random.randint(*self.config.delay_between_applications)
+                    logger.info(f"⏱️  Waiting {delay}s before next application...")
+                    await asyncio.sleep(delay)
             
-            # Update platform count
-            self.platform_counts[job.platform.value] = self.platform_counts.get(job.platform.value, 0) + 1
-            
-            # Apply iteration learnings if failed
-            if not result.success and self.iterator:
-                analysis = self.iterator.analyze_failure(result.application_id if hasattr(result, 'application_id') else "unknown")
-                if analysis:
-                    logger.info(f"Failure analysis: {analysis.suggested_fix}")
-            
-            # Log progress
-            self._log_progress(i + 1)
-            
-            # Rate limiting
-            if i < len(filtered_jobs) - 1:  # Don't delay after last
-                delay = random.randint(*self.config.delay_between_applications)
-                logger.info(f"Waiting {delay}s before next application...")
-                await asyncio.sleep(delay)
+        finally:
+            # Cleanup
+            await self.browser.close_all()
         
         end_time = datetime.now()
         
@@ -238,7 +169,7 @@ class CampaignRunner:
             total_jobs=len(filtered_jobs),
             attempted=len(self.results),
             successful=sum(1 for r in self.results if r.success),
-            failed=sum(1 for r in self.results if not r.success and r.status.value == 'error'),
+            failed=sum(1 for r in self.results if not r.success),
             skipped=len(filtered_jobs) - len(self.results),
             results=self.results,
             platform_stats=self._calculate_platform_stats()
@@ -248,7 +179,6 @@ class CampaignRunner:
         if self.config.generate_report:
             self._save_results(result)
         
-        # Print summary
         self._print_summary(result)
         
         return result
@@ -257,13 +187,11 @@ class CampaignRunner:
         """Search for jobs across all configured platforms."""
         all_jobs = []
         
-        # Try to load from job file first (if specified in config)
-        job_file = getattr(self.config, 'job_file', None)
-        if job_file and Path(job_file).exists():
-            logger.info(f"Loading jobs from file: {job_file}")
+        # Try to load from job file first
+        if self.config.job_file and Path(self.config.job_file).exists():
+            logger.info(f"📁 Loading jobs from file: {self.config.job_file}")
             try:
-                import json
-                data = json.loads(Path(job_file).read_text())
+                data = json.loads(Path(self.config.job_file).read_text())
                 file_jobs = data.get('jobs', [])
                 for job_data in file_jobs:
                     all_jobs.append(JobPosting(
@@ -277,24 +205,29 @@ class CampaignRunner:
                         easy_apply=job_data.get('easy_apply', True),
                         remote=job_data.get('is_remote', True)
                     ))
-                logger.info(f"Loaded {len(all_jobs)} jobs from file")
+                logger.info(f"✅ Loaded {len(all_jobs)} jobs from file")
                 return all_jobs
             except Exception as e:
-                logger.error(f"Failed to load job file: {e}")
+                logger.error(f"❌ Failed to load job file: {e}")
         
-        # Fall back to API search
+        # Search via adapters
         for platform_name in self.config.platforms:
             try:
-                logger.info(f"Searching {platform_name}...")
+                logger.info(f"🔍 Searching {platform_name}...")
                 
-                # Get adapter for platform
-                from adapters import get_adapter
-                adapter = get_adapter(platform_name, self.browser)
+                if self.config.use_unified_adapter:
+                    # Use new unified adapter
+                    adapter = UnifiedPlatformAdapter(
+                        user_profile=self.config.applicant_profile,
+                        browser_manager=self.browser,
+                        ai_service=self.ai
+                    )
+                else:
+                    # Use legacy adapter
+                    adapter = get_adapter(platform_name, self.browser)
                 
-                # Search
                 jobs = await adapter.search_jobs(self.config.search_criteria)
-                
-                logger.info(f"Found {len(jobs)} jobs on {platform_name}")
+                logger.info(f"✅ Found {len(jobs)} jobs on {platform_name}")
                 all_jobs.extend(jobs)
                 
                 # Delay between platforms
@@ -302,10 +235,10 @@ class CampaignRunner:
                     await asyncio.sleep(self.config.delay_between_platforms)
                     
             except Exception as e:
-                logger.error(f"Failed to search {platform_name}: {e}")
+                logger.error(f"❌ Failed to search {platform_name}: {e}")
                 continue
         
-        logger.info(f"Total jobs found: {len(all_jobs)}")
+        logger.info(f"📊 Total jobs found: {len(all_jobs)}")
         return all_jobs
     
     def _filter_jobs(self, jobs: List[JobPosting]) -> List[JobPosting]:
@@ -330,8 +263,8 @@ class CampaignRunner:
                 continue
             
             # Check platform limit
-            platform_count = self.platform_counts.get(job.platform.value, 0)
-            if self.config.max_per_platform and platform_count >= self.config.max_per_platform:
+            platform_key = job.platform.value if hasattr(job.platform, 'value') else str(job.platform)
+            if self.config.max_per_platform and self.platform_counts.get(platform_key, 0) >= self.config.max_per_platform:
                 continue
             
             # Calculate match score
@@ -341,10 +274,10 @@ class CampaignRunner:
             
             filtered.append(job)
         
-        # Sort by match score (descending)
+        # Sort by match score
         filtered.sort(key=lambda j: self._calculate_match_score(j), reverse=True)
         
-        logger.info(f"Filtered to {len(filtered)} jobs")
+        logger.info(f"🎯 Filtered to {len(filtered)} jobs")
         return filtered
     
     def _calculate_match_score(self, job: JobPosting) -> float:
@@ -376,65 +309,49 @@ class CampaignRunner:
         """Apply to a job with retry logic."""
         for attempt in range(self.config.retry_attempts):
             try:
-                # Use working legacy adapters for now
-                # Unified adapters will be swapped in once fully tested
-                adapter = self._get_working_adapter(job)
+                if self.config.use_unified_adapter:
+                    # Use new unified adapter
+                    adapter = UnifiedPlatformAdapter(
+                        user_profile=self.config.applicant_profile,
+                        browser_manager=self.browser,
+                        ai_service=self.ai
+                    )
+                    result = await adapter.apply(job, self.config.resume)
+                else:
+                    # Use legacy adapter
+                    adapter = get_adapter(job.platform.value, self.browser)
+                    result = await adapter.apply_to_job(
+                        job=job,
+                        resume=self.config.resume,
+                        profile=self.config.applicant_profile,
+                        auto_submit=self.config.auto_submit
+                    )
                 
-                result = await adapter.apply_to_job(
-                    job=job,
-                    resume=self.config.resume,
-                    profile=self.config.applicant_profile,
-                    auto_submit=self.config.auto_submit
-                )
-                
-                if result.success or result.status.value != 'error':
+                if result.success:
+                    logger.info(f"✅ Application successful! Confirmation: {result.confirmation_id}")
                     return result
-                
-                # Failed, but not an error - don't retry
-                if attempt == 0:
-                    return result
+                else:
+                    logger.warning(f"⚠️  Application failed: {result.message}")
+                    if attempt == 0:
+                        return result
                     
             except Exception as e:
-                logger.error(f"Attempt {attempt + 1} failed: {e}")
+                logger.error(f"❌ Attempt {attempt + 1} failed: {e}")
                 
                 if attempt < self.config.retry_attempts - 1:
-                    logger.info(f"Waiting {self.config.retry_delay}s before retry...")
+                    logger.info(f"⏱️  Waiting {self.config.retry_delay}s before retry...")
                     await asyncio.sleep(self.config.retry_delay)
         
-        from adapters.base import ApplicationStatus
         return ApplicationResult(
             status=ApplicationStatus.ERROR,
             message=f"Failed after {self.config.retry_attempts} attempts"
         )
     
-    def _get_working_adapter(self, job: JobPosting):
-        """
-        Get the appropriate working adapter for a job.
-        
-        Uses ATSRouter which has proper platform detection and handler routing.
-        """
-        from adapters.ats_router import ATSRouter
-        return ATSRouter(self.browser)
-    
-    def _should_stop_early(self) -> bool:
-        """Check if campaign should stop due to low success rate."""
-        if not self.config.stop_on_low_success_rate:
-            return False
-        
-        if len(self.results) < 10:  # Need minimum sample size
-            return False
-        
-        recent = self.results[-10:]
-        success_rate = sum(1 for r in recent if r.success) / len(recent)
-        
-        return success_rate < self.config.min_success_rate
-    
     def _log_progress(self, current: int):
         """Log campaign progress."""
         successful = sum(1 for r in self.results if r.success)
         rate = successful / len(self.results) * 100 if self.results else 0
-        
-        logger.info(f"Progress: {current} processed, {successful} successful ({rate:.1f}%)")
+        logger.info(f"📈 Progress: {current} processed, {successful} successful ({rate:.1f}%)")
     
     def _calculate_platform_stats(self) -> Dict[str, Dict[str, Any]]:
         """Calculate statistics per platform."""
@@ -452,7 +369,6 @@ class CampaignRunner:
             else:
                 stats[platform]['failed'] += 1
         
-        # Calculate rates
         for platform, data in stats.items():
             data['success_rate'] = data['successful'] / data['attempted'] if data['attempted'] > 0 else 0
         
@@ -461,17 +377,17 @@ class CampaignRunner:
     def _save_results(self, result: CampaignResult):
         """Save campaign results to file."""
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        safe_name = self.config.name.replace(' ', '_').replace('/', '_')
         
         # JSON results
-        json_path = self.config.output_dir / f"{self.config.name.replace(' ', '_')}_{timestamp}.json"
-        import json
+        json_path = self.config.output_dir / f"{safe_name}_{timestamp}.json"
         json_path.write_text(json.dumps(result.to_dict(), indent=2))
         
         # Text summary
-        summary_path = self.config.output_dir / f"{self.config.name.replace(' ', '_')}_{timestamp}.txt"
+        summary_path = self.config.output_dir / f"{safe_name}_{timestamp}.txt"
         summary_path.write_text(self._generate_text_report(result))
         
-        logger.info(f"Results saved to {self.config.output_dir}")
+        logger.info(f"💾 Results saved to {self.config.output_dir}")
     
     def _generate_text_report(self, result: CampaignResult) -> str:
         """Generate text report."""
@@ -492,28 +408,28 @@ SUMMARY:
 
 PLATFORM BREAKDOWN:
 """
-        
         for platform, stats in result.platform_stats.items():
             report += f"  {platform:15s}: {stats['successful']}/{stats['attempted']} ({stats['success_rate']*100:.1f}%)\n"
         
         report += "\n" + "="*70 + "\n"
-        
         return report
     
     def _print_summary(self, result: CampaignResult):
         """Print campaign summary to console."""
         print("\n" + "="*70)
-        print(f"CAMPAIGN COMPLETE: {result.campaign_name}")
+        print(f"🎉 CAMPAIGN COMPLETE: {result.campaign_name}")
         print("="*70)
-        print(f"Duration: {result.duration_seconds / 60:.1f} minutes")
-        print(f"Success Rate: {result.success_rate * 100:.1f}%")
-        print(f"Successful: {result.successful}/{result.attempted}")
+        print(f"⏱️  Duration: {result.duration_seconds / 60:.1f} minutes")
+        print(f"✅ Success Rate: {result.success_rate * 100:.1f}%")
+        print(f"📝 Successful: {result.successful}/{result.attempted}")
         print("="*70 + "\n")
     
     @staticmethod
     def load_config(path: Path) -> CampaignConfig:
         """Load campaign configuration from YAML file."""
         data = yaml.safe_load(path.read_text())
+        
+        # Handle both old and new YAML formats
         
         # Build SearchConfig
         search_data = data.get('search', {})
@@ -525,98 +441,58 @@ PLATFORM BREAKDOWN:
             easy_apply_only=search_data.get('easy_apply_only', False),
         )
         
-        # Build UserProfile
+        # Build UserProfile (support both old and new formats)
         applicant_data = data.get('applicant', {})
+        if not applicant_data:
+            # Old format - top level fields
+            applicant_data = {
+                'first_name': data.get('name', '').split()[0] if data.get('name') else '',
+                'last_name': ' '.join(data.get('name', '').split()[1:]) if data.get('name') else '',
+                'email': data.get('email', ''),
+                'phone': data.get('phone', ''),
+                'location': data.get('location', ''),
+            }
+        
         profile = UserProfile(
-            first_name=applicant_data['first_name'],
-            last_name=applicant_data['last_name'],
-            email=applicant_data['email'],
+            first_name=applicant_data.get('first_name', ''),
+            last_name=applicant_data.get('last_name', ''),
+            email=applicant_data.get('email', ''),
             phone=applicant_data.get('phone', ''),
-            linkedin_url=applicant_data.get('linkedin_url'),
+            linkedin_url=applicant_data.get('linkedin_url') or applicant_data.get('linkedin', ''),
+            location=applicant_data.get('location', ''),
             years_experience=applicant_data.get('years_experience'),
             custom_answers=applicant_data.get('custom_answers', {})
         )
         
         # Build Resume
         resume_data = data.get('resume', {})
+        if not resume_data:
+            # Old format
+            resume_path = data.get('resume_path', '')
+        else:
+            resume_path = resume_data.get('path', '')
+        
         resume = Resume(
-            file_path=resume_data['path'],
-            raw_text="",  # Will be loaded from file
+            file_path=resume_path,
+            raw_text="",
             parsed_data={}
         )
         
-        # Build CampaignConfig
-        limits = data.get('limits', {})
-        settings = data.get('settings', {})
-        output = data.get('output', {})
+        # Get strategy settings
+        strategy = data.get('strategy', {})
+        targets = data.get('targets', {})
         
         return CampaignConfig(
-            name=data['name'],
+            name=data.get('name', 'Unnamed Campaign'),
             applicant_profile=profile,
             resume=resume,
             search_criteria=search_criteria,
-            platforms=data.get('platforms', ['greenhouse', 'lever']),
-            max_applications=limits.get('max_applications', 100),
-            max_per_platform=limits.get('max_per_platform'),
-            auto_submit=settings.get('auto_submit', False),
-            delay_between_applications=settings.get('delay_between_applications', [30, 60]),
-            retry_attempts=settings.get('retry_attempts', 3),
-            job_file=data.get('job_file'),
-            output_dir=Path(output.get('dir', './campaign_output')),
-            save_screenshots=output.get('save_screenshots', True),
-            generate_report=output.get('generate_report', True)
+            platforms=search_data.get('platforms', ['greenhouse', 'lever']),
+            max_applications=targets.get('total', 10),
+            max_per_platform=targets.get('daily_max'),
+            auto_submit=strategy.get('auto_submit', False),
+            delay_between_applications=strategy.get('delay_range', [30, 60]),
+            output_dir=Path(data.get('output', {}).get('directory', './campaign_output')),
+            save_screenshots=data.get('output', {}).get('save_screenshots', True),
+            job_file=data.get('job_file')
         )
-
-
-# Example campaign YAML that replaces entire Python files:
-EXAMPLE_CAMPAIGN_YAML = """
-name: "Software Engineer - Remote"
-
-applicant:
-  first_name: "Your"
-  last_name: "Name"
-  email: "your.email@example.com"
-  phone: "555-123-4567"
-  linkedin_url: "https://linkedin.com/in/yourprofile"
-  years_experience: 5
-  custom_answers:
-    salary_expectations: "$100,000 - $130,000"
-    notice_period: "2 weeks"
-    willing_to_relocate: "No"
-
-resume:
-  path: "/path/to/your/resume.pdf"
-
-search:
-  roles:
-    - "Software Engineer"
-    - "Backend Engineer"
-    - "Full Stack Developer"
-  locations:
-    - "Remote"
-    - "San Francisco"
-    - "New York"
-  required_keywords:
-    - "Python"
-    - "AWS"
-  exclude_keywords:
-    - "Senior Staff"
-    - "Principal"
-
-platforms:
-  - greenhouse
-  - lever
-  - ashby
-  - linkedin
-
-limits:
-  max_applications: 100
-  max_per_platform: 40
-
-settings:
-  auto_submit: false
-  delay_between_applications: [30, 60]
-  retry_attempts: 3
-  stop_on_low_success_rate: true
-  min_success_rate: 0.3
-"""

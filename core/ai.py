@@ -10,6 +10,7 @@ import os
 import json
 import asyncio
 import logging
+import ssl
 from typing import Optional, Dict, Any, List
 from dataclasses import dataclass
 from datetime import datetime
@@ -17,6 +18,11 @@ from datetime import datetime
 import aiohttp
 
 logger = logging.getLogger(__name__)
+
+# Create SSL context that skips verification (for development only)
+ssl_context = ssl.create_default_context()
+ssl_context.check_hostname = False
+ssl_context.verify_mode = ssl.CERT_NONE
 
 
 @dataclass
@@ -112,7 +118,8 @@ class UnifiedAIService:
         
         for attempt in range(self.max_retries):
             try:
-                async with aiohttp.ClientSession() as session:
+                connector = aiohttp.TCPConnector(ssl=ssl_context)
+                async with aiohttp.ClientSession(connector=connector) as session:
                     async with session.post(
                         f"{self.base_url}/chat/completions",
                         headers={"Authorization": f"Bearer {self.api_key}"},
