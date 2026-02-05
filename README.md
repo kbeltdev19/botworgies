@@ -1,159 +1,122 @@
-# Job Applier Bot 🚀
+# Job Applier - AI-Powered Job Application Automation
 
-Automated job application system with multi-platform scraping and intelligent form filling.
-
-## Features
-
-- **Multi-Platform Job Scraping**
-  - LinkedIn (public listings)
-  - Greenhouse API (100+ companies)
-  - HN Jobs (Who is Hiring threads)
-  - Lever, Ashby (coming soon)
-
-- **Automated Applications**
-  - Form auto-fill for Greenhouse jobs
-  - LinkedIn Easy Apply (requires `li_at` cookie)
-  - Resume upload and profile mapping
-
-- **Campaign Management**
-  - Create candidate profiles
-  - Track application status
-  - Batch processing with rate limiting
+> **Consolidated Version** - The codebase has been unified for easier development.
 
 ## Quick Start
 
-### 1. Deploy to Fly.io
-
 ```bash
-# Install Fly CLI
-curl -L https://fly.io/install.sh | sh
-
-# Login and deploy
-fly auth login
-fly deploy
-```
-
-### 2. Set Environment Variables
-
-```bash
-fly secrets set MOONSHOT_API_KEY=your_key
-fly secrets set JWT_SECRET=your_secret
-```
-
-### 3. Create a Campaign
-
-```bash
-# POST /auth/register - Create account
-curl -X POST https://job-applier-api.fly.dev/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{"email":"you@email.com","password":"pass123"}'
-
-# POST /auth/login - Get token
-curl -X POST https://job-applier-api.fly.dev/auth/login \
-  -d "username=you@email.com&password=pass123"
-
-# POST /jobs/search - Find jobs
-curl -X POST https://job-applier-api.fly.dev/jobs/search \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{"query":"software engineer","location":"remote","limit":50}'
-```
-
-## Local Development
-
-```bash
-# Clone and setup
-git clone https://github.com/kbeltdev19/botworgies.git
-cd botworgies
-python -m venv venv
-source venv/bin/activate
+# Install dependencies
 pip install -r requirements.txt
-playwright install chromium
 
-# Run API
-uvicorn api.main:app --reload --port 8000
+# Set environment variables
+export MOONSHOT_API_KEY="your-key"
+export BROWSERBASE_API_KEY="your-key"
+export BROWSERBASE_PROJECT_ID="your-project"
 
-# Run batch applications
-python -c "from campaigns.runner import run_campaign; run_campaign('matt_edwards.json')"
+# Run the server
+python main.py server
+
+# Or apply to a single job
+python main.py apply \
+  --job-url "https://boards.greenhouse.io/..." \
+  --profile path/to/profile.yaml \
+  --resume path/to/resume.pdf
 ```
 
-## Campaign Configuration
+## What's New (Consolidated)
 
-Create a JSON file in `campaigns/`:
-
-```json
-{
-  "campaign_id": "your_campaign",
-  "candidate": {
-    "name": "John Doe",
-    "email": "john@email.com",
-    "linkedin": "https://linkedin.com/in/johndoe"
-  },
-  "resume_path": "data/resume.pdf",
-  "search_criteria": {
-    "roles": ["software engineer", "backend developer"],
-    "locations": ["Remote", "San Francisco"],
-    "salary_min": 100000,
-    "easy_apply_only": true
-  },
-  "application_settings": {
-    "max_applications_per_day": 50,
-    "max_total_applications": 200
-  }
-}
-```
-
-## API Endpoints
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/health` | GET | Health check |
-| `/auth/register` | POST | Create account |
-| `/auth/login` | POST | Get JWT token |
-| `/jobs/search` | POST | Search jobs |
-| `/apply` | POST | Apply to single job |
-| `/apply/batch` | POST | Batch applications |
-| `/resume/upload` | POST | Upload resume |
-| `/applications` | GET | List applications |
-
-## Platforms Supported
-
-| Platform | Search | Apply | Notes |
-|----------|--------|-------|-------|
-| LinkedIn | ✅ Public | ⚠️ Needs cookie | `li_at` required for Easy Apply |
-| Greenhouse | ✅ API | ✅ Auto-fill | 100+ companies |
-| HN Jobs | ✅ Algolia | ❌ External | Links to company sites |
-| Lever | 🔄 WIP | 🔄 WIP | API format changed |
+- **Unified Core Module** (`core/`) - Single source of truth for models, browser, AI
+- **BrowserBase Stagehand** - AI-powered browser automation
+- **Unified Adapter** - One adapter handles all platforms via AI
+- **Simplified Architecture** - Reduced from 311 Python files to ~50 core files
 
 ## Architecture
 
 ```
-┌─────────────────┐     ┌──────────────────┐
-│   Campaign      │────▶│  Job Scraper     │
-│   Config        │     │  (Multi-source)  │
-└─────────────────┘     └────────┬─────────┘
-                                 │
-                                 ▼
-┌─────────────────┐     ┌──────────────────┐
-│   Application   │◀────│  Job Queue       │
-│   Pipeline      │     │  (Deduplicated)  │
-└────────┬────────┘     └──────────────────┘
-         │
-         ▼
-┌─────────────────┐     ┌──────────────────┐
-│   Browser       │────▶│  Form Filler     │
-│   (Playwright)  │     │  (Auto-detect)   │
-└─────────────────┘     └──────────────────┘
+core/           # Foundation: models, browser, AI, config
+adapters/       # Platform integrations (use UnifiedPlatformAdapter)
+api/            # FastAPI endpoints
+browser/        # Browser automation (Stagehand)
 ```
 
-## Rate Limits
+See [ARCHITECTURE.md](ARCHITECTURE.md) for detailed documentation.
 
-To avoid bans, the bot enforces:
+## Usage
 
-- 30-90 second delay between applications
-- Max 50 applications per day per platform
-- Human-like mouse movements and typing
-- Session rotation for high-volume
+### Python API
+
+```python
+from core import UnifiedBrowserManager, UserProfile
+from adapters import UnifiedPlatformAdapter
+
+async with UnifiedBrowserManager() as browser:
+    adapter = UnifiedPlatformAdapter(
+        user_profile=profile,
+        browser_manager=browser
+    )
+    
+    job = await adapter.get_job_details(job_url)
+    result = await adapter.apply(job, resume)
+```
+
+### Stagehand Direct
+
+```python
+from core import UnifiedBrowserManager
+
+async with UnifiedBrowserManager() as browser:
+    session = await browser.create_session()
+    page = session.page
+    
+    await page.goto("https://example.com")
+    await page.act("click the apply button")
+    data = await page.extract('{"title": "string"}')
+```
+
+## Environment Variables
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `MOONSHOT_API_KEY` | Yes | Moonshot AI API key |
+| `BROWSERBASE_API_KEY` | Yes | BrowserBase API key |
+| `BROWSERBASE_PROJECT_ID` | Yes | BrowserBase project ID |
+| `MODEL_NAME` | No | Model (default: moonshot-v1-8k-vision-preview) |
+| `BROWSER_ENV` | No | BROWSERBASE or LOCAL |
+
+## Project Structure
+
+```
+botworgies/
+├── core/               # Unified foundation
+├── adapters/           # Platform adapters
+├── api/                # FastAPI app
+├── browser/            # Browser automation
+├── campaigns/          # Campaign management
+├── tests/              # Test suite
+├── main.py             # CLI entry point
+└── ARCHITECTURE.md     # Detailed docs
+```
+
+## Legacy Code
+
+Old code has been archived to `archive/` for reference. The new unified system replaces:
+- `browser/stealth_manager.py` → `core.browser`
+- `ai/kimi_service.py` → `core.ai`
+- `ats_automation/handlers/` → `adapters.unified`
+- Multiple config files → `api.config`
+
+## Development
+
+```bash
+# Run tests
+pytest tests/ -v
+
+# Run specific test
+pytest tests/test_unified_system.py -v
+
+# Check types
+mypy core/ adapters/
+```
 
 ## License
 

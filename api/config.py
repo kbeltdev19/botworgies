@@ -1,23 +1,25 @@
 """
-Configuration module for Job Applier API.
-Centralizes all configurable constants and settings.
+Unified Configuration Module for Job Applier
+
+All configuration settings are centralized here.
+Import from this module: from api.config import config
 """
 
 import os
-from typing import List
+from typing import List, Optional
 from dataclasses import dataclass, field
 
 
 @dataclass
 class AppConfig:
-    """Application configuration."""
+    """Unified application configuration."""
 
-    # Server settings
+    # === Server Settings ===
     HOST: str = os.getenv("HOST", "0.0.0.0")
     PORT: int = int(os.getenv("PORT", "8080"))
     DEBUG: bool = os.getenv("DEBUG", "false").lower() == "true"
 
-    # CORS settings - MUST be configured for production
+    # === CORS Settings ===
     CORS_ORIGINS: List[str] = field(default_factory=lambda: [
         origin.strip() for origin in
         os.getenv("CORS_ORIGINS", "http://localhost:3000,https://job-applier.pages.dev").split(",")
@@ -25,43 +27,80 @@ class AppConfig:
     ])
     CORS_ALLOW_CREDENTIALS: bool = True
 
-    # Rate limiting
+    # === Rate Limiting ===
     DEFAULT_DAILY_LIMIT: int = int(os.getenv("DEFAULT_DAILY_LIMIT", "10"))
     MAX_DAILY_LIMIT: int = int(os.getenv("MAX_DAILY_LIMIT", "1000"))
 
-    # File upload
+    # === File Upload ===
     MAX_UPLOAD_SIZE_MB: int = int(os.getenv("MAX_UPLOAD_SIZE_MB", "10"))
     ALLOWED_EXTENSIONS: List[str] = field(default_factory=lambda: [".pdf", ".docx", ".txt"])
 
-    # Browser automation
+    # === API Keys ===
+    MOONSHOT_API_KEY: Optional[str] = os.getenv("MOONSHOT_API_KEY")
+    BROWSERBASE_API_KEY: Optional[str] = os.getenv("BROWSERBASE_API_KEY")
+    BROWSERBASE_PROJECT_ID: Optional[str] = os.getenv("BROWSERBASE_PROJECT_ID")
+    
+    # Model configuration
+    MODEL_NAME: str = os.getenv("MODEL_NAME", "moonshot-v1-8k-vision-preview")
+    MODEL_API_KEY: Optional[str] = os.getenv("MODEL_API_KEY") or os.getenv("MOONSHOT_API_KEY")
+
+    # === Browser Automation (Stagehand) ===
     BROWSER_TIMEOUT_MS: int = int(os.getenv("BROWSER_TIMEOUT_MS", "60000"))
     MAX_SEARCH_PAGES: int = int(os.getenv("MAX_SEARCH_PAGES", "5"))
-    MAX_APPLICATION_STEPS: int = int(os.getenv("MAX_APPLICATION_STEPS", "10"))
+    MAX_APPLICATION_STEPS: int = int(os.getenv("MAX_APPLICATION_STEPS", "25"))
     
-    # Local browser fallback settings
+    # Browser environment: "BROWSERBASE" or "LOCAL"
+    BROWSER_ENV: str = os.getenv("BROWSER_ENV", "BROWSERBASE")
     LOCAL_BROWSER_ENABLED: bool = os.getenv("LOCAL_BROWSER_ENABLED", "true").lower() == "true"
     MAX_LOCAL_BROWSERS: int = int(os.getenv("MAX_LOCAL_BROWSERS", "20"))
-    BROWSERBASE_COOLDOWN_MINUTES: int = int(os.getenv("BROWSERBASE_COOLDOWN_MINUTES", "5"))
     PREFER_LOCAL_BROWSER: bool = os.getenv("PREFER_LOCAL_BROWSER", "false").lower() == "true"
 
-    # AI service
+    # === AI Service ===
     AI_MAX_RETRIES: int = int(os.getenv("AI_MAX_RETRIES", "3"))
     AI_RETRY_DELAY_SECONDS: float = float(os.getenv("AI_RETRY_DELAY_SECONDS", "1.0"))
     AI_TIMEOUT_SECONDS: int = int(os.getenv("AI_TIMEOUT_SECONDS", "30"))
 
-    # Human-like delays (seconds)
+    # === Human-like Delays ===
     MIN_HUMAN_DELAY: float = float(os.getenv("MIN_HUMAN_DELAY", "1.0"))
     MAX_HUMAN_DELAY: float = float(os.getenv("MAX_HUMAN_DELAY", "3.0"))
     MIN_TYPING_DELAY_MS: int = int(os.getenv("MIN_TYPING_DELAY_MS", "50"))
     MAX_TYPING_DELAY_MS: int = int(os.getenv("MAX_TYPING_DELAY_MS", "150"))
 
-    # Security
+    # === Security ===
     JWT_SECRET_KEY: str = os.getenv("JWT_SECRET_KEY", "")
     PASSWORD_SALT: str = os.getenv("PASSWORD_SALT", "job-applier-default-salt")
 
-    # Paths
+    # === Paths ===
     DATA_DIR: str = os.getenv("DATA_DIR", "./data")
     LOG_DIR: str = os.getenv("LOG_DIR", "./logs")
+    
+    # === Campaign Settings ===
+    CAMPAIGN_DEFAULT_MAX_APPLICATIONS: int = int(os.getenv("CAMPAIGN_DEFAULT_MAX_APPLICATIONS", "10"))
+    CAMPAIGN_DAILY_LIMIT: int = int(os.getenv("CAMPAIGN_DAILY_LIMIT", "10"))
+    
+    @property
+    def stagehand_config(self) -> dict:
+        """Get Stagehand configuration dictionary."""
+        return {
+            "env": self.BROWSER_ENV,
+            "api_key": self.BROWSERBASE_API_KEY,
+            "project_id": self.BROWSERBASE_PROJECT_ID,
+            "model_name": self.MODEL_NAME,
+            "model_client_options": {"apiKey": self.MODEL_API_KEY},
+        }
+    
+    def validate(self) -> List[str]:
+        """Validate configuration and return list of missing required settings."""
+        missing = []
+        
+        if not self.MOONSHOT_API_KEY:
+            missing.append("MOONSHOT_API_KEY")
+        if not self.BROWSERBASE_API_KEY:
+            missing.append("BROWSERBASE_API_KEY")
+        if not self.BROWSERBASE_PROJECT_ID:
+            missing.append("BROWSERBASE_PROJECT_ID")
+        
+        return missing
 
 
 # Global config instance

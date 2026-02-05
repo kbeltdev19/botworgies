@@ -17,9 +17,12 @@ PyJWT==2.8.0
 # AI Service
 openai==1.10.0
 
-# Browser Automation
-playwright>=1.40.0
+# Browser Automation - Stagehand AI-Powered Framework by BrowserBase
+stagehand-py>=2.0.0
 browserbase>=0.3.0
+playwright>=1.42.1
+httpx>=0.24.0
+python-dotenv>=1.0.0
 
 # File Parsing
 PyPDF2==3.0.1

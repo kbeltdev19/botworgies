@@ -181,19 +181,51 @@ class JobPlatformAdapter(ABC):
         
         Args:
             force_local: If True, force using local browser instead of BrowserBase.
+            
+        Note:
+            Now uses Stagehand for AI-powered browser automation.
+            Stagehand integrates with BrowserBase for stealth browsing.
+            Uses existing MOONSHOT_API_KEY and BROWSERBASE_API_KEY from environment.
         """
         if not self._session:
-            self._session = await self.browser_manager.create_stealth_session(
-                self.platform.value,
-                use_proxy=True,
-                force_local=force_local
-            )
+            # Try Stagehand first (recommended)
+            try:
+                from browser import Stagehand, StagehandConfig
+                import os
+                
+                config = StagehandConfig(
+                    env="LOCAL" if force_local else "BROWSERBASE",
+                    api_key=os.getenv("BROWSERBASE_API_KEY"),
+                    project_id=os.getenv("BROWSERBASE_PROJECT_ID"),
+                    model_name=os.getenv("MODEL_NAME", "moonshot-v1-8k-vision-preview"),
+                    model_client_options={"apiKey": os.getenv("MOONSHOT_API_KEY")}
+                )
+                
+                stagehand = Stagehand(config=config)
+                await stagehand.init()
+                self._session = stagehand
+                self._log(f"Using Stagehand ({'local' if force_local else 'BrowserBase'} mode)")
+                
+            except ImportError:
+                # Fallback to legacy browser manager if Stagehand not available
+                self._log("Stagehand not available, using legacy browser manager")
+                self._session = await self.browser_manager.create_stealth_session(
+                    self.platform.value,
+                    use_proxy=True,
+                    force_local=force_local
+                )
+                
         return self._session
 
     async def close(self):
         """Close the platform session."""
         if self._session:
-            await self.browser_manager.close_session(self._session.session_id)
+            # Check if it's a Stagehand session
+            if hasattr(self._session, 'close'):
+                await self._session.close()
+            else:
+                # Legacy browser manager
+                await self.browser_manager.close_session(self._session.session_id)
             self._session = None
 
     def _log(self, message: str, level: str = "info"):
