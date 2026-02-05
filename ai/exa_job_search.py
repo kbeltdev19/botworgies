@@ -92,11 +92,17 @@ to find jobs based on semantic meaning and context.
             payload["includeDomains"] = include_domains
         
         try:
+            import ssl
+            ssl_context = ssl.create_default_context()
+            ssl_context.check_hostname = False
+            ssl_context.verify_mode = ssl.CERT_NONE
+            
             async with aiohttp.ClientSession() as session:
                 async with session.post(
                     f"{self.base_url}/search",
                     headers={"Authorization": f"Bearer {self.api_key}"},
-                    json=payload
+                    json=payload,
+                    ssl=ssl_context
                 ) as response:
                     if response.status != 200:
                         error = await response.text()
@@ -148,11 +154,17 @@ to find jobs based on semantic meaning and context.
         }
         
         try:
+            import ssl
+            ssl_context = ssl.create_default_context()
+            ssl_context.check_hostname = False
+            ssl_context.verify_mode = ssl.CERT_NONE
+            
             async with aiohttp.ClientSession() as session:
                 async with session.post(
                     f"{self.base_url}/search",
                     headers={"Authorization": f"Bearer {self.api_key}"},
-                    json=payload
+                    json=payload,
+                    ssl=ssl_context
                 ) as response:
                     if response.status != 200:
                         return ""
@@ -207,11 +219,17 @@ to find jobs based on semantic meaning and context.
         }
         
         try:
+            import ssl
+            ssl_context = ssl.create_default_context()
+            ssl_context.check_hostname = False
+            ssl_context.verify_mode = ssl.CERT_NONE
+            
             async with aiohttp.ClientSession() as session:
                 async with session.post(
                     f"{self.base_url}/search",
                     headers={"Authorization": f"Bearer {self.api_key}"},
-                    json=payload
+                    json=payload,
+                    ssl=ssl_context
                 ) as response:
                     if response.status != 200:
                         return []
