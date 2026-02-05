@@ -181,39 +181,24 @@ class JobPlatformAdapter(ABC):
         
         Args:
             force_local: If True, force using local browser instead of BrowserBase.
-            
-        Note:
-            Now uses Stagehand for AI-powered browser automation.
-            Stagehand integrates with BrowserBase for stealth browsing.
-            Uses existing MOONSHOT_API_KEY and BROWSERBASE_API_KEY from environment.
         """
         if not self._session:
-            # Try Stagehand first (recommended)
+            # Use core browser manager (Stagehand)
             try:
-                from browser import Stagehand, StagehandConfig
+                from core.browser import UnifiedBrowserManager
                 import os
                 
-                config = StagehandConfig(
-                    env="LOCAL" if force_local else "BROWSERBASE",
-                    api_key=os.getenv("BROWSERBASE_API_KEY"),
-                    project_id=os.getenv("BROWSERBASE_PROJECT_ID"),
-                    model_name=os.getenv("MODEL_NAME", "moonshot-v1-8k-vision-preview"),
-                    model_client_options={"apiKey": os.getenv("MOONSHOT_API_KEY")}
-                )
+                if not self.browser_manager:
+                    self.browser_manager = UnifiedBrowserManager()
+                    await self.browser_manager.init()
                 
-                stagehand = Stagehand(config=config)
-                await stagehand.init()
-                self._session = stagehand
-                self._log(f"Using Stagehand ({'local' if force_local else 'BrowserBase'} mode)")
+                session = await self.browser_manager.create_session(self.platform.value)
+                self._session = session
+                self._log(f"Using BrowserBase Stagehand ({'local' if force_local else 'cloud'} mode)")
                 
-            except ImportError:
-                # Fallback to legacy browser manager if Stagehand not available
-                self._log("Stagehand not available, using legacy browser manager")
-                self._session = await self.browser_manager.create_stealth_session(
-                    self.platform.value,
-                    use_proxy=True,
-                    force_local=force_local
-                )
+            except Exception as e:
+                self._log(f"Failed to create browser session: {e}")
+                raise
                 
         return self._session
 
