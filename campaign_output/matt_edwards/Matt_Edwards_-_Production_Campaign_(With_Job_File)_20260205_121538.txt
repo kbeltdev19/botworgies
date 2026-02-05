@@ -1,0 +1,19 @@
+
+======================================================================
+CAMPAIGN REPORT: Matt Edwards - Production Campaign (With Job File)
+======================================================================
+
+Duration: 13.5 minutes
+
+SUMMARY:
+  Total Jobs Found: 550
+  Attempted: 10
+  Successful: 0
+  Failed: 10
+  Skipped: 540
+  Success Rate: 0.0%
+
+PLATFORM BREAKDOWN:
+  unknown        : 0/10 (0.0%)
+
+======================================================================

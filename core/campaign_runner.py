@@ -411,66 +411,10 @@ class CampaignRunner:
         """
         Get the appropriate working adapter for a job.
         
-        Uses handlers with actual browser automation for form filling.
-        Detects platform from URL if platform type is generic.
+        Uses ATSRouter which has proper platform detection and handler routing.
         """
-        from adapters.base import PlatformType
-        from adapters import get_external_platform_type
-        
-        platform = job.platform
-        url = job.url.lower()
-        
-        # Detect platform from URL for generic platforms
-        if platform in [PlatformType.EXTERNAL, PlatformType.COMPANY_WEBSITE]:
-            detected = get_external_platform_type(url)
-            logger.info(f"Detected platform from URL: {detected}")
-        else:
-            detected = platform.value if hasattr(platform, 'value') else str(platform)
-        
-        # Use direct_apply for Greenhouse, Lever, Ashby (has browser automation)
-        if detected == 'greenhouse' or 'greenhouse' in url:
-            from adapters.direct_apply import DirectApplyHandler
-            handler = DirectApplyHandler(self.browser)
-            handler.platform_type = 'greenhouse'
-            return handler
-        
-        elif detected == 'lever' or 'lever.co' in url:
-            from adapters.direct_apply import DirectApplyHandler
-            handler = DirectApplyHandler(self.browser)
-            handler.platform_type = 'lever'
-            return handler
-        
-        elif detected == 'ashby' or 'ashby' in url:
-            from adapters.direct_apply import DirectApplyHandler
-            handler = DirectApplyHandler(self.browser)
-            handler.platform_type = 'ashby'
-            return handler
-        
-        # Use complex_forms for Workday, Taleo, etc.
-        elif detected == 'workday' or 'myworkday' in url or 'workday.com' in url:
-            from adapters.complex_forms import ComplexFormHandler
-            return ComplexFormHandler(self.browser)
-        
-        elif detected == 'icims' or 'icims' in url:
-            from adapters.complex_forms import ComplexFormHandler
-            return ComplexFormHandler(self.browser)
-        
-        elif detected == 'taleo' or 'taleo' in url:
-            from adapters.complex_forms import ComplexFormHandler
-            return ComplexFormHandler(self.browser)
-        
-        elif platform == PlatformType.LINKEDIN or 'linkedin' in url:
-            from adapters.linkedin import LinkedInAdapter
-            return LinkedInAdapter(self.browser)
-        
-        elif platform == PlatformType.INDEED or 'indeed' in url:
-            from adapters.indeed import IndeedAdapter
-            return IndeedAdapter(self.browser)
-        
-        else:
-            # Fallback to router which detects from URL
-            from adapters.ats_router import ATSRouter
-            return ATSRouter(self.browser)
+        from adapters.ats_router import ATSRouter
+        return ATSRouter(self.browser)
     
     def _should_stop_early(self) -> bool:
         """Check if campaign should stop due to low success rate."""
