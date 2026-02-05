@@ -260,6 +260,7 @@ class CompanySpecificHandler:
             'a[href*="/apply/"]'
         ]
         
+        apply_clicked = False
         for sel in apply_selectors:
             if not sel:
                 continue
@@ -267,14 +268,47 @@ class CompanySpecificHandler:
                 apply_btn = self.page.locator(sel).first
                 if await apply_btn.count() > 0 and await apply_btn.is_visible():
                     await apply_btn.click(timeout=10000)
-                    await asyncio.sleep(3)
+                    await asyncio.sleep(5)  # Wait longer for navigation/modal
                     logger.info(f"Clicked apply button with: {sel}")
+                    apply_clicked = True
                     break
             except Exception as e:
                 logger.debug(f"Selector {sel} failed: {e}")
                 continue
-        else:
+        
+        if not apply_clicked:
             logger.warning("Could not find apply button")
+        
+        # Handle iframe (common in Workday)
+        try:
+            # Check if there's an iframe and switch to it
+            frames = self.page.frames
+            if len(frames) > 1:
+                logger.info(f"Found {len(frames)} frames, checking for application form...")
+                for i, frame in enumerate(frames):
+                    try:
+                        # Try to find form in iframe
+                        has_form = await frame.locator('input[name="firstName"]').count() > 0
+                        if has_form:
+                            logger.info(f"Found form in frame {i}")
+                            # Note: We need to use this frame for subsequent operations
+                            self.page = frame
+                            break
+                    except:
+                        continue
+        except Exception as e:
+            logger.debug(f"Frame handling failed: {e}")
+        
+        # Handle new tab/popup
+        try:
+            # Wait a bit for any new tabs
+            await asyncio.sleep(3)
+            pages = self.context.pages
+            if len(pages) > 1:
+                logger.info(f"Multiple tabs detected ({len(pages)}), switching to newest...")
+                self.page = pages[-1]  # Switch to newest tab
+        except Exception as e:
+            logger.debug(f"Tab switching failed: {e}")
         
         # Wait for form with multiple selector attempts
         form_found = False
@@ -285,29 +319,61 @@ class CompanySpecificHandler:
             'input[name="email"]',
             'input[type="email"]',
             'input[data-automation-id*="firstName"]', 
-            '[data-automation-id="legalNameSection_firstName"]'
+            '[data-automation-id="legalNameSection_firstName"]',
+            'input[placeholder*="First" i]',  # Case insensitive
+            'input[placeholder*="Email" i]',
+            'form input',  # Any input in a form
+            'input[required]',  # Required inputs
         ]
         
         for sel in form_selectors:
             if not sel:
                 continue
             try:
-                await self.page.wait_for_selector(sel, timeout=10000)
-                form_found = True
-                logger.info(f"Form found with selector: {sel}")
-                break
-            except:
+                # Check if visible, not just present
+                element = self.page.locator(sel).first
+                if await element.count() > 0:
+                    is_visible = await element.is_visible()
+                    if is_visible:
+                        form_found = True
+                        logger.info(f"Form found with selector: {sel}")
+                        break
+            except Exception as e:
+                logger.debug(f"Selector {sel} not found: {e}")
                 continue
         
         if not form_found:
-            logger.warning("Could not find application form")
+            # Try to detect what's actually on the page
+            logger.warning("Could not find standard application form")
+            
+            # Take screenshot for debugging
             screenshot = await self._capture_screenshot(job.id, 'no_form')
-            return ApplicationResult(
-                status=ApplicationStatus.PENDING_REVIEW,
-                message=f"Could not find application form for {job.company}",
-                external_url=job.url,
-                screenshot_path=screenshot
-            )
+            
+            # Check if there's a login prompt
+            login_keywords = ['sign in', 'login', 'create account', 'register']
+            page_text = await self.page.inner_text('body').lower()
+            if any(kw in page_text for kw in login_keywords):
+                logger.info("Login required for this application")
+                return ApplicationResult(
+                    status=ApplicationStatus.PENDING_REVIEW,
+                    message=f"Login required for {job.company} application",
+                    external_url=job.url,
+                    screenshot_path=screenshot
+                )
+            
+            # Check for external redirect
+            current_url = self.page.url
+            if 'workday' in current_url or 'myworkday' in current_url:
+                logger.info(f"Redirected to Workday: {current_url}")
+                # Continue anyway - might be able to fill
+                form_found = True
+            else:
+                return ApplicationResult(
+                    status=ApplicationStatus.PENDING_REVIEW,
+                    message=f"Could not find application form for {job.company}. Manual review needed.",
+                    external_url=job.url,
+                    screenshot_path=screenshot
+                )
         
         # Fill basic info with multiple selector attempts
         await self._fill_field_with_fallbacks('first_name', profile.first_name, [
