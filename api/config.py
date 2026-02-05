@@ -37,20 +37,32 @@ class AppConfig:
 
     # === API Keys ===
     MOONSHOT_API_KEY: Optional[str] = os.getenv("MOONSHOT_API_KEY")
+    OPENAI_API_KEY: Optional[str] = os.getenv("OPENAI_API_KEY")
     BROWSERBASE_API_KEY: Optional[str] = os.getenv("BROWSERBASE_API_KEY")
     BROWSERBASE_PROJECT_ID: Optional[str] = os.getenv("BROWSERBASE_PROJECT_ID")
-    
+
     # Model configuration
-    MODEL_NAME: str = os.getenv("MODEL_NAME", "moonshot-v1-8k-vision-preview")
-    MODEL_API_KEY: Optional[str] = os.getenv("MODEL_API_KEY") or os.getenv("MOONSHOT_API_KEY")
+    MODEL_NAME: str = os.getenv("MODEL_NAME", "gpt-4o")
+    MODEL_API_KEY: Optional[str] = (
+        os.getenv("MODEL_API_KEY")
+        or os.getenv("OPENAI_API_KEY")
+        or os.getenv("MOONSHOT_API_KEY")
+    )
 
     # === Browser Automation (Stagehand) ===
+    # Stagehand is enabled by default when the SDK and an API key are available
+    STAGEHAND_ENABLED: bool = os.getenv("STAGEHAND_ENABLED", "true").lower() == "true"
+    STAGEHAND_MODEL_NAME: str = os.getenv("STAGEHAND_MODEL_NAME", "gpt-4o")
+    STAGEHAND_MODEL_API_KEY: Optional[str] = (
+        os.getenv("STAGEHAND_MODEL_API_KEY")
+        or os.getenv("OPENAI_API_KEY")
+    )
     BROWSER_TIMEOUT_MS: int = int(os.getenv("BROWSER_TIMEOUT_MS", "60000"))
     MAX_SEARCH_PAGES: int = int(os.getenv("MAX_SEARCH_PAGES", "5"))
     MAX_APPLICATION_STEPS: int = int(os.getenv("MAX_APPLICATION_STEPS", "25"))
-    
+
     # Browser environment: "BROWSERBASE" or "LOCAL"
-    BROWSER_ENV: str = os.getenv("BROWSER_ENV", "BROWSERBASE")
+    BROWSER_ENV: str = os.getenv("BROWSER_ENV", "LOCAL")
     LOCAL_BROWSER_ENABLED: bool = os.getenv("LOCAL_BROWSER_ENABLED", "true").lower() == "true"
     MAX_LOCAL_BROWSERS: int = int(os.getenv("MAX_LOCAL_BROWSERS", "20"))
     PREFER_LOCAL_BROWSER: bool = os.getenv("PREFER_LOCAL_BROWSER", "false").lower() == "true"
@@ -81,25 +93,32 @@ class AppConfig:
     @property
     def stagehand_config(self) -> dict:
         """Get Stagehand configuration dictionary."""
-        return {
+        cfg = {
             "env": self.BROWSER_ENV,
-            "api_key": self.BROWSERBASE_API_KEY,
-            "project_id": self.BROWSERBASE_PROJECT_ID,
-            "model_name": self.MODEL_NAME,
-            "model_client_options": {"apiKey": self.MODEL_API_KEY},
+            "model_name": self.STAGEHAND_MODEL_NAME,
+            "model_client_options": {"apiKey": self.STAGEHAND_MODEL_API_KEY},
         }
+        # Only include BrowserBase credentials when using that environment
+        if self.BROWSER_ENV == "BROWSERBASE":
+            cfg["api_key"] = self.BROWSERBASE_API_KEY
+            cfg["project_id"] = self.BROWSERBASE_PROJECT_ID
+        return cfg
     
     def validate(self) -> List[str]:
         """Validate configuration and return list of missing required settings."""
         missing = []
-        
-        if not self.MOONSHOT_API_KEY:
-            missing.append("MOONSHOT_API_KEY")
-        if not self.BROWSERBASE_API_KEY:
-            missing.append("BROWSERBASE_API_KEY")
-        if not self.BROWSERBASE_PROJECT_ID:
-            missing.append("BROWSERBASE_PROJECT_ID")
-        
+
+        # At least one AI model key is required
+        if not self.OPENAI_API_KEY and not self.MOONSHOT_API_KEY:
+            missing.append("OPENAI_API_KEY (or MOONSHOT_API_KEY)")
+
+        # BrowserBase keys only required in BROWSERBASE mode
+        if self.BROWSER_ENV == "BROWSERBASE":
+            if not self.BROWSERBASE_API_KEY:
+                missing.append("BROWSERBASE_API_KEY")
+            if not self.BROWSERBASE_PROJECT_ID:
+                missing.append("BROWSERBASE_PROJECT_ID")
+
         return missing
 
 

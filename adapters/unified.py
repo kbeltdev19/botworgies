@@ -12,6 +12,7 @@ The adapter uses AI to:
 4. Fill and submit application forms
 """
 
+import os
 import asyncio
 import logging
 from typing import List, Optional
@@ -30,6 +31,13 @@ from core import (
     UnifiedAIService,
     detect_platform_from_url,
 )
+
+# Stagehand agent schemas (optional - for type-safe agent calls)
+try:
+    from stagehand.schemas import AgentConfig, AgentExecuteOptions, AgentProvider
+    STAGEHAND_AGENT_AVAILABLE = True
+except ImportError:
+    STAGEHAND_AGENT_AVAILABLE = False
 
 logger = logging.getLogger(__name__)
 
@@ -156,82 +164,89 @@ class UnifiedPlatformAdapter(JobPlatformAdapter):
     async def apply(self, job: JobPosting, resume: Resume) -> ApplicationResult:
         """
         Apply to a job using Stagehand AI agent.
-        
+
+        Uses Stagehand's agent API (act/observe/extract) to navigate forms,
+        fill fields, and submit the application autonomously.
+
         Args:
             job: Job posting to apply to
             resume: Resume to use
-            
+
         Returns:
             ApplicationResult with status
         """
         await self._ensure_session()
-        
+
         logger.info(f"Applying to: {job.title} at {job.company}")
-        
+
         try:
             # Navigate to job
             await self._page.goto(job.url)
             await asyncio.sleep(2)
-            
+
             # Look for apply button
             observe_result = await self._page.observe(
                 instruction="Find the apply button or link to start the application"
             )
-            
+
             if observe_result and len(observe_result) > 0:
                 await self._page.act(observe_result[0])
                 await asyncio.sleep(3)  # Wait for form to load
             else:
-                # Try direct navigation to apply page
                 await self._page.act("click the apply button")
-            
-            # Use Stagehand agent to fill the form
-            agent_config = {
-                "provider": "openai",  # Stagehand uses OpenAI-compatible API
-                "model": "gpt-4o",
-                "instructions": f"""Fill this job application form.
 
-Applicant Information:
+            # Build applicant context for the agent
+            applicant_info = f"""Applicant Information:
 - Name: {self.profile.full_name}
 - Email: {self.profile.email}
 - Phone: {self.profile.phone}
 - Location: {self.profile.location}
-- LinkedIn: {self.profile.linkedin_url or 'N/A'}
+- LinkedIn: {getattr(self.profile, 'linkedin_url', 'N/A') or 'N/A'}
 
 Resume path: {resume.file_path}
 
 Instructions:
-1. Fill all required fields
-2. Upload the resume
+1. Fill all required fields with the applicant info above
+2. Upload the resume if a file upload field is present
 3. Answer any screening questions truthfully based on the profile
-4. Submit the application"""
-            }
-            
-            execute_options = {
-                "instruction": "Complete and submit this job application form",
-                "max_steps": 25,
-                "auto_screenshot": True
-            }
-            
-            # Execute the agent
-            result = await self._page.execute(agent_config, execute_options)
-            
+4. Submit the application when all required fields are complete"""
+
+            # Use Stagehand agent API if available, otherwise fall back to act() calls
+            if STAGEHAND_AGENT_AVAILABLE and self._session and self._session.stagehand:
+                stagehand = self._session.stagehand
+                agent = stagehand.agent(
+                    provider="openai",
+                    model=os.getenv("STAGEHAND_MODEL_NAME", "gpt-4o"),
+                    instructions=applicant_info,
+                )
+                result = await agent.execute(
+                    instruction="Complete and submit this job application form",
+                    max_steps=int(os.getenv("MAX_APPLICATION_STEPS", "25")),
+                )
+            else:
+                # Fallback: use page.act() with detailed instructions
+                await self._page.act(
+                    f"Fill out this job application form. {applicant_info}"
+                )
+                await asyncio.sleep(2)
+                await self._page.act("Submit the application form")
+
             # Check for confirmation
             content = await self._page.content()
             success_indicators = [
                 "thank you", "application submitted", "successfully submitted",
                 "we have received", "confirmation", "your application"
             ]
-            
+
             success = any(ind in content.lower() for ind in success_indicators)
-            
+
             # Try to extract confirmation number
             import re
             conf_match = re.search(r'confirmation[\s#:]+([A-Z0-9\-]+)', content, re.I)
             confirmation_id = conf_match.group(1) if conf_match else None
-            
+
             if success:
-                self._log(f"✅ Application submitted! Confirmation: {confirmation_id}")
+                self._log(f"Application submitted! Confirmation: {confirmation_id}")
                 return ApplicationResult(
                     status=ApplicationStatus.SUBMITTED,
                     message="Application submitted successfully",
@@ -239,13 +254,13 @@ Instructions:
                     submitted_at=datetime.now()
                 )
             else:
-                self._log("⚠️ Could not verify successful submission")
+                self._log("Could not verify successful submission")
                 return ApplicationResult(
                     status=ApplicationStatus.PENDING_REVIEW,
                     message="Application may have been submitted - verification inconclusive",
                     submitted_at=datetime.now()
                 )
-                
+
         except Exception as e:
             logger.error(f"Application failed: {e}")
             return ApplicationResult(

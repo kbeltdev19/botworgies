@@ -32,17 +32,37 @@ logger = logging.getLogger(__name__)
 
 def check_environment():
     """Check that required environment variables are set."""
-    required = ['MOONSHOT_API_KEY', 'BROWSERBASE_API_KEY', 'BROWSERBASE_PROJECT_ID']
-    missing = [var for var in required if not os.getenv(var)]
-    
+    # Load .env file if present
+    try:
+        from dotenv import load_dotenv
+        load_dotenv()
+    except ImportError:
+        pass
+
+    missing = []
+
+    # At least one AI model key is required
+    if not os.getenv('OPENAI_API_KEY') and not os.getenv('MOONSHOT_API_KEY'):
+        missing.append('OPENAI_API_KEY (or MOONSHOT_API_KEY)')
+
+    # BrowserBase keys only required when BROWSER_ENV=BROWSERBASE
+    browser_env = os.getenv('BROWSER_ENV', 'LOCAL')
+    if browser_env == 'BROWSERBASE':
+        if not os.getenv('BROWSERBASE_API_KEY'):
+            missing.append('BROWSERBASE_API_KEY')
+        if not os.getenv('BROWSERBASE_PROJECT_ID'):
+            missing.append('BROWSERBASE_PROJECT_ID')
+
     if missing:
-        print("❌ Missing required environment variables:")
+        print("Missing required environment variables:")
         for var in missing:
             print(f"  - {var}")
         print("\nPlease set these in your .env file or environment.")
         return False
-    
-    print("✅ All required environment variables set")
+
+    # Log active configuration
+    ai_provider = "OpenAI" if os.getenv('OPENAI_API_KEY') else "Moonshot"
+    print(f"Environment OK (AI: {ai_provider}, Browser: {browser_env})")
     return True
 
 
