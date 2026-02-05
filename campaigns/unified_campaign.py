@@ -151,18 +151,27 @@ class UnifiedCampaign:
             logger.info(f"  - {source}: {count}")
     
     async def _filter_jobs(self):
-        """Filter jobs by relevance."""
+        """Filter jobs by relevance and direct ATS availability."""
         logger.info("\n[Phase 2] Filtering jobs...")
         
         # Keywords for filtering
         filter_keywords = [
             'software', 'engineer', 'developer', 'devops', 'manager',
-            'product', 'data', 'cloud', 'senior', 'staff', 'principal'
+            'product', 'data', 'cloud', 'senior', 'staff', 'principal',
+            'servicenow', 'itsm', 'itil', 'admin', 'consultant'
         ]
         
         filtered = []
+        skipped_no_direct = 0
+        
         for job in self.discovered_jobs:
             title = job.get('title', '').lower()
+            
+            # Only include jobs with direct ATS URLs (skip Indeed-only jobs)
+            apply_url = job.get('apply_url')
+            if not apply_url or 'indeed.com/job' in apply_url:
+                skipped_no_direct += 1
+                continue
             
             # Check if title contains any filter keyword
             if any(kw in title for kw in filter_keywords):
@@ -171,7 +180,8 @@ class UnifiedCampaign:
         self.discovered_jobs = filtered[:self.config.target_jobs]
         self.stats.jobs_filtered = len(self.discovered_jobs)
         
-        logger.info(f"[Filter] {len(filtered)} jobs after filtering")
+        logger.info(f"[Filter] {len(filtered)} jobs after keyword filtering")
+        logger.info(f"[Filter] {skipped_no_direct} jobs skipped (no direct ATS URL)")
         logger.info(f"[Filter] Limited to {len(self.discovered_jobs)} jobs for campaign")
     
     async def _apply_to_jobs(self):
@@ -203,12 +213,14 @@ class UnifiedCampaign:
             
             try:
                 # Convert job format for runner
+                # Use apply_url (direct ATS) if available, fallback to url (Indeed)
+                apply_url = job.get('apply_url') or job.get('url')
                 job_for_runner = {
                     'id': job.get('id'),
                     'title': job.get('title'),
                     'company': job.get('company'),
                     'location': job.get('location'),
-                    'url': job.get('url'),
+                    'url': apply_url,
                     'platform': job.get('platform', 'unknown'),
                     'description': job.get('description', ''),
                 }
