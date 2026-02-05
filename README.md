@@ -77,10 +77,11 @@ async with UnifiedBrowserManager() as browser:
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `MOONSHOT_API_KEY` | Yes | Moonshot AI API key |
+| `OPENAI_API_KEY` | Yes | OpenAI API key (for Stagehand AI features) |
 | `BROWSERBASE_API_KEY` | Yes | BrowserBase API key |
 | `BROWSERBASE_PROJECT_ID` | Yes | BrowserBase project ID |
-| `MODEL_NAME` | No | Model (default: moonshot-v1-8k-vision-preview) |
+| `MOONSHOT_API_KEY` | No | Moonshot AI API key (optional alternative) |
+| `MODEL_NAME` | No | Model (default: gpt-4o) |
 | `BROWSER_ENV` | No | BROWSERBASE or LOCAL |
 
 ## Project Structure
@@ -97,13 +98,15 @@ botworgies/
 └── ARCHITECTURE.md     # Detailed docs
 ```
 
-## Legacy Code
+## Architecture Consolidation
 
-Old code has been archived to `archive/` for reference. The new unified system replaces:
-- `browser/stealth_manager.py` → `core.browser`
-- `ai/kimi_service.py` → `core.ai`
-- `ats_automation/handlers/` → `adapters.unified`
-- Multiple config files → `api.config`
+The codebase has been consolidated from 311+ files to ~130 files:
+- **Core** (`core/`) - Foundation with models, browser, AI
+- **Adapters** (`adapters/`) - Platform integrations
+- **API** (`api/`) - FastAPI endpoints
+- **Browser** (`browser/`) - Re-exports from core.browser
+
+See [ARCHITECTURE.md](ARCHITECTURE.md) for migration guide.
 
 ## Development
 

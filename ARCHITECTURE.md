@@ -15,35 +15,33 @@ The codebase has been consolidated into a unified, modular architecture centered
 botworgies/
 ├── core/                      # Foundation layer
 │   ├── __init__.py           # Exports all core components
-│   ├── models.py             # Unified data models (JobPosting, UserProfile, etc.)
+│   ├── models.py             # Unified data models
 │   ├── browser.py            # UnifiedBrowserManager (Stagehand)
-│   ├── ai.py                 # UnifiedAIService (Moonshot)
-│   └── ...                   # Other core utilities
+│   ├── ai.py                 # UnifiedAIService
+│   └── campaign_runner.py    # Campaign execution
 │
 ├── adapters/                  # Platform integrations
 │   ├── __init__.py           # Adapter factory and exports
 │   ├── unified.py            # UnifiedPlatformAdapter (recommended)
-│   ├── base.py               # Legacy base adapter
-│   └── [platform].py         # Legacy platform-specific adapters
+│   ├── base.py               # Base adapter with models
+│   └── [platform].py         # Platform-specific adapters
 │
 ├── api/                       # FastAPI application
 │   ├── main.py               # API entry point
-│   ├── config.py             # Unified configuration
+│   ├── config.py             # Configuration
 │   └── ...                   # Other API modules
 │
-├── browser/                   # Browser automation (wrapper)
-│   └── __init__.py           # Re-exports from core.browser
+├── browser/                   # Re-exports from core.browser
+│   └── __init__.py
 │
-├── ai/                        # AI services (legacy)
-│   └── job_agent_cua.py      # CUA agent using Stagehand
+├── ai/                        # AI services
+│   └── job_agent_cua.py
 │
-├── campaigns/                 # Campaign management
-├── workers/                   # Cloudflare workers
+├── campaigns/                 # Campaign configs and runner
+│   ├── configs/              # YAML campaign configurations
+│   └── run_campaign.py       # Campaign CLI
+│
 ├── tests/                     # Test suite
-├── archive/                   # Archived old code
-│   ├── old/                  # Old documentation
-│   └── old_code/             # Old code files
-│
 ├── main.py                    # CLI entry point
 ├── README.md                  # User documentation
 └── ARCHITECTURE.md           # This file
