@@ -76,6 +76,7 @@ class JobPosting:
 
 
 @dataclass
+@dataclass
 class ApplicationResult:
     """Result of an application attempt."""
     status: ApplicationStatus
@@ -85,6 +86,11 @@ class ApplicationResult:
     external_url: Optional[str] = None
     error: Optional[str] = None
     submitted_at: Optional[datetime] = None
+    
+    @property
+    def success(self) -> bool:
+        """Check if application was successful."""
+        return self.status == ApplicationStatus.SUBMITTED
 
 
 @dataclass

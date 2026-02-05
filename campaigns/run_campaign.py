@@ -108,6 +108,12 @@ Examples:
         help='Enable verbose logging'
     )
     
+    parser.add_argument(
+        '--yes', '-y',
+        action='store_true',
+        help='Skip confirmation prompts (use with caution)'
+    )
+    
     return parser.parse_args()
 
 
@@ -164,7 +170,7 @@ async def main():
     logger.info("=" * 70 + "\n")
     
     # Confirm if auto-submit
-    if config.auto_submit and not args.dry_run:
+    if config.auto_submit and not args.dry_run and not args.yes:
         response = input("⚠️  Auto-submit is enabled. Type 'CONFIRM' to proceed: ")
         if response.strip() != "CONFIRM":
             logger.info("Aborted by user")

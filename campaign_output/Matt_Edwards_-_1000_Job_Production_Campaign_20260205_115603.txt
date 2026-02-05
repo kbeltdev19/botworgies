@@ -1,0 +1,18 @@
+
+======================================================================
+CAMPAIGN REPORT: Matt Edwards - 1000 Job Production Campaign
+======================================================================
+
+Duration: 15.4 minutes
+
+SUMMARY:
+  Total Jobs Found: 0
+  Attempted: 0
+  Successful: 0
+  Failed: 0
+  Skipped: 0
+  Success Rate: 0.0%
+
+PLATFORM BREAKDOWN:
+
+======================================================================
