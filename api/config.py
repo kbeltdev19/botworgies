@@ -52,6 +52,7 @@ class AppConfig:
     # === Browser Automation (Stagehand) ===
     # Stagehand is enabled by default when the SDK and an API key are available
     STAGEHAND_ENABLED: bool = os.getenv("STAGEHAND_ENABLED", "true").lower() == "true"
+    STAGEHAND_API_URL: str = os.getenv("STAGEHAND_API_URL", "https://api.stagehand.browserbase.com/v1")
     STAGEHAND_MODEL_NAME: str = os.getenv("STAGEHAND_MODEL_NAME", "gpt-4o")
     STAGEHAND_MODEL_API_KEY: Optional[str] = (
         os.getenv("STAGEHAND_MODEL_API_KEY")

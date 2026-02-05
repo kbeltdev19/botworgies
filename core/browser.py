@@ -131,6 +131,11 @@ class UnifiedBrowserManager:
             and bool(self.model_api_key)
         )
 
+        # Stagehand API server URL (BrowserBase hosted or self-hosted)
+        self.server_url = os.getenv(
+            "STAGEHAND_API_URL", "https://api.stagehand.browserbase.com/v1"
+        )
+
         self._sessions: Dict[str, BrowserSession] = {}
         self._config = None
         self._bb = None  # Browserbase instance (fallback only)
@@ -203,7 +208,11 @@ class UnifiedBrowserManager:
         if not self._config:
             await self.init()
 
-        stagehand = Stagehand(config=self._config)
+        stagehand = Stagehand(
+            config=self._config,
+            server_url=self.server_url,
+            model_api_key=self.model_api_key,
+        )
         await stagehand.init()
 
         session = BrowserSession(

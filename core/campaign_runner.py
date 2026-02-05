@@ -53,7 +53,7 @@ class CampaignConfig:
     output_dir: Path = field(default_factory=lambda: Path("./campaign_output"))
     save_screenshots: bool = True
     generate_report: bool = True
-    use_unified_adapter: bool = False  # Use legacy adapters (unified requires OpenAI)
+    use_unified_adapter: bool = True  # Use Stagehand-powered unified adapter by default
 
 
 @dataclass
@@ -313,34 +313,42 @@ class CampaignRunner:
         """Apply to a job with retry logic."""
         for attempt in range(self.config.retry_attempts):
             try:
-                # Always use legacy adapters for now - unified adapter requires OpenAI
                 from adapters import get_adapter
-                
+
                 platform_str = job.platform.value if hasattr(job.platform, 'value') else str(job.platform)
-                adapter = get_adapter(platform_str, self.browser, use_unified=False)
-                
-                result = await adapter.apply_to_job(
-                    job=job,
-                    resume=self.config.resume,
-                    profile=self.config.applicant_profile,
-                    auto_submit=self.config.auto_submit
+                adapter = get_adapter(
+                    platform_str,
+                    self.browser,
+                    use_unified=self.config.use_unified_adapter,
+                    user_profile=self.config.applicant_profile,
                 )
-                
+
+                # Unified adapter uses apply(job, resume); legacy uses apply_to_job
+                if self.config.use_unified_adapter:
+                    result = await adapter.apply(job, self.config.resume)
+                else:
+                    result = await adapter.apply_to_job(
+                        job=job,
+                        resume=self.config.resume,
+                        profile=self.config.applicant_profile,
+                        auto_submit=self.config.auto_submit,
+                    )
+
                 if result.success:
-                    logger.info(f"✅ Application successful! Confirmation: {result.confirmation_id}")
+                    logger.info(f"Application successful! Confirmation: {result.confirmation_id}")
                     return result
                 else:
-                    logger.warning(f"⚠️  Application failed: {result.message}")
+                    logger.warning(f"Application failed: {result.message}")
                     if attempt == 0:
                         return result
-                    
+
             except Exception as e:
-                logger.error(f"❌ Attempt {attempt + 1} failed: {e}")
-                
+                logger.error(f"Attempt {attempt + 1} failed: {e}")
+
                 if attempt < self.config.retry_attempts - 1:
-                    logger.info(f"⏱️  Waiting {self.config.retry_delay}s before retry...")
+                    logger.info(f"Waiting {self.config.retry_delay}s before retry...")
                     await asyncio.sleep(self.config.retry_delay)
-        
+
         return ApplicationResult(
             status=ApplicationStatus.ERROR,
             message=f"Failed after {self.config.retry_attempts} attempts"
@@ -477,21 +485,48 @@ PLATFORM BREAKDOWN:
             parsed_data={}
         )
         
-        # Get strategy settings
+        # Get strategy/limits/settings from various YAML formats
         strategy = data.get('strategy', {})
         targets = data.get('targets', {})
-        
+        limits = data.get('limits', {})
+        settings = data.get('settings', {})
+
+        # Platforms can be under search.platforms or top-level platforms
+        platforms = (
+            data.get('platforms')
+            or search_data.get('platforms')
+            or ['greenhouse', 'lever']
+        )
+
+        # max_applications: limits.max_applications > targets.total > default 10
+        max_applications = (
+            limits.get('max_applications')
+            or targets.get('total')
+            or 10
+        )
+
+        # Delay: settings.delay_between_applications > strategy.delay_range
+        delay = (
+            settings.get('delay_between_applications')
+            or strategy.get('delay_range')
+            or [30, 60]
+        )
+
         return CampaignConfig(
             name=data.get('name', 'Unnamed Campaign'),
             applicant_profile=profile,
             resume=resume,
             search_criteria=search_criteria,
-            platforms=search_data.get('platforms', ['greenhouse', 'lever']),
-            max_applications=targets.get('total', 10),
-            max_per_platform=targets.get('daily_max'),
-            auto_submit=strategy.get('auto_submit', False),
-            delay_between_applications=strategy.get('delay_range', [30, 60]),
-            output_dir=Path(data.get('output', {}).get('directory', './campaign_output')),
+            platforms=platforms,
+            max_applications=max_applications,
+            max_per_platform=limits.get('max_per_platform') or targets.get('daily_max'),
+            min_match_score=limits.get('min_match_score', 0.6),
+            auto_submit=settings.get('auto_submit', strategy.get('auto_submit', False)),
+            delay_between_applications=delay,
+            delay_between_platforms=settings.get('delay_between_platforms', 300),
+            retry_attempts=settings.get('retry_attempts', 3),
+            output_dir=Path(data.get('output', {}).get('dir', data.get('output', {}).get('directory', './campaign_output'))),
             save_screenshots=data.get('output', {}).get('save_screenshots', True),
-            job_file=data.get('job_file')
+            job_file=data.get('job_file'),
+            use_unified_adapter=True,
         )
