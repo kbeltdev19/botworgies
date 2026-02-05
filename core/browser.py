@@ -72,8 +72,8 @@ class UnifiedBrowserManager:
     2. Basic mode (fallback): BrowserBase + Playwright when Stagehand is unavailable
 
     And two environments:
-    - LOCAL: Local Chromium via Playwright (default, no BrowserBase account needed)
-    - BROWSERBASE: Cloud browsers via BrowserBase (requires API key + project ID)
+    - BROWSERBASE: Cloud browsers via BrowserBase (default, requires API key + project ID)
+    - LOCAL: Local Chromium via Playwright (no BrowserBase account needed)
 
     Example:
         from core.browser import UnifiedBrowserManager
@@ -98,7 +98,7 @@ class UnifiedBrowserManager:
         project_id: Optional[str] = None,
         model_api_key: Optional[str] = None,
         model_name: str = "gpt-4o",
-        env: str = "LOCAL",
+        env: str = "BROWSERBASE",
         stagehand_enabled: bool = True,
     ):
         """

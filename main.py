@@ -46,7 +46,7 @@ def check_environment():
         missing.append('OPENAI_API_KEY (or MOONSHOT_API_KEY)')
 
     # BrowserBase keys only required when BROWSER_ENV=BROWSERBASE
-    browser_env = os.getenv('BROWSER_ENV', 'LOCAL')
+    browser_env = os.getenv('BROWSER_ENV', 'BROWSERBASE')
     if browser_env == 'BROWSERBASE':
         if not os.getenv('BROWSERBASE_API_KEY'):
             missing.append('BROWSERBASE_API_KEY')

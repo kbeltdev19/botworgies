@@ -62,7 +62,7 @@ class AppConfig:
     MAX_APPLICATION_STEPS: int = int(os.getenv("MAX_APPLICATION_STEPS", "25"))
 
     # Browser environment: "BROWSERBASE" or "LOCAL"
-    BROWSER_ENV: str = os.getenv("BROWSER_ENV", "LOCAL")
+    BROWSER_ENV: str = os.getenv("BROWSER_ENV", "BROWSERBASE")
     LOCAL_BROWSER_ENABLED: bool = os.getenv("LOCAL_BROWSER_ENABLED", "true").lower() == "true"
     MAX_LOCAL_BROWSERS: int = int(os.getenv("MAX_LOCAL_BROWSERS", "20"))
     PREFER_LOCAL_BROWSER: bool = os.getenv("PREFER_LOCAL_BROWSER", "false").lower() == "true"
