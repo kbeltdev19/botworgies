@@ -220,25 +220,123 @@ class CompanySpecificHandler:
         """Handle Workday-based applications."""
         selectors = self.config.selectors
         
-        # Click apply button
-        try:
-            apply_btn = self.page.locator(selectors['apply_button']).first
-            await apply_btn.click(timeout=10000)
-            await asyncio.sleep(2)
-        except Exception as e:
-            logger.warning(f"Could not click apply button: {e}")
+        # Check if this is a search page (not direct job URL)
+        if 'search=' in job.url or 'jobs?' in job.url:
+            logger.info("Detected search page, looking for job listings...")
+            # Try to find and click on first job
+            try:
+                # Common job link selectors
+                job_links = [
+                    'a[href*="/job/"]',
+                    'a[data-automation-id="jobTitle"]',
+                    'a:has-text("Apply")',
+                    '.job-listing a',
+                    '[data-automation-id="jobListing"] a'
+                ]
+                for link_sel in job_links:
+                    try:
+                        job_link = self.page.locator(link_sel).first
+                        if await job_link.count() > 0:
+                            await job_link.click(timeout=10000)
+                            await asyncio.sleep(3)
+                            logger.info("Clicked on job listing")
+                            break
+                    except:
+                        continue
+            except Exception as e:
+                logger.warning(f"Could not find job listing: {e}")
         
-        # Wait for form
-        await self.page.wait_for_selector(
-            selectors['first_name'] + ',' + selectors['email'],
-            timeout=30000
-        )
+        # Wait for page to settle
+        await asyncio.sleep(3)
         
-        # Fill basic info
-        await self._fill_field(selectors['first_name'], profile.first_name)
-        await self._fill_field(selectors['last_name'], profile.last_name)
-        await self._fill_field(selectors['email'], profile.email)
-        await self._fill_field(selectors['phone'], profile.phone)
+        # Try multiple apply button selectors
+        apply_selectors = [
+            selectors.get('apply_button', ''),
+            'button[data-automation-id="applyButton"]',
+            'a:has-text("Apply")',
+            'button:has-text("Apply")',
+            '[data-testid="apply-button"]',
+            '.apply-button',
+            'a[href*="/apply/"]'
+        ]
+        
+        for sel in apply_selectors:
+            if not sel:
+                continue
+            try:
+                apply_btn = self.page.locator(sel).first
+                if await apply_btn.count() > 0 and await apply_btn.is_visible():
+                    await apply_btn.click(timeout=10000)
+                    await asyncio.sleep(3)
+                    logger.info(f"Clicked apply button with: {sel}")
+                    break
+            except Exception as e:
+                logger.debug(f"Selector {sel} failed: {e}")
+                continue
+        else:
+            logger.warning("Could not find apply button")
+        
+        # Wait for form with multiple selector attempts
+        form_found = False
+        form_selectors = [
+            selectors.get('first_name', ''),
+            selectors.get('email', ''),
+            'input[name="firstName"]',
+            'input[name="email"]',
+            'input[type="email"]',
+            'input[data-automation-id*="firstName"]', 
+            '[data-automation-id="legalNameSection_firstName"]'
+        ]
+        
+        for sel in form_selectors:
+            if not sel:
+                continue
+            try:
+                await self.page.wait_for_selector(sel, timeout=10000)
+                form_found = True
+                logger.info(f"Form found with selector: {sel}")
+                break
+            except:
+                continue
+        
+        if not form_found:
+            logger.warning("Could not find application form")
+            screenshot = await self._capture_screenshot(job.id, 'no_form')
+            return ApplicationResult(
+                status=ApplicationStatus.PENDING_REVIEW,
+                message=f"Could not find application form for {job.company}",
+                external_url=job.url,
+                screenshot_path=screenshot
+            )
+        
+        # Fill basic info with multiple selector attempts
+        await self._fill_field_with_fallbacks('first_name', profile.first_name, [
+            selectors.get('first_name', ''),
+            'input[name="firstName"]',
+            'input[data-automation-id*="firstName"]',
+            '[data-automation-id="legalNameSection_firstName"]'
+        ])
+        
+        await self._fill_field_with_fallbacks('last_name', profile.last_name, [
+            selectors.get('last_name', ''),
+            'input[name="lastName"]',
+            'input[data-automation-id*="lastName"]',
+            '[data-automation-id="legalNameSection_lastName"]'
+        ])
+        
+        await self._fill_field_with_fallbacks('email', profile.email, [
+            selectors.get('email', ''),
+            'input[type="email"]',
+            'input[name="email"]',
+            'input[data-automation-id*="email"]'
+        ])
+        
+        await self._fill_field_with_fallbacks('phone', profile.phone, [
+            selectors.get('phone', ''),
+            'input[type="tel"]',
+            'input[name="phone"]',
+            'input[data-automation-id*="phone"]'
+        ])
         
         # Upload resume
         try:
@@ -374,6 +472,27 @@ class CompanySpecificHandler:
                 await asyncio.sleep(0.5)
         except Exception as e:
             logger.debug(f"Could not fill field {selector}: {e}")
+    
+    async def _fill_field_with_fallbacks(self, field_name: str, value: str, selectors: list):
+        """Fill a field trying multiple selectors."""
+        if not value:
+            return
+        
+        for selector in selectors:
+            if not selector:
+                continue
+            try:
+                field = self.page.locator(selector).first
+                if await field.count() > 0 and await field.is_visible():
+                    await field.fill(value)
+                    await asyncio.sleep(0.5)
+                    logger.debug(f"Filled {field_name} with selector: {selector}")
+                    return
+            except Exception as e:
+                logger.debug(f"Selector {selector} failed for {field_name}: {e}")
+                continue
+        
+        logger.warning(f"Could not fill field {field_name} with any selector")
     
     async def _check_success(self, selector: str) -> bool:
         """Check if application was successful."""
