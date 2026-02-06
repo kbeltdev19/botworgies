@@ -6,8 +6,22 @@ Import from this module: from api.config import config
 """
 
 import os
+from pathlib import Path
 from typing import List, Optional
 from dataclasses import dataclass, field
+
+
+# Load local `.env` automatically for zero-config local runs.
+# In production, environment variables should be provided by the platform.
+try:
+    from dotenv import load_dotenv  # type: ignore
+
+    repo_root = Path(__file__).resolve().parent.parent
+    dotenv_path = repo_root / ".env"
+    if dotenv_path.exists():
+        load_dotenv(dotenv_path=dotenv_path, override=False)
+except Exception:
+    pass
 
 
 @dataclass
