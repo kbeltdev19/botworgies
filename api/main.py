@@ -36,14 +36,25 @@ from api.database import (
 from api.logging_config import logger, log_application, log_ai_request
 
 from ai.kimi_service import KimiResumeOptimizer
+from core.resume_file_parser import extract_text_from_upload
 
-# Browser manager is optional - may not be available on serverless
+# Browser manager is optional. Importing core may succeed even if optional
+# browser dependencies are missing, so instantiate defensively.
 try:
-    from core import UnifiedBrowserManager
-    BROWSER_AVAILABLE = True
-except ImportError:
+    from core import UnifiedBrowserManager  # type: ignore
+except Exception:
     UnifiedBrowserManager = None
-    BROWSER_AVAILABLE = False
+
+browser_manager = None
+BROWSER_AVAILABLE = False
+if UnifiedBrowserManager is not None:
+    try:
+        browser_manager = UnifiedBrowserManager()
+        BROWSER_AVAILABLE = True
+    except Exception as e:
+        logger.warning(f"Browser automation unavailable: {e}")
+        browser_manager = None
+        BROWSER_AVAILABLE = False
 
 from adapters import (
     get_adapter, detect_platform_from_url,
@@ -151,6 +162,12 @@ class SearchRequest(BaseModel):
     exclude_keywords: List[str] = Field(default_factory=list)
     country: str = Field(default="US", pattern="^(US|CA|GB|DE|FR|AU|IN|NL|SG|ALL)$")
     careers_url: Optional[str] = Field(default=None)
+    # Smart filtering/scoring (P0/P1)
+    use_resume_match: bool = True
+    min_match_score: float = Field(default=0.0, ge=0.0, le=1.0)
+    allow_clearance_jobs: bool = False
+    skip_senior_for_junior: bool = True
+    max_results: int = Field(default=100, ge=1, le=500)
 
     @validator('roles')
     def validate_roles(cls, v):
@@ -265,9 +282,196 @@ def validate_file_extension(filename: str) -> bool:
     return ext in config.ALLOWED_EXTENSIONS
 
 
+def _build_profile_suggestion(parsed_data: dict) -> dict:
+    """Build a best-effort profile suggestion from parsed resume data."""
+    contact = (parsed_data or {}).get("contact") or {}
+    name = (contact.get("name") or "").strip()
+    first_name = ""
+    last_name = ""
+    if name:
+        parts = [p for p in name.split() if p]
+        if parts:
+            first_name = parts[0]
+            last_name = " ".join(parts[1:]) if len(parts) > 1 else ""
+    return {
+        "first_name": first_name,
+        "last_name": last_name,
+        "email": (contact.get("email") or "").strip(),
+        "phone": (contact.get("phone") or "").strip(),
+        "linkedin_url": (contact.get("linkedin") or "").strip() or None,
+        "location": (contact.get("location") or "").strip(),
+        "years_experience": None,
+        "work_authorization": "Yes",
+        "sponsorship_required": "No",
+        "custom_answers": {},
+    }
+
+
+def _build_job_preferences(parsed_data: dict, raw_text: str, suggested_titles: list) -> dict:
+    """Best-effort job preference inference from resume + AI title suggestions."""
+    text = (raw_text or "").lower()
+    remote_pref = "unknown"
+    if "hybrid" in text:
+        remote_pref = "hybrid"
+    elif "remote" in text or "work from home" in text:
+        remote_pref = "remote"
+    elif "on-site" in text or "onsite" in text:
+        remote_pref = "onsite"
+
+    contact = (parsed_data or {}).get("contact") or {}
+    location = (contact.get("location") or "").strip()
+
+    roles: list[str] = []
+    for item in suggested_titles or []:
+        if isinstance(item, str):
+            roles.append(item)
+        elif isinstance(item, dict) and item.get("title"):
+            roles.append(str(item.get("title")))
+    roles = [r.strip() for r in roles if r and r.strip()]
+
+    return {
+        "remote_preference": remote_pref,
+        "preferred_locations": [location] if location else [],
+        "preferred_roles": roles[:10],
+    }
+
+
+def _detect_pii_warnings(text: str) -> list[dict]:
+    """Detect common PII patterns and return warnings."""
+    warnings: list[dict] = []
+
+    if re.search(r"\b\d{3}-\d{2}-\d{4}\b", text):
+        warnings.append({"type": "SSN", "message": "Social Security Number pattern detected"})
+
+    # Basic credit card patterns; does not validate Luhn by design (just warning).
+    if re.search(r"\b\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4}\b", text):
+        warnings.append({"type": "CREDIT_CARD", "message": "Credit card number pattern detected"})
+
+    return warnings
+
+
+def _extract_contact_fallback(raw_text: str) -> dict:
+    """Heuristic extraction of contact details from raw resume text."""
+    text = raw_text or ""
+    email_match = re.search(r"\b[A-Z0-9._%+\-]+@[A-Z0-9.\-]+\.[A-Z]{2,}\b", text, re.I)
+    phone_match = re.search(r"(\+?\d[\d\s\-\(\)]{7,}\d)", text)
+
+    # Name heuristic: first non-empty line with letters, excluding common section headers.
+    name = ""
+    for line in (ln.strip() for ln in text.splitlines()):
+        if not line:
+            continue
+        if len(line) > 80:
+            continue
+        lower = line.lower()
+        if lower in {"experience", "education", "skills", "summary", "projects", "certifications"}:
+            continue
+        if re.search(r"[a-zA-Z]", line) and not re.search(r"@", line):
+            name = line
+            break
+
+    return {
+        "name": name,
+        "email": email_match.group(0) if email_match else "",
+        "phone": phone_match.group(1).strip() if phone_match else "",
+    }
+
+
+_STOPWORDS = {
+    "a", "an", "and", "are", "as", "at", "be", "by", "for", "from", "has", "have", "in",
+    "is", "it", "its", "of", "on", "or", "that", "the", "this", "to", "was", "were", "will",
+    "with", "you", "your",
+}
+
+
+def _tokenize(text: str) -> list[str]:
+    text = (text or "").lower()
+    # Keep alphanumerics and a few tech symbols; everything else to space.
+    text = re.sub(r"[^a-z0-9\+\#\.\-]+", " ", text)
+    toks = [t.strip(".-") for t in text.split() if t.strip(".-")]
+    return [t for t in toks if len(t) >= 3 and t not in _STOPWORDS]
+
+
+def _extract_resume_keywords(raw_text: str, parsed_data: dict) -> set[str]:
+    keywords: set[str] = set()
+
+    parsed = parsed_data or {}
+    for skill in parsed.get("skills") or []:
+        for tok in _tokenize(str(skill)):
+            keywords.add(tok)
+
+    # Backfill from raw text using most frequent tokens.
+    try:
+        from collections import Counter
+
+        counts = Counter(_tokenize(raw_text))
+        for tok, _ in counts.most_common(120):
+            keywords.add(tok)
+    except Exception:
+        pass
+
+    return keywords
+
+
+def _keyword_overlap_score(resume_keywords: set[str], job_text: str) -> float:
+    if not resume_keywords:
+        return 0.0
+    job_tokens = set(_tokenize(job_text))
+    if not job_tokens:
+        return 0.0
+    overlap = len(resume_keywords.intersection(job_tokens))
+    denom = max(1, min(len(resume_keywords), 60))
+    return max(0.0, min(1.0, overlap / denom))
+
+
+def _detect_clearance_requirement(text: str) -> Optional[str]:
+    t = (text or "").lower()
+    patterns = [
+        r"\bts\/sci\b",
+        r"\btop secret\b",
+        r"\bsecret clearance\b",
+        r"\bsecurity clearance\b",
+        r"\bclearance required\b",
+        r"\bpolygraph\b",
+        r"\bpublic trust\b",
+    ]
+    for pat in patterns:
+        if re.search(pat, t):
+            return pat.strip("\\b")
+    return None
+
+
+def _estimate_years_experience_from_parsed(parsed_data: dict) -> Optional[int]:
+    exp = (parsed_data or {}).get("experience") or []
+    years: list[int] = []
+    for item in exp:
+        dates = str((item or {}).get("dates") or "")
+        found = re.findall(r"(?:19|20)\d{2}", dates)
+        for y in found:
+            try:
+                years.append(int(y))
+            except Exception:
+                continue
+    if len(years) >= 2:
+        return max(years) - min(years)
+    if len(years) == 1:
+        now_year = datetime.now().year
+        return max(0, now_year - years[0])
+    return None
+
+
+def _is_seniorish_title(title: str) -> bool:
+    t = (title or "").lower()
+    return bool(re.search(r"\b(senior|sr\.?|lead|principal|staff|manager|director|vp|head)\b", t))
+
+
+def _is_very_senior_title(title: str) -> bool:
+    t = (title or "").lower()
+    return bool(re.search(r"\b(principal|staff|director|vp|head)\b", t))
+
+
 # Initialize services
 kimi = KimiResumeOptimizer()
-browser_manager = UnifiedBrowserManager() if BROWSER_AVAILABLE else None
 
 
 # === API Endpoints ===
@@ -398,9 +602,9 @@ async def get_platforms():
         "platforms": [
             {"id": "linkedin", "name": "LinkedIn", "search_supported": True, "easy_apply": True},
             {"id": "indeed", "name": "Indeed", "search_supported": True, "easy_apply": True},
-            {"id": "greenhouse", "name": "Greenhouse", "search_supported": False, "easy_apply": True},
+            {"id": "greenhouse", "name": "Greenhouse", "search_supported": True, "easy_apply": True},
             {"id": "workday", "name": "Workday", "search_supported": False, "easy_apply": False},
-            {"id": "lever", "name": "Lever", "search_supported": False, "easy_apply": True}
+            {"id": "lever", "name": "Lever", "search_supported": True, "easy_apply": True}
         ]
     }
 
@@ -429,11 +633,10 @@ async def upload_resume(
     with open(file_path, "wb") as f:
         f.write(content)
 
-    # Extract text
-    if file.filename.endswith(".txt"):
-        raw_text = content.decode("utf-8")
-    else:
-        raw_text = content.decode("utf-8", errors="ignore")
+    # Extract text (PDF/DOCX/TXT)
+    extraction = extract_text_from_upload(file.filename, content)
+    raw_text = extraction.text or ""
+    pii_warnings = _detect_pii_warnings(raw_text)
 
     # Parse with Kimi AI
     try:
@@ -449,6 +652,13 @@ async def upload_resume(
     except Exception as e:
         logger.warning(f"Job title suggestion failed: {e}")
 
+    profile_suggestion = _build_profile_suggestion(parsed_data)
+    years_exp = _estimate_years_experience_from_parsed(parsed_data)
+    if years_exp is not None:
+        profile_suggestion["years_experience"] = years_exp
+
+    job_preferences = _build_job_preferences(parsed_data, raw_text, suggested_titles)
+
     # Save to database
     await save_resume(user_id, str(file_path), raw_text, parsed_data)
 
@@ -463,8 +673,12 @@ async def upload_resume(
     return {
         "message": "Resume uploaded and parsed",
         "file_path": str(file_path),
+        "extraction_warnings": extraction.warnings,
+        "pii_warnings": pii_warnings,
         "parsed_data": parsed_data,
-        "suggested_titles": suggested_titles
+        "suggested_titles": suggested_titles,
+        "profile_suggestion": profile_suggestion,
+        "job_preferences": job_preferences,
     }
 
 
@@ -580,47 +794,200 @@ async def get_user_profile(user_id: str = Depends(get_current_user)):
     return profile
 
 
+@app.post("/profile/auto")
+async def auto_generate_profile(user_id: str = Depends(get_current_user)):
+    """
+    Auto-generate a user profile from the latest uploaded resume.
+    This enables "drag and drop resume, then go" workflows.
+    """
+    resume = await get_latest_resume(user_id)
+    if not resume:
+        raise HTTPException(status_code=404, detail="Resume not found. Upload first.")
+
+    parsed = resume.get("parsed_data") or {}
+    suggestion = _build_profile_suggestion(parsed)
+    years_exp = _estimate_years_experience_from_parsed(parsed)
+    if years_exp is not None and not suggestion.get("years_experience"):
+        suggestion["years_experience"] = years_exp
+
+    # Fallback extraction if AI parse omitted fields.
+    fallback = _extract_contact_fallback(resume.get("raw_text") or "")
+    if not suggestion.get("email") and fallback.get("email"):
+        suggestion["email"] = fallback["email"]
+    if not suggestion.get("phone") and fallback.get("phone"):
+        suggestion["phone"] = fallback["phone"]
+    if not (suggestion.get("first_name") or suggestion.get("last_name")) and fallback.get("name"):
+        parts = [p for p in fallback["name"].split() if p]
+        if parts:
+            suggestion["first_name"] = parts[0]
+            suggestion["last_name"] = " ".join(parts[1:]) if len(parts) > 1 else ""
+
+    missing = [k for k in ["first_name", "last_name", "email", "phone"] if not suggestion.get(k)]
+    if missing:
+        raise HTTPException(
+            status_code=400,
+            detail={
+                "message": "Could not fully auto-generate profile; please confirm missing fields.",
+                "missing_fields": missing,
+                "profile_suggestion": suggestion,
+            },
+        )
+
+    await save_profile(user_id, suggestion)
+    return {"message": "Profile auto-generated", "profile": suggestion}
+
+
 # === Job Search Endpoints ===
+
+async def _search_jobs_jobspy(request: SearchRequest, platform: str) -> list[dict]:
+    """
+    Cookie-less job discovery using python-jobspy (public scraping).
+    Returns list of job dicts with stable keys for API response.
+    """
+    try:
+        from jobspy import scrape_jobs  # type: ignore
+    except Exception as e:
+        # Fallback to vendored submodule if available.
+        try:
+            jobspy_root = Path(__file__).parent.parent / "src" / "python-jobspy"
+            if jobspy_root.exists():
+                sys.path.append(str(jobspy_root))
+            from jobspy import scrape_jobs  # type: ignore
+        except Exception:
+            raise RuntimeError(f"JobSpy not available: {e}")
+
+    roles = request.roles or ["software engineer"]
+    search_term = " OR ".join(roles)
+
+    location = request.locations[0] if request.locations else ""
+    is_remote = any((loc or "").lower() == "remote" for loc in (request.locations or []))
+    if is_remote:
+        location = ""
+
+    hours_old = int(request.posted_within_days * 24)
+
+    # JobSpy returns a pandas DataFrame
+    results_wanted = min(int(request.max_results or 100), 200)
+    jobs_df = scrape_jobs(
+        site_name=[platform],
+        search_term=search_term,
+        location=location,
+        results_wanted=results_wanted,
+        hours_old=hours_old,
+        is_remote=is_remote,
+        easy_apply=request.easy_apply_only,
+        description_format="markdown",
+        linkedin_fetch_description=True if platform == "linkedin" else False,
+        verbose=0,
+        country_indeed=request.country if platform == "indeed" else None,
+    )
+
+    if jobs_df is None:
+        return []
+
+    jobs: list[dict] = []
+    try:
+        records = jobs_df.to_dict("records")
+    except Exception:
+        # If jobspy changes return type, try iterating rows
+        records = []
+
+    for row in records:
+        url = str(row.get("job_url") or "")
+        if not url:
+            continue
+        direct_url = str(row.get("job_url_direct") or "").strip()
+        apply_url = direct_url if direct_url.startswith(("http://", "https://")) else url
+        title = str(row.get("title") or "").strip()
+        company = str(row.get("company") or "").strip()
+        location_str = str(row.get("location") or "").strip()
+        desc = row.get("description") or ""
+        try:
+            easy_apply = bool(row.get("easy_apply")) if "easy_apply" in row else False
+        except Exception:
+            easy_apply = False
+
+        jobs.append(
+            {
+                "id": f"{platform}_{abs(hash(url)) % 10000000}",
+                "title": title or "(see posting)",
+                "company": company or "(see posting)",
+                "location": location_str,
+                "url": url,
+                "direct_url": direct_url or None,
+                "apply_url": apply_url,
+                "easy_apply": easy_apply,
+                "remote": ("remote" in location_str.lower()) if location_str else is_remote,
+                "description": str(desc)[:2000] if desc else None,
+            }
+        )
+
+    return jobs
+
 
 @app.post("/jobs/search")
 async def search_jobs(request: SearchRequest, platform: str = "linkedin", user_id: str = Depends(get_current_user)):
     """Search for jobs across platforms."""
-    if not BROWSER_AVAILABLE or not browser_manager:
-        raise HTTPException(status_code=503, detail="Browser automation not available")
-
-    if platform not in ["linkedin", "indeed", "company"]:
-        raise HTTPException(status_code=400, detail="Search only supported for: linkedin, indeed, company")
+    if platform not in ["linkedin", "indeed", "greenhouse", "lever", "company"]:
+        raise HTTPException(status_code=400, detail="Search only supported for: linkedin, indeed, greenhouse, lever, company")
 
     if platform == "company" and not request.careers_url:
         raise HTTPException(status_code=400, detail="Company platform requires careers_url")
 
-    search_config = SearchConfig(
-        roles=request.roles,
-        locations=request.locations,
-        easy_apply_only=request.easy_apply_only,
-        posted_within_days=request.posted_within_days,
-        required_keywords=request.required_keywords,
-        exclude_keywords=request.exclude_keywords,
-        country=request.country,
-        careers_url=request.careers_url
-    )
-
     try:
-        # Get LinkedIn cookie if available
-        settings = await get_settings(user_id)
-        linkedin_cookie = None
-        if settings and settings.get("linkedin_cookie_encrypted"):
-            linkedin_cookie = decrypt_sensitive_data(settings["linkedin_cookie_encrypted"])
+        # Prefer cookie-less scraping for common boards.
+        jobs_payload: list[dict]
 
-        adapter = get_adapter(platform, browser_manager, session_cookie=linkedin_cookie)
-        jobs = await adapter.search_jobs(search_config)
+        if platform in ["linkedin", "indeed"]:
+            jobs_payload = await _search_jobs_jobspy(request, platform)
+        elif platform in ["greenhouse", "lever"]:
+            # Public board APIs (no browser required).
+            search_config = SearchConfig(
+                roles=request.roles,
+                locations=request.locations,
+                easy_apply_only=request.easy_apply_only,
+                posted_within_days=request.posted_within_days,
+                required_keywords=request.required_keywords,
+                exclude_keywords=request.exclude_keywords,
+                country=request.country,
+                careers_url=request.careers_url,
+            )
+            adapter = get_adapter(platform, browser_manager, use_unified=False)
+            jobs = await adapter.search_jobs(search_config)
+            jobs_payload = [
+                {
+                    "id": j.id,
+                    "title": j.title,
+                    "company": j.company,
+                    "location": j.location,
+                    "url": j.url,
+                    "direct_url": None,
+                    "apply_url": j.url,
+                    "easy_apply": j.easy_apply,
+                    "remote": j.remote,
+                    "description": (j.description or "")[:2000] if getattr(j, "description", None) else None,
+                }
+                for j in jobs
+            ]
+        else:
+            # Company careers pages require browser automation.
+            if not BROWSER_AVAILABLE or not browser_manager:
+                raise HTTPException(status_code=503, detail="Browser automation not available")
 
-        logger.info(f"Search completed for user {user_id}: {len(jobs)} jobs found on {platform}")
+            search_config = SearchConfig(
+                roles=request.roles,
+                locations=request.locations,
+                easy_apply_only=request.easy_apply_only,
+                posted_within_days=request.posted_within_days,
+                required_keywords=request.required_keywords,
+                exclude_keywords=request.exclude_keywords,
+                country=request.country,
+                careers_url=request.careers_url,
+            )
 
-        return {
-            "platform": platform,
-            "count": len(jobs),
-            "jobs": [
+            adapter = get_adapter(platform, browser_manager, use_unified=False)
+            jobs = await adapter.search_jobs(search_config)
+            jobs_payload = [
                 {
                     "id": j.id,
                     "title": j.title,
@@ -628,17 +995,285 @@ async def search_jobs(request: SearchRequest, platform: str = "linkedin", user_i
                     "location": j.location,
                     "url": j.url,
                     "easy_apply": j.easy_apply,
-                    "remote": j.remote
+                    "remote": j.remote,
                 }
                 for j in jobs
             ]
+
+        # Optional smart scoring/filtering using the user's resume/profile.
+        resume_keywords: set[str] = set()
+        candidate_years: Optional[int] = None
+        if request.use_resume_match or request.skip_senior_for_junior:
+            latest_resume = await get_latest_resume(user_id)
+            latest_profile = await get_profile(user_id)
+            if latest_resume:
+                resume_keywords = _extract_resume_keywords(
+                    latest_resume.get("raw_text") or "",
+                    latest_resume.get("parsed_data") or {},
+                )
+                candidate_years = (
+                    (latest_profile or {}).get("years_experience")
+                    or _estimate_years_experience_from_parsed(latest_resume.get("parsed_data") or {})
+                )
+            elif latest_profile:
+                candidate_years = latest_profile.get("years_experience")
+
+        filtered: list[dict] = []
+        skipped: list[dict] = []
+        skip_reason_counts: dict[str, int] = {}
+
+        for job in jobs_payload:
+            title = str(job.get("title") or "")
+            desc = str(job.get("description") or "")
+            job_text = f"{title}\n{desc}"
+
+            clearance_hit = _detect_clearance_requirement(job_text)
+            if clearance_hit and not request.allow_clearance_jobs:
+                job["skip_reason"] = "clearance_required"
+                skipped.append(job)
+                skip_reason_counts["clearance_required"] = skip_reason_counts.get("clearance_required", 0) + 1
+                continue
+
+            if request.skip_senior_for_junior and candidate_years is not None:
+                if candidate_years <= 2 and _is_seniorish_title(title):
+                    job["skip_reason"] = "senior_role_for_junior_candidate"
+                    skipped.append(job)
+                    skip_reason_counts["senior_role_for_junior_candidate"] = (
+                        skip_reason_counts.get("senior_role_for_junior_candidate", 0) + 1
+                    )
+                    continue
+                if candidate_years <= 5 and _is_very_senior_title(title):
+                    job["skip_reason"] = "very_senior_role_for_mid_candidate"
+                    skipped.append(job)
+                    skip_reason_counts["very_senior_role_for_mid_candidate"] = (
+                        skip_reason_counts.get("very_senior_role_for_mid_candidate", 0) + 1
+                    )
+                    continue
+
+            if request.use_resume_match and resume_keywords:
+                score = _keyword_overlap_score(resume_keywords, job_text)
+                job["match_score"] = round(score, 3)
+                if request.min_match_score and score < request.min_match_score:
+                    job["skip_reason"] = "low_match_score"
+                    skipped.append(job)
+                    skip_reason_counts["low_match_score"] = skip_reason_counts.get("low_match_score", 0) + 1
+                    continue
+            else:
+                job["match_score"] = None
+
+            filtered.append(job)
+
+        # Prioritize Easy Apply and higher match scores.
+        filtered.sort(
+            key=lambda j: (
+                bool(j.get("easy_apply")),
+                float(j.get("match_score") or 0.0),
+            ),
+            reverse=True,
+        )
+        filtered = filtered[: int(request.max_results or 100)]
+
+        logger.info(
+            f"Search completed for user {user_id}: {len(filtered)} jobs returned on {platform} "
+            f"(skipped={len(skipped)})"
+        )
+
+        return {
+            "platform": platform,
+            "count": len(filtered),
+            "skipped": len(skipped),
+            "skip_reasons": skip_reason_counts,
+            "candidate_years_experience": candidate_years,
+            "jobs": filtered,
         }
     except Exception as e:
         logger.error(f"Search failed: {e}")
+        if isinstance(e, RuntimeError) and "JobSpy not available" in str(e):
+            raise HTTPException(status_code=503, detail=str(e))
         raise HTTPException(status_code=500, detail=str(e))
     finally:
-        if 'adapter' in locals():
+        if 'adapter' in locals() and hasattr(adapter, "close"):
             await adapter.close()
+
+
+# === Autopilot Campaign (Zero-Config) ===
+
+class AutopilotCampaignRequest(BaseModel):
+    platforms: List[str] = Field(default_factory=lambda: ["greenhouse", "lever", "indeed", "linkedin"])
+    max_apply: int = Field(default=10, ge=1, le=50)
+    start_apply: bool = False
+    auto_submit: bool = False
+    easy_apply_only: bool = True
+    posted_within_days: int = Field(default=7, ge=1, le=30)
+    min_match_score: float = Field(default=0.15, ge=0.0, le=1.0)
+    allow_clearance_jobs: bool = False
+    roles: Optional[List[str]] = None
+    locations: Optional[List[str]] = None
+
+
+@app.post("/campaign/autopilot")
+async def autopilot_campaign(
+    request: AutopilotCampaignRequest,
+    user_id: str = Depends(get_current_user),
+):
+    """
+    "Drag & Drop Resume, Then Go" autopilot.
+
+    Flow:
+    - Uses latest resume
+    - Auto-generates profile if missing (or returns missing fields)
+    - Suggests roles/keywords from resume
+    - Searches across platforms
+    - Filters + scores jobs
+    - Optionally starts applying (batch)
+    """
+    resume = await get_latest_resume(user_id)
+    if not resume:
+        raise HTTPException(status_code=404, detail="Resume not found. Upload first.")
+
+    profile = await get_profile(user_id)
+    if not profile:
+        parsed = resume.get("parsed_data") or {}
+        suggestion = _build_profile_suggestion(parsed)
+        years_exp = _estimate_years_experience_from_parsed(parsed)
+        if years_exp is not None:
+            suggestion["years_experience"] = years_exp
+        fallback = _extract_contact_fallback(resume.get("raw_text") or "")
+        if not suggestion.get("email") and fallback.get("email"):
+            suggestion["email"] = fallback["email"]
+        if not suggestion.get("phone") and fallback.get("phone"):
+            suggestion["phone"] = fallback["phone"]
+        if not (suggestion.get("first_name") or suggestion.get("last_name")) and fallback.get("name"):
+            parts = [p for p in fallback["name"].split() if p]
+            if parts:
+                suggestion["first_name"] = parts[0]
+                suggestion["last_name"] = " ".join(parts[1:]) if len(parts) > 1 else ""
+
+        missing = [k for k in ["first_name", "last_name", "email", "phone"] if not suggestion.get(k)]
+        if missing:
+            raise HTTPException(
+                status_code=400,
+                detail={
+                    "message": "Auto-profile incomplete; confirm missing fields and retry.",
+                    "missing_fields": missing,
+                    "profile_suggestion": suggestion,
+                },
+            )
+
+        await save_profile(user_id, suggestion)
+        profile = suggestion
+
+    # Derive roles/locations from resume unless overridden.
+    try:
+        search_cfg = await kimi.suggest_job_search_config(resume.get("raw_text") or "")
+    except Exception as e:
+        logger.warning(f"Autopilot suggest_job_search_config failed: {e}")
+        search_cfg = {}
+
+    roles = request.roles or search_cfg.get("suggested_roles") or []
+    roles = [r for r in roles if r][:8] or ["software engineer"]
+
+    locations = request.locations or []
+    if not locations:
+        prof_loc = (profile.get("location") or "").strip()
+        if prof_loc:
+            locations.append(prof_loc)
+        locations.append("Remote")
+    locations = [l for l in locations if l][:5]
+
+    # Search + score per platform.
+    all_jobs: list[dict] = []
+    per_platform: dict[str, dict] = {}
+
+    for platform in request.platforms:
+        sr = SearchRequest(
+            roles=roles[:5],
+            locations=locations[:3],
+            easy_apply_only=request.easy_apply_only,
+            posted_within_days=request.posted_within_days,
+            required_keywords=search_cfg.get("keywords") or [],
+            exclude_keywords=[],
+            country="US",
+            careers_url=None,
+            use_resume_match=True,
+            min_match_score=request.min_match_score,
+            allow_clearance_jobs=request.allow_clearance_jobs,
+            skip_senior_for_junior=True,
+            max_results=max(50, min(200, request.max_apply * 10)),
+        )
+        try:
+            resp = await search_jobs(sr, platform=platform, user_id=user_id)
+            per_platform[platform] = {
+                "count": resp.get("count", 0),
+                "skipped": resp.get("skipped", 0),
+                "skip_reasons": resp.get("skip_reasons", {}),
+            }
+            all_jobs.extend(resp.get("jobs") or [])
+        except HTTPException as e:
+            per_platform[platform] = {"error": e.detail}
+        except Exception as e:
+            per_platform[platform] = {"error": str(e)}
+
+    # Deduplicate by apply_url/url.
+    seen: set[str] = set()
+    deduped: list[dict] = []
+    for j in all_jobs:
+        key = str(j.get("apply_url") or j.get("url") or "")
+        if not key:
+            continue
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append(j)
+
+    deduped.sort(
+        key=lambda j: (
+            bool(j.get("easy_apply")),
+            float(j.get("match_score") or 0.0),
+        ),
+        reverse=True,
+    )
+    selected = deduped[: request.max_apply]
+
+    # Optionally start applying (batch).
+    apply_result = None
+    if request.start_apply:
+        if not BROWSER_AVAILABLE or not browser_manager:
+            raise HTTPException(status_code=503, detail="Browser automation not available")
+
+        # Prefer direct/apply URLs where possible.
+        apply_urls = [str(j.get("apply_url") or j.get("url")) for j in selected if (j.get("apply_url") or j.get("url"))]
+
+        # Skip LinkedIn if no cookie is set (batch handler will also enforce this).
+        settings = await get_settings(user_id) or {}
+        linkedin_cookie = settings.get("linkedin_cookie_encrypted")
+        if not linkedin_cookie:
+            filtered_apply_urls = []
+            for url in apply_urls:
+                if "linkedin.com/" in (url or ""):
+                    continue
+                filtered_apply_urls.append(url)
+            apply_urls = filtered_apply_urls
+
+        if apply_urls:
+            batch_req = BatchApplicationRequest(
+                job_urls=apply_urls,
+                auto_submit=request.auto_submit,
+                generate_cover_letter=True,
+                cover_letter_tone="professional",
+                max_concurrent=3,
+                target_apps_per_minute=6.0,
+            )
+            apply_result = await apply_to_jobs_batch(batch_req, user_id=user_id)
+
+    return {
+        "roles": roles,
+        "locations": locations,
+        "search_config": search_cfg,
+        "platforms": per_platform,
+        "recommended": selected,
+        "apply_result": apply_result,
+    }
 
 
 # === Application Endpoints ===
@@ -707,7 +1342,7 @@ async def apply_to_job(
         logger.info(f"Starting application {application_id} for {request.job_url}")
         adapter = None
         try:
-            adapter = get_adapter(platform, browser_manager, session_cookie=linkedin_cookie)
+            adapter = get_adapter(platform, browser_manager, session_cookie=linkedin_cookie, use_unified=False)
             job = await adapter.get_job_details(request.job_url)
             logger.info(f"Got job details: {job.title} at {job.company}")
 
@@ -729,13 +1364,19 @@ async def apply_to_job(
                 custom_answers=profile.get("custom_answers", {})
             )
 
-            result = await adapter.apply_to_job(
-                job=job,
-                resume=resume_obj,
-                profile=profile_obj,
-                cover_letter=cover_letter,
-                auto_submit=request.auto_submit
-            )
+            if hasattr(adapter, "apply_to_job"):
+                result = await adapter.apply_to_job(
+                    job=job,
+                    resume=resume_obj,
+                    profile=profile_obj,
+                    cover_letter=cover_letter,
+                    auto_submit=request.auto_submit,
+                )
+            elif hasattr(adapter, "apply"):
+                # Unified/core adapter compatibility
+                result = await adapter.apply(job=job, resume=resume_obj)
+            else:
+                raise RuntimeError("Adapter does not implement apply_to_job/apply")
 
             await save_application({
                 "id": application_id,
@@ -743,7 +1384,7 @@ async def apply_to_job(
                 "job_url": request.job_url,
                 "job_title": job.title,
                 "company": job.company,
-                "platform": platform,
+                "platform": str(platform),
                 "status": result.status.value,
                 "message": result.message,
                 "screenshot_path": result.screenshot_path,
@@ -765,14 +1406,14 @@ async def apply_to_job(
                 "id": application_id,
                 "user_id": user_id,
                 "job_url": request.job_url,
-                "platform": platform,
+                "platform": str(platform),
                 "status": "error",
                 "error": str(e),
                 "timestamp": datetime.now().isoformat()
             })
             log_application(application_id, user_id, request.job_url, "error", str(e))
         finally:
-            if adapter:
+            if adapter and hasattr(adapter, "close"):
                 await adapter.close()
 
     background_tasks.add_task(do_apply)
@@ -910,16 +1551,21 @@ async def apply_to_jobs_batch(
         )
         
         # Apply
-        adapter = get_adapter(platform, browser_manager, session_cookie=linkedin_cookie)
+        adapter = get_adapter(platform, browser_manager, session_cookie=linkedin_cookie, use_unified=False)
         try:
             job_details = await adapter.get_job_details(job_url)
-            result = await adapter.apply_to_job(
-                job=job_details,
-                resume=resume_obj,
-                profile=profile_obj,
-                cover_letter=cover_letter,
-                auto_submit=request.auto_submit
-            )
+            if hasattr(adapter, "apply_to_job"):
+                result = await adapter.apply_to_job(
+                    job=job_details,
+                    resume=resume_obj,
+                    profile=profile_obj,
+                    cover_letter=cover_letter,
+                    auto_submit=request.auto_submit,
+                )
+            elif hasattr(adapter, "apply"):
+                result = await adapter.apply(job=job_details, resume=resume_obj)
+            else:
+                raise RuntimeError("Adapter does not implement apply_to_job/apply")
             
             # Save application
             app_id = f"app_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:8]}"
@@ -929,7 +1575,7 @@ async def apply_to_jobs_batch(
                 "job_url": job_url,
                 "job_title": job_details.title,
                 "company": job_details.company,
-                "platform": platform,
+                "platform": str(platform),
                 "status": result.status.value,
                 "message": result.message,
                 "screenshot_path": result.screenshot_path,
@@ -942,7 +1588,8 @@ async def apply_to_jobs_batch(
                 "message": result.message
             }
         finally:
-            await adapter.close()
+            if hasattr(adapter, "close"):
+                await adapter.close()
     
     # Process batch
     start_time = datetime.now()
@@ -1046,7 +1693,7 @@ async def answer_question(question: str, user_id: str = Depends(get_current_user
     try:
         answer = await kimi.answer_application_question(
             question=question,
-            resume_context=resume["raw_text"][:2000],
+            context=resume["raw_text"][:2000],
             existing_answers=profile.get("custom_answers") if profile else None
         )
         return {"question": question, "answer": answer}
@@ -1248,11 +1895,9 @@ async def test_apply_to_folder(
     failed = 0
     
     resume_obj = Resume(
-        raw_text=resume["raw_text"],
-        contact_info=resume.get("contact_info", {}),
-        skills=resume.get("skills", []),
-        experience=resume.get("experience", []),
-        education=resume.get("education", [])
+        file_path=resume["file_path"],
+        raw_text=resume.get("raw_text") or "",
+        parsed_data=resume.get("parsed_data") or {},
     )
     
     profile_obj = UserProfile(

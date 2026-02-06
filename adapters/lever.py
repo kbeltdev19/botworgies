@@ -7,6 +7,7 @@ import aiohttp
 import asyncio
 from typing import List, Optional
 from datetime import datetime
+from pathlib import Path
 
 from .base import (
     JobPlatformAdapter, PlatformType, JobPosting, ApplicationResult,
@@ -137,12 +138,215 @@ class LeverAdapter(JobPlatformAdapter):
         cover_letter: Optional[str] = None,
         auto_submit: bool = False
     ) -> ApplicationResult:
-        """Apply to Lever job."""
-        return ApplicationResult(
-            status=ApplicationStatus.EXTERNAL_APPLICATION,
-            message=f"Apply at: {job.url}",
-            external_url=job.url
-        )
+        """
+        Apply to a Lever posting via the public web form.
+
+        - Fill core fields + resume upload.
+        - If CAPTCHA is present, do not attempt to bypass; return PENDING_REVIEW.
+        - If auto_submit is False, stop at review with a screenshot.
+        """
+        if not self.browser_manager:
+            return ApplicationResult(
+                status=ApplicationStatus.EXTERNAL_APPLICATION,
+                message=f"Apply at: {job.url}",
+                external_url=job.url,
+            )
+
+        session = await self.browser_manager.create_session(self.platform.value)
+        page = session.page
+
+        async def try_fill(selectors: List[str], value: str) -> bool:
+            value = (value or "").strip()
+            if not value:
+                return False
+            for sel in selectors:
+                try:
+                    loc = page.locator(sel).first
+                    if await loc.count() > 0 and await loc.is_visible():
+                        await loc.fill(value)
+                        await asyncio.sleep(0.2)
+                        return True
+                except Exception:
+                    continue
+            return False
+
+        async def try_upload(selectors: List[str], file_path: str) -> bool:
+            if not file_path or not Path(file_path).exists():
+                return False
+            for sel in selectors:
+                try:
+                    loc = page.locator(sel).first
+                    if await loc.count() > 0:
+                        await loc.set_input_files(file_path)
+                        await asyncio.sleep(0.5)
+                        return True
+                except Exception:
+                    continue
+            return False
+
+        async def detect_captcha() -> bool:
+            selectors = [
+                'iframe[src*="recaptcha"]',
+                'iframe[src*="captcha"]',
+                ".g-recaptcha",
+                "[data-sitekey]",
+            ]
+            for sel in selectors:
+                try:
+                    if await page.locator(sel).count() > 0:
+                        return True
+                except Exception:
+                    continue
+            return False
+
+        screenshot_path = None
+        try:
+            await page.goto(job.url, wait_until="domcontentloaded", timeout=60000)
+            await self.browser_manager.human_like_delay(2, 4)
+
+            # Lever often hides the form behind an "Apply" CTA.
+            for sel in [
+                'a:has-text("Apply")',
+                'button:has-text("Apply")',
+                'a[href*="apply"]',
+            ]:
+                try:
+                    btn = page.locator(sel).first
+                    if await btn.count() > 0 and await btn.is_visible():
+                        await btn.click()
+                        await asyncio.sleep(1)
+                        break
+                except Exception:
+                    continue
+
+            full_name = f"{profile.first_name} {profile.last_name}".strip()
+            await try_fill(
+                [
+                    "input[name='name']",
+                    "input#name",
+                    "input[placeholder*='Name' i]",
+                ],
+                full_name,
+            )
+            await try_fill(
+                [
+                    "input[name='email']",
+                    "input#email",
+                    "input[type='email']",
+                ],
+                profile.email,
+            )
+            await try_fill(
+                [
+                    "input[name='phone']",
+                    "input#phone",
+                    "input[type='tel']",
+                ],
+                profile.phone,
+            )
+
+            await try_upload(
+                [
+                    "input[name='resume']",
+                    "input#resume",
+                    "input[type='file']",
+                ],
+                resume.file_path,
+            )
+
+            if cover_letter:
+                await try_fill(
+                    [
+                        "textarea[name='comments']",
+                        "textarea#comments",
+                        "textarea[name*='cover' i]",
+                    ],
+                    cover_letter,
+                )
+
+            if await detect_captcha():
+                screenshot_path = f"/tmp/lever_captcha_{job.id}.png"
+                await page.screenshot(path=screenshot_path, full_page=True)
+                return ApplicationResult(
+                    status=ApplicationStatus.PENDING_REVIEW,
+                    message="CAPTCHA detected; manual completion required.",
+                    screenshot_path=screenshot_path,
+                    external_url=job.url,
+                )
+
+            if not auto_submit:
+                screenshot_path = f"/tmp/lever_review_{job.id}.png"
+                await page.screenshot(path=screenshot_path, full_page=True)
+                return ApplicationResult(
+                    status=ApplicationStatus.PENDING_REVIEW,
+                    message="Lever application filled; ready for review.",
+                    screenshot_path=screenshot_path,
+                    external_url=job.url,
+                )
+
+            # Submit
+            submitted = False
+            for sel in [
+                "button[type='submit']",
+                "input[type='submit']",
+                "button:has-text(\"Submit\")",
+                "button:has-text(\"Send\")",
+                "button:has-text(\"Apply\")",
+            ]:
+                try:
+                    btn = page.locator(sel).first
+                    if await btn.count() > 0 and await btn.is_visible() and await btn.is_enabled():
+                        await btn.click()
+                        await asyncio.sleep(3)
+                        submitted = True
+                        break
+                except Exception:
+                    continue
+
+            if not submitted:
+                screenshot_path = f"/tmp/lever_submit_missing_{job.id}.png"
+                await page.screenshot(path=screenshot_path, full_page=True)
+                return ApplicationResult(
+                    status=ApplicationStatus.ERROR,
+                    message="Submit button not found/clickable.",
+                    screenshot_path=screenshot_path,
+                    external_url=job.url,
+                )
+
+            content = (await page.content()).lower()
+            if "thank you" in content or "application submitted" in content:
+                return ApplicationResult(
+                    status=ApplicationStatus.SUBMITTED,
+                    message="Application submitted",
+                    submitted_at=datetime.now(),
+                )
+
+            screenshot_path = f"/tmp/lever_post_submit_{job.id}.png"
+            await page.screenshot(path=screenshot_path, full_page=True)
+            return ApplicationResult(
+                status=ApplicationStatus.PENDING_REVIEW,
+                message="Submitted, but confirmation not detected. Please verify.",
+                screenshot_path=screenshot_path,
+                external_url=job.url,
+            )
+        except Exception as e:
+            screenshot_path = screenshot_path or f"/tmp/lever_error_{job.id}.png"
+            try:
+                await page.screenshot(path=screenshot_path, full_page=True)
+            except Exception:
+                pass
+            return ApplicationResult(
+                status=ApplicationStatus.ERROR,
+                message=f"Lever apply failed: {e}",
+                screenshot_path=screenshot_path,
+                external_url=job.url,
+                error=str(e),
+            )
+        finally:
+            try:
+                await self.browser_manager.close_session(session.session_id)
+            except Exception:
+                pass
 
 
 async def test_lever():

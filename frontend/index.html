@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Applier</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ink: "#0b0e14",
+              paper: "#f8f4ec",
+              clay: "#e7dfd3",
+              moss: "#0f5d4a",
+              rust: "#b94a2c",
+              sky: "#1f6feb",
+            },
+            boxShadow: {
+              card: "0 18px 60px rgba(11, 14, 20, 0.12)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --paper: #f8f4ec;
+        --ink: #0b0e14;
+        --clay: #e7dfd3;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        font-family: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system,
+          Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+          "Segoe UI Emoji";
+        background: radial-gradient(
+            1200px 600px at 20% 0%,
+            rgba(31, 111, 235, 0.18),
+            transparent 55%
+          ),
+          radial-gradient(
+            1000px 800px at 85% 10%,
+            rgba(15, 93, 74, 0.18),
+            transparent 50%
+          ),
+          linear-gradient(180deg, var(--paper), #ffffff);
+        color: var(--ink);
+      }
+      .brand {
+        font-family: "Fraunces", ui-serif, Georgia, Cambria, "Times New Roman",
+          Times, serif;
+      }
+      .dropzone.dragover {
+        outline: 3px dashed rgba(31, 111, 235, 0.6);
+        outline-offset: 4px;
+        background: rgba(31, 111, 235, 0.06);
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+      }
+    </style>
+  </head>
+
+  <body class="antialiased">
+    <div class="mx-auto max-w-6xl px-4 py-8">
+      <header class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <div class="brand text-3xl font-bold tracking-tight">Job Applier</div>
+          <div class="text-sm text-black/60">
+            Upload a resume, confirm profile, then run Autopilot.
+          </div>
+        </div>
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
+          <label class="text-xs font-semibold text-black/70">API Base URL</label>
+          <input
+            id="apiBase"
+            class="w-full sm:w-80 rounded-xl border border-black/10 bg-white/70 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-sky/40"
+            placeholder="http://localhost:8080"
+            value="http://localhost:8080"
+          />
+        </div>
+      </header>
+
+      <main class="mt-7 grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <section class="rounded-2xl border border-black/10 bg-white/70 p-5 shadow-card">
+          <div class="flex items-start justify-between gap-3">
+            <h2 class="text-sm font-semibold tracking-wide text-black/80">Auth</h2>
+            <span id="authBadge" class="mono rounded-full bg-black/5 px-2 py-1 text-xs text-black/60"
+              >No token</span
+            >
+          </div>
+          <div class="mt-4 grid gap-3">
+            <input
+              id="email"
+              class="rounded-xl border border-black/10 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky/40"
+              placeholder="Email"
+              type="email"
+              autocomplete="email"
+            />
+            <input
+              id="password"
+              class="rounded-xl border border-black/10 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky/40"
+              placeholder="Password"
+              type="password"
+              autocomplete="current-password"
+            />
+            <div class="flex flex-wrap gap-2">
+              <button
+                id="btnRegister"
+                class="rounded-xl bg-ink px-3 py-2 text-sm font-semibold text-white hover:opacity-90"
+              >
+                Register
+              </button>
+              <button
+                id="btnLogin"
+                class="rounded-xl bg-sky px-3 py-2 text-sm font-semibold text-white hover:opacity-90"
+              >
+                Login
+              </button>
+              <button
+                id="btnLogout"
+                class="rounded-xl border border-black/10 bg-white px-3 py-2 text-sm font-semibold text-black/70 hover:bg-black/5"
+              >
+                Logout
+              </button>
+            </div>
+            <div id="authMsg" class="text-xs text-black/60"></div>
+          </div>
+        </section>
+
+        <section class="rounded-2xl border border-black/10 bg-white/70 p-5 shadow-card lg:col-span-2">
+          <div class="flex items-start justify-between gap-3">
+            <h2 class="text-sm font-semibold tracking-wide text-black/80">Resume</h2>
+            <div class="text-xs text-black/60">PDF, DOCX, or TXT</div>
+          </div>
+          <div id="dropzone" class="dropzone mt-4 rounded-2xl border border-black/10 bg-white p-5">
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <div class="text-sm font-semibold">Drag and drop your resume</div>
+                <div class="text-xs text-black/60">or pick a file</div>
+              </div>
+              <div class="flex flex-wrap items-center gap-2">
+                <input id="resumeFile" type="file" class="text-sm" />
+                <button
+                  id="btnUpload"
+                  class="rounded-xl bg-moss px-3 py-2 text-sm font-semibold text-white hover:opacity-90"
+                >
+                  Upload and Parse
+                </button>
+              </div>
+            </div>
+            <div id="resumeMsg" class="mt-3 text-xs text-black/60"></div>
+          </div>
+
+          <div class="mt-4 grid gap-4 md:grid-cols-2">
+            <div class="rounded-2xl border border-black/10 bg-white p-4">
+              <div class="text-xs font-semibold text-black/70">Warnings</div>
+              <pre id="resumeWarnings" class="mono mt-2 whitespace-pre-wrap text-xs text-black/60">-</pre>
+            </div>
+            <div class="rounded-2xl border border-black/10 bg-white p-4">
+              <div class="text-xs font-semibold text-black/70">Preferences</div>
+              <pre id="resumePrefs" class="mono mt-2 whitespace-pre-wrap text-xs text-black/60">-</pre>
+            </div>
+          </div>
+        </section>
+
+        <section class="rounded-2xl border border-black/10 bg-white/70 p-5 shadow-card lg:col-span-2">
+          <div class="flex items-start justify-between gap-3">
+            <h2 class="text-sm font-semibold tracking-wide text-black/80">Profile</h2>
+            <div class="flex gap-2">
+              <button
+                id="btnAutoProfile"
+                class="rounded-xl border border-black/10 bg-white px-3 py-2 text-sm font-semibold text-black/70 hover:bg-black/5"
+              >
+                Auto-Generate
+              </button>
+              <button
+                id="btnSaveProfile"
+                class="rounded-xl bg-ink px-3 py-2 text-sm font-semibold text-white hover:opacity-90"
+              >
+                Save Profile
+              </button>
+            </div>
+          </div>
+
+          <div class="mt-4 grid gap-3 md:grid-cols-2">
+            <input id="firstName" class="rounded-xl border border-black/10 bg-white px-3 py-2 text-sm" placeholder="First name" />
+            <input id="lastName" class="rounded-xl border border-black/10 bg-white px-3 py-2 text-sm" placeholder="Last name" />
+            <input id="profileEmail" class="rounded-xl border border-black/10 bg-white px-3 py-2 text-sm" placeholder="Email" />
+            <input id="phone" class="rounded-xl border border-black/10 bg-white px-3 py-2 text-sm" placeholder="Phone" />
+            <input id="location" class="rounded-xl border border-black/10 bg-white px-3 py-2 text-sm" placeholder="Location (optional)" />
+            <input id="yearsExp" class="rounded-xl border border-black/10 bg-white px-3 py-2 text-sm" placeholder="Years of experience (optional)" />
+          </div>
+          <div id="profileMsg" class="mt-3 text-xs text-black/60"></div>
+        </section>
+
+        <section class="rounded-2xl border border-black/10 bg-white/70 p-5 shadow-card lg:col-span-3">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h2 class="text-sm font-semibold tracking-wide text-black/80">Autopilot</h2>
+              <div class="text-xs text-black/60">
+                Runs search, filters, scoring, then optionally starts applying in batch.
+              </div>
+            </div>
+            <button
+              id="btnAutopilot"
+              class="rounded-2xl bg-rust px-4 py-2 text-sm font-semibold text-white hover:opacity-90"
+            >
+              Run Autopilot
+            </button>
+          </div>
+
+          <div class="mt-4 grid gap-4 lg:grid-cols-3">
+            <div class="rounded-2xl border border-black/10 bg-white p-4">
+              <div class="text-xs font-semibold text-black/70">Search Overrides</div>
+              <div class="mt-2 grid gap-2">
+                <input
+                  id="rolesOverride"
+                  class="rounded-xl border border-black/10 bg-white px-3 py-2 text-sm"
+                  placeholder="Roles (comma-separated, optional)"
+                />
+                <input
+                  id="locationsOverride"
+                  class="rounded-xl border border-black/10 bg-white px-3 py-2 text-sm"
+                  placeholder="Locations (comma-separated, optional)"
+                />
+              </div>
+              <div class="mt-3 grid grid-cols-2 gap-2">
+                <div>
+                  <label class="text-xs font-semibold text-black/60">Max apply</label>
+                  <input id="maxApply" type="number" value="10" min="1" max="50" class="mt-1 w-full rounded-xl border border-black/10 bg-white px-3 py-2 text-sm" />
+                </div>
+                <div>
+                  <label class="text-xs font-semibold text-black/60">Min match</label>
+                  <input id="minMatch" type="number" value="0.15" step="0.05" min="0" max="1" class="mt-1 w-full rounded-xl border border-black/10 bg-white px-3 py-2 text-sm" />
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-black/10 bg-white p-4">
+              <div class="text-xs font-semibold text-black/70">Platforms</div>
+              <div class="mt-2 grid grid-cols-2 gap-2 text-sm text-black/70">
+                <label class="flex items-center gap-2"><input id="pGreenhouse" type="checkbox" checked /> Greenhouse</label>
+                <label class="flex items-center gap-2"><input id="pLever" type="checkbox" checked /> Lever</label>
+                <label class="flex items-center gap-2"><input id="pIndeed" type="checkbox" checked /> Indeed</label>
+                <label class="flex items-center gap-2"><input id="pLinkedIn" type="checkbox" checked /> LinkedIn</label>
+              </div>
+              <div class="mt-3 flex flex-col gap-2 text-sm text-black/70">
+                <label class="flex items-center gap-2"><input id="easyApplyOnly" type="checkbox" checked /> Easy-apply only</label>
+                <label class="flex items-center gap-2"><input id="allowClearance" type="checkbox" /> Allow clearance roles</label>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-black/10 bg-white p-4">
+              <div class="text-xs font-semibold text-black/70">Apply Mode</div>
+              <div class="mt-2 flex flex-col gap-2 text-sm text-black/70">
+                <label class="flex items-center gap-2"><input id="startApply" type="checkbox" /> Start applying automatically</label>
+                <label class="flex items-center gap-2"><input id="autoSubmit" type="checkbox" /> Auto-submit (no review)</label>
+              </div>
+              <div class="mt-3 text-xs text-black/60">
+                Note: If CAPTCHAs are present, the run will return “pending review” so you can complete manually.
+              </div>
+            </div>
+          </div>
+
+          <div id="autopilotMsg" class="mt-4 text-xs text-black/60"></div>
+
+          <div class="mt-4 overflow-hidden rounded-2xl border border-black/10 bg-white">
+            <div class="flex items-center justify-between border-b border-black/10 px-4 py-3">
+              <div class="text-xs font-semibold text-black/70">Recommended Jobs</div>
+              <div id="jobCount" class="mono text-xs text-black/50">0</div>
+            </div>
+            <div class="overflow-auto">
+              <table class="w-full text-left text-sm">
+                <thead class="bg-black/5 text-xs font-semibold text-black/60">
+                  <tr>
+                    <th class="px-4 py-2">Score</th>
+                    <th class="px-4 py-2">Title</th>
+                    <th class="px-4 py-2">Company</th>
+                    <th class="px-4 py-2">Location</th>
+                    <th class="px-4 py-2">Apply</th>
+                  </tr>
+                </thead>
+                <tbody id="jobsTbody" class="divide-y divide-black/5"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const els = (id) => document.getElementById(id);
+
+      const storage = {
+        getToken: () => localStorage.getItem("token") || "",
+        setToken: (t) => localStorage.setItem("token", t || ""),
+        clearToken: () => localStorage.removeItem("token"),
+      };
+
+      function apiBase() {
+        return (els("apiBase").value || "http://localhost:8080").replace(/\/+$/, "");
+      }
+
+      async function apiFetch(path, opts = {}) {
+        const token = storage.getToken();
+        const headers = opts.headers ? { ...opts.headers } : {};
+        if (token) headers["Authorization"] = `Bearer ${token}`;
+        const res = await fetch(`${apiBase()}${path}`, { ...opts, headers });
+        const text = await res.text();
+        let data = null;
+        try {
+          data = text ? JSON.parse(text) : null;
+        } catch {
+          data = text;
+        }
+        if (!res.ok) {
+          const msg = data?.detail ? JSON.stringify(data.detail) : JSON.stringify(data);
+          throw new Error(msg || `HTTP ${res.status}`);
+        }
+        return data;
+      }
+
+      function setMsg(el, msg, tone = "muted") {
+        el.textContent = msg || "";
+        el.className =
+          tone === "err"
+            ? "text-xs text-rust"
+            : tone === "ok"
+            ? "text-xs text-moss"
+            : "text-xs text-black/60";
+      }
+
+      function refreshAuthBadge() {
+        const token = storage.getToken();
+        els("authBadge").textContent = token ? "Token set" : "No token";
+      }
+
+      async function register() {
+        setMsg(els("authMsg"), "Registering...");
+        const email = els("email").value.trim();
+        const password = els("password").value;
+        const data = await apiFetch("/auth/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        });
+        storage.setToken(data.access_token);
+        refreshAuthBadge();
+        setMsg(els("authMsg"), "Registered and logged in.", "ok");
+      }
+
+      async function login() {
+        setMsg(els("authMsg"), "Logging in...");
+        const email = els("email").value.trim();
+        const password = els("password").value;
+        const data = await apiFetch("/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        });
+        storage.setToken(data.access_token);
+        refreshAuthBadge();
+        setMsg(els("authMsg"), "Logged in.", "ok");
+      }
+
+      function logout() {
+        storage.clearToken();
+        refreshAuthBadge();
+        setMsg(els("authMsg"), "Logged out.", "ok");
+      }
+
+      async function uploadResume() {
+        const f = els("resumeFile").files?.[0];
+        if (!f) {
+          setMsg(els("resumeMsg"), "Choose a resume file first.", "err");
+          return;
+        }
+        setMsg(els("resumeMsg"), "Uploading and parsing...");
+        const fd = new FormData();
+        fd.append("file", f);
+        const data = await apiFetch("/resume/upload", { method: "POST", body: fd });
+        setMsg(els("resumeMsg"), "Uploaded and parsed.", "ok");
+        els("resumeWarnings").textContent = JSON.stringify(
+          { extraction_warnings: data.extraction_warnings, pii_warnings: data.pii_warnings },
+          null,
+          2
+        );
+        els("resumePrefs").textContent = JSON.stringify(data.job_preferences || {}, null, 2);
+
+        const p = data.profile_suggestion || {};
+        els("firstName").value = p.first_name || "";
+        els("lastName").value = p.last_name || "";
+        els("profileEmail").value = p.email || "";
+        els("phone").value = p.phone || "";
+        els("location").value = p.location || "";
+        els("yearsExp").value = p.years_experience ?? "";
+        setMsg(els("profileMsg"), "Profile suggestion loaded. Confirm/edit, then Save.", "ok");
+      }
+
+      async function autoProfile() {
+        setMsg(els("profileMsg"), "Auto-generating profile from latest resume...");
+        try {
+          const data = await apiFetch("/profile/auto", { method: "POST" });
+          const p = data.profile || {};
+          els("firstName").value = p.first_name || "";
+          els("lastName").value = p.last_name || "";
+          els("profileEmail").value = p.email || "";
+          els("phone").value = p.phone || "";
+          els("location").value = p.location || "";
+          els("yearsExp").value = p.years_experience ?? "";
+          setMsg(els("profileMsg"), "Profile auto-generated and saved.", "ok");
+        } catch (e) {
+          setMsg(els("profileMsg"), String(e.message || e), "err");
+        }
+      }
+
+      async function saveProfile() {
+        setMsg(els("profileMsg"), "Saving profile...");
+        const payload = {
+          first_name: els("firstName").value.trim(),
+          last_name: els("lastName").value.trim(),
+          email: els("profileEmail").value.trim(),
+          phone: els("phone").value.trim(),
+          linkedin_url: null,
+          years_experience: els("yearsExp").value ? Number(els("yearsExp").value) : null,
+          work_authorization: "Yes",
+          sponsorship_required: "No",
+          custom_answers: {},
+        };
+        await apiFetch("/profile", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        setMsg(els("profileMsg"), "Profile saved.", "ok");
+      }
+
+      function platformsSelected() {
+        const ps = [];
+        if (els("pGreenhouse").checked) ps.push("greenhouse");
+        if (els("pLever").checked) ps.push("lever");
+        if (els("pIndeed").checked) ps.push("indeed");
+        if (els("pLinkedIn").checked) ps.push("linkedin");
+        return ps;
+      }
+
+      function splitCsv(v) {
+        const parts = (v || "")
+          .split(",")
+          .map((s) => s.trim())
+          .filter(Boolean);
+        return parts.length ? parts : null;
+      }
+
+      function renderJobs(jobs = []) {
+        els("jobCount").textContent = String(jobs.length);
+        const tb = els("jobsTbody");
+        tb.innerHTML = "";
+        for (const j of jobs) {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td class="px-4 py-3 mono text-xs text-black/60">${j.match_score ?? "-"}</td>
+            <td class="px-4 py-3">${escapeHtml(j.title || "")}</td>
+            <td class="px-4 py-3">${escapeHtml(j.company || "")}</td>
+            <td class="px-4 py-3">${escapeHtml(j.location || "")}</td>
+            <td class="px-4 py-3">
+              <a class="text-sky underline" href="${escapeAttr(j.apply_url || j.url || "#")}" target="_blank" rel="noreferrer">open</a>
+            </td>`;
+          tb.appendChild(tr);
+        }
+      }
+
+      function escapeHtml(s) {
+        return String(s)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function escapeAttr(s) {
+        return String(s).replaceAll('"', "%22").replaceAll("'", "%27");
+      }
+
+      async function runAutopilot() {
+        setMsg(els("autopilotMsg"), "Running autopilot...");
+        renderJobs([]);
+        const payload = {
+          platforms: platformsSelected(),
+          max_apply: Number(els("maxApply").value || 10),
+          start_apply: els("startApply").checked,
+          auto_submit: els("autoSubmit").checked,
+          easy_apply_only: els("easyApplyOnly").checked,
+          posted_within_days: 7,
+          min_match_score: Number(els("minMatch").value || 0.15),
+          allow_clearance_jobs: els("allowClearance").checked,
+          roles: splitCsv(els("rolesOverride").value),
+          locations: splitCsv(els("locationsOverride").value),
+        };
+
+        const data = await apiFetch("/campaign/autopilot", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        renderJobs(data.recommended || []);
+        const meta = {
+          roles: data.roles,
+          locations: data.locations,
+          platforms: data.platforms,
+          apply_result: data.apply_result ? data.apply_result.summary : null,
+        };
+        setMsg(els("autopilotMsg"), JSON.stringify(meta, null, 2), "ok");
+      }
+
+      // Drag and drop
+      const dz = els("dropzone");
+      dz.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dz.classList.add("dragover");
+      });
+      dz.addEventListener("dragleave", () => dz.classList.remove("dragover"));
+      dz.addEventListener("drop", (e) => {
+        e.preventDefault();
+        dz.classList.remove("dragover");
+        const f = e.dataTransfer.files?.[0];
+        if (f) {
+          const dt = new DataTransfer();
+          dt.items.add(f);
+          els("resumeFile").files = dt.files;
+        }
+      });
+
+      // Bind buttons
+      els("btnRegister").addEventListener("click", () => register().catch((e) => setMsg(els("authMsg"), String(e), "err")));
+      els("btnLogin").addEventListener("click", () => login().catch((e) => setMsg(els("authMsg"), String(e), "err")));
+      els("btnLogout").addEventListener("click", logout);
+      els("btnUpload").addEventListener("click", () => uploadResume().catch((e) => setMsg(els("resumeMsg"), String(e), "err")));
+      els("btnAutoProfile").addEventListener("click", () => autoProfile());
+      els("btnSaveProfile").addEventListener("click", () => saveProfile().catch((e) => setMsg(els("profileMsg"), String(e), "err")));
+      els("btnAutopilot").addEventListener("click", () => runAutopilot().catch((e) => setMsg(els("autopilotMsg"), String(e), "err")));
+
+      refreshAuthBadge();
+    </script>
+  </body>
+</html>
+
