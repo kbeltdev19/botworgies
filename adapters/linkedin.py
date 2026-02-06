@@ -242,13 +242,16 @@ class LinkedInAdapter(JobPlatformAdapter):
         page = session.page
         
         try:
-            # Set cookie
-            await page.context.add_cookies([{
-                "name": "li_at",
-                "value": self.session_cookie,
-                "domain": ".linkedin.com",
-                "path": "/"
-            }])
+            # Set cookie if available
+            if self.session_cookie:
+                await page.context.add_cookies([{
+                    "name": "li_at",
+                    "value": str(self.session_cookie),
+                    "domain": ".linkedin.com",
+                    "path": "/"
+                }])
+            else:
+                logger.warning("[LinkedIn] No session cookie provided - authentication may fail")
             
             await page.goto(job_url, wait_until="domcontentloaded")
             await self._human_delay()
@@ -370,13 +373,16 @@ class LinkedInAdapter(JobPlatformAdapter):
         step_number = 0
         
         try:
-            # Set cookie
-            await page.context.add_cookies([{
-                "name": "li_at",
-                "value": self.session_cookie,
-                "domain": ".linkedin.com",
-                "path": "/"
-            }])
+            # Set cookie if available
+            if self.session_cookie:
+                await page.context.add_cookies([{
+                    "name": "li_at",
+                    "value": str(self.session_cookie),
+                    "domain": ".linkedin.com",
+                    "path": "/"
+                }])
+            else:
+                logger.warning("[LinkedIn] No session cookie provided - authentication may fail")
             
             # Navigate to job
             print(f"[LinkedIn] Navigating to {job.url}")

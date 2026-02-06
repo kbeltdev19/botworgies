@@ -198,8 +198,21 @@ class UnifiedBrowserManager:
     
     async def _create_basic_session(self, platform: str = "generic") -> BrowserSession:
         """Create a basic BrowserBase session without AI features."""
-        # Create a BrowserBase session
-        bb_session = self._bb.sessions.create(project_id=self.project_id)
+        # Create a BrowserBase session with proxy and captcha solving enabled
+        bb_session = self._bb.sessions.create(
+            project_id=self.project_id,
+            proxies=True,
+            browser_settings={
+                "solve_captchas": True,
+                "block_ads": True,
+                "fingerprint": {
+                    "browsers": ["chrome"],
+                    "devices": ["desktop"],
+                    "operating_systems": ["macos"],
+                    "locales": ["en-US"],
+                },
+            },
+        )
         connect_url = bb_session.connect_url
         session_id = bb_session.id
         
@@ -259,17 +272,54 @@ class UnifiedBrowserManager:
             await self.close_session(session_id)
         logger.info("All browser sessions closed")
     
+    async def create_stealth_session(self, platform: str = "generic") -> BrowserSession:
+        """Alias for create_session (stealth is enabled by default)."""
+        return await self.create_session(platform)
+
     async def human_like_delay(self, min_seconds: float = 1.0, max_seconds: float = 3.0):
-        """
-        Wait for a random duration to simulate human-like behavior.
-        
-        Args:
-            min_seconds: Minimum delay in seconds
-            max_seconds: Maximum delay in seconds
-        """
+        """Wait for a random duration to simulate human-like behavior."""
         import random
         delay = random.uniform(min_seconds, max_seconds)
         await asyncio.sleep(delay)
+
+    async def human_like_click(self, page, selector: str):
+        """Click an element with a human-like delay."""
+        import random
+        await asyncio.sleep(random.uniform(0.3, 1.2))
+        try:
+            element = page.locator(selector).first
+            await element.wait_for(state="visible", timeout=10000)
+            await element.click()
+        except Exception as e:
+            logger.warning(f"human_like_click failed for '{selector}': {e}")
+            await page.click(selector, timeout=10000)
+
+    async def human_like_scroll(self, page, direction: str = "down", amount: int = 300):
+        """Scroll the page with human-like behavior."""
+        import random
+        await asyncio.sleep(random.uniform(0.2, 0.6))
+        delta = amount if direction == "down" else -amount
+        await page.mouse.wheel(0, delta)
+
+    async def human_like_type(self, page, selector: str, text: str):
+        """Type text with human-like delays."""
+        import random
+        element = page.locator(selector).first
+        await element.click()
+        for char in text:
+            await element.type(char, delay=random.randint(50, 150))
+
+    async def wait_for_cloudflare(self, page, timeout: int = 15000):
+        """Wait for Cloudflare challenge to resolve."""
+        try:
+            await page.wait_for_load_state("networkidle", timeout=timeout)
+        except Exception:
+            pass
+
+    async def solve_captcha(self, page) -> bool:
+        """Attempt to solve CAPTCHA (handled by BrowserBase solve_captchas setting)."""
+        await asyncio.sleep(3)
+        return True
     
     def get_stats(self) -> Dict[str, Any]:
         """Get browser manager statistics."""

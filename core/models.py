@@ -365,6 +365,9 @@ def detect_platform_from_url(url: str) -> PlatformType:
         PlatformType.LINKEDIN: ["linkedin.com/jobs"],
         PlatformType.INDEED: ["indeed.com", "indeed.jobs"],
         PlatformType.DICE: ["dice.com"],
+        PlatformType.ZIPRECRUITER: ["ziprecruiter.com"],
+        PlatformType.CLEARANCEJOBS: ["clearancejobs.com"],
+        PlatformType.USAJOBS: ["usajobs.gov"],
     }
     
     for platform, patterns_list in patterns.items():

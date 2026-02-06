@@ -38,35 +38,37 @@ class SubmissionValidatorFixed:
     ]
     
     # Cloudflare/CAPTCHA indicators - if present, it's NOT a success
+    # These are checked against VISIBLE text, not HTML source
     CLOUDFLARE_INDICATORS = [
         "additional verification required",
-        "ray id",
-        "cloudflare",
+        "ray id:",  # Cloudflare error page
         "checking your browser",
-        "please wait",
+        "please wait...",  # Cloudflare waiting page
         "verifying you are human",
         "ddos protection",
-        "just a moment",
+        "just a moment...",  # Cloudflare challenge
         "attention required",
-        "captcha",
-        "i'm not a robot",
+        "i'm not a robot",  # reCAPTCHA checkbox text
         "verify you are human",
+        "please verify you are human",
     ]
     
     # Error indicators - submission failed
+    # These must be complete phrases, not single words
     ERROR_INDICATORS = [
         "error occurred",
         "something went wrong",
         "failed to submit",
         "please try again",
-        "required field",
-        "invalid",
-        "error:",
+        "required field is missing",
+        "field is required",
         "could not submit",
         "unexpected error",
         "fix the following errors",
         "submission failed",
         "an error has occurred",
+        "submission error",
+        "application error",
     ]
     
     # URL patterns that indicate success

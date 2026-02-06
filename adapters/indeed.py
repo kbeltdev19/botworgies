@@ -339,11 +339,37 @@ class IndeedAdapter(JobPlatformAdapter):
         current_url = page.url
         logger.info(f"[Indeed] On page: {current_url[:60]}...")
         
-        # Handle CAPTCHA if present
-        if hasattr(self.browser_manager, 'solve_captcha'):
-            captcha_solved = await self.browser_manager.solve_captcha(page)
-            if captcha_solved:
-                await self.browser_manager.human_like_delay(2, 3)
+        # Handle CAPTCHA if present - BrowserBase should auto-solve, but add fallback
+        captcha_present = await self._check_for_captcha(page)
+        if captcha_present:
+            logger.warning("[Indeed] CAPTCHA detected, attempting to solve...")
+            
+            # Wait for BrowserBase auto-solving
+            await asyncio.sleep(5)
+            
+            # Check if still present
+            captcha_present = await self._check_for_captcha(page)
+            if captcha_present:
+                # Fallback to capsolver
+                from core.captcha_solver import get_captcha_solver
+                solver = get_captcha_solver()
+                
+                if solver.is_configured():
+                    logger.info("[Indeed] Using Capsolver fallback...")
+                    # Try to find and solve reCAPTCHA
+                    site_key = await self._find_recaptcha_sitekey(page)
+                    if site_key:
+                        token = await solver.solve_recaptcha_v2(site_key, page.url)
+                        if token:
+                            # Inject token into page
+                            await page.evaluate(f"""
+                                document.querySelector('[name="g-recaptcha-response"]')?.setAttribute('value', '{token}');
+                                document.querySelector('#g-recaptcha-response')?.setAttribute('value', '{token}');
+                            """)
+                            await asyncio.sleep(2)
+                else:
+                    logger.warning("[Indeed] Capsolver not configured, waiting longer...")
+                    await asyncio.sleep(10)
         
         # Wait for page to fully load (Indeed loads dynamically)
         logger.info(f"[Indeed] Waiting for page to load...")
@@ -476,16 +502,10 @@ class IndeedAdapter(JobPlatformAdapter):
                     external_url = await external_link.get_attribute("href")
                     if external_url:
                         # Use external adapter for company site application
-                        from .external import ExternalApplicationAdapter
-                        external_adapter = ExternalApplicationAdapter(self.browser_manager)
-                        job.external_apply_url = external_url
-                        
-                        return await external_adapter.apply_to_job(
-                            job=job,
-                            resume=resume,
-                            profile=profile,
-                            cover_letter=cover_letter,
-                            auto_submit=auto_submit
+                        # External application - return status for manual handling
+                        return ApplicationResult(
+                            status=ApplicationStatus.EXTERNAL_APPLICATION,
+                            message=f"External application required: {external_url[:80]}..."
                         )
             
             return ApplicationResult(
@@ -614,8 +634,8 @@ class IndeedAdapter(JobPlatformAdapter):
                             await self.browser_manager.human_like_delay(3, 5)
                             
                             # VALIDATION: Check if submission was successful
-                            from .validation import SubmissionValidator
-                            validation_result = await SubmissionValidator.validate(
+                            from .validation_fixed import SubmissionValidatorFixed
+                            validation_result = await SubmissionValidatorFixed.validate(
                                 page, job.id, platform="indeed"
                             )
                             if validation_result['success']:
@@ -649,3 +669,58 @@ class IndeedAdapter(JobPlatformAdapter):
             status=ApplicationStatus.ERROR,
             message="Could not complete application flow"
         )
+    
+    async def _check_for_captcha(self, page) -> bool:
+        """Check if CAPTCHA is present on the page."""
+        captcha_selectors = [
+            '.g-recaptcha',  # reCAPTCHA widget
+            '#g-recaptcha',
+            'iframe[src*="recaptcha"]',  # reCAPTCHA iframe
+            'iframe[src*="captcha"]',  # hCaptcha iframe
+            '.h-captcha',
+            '#h-captcha',
+            '.cf-turnstile',  # Cloudflare turnstile
+            'input[name="g-recaptcha-response"]',  # Hidden input
+        ]
+        
+        for selector in captcha_selectors:
+            try:
+                if await page.locator(selector).count() > 0:
+                    logger.debug(f"[Indeed] CAPTCHA element found: {selector}")
+                    return True
+            except:
+                continue
+        
+        return False
+    
+    async def _find_recaptcha_sitekey(self, page) -> Optional[str]:
+        """Find reCAPTCHA site key on the page."""
+        try:
+            # Try data-sitekey attribute
+            site_key = await page.evaluate("""
+                () => {
+                    const el = document.querySelector('.g-recaptcha');
+                    return el ? el.getAttribute('data-sitekey') : null;
+                }
+            """)
+            
+            if site_key:
+                return site_key
+            
+            # Try finding in scripts
+            site_key = await page.evaluate("""
+                () => {
+                    const scripts = document.querySelectorAll('script');
+                    for (const script of scripts) {
+                        const text = script.textContent || '';
+                        const match = text.match(/sitekey["']?\s*:\s*["']([^"']+)/);
+                        if (match) return match[1];
+                    }
+                    return null;
+                }
+            """)
+            
+            return site_key
+        except Exception as e:
+            logger.debug(f"[Indeed] Error finding site key: {e}")
+            return None

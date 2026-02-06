@@ -42,8 +42,8 @@ search:
     - "Staff"
 
 platforms:
-  - linkedin
-  - indeed
+  # - linkedin  # Disabled - requires valid li_at session cookie
+  - indeed    # Now with Capsolver fallback for CAPTCHA
   - greenhouse
   - lever
   - clearancejobs
@@ -54,17 +54,17 @@ limits:
   min_match_score: 0.7
 
 settings:
-  auto_submit: false
-  delay_between_applications: [30, 60]
-  delay_between_platforms: 300
-  retry_attempts: 3
+  auto_submit: true
+  delay_between_applications: [10, 30]
+  delay_between_platforms: 60
+  retry_attempts: 1
   enable_iteration: true
   enable_monitoring: true
   stop_on_low_success_rate: true
   min_success_rate: 0.3
 
-# Use pre-scraped jobs file
-job_file: "campaigns/output/kevin_1000_real_v3/jobs.json"
+# Use fresh scraped jobs (Indeed jobs with CAPTCHA fallback)
+job_file: "campaigns/output/kevin_fresh/jobs.json"
 
 output:
   dir: "./campaign_output/kevin_beltran"

@@ -20,8 +20,9 @@ from typing import Dict, List, Optional, Any, Tuple
 
 # New unified imports
 from core.models import (
-    JobPosting, UserProfile, Resume, ApplicationResult, 
-    SearchConfig, PlatformType, ApplicationStatus
+    JobPosting, UserProfile, Resume, ApplicationResult,
+    SearchConfig, PlatformType, ApplicationStatus,
+    detect_platform_from_url
 )
 from core.browser import UnifiedBrowserManager
 from core.ai import UnifiedAIService
@@ -198,13 +199,25 @@ class CampaignRunner:
                 else:
                     file_jobs = data.get('jobs', [])
                 for job_data in file_jobs:
+                    # Detect platform from URL if not specified
+                    url = job_data.get('url', '')
+                    platform_str = job_data.get('platform', '')
+                    if not platform_str and url:
+                        platform_str = detect_platform_from_url(url)
+                    if not platform_str or platform_str == 'unknown':
+                        platform_str = 'external'
+                    try:
+                        platform = PlatformType(platform_str)
+                    except ValueError:
+                        platform = PlatformType.EXTERNAL
+
                     all_jobs.append(JobPosting(
                         id=job_data.get('id', f"file_{len(all_jobs)}"),
-                        platform=PlatformType(job_data.get('platform', 'external')),
+                        platform=platform,
                         title=job_data.get('title', 'Unknown'),
                         company=job_data.get('company', 'Unknown'),
                         location=job_data.get('location', 'Remote'),
-                        url=job_data.get('url', ''),
+                        url=url,
                         description=job_data.get('description', ''),
                         easy_apply=job_data.get('easy_apply', True),
                         remote=job_data.get('is_remote', True)
@@ -250,12 +263,20 @@ class CampaignRunner:
         filtered = []
         seen = set()
         
+        # Get allowed platforms from config
+        allowed_platforms = set(p.lower() for p in self.config.platforms)
+        
         for job in jobs:
             # Deduplicate
             key = f"{job.company}_{job.title}"
             if key in seen:
                 continue
             seen.add(key)
+            
+            # Check platform is allowed
+            platform_key = job.platform.value if hasattr(job.platform, 'value') else str(job.platform)
+            if platform_key.lower() not in allowed_platforms:
+                continue
             
             # Check exclusions
             if any(excluded.lower() in job.company.lower() 
@@ -267,7 +288,6 @@ class CampaignRunner:
                 continue
             
             # Check platform limit
-            platform_key = job.platform.value if hasattr(job.platform, 'value') else str(job.platform)
             if self.config.max_per_platform and self.platform_counts.get(platform_key, 0) >= self.config.max_per_platform:
                 continue
             
@@ -311,20 +331,41 @@ class CampaignRunner:
     
     async def _apply_with_retry(self, job: JobPosting) -> ApplicationResult:
         """Apply to a job with retry logic."""
+        platform_str = job.platform.value if hasattr(job.platform, 'value') else str(job.platform)
+        
+        # Skip LinkedIn jobs if no session cookie is configured
+        if platform_str == 'linkedin' and not hasattr(self, '_linkedin_cookie'):
+            logger.warning(f"⚠️  Skipping LinkedIn job (no session cookie configured): {job.title} at {job.company}")
+            return ApplicationResult(
+                status=ApplicationStatus.SKIPPED,
+                message="LinkedIn jobs require a session cookie (li_at) to be configured"
+            )
+        
         for attempt in range(self.config.retry_attempts):
             try:
-                # Always use legacy adapters for now - unified adapter requires OpenAI
                 from adapters import get_adapter
-                
-                platform_str = job.platform.value if hasattr(job.platform, 'value') else str(job.platform)
+
+                # Also try to detect from URL if platform is external/unknown
+                if platform_str in ('external', 'unknown') and job.url:
+                    detected = detect_platform_from_url(job.url)
+                    if detected != 'unknown':
+                        platform_str = detected
+
                 adapter = get_adapter(platform_str, self.browser, use_unified=False)
-                
-                result = await adapter.apply_to_job(
-                    job=job,
-                    resume=self.config.resume,
-                    profile=self.config.applicant_profile,
-                    auto_submit=self.config.auto_submit
-                )
+
+                # Handle both legacy (apply_to_job) and unified (apply) adapter methods
+                if hasattr(adapter, 'apply_to_job'):
+                    result = await adapter.apply_to_job(
+                        job=job,
+                        resume=self.config.resume,
+                        profile=self.config.applicant_profile,
+                        auto_submit=self.config.auto_submit
+                    )
+                else:
+                    result = await adapter.apply(
+                        job=job,
+                        resume=self.config.resume
+                    )
                 
                 if result.success:
                     logger.info(f"✅ Application successful! Confirmation: {result.confirmation_id}")
@@ -477,21 +518,23 @@ PLATFORM BREAKDOWN:
             parsed_data={}
         )
         
-        # Get strategy settings
-        strategy = data.get('strategy', {})
-        targets = data.get('targets', {})
-        
+        # Get strategy/settings (support both keys)
+        strategy = data.get('strategy', {}) or data.get('settings', {})
+        targets = data.get('targets', {}) or data.get('limits', {})
+
         return CampaignConfig(
             name=data.get('name', 'Unnamed Campaign'),
             applicant_profile=profile,
             resume=resume,
             search_criteria=search_criteria,
-            platforms=search_data.get('platforms', ['greenhouse', 'lever']),
-            max_applications=targets.get('total', 10),
-            max_per_platform=targets.get('daily_max'),
+            platforms=data.get('platforms', search_data.get('platforms', ['greenhouse', 'lever'])),
+            max_applications=targets.get('total', targets.get('max_applications', 10)),
+            max_per_platform=targets.get('daily_max', targets.get('max_per_platform')),
             auto_submit=strategy.get('auto_submit', False),
-            delay_between_applications=strategy.get('delay_range', [30, 60]),
-            output_dir=Path(data.get('output', {}).get('directory', './campaign_output')),
+            retry_attempts=strategy.get('retry_attempts', 3),
+            delay_between_applications=tuple(strategy.get('delay_between_applications', strategy.get('delay_range', [30, 60]))),
+            delay_between_platforms=strategy.get('delay_between_platforms', 300),
+            output_dir=Path(data.get('output', {}).get('dir', data.get('output', {}).get('directory', './campaign_output'))),
             save_screenshots=data.get('output', {}).get('save_screenshots', True),
             job_file=data.get('job_file')
         )
