@@ -38,6 +38,7 @@ class FormIntelligence:
         question_type: str,  # 'text', 'select', 'radio', 'checkbox'
         options: List[str] = None,
         profile: Dict = None,
+        resume_text: str = None,
         job_description: str = None,
         context: Dict = None
     ) -> str:
@@ -68,7 +69,7 @@ class FormIntelligence:
             # Build prompt
             prompt = self._build_prompt(
                 question, question_type, options,
-                profile, job_description, context
+                profile, resume_text, job_description, context
             )
             
             # Get AI response
@@ -93,13 +94,16 @@ class FormIntelligence:
         question_type: str,
         options: List[str],
         profile: Dict,
+        resume_text: str,
         job_description: str,
         context: Dict
     ) -> str:
         """Build AI prompt for question answering."""
         
         prompt_parts = [
-            "You are helping someone fill out a job application. Answer the question professionally and concisely.",
+            "You are helping someone fill out a job application.",
+            "Be truthful and accurate. Do not invent experience, skills, companies, dates, degrees, or credentials.",
+            "Use only the provided applicant profile and resume context. If unknown, say 'Not specified'.",
             "",
             f"Question: {question}",
             f"Question Type: {question_type}",
@@ -111,9 +115,25 @@ class FormIntelligence:
         if profile:
             prompt_parts.append("")
             prompt_parts.append("Applicant Profile:")
-            prompt_parts.append(f"- Name: {profile.get('first_name', '')} {profile.get('last_name', '')}")
-            prompt_parts.append(f"- Experience: {profile.get('years_experience', '5+')} years")
-            prompt_parts.append(f"- Skills: {profile.get('skills', 'relevant technical skills')}")
+            if profile.get("first_name") or profile.get("last_name"):
+                prompt_parts.append(f"- Name: {profile.get('first_name', '')} {profile.get('last_name', '')}".strip())
+            if profile.get("email"):
+                prompt_parts.append(f"- Email: {profile.get('email')}")
+            if profile.get("phone"):
+                prompt_parts.append(f"- Phone: {profile.get('phone')}")
+            if profile.get("years_experience") is not None:
+                prompt_parts.append(f"- Years Experience: {profile.get('years_experience')}")
+            if profile.get("work_authorization"):
+                prompt_parts.append(f"- Work Authorization: {profile.get('work_authorization')}")
+            if profile.get("sponsorship_required"):
+                prompt_parts.append(f"- Sponsorship Required: {profile.get('sponsorship_required')}")
+            if profile.get("custom_answers"):
+                prompt_parts.append(f"- Known Answers: {profile.get('custom_answers')}")
+
+        if resume_text:
+            prompt_parts.append("")
+            prompt_parts.append("Resume Context (truncated):")
+            prompt_parts.append(resume_text[:2500])
         
         if job_description:
             prompt_parts.append(f"")
@@ -125,11 +145,10 @@ class FormIntelligence:
         
         prompt_parts.append(f"")
         prompt_parts.append(f"Instructions:")
-        prompt_parts.append(f"1. Answer truthfully based on the profile")
-        prompt_parts.append(f"2. Keep answers concise (1-2 sentences for text, exact option for select)")
-        prompt_parts.append(f"3. For yes/no questions about eligibility: answer 'Yes' if qualified")
-        prompt_parts.append(f"4. For salary questions: be reasonable and negotiable")
-        prompt_parts.append(f"5. Match the tone of the job description")
+        prompt_parts.append(f"1. Keep answers concise (1-2 sentences for text, exact option for select/radio).")
+        prompt_parts.append(f"2. If the form asks for demographics (race/gender/veteran/disability), choose 'Prefer not to answer' when available.")
+        prompt_parts.append(f"3. For salary questions: respond 'Negotiable' unless a specific number is explicitly provided in the profile.")
+        prompt_parts.append(f"4. For authorization/sponsorship: use the profile fields. If missing, say 'Not specified'.")
         prompt_parts.append(f"")
         prompt_parts.append(f"Answer:")
         
@@ -151,8 +170,13 @@ class FormIntelligence:
             for option in options:
                 if option.lower() in answer_lower or answer_lower in option.lower():
                     return option
-            # Default to first non-empty option
-            return options[0] if options else answer
+            # Default to first non-placeholder option
+            cleaned = [o for o in options if (o or "").strip()]
+            non_placeholder = [
+                o for o in cleaned
+                if not any(tok in o.lower() for tok in ["select", "choose", "--", "please select"])
+            ]
+            return (non_placeholder[0] if non_placeholder else (cleaned[0] if cleaned else answer))
         
         if question_type == 'checkbox':
             # Normalize yes/no for checkboxes

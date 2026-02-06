@@ -247,6 +247,275 @@ class GreenhouseAdapter(JobPlatformAdapter):
                     continue
             return False
 
+        async def fill_additional_fields() -> dict:
+            """
+            Best-effort fill for additional required fields (screening/EEO/etc).
+            Returns dict: {filled: int, missing_required: [question,...]}.
+            """
+            try:
+                from ai.form_intelligence import get_form_intelligence
+
+                fi = get_form_intelligence()
+            except Exception:
+                fi = None
+
+            profile_ctx = {
+                "first_name": getattr(profile, "first_name", ""),
+                "last_name": getattr(profile, "last_name", ""),
+                "email": getattr(profile, "email", ""),
+                "phone": getattr(profile, "phone", ""),
+                "location": getattr(profile, "location", ""),
+                "work_authorization": getattr(profile, "work_authorization", "Yes"),
+                "sponsorship_required": getattr(profile, "sponsorship_required", "No"),
+                "years_experience": getattr(profile, "years_experience", None),
+                "custom_answers": getattr(profile, "custom_answers", {}) or {},
+            }
+            resume_text = getattr(resume, "raw_text", "") or ""
+            job_desc = getattr(job, "description", "") or ""
+
+            filled = 0
+            missing_required: list[str] = []
+            processed_radio_names: set[str] = set()
+
+            controls = page.locator("form input, form select, form textarea")
+            try:
+                total = await controls.count()
+            except Exception:
+                return {"filled": 0, "missing_required": []}
+
+            max_controls = min(total, 200)
+            for i in range(max_controls):
+                el = controls.nth(i)
+                try:
+                    if not await el.is_visible():
+                        continue
+                except Exception:
+                    continue
+
+                try:
+                    tag = await el.evaluate("e => e.tagName.toLowerCase()")
+                except Exception:
+                    continue
+
+                itype = ""
+                if tag == "input":
+                    try:
+                        itype = (await el.get_attribute("type") or "").lower()
+                    except Exception:
+                        itype = ""
+                    if itype in {"hidden", "submit", "button", "image", "reset"}:
+                        continue
+                    if itype == "file":
+                        continue
+
+                # Required?
+                try:
+                    required = bool(
+                        await el.evaluate("e => !!(e.required || e.getAttribute('aria-required') === 'true')")
+                    )
+                except Exception:
+                    required = False
+
+                # Check if already filled
+                try:
+                    if tag == "input" and itype == "checkbox":
+                        if await el.is_checked():
+                            continue
+                    elif tag == "input" and itype == "radio":
+                        name = (await el.get_attribute("name") or "").strip()
+                        if name in processed_radio_names:
+                            continue
+                        # If any radio in this group is checked, skip.
+                        group_checked = await el.evaluate(
+                            """(e) => {
+                                const name = e.getAttribute('name');
+                                if (!name) return e.checked;
+                                const sel = `input[type="radio"][name="${CSS.escape(name)}"]`;
+                                return Array.from(document.querySelectorAll(sel)).some(r => r.checked);
+                            }"""
+                        )
+                        if group_checked:
+                            processed_radio_names.add(name)
+                            continue
+                    else:
+                        val = (await el.input_value()) if hasattr(el, "input_value") else ""
+                        if (val or "").strip():
+                            continue
+                except Exception:
+                    pass
+
+                # Label / question text
+                question = ""
+                try:
+                    question = (
+                        await el.evaluate(
+                            """(e) => {
+                                const byFor = e.id ? document.querySelector(`label[for="${e.id}"]`) : null;
+                                const label = byFor?.innerText || e.closest('label')?.innerText || '';
+                                const legend = e.closest('fieldset')?.querySelector('legend')?.innerText || '';
+                                const aria = e.getAttribute('aria-label') || '';
+                                const ph = e.getAttribute('placeholder') || '';
+                                const nm = e.getAttribute('name') || '';
+                                return (legend || label || aria || ph || nm || '').trim();
+                            }"""
+                        )
+                        or ""
+                    )
+                except Exception:
+                    question = ""
+
+                # Checkbox: required consent boxes
+                if tag == "input" and itype == "checkbox":
+                    if required:
+                        try:
+                            label_txt = (question or "").lower()
+                            # Check required consent/acknowledgement boxes.
+                            if any(k in label_txt for k in ["agree", "consent", "privacy", "terms", "acknowledge"]):
+                                await el.check()
+                                filled += 1
+                                continue
+                            await el.check()
+                            filled += 1
+                            continue
+                        except Exception:
+                            if required:
+                                missing_required.append(question or "required_checkbox")
+                            continue
+                    continue
+
+                # Radio group (process once per name)
+                if tag == "input" and itype == "radio":
+                    try:
+                        group = await el.evaluate(
+                            """(e) => {
+                                const name = e.getAttribute('name') || '';
+                                const sel = name ? `input[type="radio"][name="${CSS.escape(name)}"]` : '';
+                                const radios = sel ? Array.from(document.querySelectorAll(sel)) : [e];
+                                const legend = e.closest('fieldset')?.querySelector('legend')?.innerText || '';
+                                const opts = radios.map(r => ({
+                                    id: r.id || '',
+                                    value: r.value || '',
+                                    label: (document.querySelector(`label[for="${r.id}"]`)?.innerText || r.closest('label')?.innerText || '').trim()
+                                }));
+                                const req = radios.some(r => r.required || r.getAttribute('aria-required') === 'true');
+                                return {name, legend, options: opts, required: req};
+                            }"""
+                        )
+                        name = (group or {}).get("name") or ""
+                        processed_radio_names.add(name)
+                        opts = (group or {}).get("options") or []
+                        opt_labels = [o.get("label") or o.get("value") for o in opts if (o.get("label") or o.get("value"))]
+                        qtxt = (group or {}).get("legend") or question or "Please choose an option"
+
+                        if not opt_labels:
+                            if (group or {}).get("required"):
+                                missing_required.append(qtxt)
+                            continue
+
+                        if fi:
+                            ans = await fi.answer_question(
+                                question=qtxt,
+                                question_type="radio",
+                                options=opt_labels,
+                                profile=profile_ctx,
+                                resume_text=resume_text,
+                                job_description=job_desc,
+                                context={"company": getattr(job, "company", ""), "title": getattr(job, "title", "")},
+                            )
+                        else:
+                            ans = opt_labels[0]
+
+                        # Click matching option
+                        clicked = False
+                        for o in opts:
+                            lbl = (o.get("label") or o.get("value") or "").strip()
+                            if not lbl:
+                                continue
+                            if lbl.lower() == str(ans).lower():
+                                if o.get("id"):
+                                    await page.locator(f"label[for='{o['id']}']").first.click()
+                                else:
+                                    await page.locator(
+                                        f"input[type='radio'][name=\"{name}\"][value=\"{o.get('value','')}\"]"
+                                    ).first.click()
+                                clicked = True
+                                filled += 1
+                                break
+                        if not clicked:
+                            # Fallback click first option
+                            first = opts[0]
+                            if first.get("id"):
+                                await page.locator(f"label[for='{first['id']}']").first.click()
+                            else:
+                                await el.click()
+                            filled += 1
+                        continue
+                    except Exception:
+                        if required:
+                            missing_required.append(question or "required_radio")
+                        continue
+
+                # Select
+                if tag == "select":
+                    try:
+                        options_text = [t.strip() for t in await el.locator("option").all_inner_texts() if t.strip()]
+                    except Exception:
+                        options_text = []
+                    if not options_text:
+                        if required:
+                            missing_required.append(question or "required_select")
+                        continue
+                    if fi:
+                        ans = await fi.answer_question(
+                            question=question or "Select an option",
+                            question_type="select",
+                            options=options_text,
+                            profile=profile_ctx,
+                            resume_text=resume_text,
+                            job_description=job_desc,
+                            context={"company": getattr(job, "company", ""), "title": getattr(job, "title", "")},
+                        )
+                    else:
+                        ans = options_text[0]
+                    try:
+                        await el.select_option(label=str(ans))
+                    except Exception:
+                        try:
+                            await el.select_option(value=str(ans))
+                        except Exception:
+                            pass
+                    filled += 1
+                    continue
+
+                # Text / textarea
+                if tag in {"input", "textarea"}:
+                    qtype = "text"
+                    if tag == "input" and itype in {"email", "tel"}:
+                        qtype = "text"
+
+                    if fi:
+                        ans = await fi.answer_question(
+                            question=question or "Answer",
+                            question_type=qtype,
+                            options=None,
+                            profile=profile_ctx,
+                            resume_text=resume_text,
+                            job_description=job_desc,
+                            context={"company": getattr(job, "company", ""), "title": getattr(job, "title", "")},
+                        )
+                    else:
+                        ans = "Not specified"
+
+                    try:
+                        await el.fill(str(ans))
+                        filled += 1
+                    except Exception:
+                        if required:
+                            missing_required.append(question or "required_text")
+                    continue
+
+            return {"filled": filled, "missing_required": missing_required}
+
         screenshot_path = None
         try:
             await page.goto(job.url, wait_until="domcontentloaded", timeout=60000)
@@ -321,6 +590,17 @@ class GreenhouseAdapter(JobPlatformAdapter):
                         "textarea[name*='cover' i]",
                     ],
                     cover_letter,
+                )
+
+            extra = await fill_additional_fields()
+            if extra.get("missing_required"):
+                screenshot_path = f"/tmp/greenhouse_required_missing_{job.id}.png"
+                await page.screenshot(path=screenshot_path, full_page=True)
+                return ApplicationResult(
+                    status=ApplicationStatus.PENDING_REVIEW,
+                    message=f"Missing required fields ({len(extra.get('missing_required'))}); manual review required.",
+                    screenshot_path=screenshot_path,
+                    external_url=job.url,
                 )
 
             if await detect_captcha():

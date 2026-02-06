@@ -68,4 +68,6 @@ tmp/
 temp/
 *.tmp
 campaign_output/
+campaigns/output/
+campaigns/logs/
 *.log

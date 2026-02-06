@@ -211,7 +211,12 @@ class ParallelApplicationProcessor:
                         duration = (completed_at - started_at).total_seconds()
                         
                         # Check if it's a rate limit error
-                        if "429" in error_msg or "rate limit" in error_msg.lower():
+                        if (
+                            "429" in error_msg
+                            or "rate limit" in error_msg.lower()
+                            or "daily limit" in error_msg.lower()
+                            or "too many requests" in error_msg.lower()
+                        ):
                             status = ApplicationStatus.RATE_LIMITED
                             self.stats["total_rate_limited"] += 1
                         else:

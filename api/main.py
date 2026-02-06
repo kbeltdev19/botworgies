@@ -5,6 +5,7 @@ With authentication, database persistence, and proper security.
 """
 
 import os
+import json
 import re
 import uuid
 import asyncio
@@ -30,8 +31,10 @@ from api.auth import (
 from api.database import (
     init_database, create_user, get_user_by_email, get_user_by_id,
     save_profile, get_profile, save_resume, get_latest_resume, update_resume_tailored,
-    save_application, get_applications, get_application, count_applications_since,
-    save_settings, get_settings
+    save_application, get_applications, get_applications_since, get_application, count_applications_since,
+    save_settings, get_settings,
+    create_campaign, get_campaign, list_campaigns, set_campaign_status,
+    enqueue_jobs, get_queue_counts, list_queue_items, cancel_campaign_queue
 )
 from api.logging_config import logger, log_application, log_ai_request
 
@@ -75,6 +78,11 @@ from api.parallel_processor import (
     BatchApplicationStats
 )
 
+# Shared application engine + persistent queue worker
+from api.application_engine import ApplyOptions, RateLimitError, apply_job_url
+from api.queue_worker import QueueWorker
+from monitoring.notifications import notifications
+
 
 # === Lifespan Management ===
 
@@ -85,9 +93,29 @@ async def lifespan(app: FastAPI):
     logger.info("Starting Job Applier API...")
     await init_database()
     logger.info("Database initialized")
+
+    # Start persistent queue worker (optional).
+    try:
+        enabled = os.getenv("QUEUE_WORKER_ENABLED", "true").lower() == "true"
+        if enabled and BROWSER_AVAILABLE and browser_manager is not None:
+            qw = QueueWorker(browser_manager=browser_manager, kimi=kimi)
+            qw.start()
+            app.state.queue_worker = qw
+            logger.info("Queue worker enabled")
+        else:
+            logger.info("Queue worker disabled")
+    except Exception as e:
+        logger.warning(f"Queue worker failed to start: {e}")
+
     yield
     # Shutdown
     logger.info("Shutting down Job Applier API...")
+    try:
+        qw = getattr(app.state, "queue_worker", None)
+        if qw:
+            await qw.stop()
+    except Exception:
+        pass
     if browser_manager is not None:
         await browser_manager.close_all()
         logger.info("Browser sessions closed")
@@ -182,6 +210,10 @@ class UserProfileRequest(BaseModel):
     email: EmailStr
     phone: str = Field(..., pattern=r'^[\d\s\-\+\(\)]{7,20}$')
     linkedin_url: Optional[str] = Field(default=None, max_length=200)
+    location: Optional[str] = Field(default=None, max_length=200)
+    website: Optional[str] = Field(default=None, max_length=200)
+    github_url: Optional[str] = Field(default=None, max_length=200)
+    portfolio_url: Optional[str] = Field(default=None, max_length=200)
     years_experience: Optional[int] = Field(default=None, ge=0, le=50)
     work_authorization: str = Field(default="Yes", pattern="^(Yes|No)$")
     sponsorship_required: str = Field(default="No", pattern="^(Yes|No)$")
@@ -209,6 +241,10 @@ class TailorResumeRequest(BaseModel):
 class UserSettingsRequest(BaseModel):
     daily_limit: int = Field(default=10, ge=1, le=1000)
     linkedin_cookie: Optional[str] = Field(default=None, max_length=500)
+    slack_webhook_url: Optional[str] = Field(default=None, max_length=500)
+    discord_webhook_url: Optional[str] = Field(default=None, max_length=500)
+    email_notifications_to: Optional[str] = Field(default=None, max_length=500)
+    platform_daily_limits: Optional[dict] = Field(default=None)
 
 
 class JobTitleSuggestion(BaseModel):
@@ -567,7 +603,11 @@ async def get_user_settings(user_id: str = Depends(get_current_user)):
         "remaining": max(0, daily_limit - sent_24h),
         "can_apply": sent_24h < daily_limit,
         "reset_info": "Rolling 24-hour window",
-        "linkedin_cookie_set": bool(settings.get("linkedin_cookie_encrypted"))
+        "linkedin_cookie_set": bool(settings.get("linkedin_cookie_encrypted")),
+        "slack_webhook_set": bool(settings.get("slack_webhook_url") or os.getenv("SLACK_WEBHOOK_URL")),
+        "discord_webhook_set": bool(settings.get("discord_webhook_url") or os.getenv("DISCORD_WEBHOOK_URL")),
+        "email_notifications_to": settings.get("email_notifications_to"),
+        "platform_daily_limits": json.loads(settings.get("platform_daily_limits_json") or "null")
     }
 
 
@@ -580,6 +620,18 @@ async def update_user_settings(request: UserSettingsRequest, user_id: str = Depe
     if request.linkedin_cookie:
         settings_data["linkedin_cookie_encrypted"] = encrypt_sensitive_data(request.linkedin_cookie)
         logger.info(f"LinkedIn cookie updated for user {user_id}")
+
+    # Optional notification + platform throttles
+    if request.slack_webhook_url is not None:
+        settings_data["slack_webhook_url"] = request.slack_webhook_url.strip() if request.slack_webhook_url else None
+    if request.discord_webhook_url is not None:
+        settings_data["discord_webhook_url"] = request.discord_webhook_url.strip() if request.discord_webhook_url else None
+    if request.email_notifications_to is not None:
+        settings_data["email_notifications_to"] = (
+            request.email_notifications_to.strip() if request.email_notifications_to else None
+        )
+    if request.platform_daily_limits is not None:
+        settings_data["platform_daily_limits_json"] = json.dumps(request.platform_daily_limits)
 
     await save_settings(user_id, settings_data)
 
@@ -1235,16 +1287,22 @@ async def autopilot_campaign(
     )
     selected = deduped[: request.max_apply]
 
-    # Optionally start applying (batch).
+    # Optionally start applying by enqueuing a persistent campaign.
     apply_result = None
+    campaign_id = None
+    enqueued = 0
     if request.start_apply:
         if not BROWSER_AVAILABLE or not browser_manager:
             raise HTTPException(status_code=503, detail="Browser automation not available")
 
         # Prefer direct/apply URLs where possible.
-        apply_urls = [str(j.get("apply_url") or j.get("url")) for j in selected if (j.get("apply_url") or j.get("url"))]
+        apply_urls = [
+            str(j.get("apply_url") or j.get("url"))
+            for j in selected
+            if (j.get("apply_url") or j.get("url"))
+        ]
 
-        # Skip LinkedIn if no cookie is set (batch handler will also enforce this).
+        # Skip LinkedIn if no cookie is set.
         settings = await get_settings(user_id) or {}
         linkedin_cookie = settings.get("linkedin_cookie_encrypted")
         if not linkedin_cookie:
@@ -1256,15 +1314,38 @@ async def autopilot_campaign(
             apply_urls = filtered_apply_urls
 
         if apply_urls:
-            batch_req = BatchApplicationRequest(
-                job_urls=apply_urls,
-                auto_submit=request.auto_submit,
-                generate_cover_letter=True,
-                cover_letter_tone="professional",
-                max_concurrent=3,
-                target_apps_per_minute=6.0,
+            campaign_id = await create_campaign(
+                user_id=user_id,
+                name=f"autopilot_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
+                config={
+                    "source": "autopilot",
+                    "auto_submit": request.auto_submit,
+                    "generate_cover_letter": True,
+                    "cover_letter_tone": "professional",
+                },
+                status="running",
             )
-            apply_result = await apply_to_jobs_batch(batch_req, user_id=user_id)
+            jobs_to_enqueue = []
+            for j in selected:
+                url = str(j.get("apply_url") or j.get("url") or "").strip()
+                if not url:
+                    continue
+                if (not linkedin_cookie) and "linkedin.com/" in url:
+                    continue
+                plat = detect_platform_from_url(url)
+                jobs_to_enqueue.append(
+                    {
+                        "job_url": url,
+                        "platform": plat.value if hasattr(plat, "value") else str(plat),
+                        "payload": j,
+                    }
+                )
+            enqueued = await enqueue_jobs(user_id, campaign_id, jobs_to_enqueue, priority=0, max_attempts=3)
+            apply_result = {
+                "campaign_id": campaign_id,
+                "enqueued": enqueued,
+                "message": "Enqueued. Processing will continue in the background.",
+            }
 
     return {
         "roles": roles,
@@ -1273,7 +1354,143 @@ async def autopilot_campaign(
         "platforms": per_platform,
         "recommended": selected,
         "apply_result": apply_result,
+        "campaign_id": campaign_id,
+        "enqueued": enqueued,
     }
+
+
+@app.get("/campaigns")
+async def campaigns_list(user_id: str = Depends(get_current_user)):
+    camps = await list_campaigns(user_id, limit=50)
+    # Add queue counts for quick dashboard display.
+    out = []
+    for c in camps:
+        counts = await get_queue_counts(c["id"])
+        c["queue_counts"] = counts
+        out.append(c)
+    return {"campaigns": out}
+
+
+@app.get("/campaigns/{campaign_id}")
+async def campaigns_get(campaign_id: str, user_id: str = Depends(get_current_user)):
+    camp = await get_campaign(campaign_id)
+    if not camp:
+        raise HTTPException(status_code=404, detail="Campaign not found")
+    if camp["user_id"] != user_id:
+        raise HTTPException(status_code=403, detail="Access denied")
+    camp["queue_counts"] = await get_queue_counts(campaign_id)
+    return camp
+
+
+@app.get("/campaigns/{campaign_id}/queue")
+async def campaigns_queue(campaign_id: str, user_id: str = Depends(get_current_user), limit: int = 200):
+    camp = await get_campaign(campaign_id)
+    if not camp:
+        raise HTTPException(status_code=404, detail="Campaign not found")
+    if camp["user_id"] != user_id:
+        raise HTTPException(status_code=403, detail="Access denied")
+    items = await list_queue_items(campaign_id, limit=limit)
+    return {"campaign_id": campaign_id, "items": items}
+
+
+@app.post("/campaigns/{campaign_id}/pause")
+async def campaigns_pause(campaign_id: str, user_id: str = Depends(get_current_user)):
+    camp = await get_campaign(campaign_id)
+    if not camp:
+        raise HTTPException(status_code=404, detail="Campaign not found")
+    if camp["user_id"] != user_id:
+        raise HTTPException(status_code=403, detail="Access denied")
+    await set_campaign_status(campaign_id, "paused")
+    return {"message": "Campaign paused", "campaign_id": campaign_id}
+
+
+@app.post("/campaigns/{campaign_id}/resume")
+async def campaigns_resume(campaign_id: str, user_id: str = Depends(get_current_user)):
+    camp = await get_campaign(campaign_id)
+    if not camp:
+        raise HTTPException(status_code=404, detail="Campaign not found")
+    if camp["user_id"] != user_id:
+        raise HTTPException(status_code=403, detail="Access denied")
+    await set_campaign_status(campaign_id, "running")
+    return {"message": "Campaign resumed", "campaign_id": campaign_id}
+
+
+@app.post("/campaigns/{campaign_id}/stop")
+async def campaigns_stop(campaign_id: str, user_id: str = Depends(get_current_user)):
+    camp = await get_campaign(campaign_id)
+    if not camp:
+        raise HTTPException(status_code=404, detail="Campaign not found")
+    if camp["user_id"] != user_id:
+        raise HTTPException(status_code=403, detail="Access denied")
+    await set_campaign_status(campaign_id, "stopped")
+    await cancel_campaign_queue(campaign_id, reason="stopped_by_user")
+    return {"message": "Campaign stopped", "campaign_id": campaign_id}
+
+
+# === Notifications ===
+
+class DailySummaryRequest(BaseModel):
+    send_email: bool = False
+
+
+@app.post("/notifications/test")
+async def notifications_test(user_id: str = Depends(get_current_user)):
+    settings = await get_settings(user_id) or {}
+    await notifications.notify_application(
+        {
+            "user_id": user_id,
+            "application_id": "test",
+            "platform": "system",
+            "job_title": "Test Notification",
+            "company": "Job Applier",
+            "job_url": "",
+            "status": "info",
+            "message": "This is a test notification from Job Applier.",
+        },
+        slack_url=settings.get("slack_webhook_url") or "",
+        discord_url=settings.get("discord_webhook_url") or "",
+    )
+    return {"message": "Test notification sent (if configured)."}
+
+
+@app.post("/notifications/daily-summary")
+async def notifications_daily_summary(request: DailySummaryRequest, user_id: str = Depends(get_current_user)):
+    since = datetime.now() - timedelta(hours=24)
+    apps = await get_applications_since(user_id, since, limit=2000)
+
+    def _count(status: str) -> int:
+        return sum(1 for a in apps if str(a.get("status") or "").lower() == status)
+
+    submitted = _count("submitted")
+    pending_review = _count("pending_review")
+    external = _count("external_application")
+    errors = _count("error")
+    total = len(apps)
+    success_rate = round((submitted / max(1, total)) * 100, 1)
+
+    summary = {
+        "since": since.isoformat(),
+        "total": total,
+        "submitted": submitted,
+        "pending_review": pending_review,
+        "external_application": external,
+        "errors": errors,
+        "success_rate_pct": success_rate,
+    }
+
+    sent = False
+    if request.send_email:
+        settings = await get_settings(user_id) or {}
+        to_email = settings.get("email_notifications_to") or (await get_user_by_id(user_id) or {}).get("email")
+        if to_email:
+            body = (
+                "Job Applier daily summary (last 24h)\n\n"
+                + json.dumps(summary, indent=2)
+                + "\n"
+            )
+            sent = await notifications.send_email(to_email, "Job Applier Daily Summary", body)
+
+    return {"summary": summary, "email_sent": sent}
 
 
 # === Application Endpoints ===
@@ -1288,133 +1505,45 @@ async def apply_to_job(
     if not BROWSER_AVAILABLE or not browser_manager:
         raise HTTPException(status_code=503, detail="Browser automation not available")
 
-    # Check rate limit
-    settings = await get_settings(user_id) or {}
-    daily_limit = settings.get("daily_limit", config.DEFAULT_DAILY_LIMIT)
-    cutoff = datetime.now() - timedelta(hours=24)
-    sent_24h = await count_applications_since(user_id, cutoff)
-
-    if sent_24h >= daily_limit:
-        raise HTTPException(
-            status_code=429,
-            detail=f"Daily limit reached ({daily_limit}). Sent: {sent_24h}. Try again later."
-        )
-
-    resume = await get_latest_resume(user_id)
-    profile = await get_profile(user_id)
-
-    if not resume:
-        raise HTTPException(status_code=400, detail="Resume not uploaded")
-    if not profile:
-        raise HTTPException(status_code=400, detail="Profile not saved")
-
-    # Detect platform
-    platform = detect_platform_from_url(request.job_url)
-    if platform == "unknown":
-        raise HTTPException(status_code=400, detail="Unsupported job platform")
-
-    # Check LinkedIn auth requirement
-    linkedin_cookie = None
-    if platform == "linkedin":
-        if settings.get("linkedin_cookie_encrypted"):
-            linkedin_cookie = decrypt_sensitive_data(settings["linkedin_cookie_encrypted"])
-        else:
-            raise HTTPException(status_code=400, detail="LinkedIn requires authentication. Add li_at cookie in settings.")
-
-    # Generate cover letter if requested
-    cover_letter = None
-    if request.generate_cover_letter:
-        try:
-            cover_letter = await kimi.generate_cover_letter(
-                resume_summary=resume["raw_text"][:2000],
-                job_title="Position",
-                company_name="Company",
-                job_requirements="",
-                tone=request.cover_letter_tone
-            )
-        except Exception as e:
-            logger.warning(f"Cover letter generation failed: {e}")
-
-    # Create application record
+    # Create placeholder application record so clients can poll immediately.
     application_id = f"app_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:8]}"
+    await save_application(
+        {
+            "id": application_id,
+            "user_id": user_id,
+            "job_url": request.job_url,
+            "platform": str(detect_platform_from_url(request.job_url)),
+            "status": "processing",
+            "timestamp": datetime.now().isoformat(),
+        }
+    )
 
     async def do_apply():
-        logger.info(f"Starting application {application_id} for {request.job_url}")
-        adapter = None
         try:
-            adapter = get_adapter(platform, browser_manager, session_cookie=linkedin_cookie, use_unified=False)
-            job = await adapter.get_job_details(request.job_url)
-            logger.info(f"Got job details: {job.title} at {job.company}")
-
-            # Build Resume and UserProfile objects
-            resume_obj = Resume(
-                file_path=resume["file_path"],
-                raw_text=resume["raw_text"],
-                parsed_data=resume["parsed_data"]
-            )
-            profile_obj = UserProfile(
-                first_name=profile["first_name"],
-                last_name=profile["last_name"],
-                email=profile["email"],
-                phone=profile["phone"],
-                linkedin_url=profile.get("linkedin_url"),
-                years_experience=profile.get("years_experience"),
-                work_authorization=profile.get("work_authorization", "Yes"),
-                sponsorship_required=profile.get("sponsorship_required", "No"),
-                custom_answers=profile.get("custom_answers", {})
-            )
-
-            if hasattr(adapter, "apply_to_job"):
-                result = await adapter.apply_to_job(
-                    job=job,
-                    resume=resume_obj,
-                    profile=profile_obj,
-                    cover_letter=cover_letter,
+            await apply_job_url(
+                user_id=user_id,
+                job_url=request.job_url,
+                browser_manager=browser_manager,
+                kimi=kimi,
+                options=ApplyOptions(
                     auto_submit=request.auto_submit,
-                )
-            elif hasattr(adapter, "apply"):
-                # Unified/core adapter compatibility
-                result = await adapter.apply(job=job, resume=resume_obj)
-            else:
-                raise RuntimeError("Adapter does not implement apply_to_job/apply")
-
-            await save_application({
-                "id": application_id,
-                "user_id": user_id,
-                "job_url": request.job_url,
-                "job_title": job.title,
-                "company": job.company,
-                "platform": str(platform),
-                "status": result.status.value,
-                "message": result.message,
-                "screenshot_path": result.screenshot_path,
-                "timestamp": datetime.now().isoformat()
-            })
-
-            log_application(application_id, user_id, request.job_url, result.status.value)
-            user = await get_user_by_id(user_id)
-            log_activity("APPLY", user.get("email") if user else user_id, {
-                "job": job.title,
-                "company": job.company,
-                "platform": platform,
-                "status": result.status.value
-            })
-
+                    generate_cover_letter=request.generate_cover_letter,
+                    cover_letter_tone=request.cover_letter_tone,
+                    application_id=application_id,
+                ),
+            )
         except Exception as e:
             logger.error(f"Application {application_id} failed: {e}")
             await save_application({
                 "id": application_id,
                 "user_id": user_id,
                 "job_url": request.job_url,
-                "platform": str(platform),
+                "platform": str(detect_platform_from_url(request.job_url)),
                 "status": "error",
                 "error": str(e),
                 "timestamp": datetime.now().isoformat()
             })
             log_application(application_id, user_id, request.job_url, "error", str(e))
-        finally:
-            if adapter and hasattr(adapter, "close"):
-                await adapter.close()
 
     background_tasks.add_task(do_apply)
 
@@ -1478,29 +1607,32 @@ async def apply_to_jobs_batch(
             detail=f"Would exceed daily limit. Remaining: {remaining_today}, Requested: {len(request.job_urls)}"
         )
     
-    # Get user data
+    # Fail fast if required user data is missing.
     resume = await get_latest_resume(user_id)
     profile = await get_profile(user_id)
-    
     if not resume:
         raise HTTPException(status_code=400, detail="Resume not uploaded")
     if not profile:
         raise HTTPException(status_code=400, detail="Profile not saved")
-    
-    # Get LinkedIn cookie if available
-    linkedin_cookie = None
-    if settings.get("linkedin_cookie_encrypted"):
-        linkedin_cookie = decrypt_sensitive_data(settings["linkedin_cookie_encrypted"])
-    
-    # Prepare jobs list
-    jobs = [{"url": url, "platform": detect_platform_from_url(url)} for url in request.job_urls]
-    
-    # Filter out unsupported platforms
+
+    # Determine platform ids up front for filtering/metrics.
+    jobs = []
+    for url in request.job_urls:
+        plat = detect_platform_from_url(url)
+        plat_id = plat.value if hasattr(plat, "value") else str(plat)
+        jobs.append({"url": url, "platform": plat_id})
+
     supported_jobs = [j for j in jobs if j["platform"] != "unknown"]
     unsupported_jobs = [j for j in jobs if j["platform"] == "unknown"]
-    
     if not supported_jobs:
         raise HTTPException(status_code=400, detail="No supported job platforms in batch")
+
+    # Skip LinkedIn jobs if cookie not set (otherwise each will fail).
+    linkedin_cookie_present = bool(settings.get("linkedin_cookie_encrypted"))
+    if not linkedin_cookie_present:
+        supported_jobs = [j for j in supported_jobs if j["platform"] != "linkedin"]
+        if not supported_jobs:
+            raise HTTPException(status_code=400, detail="Only LinkedIn URLs provided, but LinkedIn cookie is not set.")
     
     # Create processor
     processor = ParallelApplicationProcessor(
@@ -1511,85 +1643,25 @@ async def apply_to_jobs_batch(
     
     async def process_single_application(job: dict) -> dict:
         """Process a single application."""
-        platform = job["platform"]
         job_url = job["url"]
-        
-        # Check LinkedIn auth
-        if platform == "linkedin" and not linkedin_cookie:
-            raise Exception("LinkedIn requires authentication. Add li_at cookie in settings.")
-        
-        # Generate cover letter if requested
-        cover_letter = None
-        if request.generate_cover_letter:
-            try:
-                cover_letter = await kimi.generate_cover_letter(
-                    resume_summary=resume["raw_text"][:2000],
-                    job_title="Position",
-                    company_name="Company",
-                    job_requirements="",
-                    tone=request.cover_letter_tone
-                )
-            except Exception as e:
-                logger.warning(f"Cover letter generation failed for {job_url}: {e}")
-        
-        # Build objects
-        resume_obj = Resume(
-            file_path=resume["file_path"],
-            raw_text=resume["raw_text"],
-            parsed_data=resume["parsed_data"]
+
+        record = await apply_job_url(
+            user_id=user_id,
+            job_url=job_url,
+            browser_manager=browser_manager,
+            kimi=kimi,
+            options=ApplyOptions(
+                auto_submit=request.auto_submit,
+                generate_cover_letter=request.generate_cover_letter,
+                cover_letter_tone=request.cover_letter_tone,
+            ),
         )
-        profile_obj = UserProfile(
-            first_name=profile["first_name"],
-            last_name=profile["last_name"],
-            email=profile["email"],
-            phone=profile["phone"],
-            linkedin_url=profile.get("linkedin_url"),
-            years_experience=profile.get("years_experience"),
-            work_authorization=profile.get("work_authorization", "Yes"),
-            sponsorship_required=profile.get("sponsorship_required", "No"),
-            custom_answers=profile.get("custom_answers", {})
-        )
-        
-        # Apply
-        adapter = get_adapter(platform, browser_manager, session_cookie=linkedin_cookie, use_unified=False)
-        try:
-            job_details = await adapter.get_job_details(job_url)
-            if hasattr(adapter, "apply_to_job"):
-                result = await adapter.apply_to_job(
-                    job=job_details,
-                    resume=resume_obj,
-                    profile=profile_obj,
-                    cover_letter=cover_letter,
-                    auto_submit=request.auto_submit,
-                )
-            elif hasattr(adapter, "apply"):
-                result = await adapter.apply(job=job_details, resume=resume_obj)
-            else:
-                raise RuntimeError("Adapter does not implement apply_to_job/apply")
-            
-            # Save application
-            app_id = f"app_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:8]}"
-            await save_application({
-                "id": app_id,
-                "user_id": user_id,
-                "job_url": job_url,
-                "job_title": job_details.title,
-                "company": job_details.company,
-                "platform": str(platform),
-                "status": result.status.value,
-                "message": result.message,
-                "screenshot_path": result.screenshot_path,
-                "timestamp": datetime.now().isoformat()
-            })
-            
-            return {
-                "application_id": app_id,
-                "status": result.status.value,
-                "message": result.message
-            }
-        finally:
-            if hasattr(adapter, "close"):
-                await adapter.close()
+
+        return {
+            "application_id": record.get("id"),
+            "status": record.get("status"),
+            "message": record.get("message") or record.get("error") or "",
+        }
     
     # Process batch
     start_time = datetime.now()
